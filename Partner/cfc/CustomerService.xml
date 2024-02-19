@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomerService>
+    <methods>
+        <method>
+            <name>GetCustomer</name>
+            <params>
+                <name type="integer" required="false" description="Müşteri Id">CustomerId</name>
+                <name type="string"  required="false" description="Arama Keyword">Keyword</name>
+                <name type="integer" required="false" default="20" description="Sorgudan Dönecek Satır Sayısı">RowCount</name>
+                <name type="integer" required="false" default="1" description="Sayfalama Kullanılıyorsa Sayfa">Page</name>
+            </params>
+            <description>
+                Müşterileri Listelemek İçin Kullanılır
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+    </methods>
+
+</CustomerService>
