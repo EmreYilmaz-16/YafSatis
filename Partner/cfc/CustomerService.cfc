@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cfset DSN=application.systemParams().DSN>
+    <cfset DSN=application.systemParam().DSN>
     <cffunction name="GetCustomer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="CustomerId" default="">
         <cfargument name="Keyword" default="">
