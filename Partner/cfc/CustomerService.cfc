@@ -10,7 +10,7 @@
             <cfif len(arguments.Keyword)>
                 AND (
                     FULLNAME LIKE '%#arguments.Keyword#%' OR
-                    MEMBERCODE LIKE '%#arguments.Keyword#%'
+                    MEMBER_CODE LIKE '%#arguments.Keyword#%'
                 )
             </cfif>
             <cfif len(arguments.CustomerId)>
