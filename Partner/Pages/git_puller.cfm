@@ -4,7 +4,8 @@ variable="local.out"
 errorvariable="local.err"> 
 </cfexecute>
 
-
+<cfdump var="#local.out#">
+<cfdump var="#local.err#">
 
 <cf_box title="Gİt">
 <cfoutput>
