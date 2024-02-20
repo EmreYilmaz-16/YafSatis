@@ -32,7 +32,9 @@
                 <title/>
             </head>
             <body>
-                merhaba
+                <xsl:for-each select="Service/methods">
+                    <xsl:text>Merhaba</xsl:text>
+                </xsl:for-each>
             </body>
         </html>
         </xsl:template>

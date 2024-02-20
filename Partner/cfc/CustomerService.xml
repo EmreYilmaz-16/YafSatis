@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet href="Services.xslt" type="text/xsl"?>
-<CustomerService>
+<Service>
     <methods>
         <method>
             <name>GetCustomer</name>
@@ -17,4 +17,4 @@
         </method>
     </methods>
 
-</CustomerService>
+</Service>
