@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<CustomerService>
+<Service>
     <methods>
         <method>
             <name>GetShips</name>
@@ -39,4 +39,4 @@
         </method>
     </methods>
 
-</CustomerService>
+</Service>
