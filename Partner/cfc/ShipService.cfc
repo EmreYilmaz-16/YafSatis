@@ -109,6 +109,7 @@
                 <cfdump  var="#CGI#">                
      
                 <cfdump var="#arguments#">
+                <cfdump var="#cfcatch#">
                </cfsavecontent>
                <cffile action="write" file = "c:\CfCatchAddShip.html" output="#control5#"></cffile>
             <cfreturn replace(serializeJSON(cfcatch),"//","")>
