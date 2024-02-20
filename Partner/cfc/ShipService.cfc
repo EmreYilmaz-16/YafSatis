@@ -63,7 +63,9 @@
         <cfargument name="RECORD_EMP">
         <cfargument name="CustomerId" default="">
         <cfargument name="ACTION_TYPE" default="">
-        <cfquery name="Add" datasource="#dsn#" result="res">
+       <cftry>
+       
+       <cfquery name="Add" datasource="#dsn#" result="res">
             INSERT INTO [CatalystQA].[PBS_SHIPS]
            ([SHIP_NAME]
            ,[BUILD_YEAR]
@@ -102,6 +104,11 @@
            ,1)
         </cfquery>
         <cfreturn getShip(ShipId=res.IDENTITYCOL)>
+        <cfcatch>
+            <cfreturn replace(serializeJSON(cfcatch),"//","")>
+            
+        </cfcatch>
+       </cftry>
     </cffunction>
     <cffunction name="MoveShip">
 
