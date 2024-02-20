@@ -2,6 +2,7 @@
 <?xml-stylesheet href="Services.xslt" type="text/xsl"?>
 <Service>
     <name>ShipService</name>
+    <service_path><![CDATA[Partner\cfc\ShipService.cfc ]]></service_path>
     <methods>
         <method>
             <name>GetShips</name>

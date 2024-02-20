@@ -2,6 +2,7 @@
 <?xml-stylesheet href="Services.xslt" type="text/xsl"?>
 <Service>
     <name>CustomerService</name>
+    <service_path><![CDATA[Partner\cfc\CustomerService.cfc ]]></service_path>
     <methods>
         <method>
             <name>GetCustomer</name>
