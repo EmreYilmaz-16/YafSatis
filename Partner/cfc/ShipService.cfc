@@ -43,6 +43,7 @@
                 arrayAppend(ReturnArr,item);
             </cfscript>
         </cfloop>
+        <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
 
     <cffunction name="AddShip">
