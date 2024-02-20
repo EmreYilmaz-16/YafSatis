@@ -39,6 +39,24 @@
             <returns >GetShips result</returns>
         </method>
         <method>
+            <name>UpdateShip</name>
+            <params>
+                <name type="integer"  required="false" description="Gemi Id">SHIP_ID</name>
+                <name type="string"  required="false" description="Gemi Adı">SHIP_NAME</name>
+                <name type="integer"  required="false" description="Üretim Yılı">BUILD_YEAR</name>
+                <name type="decimal"  required="false" description="Boş Ağırlık">GROSS_TONNAGE</name>
+                <name type="decimal"  required="false" description="İstahap Hadi">DEAD_WEIGHT_TONNAGE</name>
+                <name type="decimal"  required="false" description="Uzunluk">LENGTH</name>
+                <name type="decimal"  required="false" description="Genişlik">WIDTH</name>
+                <name type="integer"  required="false" description="Gemi Tipi">SHIP_TYPE_ID</name>
+                <name type="integer"  required="false" description="Güncelleyen">UPDATE_EMP</name>                              
+            </params>
+            <description>
+                Gemi Güncellemek İçin Kullanılır 
+            </description>
+            <returns >GetShips result</returns>
+        </method>
+        <method>
             <name>MoveShip</name>
             <params>
                 <name type="integer"  required="false" description="Gemi Id">SHIP_ID</name>

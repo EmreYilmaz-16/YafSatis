@@ -18,8 +18,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         <td>
             <xsl:value-of select="name" /><br/>
          <code>
-            <b>Dönüş Tipi</b> <xsl:value-of select="returns" /><br/>
-           <b>Açıklama</b> <xsl:value-of select="description" /><br/>
+            <b>Dönüş Tipi :</b> <xsl:value-of select="returns" /><br/>
+           <b>Açıklama :</b> <xsl:value-of select="description" /><br/>
         </code>
         </td>
         <td><table class="table table-sm table-striped">

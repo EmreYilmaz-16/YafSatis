@@ -145,7 +145,43 @@ VALUES
 <cfreturn GetShips(ShipId=arguments.SHIP_ID)>
     </cffunction>
     <cffunction name="UpdateShip">
-
+        <cfargument name="SHIP_ID">
+        <cfargument name="SHIP_NAME">        
+        <cfargument name="BUILD_YEAR">
+        <cfargument name="GROSS_TONNAGE">
+        <cfargument name="DEAD_WEIGHT_TONNAGE">
+        <cfargument name="LENGTH">
+        <cfargument name="WIDTH">
+        <cfargument name="SHIP_TYPE_ID">
+        <cfargument name="UPDATE_EMP">        
+       <cftry>
+       
+       <cfquery name="Add" datasource="#dsn#" result="res">
+           UPDATE [CatalystQA].[PBS_SHIPS] SET 
+           SHIP_NAME='#arguments.SHIP_NAME#',
+           BUILD_YEAR=#arguments.BUILD_YEAR#,
+           GROSS_TONNAGE=#arguments.GROSS_TONNAGE#,
+           DEAD_WEIGHT_TONNAGE=#arguments.DEAD_WEIGHT_TONNAGE#,
+           LENGTH=#arguments.LENGTH#,
+           WIDTH=#arguments.WIDTH#,
+           SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#,
+           UPDATE_DATE=GETDATE(),
+           UPDATE_EMP=#arguments.UPDATE_EMP#
+           WHERE SHIP_ID=#arguments.SHIP_ID#
+        </cfquery>        
+        <cfreturn GetShips(ShipId=arguments.SHIP_ID)>
+        <cfcatch>
+            <cfsavecontent  variable="control5">
+                <cfdump  var="#CGI#">                
+     
+                <cfdump var="#arguments#">
+                <cfdump var="#cfcatch#">
+               </cfsavecontent>
+               <cffile action="write" file = "c:\CfCatchAddShip.html" output="#control5#"></cffile>
+            <cfreturn replace(serializeJSON(cfcatch),"//","")>
+            
+        </cfcatch>
+       </cftry>
     </cffunction>
    
 </cfcomponent>
