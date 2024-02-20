@@ -153,7 +153,7 @@
 <!--- From Kısmı Başlangıç --->
 <cf_box>
     <cf_box_elements vertical="1">
-        <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
             <label class="bold"><strong>CUSTOMER NAME</strong></label>
             <input type="text">
         </div>
@@ -193,8 +193,8 @@
             <input type="text">
         </div>
             
-        <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12 margin-top-20    ">
-            <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-search"></i><span class="font-sm">Extra Button İcon</span></a>
+        <div class="form-group col col-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-top-20">
+            <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="width:85%;"><i class="fa fa-repeat"></i><span class="font-sm">FILTER LIST</span></a>
         </div>
         
     </cf_box_elements>
@@ -252,8 +252,6 @@
 </cf_box>
 <!--- Grid Bitiş --->
 
-
-<!--- Açılır Poup Başlangıç --->
 <div id="popup_box_Add_New_Record" style="display:none" class="col col-12 col-md-12 col-sm-12 col-xs-12 padding-0 ">
     <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
         <div class="ui-draggable-box">
