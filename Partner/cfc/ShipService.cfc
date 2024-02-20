@@ -118,7 +118,31 @@
        </cftry>
     </cffunction>
     <cffunction name="MoveShip">
+        <cfargument name="SHIP_ID">
+        <cfargument name="ToCustomerId">
+        <cfargument name="ACTION_TYPE">
 
+        <cfquery name="upLs" datasource="#dsn#">
+            select * from PBS_SHIP_COMPANY_RELATION where SHIP_ID=#SHIP_ID# AND SHIP_STATUS=1
+        </cfquery>
+<cfquery name="upd" datasource="#dsn#">
+    UPDATE PBS_SHIP_COMPANY_RELATION SET SHIP_STATUS=0 WHERE ID=#upLs.ID#
+</cfquery>
+<cfquery name="ins2" datasource="#dsn#">
+    INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
+   ([SHIP_ID]
+   ,[COMPANY_ID]
+   ,[ACTION_DATE]
+   ,[ACTION_TYPE]
+   ,[SHIP_STATUS])
+VALUES
+   (#res.IDENTITYCOL#
+   ,#arguments.ToCustomerId#
+   ,GETDATE()
+   ,#arguments.ACTION_TYPE#
+   ,1)
+</cfquery>
+<cfreturn GetShips(ShipId=arguments.SHIP_ID)>
     </cffunction>
     <cffunction name="UpdateShip">
 

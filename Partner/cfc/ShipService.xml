@@ -36,7 +36,19 @@
             <description>
                 Gemi Eklemek İçin Kullanılır 
             </description>
-            <returns >JSON Array</returns>
+            <returns >GetShips result</returns>
+        </method>
+        <method>
+            <name>MoveShip</name>
+            <params>
+                <name type="integer"  required="false" description="Gemi Id">SHIP_ID</name>
+                <name type="integer"  required="false" description="Taşınacak Müşteri">ToCustomerId</name>
+                <name type="integer" required="false" description="İlişki Şekli">ACTION_TYPE</name>
+            </params>
+            <description>
+                Gemiyi Bir Müşteriden Diğerine Taşımak İçin Kullanılır
+            </description>
+            <returns >GetShips result</returns>
         </method>
     </methods>
 
