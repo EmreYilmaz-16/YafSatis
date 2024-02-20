@@ -103,7 +103,7 @@
            ,#arguments.ACTION_TYPE#
            ,1)
         </cfquery>
-        <cfreturn getShip(ShipId=res.IDENTITYCOL)>
+        <cfreturn GetShips(ShipId=res.IDENTITYCOL)>
         <cfcatch>
             <cfsavecontent  variable="control5">
                 <cfdump  var="#CGI#">                
