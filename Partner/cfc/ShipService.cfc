@@ -99,7 +99,7 @@
      VALUES
            (#res.IDENTITYCOL#
            ,#arguments.CustomerId#
-           ,GETDATE(),
+           ,GETDATE()
            ,#arguments.ACTION_TYPE#
            ,1)
         </cfquery>
