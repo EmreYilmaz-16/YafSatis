@@ -105,6 +105,12 @@
         </cfquery>
         <cfreturn getShip(ShipId=res.IDENTITYCOL)>
         <cfcatch>
+            <cfsavecontent  variable="control5">
+                <cfdump  var="#CGI#">                
+     
+                <cfdump var="#arguments#">
+               </cfsavecontent>
+               <cffile action="write" file = "c:\CfCatchAddShip.html" output="#control5#"></cffile>
             <cfreturn replace(serializeJSON(cfcatch),"//","")>
             
         </cfcatch>
