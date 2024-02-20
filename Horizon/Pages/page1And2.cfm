@@ -257,7 +257,7 @@
 <div id="popup_box_Add_New_Record" style="display:none" class="col col-12 col-md-12 col-sm-12 col-xs-12 padding-0 ">
     <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
         <div class="ui-draggable-box">
-            <cf_box title="NEW INQUIRY RECORD" closable="1" close_href="javascript:show_hide('popup_box_Add_New_Record');">
+            <cf_box title="NEW INQUIRY RECORD">
                 <div class="ui-form-list">
 
                     <!--- 1.GRID --->
