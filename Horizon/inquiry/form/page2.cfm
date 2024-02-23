@@ -30,7 +30,7 @@
                                 <label class="margin-bottom-5 bold font-sm">VESSEL NAME</label>
                                 <div class="input-group">
                                     <input type="text">
-                                    <span class="input-group-addon icon-ellipsis color-CR"></span>
+                                    <span onclick="openShipList()" class="input-group-addon icon-ellipsis color-CR"></span>
                                 </div>
                             </div>
                         </div>

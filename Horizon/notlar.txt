@@ -1,1 +1,5 @@
-Sayfaları Ayırıp Çalışırsan Daha Yönetilebilir Olur page1and2.cfm deki teklif ekleme ekranını page2 ye taşıdım
+--Sayfaları Ayırıp Çalışırsan Daha Yönetilebilir Olur page1and2.cfm deki teklif ekleme ekranını page2 ye taşıdım
+
+
+--Sayfaları Workcube Klasörleme Mantığına Göre Yerleştirirsen Daha Kolay Bulunabilir Büyük Projelerde  Örnek Klasörleri OLuşturuyourm
+
