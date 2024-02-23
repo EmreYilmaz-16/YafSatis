@@ -1,3 +1,11 @@
+<script>
+    var DataSources={
+        DSN:"<cfoutput>#dsn#</cfoutput>",
+        DSN1:"<cfoutput>#dsn1#</cfoutput>",
+        DSN2:"<cfoutput>#dsn2#</cfoutput>",
+        DSN3:"<cfoutput>#dsn3#</cfoutput>",
+    }
+</script>
 <!--- Yönlendirme Başlangıç --->
 <section class="page-bar">
     <ul class="page-breadcrumb">
