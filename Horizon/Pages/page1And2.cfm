@@ -207,13 +207,8 @@
             <input type="text" name="ref_no" value="ref_no">
         </div>
             
-<<<<<<< HEAD
-        <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12 margin-top-20">
-            <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-search"></i><span class="font-sm">Extra Button İcon</span></a>
-=======
         <div class="form-group col col-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-top-20">
             <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="width:85%;"><i class="fa fa-repeat"></i><span class="font-sm">FILTER LIST</span></a>
->>>>>>> 156b4082472ef7ee992b0e383cb07da1c738c51c
         </div>
     </form>
     </cf_box_elements>
