@@ -193,7 +193,7 @@
                 <input type="hidden" name="sales_member_id" id="sales_member_id" value="">
                 <input type="hidden" name="sales_member_type" id="sales_member_type" value="">
                 <input name="sales_member_name" type="text" id="sales_member_name" placeholder="Sales Partner " onfocus="AutoComplete_Create('sales_member_name','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_PARTNER_NAME2,MEMBER_NAME2','get_member_autocomplete','\'1,2\',0,0,0','PARTNER_ID2,MEMBER_TYPE','sales_member_id,sales_member_type','','3','250');" value="" autocomplete="off"><div id="sales_member_name_div_2" name="sales_member_name_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 942px; top: 209px; z-index: 159; display: none;"></div>
-                <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_pars&field_id=order_form.sales_member_id&field_name=order_form.sales_member_name&field_type=order_form.sales_member_type&select_list=2,3');"></span>
+                <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_pars&field_id=order_Search_form.sales_member_id&field_name=order_Search_form.sales_member_name&field_type=order_Search_form.sales_member_type&select_list=2,3');"></span>
             </div>
         </div>
 
