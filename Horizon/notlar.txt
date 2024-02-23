@@ -1,0 +1,1 @@
+Sayfaları Ayırıp Çalışırsan Daha Yönetilebilir Olur page1and2.cfm deki teklif ekleme ekranını page2 ye taşıdım
