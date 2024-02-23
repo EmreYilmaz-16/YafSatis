@@ -17,10 +17,10 @@
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">CUSTOMER NAME</label>
                                 <div class="input-group">
-                                    <input type="hidden" name="consumer_id" id="consumer_id">
-                                    <input type="hidden" name="company_id" id="company_id">
-                                    <input type="text" name="company" id="company" onfocus="AutoComplete_Create('company','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1,2\',0,0','COMPANY_ID,CONSUMER_ID','company_id,consumer_id','','3','200');" autocomplete="off"><div id="company_div_2" name="company_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>
-                                    <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_pars&field_name=order_form.company&field_comp_id=order_form.company_id&field_consumer=order_form.consumer_id&select_list=7,8&keyword='+encodeURIComponent(document.order_form.company.value));"></span>
+                                    <input type="hidden" name="Addconsumer_id" id="Addconsumer_id">
+                                    <input type="hidden" name="Addcompany_id" id="Addcompany_id">
+                                    <input type="text" name="Addcompany" id="Addcompany" onfocus="AutoComplete_Create('Addcompany','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1,2\',0,0','COMPANY_ID,CONSUMER_ID','Addcompany_id,Addconsumer_id','','3','200');" autocomplete="off"><div id="company_div_2" name="company_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>
+                                    <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_pars&field_name=order_form.Addcompany&field_comp_id=order_form.Addcompany_id&field_consumer=order_form.Addconsumer_id&select_list=7,8&keyword='+encodeURIComponent(document.order_form.company.value));"></span>
                                 </div>
                             </div>
                         </div>
