@@ -271,16 +271,14 @@
         <div class="ui-draggable-box">
             <cf_box title="NEW INQUIRY RECORD">
                 <div class="ui-form-list">
-
+<form name="order_form">
                     <!--- 1.GRID --->
                     <div class="margintop-5 col col-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY REASON</label>
-                                <select>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select onclick="getOfferCurrencies(this)">
+                                    
                                 </select>
                             </div>
                         </div>
@@ -475,8 +473,12 @@
                     <a href="index.cfm?fuseaction=test_projects.equipment_new" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-check-square"></i>SAVE</a>
                     <a href="javascript:show_hide('popup_box_Add_New_Record');" class="ui-wrk-btn ui-wrk-btn-red ui-wrk-btn-addon-left"><i class="fa fa-close"></i>CLOSE</a>
                 </div>
+            </form>
             </cf_box>
+        
         </div>
         
     </div>
 </div>
+
+<script src="/AddOns/YafSatis/Horizon/js/page1.js"></script>
