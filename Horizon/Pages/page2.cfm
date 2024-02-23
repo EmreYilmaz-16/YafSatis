@@ -7,7 +7,7 @@
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY REASON</label>
-                                <select onclick="getOfferCurrencies(this)" id="OFFER_CURRENCY" name="OFFER_CURRENCY">
+                                <select  id="OFFER_CURRENCY" name="OFFER_CURRENCY">
                                     
                                 </select>
                             </div>
