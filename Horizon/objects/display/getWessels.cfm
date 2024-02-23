@@ -48,8 +48,9 @@ var CustomerId="<cfoutput>#attributes.CustomerId#</cfoutput>"
     function GetShips(el,ev) {
         var kv=el.value;
         var liste=document.getElementById("ShipList")
-        $(liste).html("");
+       
         if(ev.keyCode==13){
+            $(liste).html("");
             $.ajax({
             url:ServiceUri+"/ShipService.cfc?method=GetShips&CustomerId="+CustomerId+"&ShipStatus=1&Keyword="+kv,
             success:function (returnData) {
