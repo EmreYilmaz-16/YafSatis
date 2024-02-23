@@ -16,4 +16,20 @@
         </cfloop>
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
+    <cffunction name="getOfferPriorities" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfquery name="getAll" datasource="#dsn#">
+            select  PRIORITY_ID,PRIORITY from CatalystQA.SETUP_PRIORITY
+        </cfquery>
+        <cfset ReturnArr=arrayNew(1)>
+        <cfloop query="getAll">
+            <cfscript>
+                item={
+                    PRIORITY_ID=PRIORITY_ID,
+                    PRIORITY=PRIORITY
+                };
+                arrayAppend(ReturnArr,item);
+            </cfscript>
+        </cfloop>
+        <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
 </cfcomponent>
