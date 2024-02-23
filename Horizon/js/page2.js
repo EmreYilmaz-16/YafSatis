@@ -1,7 +1,7 @@
 var ServiceUri="/AddOns/YafSatis/Partner/cfc"
 $(document).ready(function(){
     var e=document.getElementById("OFFER_CURRENCY")
-    getOfferCurrencies()
+    getOfferCurrencies(e)
 })
 function getOfferCurrencies(el){
     $.ajax({
