@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="Services.xslt" type="text/xsl"?>
+<Service>
+    <name>OfferService</name>
+    <service_path><![CDATA[Partner\cfc\OfferService.cfc ]]></service_path>
+    <methods>
+        <method>
+            <name>getOfferCurrencies</name>
+            <params>
+                
+            </params>
+            <description>
+                Teklif Tiplerini Listelemek İçin Kullanılır
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getOfferPriorities</name>
+            <params>
+                
+            </params>
+            <description>
+                Teklif Önceliklerini Listelemek İçin Kullanılır
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+    </methods>
+
+</Service>
