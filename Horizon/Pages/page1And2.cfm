@@ -153,7 +153,6 @@
 <!--- From Kısmı Başlangıç --->
 <cf_box>
     <cf_box_elements vertical="1">
-<<<<<<< HEAD
         <form name="order_Search_form">
         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
             <label class="bold"><strong>CUSTOMER NAME</strong></label> <!---- //BILGI Veri Kayıt Edebilmek İçin Id Değeri de gereklidir Her bir alan için Gözüken Alan ve Id değeri Olmalıdır ---->
@@ -170,11 +169,6 @@
 
             </div>
             <!---//BILGI Burada Workcube'ün Standart Müşteri Seçim Ekranını Kullanabiliriz Örn : Üstteki Alanlar Burada Bizi Zorunlu tuttuğu yer bir Form İçerisinde Olması---->
-=======
-        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
-            <label class="bold"><strong>CUSTOMER NAME</strong></label>
-            <input type="text">
->>>>>>> 156b4082472ef7ee992b0e383cb07da1c738c51c
         </div>
 
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
