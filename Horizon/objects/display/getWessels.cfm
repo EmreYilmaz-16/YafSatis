@@ -1,6 +1,6 @@
 
 <div class="form-group">
-<input type="text" onkeyup="GetShips(this)" placeholder="Keyword">
+<input type="text" onkeyup="GetShips(this,event)" placeholder="Keyword">
 </div>
 <cf_ajax_list>
     <thead>
@@ -45,11 +45,11 @@ var CustomerId="<cfoutput>#attributes.CustomerId#</cfoutput>"
             }
         })
     })
-    function GetShips(el) {
+    function GetShips(el,ev) {
         var kv=el.value;
         var liste=document.getElementById("ShipList")
         $(liste).html("");
-        if(kv.length>3){
+        if(ev.keyCode==13){
             $.ajax({
             url:ServiceUri+"/ShipService.cfc?method=GetShips&CustomerId="+CustomerId+"&ShipStatus=1&Keyword="+kv,
             success:function (returnData) {
