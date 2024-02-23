@@ -1,6 +1,7 @@
 
-<input type="text" onkeyup="GetShips()">
-
+<div class="form-group">
+<input type="text" onkeyup="GetShips(this)" placeholder="Keyword">
+</div>
 <cf_ajax_list>
     <thead>
         <tr>
