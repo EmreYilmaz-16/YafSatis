@@ -29,8 +29,9 @@
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">VESSEL NAME</label>
                                 <div class="input-group">
-                                    <input type="text">
-                                    <span class="input-group-addon icon-ellipsis color-CR"></span>
+                                    <input type="text" name="ship_name" id="ship_name">
+                                    <input type="hidden" name="ship_id" id="ship_id">
+                                    <span onclick="openShipList()" class="input-group-addon icon-ellipsis color-CR"></span>
                                 </div>
                             </div>
                         </div>

@@ -74,7 +74,9 @@ var CustomerId="<cfoutput>#attributes.CustomerId#</cfoutput>"
         }
     }
     function setShip(id,name) {
-        
+        $("#ship_name").val(name);
+        $("#ship_id").val(id);
+        closeBoxDraggable("<cfoutput>#attributes.modal_id#</cfoutput>")
     }
 </script>
 
