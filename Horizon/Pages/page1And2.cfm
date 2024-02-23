@@ -153,6 +153,7 @@
 <!--- From Kısmı Başlangıç --->
 <cf_box>
     <cf_box_elements vertical="1">
+<<<<<<< HEAD
         <form name="order_Search_form">
         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
             <label class="bold"><strong>CUSTOMER NAME</strong></label> <!---- //BILGI Veri Kayıt Edebilmek İçin Id Değeri de gereklidir Her bir alan için Gözüken Alan ve Id değeri Olmalıdır ---->
@@ -169,6 +170,11 @@
 
             </div>
             <!---//BILGI Burada Workcube'ün Standart Müşteri Seçim Ekranını Kullanabiliriz Örn : Üstteki Alanlar Burada Bizi Zorunlu tuttuğu yer bir Form İçerisinde Olması---->
+=======
+        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
+            <label class="bold"><strong>CUSTOMER NAME</strong></label>
+            <input type="text">
+>>>>>>> 156b4082472ef7ee992b0e383cb07da1c738c51c
         </div>
 
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
@@ -207,8 +213,13 @@
             <input type="text" name="ref_no" value="ref_no">
         </div>
             
+<<<<<<< HEAD
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12 margin-top-20">
             <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-search"></i><span class="font-sm">Extra Button İcon</span></a>
+=======
+        <div class="form-group col col-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-top-20">
+            <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="width:85%;"><i class="fa fa-repeat"></i><span class="font-sm">FILTER LIST</span></a>
+>>>>>>> 156b4082472ef7ee992b0e383cb07da1c738c51c
         </div>
     </form>
     </cf_box_elements>
@@ -266,12 +277,10 @@
 </cf_box>
 <!--- Grid Bitiş --->
 
-
-<!--- Açılır Poup Başlangıç --->
 <div id="popup_box_Add_New_Record" style="display:none" class="col col-12 col-md-12 col-sm-12 col-xs-12 padding-0 ">
     <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
         <div class="ui-draggable-box">
-            <cf_box title="NEW INQUIRY RECORD" closable="1" close_href="javascript:show_hide('popup_box_Add_New_Record');">
+            <cf_box title="NEW INQUIRY RECORD">
                 <div class="ui-form-list">
 
                     <!--- 1.GRID --->
