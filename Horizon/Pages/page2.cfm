@@ -54,9 +54,10 @@
                     <!--- 2.GRID --->
                     <div class="margin-top-10 col col-12 col-md-12 col-sm-12 col-xs-12" >
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="margin-bottom-5 bold font-sm">DATE</label>
                             <div class="input-group">
-                                <cfsavecontent variable="message"><cf_get_lang dictionary_id='57477.hatalı veri'>:<cf_get_lang dictionary_id='57742.Tarih'>!</cfsavecontent>
-                                <input type="text" name="start_date"  value="#dateformat(attributes.start_date,dateformat_style)#" validate="#validate_style#" maxlength="10" message="#message#">
+                                
+                                <input type="text" name="start_date"  value="" >
                                 <span class="input-group-addon"><cf_wrk_date_image date_field="start_date"></span>
                             </div>
                         </div>
@@ -111,9 +112,10 @@
                     <!--- 4.GRID --->  
                     <div class="margin-top-10 col col-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="margin-bottom-5 bold font-sm">DELIVERY DATE</label>
                             <div class="input-group">
-                                <cfsavecontent variable="message"><cf_get_lang dictionary_id='57477.hatalı veri'>:<cf_get_lang dictionary_id='57742.Tarih'>!</cfsavecontent>
-                                <input type="text" name="start_date"  value="#dateformat(attributes.start_date,dateformat_style)#" validate="#validate_style#" maxlength="10" message="#message#">
+                                
+                                <input type="text" name="delivery_date" >
                                 <span class="input-group-addon"><cf_wrk_date_image date_field="start_date"></span>
                             </div>
                         </div>
