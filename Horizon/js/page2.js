@@ -2,8 +2,10 @@ var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 $(document).ready(function () {
   var e = document.getElementById("OFFER_CURRENCY");
   var e1 = document.getElementById("MONEY");
+  var e2 = document.getElementById("PRIORITY");
   getOfferCurrencies(e);
   getMoney(e1);
+  getOfferPriorities(e2);
 });
 var MoneyArr = [];
 function openShipList() {
@@ -60,6 +62,22 @@ function setMoney(el) {
   $("#rate2").val(MoneyArr[ix].RATE2);
 }
 
+function getOfferPriorities(el) {
+    $.ajax({
+      url: ServiceUri + "/OfferService.cfc?method=getOfferPriorities",
+      success: function (returnData) {
+        var Obje = JSON.parse(returnData);
+        console.log(Obje);
+        $(el).html("");
+        for (let i = 0; i < Obje.length; i++) {
+          var option = document.createElement("option");
+          option.value = Obje[i].PRIORITY_ID;
+          option.innerText = Obje[i].PRIORITY;
+          el.appendChild(option);
+        }
+      },
+    });
+  }
 /**
  * <input type="hidden" name="rate1" id="rate1">
                                 <input type="hidden" name="rate2" id="rate2">
