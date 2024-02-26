@@ -32,4 +32,22 @@
         </cfloop>
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
+    <cffunction name="getOfferMoney" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfquery name="getMoneyTypes" datasource="#dsn#">
+            SELECT DISTINCT MONEY,RATE1,RATE2  FROM CatalystQA.SETUP_MONEY
+        </cfquery>
+        <cfset ReturnArr=arrayNew(1)>
+        <cfloop query="getMoneyTypes">
+            <cfscript>
+                item={
+                    MONEY=MONEY,
+                    RATE1=RATE1,
+                    RATE2=RATE2
+                };
+                arrayAppend(ReturnArr,item);
+            </cfscript>
+        </cfloop>
+        <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
+
 </cfcomponent>

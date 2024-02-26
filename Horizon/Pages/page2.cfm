@@ -138,11 +138,11 @@
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">CURRENCY</label>
-                                <select>
-                                    <option selected>EU</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select name="MONEY" id="MONEY" onchange="setMoney(this)">
+                                    
                                 </select>
+                                <input type="hidden" name="rate1" id="rate1">
+                                <input type="hidden" name="rate2" id="rate2">
                             </div>
                         </div>
 
