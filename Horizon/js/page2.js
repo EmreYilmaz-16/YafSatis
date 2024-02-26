@@ -35,7 +35,7 @@ function getOfferCurrencies(el) {
   });
 }
 
-function getMoney() {
+function getMoney(el) {
   $.ajax({
     url: ServiceUri + "/OfferService.cfc?method=getOfferMoney",
     success: function (returnData) {
