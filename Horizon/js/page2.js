@@ -3,7 +3,7 @@ $(document).ready(function () {
   var e = document.getElementById("OFFER_CURRENCY");
   var e1 = document.getElementById("MONEY");
   getOfferCurrencies(e);
-  getOfferCurrencies(e1);
+  getMoney(e1);
 });
 var MoneyArr = [];
 function openShipList() {
