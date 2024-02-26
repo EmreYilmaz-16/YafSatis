@@ -57,11 +57,11 @@
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">DATE</label>
                                 <div class="input-group">
-                                    <div class="input-group">
+                                    
                                         
                                         <input type="text" name="start_date"  >
                                         <span class="input-group-addon"><cf_wrk_date_image date_field="start_date"></span>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -120,11 +120,11 @@
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">DELIVERY DATE</label>
                                 <div class="input-group">
-                                    <div class="input-group">
+                                    
                                         <cfsavecontent variable="message"><cf_get_lang dictionary_id='57477.hatalı veri'>:<cf_get_lang dictionary_id='57742.Tarih'>!</cfsavecontent>
                                         <input type="text" name="delivery_date"  id="delivery_date">
                                         <span class="input-group-addon"><cf_wrk_date_image date_field="delivery_date"></span>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
