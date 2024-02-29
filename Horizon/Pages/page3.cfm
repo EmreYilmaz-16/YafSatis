@@ -187,10 +187,8 @@
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">EQUIPMENT</label>
-                    <select>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
+                    <select name="PRODUCT_CAT" id="PRODUCT_CAT">
+                        
                     </select>
                 </div>
             </div>
@@ -278,3 +276,5 @@
 <cf_box>
     
 </cf_box>
+
+<script src="/AddOns/YafSatis/Horizon/js/sayfa3.js"></script>
