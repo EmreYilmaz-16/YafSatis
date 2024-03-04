@@ -123,9 +123,11 @@ function addEqRow(Obj, jsn) {
   var spn='<span class="icn-md icon-remove"></span>'
   
   b4.innerHTML=spn;
-
+  292424
   var b5 = document.createElement("button");
-  b5.innerText = "A";
+  b5.setAttribute("class","ui-wrk-btn")
+  b5.setAttribute("style","background:#292424 !important")
+  b5.innerHTML='<span class="icn-md fa fa-trash"></span>';
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
   diva.appendChild(b1);
