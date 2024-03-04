@@ -88,6 +88,7 @@ function AddEquipment() {
 var EqArr = [];
 
 function addEqRow(Obj, jsn) {
+ console.log(Obj);
   var div = document.createElement("div");
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("data-PropList", Obj.PropList);
@@ -136,6 +137,7 @@ function addEqRow(Obj, jsn) {
     sv_kalan = sv_kalan_ * 8;
     var td = document.createElement("td");
     td.setAttribute("style", "width:" + sv_kalan+"%");
+    tr.appendChild(td);
   }
 
   table.appendChild(tr);
