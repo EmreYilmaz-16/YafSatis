@@ -75,6 +75,7 @@ function AddEquipment() {
   ReturnObject.Filters=SelectedValues;
   ReturnObject.PropList=PropList;
   var jsn = JSON.stringify(ReturnObject);
+  addEqRow(ReturnObject,jsn);
 }
 var EqArr=[];
 
