@@ -111,7 +111,7 @@ function addEqRow(Obj,jsn){
     const element = Obj.Filters[index];
     var td=document.createElement("td");
     td.setAttribute("style","border-right:solid 1px")
-    var spnT="<span>"+element.PNAME+"</span></br><span>"+element.PRODUCT_CAT+"</span>"
+    var spnT="<span style='font-weight:bold'>"+element.PNAME+"</span></br><span>"+element.PRODUCT_CAT+"</span>"
     td.innerHTML=spnT;
     tr.appendChild(td);
   }
