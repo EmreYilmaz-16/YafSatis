@@ -39,7 +39,7 @@ function getCats(el) {
       });*/
 
       AjaxPageLoad(
-        "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getWessels&PRODUCT_CATID=" +cat_id
+        "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +cat_id
          ,
         "PROP_AREA",
         1,
