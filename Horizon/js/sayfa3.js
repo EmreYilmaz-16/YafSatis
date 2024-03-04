@@ -88,7 +88,11 @@ function AddEquipment() {
 var EqArr = [];
 
 function addEqRow(Obj, jsn) {
- console.log(Obj);
+  var exxx = EqArr.findIndex((p) => p == Obj.PropList);
+  if (exxx != -1) {
+    return false;
+  }
+  console.log(Obj);
   var div = document.createElement("div");
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("data-PropList", Obj.PropList);
@@ -120,7 +124,7 @@ function addEqRow(Obj, jsn) {
   for (let index = 0; index < Obj.Filters.length; index++) {
     const element = Obj.Filters[index];
     var td = document.createElement("td");
-    td.setAttribute("style", "border-right:solid 1px;width:"+svk_st+"%");
+    td.setAttribute("style", "border-right:solid 1px;width:" + svk_st + "%");
     var spnT =
       "<span style='font-weight:bold'>" +
       element.PNAME +
@@ -136,11 +140,16 @@ function addEqRow(Obj, jsn) {
     sv_kalan_ = 12 - Obj.Filters.length;
     sv_kalan = sv_kalan_ * 8;
     var td = document.createElement("td");
-    td.setAttribute("style", "width:" + sv_kalan+"%");
+    td.setAttribute("style", "width:" + sv_kalan + "%");
     tr.appendChild(td);
   }
 
   table.appendChild(tr);
+  var input=document.createElement("input");
+  input.setAttribute("type","hidden");
+  input.value=jsn;
+  input.name="AddedEquipment";
+  div.appendChild(input);
   div.appendChild(table);
   document.getElementById("BasketArea").appendChild(div);
 }
