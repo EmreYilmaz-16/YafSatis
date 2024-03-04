@@ -111,7 +111,7 @@ function addEqRow(Obj,jsn){
     var td=document.createElement("td");
     td.setAttribute("style","border-right:solid 1px")
     var spnT="<span>"+element.PRODUCT_CAT+"</span></br><span>"+element.PRODUCT_CAT+"</span>"
-    td.innerHTML(spnT);
+    td.innerHTML=spnT;
     tr.appendChild(td);
   }
   table.appendChild(tr);
