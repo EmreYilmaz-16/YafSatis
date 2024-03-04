@@ -187,12 +187,15 @@
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">EQUIPMENT</label>
-                    <select name="PRODUCT_CAT" id="PRODUCT_CAT">
+                    <select name="PRODUCT_CAT" id="PRODUCT_CAT" onchange="getCatProperties(this.value)">
                         
                     </select>
                 </div>
             </div>
+            <div id="PROP_AREA">
 
+            </div>
+            <!-----
             <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">BRAND</label>
@@ -248,7 +251,7 @@
                     <input type="text">
                 </div>
             </div>
-
+----->
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="padding-2 col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -48,7 +48,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
                    <cfscript>
                        item={
                         PROPERTY_DETAIL=PROPERTY_DETAIL,
-                          PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID
+                          PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
                           IS_SUB_PRPT=PRPT
                        };
                        arrayAppend(ReturnArr,item);
