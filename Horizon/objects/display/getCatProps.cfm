@@ -16,7 +16,7 @@
         <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY#</label>
            
-            <select class="propss" name="SEARCH_PROP" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
+            <select class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
                 
                 <option value="">Seç</option>
                 <cfloop array="#CatPropertieDetails#" item="it2">

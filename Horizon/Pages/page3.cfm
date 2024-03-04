@@ -1,6 +1,16 @@
 <!--<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />---->
 
 <!--- Yönlendirme Başlangıç --->
+<style>
+    .EqTableMain{
+        text-align: center;
+    width: 100%;
+    }
+    .EqTableMainRows{
+        border-right: solid 1px;
+    width: 8%;
+    }
+</style>
 <cf_box>
     <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12">
         <div class="pull-left margin-top-10">
@@ -197,63 +207,6 @@
             <div id="PROP_AREA">
 
             </div>
-            <!-----
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">BRAND</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">TYPE</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">CYLINDER</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">CYLINDER BORE</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">RPM</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">KW</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">DATE</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
-                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                    <label class="margin-bottom-5 bold font-sm">SEIRAL NO</label>
-                    <input type="text">
-                </div>
-            </div>
------>
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="padding-2 col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -269,7 +222,7 @@
                             <a href="javascript://" class="font-xs text-info"><i class="fa fa-cloud-upload margin-right-5"></i>SAMPLE EXCEL</a>
                         </div>
                     </div>
-                    <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left btn-block padding-left-5 padding-right-5"><i class="fa fa-plus"></i>ADD EQUIPMENT</a>
+                    <a href="javascript://" onclick="AddEquipment()" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left btn-block padding-left-5 padding-right-5"><i class="fa fa-plus"></i>ADD EQUIPMENT</a>
                     
                 </div>
             </div>
@@ -279,6 +232,9 @@
 
 <!--- .... --->
 <cf_box>
+    <div id="BasketArea">
+
+    </div>
     
 </cf_box>
 
