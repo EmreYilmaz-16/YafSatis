@@ -56,4 +56,27 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
                </cfloop>
                <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction> 
+    <cffunction name="getPropertyDetailsWithCatId">
+        <cfargument name="PROPERTY_ID">
+        <cfargument name="PRODUCT_CATID">
+        <cfquery name="getAll" datasource="#dsn#">
+            SELECT DISTINCT PPD.PROPERTY_DETAIL,PPD.PROPERTY_DETAIL_ID,T.PRPT FROM CatalystQA_product.PRODUCT_DT_PROPERTIES  PDP
+INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
+CROSS APPLY (
+  SELECT DISTINCT(PRPT_ID) AS PRPT FROM   CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2 WHERE PP2.RELATED_VARIATION_ID=PPD.PROPERTY_DETAIL_ID ) AS T
+WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#) AND PPD.PRPT_ID=#arguments.PROPERTY_ID#
+        </cfquery>
+          <cfset ReturnArr=arrayNew(1)>
+          <cfloop query="getAll">
+              <cfscript>
+                  item={
+                   PROPERTY_DETAIL=PROPERTY_DETAIL,
+                     PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
+                     IS_SUB_PRPT=PRPT
+                  };
+                  arrayAppend(ReturnArr,item);
+              </cfscript>
+          </cfloop>
+          <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
 </cfcomponent>
