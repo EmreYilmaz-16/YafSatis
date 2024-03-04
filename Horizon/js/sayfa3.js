@@ -152,6 +152,7 @@ function addEqRow(Obj, jsn) {
   div.appendChild(input);
   div.appendChild(table);
   document.getElementById("BasketArea").appendChild(div);
+  EqArr.push(Obj.PropList);
 }
 
 /*
