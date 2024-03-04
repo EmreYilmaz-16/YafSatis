@@ -58,7 +58,12 @@ function AddEquipment() {
   };
   console.table(ReturnObject);
   var SelectedValues = [];
-
+var ox={
+  PRODUCT_CAT: PRODUCT_CAT,
+  PRODUCT_CAT_ID: PRODUCT_CAT_ID,
+  PNAME:"EQUIPMENT"
+}
+SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
   var PropList = "";
   //console.log(Properties)
