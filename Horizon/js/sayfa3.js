@@ -65,8 +65,9 @@ function AddEquipment() {
     console.log($(Pelem).select2("data")[0]);
     var PRODUCT_CAT = Pdata.text;
     var PRODUCT_CAT_ID = Pdata.id;
+    var PNAME=Pdata.title
     if (Pdata.id.length > 0) {
-      var O = { PRODUCT_CAT: PRODUCT_CAT, PRODUCT_CAT_ID: PRODUCT_CAT_ID };
+      var O = { PRODUCT_CAT: PRODUCT_CAT, PRODUCT_CAT_ID: PRODUCT_CAT_ID,PNAME:PNAME };
       console.table(O);
       SelectedValues.push(O);
       PropList+=","+PRODUCT_CAT_ID;
@@ -110,7 +111,7 @@ function addEqRow(Obj,jsn){
     const element = Obj.Filters[index];
     var td=document.createElement("td");
     td.setAttribute("style","border-right:solid 1px")
-    var spnT="<span>"+element.PRODUCT_CAT+"</span></br><span>"+element.PRODUCT_CAT+"</span>"
+    var spnT="<span>"+element.PNAME+"</span></br><span>"+element.PRODUCT_CAT+"</span>"
     td.innerHTML=spnT;
     tr.appendChild(td);
   }
