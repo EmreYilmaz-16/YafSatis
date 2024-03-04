@@ -82,7 +82,7 @@ var EqArr=[];
 function addEqRow(Obj,jsn){
   var div=document.createElement("div");
   div.setAttribute("class","alert alert-success eq_header")
-  div.setaAttribute("data-PropList",Obj.PropList);
+  div.setAttribute("data-PropList",Obj.PropList);
   var table=document.createElement("table");
   table.setAttribute("class","EqTableMain")
   var tr=document.createElement("tr");
