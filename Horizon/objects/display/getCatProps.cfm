@@ -10,7 +10,7 @@
     <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
         <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY#</label>
-            <select name="SEARCH_PROP" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#">
+            <select class="propss" name="SEARCH_PROP" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#">
                 <cfset CatPropertieDetailsJson=ProductService.getPropDetails(PROPERTY_ID=it.PROPERTY_ID)>
                 <cfset CatPropertieDetails=deserializeJSON(CatPropertieDetailsJson)>
                 <option value="">Seç</option>
@@ -22,3 +22,9 @@
     </div>
 </cfloop>
 </cfoutput>
+
+<script>
+    $(document).ready(function(){
+        $('.propss').select2();
+    })
+</script>

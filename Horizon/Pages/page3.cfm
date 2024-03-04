@@ -1,3 +1,5 @@
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <!--- Yönlendirme Başlangıç --->
 <cf_box>
     <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12">
@@ -281,3 +283,4 @@
 </cf_box>
 
 <script src="/AddOns/YafSatis/Horizon/js/sayfa3.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
