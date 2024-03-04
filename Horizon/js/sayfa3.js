@@ -106,9 +106,13 @@ function addEqRow(Obj, jsn) {
   var tr = document.createElement("tr");
   var td = document.createElement("td");
   var b1 = document.createElement("button");
-  b1.innerText = "A";
+  b1.setAttribute("class","ui-wrk-btn ui-wrk-btn-extra")
+  var spn='<span class="icn-md fa fa-check-square-o"></span>'
+  b1.innerHTML= spn;
   var b2 = document.createElement("button");
-  b2.innerText = "A";
+  b2.setAttribute("class","ui-wrk-btn ui-wrk-btn-success")
+  var spn='<span class="icn-md fa fa-plus"></span>'
+  b2.innerHTML = spn;
   var b3 = document.createElement("button");
   b3.innerText = "A";
   var b4 = document.createElement("button");
