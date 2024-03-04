@@ -21,7 +21,7 @@
         <cfquery name="getAll" datasource="#dsn#">
             select PP.PROPERTY,PP.PROPERTY_ID from CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP
             LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY as PP ON PCP.PROPERTY_ID=PP.PROPERTY_ID
-                where PRODUCT_CAT_ID=#arguments.PRODUCT_CAT_ID#
+                where PRODUCT_CAT_ID=#arguments.PRODUCT_CATID#
         </cfquery>
              <cfset ReturnArr=arrayNew(1)>
              <cfloop query="getAll">
