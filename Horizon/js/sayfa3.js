@@ -52,12 +52,15 @@ function AddEquipment() {
   var PRODUCT_CAT = elem.options[ix].innerText;
   var PRODUCT_CAT_ID = elem.options[ix].value;
 
-  var ReturnObject = { PRODUCT_CAT: PRODUCT_CAT, PRODUCT_CAT_ID: PRODUCT_CAT_ID };
+  var ReturnObject = {
+    PRODUCT_CAT: PRODUCT_CAT,
+    PRODUCT_CAT_ID: PRODUCT_CAT_ID,
+  };
   console.table(ReturnObject);
   var SelectedValues = [];
-  
+
   var Properties = document.getElementsByClassName("propss");
-  var PropList="";
+  var PropList = "";
   //console.log(Properties)
   for (let i = 0; i < Properties.length; i++) {
     var Pelem = Properties[i];
@@ -65,56 +68,76 @@ function AddEquipment() {
     console.log($(Pelem).select2("data")[0]);
     var PRODUCT_CAT = Pdata.text;
     var PRODUCT_CAT_ID = Pdata.id;
-    var PNAME=Pdata.title
+    var PNAME = Pdata.title;
     if (Pdata.id.length > 0) {
-      var O = { PRODUCT_CAT: PRODUCT_CAT, PRODUCT_CAT_ID: PRODUCT_CAT_ID,PNAME:PNAME };
+      var O = {
+        PRODUCT_CAT: PRODUCT_CAT,
+        PRODUCT_CAT_ID: PRODUCT_CAT_ID,
+        PNAME: PNAME,
+      };
       console.table(O);
       SelectedValues.push(O);
-      PropList+=","+PRODUCT_CAT_ID;
+      PropList += "," + PRODUCT_CAT_ID;
     }
   }
-  ReturnObject.Filters=SelectedValues;
-  ReturnObject.PropList=PropList;
+  ReturnObject.Filters = SelectedValues;
+  ReturnObject.PropList = PropList;
   var jsn = JSON.stringify(ReturnObject);
-  addEqRow(ReturnObject,jsn);
+  addEqRow(ReturnObject, jsn);
 }
-var EqArr=[];
+var EqArr = [];
 
-function addEqRow(Obj,jsn){
-  var div=document.createElement("div");
-  div.setAttribute("class","alert alert-success eq_header")
-  div.setAttribute("data-PropList",Obj.PropList);
-  var table=document.createElement("table");
-  table.setAttribute("class","EqTableMain")
-  var tr=document.createElement("tr");
-  var td=document.createElement("td");
-  var b1=document.createElement("button")
-  b1.innerText="A"
-  var b2=document.createElement("button")
-  b2.innerText="A"
-  var b3=document.createElement("button")
-  b3.innerText="A"
-  var b4=document.createElement("button")
-  b4.innerText="A"
-  var b5=document.createElement("button")
-  b5.innerText="A"
-  var diva= document.createElement("div")
-  diva.setAttribute("style","display:flex");
-  diva.appendChild(b1)
-  diva.appendChild(b2)
-  diva.appendChild(b3)
-  diva.appendChild(b4)
+function addEqRow(Obj, jsn) {
+  var div = document.createElement("div");
+  div.setAttribute("class", "alert alert-success eq_header");
+  div.setAttribute("data-PropList", Obj.PropList);
+  var table = document.createElement("table");
+  table.setAttribute("class", "EqTableMain");
+  var tr = document.createElement("tr");
+  var td = document.createElement("td");
+  var b1 = document.createElement("button");
+  b1.innerText = "A";
+  var b2 = document.createElement("button");
+  b2.innerText = "A";
+  var b3 = document.createElement("button");
+  b3.innerText = "A";
+  var b4 = document.createElement("button");
+  b4.innerText = "A";
+  var b5 = document.createElement("button");
+  b5.innerText = "A";
+  var diva = document.createElement("div");
+  diva.setAttribute("style", "display:flex");
+  diva.appendChild(b1);
+  diva.appendChild(b2);
+  diva.appendChild(b3);
+  diva.appendChild(b4);
   diva.appendChild(b5);
   td.appendChild(diva);
   tr.appendChild(td);
+  var svk_st = 8;
+
   for (let index = 0; index < Obj.Filters.length; index++) {
     const element = Obj.Filters[index];
-    var td=document.createElement("td");
-    td.setAttribute("style","border-right:solid 1px")
-    var spnT="<span style='font-weight:bold'>"+element.PNAME+"</span></br><span>"+element.PRODUCT_CAT+"</span>"
-    td.innerHTML=spnT;
+    var td = document.createElement("td");
+    td.setAttribute("style", "border-right:solid 1px;width:"+svk_st+"%");
+    var spnT =
+      "<span style='font-weight:bold'>" +
+      element.PNAME +
+      "</span></br><span>" +
+      element.PRODUCT_CAT +
+      "</span>";
+    td.innerHTML = spnT;
     tr.appendChild(td);
   }
+  var sv_kalan_ = 0;
+  var sv_kalan = 0;
+  if (Obj.Filters.length < 12) {
+    sv_kalan_ = 12 - Obj.Filters.length;
+    sv_kalan = sv_kalan_ * 8;
+    var td = document.createElement("td");
+    td.setAttribute("style", "width:" + sv_kalan+"%");
+  }
+
   table.appendChild(tr);
   div.appendChild(table);
   document.getElementById("BasketArea").appendChild(div);
