@@ -1,4 +1,4 @@
-getCatProperties
+﻿
 
 <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
 
