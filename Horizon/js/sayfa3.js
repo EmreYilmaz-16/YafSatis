@@ -68,6 +68,7 @@ function AddEquipment() {
   SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
   var PropList = "";
+  PropList+=PRODUCT_CAT_ID
   //console.log(Properties)
   for (let i = 0; i < Properties.length; i++) {
     var Pelem = Properties[i];
