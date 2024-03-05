@@ -461,6 +461,7 @@ function addRowCrs(proplist) {
   td.appendChild(div);
   tr.appendChild(td);
   document.getElementById("SubSepetBody_" + proplist).appendChild(tr);
+  RowCount++;
 }
 
 function thCrate(innerText) {
