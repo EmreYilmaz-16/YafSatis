@@ -83,6 +83,7 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
     <cffunction name="SearchProduct" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
         <cfdump var="#arguments.FormData#">
-
+<cfset FData=deserializeJSON(arguments.FormData)>
+<cfdump var="#FData#">
     </cffunction>
 </cfcomponent>
