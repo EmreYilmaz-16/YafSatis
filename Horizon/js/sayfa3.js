@@ -387,7 +387,7 @@ function addRowCrs(proplist) {
   div2.setAttribute("style","display:flex");
   var input = document.createElement("input");
   input.setAttribute("type","text")
-  input.name = "TOTAL_PRICE_" + RowCount;
+  input.name = "FIRST_REMARK_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("span");
   input.setAttribute("class","input-group-addon btnPointer icon-remove") 
@@ -396,7 +396,43 @@ function addRowCrs(proplist) {
   td.appendChild(div);
   tr.appendChild(td);
 
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "DELIVERED_ITEMS_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML="";
+  input.name = "WEIGHT_UNIT_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
 
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "WEIGHT_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML="";
+  input.name = "DELIVERED_ITEMS_UNIT_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
   document.getElementById("SubSepetBody_"+proplist).appendChild(tr);
 }
 
@@ -456,25 +492,8 @@ function CreateOptionList(tip, selval = "EUR") {
  
   
   
-     	<td>
-    	<div class="form-group">
-        <div class="input-group">
-        	<input class="form-control" type="text" name="FIRST_REMARK">
-            <button class="btn btn-danger">x</button>
-          </div>
-        </div>
-    </td>
- 	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="DELIVERED_ITEMS">
-        	<select class="input-group-text" name="DELIVERED_ITEMS_UNIT">
-            <option value="pcs">pcs</option>
-            <option value="GR">GR</option>
-            </select>
-            </div>
-        </div>
-    </td>
+ 
+ 
          	<td>
     	<div class="form-group">
         	<div class="input-group">
