@@ -14,9 +14,9 @@
 
     <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
         <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-            <label class="margin-bottom-5 bold font-sm">#it.PROPERTY#</label>
+            <label class="margin-bottom-5 bold font-sm">#it.PROPERTY# <cfif it.IS_AMOUNT EQ 1><span style="color:red;font-weight:bold">*</span></cfif></label>
            
-            <select class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
+            <select <cfif it.IS_AMOUNT EQ 1>required</cfif> class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
                 
                 <option value="">Seç</option>
                 <cfloop array="#CatPropertieDetails#" item="it2">

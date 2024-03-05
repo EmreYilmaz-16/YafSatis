@@ -19,7 +19,7 @@
     <cffunction name="getCatProperties" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="PRODUCT_CATID">
         <cfquery name="getAll" datasource="#dsn#">
-            select PP.PROPERTY,PP.PROPERTY_ID from CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP
+            select PP.PROPERTY,PP.PROPERTY_ID,PCP.IS_AMOUNT from CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP
             LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY as PP ON PCP.PROPERTY_ID=PP.PROPERTY_ID
                 where PRODUCT_CAT_ID=#arguments.PRODUCT_CATID#
         </cfquery>
@@ -28,7 +28,8 @@
                  <cfscript>
                      item={
                         PROPERTY=PROPERTY,
-                        PROPERTY_ID=PROPERTY_ID
+                        PROPERTY_ID=PROPERTY_ID,
+                        IS_AMOUNT:IS_AMOUNT
                      };
                      arrayAppend(ReturnArr,item);
                  </cfscript>
