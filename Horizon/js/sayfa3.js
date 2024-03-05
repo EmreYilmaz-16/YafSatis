@@ -194,6 +194,9 @@ function addEqRow(Obj, jsn) {
   thead.appendChild(tr);
   Table.appendChild(thead);
   Table.id="SubSepet_"+Obj.PropList;
+  var tbody=document.createElement("tbody");
+  tbody.id="SubSepetBody_"+Obj.PropList;
+  Table.appendChild(tbody);
   div2.appendChild(Table)
 div.appendChild(div2);
 var btn='<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_'+Obj.PropList+'">0</span> Rows Listed<br><span id="TOTALE_'+Obj.PropList+'">0 €</span></button>'
