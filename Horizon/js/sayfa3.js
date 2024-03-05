@@ -177,6 +177,7 @@ function addEqRow(Obj, jsn) {
   input.setAttribute("type", "hidden");
   input.value = jsn;
   input.name = "AddedEquipment";
+  input.id = "AddedEquipment_"+Obj.PropList;
   div.appendChild(input);
   div.appendChild(table);
   var div2 = document.createElement("div");
@@ -257,6 +258,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type","text")
   input.name = "PRODUCT_CODE_2_" + RowCount;
+  input.setAttribute("proplist",proplist);
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
   div.appendChild(input);
   td.appendChild(div);
@@ -452,7 +454,9 @@ function thCrate(innerText) {
   return th;
 }
 
-function getProduct(el, rc) {}
+function getProduct(el, rc) {
+  //"AddedEquipment_"+Obj.PropList
+}
 
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
