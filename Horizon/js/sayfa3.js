@@ -289,7 +289,7 @@ function addRowCrs(proplist) {
   input.name = "PURCHASE_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML(CreateOptionList(1, ""));
+  input.innerHTML=CreateOptionList(1, "");
   input.name = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
