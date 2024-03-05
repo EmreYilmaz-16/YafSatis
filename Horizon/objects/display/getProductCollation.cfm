@@ -13,14 +13,15 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
 </cfloop>
  
 </cfquery>
-<cfdump var="#getProd#">
-<table>
+
+<cf_ajax_list>
     <cfquery name="getPrcPrp" datasource="#dsn1#">
 SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP 
 	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PCP.PROPERTY_ID
 	WHERE PRODUCT_CAT_ID=#listGetAt(attributes.prp_list,1)#
     </cfquery>
     <tr>
+        <th>Part No</th>
         <th>Ürün</th>
         <cfloop query="getPrcPrp">
             <th>
@@ -30,6 +31,9 @@ SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY A
     </tr>
 <cfoutput query="getProd">
     <tr>
+        <TD>
+            #MANUFACT_CODE#
+        </TD>
         <TD>
             #PRODUCT_NAME#
         </TD>
@@ -43,7 +47,7 @@ SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY A
         </cfloop>
     </tr>
 </cfoutput>
-</table>
+</cf_ajax_list>
 <cfcatch>
     <cfdump var="#cfcatch#">
 </cfcatch>
