@@ -495,9 +495,9 @@ function getProduct(el, rc) {
 
       if (Obje.RECORD_COUNT >= 1) {
         if (Obje.RECORD_COUNT > 1) {
-          el.setAttribute("style", "color:orange");
+          el.setAttribute("style", "color:orange;font-weight:bold");
         } else {
-          el.setAttribute("style", "color:green");
+          el.setAttribute("style", "color:green;font-weight:bold");
         }
         document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
           Obje.PRODUCT_NAME;
@@ -523,7 +523,7 @@ function getProduct(el, rc) {
 
         document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
       } else {
-        el.setAttribute("style", "color:red");
+        el.setAttribute("style", "color:red;font-weight:bold");
       }
     },
   });
