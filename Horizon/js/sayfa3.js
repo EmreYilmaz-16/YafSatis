@@ -5,7 +5,6 @@ $(document).ready(function () {
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
   getCats(e);
-  
 });
 function getCats(el) {
   $.ajax({
@@ -68,7 +67,7 @@ function AddEquipment() {
   SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
   var PropList = "";
-  PropList+=PRODUCT_CAT_ID
+  PropList += PRODUCT_CAT_ID;
   //console.log(Properties)
   for (let i = 0; i < Properties.length; i++) {
     var Pelem = Properties[i];
@@ -135,11 +134,26 @@ function addEqRow(Obj, jsn) {
   b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
-  b1.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
-  b2.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
-  b3.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
-  b4.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
-  b5.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b1.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b2.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b3.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b4.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b5.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
   diva.appendChild(b1);
   diva.appendChild(b2);
   diva.appendChild(b3);
@@ -177,16 +191,13 @@ function addEqRow(Obj, jsn) {
   input.setAttribute("type", "hidden");
   input.value = jsn;
   input.name = "AddedEquipment";
-  input.id = "AddedEquipment_"+Obj.PropList;
+  input.id = "AddedEquipment_" + Obj.PropList;
   div.appendChild(input);
   div.appendChild(table);
   var div2 = document.createElement("div");
   div2.setAttribute("style", "background:white");
   var Table = document.createElement("table");
-  Table.setAttribute(
-    "class",
-    "SubSepet table"
-  );
+  Table.setAttribute("class", "SubSepet table");
   var thead = document.createElement("thead");
   var tr = document.createElement("tr");
   tr.appendChild(thCrate("#"));
@@ -202,7 +213,7 @@ function addEqRow(Obj, jsn) {
   tr.appendChild(thCrate("First Remark"));
   tr.appendChild(thCrate("Delivered Items"));
   tr.appendChild(thCrate("Weight"));
-  
+
   thead.appendChild(tr);
   Table.appendChild(thead);
   Table.id = "SubSepet_" + Obj.PropList;
@@ -238,11 +249,17 @@ function addRowCrs(proplist) {
   input.setAttribute("class", "SatirSecCbx");
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
-  b1.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b1.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
   b1.innerText = RowCount;
   var b2 = document.createElement("button");
   b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
-  b2.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b2.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
   b2.innerText = RowCount;
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
@@ -256,9 +273,9 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "PRODUCT_CODE_2_" + RowCount;
-  input.setAttribute("proplist",proplist);
+  input.setAttribute("proplist", proplist);
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
   div.appendChild(input);
   td.appendChild(div);
@@ -268,7 +285,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "PRODUCT_NAME_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -278,7 +295,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "QUANTITY_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -288,7 +305,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("select");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "PRODUCT_UNIT_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -299,13 +316,13 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "PURCHASE_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML=CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, "");
   input.name = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -318,13 +335,13 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "SALE_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML=CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, "");
   input.name = "SALE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -337,13 +354,13 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "SALE_DISCOUNT_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML=CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, "");
   input.name = "SALE_DISCOUNT_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -356,13 +373,13 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "UNIT_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML=CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, "");
   input.name = "UNIT_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -375,13 +392,13 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "TOTAL_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML=CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, "");
   input.name = "TOTAL_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -389,19 +406,18 @@ function addRowCrs(proplist) {
   td.appendChild(div);
   tr.appendChild(td);
 
-
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "FIRST_REMARK_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("span");
-  input.setAttribute("class","input-group-addon btnPointer icon-remove") 
+  input.setAttribute("class", "input-group-addon btnPointer icon-remove");
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
@@ -412,39 +428,39 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
+  div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
-  input.setAttribute("type","text")
+  input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML="";
-  input.name = "WEIGHT_UNIT_" + RowCount;
-  input.setAttribute("class", "input-group-text");
-  div2.appendChild(input);
-  div.appendChild(div2);
-  td.appendChild(div);
-  tr.appendChild(td);
-
-  var td = document.createElement("td");
-  var div = document.createElement("div");
-  div.setAttribute("class", "form-group");
-  var div2 = document.createElement("div");
-  div2.setAttribute("class", "input-group");
-  div2.setAttribute("style","display:flex");
-  var input = document.createElement("input");
-  input.setAttribute("type","text")
-  input.name = "WEIGHT_" + RowCount;
-  div2.appendChild(input);
-  var input = document.createElement("select");
-  input.innerHTML="";
+  input.innerHTML = ""; 
   input.name = "DELIVERED_ITEMS_UNIT_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
   tr.appendChild(td);
-  document.getElementById("SubSepetBody_"+proplist).appendChild(tr);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style", "display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.name = "WEIGHT_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML = "";
+  input.name = "WEIGHT_UNIT_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+  document.getElementById("SubSepetBody_" + proplist).appendChild(tr);
 }
 
 function thCrate(innerText) {
@@ -456,23 +472,54 @@ function thCrate(innerText) {
 
 function getProduct(el, rc) {
   //"AddedEquipment_"+Obj.PropList
-  var keyword=el.value;
+  var keyword = el.value;
 
-  var pL=document.getElementsByName("PRODUCT_CODE_2_"+rc)[0].getAttribute("proplist")
-  var SearchMainValue=document.getElementById("AddedEquipment_"+pL).value;
-  SearchMainValue=JSON.parse(SearchMainValue);
-  var Search={
-    SearchMainValue:SearchMainValue,
-    keyword:keyword
-  }
+  var pL = document
+    .getElementsByName("PRODUCT_CODE_2_" + rc)[0]
+    .getAttribute("proplist");
+  var SearchMainValue = document.getElementById("AddedEquipment_" + pL).value;
+  SearchMainValue = JSON.parse(SearchMainValue);
+  var Search = {
+    SearchMainValue: SearchMainValue,
+    keyword: keyword,
+  };
   console.table(Search);
   console.log(Search);
   $.ajax({
-    url:ServiceUri+"/ProductService.cfc?method=SearchProduct",
-    data:{
-      FormData:JSON.stringify(Search)
-    }
-  })
+    url: ServiceUri + "/ProductService.cfc?method=SearchProduct",
+    data: {
+      FormData: JSON.stringify(Search),
+      success: function (returnData) {
+        var Obje = JSON.parse(returnData);
+
+        if (Obje.RECORD_COUNT >= 1) {
+          if (Obje.RECORD_COUNT > 1) {
+            el.setAttribute("style", "color:orange");
+          } else {
+            el.setAttribute("style", "color:green");
+          }
+          document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
+            Obje.PRODUCT_NAME;
+          document.getElementsByName("QUANTITY_" + rc)[0].value = 1;
+          document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
+            '<option value="'+Obje.MAIN_UNIT+'">'+Obje.MAIN_UNIT+'</option>';
+            document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = 0;
+            document.getElementsByName("SALE_PRICE_" + rc)[0].value = 0;
+            document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = 0;
+            document.getElementsByName("UNIT_PRICE_" + rc)[0].value = 0;
+            document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = 0;
+            document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = 0;
+            document.getElementsByName("DELIVERED_ITEMS_UNIT_" + rc)[0].innerHTML =
+            '<option value="'+Obje.MAIN_UNIT+'">'+Obje.MAIN_UNIT+'</option>';
+            
+            document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
+            
+        } else {
+          el.setAttribute("style", "color:red");
+        }
+      },
+    },
+  });
 }
 
 function CreateOptionList(tip, selval = "EUR") {
@@ -541,5 +588,3 @@ function CreateOptionList(tip, selval = "EUR") {
  * 
  * 
  */
-
-
