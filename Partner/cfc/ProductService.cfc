@@ -103,7 +103,7 @@ where PRODUCT_CATID=#FData.SearchMainValue.PRODUCT_CAT_ID#
 <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
 <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
 <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
-<cfset P.RECORD_COUNT=getProd.RECORD_COUNT>
+<cfset P.RECORD_COUNT=getProd.recordcount>
 <cfreturn replace(serializeJSON(P),"//","")>
     </cffunction>
 </cfcomponent>
