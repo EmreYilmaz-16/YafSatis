@@ -197,6 +197,8 @@ function addEqRow(Obj, jsn) {
   div2.appendChild(Table)
 div.appendChild(div2);
 var btn='<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_'+Obj.PropList+'">0</span> Rows Listed<br><span id="TOTALE_'+Obj.PropList+'">0 €</span></button>'
+var btn='<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_'+Obj.PropList+'">0</span> Rows Listed<br><span id="TOTALE_'+Obj.PropList+'">0 €</span></button>'
+btn=$(btn)[0];
 div.appendChild(btn);
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
