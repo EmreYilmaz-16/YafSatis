@@ -466,6 +466,7 @@ function getProduct(el, rc) {
     keyword:keyword
   }
   console.table(Search);
+  console.log(Search);
 }
 
 function CreateOptionList(tip, selval = "EUR") {
