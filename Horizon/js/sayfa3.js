@@ -288,6 +288,7 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
   var input = document.createElement("input");
   input.setAttribute("type","text")
   input.name = "PURCHASE_PRICE_" + RowCount;
@@ -300,6 +301,103 @@ function addRowCrs(proplist) {
   div.appendChild(div2);
   td.appendChild(div);
   tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "SALE_PRICE_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML=CreateOptionList(1, "");
+  input.name = "SALE_MONEY_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "SALE_DISCOUNT_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML=CreateOptionList(1, "");
+  input.name = "SALE_DISCOUNT_MONEY_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "UNIT_PRICE_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML=CreateOptionList(1, "");
+  input.name = "UNIT_PRICE_MONEY_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "TOTAL_PRICE_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML=CreateOptionList(1, "");
+  input.name = "TOTAL_PRICE_MONEY_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  div2.setAttribute("style","display:flex");
+  var input = document.createElement("input");
+  input.setAttribute("type","text")
+  input.name = "TOTAL_PRICE_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("span");
+  input.setAttribute("class","input-group-addon btnPointer icon-remove")
+  input.name = "TOTAL_PRICE_MONEY_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
 
   document.getElementById("SubSepetBody_"+proplist).appendChild(tr);
 }
@@ -355,61 +453,11 @@ function CreateOptionList(tip, selval = "EUR") {
 <tr>	     
      
   	
-  	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="PURCHASE_PRICE">
-        	<select class="input-group-text" name="PURCHASE_PRICE_MONEY">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            </select>
-            </div>
-        </div>
-    </td>  
-  	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="SALE_PRICE">
-        	<select class="input-group-text" name="SALE_PRICE_MONEY">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            </select>
-            </div>
-        </div>
-    </td>    
-      	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="SALE_DISCOUNT">
-        	<select class="input-group-text" name="SALE_DISCOUNT_MONEY">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            </select>
-            </div>
-        </div>
-    </td>   
-          	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="UNIT_PRICE">
-        	<select class="input-group-text" name="UNIT_PRICE_MONEY">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            </select>
-            </div>
-        </div>
-    </td>
-              	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="TOTAL_PRICE">
-        	<select class="input-group-text" name="TOTAL_PRICE_MONEY">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            </select>
-            </div>
-        </div>
-    </td>
+  	
+   
+ 
+  
+  
      	<td>
     	<div class="form-group">
         <div class="input-group">
