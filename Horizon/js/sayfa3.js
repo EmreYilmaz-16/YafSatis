@@ -510,6 +510,7 @@ function getProduct(el, rc) {
           var btn=document.createElement("button");
           btn.setAttribute("class","btn btn-warning");
           el.parentElement.appendChild(btn);
+          el.parentElement.setAttribute("style","display:flex");
         } else {
           el.setAttribute("style", "color:green;font-weight:bold");
         }
