@@ -301,6 +301,7 @@ function CreateOptionList(tip){
       ReturnStr+="<option value='"+element+"'>"+element+"</option>";
       
     }
+    console.log(ReturnStr);
     var o=$("ReturnStr");
     console.log(o);
   }
