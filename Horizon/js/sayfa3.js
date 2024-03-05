@@ -458,7 +458,8 @@ function getProduct(el, rc) {
   //"AddedEquipment_"+Obj.PropList
   var keyword=el.value;
   var pL=document.getElementsByName("PRODUCT_CODE_2_1")[0].getAttribute("proplist")
-  var SearchMainValue=document.getElementById("AddedEquipment_"+pL);
+  var SearchMainValue=document.getElementById("AddedEquipment_"+pL).value;
+  SearchMainValue=JSON.parse(SearchMainValue);
   var Search={
     SearchMainValue:SearchMainValue,
     keyword:keyword
