@@ -173,11 +173,11 @@ function addEqRow(Obj, jsn) {
   div.appendChild(input);
   div.appendChild(table);
   var div2 = document.createElement("div");
-  div2.setAttribute("class", "ui-scroll");
+  div2.setAttribute("style", "background:white");
   var Table = document.createElement("table");
   Table.setAttribute(
     "class",
-    "SubSepet ui-table-list ui-form tablesorter tablesorter-default"
+    "SubSepet table"
   );
   var thead = document.createElement("thead");
   var tr = document.createElement("tr");
@@ -194,7 +194,7 @@ function addEqRow(Obj, jsn) {
   tr.appendChild(thCrate("First Remark"));
   tr.appendChild(thCrate("Delivered Items"));
   tr.appendChild(thCrate("Weight"));
-  tr.setAttribute("class", "tablesorter-headerRow");
+  
   thead.appendChild(tr);
   Table.appendChild(thead);
   Table.id = "SubSepet_" + Obj.PropList;
