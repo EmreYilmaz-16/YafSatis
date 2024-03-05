@@ -172,7 +172,7 @@ function addEqRow(Obj, jsn) {
   div.appendChild(input);
   div.appendChild(table);
   var Table=document.createElement("table");
-  Table.id="SubSepet_"+PropList;
+  Table.id="SubSepet_"+Obj.PropList;
 
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
