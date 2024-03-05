@@ -2,6 +2,9 @@
 
 <!--- Yönlendirme Başlangıç --->
 <style>
+*{
+    font-size:8pt !important;
+}
     .EqTableMain{
         text-align: center;
     width: 100%;
