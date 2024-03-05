@@ -114,7 +114,7 @@ function addEqRow(Obj, jsn) {
   b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
   var spn = '<span class="icn-md fa fa-plus"></span>';
   b2.innerHTML = spn;
-  b2.setAttribute("onclick", "addRowCrs(" + Obj.PropList + ")");
+  b2.setAttribute("onclick", "addRowCrs('" + Obj.PropList + "')");
 
   var b3 = document.createElement("button");
   b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
