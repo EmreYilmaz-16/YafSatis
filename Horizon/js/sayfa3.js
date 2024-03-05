@@ -5,6 +5,7 @@ $(document).ready(function () {
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
   getCats(e);
+  
 });
 function getCats(el) {
   $.ajax({
@@ -35,7 +36,7 @@ function getCatProperties(cat_id) {
             option.innerText = Obje[i].PRODUCT_CAT;
             el.appendChild(option);
           }
-        },
+        },font-size: 7px !important;padding: 3px 7px !important;
       });*/
 
   AjaxPageLoad(
@@ -133,6 +134,11 @@ function addEqRow(Obj, jsn) {
   b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
+  b1.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b2.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b3.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b4.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
+  b5.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
   diva.appendChild(b1);
   diva.appendChild(b2);
   diva.appendChild(b3);
@@ -230,9 +236,11 @@ function addRowCrs(proplist) {
   input.setAttribute("class", "SatirSecCbx");
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+  b1.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
   b1.innerText = RowCount;
   var b2 = document.createElement("button");
   b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+  b2.setAttribute("style","font-size: 7px !important;padding: 3px 7px !important;")
   b2.innerText = RowCount;
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
@@ -511,3 +519,5 @@ function CreateOptionList(tip, selval = "EUR") {
  * 
  * 
  */
+
+
