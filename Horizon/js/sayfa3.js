@@ -569,9 +569,10 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
-function UpdateRow(PID,MANCODE,PN,RC){
+function UpdateRow(PID,MANCODE,PN,RC,mdl){
   document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].value=MANCODE
   document.getElementsByName("PRODUCT_NAME_"+RC)[0].value=PN
   document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].setAttribute("style","color:green;font-weight:bold");
   $(document.getElementsByName("PRODUCT_CODE_2_1")[0].parentElement).find("button").remove();
+  closeBoxDraggable(mdl);
 }
