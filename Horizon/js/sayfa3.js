@@ -85,12 +85,13 @@ function AddEquipment() {
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
         PNAME: PNAME,
       };
-      if(isReq =="true" && Pdata.id.length==0){
-        DataHata++;
-      }
+     
       console.table(O);
       SelectedValues.push(O);
       PropList += "," + PRODUCT_CAT_ID;
+    }
+    if(isReq =="true" && Pdata.id.length==0){
+      DataHata++;
     }
   }
   ReturnObject.Filters = SelectedValues;
