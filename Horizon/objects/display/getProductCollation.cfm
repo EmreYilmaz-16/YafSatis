@@ -11,7 +11,7 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
 ) AS TT WHERE 1=1 AND MANUFACT_CODE ='#attributes.kw#'
 <cfloop list="#prplist#" item="it"> AND DTP LIKE '%#it#,%'
 </cfloop>
- ORDER BY LINE
+ 
 </cfquery>
 
 <cf_ajax_list>
