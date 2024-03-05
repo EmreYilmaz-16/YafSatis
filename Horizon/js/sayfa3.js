@@ -194,7 +194,8 @@ function addEqRow(Obj, jsn) {
   thead.appendChild(tr);
   Table.appendChild(thead);
   Table.id="SubSepet_"+Obj.PropList;
-div.appendChild(Table);
+  div2.appendChild(Table)
+div.appendChild(div2);
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
