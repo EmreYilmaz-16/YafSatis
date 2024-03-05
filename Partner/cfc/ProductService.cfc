@@ -85,5 +85,16 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
         <cfdump var="#arguments.FormData#">
 <cfset FData=deserializeJSON(arguments.FormData)>
 <cfdump var="#FData#">
+<cfquery name="getProd" datasource="#dsn#">
+    SELECT * FROM (
+SELECT PRODUCT_NAME,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  FROM CatalystQA_product.PRODUCT AS P
+where PRODUCT_CATID=#FData.PRODUCT_CAT_ID#  
+
+) AS TT WHERE 1=1 
+<cfloop array="#FData.Filters#" item="it"> <cfif it.PNAME neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
+</cfloop>
+ 
+</cfquery>
+<cfdump var="#getProd#">
     </cffunction>
 </cfcomponent>
