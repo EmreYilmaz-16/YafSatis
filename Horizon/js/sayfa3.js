@@ -390,9 +390,7 @@ function addRowCrs(proplist) {
   input.name = "TOTAL_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("span");
-  input.setAttribute("class","input-group-addon btnPointer icon-remove")
-  input.name = "TOTAL_PRICE_MONEY_" + RowCount;
-  input.setAttribute("class", "input-group-text");
+  input.setAttribute("class","input-group-addon btnPointer icon-remove") 
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
