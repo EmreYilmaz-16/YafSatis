@@ -13,6 +13,9 @@
         border-right: solid 1px;
     width: 8%;
     }
+    .input-group-addon, .input-group-btn{
+        width:unset !important;
+    }
 </style>
 <cf_box>
     <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12">
