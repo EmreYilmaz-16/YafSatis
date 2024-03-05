@@ -15,12 +15,32 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
 </cfquery>
 <cfdump var="#getProd#">
 <table>
+    <cfquery name="getPrcPrp" datasource="#dsn1#">
+SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP 
+	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PCP.PROPERTY_ID
+	WHERE PRODUCT_CAT_ID=#listGetAt(attributes.prp_list,1)#
+    </cfquery>
+    <tr>
+        <th>Ürün</th>
+        <cfloop query="getPrcPrp">
+            <th>
+                <cfoutput>#PROPERTY#</cfoutput>
+            </th>
+        </cfloop>
+    </tr>
 <cfoutput query="getProd">
     <tr>
         <TD>
             #PRODUCT_NAME#
         </TD>
-    
+        <cfloop query="getPrcPrp">
+            <cfquery name="getpv" datasource="#dsn1#">
+                	select PPD.PROPERTY_DETAIL from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP 
+	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
+	where PRODUCT_ID=#getProd.PRODUCT_ID# AND VARIATION_ID IS NOT NULL AND PROPERTY_ID=#getPrcPrp.PROPERTY_ID#
+            </cfquery>
+            <td>#getpv.PROPERTY_DETAIL#</td>
+        </cfloop>
     </tr>
 </cfoutput>
 </table>
