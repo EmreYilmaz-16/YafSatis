@@ -468,7 +468,7 @@ function getProduct(el, rc) {
   console.table(Search);
   console.log(Search);
   $.ajax({
-    url:ServiceUri+"/ProductService?method=SearchProduct",
+    url:ServiceUri+"/ProductService.cfc?method=SearchProduct",
     data:{
       FormData:JSON.stringify(Search)
     }
