@@ -507,6 +507,9 @@ function getProduct(el, rc) {
       if (Obje.RECORD_COUNT >= 1) {
         if (Obje.RECORD_COUNT > 1) {
           el.setAttribute("style", "color:orange;font-weight:bold");
+          var btn=document.createElement("button");
+          btn.setAttribute("class","btn btn-warning");
+          el.parentElement.appendChild(btn);
         } else {
           el.setAttribute("style", "color:green;font-weight:bold");
         }
