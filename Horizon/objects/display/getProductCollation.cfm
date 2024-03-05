@@ -1,6 +1,6 @@
 <cf_box>
     <cftry>
-<cfdump var="#attributes#">
+
 <cfset prplist=listDeleteAt(attributes.prp_list,1)>
 <cfquery name="getProd" datasource="#dsn#">
     SELECT * FROM (

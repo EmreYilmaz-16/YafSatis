@@ -513,7 +513,7 @@ function getProduct(el, rc) {
           btn.innerHTML="<i class='icn-md fa fa-search'></i>";
           el.parentElement.appendChild(btn);
           el.parentElement.setAttribute("style","display:flex");
-          btn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&kw="+el.value+"&prp_list="+pL+"')")
+          btn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc="+rc+"&kw="+el.value+"&prp_list="+pL+"')")
 
         } else {
           el.setAttribute("style", "color:green;font-weight:bold");
