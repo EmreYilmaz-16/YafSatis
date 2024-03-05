@@ -569,48 +569,9 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
-/**
- * 
- * <table class="table table-bordered">
-<tr>
-<th>#</th>
-<th>Part No</th>
-<th>Part Name</th>
-<th>Quantity</th>
-<th>Unit</th>
-<th>Purchase Price</th>
-<th>Sales Price</th>
-<th>Sales Discount</th>
-<th>Unit Price</th>
-<th>Total Price</th>
-<th>First Remark</th>
-<th>Delivered Items</th>
-<th>Weight</th>
-</tr>
-<tr>	     
-     
-  	
-  	
-   
- 
-  
-  
- 
- 
-         	<td>
-    	<div class="form-group">
-        	<div class="input-group">
-        <input type="text" class="form-control"  name="WEIGHT">
-        	<select class="input-group-text" name="WEIGHT_UNIT">
-            <option value="KG">KG</option>
-            <option value="GR">GR</option>
-            </select>
-            </div>
-        </div>
-    </td>
-</tr>
-
-</table>
- * 
- * 
- */
+function UpdateRow(PID,MANCODE,PN,RC){
+  document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].value=MANCODE
+  document.getElementsByName("PRODUCT_NAME_"+RC)[0].value=PN
+  document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].setAttribute("style","color:green;font-weight:bold");
+  $(document.getElementsByName("PRODUCT_CODE_2_1")[0].parentElement).find("button").remove();
+}
