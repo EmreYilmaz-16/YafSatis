@@ -69,8 +69,11 @@ function AddEquipment() {
   var PropList = "";
   PropList += PRODUCT_CAT_ID;
   //console.log(Properties)
+  var DataHata=0;
   for (let i = 0; i < Properties.length; i++) {
     var Pelem = Properties[i];
+    var isReq=Pelem.getAttribute("required");
+    
     var Pdata = $(Pelem).select2("data")[0];
     console.log($(Pelem).select2("data")[0]);
     var PRODUCT_CAT = Pdata.text;
@@ -82,6 +85,9 @@ function AddEquipment() {
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
         PNAME: PNAME,
       };
+      if(isReq =="true" && Pdata.id.length==0){
+        DataHata++;
+      }
       console.table(O);
       SelectedValues.push(O);
       PropList += "," + PRODUCT_CAT_ID;
@@ -90,6 +96,10 @@ function AddEquipment() {
   ReturnObject.Filters = SelectedValues;
   ReturnObject.PropList = PropList;
   var jsn = JSON.stringify(ReturnObject);
+  if(DataHata>0){
+    alert("Zorunlu Alanlar var !");
+    return false;
+  }
   addEqRow(ReturnObject, jsn);
 }
 var EqArr = [];
