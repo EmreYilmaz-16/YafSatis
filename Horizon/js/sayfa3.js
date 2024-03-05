@@ -246,6 +246,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
+  input.setAttribute("type","text")
   input.name = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
   div.appendChild(input);
@@ -256,6 +257,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
+  input.setAttribute("type","text")
   input.name = "PRODUCT_NAME_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -265,6 +267,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
+  input.setAttribute("type","text")
   input.name = "QUANTITY_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -274,6 +277,7 @@ function addRowCrs(proplist) {
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("select");
+  input.setAttribute("type","text")
   input.name = "PRODUCT_UNIT_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -285,7 +289,7 @@ function addRowCrs(proplist) {
   var div2 = document.createElement("div");
   div2.setAttribute("class", "input-group");
   var input = document.createElement("input");
-  input.type = "textbox";
+  input.setAttribute("type","text")
   input.name = "PURCHASE_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
