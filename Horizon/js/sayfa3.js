@@ -488,44 +488,42 @@ function getProduct(el, rc) {
     url: ServiceUri + "/ProductService.cfc?method=SearchProduct",
     data: {
       FormData: JSON.stringify(Search),
-      success: function (returnData) {
-        var Obje = JSON.parse(returnData);
+    },
+    success: function (returnData) {
+      var Obje = JSON.parse(returnData);
 
-        if (Obje.RECORD_COUNT >= 1) {
-          if (Obje.RECORD_COUNT > 1) {
-            el.setAttribute("style", "color:orange");
-          } else {
-            el.setAttribute("style", "color:green");
-          }
-          document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
-            Obje.PRODUCT_NAME;
-          document.getElementsByName("QUANTITY_" + rc)[0].value = 1;
-          document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
-            '<option value="' +
-            Obje.MAIN_UNIT +
-            '">' +
-            Obje.MAIN_UNIT +
-            "</option>";
-          document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = 0;
-          document.getElementsByName("SALE_PRICE_" + rc)[0].value = 0;
-          document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = 0;
-          document.getElementsByName("UNIT_PRICE_" + rc)[0].value = 0;
-          document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = 0;
-          document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = 0;
-          document.getElementsByName(
-            "DELIVERED_ITEMS_UNIT_" + rc
-          )[0].innerHTML =
-            '<option value="' +
-            Obje.MAIN_UNIT +
-            '">' +
-            Obje.MAIN_UNIT +
-            "</option>";
-
-          document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
+      if (Obje.RECORD_COUNT >= 1) {
+        if (Obje.RECORD_COUNT > 1) {
+          el.setAttribute("style", "color:orange");
         } else {
-          el.setAttribute("style", "color:red");
+          el.setAttribute("style", "color:green");
         }
-      },
+        document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
+          Obje.PRODUCT_NAME;
+        document.getElementsByName("QUANTITY_" + rc)[0].value = 1;
+        document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
+          '<option value="' +
+          Obje.MAIN_UNIT +
+          '">' +
+          Obje.MAIN_UNIT +
+          "</option>";
+        document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = 0;
+        document.getElementsByName("SALE_PRICE_" + rc)[0].value = 0;
+        document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = 0;
+        document.getElementsByName("UNIT_PRICE_" + rc)[0].value = 0;
+        document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = 0;
+        document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = 0;
+        document.getElementsByName("DELIVERED_ITEMS_UNIT_" + rc)[0].innerHTML =
+          '<option value="' +
+          Obje.MAIN_UNIT +
+          '">' +
+          Obje.MAIN_UNIT +
+          "</option>";
+
+        document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
+      } else {
+        el.setAttribute("style", "color:red");
+      }
     },
   });
 }
