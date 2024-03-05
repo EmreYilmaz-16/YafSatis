@@ -470,7 +470,7 @@ function getProduct(el, rc) {
   $.ajax({
     url:ServiceUri+"/ProductService?method=SearchProduct",
     data:{
-      FormData:JSON.stringify(Search);
+      FormData:JSON.stringify(Search)
     }
   })
 }
