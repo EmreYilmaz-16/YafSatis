@@ -1,3 +1,4 @@
+var RowCount = 1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
@@ -58,12 +59,12 @@ function AddEquipment() {
   };
   console.table(ReturnObject);
   var SelectedValues = [];
-var ox={
-  PRODUCT_CAT: PRODUCT_CAT,
-  PRODUCT_CAT_ID: PRODUCT_CAT_ID,
-  PNAME:"EQUIPMENT"
-}
-SelectedValues.push(ox);
+  var ox = {
+    PRODUCT_CAT: PRODUCT_CAT,
+    PRODUCT_CAT_ID: PRODUCT_CAT_ID,
+    PNAME: "EQUIPMENT",
+  };
+  SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
   var PropList = "";
   //console.log(Properties)
@@ -106,30 +107,30 @@ function addEqRow(Obj, jsn) {
   var tr = document.createElement("tr");
   var td = document.createElement("td");
   var b1 = document.createElement("button");
-  b1.setAttribute("class","ui-wrk-btn ui-wrk-btn-extra")
-  var spn='<span class="icn-md fa fa-check-square-o"></span>'
-  b1.innerHTML= spn;
+  b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+  var spn = '<span class="icn-md fa fa-check-square-o"></span>';
+  b1.innerHTML = spn;
   var b2 = document.createElement("button");
-  b2.setAttribute("class","ui-wrk-btn ui-wrk-btn-success")
-  var spn='<span class="icn-md fa fa-plus"></span>'
+  b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+  var spn = '<span class="icn-md fa fa-plus"></span>';
   b2.innerHTML = spn;
-  b2.setAttribute("onclick","addRowCrs("+Obj.PropList+")")
-  
+  b2.setAttribute("onclick", "addRowCrs(" + Obj.PropList + ")");
+
   var b3 = document.createElement("button");
-  b3.setAttribute("class","ui-wrk-btn ui-wrk-btn-warning")
-  var spn='<span class="icn-md fa fa-edit"></span>'
-  b3.innerHTML=spn;
-  
+  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+  var spn = '<span class="icn-md fa fa-edit"></span>';
+  b3.innerHTML = spn;
+
   var b4 = document.createElement("button");
-  b4.setAttribute("class","ui-wrk-btn ui-wrk-btn-red")
-  var spn='<span class="icn-md icon-remove"></span>'
-  
-  b4.innerHTML=spn;
-  
+  b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
+  var spn = '<span class="icn-md icon-remove"></span>';
+
+  b4.innerHTML = spn;
+
   var b5 = document.createElement("button");
-  b5.setAttribute("class","ui-wrk-btn")
-  b5.setAttribute("style","background:#292424 !important;color:white")
-  b5.innerHTML='<span class="icn-md fa fa-trash"></span>';
+  b5.setAttribute("class", "ui-wrk-btn");
+  b5.setAttribute("style", "background:#292424 !important;color:white");
+  b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
   diva.appendChild(b1);
@@ -165,18 +166,21 @@ function addEqRow(Obj, jsn) {
   }
 
   table.appendChild(tr);
-  var input=document.createElement("input");
-  input.setAttribute("type","hidden");
-  input.value=jsn;
-  input.name="AddedEquipment";
+  var input = document.createElement("input");
+  input.setAttribute("type", "hidden");
+  input.value = jsn;
+  input.name = "AddedEquipment";
   div.appendChild(input);
   div.appendChild(table);
-  var div2=document.createElement("div");
-  div2.setAttribute("class","ui-scroll")
-  var Table=document.createElement("table");
-  Table.setAttribute("class","SubSepet ui-table-list ui-form tablesorter tablesorter-default")
-  var thead=document.createElement("thead");
-  var tr=document.createElement("tr"); 
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "ui-scroll");
+  var Table = document.createElement("table");
+  Table.setAttribute(
+    "class",
+    "SubSepet ui-table-list ui-form tablesorter tablesorter-default"
+  );
+  var thead = document.createElement("thead");
+  var tr = document.createElement("tr");
   tr.appendChild(thCrate("#"));
   tr.appendChild(thCrate("Part No"));
   tr.appendChild(thCrate("Part Name"));
@@ -190,35 +194,117 @@ function addEqRow(Obj, jsn) {
   tr.appendChild(thCrate("First Remark"));
   tr.appendChild(thCrate("Delivered Items"));
   tr.appendChild(thCrate("Weight"));
-  tr.setAttribute("class","tablesorter-headerRow")
+  tr.setAttribute("class", "tablesorter-headerRow");
   thead.appendChild(tr);
   Table.appendChild(thead);
-  Table.id="SubSepet_"+Obj.PropList;
-  var tbody=document.createElement("tbody");
-  tbody.id="SubSepetBody_"+Obj.PropList;
+  Table.id = "SubSepet_" + Obj.PropList;
+  var tbody = document.createElement("tbody");
+  tbody.id = "SubSepetBody_" + Obj.PropList;
   Table.appendChild(tbody);
-  div2.appendChild(Table)
-div.appendChild(div2);
-var btn='<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_'+Obj.PropList+'">0</span> Rows Listed<br><span id="TOTALE_'+Obj.PropList+'">0 €</span></button>'
-var btn='<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_'+Obj.PropList+'">0</span> Rows Listed<br><span id="TOTALE_'+Obj.PropList+'">0 €</span></button>'
-btn=$(btn)[0];
-div.appendChild(btn);
+  div2.appendChild(Table);
+  div.appendChild(div2);
+  var btn =
+    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
+    Obj.PropList +
+    '">0</span> Rows Listed<br><span id="TOTALE_' +
+    Obj.PropList +
+    '">0 €</span></button>';
+  var btn =
+    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
+    Obj.PropList +
+    '">0</span> Rows Listed<br><span id="TOTALE_' +
+    Obj.PropList +
+    '">0 €</span></button>';
+  btn = $(btn)[0];
+  div.appendChild(btn);
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
 
-function addRowCrs(proplist){
-   
+function addRowCrs(proplist) {
+  var tr = document.createElement("tr");
+  var td = document.createElement("td");
+  var input = document.createElement("input");
+  input.type = "checkbox";
+  input.name = "CBX_" + RowCount;
+  input.setAttribute("class", "SatirSecCbx");
+  var b1 = document.createElement("button");
+  b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+  b1.innerText = RowCount;
+  var b2 = document.createElement("button");
+  b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+  b2.innerText = RowCount;
+  var div = document.createElement("div");
+  div.setAttribute("style", "display:flex");
+  div.appendChild(input);
+  div.appendChild(b1);
+  div.appendChild(b2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div =document.createElement("div");
+  div.setAttribute("class","form-group");
+  var input=document.createElement("input");
+  input.name="PRODUCT_CODE_2_"+RowCount;
+  input.setAttribute("onchange","getProduct(this,"+RowCount+")")
+  div.appendChild(input);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td=document.createElement("td");
+  var div =document.createElement("div");
+  div.setAttribute("class","form-group");
+  var input=document.createElement("input");
+  input.name="PRODUCT_NAME_"+RowCount;
+  div.appendChild(input);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td=document.createElement("td");
+  var div =document.createElement("div");
+  div.setAttribute("class","form-group");
+  var input=document.createElement("input");
+  input.name="QUANTITY_"+RowCount;
+  div.appendChild(input);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td=document.createElement("td");
+  var div =document.createElement("div");
+  div.setAttribute("class","form-group");
+  var input=document.createElement("select");
+  input.name="PRODUCT_UNIT_"+RowCount;
+  div.appendChild(input);
+  td.appendChild(div);
+  tr.appendChild(td);
 }
 
-function thCrate(innerText){
-  var th=document.createElement("th");
-  th.innerText=innerText
-  th.setAttribute("class","tablesorter-header tablesorter-headerUnSorted")
+function thCrate(innerText) {
+  var th = document.createElement("th");
+  th.innerText = innerText;
+  th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted");
   return th;
 }
 
+function getProduct(el,rc){
 
+}
+
+function CreateOptionList(tip){
+  if(tip==1){
+    var paraBirimleri=wrk_safe_query("getMoneyList","dsn");
+    var array=paraBirimleri.MONEY
+    var ReturnStr="";
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      ReturnStr+="<option value='"+element+"'>"+element+"</option>";
+      
+    }
+    var o=$("ReturnStr");
+    console.log(o);
+  }
+}
 /**
  * 
  * <table class="table table-bordered">
@@ -237,37 +323,9 @@ function thCrate(innerText){
 <th>Delivered Items</th>
 <th>Weight</th>
 </tr>
-<tr>
-	<td>
-    <div style="display:flex">
-    	<input type="checkbox" name="">
-        <button class="btn btn-success">1</button>
-        <button class="btn btn-warning">2</button>
-        <button class="btn btn-secondary">3</button>
-        </div>
-    </td>
-    <td>
-    	<div class="form-group">
-        	<input class="form-control" type="text" name="PRODUCT_CODE">
-        </div>
-    </td>
-  	<td>
-    	<div class="form-group">
-        	<input class="form-control" type="text" name="PRODUCT_NAME">
-        </div>
-    </td>
-  	<td>
-    	<div class="form-group">
-        	<input class="form-control" type="text" name="AMOUNT">
-        </div>
-    </td>    
-  	<td>
-    	<div class="form-group">
-        	<select class="form-control form-select" name="UNIT">
-            <option value="pcs">PCS</option>
-            </select>
-        </div>
-    </td>
+<tr>	     
+     
+  	
   	<td>
     	<div class="form-group">
         	<div class="input-group">
