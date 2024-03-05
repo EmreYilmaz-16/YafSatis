@@ -102,7 +102,7 @@ function addEqRow(Obj, jsn) {
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("data-PropList", Obj.PropList);
   var table = document.createElement("table");
-  table.setAttribute("class", "EqTableMain");
+  table.setAttribute("class", "EqTableMain ui-table-list ui-form tablesorter tablesorter-default");
   var tr = document.createElement("tr");
   var td = document.createElement("td");
   var b1 = document.createElement("button");
@@ -113,6 +113,8 @@ function addEqRow(Obj, jsn) {
   b2.setAttribute("class","ui-wrk-btn ui-wrk-btn-success")
   var spn='<span class="icn-md fa fa-plus"></span>'
   b2.innerHTML = spn;
+  b2.setAttribute("onclick","addRowCrs("+Obj.PropList+")")
+  
   var b3 = document.createElement("button");
   b3.setAttribute("class","ui-wrk-btn ui-wrk-btn-warning")
   var spn='<span class="icn-md fa fa-edit"></span>'
@@ -123,10 +125,10 @@ function addEqRow(Obj, jsn) {
   var spn='<span class="icn-md icon-remove"></span>'
   
   b4.innerHTML=spn;
-  292424
+  
   var b5 = document.createElement("button");
   b5.setAttribute("class","ui-wrk-btn")
-  b5.setAttribute("style","background:#292424 !important")
+  b5.setAttribute("style","background:#292424 !important;color:white")
   b5.innerHTML='<span class="icn-md fa fa-trash"></span>';
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
@@ -169,70 +171,156 @@ function addEqRow(Obj, jsn) {
   input.name="AddedEquipment";
   div.appendChild(input);
   div.appendChild(table);
+  var Table=document.createElement("table");
+  Table.id="SubSepet_"+PropList;
+
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
 
-/*
- <div class="alert alert-success eq_header">
-    <table style="
-    text-align: center;
-    width: 100%;
-">
-        <tbody><tr>
-<td style="
-    text-align: left;
-">
-    <button class="btn btn-danger">A</button>
-<button class="btn btn-danger">B</button>
-<button class="btn btn-danger">C</button>
-<button class="btn btn-danger">D</button>
-<button class="btn btn-danger">D</button></td>
-            
-        <td style="
-    border-right: solid 1px;
-    width: 8%;
-">
-    <span style="font-weight:bold">Equipment</span>
-<br>    
-        <span>Main Engine</span>
-    
-            
-        </td><td style="
-    border-right: solid 1px;
-    width: 8%;
-">
-    <span style="font-weight:bold">Brand</span>
-<br>    
-        <span>Wartsilla</span>
-    
-            
-        </td><td style="
-    border-right: solid 1px;
-    width: 8%;
-">
-    <span style="font-weight:bold">Type</span>
-<br>    
-        <span>M32</span>
-    
-            
-        </td><td style="
-    border-right: solid 1px;
-    width: 8%;
-">
-    <span style="font-weight:bold">Cylinder</span>
-<br>    
-        <span>8</span>
-    
-            
-        </td>
-<td style="
-    width: 60%;
-"></td></tr>
-    
-    </tbody></table>
-<table class="table">
-</table>
-</div>
+function addRowCrs(proplist){
+   
+}
 
-*/
+
+
+/**
+ * 
+ * <table class="table table-bordered">
+<tr>
+<th>#</th>
+<th>Part No</th>
+<th>Part Name</th>
+<th>Quantity</th>
+<th>Unit</th>
+<th>Purchase Price</th>
+<th>Sales Price</th>
+<th>Sales Discount</th>
+<th>Unit Price</th>
+<th>Total Price</th>
+<th>First Remark</th>
+<th>Delivered Items</th>
+<th>Weight</th>
+</tr>
+<tr>
+	<td>
+    <div style="display:flex">
+    	<input type="checkbox" name="">
+        <button class="btn btn-success">1</button>
+        <button class="btn btn-warning">2</button>
+        <button class="btn btn-secondary">3</button>
+        </div>
+    </td>
+    <td>
+    	<div class="form-group">
+        	<input class="form-control" type="text" name="PRODUCT_CODE">
+        </div>
+    </td>
+  	<td>
+    	<div class="form-group">
+        	<input class="form-control" type="text" name="PRODUCT_NAME">
+        </div>
+    </td>
+  	<td>
+    	<div class="form-group">
+        	<input class="form-control" type="text" name="AMOUNT">
+        </div>
+    </td>    
+  	<td>
+    	<div class="form-group">
+        	<select class="form-control form-select" name="UNIT">
+            <option value="pcs">PCS</option>
+            </select>
+        </div>
+    </td>
+  	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="PURCHASE_PRICE">
+        	<select class="input-group-text" name="PURCHASE_PRICE_MONEY">
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            </select>
+            </div>
+        </div>
+    </td>  
+  	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="SALE_PRICE">
+        	<select class="input-group-text" name="SALE_PRICE_MONEY">
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            </select>
+            </div>
+        </div>
+    </td>    
+      	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="SALE_DISCOUNT">
+        	<select class="input-group-text" name="SALE_DISCOUNT_MONEY">
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            </select>
+            </div>
+        </div>
+    </td>   
+          	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="UNIT_PRICE">
+        	<select class="input-group-text" name="UNIT_PRICE_MONEY">
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            </select>
+            </div>
+        </div>
+    </td>
+              	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="TOTAL_PRICE">
+        	<select class="input-group-text" name="TOTAL_PRICE_MONEY">
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            </select>
+            </div>
+        </div>
+    </td>
+     	<td>
+    	<div class="form-group">
+        <div class="input-group">
+        	<input class="form-control" type="text" name="FIRST_REMARK">
+            <button class="btn btn-danger">x</button>
+          </div>
+        </div>
+    </td>
+ 	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="DELIVERED_ITEMS">
+        	<select class="input-group-text" name="DELIVERED_ITEMS_UNIT">
+            <option value="pcs">pcs</option>
+            <option value="GR">GR</option>
+            </select>
+            </div>
+        </div>
+    </td>
+         	<td>
+    	<div class="form-group">
+        	<div class="input-group">
+        <input type="text" class="form-control"  name="WEIGHT">
+        	<select class="input-group-text" name="WEIGHT_UNIT">
+            <option value="KG">KG</option>
+            <option value="GR">GR</option>
+            </select>
+            </div>
+        </div>
+    </td>
+</tr>
+
+</table>
+ * 
+ * 
+ */
