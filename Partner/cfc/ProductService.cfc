@@ -82,9 +82,9 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
 
     <cffunction name="SearchProduct" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
-        <cfdump var="#arguments.FormData#">
+
 <cfset FData=deserializeJSON(arguments.FormData)>
-<cfdump var="#FData#">
+
 <cfquery name="getProd" datasource="#dsn#">
     SELECT * FROM (
 SELECT PRODUCT_NAME,MANUFACT_CODE,PRODUCT_CODE,PRODUCT_CODE_2,PU.MAIN_UNIT,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  FROM CatalystQA_product.PRODUCT AS P
@@ -96,6 +96,14 @@ where PRODUCT_CATID=#FData.SearchMainValue.PRODUCT_CAT_ID#
 </cfloop>
  
 </cfquery>
-<cfdump var="#getProd#">
+
+<CFSET P=structNew()>
+<cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
+<cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
+<cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
+<cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
+<cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
+<cfset P.RECORD_COUNT=getProd.RECORD_COUNT>
+<cfreturn replace(serializeJSON(P),"//","")>
     </cffunction>
 </cfcomponent>
