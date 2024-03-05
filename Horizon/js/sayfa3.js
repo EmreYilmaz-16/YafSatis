@@ -102,7 +102,7 @@ function addEqRow(Obj, jsn) {
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("data-PropList", Obj.PropList);
   var table = document.createElement("table");
-  table.setAttribute("class", "EqTableMain ui-table-list ui-form tablesorter tablesorter-default");
+  table.setAttribute("class", "EqTableMain");
   var tr = document.createElement("tr");
   var td = document.createElement("td");
   var b1 = document.createElement("button");
@@ -172,8 +172,26 @@ function addEqRow(Obj, jsn) {
   div.appendChild(input);
   div.appendChild(table);
   var Table=document.createElement("table");
+  Table.setAttribute("class","SubSepet ui-table-list ui-form tablesorter tablesorter-default")
+  var thead=document.createElement("thead");
+  var tr=document.createElement("tr"); 
+  tr.appendChild(thCrate("#"));
+  tr.appendChild(thCrate("Part No"));
+  tr.appendChild(thCrate("Part Name"));
+  tr.appendChild(thCrate("Quantity"));
+  tr.appendChild(thCrate("Unit"));
+  tr.appendChild(thCrate("Purchase Price"));
+  tr.appendChild(thCrate("Sales Price"));
+  tr.appendChild(thCrate("Sales Discount"));
+  tr.appendChild(thCrate("Unit Price"));
+  tr.appendChild(thCrate("Total Price"));
+  tr.appendChild(thCrate("First Remark"));
+  tr.appendChild(thCrate("Delivered Items"));
+  tr.appendChild(thCrate("Weight"));
+  thead.appendChild(tr);
+  Table.appendChild(thead);
   Table.id="SubSepet_"+Obj.PropList;
-
+div.appendChild(Table);
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
@@ -182,6 +200,11 @@ function addRowCrs(proplist){
    
 }
 
+function thCrate(innerText){
+  var th=document.createElement("th");
+  th.innerText="#"
+  return th;
+}
 
 
 /**
