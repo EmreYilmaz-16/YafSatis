@@ -243,41 +243,61 @@ function addRowCrs(proplist) {
   tr.appendChild(td);
 
   var td = document.createElement("td");
-  var div =document.createElement("div");
-  div.setAttribute("class","form-group");
-  var input=document.createElement("input");
-  input.name="PRODUCT_CODE_2_"+RowCount;
-  input.setAttribute("onchange","getProduct(this,"+RowCount+")")
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("input");
+  input.name = "PRODUCT_CODE_2_" + RowCount;
+  input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
 
-  var td=document.createElement("td");
-  var div =document.createElement("div");
-  div.setAttribute("class","form-group");
-  var input=document.createElement("input");
-  input.name="PRODUCT_NAME_"+RowCount;
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("input");
+  input.name = "PRODUCT_NAME_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
 
-  var td=document.createElement("td");
-  var div =document.createElement("div");
-  div.setAttribute("class","form-group");
-  var input=document.createElement("input");
-  input.name="QUANTITY_"+RowCount;
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("input");
+  input.name = "QUANTITY_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
 
-  var td=document.createElement("td");
-  var div =document.createElement("div");
-  div.setAttribute("class","form-group");
-  var input=document.createElement("select");
-  input.name="PRODUCT_UNIT_"+RowCount;
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("select");
+  input.name = "PRODUCT_UNIT_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var div2 = document.createElement("div");
+  div2.setAttribute("class", "input-group");
+  var input = document.createElement("input");
+  input.type = "textbox";
+  input.name = "PURCHASE_PRICE_" + RowCount;
+  div2.appendChild(input);
+  var input = document.createElement("select");
+  input.innerHTML(CreateOptionList(1, ""));
+  input.name = "PURCHASE_MONEY_" + RowCount;
+  input.setAttribute("class", "input-group-text");
+  div2.appendChild(input);
+  div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  document.getElementById("SubSepetBody_"+proplist).appendChild(tr);
 }
 
 function thCrate(innerText) {
@@ -287,22 +307,26 @@ function thCrate(innerText) {
   return th;
 }
 
-function getProduct(el,rc){
+function getProduct(el, rc) {}
 
-}
-
-function CreateOptionList(tip){
-  if(tip==1){
-    var paraBirimleri=wrk_safe_query("getMoneyList","dsn");
-    var array=paraBirimleri.MONEY
-    var ReturnStr="";
+function CreateOptionList(tip, selval = "EUR") {
+  if (tip == 1) {
+    var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
+    var array = paraBirimleri.MONEY;
+    var ReturnStr = "";
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
-      ReturnStr+="<option value='"+element+"'>"+element+"</option>";
-      
+      if (selval == element) {
+        ReturnStr +=
+          "<option  selected value='" + element + "'>" + element + "</option>";
+      } else {
+        ReturnStr +=
+          "<option  value='" + element + "'>" + element + "</option>";
+      }
     }
     console.log(ReturnStr);
-    var o=$("ReturnStr");
+    var o = $("ReturnStr");
+    return ReturnStr;
     console.log(o);
   }
 }
