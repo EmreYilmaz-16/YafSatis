@@ -171,6 +171,8 @@ function addEqRow(Obj, jsn) {
   input.name="AddedEquipment";
   div.appendChild(input);
   div.appendChild(table);
+  var div2=document.createElement("div");
+  div2.setAttribute("class","ui-scroll")
   var Table=document.createElement("table");
   Table.setAttribute("class","SubSepet ui-table-list ui-form tablesorter tablesorter-default")
   var thead=document.createElement("thead");
@@ -188,6 +190,7 @@ function addEqRow(Obj, jsn) {
   tr.appendChild(thCrate("First Remark"));
   tr.appendChild(thCrate("Delivered Items"));
   tr.appendChild(thCrate("Weight"));
+  tr.setAttribute("class","tablesorter-headerRow")
   thead.appendChild(tr);
   Table.appendChild(thead);
   Table.id="SubSepet_"+Obj.PropList;
@@ -202,7 +205,8 @@ function addRowCrs(proplist){
 
 function thCrate(innerText){
   var th=document.createElement("th");
-  th.innerText="#"
+  th.innerText=innerText
+  th.setAttribute("class","tablesorter-header tablesorter-headerUnSorted")
   return th;
 }
 
