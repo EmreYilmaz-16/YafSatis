@@ -510,7 +510,7 @@ function getProduct(el, rc) {
           var btn=document.createElement("button");
           btn.setAttribute("class","btn btn-warning");
           
-          btn.innerHTML("<i class='icn-md fa fa-search'></i>")
+          btn.innerHTML="<i class='icn-md fa fa-search'></i>";
           el.parentElement.appendChild(btn);
           el.parentElement.setAttribute("style","display:flex");
         } else {
