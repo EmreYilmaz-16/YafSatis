@@ -434,7 +434,7 @@ function addRowCrs(proplist) {
   input.name = "DELIVERED_ITEMS_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = ""; 
+  input.innerHTML = "";
   input.name = "DELIVERED_ITEMS_UNIT_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -483,8 +483,7 @@ function getProduct(el, rc) {
     SearchMainValue: SearchMainValue,
     keyword: keyword,
   };
-  console.table(Search);
-  console.log(Search);
+
   $.ajax({
     url: ServiceUri + "/ProductService.cfc?method=SearchProduct",
     data: {
@@ -502,18 +501,27 @@ function getProduct(el, rc) {
             Obje.PRODUCT_NAME;
           document.getElementsByName("QUANTITY_" + rc)[0].value = 1;
           document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
-            '<option value="'+Obje.MAIN_UNIT+'">'+Obje.MAIN_UNIT+'</option>';
-            document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = 0;
-            document.getElementsByName("SALE_PRICE_" + rc)[0].value = 0;
-            document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = 0;
-            document.getElementsByName("UNIT_PRICE_" + rc)[0].value = 0;
-            document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = 0;
-            document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = 0;
-            document.getElementsByName("DELIVERED_ITEMS_UNIT_" + rc)[0].innerHTML =
-            '<option value="'+Obje.MAIN_UNIT+'">'+Obje.MAIN_UNIT+'</option>';
-            
-            document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
-            
+            '<option value="' +
+            Obje.MAIN_UNIT +
+            '">' +
+            Obje.MAIN_UNIT +
+            "</option>";
+          document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = 0;
+          document.getElementsByName("SALE_PRICE_" + rc)[0].value = 0;
+          document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = 0;
+          document.getElementsByName("UNIT_PRICE_" + rc)[0].value = 0;
+          document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = 0;
+          document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = 0;
+          document.getElementsByName(
+            "DELIVERED_ITEMS_UNIT_" + rc
+          )[0].innerHTML =
+            '<option value="' +
+            Obje.MAIN_UNIT +
+            '">' +
+            Obje.MAIN_UNIT +
+            "</option>";
+
+          document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
         } else {
           el.setAttribute("style", "color:red");
         }
