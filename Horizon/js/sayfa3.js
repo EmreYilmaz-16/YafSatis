@@ -467,6 +467,12 @@ function getProduct(el, rc) {
   }
   console.table(Search);
   console.log(Search);
+  $.ajax({
+    url:ServiceUri+"/ProductService?method=SearchProduct",
+    data:{
+      FormData:JSON.stringify(Search);
+    }
+  })
 }
 
 function CreateOptionList(tip, selval = "EUR") {
