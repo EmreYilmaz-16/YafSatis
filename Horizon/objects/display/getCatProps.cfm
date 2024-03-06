@@ -49,6 +49,12 @@
             url:Uri,
             success:function (returnData) {
                 console.log(returnData)
+                var e=document.getElementById("SEARCH_PROP_"+relVar)
+                for(let i=0;i<e.options.length;i++){
+                e.options[i].remove()
+                }
+                $(e).val(null).trigger('change');
+
             }
         })
     }
