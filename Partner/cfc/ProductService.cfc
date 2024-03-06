@@ -60,6 +60,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
     <cffunction name="getPropertyDetailsWithCatId">
         <cfargument name="PROPERTY_ID">
         <cfargument name="PRODUCT_CATID">
+        
         <cfquery name="getAll" datasource="#dsn#">
             SELECT DISTINCT PPD.PROPERTY_DETAIL,PPD.PROPERTY_DETAIL_ID,T.PRPT FROM CatalystQA_product.PRODUCT_DT_PROPERTIES  PDP
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
