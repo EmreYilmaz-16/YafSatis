@@ -14,7 +14,7 @@
     <cfloop array="#CatPropertieDetails#" item="itx">
         <cfset RElprp="#RElprp#,#itx.IS_SUB_PRPT#">
     </cfloop>
-      <cfdump var="#RElprp#">
+      <cfdump var="#listlen(RElprp)#">
 
     <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
         <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
