@@ -44,7 +44,7 @@
         var iid=SelEleman.id
        var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+iid+"&iid="+iid;
        console.log(Uri);
-       return false;
+       
         $.ajax({
             url:Uri,
             success:function (returnData) {
