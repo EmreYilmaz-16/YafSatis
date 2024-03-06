@@ -12,7 +12,7 @@
     <cfset CatPropertieDetails=deserializeJSON(CatPropertieDetailsJson)>
     <cfset RElprp="">
     <cfloop array="#CatPropertieDetails#" item="itx">
-        <cfset RElprp="#RElprp#,#itx.RELATED_VARIATION_ID#">
+        <cfset RElprp="#RElprp#,#itx.IS_SUB_PRPT#">
     </cfloop>
       <cfdump var="#RElprp#">
 
