@@ -42,11 +42,14 @@
         var SelEleman=$(el).select2('data')[0];
         var relVar=SelEleman.element.getAttribute('data-related_variation_id')
         var iid=SelEleman.id
-       var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+relVar+"&iid="+iid;
+       var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+iid+"&iid="+iid;
        console.log(Uri);
        return false;
         $.ajax({
-            url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+relVar
+            url:Uri,
+            success:function (returnData) {
+                console.log(returnData)
+            }
         })
     }
 </script>
