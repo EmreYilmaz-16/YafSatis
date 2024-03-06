@@ -39,8 +39,10 @@
         $('.propss').select2();
     })
     function iliskiliDataOlustur(el,pcat,prpt){
-        var relVar=$(el).select2('data')[0].element.getAttribute('data-related_variation_id')
-       var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+relVar;
+        var SelEleman=$(el).select2('data')[0];
+        var relVar=SelEleman.element.getAttribute('data-related_variation_id')
+        var iid=SelEleman.id
+       var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+relVar+"&iid="+iid;
        console.log(Uri);
        return false;
         $.ajax({
