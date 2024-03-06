@@ -61,12 +61,13 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfargument name="PROPERTY_ID">
         <cfargument name="PRODUCT_CATID">
         <cfargument name="RELATED_VAR_ID" default="">
+        <cfargument name="RELATED_PROP_ID" default="">
         <cfquery name="getAll" datasource="#dsn#">
             SELECT DISTINCT PPD.PROPERTY_DETAIL,PPD.PROPERTY_DETAIL_ID,T.PRPT FROM CatalystQA_product.PRODUCT_DT_PROPERTIES  PDP
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
 OUTER APPLY (
   SELECT DISTINCT(PRPT_ID) AS PRPT FROM   CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2 WHERE PP2.RELATED_VARIATION_ID=PPD.PROPERTY_DETAIL_ID ) AS T
-WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#) AND PPD.PRPT_ID=#arguments.PROPERTY_ID#
+WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#) <cfif len(arguments.RELATED_PROP_ID)>AND PPD.PRPT_ID=#arguments.RELATED_PROP_ID#<cfelse> AND PPD.PRPT_ID=#arguments.PROPERTY_ID#</cfif>
 <cfif len(arguments.RELATED_VAR_ID)> AND PPD.RELATED_VARIATION_ID=#arguments.RELATED_VAR_ID# </cfif>
         </cfquery>
           <cfset ReturnArr=arrayNew(1)>
