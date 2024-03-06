@@ -6,10 +6,11 @@
 <cfset CatProperties=deserializeJSON(CatPropertiesJson)>
 
 <cfoutput>
+    <cfdump var="#CatProperties#">
 <cfloop array="#CatProperties#" item="it">
     <cfset CatPropertieDetailsJson=ProductService.getPropertyDetailsWithCatId(PROPERTY_ID=it.PROPERTY_ID,PRODUCT_CATID=attributes.PRODUCT_CATID)>
     <cfset CatPropertieDetails=deserializeJSON(CatPropertieDetailsJson)>
-    
+    <cfdump var="#CatPropertieDetails#">
       
 
     <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
