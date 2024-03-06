@@ -86,7 +86,7 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
 
 <cfset FData=deserializeJSON(arguments.FormData)>
 
-<cfquery name="getSearchParams">
+<cfquery name="getSearchParams" datasource="#dsn#">
     select PP.PROPERTY+'-'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID) from CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
 
