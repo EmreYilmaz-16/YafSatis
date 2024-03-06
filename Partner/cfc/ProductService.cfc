@@ -57,7 +57,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
                </cfloop>
                <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction> 
-    <cffunction name="getPropertyDetailsWithCatId">
+    <cffunction name="getPropertyDetailsWithCatId"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="PROPERTY_ID">
         <cfargument name="PRODUCT_CATID">
         <cfargument name="RELATED_VAR_ID" default="">
