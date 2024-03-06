@@ -86,6 +86,24 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
 
 <cfset FData=deserializeJSON(arguments.FormData)>
 
+<cfquery name="getSearchParams">
+    select PP.PROPERTY+'-'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID) from CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
+INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
+
+  WHERE 1=1
+  <cfif arrayLen(FData.SearchMainValue.Filters) gt 1>
+    PROPERTY_DETAIL_ID IN (
+        <cfloop array="#FData.SearchMainValue.Filters#" item="it"><cfif it.PNAME neq "EQUIPMENT"></cfif>
+        #it.PRODUCT_CAT_ID#,
+        </cfloop>0
+)
+</cfif>
+
+</cfquery>
+
+<cfdump var="#getSearchParams#">
+
+
 <cfquery name="getProd" datasource="#dsn#">
     SELECT * FROM (
 SELECT PRODUCT_NAME,MANUFACT_CODE,PRODUCT_CODE,PRODUCT_CODE_2,PU.MAIN_UNIT,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  FROM CatalystQA_product.PRODUCT AS P
