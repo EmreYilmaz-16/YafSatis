@@ -39,7 +39,7 @@
         $('.propss').select2();
     })
     function iliskiliDataOlustur(el,pcat,prpt){
-        var SelEleman=$(el).select2('data')[0];
+       /* var SelEleman=$(el).select2('data')[0];
         var relVar=SelEleman.element.getAttribute('data-related_variation_id')
         var iid=SelEleman.id
        var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_PROP_ID="+relVar+"&RELATED_VAR_ID="+iid;
@@ -50,12 +50,17 @@
             success:function (returnData) {
                 console.log(returnData)
                 var e=document.getElementById("SEARCH_PROP_"+relVar)
-                for(let i=0;i<e.options.length;i++){
+                var iii=e.options.length;
+                while (iii>0) {
+                    
+                iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
                 e.options[i].remove()
                 }
+                
                 $(e).val(null).trigger('change');
 
             }
-        })
+        })*/ 
+        return true;
     }
 </script>
