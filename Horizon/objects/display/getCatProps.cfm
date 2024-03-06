@@ -21,7 +21,7 @@
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY# <cfif it.IS_AMOUNT EQ 1><span style="color:red;font-weight:bold">*</span></cfif></label>
            
             <select <cfif listlen(RElprp) gt 0>
-                onchange="alert($(this).select2('data')[0].element.getAttribute('data-related_variation_id'))"
+                onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#)"
             </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
                 
                 <option value="">Seç</option>
@@ -38,4 +38,13 @@
     $(document).ready(function(){
         $('.propss').select2();
     })
+    function iliskiliDataOlustur(el,pcat,prpt){
+        var relVar=$(el).select2('data')[0].element.getAttribute('data-related_variation_id')
+       var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+relVar;
+       console.log(Uri);
+       return false;
+        $.ajax({
+            url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_VAR_ID="+relVar
+        })
+    }
 </script>
