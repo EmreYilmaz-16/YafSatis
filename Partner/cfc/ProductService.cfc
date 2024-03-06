@@ -126,8 +126,9 @@ WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#'
         AND DTP LIKE '%#SEARCH_PARAM#,%' 
     
 </cfloop>
- <cfdump var="#getProd#">
+
 </cfquery>
+<cfdump var="#getProd#">
 <!-----
     	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
 			INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
