@@ -78,7 +78,7 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
                    PROPERTY_DETAIL=PROPERTY_DETAIL,
                      PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
                      IS_SUB_PRPT=PRPT,
-                     PROPERTY_ID=PROPERTY,
+                     PROPERTY=PROPERTY,
                      PROPERTY_ID=PROPERTY_ID
 
                   };
