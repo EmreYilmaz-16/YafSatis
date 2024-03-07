@@ -57,8 +57,10 @@
                     ic++
                  try{   e.options[iii].remove()
                 iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
-                 } catch{
+                 }  catch (error) {
+  console.error(error);
                     console.log(iii)
+                    console.log(err)
                     if(ic==10) return false;
                     
                  }
