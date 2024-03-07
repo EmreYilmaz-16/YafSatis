@@ -57,6 +57,7 @@
                 while (iii>1) {
                     ic++
                  try{   
+                    console.log(e.options[iii].value)
                     e.options[iii].remove()
                     iii=e.options.length;
                  }  catch (error) {
