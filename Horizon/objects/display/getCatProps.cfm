@@ -52,11 +52,15 @@
                 var Obj=JSON.parse(returnData)
                 var e=document.getElementById("SEARCH_PROP_"+relVar)
                 var iii=e.options.length;
+                var ic=0;
                 while (iii>1) {
+                    ic++
                  try{   e.options[iii].remove()
                 iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
                  } catch{
                     console.log(iii)
+                    if(ic==10) return false;
+                    
                  }
                 }
                 
