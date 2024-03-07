@@ -54,21 +54,21 @@
                 console.log(e.options)
                 var iii=e.options.length;
                 var ic=0;
-                while (iii>1) {
-                    ic++
-                 try{   
-                    console.log(e.options[iii].value)
-                    e.options[iii].remove()
-                    iii=e.options.length;
-                 }  catch (error) {
-  console.error(error);
-                    console.log(iii)
-                    console.log(e.options.length)
-                    if(ic==10) return false;
+//                 while (iii>1) {
+//                     ic++
+//                  try{   
+//                     console.log(e.options[iii].value)
+//                     e.options[iii].remove()
+//                     iii=e.options.length;
+//                  }  catch (error) {
+//   console.error(error);
+//                     console.log(iii)
+//                     console.log(e.options.length)
+//                     if(ic==10) return false;
                     
-                 }
-                }
-                
+//                  }
+//                 }
+                $(e).html("");
                 $(e).val(null).trigger('change');
                 for (let index = 0; index < Obj.length; index++) {
                     const element = Obj[index];
