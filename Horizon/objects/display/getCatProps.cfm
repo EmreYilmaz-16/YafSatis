@@ -51,6 +51,7 @@
                 console.log(returnData)
                 var Obj=JSON.parse(returnData)
                 var e=document.getElementById("SEARCH_PROP_"+relVar)
+                console.log(e.options)
                 var iii=e.options.length;
                 var ic=0;
                 while (iii>1) {
