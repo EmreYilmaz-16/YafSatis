@@ -56,8 +56,9 @@
                 var ic=0;
                 while (iii>1) {
                     ic++
-                 try{   e.options[iii].remove()
-                iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
+                 try{   
+                    e.options[iii].remove()
+                    iii=e.options.length;
                  }  catch (error) {
   console.error(error);
                     console.log(iii)
