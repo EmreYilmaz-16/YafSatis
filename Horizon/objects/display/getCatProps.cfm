@@ -77,7 +77,7 @@
                     option.value=element.PROPERTY_DETAIL_ID
                     option.innerText=element.PROPERTY_DETAIL
                     option.setAttribute("data-RELATED_VARIATION_ID",element.IS_SUB_PRPT)
-                    option.setAttribute("title",element.PROPERTY_ID)
+                    option.setAttribute("title",element.PROPERTY)
                     e.appendChild(option);
                     /*
                     data-RELATED_VARIATION_ID="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" 
