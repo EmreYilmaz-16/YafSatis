@@ -52,7 +52,7 @@
                 var Obj=JSON.parse(returnData)
                 var e=document.getElementById("SEARCH_PROP_"+relVar)
                 var iii=e.options.length;
-                while (iii>0) {
+                while (iii>1) {
                  try{   e.options[iii].remove()
                 iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
                  } catch{
