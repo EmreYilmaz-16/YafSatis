@@ -62,7 +62,7 @@
                  }  catch (error) {
   console.error(error);
                     console.log(iii)
-                   // console.log(err)
+                    console.log(e.options.length;)
                     if(ic==10) return false;
                     
                  }
