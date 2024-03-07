@@ -55,7 +55,7 @@
                 while (iii>0) {
                     
                 iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
-                e.options[i].remove()
+                e.options[iii].remove()
                 }
                 
                 $(e).val(null).trigger('change');
