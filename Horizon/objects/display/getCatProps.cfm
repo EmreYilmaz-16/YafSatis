@@ -26,7 +26,7 @@
                 
                 <option value="">Seç</option>
                 <cfloop array="#CatPropertieDetails#" item="it2">
-                    <option data-RELATED_VARIATION_ID=#it2.IS_SUB_PRPT# title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
+                    <option data-RELATED_VARIATION_ID="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
                 </cfloop>
             </select>
         </div>
@@ -39,7 +39,7 @@
         $('.propss').select2();
     })
     function iliskiliDataOlustur(el,pcat,prpt){
-       /* var SelEleman=$(el).select2('data')[0];
+        var SelEleman=$(el).select2('data')[0];
         var relVar=SelEleman.element.getAttribute('data-related_variation_id')
         var iid=SelEleman.id
        var Uri="/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_PROP_ID="+relVar+"&RELATED_VAR_ID="+iid;
@@ -49,6 +49,7 @@
             url:Uri,
             success:function (returnData) {
                 console.log(returnData)
+                var Obj=JSON.parse(returnData)
                 var e=document.getElementById("SEARCH_PROP_"+relVar)
                 var iii=e.options.length;
                 while (iii>0) {
@@ -58,6 +59,20 @@
                 }
                 
                 $(e).val(null).trigger('change');
+                for (let index = 0; index < Obj.length; index++) {
+                    const element = Obj[index];
+                   // var newOption = new Option(element.text, element.id, false, false);
+                    var option=document.createElement("option");
+                    option.value=element.PROPERTY_DETAIL_ID
+                    option.innerText=element.PROPERTY_DETAIL
+                    option.setAttribute("data-RELATED_VARIATION_ID",element.IS_SUB_PRPT)
+                    option.setAttribute("title",element.PROPERTY_ID)
+                    e.appendChild(option);
+                    /*
+                    data-RELATED_VARIATION_ID="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" 
+                    */
+                   $(e).trigger('change');
+                }
 
             }
         })*/ 
