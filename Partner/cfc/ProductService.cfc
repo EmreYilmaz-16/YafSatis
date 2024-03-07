@@ -63,7 +63,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfargument name="RELATED_VAR_ID" default="">
         <cfargument name="RELATED_PROP_ID" default="">
         <cfquery name="getAll" datasource="#dsn#">
-            SELECT DISTINCT PPD.PROPERTY_DETAIL,PPD.PROPERTY_DETAIL_ID,T.PRPT,PP.PROPERTY FROM CatalystQA_product.PRODUCT_DT_PROPERTIES  PDP
+            SELECT DISTINCT PPD.PROPERTY_DETAIL,PPD.PROPERTY_DETAIL_ID,T.PRPT,PP.PROPERTY,PPD.PROPERTY_ID FROM CatalystQA_product.PRODUCT_DT_PROPERTIES  PDP
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PROPERTY_ID
 OUTER APPLY (
@@ -78,7 +78,8 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
                    PROPERTY_DETAIL=PROPERTY_DETAIL,
                      PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
                      IS_SUB_PRPT=PRPT,
-                     PROPERTY_ID=PROPERTY
+                     PROPERTY_ID=PROPERTY,
+                     PROPERTY_ID=PROPERTY_ID
 
                   };
                   arrayAppend(ReturnArr,item);
