@@ -53,9 +53,11 @@
                 var e=document.getElementById("SEARCH_PROP_"+relVar)
                 var iii=e.options.length;
                 while (iii>0) {
-                    e.options[iii].remove()
+                 try{   e.options[iii].remove()
                 iii=document.getElementById("SEARCH_PROP_"+relVar).options.length;
-                
+                 } catch{
+                    console.log(iii)
+                 }
                 }
                 
                 $(e).val(null).trigger('change');
