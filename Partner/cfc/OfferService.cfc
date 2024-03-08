@@ -125,7 +125,7 @@
 
         </cfif>
         
-
+<cfset Tarih=dateFormat(Tarih,"yyyy-mm-dd")>
         <cfreturn Tarih>
     </cffunction>
 </cfcomponent>
