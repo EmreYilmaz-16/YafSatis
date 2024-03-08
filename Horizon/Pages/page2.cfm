@@ -98,7 +98,7 @@
                                         var Gun=list_getat(OfferDate.value,1,"/")
                                         var Ay=list_getat(OfferDate.value,2,"/")
                                         var Yil=list_getat(OfferDate.value,3,"/")
-                                        $.get("/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=TarihIslem&yil="+Yil+"&ay="+Ay+"&gun="+Gun+"&islem=1&DatePart=d&dValue=10").done(function(str){
+                                        $.get("/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=TarihIslem&yil="+Yil+"&ay="+Ay+"&gun="+Gun+"&islem=1&DatePart=d&dValue="+dv).done(function(str){
                                             $("#validtyDate").val(str);
                                         })                                       
                                     }
