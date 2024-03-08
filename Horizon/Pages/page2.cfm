@@ -100,16 +100,16 @@
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">DELIVERY PLACE</label>
-                                <select name="DELIVERY_PLACE" id="DELIVERY_PLACE">
+                                <select name="DELIVERY_PLACE" id="DELIVERY_PLACE" onchange="if(this.value =='2' || this.value=='3') $('#DELIVERY_ADDRESS').show();else $('#DELIVERY_ADDRESS').hide();">
 
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12" id="dpAddress" style="display:none">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">DELIVERY ADDRESS</label>
-                                <input type="text">
+                                <input type="text" name="DELIVERY_ADDRESS" id="DELIVERY_ADDRESS">
                             </div>
                         </div>
                     </div>
