@@ -109,5 +109,24 @@
          </cfloop>
          <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
+    <cffunction name="TarihIslem" access="remote" httpMethod="post" returntype="string" returnformat="plain">
+        <cfargument name="Yil" required="true">
+        <cfargument name="ay" required="true">
+        <cfargument name="gun" required="true">
+        <cfargument name="islem" default="0">
+        <cfargument name="DatePart" default="d">
+        <cfargument name="dValue" default="0">
+        <cfset Tarih=createDate(arguments.yil,arguments.ay,arguments.gun)>
+        <cfif arguments.islem eq 0>
+            
+        </cfif>
+        <cfif arguments.islem eq 1>
+            <cfset Tarih=dateAdd(arguments.DatePart,arguments.dValue,Tarih)>
+
+        </cfif>
+        
+
+        <cfreturn Tarih>
+    </cffunction>
 </cfcomponent>
 
