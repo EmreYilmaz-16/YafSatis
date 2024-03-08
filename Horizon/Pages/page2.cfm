@@ -92,6 +92,7 @@
                                     <span class="input-group-addon">DAYS</span>
                                     <input type="hidden" name="validtyDate" id="validtyDate">
                                 </div>
+                                <code id="vdV"></code>
                                 <script>
                                     function setValidyDate(dv){
                                         var OfferDate=document.getElementById("start_date")
@@ -100,6 +101,7 @@
                                         var Yil=list_getat(OfferDate.value,3,"/")
                                         $.get("/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=TarihIslem&yil="+Yil+"&ay="+Ay+"&gun="+Gun+"&islem=1&DatePart=d&dValue="+dv).done(function(str){
                                             $("#validtyDate").val(str);
+                                            $("#vdV").text(str);
                                         })                                       
                                     }
                                 </script>
