@@ -95,10 +95,14 @@
                                 <script>
                                     function setValidyDate(dv){
                                         var OfferDate=document.getElementById("start_date");
+                                        console.log(OfferDate);
                                         var Gun=list_getat(OfferDate.value,1,"/")
                                         var Ay=list_getat(OfferDate.value,2,"/")
                                         var Yil=list_getat(OfferDate.value,3,"/")
+                                        console.table({yil:Yil,ay:Ay,gun:Gun});
                                         var d=new Date(Yil,Ay,Gun)
+                                        console.log(d);
+                                        console.log(dv);
                                         d.setDate(d.getDate()+dv)
                                         var ds=list_getat(d.toISOString(),1,"T")
                                         $("#validtyDate").val(ds);
