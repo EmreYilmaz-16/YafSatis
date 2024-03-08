@@ -3,9 +3,13 @@ $(document).ready(function () {
   var e = document.getElementById("OFFER_CURRENCY");
   var e1 = document.getElementById("MONEY");
   var e2 = document.getElementById("PRIORITY");
+  var e3 = document.getElementById("DELIVERY_PLACE");
+  var e4=document.getElementById("SHIP_METHOD_ID");
   getOfferCurrencies(e);
   getMoney(e1);
   getOfferPriorities(e2);
+  getDeliveryPlaces(e3);
+  getShipMethods(e4);
 });
 var MoneyArr = [];
 function openShipList() {
@@ -32,6 +36,41 @@ function getOfferCurrencies(el) {
         option.value = Obje[i].OFFER_CURRENCY_ID;
         option.innerText = Obje[i].OFFER_CURRENCY;
         el.appendChild(option);
+      }
+    },
+  });
+}
+function getDeliveryPlaces(el) {
+  $.ajax({
+    url: ServiceUri + "/OfferService.cfc?method=getDeliveryPlaces",
+    success: function (returnData) {
+      var Obje = JSON.parse(returnData);
+      console.log(Obje);
+      $(el).html("");
+      for (let i = 0; i < Obje.length; i++) {
+        var option = document.createElement("option");
+        option.value = Obje[i].DELIVERY_PLACE_ID;
+        option.innerText = Obje[i].DELIVERY_PLACE;
+        el.appendChild(option);
+        /*DELIVERY_PLACE_ID,DELIVERY_PLACE*/
+      }
+    },
+  });
+}
+
+function getShipMethods(el) {
+  $.ajax({
+    url: ServiceUri + "/OfferService.cfc?method=getShipMethods",
+    success: function (returnData) {
+      var Obje = JSON.parse(returnData);
+      console.log(Obje);
+      $(el).html("");
+      for (let i = 0; i < Obje.length; i++) {
+        var option = document.createElement("option");
+        option.value = Obje[i].SHIP_METHOD_ID;
+        option.innerText = Obje[i].SHIP_METHOD;
+        el.appendChild(option);
+        /*DELIVERY_PLACE_ID,DELIVERY_PLACE*/
       }
     },
   });
