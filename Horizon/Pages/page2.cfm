@@ -39,14 +39,15 @@
                         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">TRANSIT WAREHOUESE (EXW)</label>
-                                <input type="text">
+                                <input type="text" name="TW" id="TW">
+                                
                             </div>
                         </div>
     
                         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">CUSTOMER REF</label>
-                                <input type="text">
+                                <input type="text" name="AddRefNo" id="AddRefNo">
                             </div>
                         </div>
                     </div>
@@ -147,7 +148,7 @@
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">DELIVERY TIME</label>
                                 <div class="input-group">
-                                    <input type="text">
+                                    <input type="text" name="DVTime" id="DVTime">
                                     <span class="input-group-addon">W/DAYS</span>
                                 </div>
                             </div>
@@ -179,7 +180,7 @@
                         <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY NOTE</label>
-                                <input type="text">
+                                <input type="text" name="OfferDetail" id="OfferDetail">
                             </div>
                         </div>
                     </div>
@@ -189,14 +190,14 @@
                         <div class="form-group col col-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY INFORMATION - 1</label>
-                                <input type="text">
+                                <input type="text" name="PROPERTY1" id="PROPERTY1">
                             </div>
                         </div>
 
                         <div class="form-group col col-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY INFORMATION - 2</label>
-                                <input type="text">
+                                <input type="text" name="PROPERTY2" id="PROPERTY2">
                             </div>
                         </div>
                     </div>
@@ -206,14 +207,14 @@
                         <div class="form-group col col-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY INFORMATION - 3</label>
-                                <input type="text">
+                                <input type="text" name="PROPERTY3" id="PROPERTY3">
                             </div>
                         </div>
 
                         <div class="form-group col col-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">INQUIRY INFORMATION - 4</label>
-                                <input type="text">
+                                <input type="text" name="PROPERTY4" id="PROPERTY4">
                             </div>
                         </div>
                     </div>

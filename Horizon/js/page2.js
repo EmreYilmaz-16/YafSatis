@@ -137,6 +137,69 @@ function getOfferPriorities(el) {
     },
   });
 }
+function SaveOfferHeader() {
+  var OFFER_CURRENCY = $("#OFFER_CURRENCY").val();
+  var COMPANY_ID = $("#Addcompany_id").val();
+  var COMPANY_NAME = $("#Addcompany").val();
+  var SHIP_NAME = $("#ship_name").val();
+  var SHIP_ID = $("#ship_id").val();
+  var TRANSIT_WAREHOUSE = $("#TW").val();
+
+  var REF_NO = $("#AddRefNo").val();
+  var OFFER_DATE = $("#start_date").val();
+  var SHIP_METHOD_ID = $("#SHIP_METHOD_ID").val();
+  var PRIORITY = $("#PRIORITY").val();
+  var VALID_DAYS = $("#validDay").val();
+  var VALID_DATE = $("#validtyDate").val();
+  var DELIVERY_PLACE = $("#DELIVERY_PLACE").val();
+  var DELIVERY_ADDRESS = $("#DELIVERY_ADDRESS").val();
+  var DELIVERY_DATE = $("#delivery_date").val();
+  var DELIVERY_TYIME = $("#DVTime").val();
+  var MONEY = $("#MONEY").val();
+  var OFFER_CONDITION = $("#OFFER_CONDITION").val();
+  var OFFER_DETAIL = $("#OfferDetail").val();
+  var PROPERTY1 = $("#PROPERTY1").val();
+  var PROPERTY2 = $("#PROPERTY2").val();
+  var PROPERTY3 = $("#PROPERTY3").val();
+  var PROPERTY4 = $("#PROPERTY4").val();
+
+  var O = {
+    OFFER_CURRENCY: OFFER_CURRENCY,
+    COMPANY_ID: COMPANY_ID,
+    COMPANY_NAME: COMPANY_NAME,
+    SHIP_NAME: SHIP_NAME,
+    SHIP_ID: SHIP_ID,
+    TRANSIT_WAREHOUSE: TRANSIT_WAREHOUSE,
+    REF_NO: REF_NO,
+    OFFER_DATE: OFFER_DATE,
+    SHIP_METHOD_ID: SHIP_METHOD_ID,
+    PRIORITY: PRIORITY,
+    VALID_DAYS: VALID_DAYS,
+    VALID_DATE: VALID_DATE,
+    DELIVERY_PLACE: DELIVERY_PLACE,
+    DELIVERY_ADDRESS: DELIVERY_ADDRESS,
+    DELIVERY_DATE: DELIVERY_DATE,
+    DELIVERY_TYIME: DELIVERY_TYIME,
+    MONEY: MONEY,
+    OFFER_CONDITION: OFFER_CONDITION,
+    OFFER_DETAIL: OFFER_DETAIL,
+    PROPERTY1: PROPERTY1,
+    PROPERTY2: PROPERTY2,
+    PROPERTY3: PROPERTY3,
+    PROPERTY4: PROPERTY4,
+  };
+
+  $.ajax({
+    url: ServiceUri + "/OfferService.cfc?method=SaveOfferHeader",
+    data: {
+      Fdata: O,
+    },
+    success: function (retdat) {
+      console.log("Kaydettim");
+    },
+  });
+}
+
 /**
  * <input type="hidden" name="rate1" id="rate1">
                                 <input type="hidden" name="rate2" id="rate2">

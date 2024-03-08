@@ -128,5 +128,15 @@
 <cfset Tarih=dateFormat(Tarih,"yyyy-mm-dd")>
         <cfreturn Tarih>
     </cffunction>
+
+<cffunction name="SaveOfferHeader" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="FData">
+
+    <cfset FormData=deserializeJSON(arguments.FData)>
+    <cfdump var="#FormData#">
+
+
+</cffunction>
+
 </cfcomponent>
 
