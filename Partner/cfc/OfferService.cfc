@@ -72,17 +72,17 @@
     <cffunction name="getShipMethods" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="shipMethodID" default="">
         <cfquery name="getAll" datasource="#dsn#">
-            select select SHIP_METHOD_ID,SHIP_METHOD from CatalystQA.SHIP_METHOD from CatalystQA.SHIP_METHOD
-            <CFIF LEN(arguments.DeliveryPlaceId)>
-                WHERE DELIVERY_PLACE_ID=#arguments.DeliveryPlaceId#
+            select  SHIP_METHOD_ID,SHIP_METHOD from CatalystQA.SHIP_METHOD 
+            <CFIF LEN(arguments.shipMethodID)>
+                WHERE SHIP_METHOD_ID=#arguments.shipMethodID#
             </CFIF>
         </cfquery>
          <cfset ReturnArr=arrayNew(1)>
          <cfloop query="getAll">
              <cfscript>
                  item={
-                    DELIVERY_PLACE_ID=DELIVERY_PLACE_ID,
-                    DELIVERY_PLACE=DELIVERY_PLACE
+                    SHIP_METHOD_ID=SHIP_METHOD_ID,
+                    SHIP_METHOD=SHIP_METHOD
                  };
                  arrayAppend(ReturnArr,item);
              </cfscript>
