@@ -119,6 +119,7 @@ function setMoney(el) {
   var ix = MoneyArr.findIndex((p) => p.MONEY == el.value);
   $("#rate1").val(MoneyArr[ix].RATE1);
   $("#rate2").val(MoneyArr[ix].RATE2);
+  MONEY_ARR.find(p=>p.MONEY==el.value).SELECTED=1
 }
 
 function getOfferPriorities(el) {
