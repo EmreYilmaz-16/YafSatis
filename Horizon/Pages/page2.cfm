@@ -1,4 +1,5 @@
 
+
             <cf_box title="NEW INQUIRY RECORD" scroll="1" collapsable="1" resize="1" popup_box="1">
                 <div class="ui-form-list">
 <form name="order_form">

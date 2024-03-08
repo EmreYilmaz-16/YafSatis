@@ -1,3 +1,26 @@
+<cfquery name="getMoney" datasource="#dsn#">
+    SELECT (
+            SELECT RATE1
+            FROM workcube_metosan.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM workcube_metosan.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE1
+        ,(
+            SELECT RATE2
+            FROM workcube_metosan.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM workcube_metosan.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE2
+        ,SM.MONEY
+    FROM workcube_metosan.SETUP_MONEY AS SM
+    WHERE SM.PERIOD_ID = #session.ep.period_id#
+</cfquery>
 <script>
     var DataSources={
         DSN:"<cfoutput>#dsn#</cfoutput>",
@@ -5,7 +28,19 @@
         DSN2:"<cfoutput>#dsn2#</cfoutput>",
         DSN3:"<cfoutput>#dsn3#</cfoutput>",
     }
+    var ACTIVE_COMPANY="<CFOUTPUT>#session.ep.company_id#</CFOUTPUT>";
+    var MONEY_ARR=[
+        <cfoutput query="getMoney">
+            {
+                RATE1:#RATE1#,
+                RATE2:#RATE2#,
+                MONEY:'#MONEY#',
+                SELECTED:0
+            },
+        </cfoutput>
+    ]
 </script>
+
 <!--- Yönlendirme Başlangıç --->
 <section class="page-bar">
     <ul class="page-breadcrumb">
