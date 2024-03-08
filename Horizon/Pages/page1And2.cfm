@@ -1,24 +1,24 @@
 <cfquery name="getMoney" datasource="#dsn#">
     SELECT (
             SELECT RATE1
-            FROM workcube_metosan.MONEY_HISTORY
+            FROM #DSN#.MONEY_HISTORY
             WHERE MONEY_HISTORY_ID = (
                     SELECT MAX(MONEY_HISTORY_ID)
-                    FROM workcube_metosan.MONEY_HISTORY
+                    FROM #DSN#.MONEY_HISTORY
                     WHERE MONEY = SM.MONEY
                     )
             ) AS RATE1
         ,(
             SELECT RATE2
-            FROM workcube_metosan.MONEY_HISTORY
+            FROM #DSN#.MONEY_HISTORY
             WHERE MONEY_HISTORY_ID = (
                     SELECT MAX(MONEY_HISTORY_ID)
-                    FROM workcube_metosan.MONEY_HISTORY
+                    FROM #DSN#.MONEY_HISTORY
                     WHERE MONEY = SM.MONEY
                     )
             ) AS RATE2
         ,SM.MONEY
-    FROM workcube_metosan.SETUP_MONEY AS SM
+    FROM #DSN#.SETUP_MONEY AS SM
     WHERE SM.PERIOD_ID = #session.ep.period_id#
 </cfquery>
 <script>
