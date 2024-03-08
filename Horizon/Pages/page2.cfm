@@ -59,7 +59,7 @@
                                 <div class="input-group">
                                     
                                         
-                                        <input type="text" name="start_date"  >
+                                        <input type="text" name="start_date"  value="<cfoutput>#dateFormat(now(),'dd/mm/yyyy')#</cfoutput>">
                                         <span class="input-group-addon"><cf_wrk_date_image date_field="start_date"></span>
                                     
                                 </div>
@@ -86,11 +86,24 @@
 
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
-                                <label class="margin-bottom-5 bold font-sm">VALIDATY</label>
+                                <label class="margin-bottom-5 bold font-sm">VALIDITY</label>
                                 <div class="input-group">
-                                    <input type="text">
+                                    <input type="text" name="validDay" id="validDay" onchange="setValidyDate(this.value)">                                    
                                     <span class="input-group-addon">DAYS</span>
+                                    <input type="hidden" name="validtyDate" id="validtyDate">
                                 </div>
+                                <script>
+                                    function setValidyDate(dv){
+                                        var OfferDate=document.getElementById("start_date");
+                                        var Gun=list_getat(OfferDate.value,1,"/")
+                                        var Ay=list_getat(OfferDate.value,2,"/")
+                                        var Yil=list_getat(OfferDate.value,3,"/")
+                                        var d=new Date(Yil,Ay,Gun)
+                                        d.setDate(d.getDate()+dv)
+                                        var ds=list_getat(d.toISOString(),1,"T")
+                                        $("#validtyDate").val(ds);
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
