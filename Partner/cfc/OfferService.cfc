@@ -89,5 +89,25 @@
          </cfloop>
          <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
-
+    <cffunction name="getOfferConditions" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="ConditionID" default="">
+        <cfquery name="getAll" datasource="#dsn#">
+            select  ID,CONDITION from CatalystQA.PBS_OFFER_CONDITIONS 
+            <CFIF LEN(arguments.ConditionID)>
+                WHERE ID=#arguments.ConditionID#
+            </CFIF>
+        </cfquery>
+         <cfset ReturnArr=arrayNew(1)>
+         <cfloop query="getAll">
+             <cfscript>
+                 item={
+                    ID=ID,
+                    CONDITION=CONDITION
+                 };
+                 arrayAppend(ReturnArr,item);
+             </cfscript>
+         </cfloop>
+         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
 </cfcomponent>
+

@@ -153,10 +153,8 @@
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">CONDITION</label>
-                                <select>
-                                    <option selected>OEM</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select name="OFFER_CONDITION" id="OFFER_CONDITION">
+                                    
                                 </select>
                             </div>
                         </div>

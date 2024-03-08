@@ -5,11 +5,13 @@ $(document).ready(function () {
   var e2 = document.getElementById("PRIORITY");
   var e3 = document.getElementById("DELIVERY_PLACE");
   var e4=document.getElementById("SHIP_METHOD_ID");
+  var e5=document.getElementById("OFFER_CONDITION");
   getOfferCurrencies(e);
   getMoney(e1);
   getOfferPriorities(e2);
   getDeliveryPlaces(e3);
   getShipMethods(e4);
+  getOfferConditions(e5);
 });
 var MoneyArr = [];
 function openShipList() {
@@ -53,6 +55,24 @@ function getDeliveryPlaces(el) {
         option.innerText = Obje[i].DELIVERY_PLACE;
         el.appendChild(option);
         /*DELIVERY_PLACE_ID,DELIVERY_PLACE*/
+      }
+    },
+  });
+}
+function getOfferConditions(el) {
+  $.ajax({
+    url: ServiceUri + "/OfferService.cfc?method=getOfferConditions",
+    success: function (returnData) {
+      var Obje = JSON.parse(returnData);
+      console.log(Obje);
+      $(el).html("");
+      for (let i = 0; i < Obje.length; i++) {
+        var option = document.createElement("option");
+        option.value = Obje[i].ID;
+        option.innerText = Obje[i].CONDITION;
+        el.appendChild(option);
+        /*DELIVERY_PLACE_ID,DELIVERY_PLACE ID=ID,
+                    CONDITION=CONDITION*/
       }
     },
   });
