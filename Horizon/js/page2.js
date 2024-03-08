@@ -4,8 +4,8 @@ $(document).ready(function () {
   var e1 = document.getElementById("MONEY");
   var e2 = document.getElementById("PRIORITY");
   var e3 = document.getElementById("DELIVERY_PLACE");
-  var e4=document.getElementById("SHIP_METHOD_ID");
-  var e5=document.getElementById("OFFER_CONDITION");
+  var e4 = document.getElementById("SHIP_METHOD_ID");
+  var e5 = document.getElementById("OFFER_CONDITION");
   getOfferCurrencies(e);
   getMoney(e1);
   getOfferPriorities(e2);
@@ -122,21 +122,21 @@ function setMoney(el) {
 }
 
 function getOfferPriorities(el) {
-    $.ajax({
-      url: ServiceUri + "/OfferService.cfc?method=getOfferPriorities",
-      success: function (returnData) {
-        var Obje = JSON.parse(returnData);
-        console.log(Obje);
-        $(el).html("");
-        for (let i = 0; i < Obje.length; i++) {
-          var option = document.createElement("option");
-          option.value = Obje[i].PRIORITY_ID;
-          option.innerText = Obje[i].PRIORITY;
-          el.appendChild(option);
-        }
-      },
-    });
-  }
+  $.ajax({
+    url: ServiceUri + "/OfferService.cfc?method=getOfferPriorities",
+    success: function (returnData) {
+      var Obje = JSON.parse(returnData);
+      console.log(Obje);
+      $(el).html("");
+      for (let i = 0; i < Obje.length; i++) {
+        var option = document.createElement("option");
+        option.value = Obje[i].PRIORITY_ID;
+        option.innerText = Obje[i].PRIORITY;
+        el.appendChild(option);
+      }
+    },
+  });
+}
 /**
  * <input type="hidden" name="rate1" id="rate1">
                                 <input type="hidden" name="rate2" id="rate2">

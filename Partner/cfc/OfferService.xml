@@ -24,6 +24,46 @@
             </description>
             <returns >JSON Array</returns>
         </method>
+        <method>
+            <name>getOfferMoney</name>
+            <params>
+                
+            </params>
+            <description>
+                Para Birimlerini Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getDeliveryPlaces</name>
+            <params>
+                
+            </params>
+            <description>
+                Teslim Yerlerini Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getShipMethods</name>
+            <params>
+                
+            </params>
+            <description>
+                Sevk Yöntemini Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getOfferConditions</name>
+            <params>
+                
+            </params>
+            <description>
+                Teklifteki Ürün Condition Alanını Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
     </methods>
 
 </Service>

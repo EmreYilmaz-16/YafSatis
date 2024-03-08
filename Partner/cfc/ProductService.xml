@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="Services.xslt" type="text/xsl"?>
+<Service>
+    <name>ProductService</name>
+    <service_path><![CDATA[Partner\cfc\ProductService.cfc ]]></service_path>
+    <methods>
+        <method>
+            <name>getCats</name>
+            <params>
+                
+            </params>
+            <description>
+                Ürün Kategorilerini Getirir (Component)
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getCatProperties</name>
+            <params>
+                <name type="integer" required="true" description="Kategori Id">PRODUCT_CATID</name>
+            </params>
+            <description>
+                Kategoriye Göre Ürün Özelliklerini Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getPropDetails</name>
+            <params>
+                <name type="integer" required="true" description="Özellik Id">PROPERTY_ID</name>
+            </params>
+            <description>
+                Özellik Idsine Göre Varyasyonları Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getPropertyDetailsWithCatId</name>
+            <params>
+                <name type="integer" required="true" description="Özellik Id">PROPERTY_ID</name>
+                <name type="integer" required="true" description="Kategori Id">PRODUCT_CATID</name>
+                <name type="integer" required="false" description="İlişkili Varyason Id">RELATED_VAR_ID</name>
+                <name type="integer" required="false" description="İlişkili Özellik Id">RELATED_PROP_ID</name>
+            </params>
+            <description>
+                Ürün Kategorisi Ve Özellik Id'sine Bağlı Olarak Varyasyonları Getirir ;Eğer "RELATED_VAR_ID" ve "RELATED_PROP_ID" parametreleri gönderilirse seçilen varyasyonla ilişkili varyasonları getirir
+                
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>SearchProduct</name>
+            <params>
+                <name type="application/json" required="true" description="Form Data">FormData</name>
+            </params>
+            <description>
+                Ürün Aramak İçin Kullanılır
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+      
+    </methods>
+
+</Service>
