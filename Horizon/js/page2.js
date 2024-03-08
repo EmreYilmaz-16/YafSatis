@@ -192,7 +192,7 @@ function SaveOfferHeader() {
   $.ajax({
     url: ServiceUri + "/OfferService.cfc?method=SaveOfferHeader",
     data: {
-      Fdata: O,
+      Fdata: JSON.stringify(O),
     },
     success: function (retdat) {
       console.log("Kaydettim");
