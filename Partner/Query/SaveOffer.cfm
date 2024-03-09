@@ -25,7 +25,7 @@ select count(*) AS RC from PBS_OFFER
     <cfset "attributes._txt_rate2_#i#"=it.RATE2>
     <cfset "attributes.txt_rate1_#i#"=it.RATE1>
     <cfset "attributes.txt_rate2_#i#"=it.RATE2>
-    <cfif it.
+    
 </cfloop>
 <cfset attributes.KUR_SAY=arrayLen(FormData.KURLAR)>
 
