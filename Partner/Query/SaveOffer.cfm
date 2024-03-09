@@ -1,7 +1,7 @@
 <cfset ActiveCompany=FormData.ActiveCompany>
 <cfset FORM.ACTIVE_COMPANY=ActiveCompany>
 <cfset ATTRIBUTES.ACTIVE_COMPANY=ActiveCompany>
-<CFSET DSN3=FormData.DataSources.DSN3>
+<CFSET DSN3=FormData.DATA_SOURCES.DSN3>
 <cfquery name="getOfferC" datasource="#dsn3#">
 select count(*) AS RC from PBS_OFFER
 </cfquery>
