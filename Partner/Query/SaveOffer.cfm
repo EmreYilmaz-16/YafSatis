@@ -68,6 +68,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.consumer_id="">
 <cfset attributes.reserved=1>
 <CFSET attributes.SALES_EMP_ID=FormData.SALES_EMP_ID>
+<CFSET attributes.PROJECT_HEAD ="">
 <cfif not isDefined("FormData.SALES_EMP")>
     <cfquery name="EMP" datasource="#dsn#">
         SELECT EMPLOYEE_NAME,EMPLOYEE_SURNAME FROM EMPLOYEES WHERE EMPLOYEE_ID=#FormData.SALES_EMP_ID#
