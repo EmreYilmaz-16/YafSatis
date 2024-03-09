@@ -191,6 +191,7 @@ CROSS APPLY(
     <cfset ITEM=structNew()>
     <CFSET ITEM.CURRENCY_ID=OFFER_CURRENCY>
     <cfset ITEM.STAGE=STAGE>
+    <cfset ITEM.PROCESS_ROW_ID=PROCESS_ROW_ID>
     <cfset ITEM.STAGE_COUNT=QC>
     <cfscript> arrayAppend(ReturnData.OFFER_STAGE_TOTALS,ITEM)</cfscript>
 </CFLOOP>
