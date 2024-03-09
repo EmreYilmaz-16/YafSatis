@@ -137,6 +137,11 @@
     <cfinclude template="../Query/SaveOffer.cfm">
 
 </cffunction>
-
+<cffunction name="wrk_eval" returntype="string" output="false">
+	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
+	<cfargument name="gelen" required="no" type="string">
+	<cfset wrk_sql_value = "#replaceNoCase(trim(evaluate("#gelen#")),"'","''","ALL")#">
+	<cfreturn wrk_sql_value>
+</cffunction>
 </cfcomponent>
 
