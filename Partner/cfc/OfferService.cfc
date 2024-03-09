@@ -209,7 +209,7 @@ CROSS APPLY(
     <cfargument name="FINISH_DATE" default="">
     <cfargument name="START_ROW" default="1">
     <cfargument name="MAX_ROW" default="20">
-   <cfquery name="getOffers" datasource="#dsn#">
+  <!--- <cfquery name="getOffers" datasource="#dsn#">
         	WITH CTE1 AS(
             SELECT
 			C.NICKNAME,C.FULLNAME,PO.OFFER_HEAD,PO.OFFER_ID,PO.REF_NO,PO.OFFER_NUMBER,E.EMPLOYEE_NAME,E.EMPLOYEE_SURNAME,SM.SHIP_METHOD,PO.OFFER_CURRENCY,PO.OFFER_STAGE,PO.OFFER_DATE,PO.DELIVERY_ADDRESS,DP.DELIVERY_PLACE
@@ -253,7 +253,7 @@ CROSS APPLY(
                 
     </cfquery>
     <cfset ReturnArr=arrayNew(1)>
-   <!--- <CFLOOP query="getOffers">
+    <CFLOOP query="getOffers">
         <cfscript>
             OfferItem=structNew();
             OfferItem={
