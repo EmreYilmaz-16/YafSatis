@@ -163,6 +163,7 @@
                                 </select>
                                 <input type="hidden" name="rate1" id="rate1">
                                 <input type="hidden" name="rate2" id="rate2">
+                                <input type="hidden" name="selected_money" id="selected_money">
                             </div>
                         </div>
 

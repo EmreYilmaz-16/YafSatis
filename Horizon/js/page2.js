@@ -119,7 +119,8 @@ function setMoney(el) {
   var ix = MoneyArr.findIndex((p) => p.MONEY == el.value);
   $("#rate1").val(MoneyArr[ix].RATE1);
   $("#rate2").val(MoneyArr[ix].RATE2);
-  MONEY_ARR.find(p=>p.MONEY==el.value).SELECTED=1
+  $("#selected_money").val(MoneyArr[ix].MONEY);
+  
 }
 
 function getOfferPriorities(el) {
@@ -149,6 +150,8 @@ function SaveOfferHeader() {
   var REF_NO = $("#AddRefNo").val();
   var OFFER_DATE = $("#start_date").val();
   var SHIP_METHOD_ID = $("#SHIP_METHOD_ID").val();
+  var ix=document.getElementById("SHIP_METHOD_ID").options.selectedIndex
+var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
   var PRIORITY = $("#PRIORITY").val();
   var VALID_DAYS = $("#validDay").val();
   var VALID_DATE = $("#validtyDate").val();
@@ -163,6 +166,10 @@ function SaveOfferHeader() {
   var PROPERTY2 = $("#PROPERTY2").val();
   var PROPERTY3 = $("#PROPERTY3").val();
   var PROPERTY4 = $("#PROPERTY4").val();
+  var OFFER_MONEY = $("#selected_money").val();
+  var RATE1=$("#rate1").val();
+  var RATE2=$("#rate2").val();
+  
 
   var O = {
     OFFER_CURRENCY: OFFER_CURRENCY,
@@ -174,6 +181,7 @@ function SaveOfferHeader() {
     REF_NO: REF_NO,
     OFFER_DATE: OFFER_DATE,
     SHIP_METHOD_ID: SHIP_METHOD_ID,
+    SHIP_METHOD:SHIP_METHOD,
     PRIORITY: PRIORITY,
     VALID_DAYS: VALID_DAYS,
     VALID_DATE: VALID_DATE,
@@ -188,6 +196,11 @@ function SaveOfferHeader() {
     PROPERTY2: PROPERTY2,
     PROPERTY3: PROPERTY3,
     PROPERTY4: PROPERTY4,
+    KURLAR:MONEY_ARR,
+    OFFER_MONEY:OFFER_MONEY,
+    DATA_SOURCES:DataSources,
+    RATE1:RATE1,
+    RATE2:RATE2,
   };
 
   $.ajax({
