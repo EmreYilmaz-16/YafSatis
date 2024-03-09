@@ -169,7 +169,7 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
   var OFFER_MONEY = $("#selected_money").val();
   var RATE1=$("#rate1").val();
   var RATE2=$("#rate2").val();
-  
+  var ACTIVECOMPANY =$("#ACTIVECOMPANY").val();
 
   var O = {
     OFFER_CURRENCY: OFFER_CURRENCY,
@@ -201,6 +201,7 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
     DATA_SOURCES:DataSources,
     RATE1:RATE1,
     RATE2:RATE2,
+    ACTIVECOMPANY:ACTIVECOMPANY,
   };
 
   $.ajax({
