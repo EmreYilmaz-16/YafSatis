@@ -32,7 +32,25 @@ function getOfferList() {
         var OfferList=JSON.parse(retDat);
         OfferList.forEach(element => {
             console.log(element)
+            var tr=document.createElement("tr");
+            var td=document.createElement("td");            
+            td.innerText=element.OFFER_DATE;
+            tr.appendChild(td);
+            var td=document.createElement("td");            
+            td.innerText=element.REF_NO;
+            tr.appendChild(td);
+            var td=document.createElement("td");            
+            td.innerText=element.NICKNAME;
+            tr.appendChild(td);
+            var td=document.createElement("td");            
+            td.innerText=element.DELIVERY_ADDRESS;
+            tr.appendChild(td);
+            var td=document.createElement("td");            
+            td.innerText=element.SHIP_METHOD;
+            tr.appendChild(td);
+            document.getElementById("OfferList").appendChild(tr);
         });
     },
   });
 }
+

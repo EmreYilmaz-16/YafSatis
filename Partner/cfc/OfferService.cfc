@@ -268,7 +268,7 @@ CROSS APPLY(
                 SHIP_METHOD=SHIP_METHOD,
                 OFFER_CURRENCY=OFFER_CURRENCY,
                 OFFER_STAGE=OFFER_STAGE,
-                OFFER_DATE=dateFormat(OFFER_DATE,"yyyy-mm-dd"),
+                OFFER_DATE=dateFormat(OFFER_DATE,"dd/mm/yyyy"),
                 DELIVERY_ADDRESS=DELIVERY_ADDRESS,
                 DELIVERY_PLACE=DELIVERY_PLACE
             };
