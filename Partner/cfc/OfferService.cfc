@@ -149,7 +149,7 @@
 </cftry>----->
 </cffunction>
 <cffunction name="getOfferDashBoard" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-  <!----  <cfquery name="QUERY_0" datasource="#DSN#">
+  <cfquery name="QUERY_0" datasource="#DSN#">
    WITH CTE1 AS 
 (
 SELECT * FROM (
@@ -185,9 +185,8 @@ CROSS APPLY(
     <CFSET ITEM.CURRENCY_COUNT=QCS>
     <cfscript> arrayAppend(ReturnData.OFFER_CURRENCY_TOTALS,ITEM)</cfscript>
 </CFLOOP>
----->
- <CFSET ReturnData=structNew()>
- <CFSET ReturnData.Message="Merhaba">
+
+
     <cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
