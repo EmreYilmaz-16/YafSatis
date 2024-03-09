@@ -37,7 +37,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.member_name=FormData.COMPANY_NAME>
 <cfset attributes.OFFER_DESCRIPTION=FormData.OFFER_DETAIL>
 <cfset attributes.company_id=FormData.COMPANY_ID>
-<cfset attributes.partner_id=1>
+<cfset attributes.partner_id=1> <!---//YAPILACAK TEKLİF EKRANINA GİZLİ ALAN OLARAK MÜŞTERİ YETKİLİ KONACAK---->
 
 
 
@@ -67,6 +67,6 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.ref_member_type ="">
 <cfset attributes.consumer_id="">
 <cfset attributes.reserved=1>
-<cfset attributes.rows_=arrayLen(BasketRows)>
+<cfset attributes.rows_="">
 
 <cfinclude template="../includes/add_offer.cfm">
