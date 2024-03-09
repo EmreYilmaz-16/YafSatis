@@ -69,6 +69,13 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.reserved=1>
 <CFSET attributes.SALES_EMP_ID=FormData.SALES_EMP_ID>
 <CFSET attributes.PROJECT_HEAD ="">
+<CFSET attributes.WESSEL_ID=FormData.SHIP_ID>
+<CFSET attributes.TRANSIT_WAREHOUSE=FormData.TRANSIT_WAREHOUSE>
+<CFSET attributes.REF_NO=FormData.REF_NO>
+<CFSET attributes.OFFER_CURRENCY=FormData.OFFER_CURRENCY>
+<CFSET attributes.OFFER_CONDITION=FormData.OFFER_CONDITION>
+<CFSET attributes.DELIVERY_PLACE=FormData.DELIVERY_PLACE>
+<CFSET attributes.DELIVERY_ADDRESS=FormData.DELIVERY_ADDRESS>
 <cfif not isDefined("FormData.SALES_EMP")>
     <cfquery name="EMP" datasource="#dsn#">
         SELECT EMPLOYEE_NAME,EMPLOYEE_SURNAME FROM EMPLOYEES WHERE EMPLOYEE_ID=#FormData.SALES_EMP_ID#

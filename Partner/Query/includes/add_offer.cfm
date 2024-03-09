@@ -118,7 +118,12 @@
                 EVENT_PLAN_ROW_ID,
                 SA_DISCOUNT,
                 PRICE_CAT_ID,
-				OFFER_DESCRIPTION
+				OFFER_DESCRIPTION,
+				WESSEL_ID,
+				TRANSIT_WAREHOUSE,				
+				OFFER_CONDITION,
+				DELIVERY_PLACE,
+				DELIVERY_ADDRESS
 			)
 			VALUES 
 			(
@@ -139,7 +144,7 @@
 			<cfif len(attributes.sales_emp_id) and len(attributes.sales_emp)>#attributes.sales_emp_id#<cfelse>NULL</cfif>,
 			<cfif isdefined("attributes.sales_member") and len(attributes.sales_member) and len(attributes.sales_member_id) and len(attributes.sales_member_type) and attributes.sales_member_type eq 'partner'>#attributes.sales_member_id#<cfelse>NULL</cfif>,
 			<cfif isdefined("attributes.sales_member") and len(attributes.sales_member) and len(attributes.sales_member_id) and len(attributes.sales_member_type) and attributes.sales_member_type eq 'consumer'>#attributes.sales_member_id#<cfelse>NULL</cfif>,
-			-1,
+			#attributes.OFFER_CURRENCY#,
 			#attributes.process_stage#,
 			<cfif len(attributes.offer_date)>#attributes.offer_date#<cfelse>NULL</cfif>,
 			<cfif isdefined("attributes.price") and len(attributes.price)>#attributes.price#,</cfif>
@@ -188,7 +193,13 @@
             <cfif isdefined('attributes.event_plan_row_id') and len(attributes.event_plan_row_id)>#event_plan_row_id#<cfelse>NULL</cfif>,
             <cfif isdefined("attributes.genel_indirim") and len(attributes.genel_indirim)>#attributes.genel_indirim#<cfelse>NULL</cfif>,
             <cfif isdefined("attributes.price_catid") and len(attributes.price_catid)>#attributes.price_catid#<cfelse>NULL</cfif>,
-			<cfif isDefined("attributes.OFFER_DESCRIPTION") and len(attributes.OFFER_DESCRIPTION)>'#attributes.OFFER_DESCRIPTION#'<cfelse>NULL</cfif>
+			<cfif isDefined("attributes.OFFER_DESCRIPTION") and len(attributes.OFFER_DESCRIPTION)>'#attributes.OFFER_DESCRIPTION#'<cfelse>NULL</cfif>,
+				<cfif isDefined("attributes.WESSEL_ID") and len(attributes.WESSEL_ID)>#attributes.WESSEL_ID#<cfelse>NULL</cfif>,
+					<cfif isDefined("attributes.TRANSIT_WAREHOUSE") and len(attributes.TRANSIT_WAREHOUSE)>'#attributes.TRANSIT_WAREHOUSE#'<cfelse>NULL</cfif>,
+						<cfif isDefined("attributes.OFFER_CONDITION") and len(attributes.OFFER_CONDITION)>#attributes.OFFER_CONDITION#<cfelse>NULL</cfif>,
+							<cfif isDefined("attributes.DELIVERY_PLACE") and len(attributes.DELIVERY_PLACE)>#attributes.DELIVERY_PLACE#<cfelse>NULL</cfif>,
+					<cfif isDefined("attributes.DELIVERY_ADDRESS") and len(attributes.DELIVERY_ADDRESS)>'#attributes.DELIVERY_ADDRESS#'<cfelse>NULL</cfif>
+					
 			)
 		</cfquery>
 		<cfset GET_MAX_OFFER.max_id = GET_MAX_OFFER.IDENTITYCOL>
