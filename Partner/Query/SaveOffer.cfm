@@ -37,7 +37,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.member_name=FormData.COMPANY_NAME>
 <cfset attributes.OFFER_DESCRIPTION=FormData.OFFER_DETAIL>
 <cfset attributes.company_id=FormData.COMPANY_ID>
-<cfset attributes.partner_id=FormData.COMPANY_PARTNER_ID>
+<cfset attributes.partner_id=1>
 
 
 
