@@ -67,6 +67,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.ref_member_type ="">
 <cfset attributes.consumer_id="">
 <cfset attributes.reserved=1>
+<CFSET attributes.SALES_EMP_ID=FormData.SALES_EMP_ID>
 <cfset attributes.rows_="">
 
 <cfinclude template="includes/add_offer.cfm">
