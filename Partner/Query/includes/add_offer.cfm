@@ -22,7 +22,7 @@
 </cfif> 
 <cfif len(attributes.deliverdate)><cf_date tarih="attributes.deliverdate"></cfif>
 <cfif len(attributes.ship_date)><cf_date tarih="attributes.ship_date"></cfif>
-<cfif len(attributes.finishdate)><cf_date tarih="attributes.finishdate"></cfif>
+
 <cf_papers paper_type="offer" paper_type2="1">
 <cfquery name="get_country" datasource="#dsn#">
     <cfif isdefined("attributes.company_id") and len(attributes.company_id)>
@@ -123,7 +123,8 @@
 				TRANSIT_WAREHOUSE,				
 				OFFER_CONDITION,
 				DELIVERY_PLACE,
-				DELIVERY_ADDRESS
+				DELIVERY_ADDRESS,
+				VALID_DAYS
 			)
 			VALUES 
 			(
@@ -153,7 +154,7 @@
 			<cfif len(attributes.commission_rate) and len(attributes.pay_method)>#attributes.commission_rate#<cfelse>NULL</cfif>,
 			<cfif len(attributes.deliverdate)>#attributes.deliverdate#<cfelse>NULL</cfif>,
 			<cfif len(attributes.ship_date)>#attributes.ship_date#<cfelse>NULL</cfif>,
-			<cfif len(attributes.finishdate)>#attributes.finishdate#<cfelse>NULL</cfif>,			
+			<cfif len(attributes.finishdate)>'#attributes.finishdate#'<cfelse>NULL</cfif>,			
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#attributes.offer_head#">,
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#attributes.offer_detail#">,
 			<cfif isdefined('attributes.basket_money') and len(attributes.basket_money)>
@@ -198,7 +199,8 @@
 					<cfif isDefined("attributes.TRANSIT_WAREHOUSE") and len(attributes.TRANSIT_WAREHOUSE)>'#attributes.TRANSIT_WAREHOUSE#'<cfelse>NULL</cfif>,
 						<cfif isDefined("attributes.OFFER_CONDITION") and len(attributes.OFFER_CONDITION)>#attributes.OFFER_CONDITION#<cfelse>NULL</cfif>,
 							<cfif isDefined("attributes.DELIVERY_PLACE") and len(attributes.DELIVERY_PLACE)>#attributes.DELIVERY_PLACE#<cfelse>NULL</cfif>,
-					<cfif isDefined("attributes.DELIVERY_ADDRESS") and len(attributes.DELIVERY_ADDRESS)>'#attributes.DELIVERY_ADDRESS#'<cfelse>NULL</cfif>
+					<cfif isDefined("attributes.DELIVERY_ADDRESS") and len(attributes.DELIVERY_ADDRESS)>'#attributes.DELIVERY_ADDRESS#'<cfelse>NULL</cfif>,
+						<cfif isDefined("attributes.VALID_DAYS") and len(attributes.VALID_DAYS)>#attributes.VALID_DAYS#<cfelse>NULL</cfif>
 					
 			)
 		</cfquery>

@@ -76,6 +76,7 @@ select count(*) AS RC from PBS_OFFER
 <CFSET attributes.OFFER_CONDITION=FormData.OFFER_CONDITION>
 <CFSET attributes.DELIVERY_PLACE=FormData.DELIVERY_PLACE>
 <CFSET attributes.DELIVERY_ADDRESS=FormData.DELIVERY_ADDRESS>
+<CFSET attributes.VALID_DAYS=FormData.VALID_DAYS>
 <cfif not isDefined("FormData.SALES_EMP")>
     <cfquery name="EMP" datasource="#dsn#">
         SELECT EMPLOYEE_NAME,EMPLOYEE_SURNAME FROM EMPLOYEES WHERE EMPLOYEE_ID=#FormData.SALES_EMP_ID#
