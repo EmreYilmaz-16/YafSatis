@@ -131,11 +131,11 @@
 
 <cffunction name="SaveOfferHeader" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="FData">
-<!----
+
     <cfset FormData=deserializeJSON(arguments.FData)>
-    <cfdump var="#FormData#">
+   
     <cfset ReturnData=structNew()>
-    <cftry>
+  <!----  <cftry>
     <cfinclude template="../Query/SaveOffer.cfm">
     <cfset ReturnData.STATUS=1>
     <CFSET ReturnData.Message="Kayıt Başarılı">
