@@ -253,7 +253,7 @@ CROSS APPLY(
                 
     </cfquery>
     <cfset ReturnArr=arrayNew(1)>
-    <CFLOOP query="getOffers">
+   <!--- <CFLOOP query="getOffers">
         <cfscript>
             OfferItem=structNew();
             OfferItem={
@@ -275,7 +275,7 @@ CROSS APPLY(
             arrayAppend(ReturnArr,OfferItem);
         </cfscript>
         
-    </CFLOOP>
+    </CFLOOP>---->
     <cfreturn replace(serializeJSON(ReturnArr),"//","")>
 </cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
