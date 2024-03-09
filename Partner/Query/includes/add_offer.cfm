@@ -193,7 +193,7 @@
 		</cfquery>
 		<cfset GET_MAX_OFFER.max_id = GET_MAX_OFFER.IDENTITYCOL>
         <cfset dsn_type=dsn3>
-
+		<cfif len(attributes.rows_)>
 		<cfloop from="1" to="#attributes.rows_#" index="I">
 			<cf_date tarih="attributes.deliver_date#i#">
 			<cfif session.ep.our_company_info.spect_type and isdefined('attributes.is_production#i#') and evaluate('attributes.is_production#i#') eq 1 and (not isdefined('attributes.spect_id#i#') or not len(evaluate('attributes.spect_id#i#')))>
@@ -451,7 +451,7 @@
 				<cfinclude template="addKarmaProducts.cfm">
 			</cfif>
 		</cfloop>
-
+	</cfif>
 		<cfscript>
 			basket_kur_ekle_pbs(action_id:get_max_offer.max_id,table_type_id:4,process_type:0);
 		</cfscript>
