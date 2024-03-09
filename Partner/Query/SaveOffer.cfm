@@ -69,4 +69,4 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.reserved=1>
 <cfset attributes.rows_="">
 
-<cfinclude template="../includes/add_offer.cfm">
+<cfinclude template="includes/add_offer.cfm">
