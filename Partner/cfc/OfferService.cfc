@@ -180,13 +180,20 @@ CROSS APPLY(
     </cfquery>
 <CFSET ReturnData=structNew()>
 <CFSET ReturnData.OFFER_CURRENCY_TOTALS=arrayNew(1)>
+<CFSET ReturnData.OFFER_STAGE_TOTALS=arrayNew(1)>
 <cfloop query="GETQS">
     <cfset ITEM=structNew()>
     <CFSET ITEM.CURRENCY_ID=OFFER_CURRENCY>
     <CFSET ITEM.CURRENCY_COUNT=QCS>
     <cfscript> arrayAppend(ReturnData.OFFER_CURRENCY_TOTALS,ITEM)</cfscript>
 </CFLOOP>
-
+<cfloop query="QUERY_0">
+    <cfset ITEM=structNew()>
+    <CFSET ITEM.CURRENCY_ID=OFFER_CURRENCY>
+    <cfset ITEM.STAGE=STAGE>
+    <cfset ITEM.STAGE_COUNT=QC>
+    <cfscript> arrayAppend(ReturnData.OFFER_STAGE_TOTALS,ITEM)</cfscript>
+</CFLOOP>
 
     <cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cffunction>
