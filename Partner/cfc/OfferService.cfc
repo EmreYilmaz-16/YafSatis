@@ -137,10 +137,10 @@
     <cfset ReturnData=structNew()>
   <cftry>
       <cfinclude template="../Query/SaveOffer.cfm">
-   <!---- <cfset ReturnData.STATUS=1>
+    <cfset ReturnData.STATUS=1>
     <CFSET ReturnData.Message="Kayıt Başarılı">
     <cfset ReturnData.ErrorDetail="">
-    -----><cfcatch>
+   <!---- -----><cfcatch>
         <cfset ReturnData.STATUS=0>
          <CFSET ReturnData.Message="Hata Oluştu">
         <cfset ReturnData.ErrorDetail="#cfcatch.message#">
