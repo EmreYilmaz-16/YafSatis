@@ -131,7 +131,7 @@
 
 <cffunction name="SaveOfferHeader" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="FData">
-<!----
+
     <cfset FormData=deserializeJSON(arguments.FData)>
     <cfdump var="#FormData#">
     <cfset ReturnData=structNew()>
@@ -146,9 +146,50 @@
         <cfset ReturnData.ErrorDetail="#cfcatch.message#">
         </cfcatch>
     <cfreturn replace(serializeJSON(ReturnData),"//","")>
-</cftry>----->
+</cftry>
 </cffunction>
+<cffunction name="getOfferDashBoard" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+  <!----  <cfquery name="QUERY_0" datasource="#DSN#">
+   WITH CTE1 AS 
+(
+SELECT * FROM (
+select STAGE,PROCESS_ROW_ID,1 AS OFFER_CURRENCY from CatalystQA.PROCESS_TYPE_ROWS where PROCESS_ID=193 AND DETAIL LIKE '%1%'
+UNION ALL
+select STAGE,PROCESS_ROW_ID,2 AS OFFER_CURRENCY from CatalystQA.PROCESS_TYPE_ROWS where PROCESS_ID=193 AND DETAIL LIKE '%2%'
+) AS T 
+CROSS APPLY(
+    SELECT COUNT(*) AS QC FROM CatalystQA_1.PBS_OFFER WHERE OFFER_STAGE=T.PROCESS_ROW_ID AND OFFER_CURRENCY=T.OFFER_CURRENCY
+    
+) AS TF 
 
+) ,CTE2 AS (
+    SELECT SUM(QC) AS QCS,OFFER_CURRENCY FROM CTE1 GROUP BY OFFER_CURRENCY
+)
+ SELECT
+				CTE2.*,CTE1.*
+
+			FROM
+				CTE2,
+				CTE1 
+            WHERE CTE2.OFFER_CURRENCY=CTE1.OFFER_CURRENCY
+			
+    </cfquery>
+    <cfquery name="GETQS" dbtype="query">
+        SELECT DISTINCT QCS,OFFER_CURRENCY FROM QUERY_0
+    </cfquery>
+<CFSET ReturnData=structNew()>
+<CFSET ReturnData.OFFER_CURRENCY_TOTALS=arrayNew(1)>
+<cfloop query="GETQS">
+    <cfset ITEM=structNew()>
+    <CFSET ITEM.CURRENCY_ID=OFFER_CURRENCY>
+    <CFSET ITEM.CURRENCY_COUNT=QCS>
+    <cfscript> arrayAppend(ReturnData.OFFER_CURRENCY_TOTALS,ITEM)</cfscript>
+</CFLOOP>
+---->
+ <CFSET ReturnData=structNew()>
+ <CFSET ReturnData.Message="Merhaba">
+    <cfreturn replace(serializeJSON(ReturnData),"//","")>
+</cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
