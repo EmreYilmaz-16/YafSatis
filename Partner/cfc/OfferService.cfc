@@ -131,7 +131,7 @@
 
 <cffunction name="SaveOfferHeader" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="FData">
-
+<!----
     <cfset FormData=deserializeJSON(arguments.FData)>
     <cfdump var="#FormData#">
     <cfset ReturnData=structNew()>
@@ -146,7 +146,7 @@
         <cfset ReturnData.ErrorDetail="#cfcatch.message#">
         </cfcatch>
     <cfreturn replace(serializeJSON(ReturnData),"//","")>
-</cftry>
+</cftry>----->
 </cffunction>
 <cffunction name="getOfferDashBoard" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
   <!----  <cfquery name="QUERY_0" datasource="#DSN#">
