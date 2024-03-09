@@ -204,12 +204,12 @@ CROSS APPLY(
     <cfargument name="OFFER_STAGE" default="">
     <cfargument name="OFFER_NUMBER" default="">
     <cfargument name="REF_NO" default="">
-    <cfargument name="SALES_EMP_ID" default="">
-    <cfargument name="START_DATE" default="">
+    
+   <cfargument name="START_DATE" default="">
     <cfargument name="FINISH_DATE" default="">
     <cfargument name="START_ROW" default="1">
     <cfargument name="MAX_ROW" default="20">
- <!---<cfquery name="getOffers" datasource="#dsn#">
+ <cfquery name="getOffers" datasource="#dsn#">
         	WITH CTE1 AS(
             SELECT
 			C.NICKNAME,C.FULLNAME,PO.OFFER_HEAD,PO.OFFER_ID,PO.REF_NO,PO.OFFER_NUMBER,E.EMPLOYEE_NAME,E.EMPLOYEE_SURNAME,SM.SHIP_METHOD,PO.OFFER_CURRENCY,PO.OFFER_STAGE,PO.OFFER_DATE,PO.DELIVERY_ADDRESS,DP.DELIVERY_PLACE
@@ -276,7 +276,7 @@ CROSS APPLY(
         </cfscript>
         
     </CFLOOP>
-    <cfreturn replace(serializeJSON(ReturnArr),"//","")>---->
+    <cfreturn replace(serializeJSON(ReturnArr),"//","")><!--- ---->
 </cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
