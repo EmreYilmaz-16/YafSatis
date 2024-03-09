@@ -271,21 +271,8 @@
                 <th width="120"></th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>123</td>
-                <td>2020</td>
-                <td>2020</td>
-                <td>2020</td>
-                <td>
-                    <div class="form-group color-In" style="border-radius:3px; color:#fff">
-                        <select class="bold" style="color:#fff">
-                            <option class="text-light" style="color:#000" selected>TRANSACTIONS</option>
-                        </select>
-                    </div>
-                </td>
-            </tr>
+        <tbody id="OfferList">
+            
            
         </tbody>
     </cf_ajax_list>
