@@ -145,8 +145,9 @@
          <CFSET ReturnData.Message="Hata Oluştu">
         <cfset ReturnData.ErrorDetail="#cfcatch.message#">
         </cfcatch>
-    <cfreturn replace(serializeJSON(ReturnData),"//","")><!-------->
+        
 </cftry>
+<cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cffunction>
 <cffunction name="getOfferDashBoard" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
   <cfquery name="QUERY_0" datasource="#DSN#">
