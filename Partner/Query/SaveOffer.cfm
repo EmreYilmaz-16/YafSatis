@@ -75,5 +75,15 @@ select count(*) AS RC from PBS_OFFER
     <CFSET attributes.SALES_EMP="#EMP.EMPLOYEE_NAME# #EMP.EMPLOYEE_SURNAME#">
 </cfif>
 <cfset attributes.rows_="">
-
+<cfif getOfferC.RC eq 0><cfset Num=1><cfelse>
+    <cfset num=getOfferC.RC>
+    <cfset Num=Num+1></cfif>
+<cfset paper_fulbs="PBSTV-#Num#">
+<cfif len(FormData.ORDER_ID) AND FormData.ORDER_ID NEQ 0>
+<cfelse>    
+    <cfquery name="get_offer_number" datasource="#dsn3#">
+        EXEC GET_PAPER_NUMBER 1
+    </cfquery>
+    <cfset paper_fulbs=get_offer_number.PAPER_NO>
+</cfif>
 <cfinclude template="includes/add_offer.cfm">
