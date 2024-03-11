@@ -252,6 +252,13 @@ CROSS APPLY(
 
                 
     </cfquery>
+     <cfsavecontent  variable="control5">
+        <cfdump  var="#CGI#">                
+        <cfdump  var="#arguments#">
+        <cfdump  var="#getOffers#">
+        
+       </cfsavecontent>
+       <cffile action="write" file = "c:\GetOfferList.html" output="#control5#"></cffile>
     <cfset ReturnArr=arrayNew(1)>
     <CFLOOP query="getOffers">
         <cfscript>
