@@ -46,7 +46,7 @@ function LoadOffers(tip, vl, vl2) {
     }
     if (Filters.Stage == 261) {
       if (vl2 == 1) {
-        $("#SOC_1_261").removeClass("ui-btn-ui-btn-outline-success");
+        $("#SOC_1_261").removeClass("ui-btn-outline-success");
         $("#SOC_1_261").addClass("ui-btn-success");
 
         $("#SOC_1_263").removeClass("ui-btn-success");
