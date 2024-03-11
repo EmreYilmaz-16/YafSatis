@@ -5,6 +5,10 @@
     color: #ffb822 !important;
     border-radius: 3px;
 }
+.ui-btn-outline-update:hover, .ui-btn-outline-update:active {
+    background-color: #e4a114;
+    color: #fff;
+}
 </style>
 <cfquery name="getMoney" datasource="#dsn#">
     SELECT (
