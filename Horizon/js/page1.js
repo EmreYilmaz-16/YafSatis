@@ -33,7 +33,7 @@ function LoadOffers(tip,vl) {
 
     if(Filters.ForCustomer==2 && vl==2) Filters.ForCustomer=0; else Filters.ForCustomer=2;
     if(Filters.ForCustomer==0 && vl==2) Filters.ForCustomer=2; else Filters.ForCustomer=2;
-    console.warn();(vl);
+    console.warn(vl);
     console.log(Filters);
   }
 }
