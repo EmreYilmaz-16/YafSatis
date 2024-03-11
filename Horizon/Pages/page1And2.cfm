@@ -115,7 +115,7 @@
             <a onclick="openBoxDraggable('index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2')" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-plus"></i>ADD NEW RECORD</a>
         </div>
     </div>
-
+<div style="clear:both"></div>
     <cf_box_elements >
         <div class="col col-12">
             <div class="col col-6 d-flex">
