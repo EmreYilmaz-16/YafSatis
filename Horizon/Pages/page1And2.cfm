@@ -1,3 +1,11 @@
+<style>
+    .ui-btn-outline-update {
+    padding: 0 15px !important;
+    background-color: none !important
+    color: #ffb822 !important;
+    border-radius: 3px;
+}
+</style>
 <cfquery name="getMoney" datasource="#dsn#">
     SELECT (
             SELECT RATE1
@@ -85,7 +93,7 @@
                 </a>
             </div>
             <div class="col col-6 d-flex">
-                <a href="javascript://" class="ui-btn ui-btn-update border border-warning text-dark ui-btn-block" style="height:100%;">
+                <a href="javascript://" class="ui-btn ui-btn-outline-update border border-warning text-dark ui-btn-block" style="height:100%;">
                     <div class="pull-left font-lg padding-5">
                         INQUIRY FOR YAF STOCK
                     </div>
