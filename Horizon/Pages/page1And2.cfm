@@ -250,9 +250,10 @@
 
 <!--- From Kısmı Başlangıç --->
 <cf_box>
-    <cf_box_elements >
+    
         <form name="order_Search_form">
-        <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="row">
+            <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
             <label class="bold"><strong>CUSTOMER NAME</strong></label> <!---- //BILGI Veri Kayıt Edebilmek İçin Id Değeri de gereklidir Her bir alan için Gözüken Alan ve Id değeri Olmalıdır ---->
             <div class="input-group">
                 <input type="hidden" name="consumer_id" id="consumer_id" value="">
@@ -308,8 +309,9 @@
         <div class="form-group col col-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-top-20">
             <a href="javascript://" onclick="TeklifGetir()"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="width:85%;"><i class="fa fa-repeat"></i><span class="font-sm">FILTER LIST</span></a>
         </div>
+    </div>
     </form>
-    </cf_box_elements>
+    
 </cf_box>
 <!--- From Kısmı Başlangıç Bitiş --->
 
