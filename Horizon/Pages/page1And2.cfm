@@ -92,7 +92,7 @@
     <cf_box_elements >
         <div class="col col-12">
             <div class="col col-6 d-flex">
-                <a href="javascript://" onclick="LoadOffers('Cust',1);" class="ui-btn ui-btn-update border border-warning text-dark ui-btn-block" style="height:100%;">
+                <a href="javascript://" onclick="LoadOffers('Cust',1);" id="Cust1" class="ui-btn ui-btn-update border border-warning text-dark ui-btn-block" style="height:100%;">
                     <div class="pull-left font-lg padding-5">
                         CUSTOMER INQUIRY
                     </div>
@@ -107,7 +107,7 @@
                 </a>
             </div>
             <div class="col col-6 d-flex">
-                <a href="javascript://" onclick="LoadOffers('Cust',2);" class="ui-btn ui-btn-outline-update border border-warning text-dark ui-btn-block" style="height:100%;">
+                <a href="javascript://" onclick="LoadOffers('Cust',2);" id="Cust2" class="ui-btn ui-btn-outline-update border border-warning text-dark ui-btn-block" style="height:100%;">
                     <div class="pull-left font-lg padding-5">
                         INQUIRY FOR YAF STOCK
                     </div>

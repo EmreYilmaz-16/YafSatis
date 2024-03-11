@@ -35,6 +35,20 @@ function LoadOffers(tip, vl) {
     else Filters.ForCustomer = vl;
     console.warn(vl);
     console.log(Filters);
+    if (Filters.ForCustomer == 1) {
+      $("#Cust1").removeClass("ui-btn-update");
+
+      $("#Cust1").removeClass("ui-btn-outline-update");
+      $("#Cust1").addClass("ui-btn-update");
+      $("#Cust2").removeClass("ui-btn-update");
+      $("#Cust2").addClass("ui-btn-outline-update");
+    } else if (Filters.ForCustomer == 2) {
+      $("#Cust2").removeClass("ui-btn-update");
+      $("#Cust2").removeClass("ui-btn-outline-update");
+      $("#Cust2").addClass("ui-btn-update");
+      $("#Cust1").removeClass("ui-btn-update");
+      $("#Cust1").addClass("ui-btn-outline-update");
+    }
   }
 }
 //OfferList
