@@ -9,6 +9,16 @@
     background-color: #e4a114;
     color: #fff;
 }
+.ui-btn-outline-success {
+    padding: 0 15px !important;
+    background-color: none;
+    color: #44b6ae !important;
+    border-radius: 3px;
+}
+.ui-btn-outline-success:hover, .ui-btn-outline-success:active {
+    background-color: #44b6ae;
+    color: #fff;
+}
 </style>
 <cfquery name="getMoney" datasource="#dsn#">
     SELECT (
@@ -92,7 +102,7 @@
     <cf_box_elements >
         <div class="col col-12">
             <div class="col col-6 d-flex">
-                <a href="javascript://" onclick="LoadOffers('Cust',1);" id="Cust1" class="ui-btn ui-btn-update border border-warning text-dark ui-btn-block" style="height:100%;">
+                <a href="javascript://" onclick="LoadOffers('Cust',1);" id="Cust1" class="ui-btn ui-btn-outline-update border border-warning text-dark ui-btn-block" style="height:100%;">
                     <div class="pull-left font-lg padding-5">
                         CUSTOMER INQUIRY
                     </div>
@@ -125,7 +135,7 @@
             
             <div class="col col-12 margin-top-5">
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -139,7 +149,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CONFIRMED
                         </div>
@@ -153,7 +163,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-">
                             SUPPLIER
                         </div>
@@ -167,7 +177,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             C. OFFER
                         </div>
@@ -181,7 +191,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -195,7 +205,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             SUPPLIER
                         </div>
