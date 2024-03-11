@@ -290,6 +290,14 @@ function addRowCrs(proplist) {
   input.setAttribute("proplist", proplist);
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
   div.appendChild(input);
+  var input=document.createElement("input");
+  input.type="hidden";
+  input.name="PRODUCT_ID"+RowCount;
+  div.appendChild(input);
+  var input=document.createElement("input");
+  input.type="hidden";
+  input.name="STOCK_ID"+RowCount;
+  div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
 
