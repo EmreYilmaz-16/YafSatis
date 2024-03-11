@@ -270,7 +270,8 @@ CROSS APPLY(
                 OFFER_STAGE=OFFER_STAGE,
                 OFFER_DATE=dateFormat(OFFER_DATE,"dd/mm/yyyy"),
                 DELIVERY_ADDRESS=DELIVERY_ADDRESS,
-                DELIVERY_PLACE=DELIVERY_PLACE
+                DELIVERY_PLACE=DELIVERY_PLACE,
+                ROW_NUMBER=RowNum
             };
             arrayAppend(ReturnArr,OfferItem);
         </cfscript>

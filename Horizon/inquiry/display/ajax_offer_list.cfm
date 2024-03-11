@@ -9,6 +9,7 @@ REF_NO=Fdata.RefNo,
 START_DATE=Fdata.StartDate,
 FINISH_DATE=Fdata.FinishDate,
 START_ROW=1,MAX_ROW=20)>
+<cfset OfferList=deserializeJSON(OfferList)>
 <!---
 <cfargument name="SALES_EMP_ID" default="">
 <cfargument name="OFFER_CURRENCY" default="">
@@ -32,7 +33,24 @@ START_ROW=1,MAX_ROW=20)>
         </tr>
     </thead>
     <tbody id="OfferList">
-        
+        <cfoutput>
+        <cfloop array="#OfferList#" item="it">
+            <td>
+                #it.OFFER_DATE#
+            </td>
+            <td>
+                #it.REF_NO#
+            </td>
+            <td>
+                #it.NICKNAME#
+            </td>
+            <td>
+                #it.DELIVERY_ADDRESS# =>
+                #it.DELIVERY_PLACE# 
+            </td>
+            <td>#it.SHIP_METHOD#</td>
+        </cfloop>
+    </cfoutput>
        
     </tbody>
 </cf_ajax_list>
