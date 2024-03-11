@@ -51,7 +51,7 @@ START_ROW:1,MAX_ROW:20)>
                 #it.NICKNAME#
             </td>
             <td>
-                #it.DELIVERY_ADDRESS# =>
+                #it.DELIVERY_ADDRESS# =&gt;
                 #it.DELIVERY_PLACE# 
             </td>
             <td>#it.SHIP_METHOD#</td>
