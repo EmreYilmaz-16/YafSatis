@@ -49,6 +49,8 @@ function LoadOffers(tip, vl, vl2) {
     for (let index = 0; index < exlems.length; index++) {
       var bs = exlems[i].getAttribute("data-stage");
       var bi = exlems[i].id;
+      console.log(bs);
+      console.log(bi);
       bs = parseInt(bs);
       if (bs == Filters.Stage) {
         console.log("Burdayım"+bi)
