@@ -51,8 +51,10 @@ function LoadOffers(tip, vl, vl2) {
       var bi = exlems[i].id;
       bs = parseInt(bs);
       if (bs == Filters.Stage) {
+        console.log("Burdayım"+bi)
         setActive(bi);
       } else {
+        console.log("Burdayım !"+bi)
         setDeActive(bi);
       }
     }
