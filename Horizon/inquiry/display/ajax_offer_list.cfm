@@ -10,7 +10,7 @@ START_DATE:Fdata.StartDate,
 FINISH_DATE:Fdata.FinishDate,
 START_ROW:1,MAX_ROW:20)>
 <cfset OfferList=deserializeJSON(OfferList)><!------>
-<cfdump var="#OfferList#">
+
 <!---
 <cfargument name="SALES_EMP_ID" default="">
 <cfargument name="OFFER_CURRENCY" default="">
@@ -41,8 +41,9 @@ START_ROW:1,MAX_ROW:20)>
                 #it.OFFER_DATE#
             </td>
             <td>
-                <code>#it.OFFER_NUMBER#</code>
-                #it.REF_NO#
+                <a><code style="color:red">#it.OFFER_NUMBER#</code>
+                <br>#it.REF_NO#
+            </a>
             </td>
             <td>
                 #it.NICKNAME#
