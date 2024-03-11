@@ -25,7 +25,7 @@ function getDashBoard() {
   });
 }
 
-function LoadOffers(tip, vl) {
+function LoadOffers(tip, vl, vl2) {
   if (tip == "Cust") {
     //Filters.ForCustomer
     if (Filters.ForCustomer == 1 && vl == 1) Filters.ForCustomer = 0;
@@ -53,6 +53,33 @@ function LoadOffers(tip, vl) {
       $("#Cust1").removeClass("ui-btn-update");
       $("#Cust1").addClass("ui-btn-outline-update");
       $("#Cust2").addClass("ui-btn-outline-update");
+    }
+  } else if (tip == "STG") {
+    if (Filters.Stage != vl) Filters.Stage = vl;
+    else Filters.Stage = 0;
+    if (Filters.Stage == 261) {
+      if (vl2 == 1) {
+        $("#SOC_1_261").removeClass("ui-btn-update");
+        $("#SOC_1_261").removeClass("ui-btn-update");
+        $("#SOC_1_263").removeClass("ui-btn-success");
+        $("#SOC_1_262").removeClass("ui-btn-success");
+        $("#SOC_2_264").removeClass("ui-btn-success");
+        $("#SOC_1_261").removeClass("ui-btn-success");
+        $("#SOC_1_261").removeClass("ui-btn-success");
+
+      } else {
+      }
+      /* SOC_1_261
+      SOC_1_263
+      SOC_1_262
+      SOC_2_261
+      SOC_2_262
+      SOC_2_264
+      
+      
+      ui-btn-outline-success 
+      ui-btn-success 
+      */
     }
   }
 }

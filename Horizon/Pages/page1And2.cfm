@@ -7,7 +7,7 @@
 }
 .ui-btn-outline-update:hover, .ui-btn-outline-update:active {
     background-color: #e4a114;
-    color: #fff;
+    color: #fff !important;
 }
 .ui-btn-outline-success {
     padding: 0 15px !important;
@@ -17,7 +17,7 @@
 }
 .ui-btn-outline-success:hover, .ui-btn-outline-success:active {
     background-color: #44b6ae;
-    color: #fff;
+    color: #fff !important;
 }
 </style>
 <cfquery name="getMoney" datasource="#dsn#">
@@ -63,7 +63,7 @@
     ]
     var Filters={
         ForCustomer:1,
-        Stage:"",
+        Stage:0,
         CompanyId:"",
         StartDate:"",
         FinishDate:"",
@@ -132,10 +132,10 @@
                 </a>
             </div>
 
-            
+        
             <div class="col col-12 margin-top-5">
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_1_261" onclick="LoadOffers('STG',261,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CONFIRMED
                         </div>
@@ -163,7 +163,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_1_262" onclick="LoadOffers('STG',262,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-">
                             SUPPLIER
                         </div>
@@ -175,9 +175,9 @@
                         </div>
                     </a>
                 </div>
-
+                
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_2_264" onclick="LoadOffers('STG',264,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             C. OFFER
                         </div>
@@ -191,7 +191,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_2_261" onclick="LoadOffers('STG',261,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -205,7 +205,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_2_262" onclick="LoadOffers('STG',262,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             SUPPLIER
                         </div>
