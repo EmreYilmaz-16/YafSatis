@@ -42,6 +42,7 @@ START_ROW:1,MAX_ROW:20)>
     <tbody id="OfferList">
         <cfoutput>
         <cfloop array="#OfferList#" item="it">
+           <tr>
             <td>
                 #it.OFFER_DATE#
             </td>
@@ -56,6 +57,7 @@ START_ROW:1,MAX_ROW:20)>
                 #it.DELIVERY_PLACE# 
             </td>
             <td>#it.SHIP_METHOD#</td>
+        </tr>
         </cfloop>
     </cfoutput>
        
