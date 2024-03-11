@@ -37,10 +37,10 @@ function LoadOffers(tip, vl, vl2) {
     console.log(Filters);
    
   } else if (tip == "STG") {
-    
+    Filters.ForCustomer = vl2;
     if (Filters.Stage != vl && Filters.ForCustomer != vl2) {
       Filters.Stage = vl;
-      Filters.ForCustomer = vl2;
+      
     } else {
       Filters.Stage = 0;
       Filters.ForCustomer = 0;
