@@ -280,7 +280,7 @@
             <label class="bold">DATE (FINISH)</label>
             
                 <input type="date" name="FinishDate" id="FinishDate">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                
             
         </div>
 <!---//DIKKAT HTML inputları Kullanırken İd ve name attributeleri genelde yok bunlarıda isimlendirirken aslında kullanacağın servisteki değişkenler ile uyumlu olarak yazarsan javascript tarafında form.serialize yapıp kolaylıkla servise gönderebilirsin ----->
