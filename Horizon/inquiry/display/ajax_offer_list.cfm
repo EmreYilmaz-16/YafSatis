@@ -1,6 +1,14 @@
 <cfdump var="#attributes#">
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
-<cfset OfferList=OfferService.getOfferList()>
+<cfset Fdata=deserializeJSON(attributes.FormData)>
+<cfset OfferList=OfferService.getOfferList(SALES_EMP_ID=Fdata.SalesPartnerId,
+OFFER_CURRENCY=Fdata.ForCustomer,
+OFFER_STAGE.Fdata.Stage,
+OFFER_NUMBER=Fdata.PaperNo,
+REF_NO=Fdata.RefNo,
+START_DATE=Fdata.StartDate,
+FINISH_DATE=Fdata.FinishDate,
+START_ROW=1,MAX_ROW=20)>
 <!---
 <cfargument name="SALES_EMP_ID" default="">
 <cfargument name="OFFER_CURRENCY" default="">
