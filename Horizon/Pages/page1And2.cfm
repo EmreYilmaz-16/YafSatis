@@ -110,7 +110,7 @@
 
 <!--- Üst Panel Başlangıç --->
 <cf_box title="INQUIRY RECORDS (CUSTOMER INQUIRY)">
-    <div class="page-header ">
+    <div class="page-header " style="margin-bottom:10px">
         <div class=" headerMenu pull-right">
             <a onclick="openBoxDraggable('index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2')" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-plus"></i>ADD NEW RECORD</a>
         </div>
