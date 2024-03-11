@@ -56,10 +56,10 @@ function LoadOffers(tip, vl, vl2) {
       console.log(bi);
       bs = parseInt(bs);
       if (bs == Filters.Stage) {
-        console.log("Burdayım"+bi)
+        console.log("Yaktim"+bi)
         setActive(bi);
       } else {
-        console.log("Burdayım !"+bi)
+        console.log("Söndürdüm !"+bi)
         setDeActive(bi);
       }
     }
