@@ -3,6 +3,7 @@
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset Fdata=deserializeJSON(attributes.FormData)>
 <cfdump var="#Fdata#">
+<cfset OfferList=arrayNew(1)>
 <cfabort>
 <!---
 <cfset OfferList=OfferService.getOfferList(SALES_EMP_ID=Fdata.SalesPartnerId,
