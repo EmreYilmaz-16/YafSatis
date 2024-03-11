@@ -16,6 +16,7 @@ START_DATE:Fdata.StartDate,
 FINISH_DATE:Fdata.FinishDate,
 START_ROW:1,MAX_ROW:20)>
 <cfset OfferList=deserializeJSON(OfferList)><!------>
+<cfdump var="#OfferList#">
 <!---
 <cfargument name="SALES_EMP_ID" default="">
 <cfargument name="OFFER_CURRENCY" default="">
