@@ -250,7 +250,7 @@
 
 <!--- From Kısmı Başlangıç --->
 <cf_box>
-    <cf_box_elements vertical="1">
+    <cf_box_elements >
         <form name="order_Search_form">
         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
             <label class="bold"><strong>CUSTOMER NAME</strong></label> <!---- //BILGI Veri Kayıt Edebilmek İçin Id Değeri de gereklidir Her bir alan için Gözüken Alan ve Id değeri Olmalıdır ---->
