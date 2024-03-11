@@ -59,15 +59,35 @@ function LoadOffers(tip, vl, vl2) {
     else Filters.Stage = 0;
     if (Filters.Stage == 261) {
       if (vl2 == 1) {
-        $("#SOC_1_261").removeClass("ui-btn-update");
-        $("#SOC_1_261").removeClass("ui-btn-update");
+        $("#SOC_1_261").removeClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_1_261").addClass("ui-btn-update");
+
         $("#SOC_1_263").removeClass("ui-btn-success");
         $("#SOC_1_262").removeClass("ui-btn-success");
+        $("#SOC_2_261").removeClass("ui-btn-success");
+        $("#SOC_2_262").removeClass("ui-btn-success");
         $("#SOC_2_264").removeClass("ui-btn-success");
-        $("#SOC_1_261").removeClass("ui-btn-success");
-        $("#SOC_1_261").removeClass("ui-btn-success");
 
+        $("#SOC_1_263").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_1_262").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_2_261").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_2_262").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_2_264").addClass("ui-btn-ui-btn-outline-success-update");
       } else {
+        $("#SOC_2_261").removeClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_2_261").addClass("ui-btn-update");
+
+        $("#SOC_1_263").removeClass("ui-btn-success");
+        $("#SOC_1_262").removeClass("ui-btn-success");
+        $("#SOC_1_261").removeClass("ui-btn-success");
+        $("#SOC_2_262").removeClass("ui-btn-success");
+        $("#SOC_2_264").removeClass("ui-btn-success");
+
+        $("#SOC_1_263").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_1_262").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_1_261").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_2_262").addClass("ui-btn-ui-btn-outline-success-update");
+        $("#SOC_2_264").addClass("ui-btn-ui-btn-outline-success-update");
       }
       /* SOC_1_261
       SOC_1_263
