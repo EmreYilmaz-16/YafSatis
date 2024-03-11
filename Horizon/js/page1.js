@@ -48,6 +48,11 @@ function LoadOffers(tip, vl) {
       $("#Cust2").addClass("ui-btn-update");
       $("#Cust1").removeClass("ui-btn-update");
       $("#Cust1").addClass("ui-btn-outline-update");
+    } else {
+      $("#Cust2").removeClass("ui-btn-update");
+      $("#Cust1").removeClass("ui-btn-update");
+      $("#Cust1").addClass("ui-btn-outline-update");
+      $("#Cust2").addClass("ui-btn-outline-update");
     }
   }
 }
