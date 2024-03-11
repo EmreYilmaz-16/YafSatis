@@ -116,12 +116,6 @@
         </div>
     </div>
 
-</cf_box>
-
-<!--- Üst Panel Bitiş --->
-
-<!--- Butonlar Başlangıç --->
-<cf_box>
     <cf_box_elements >
         <div class="col col-12">
             <div class="col col-6 d-flex">
