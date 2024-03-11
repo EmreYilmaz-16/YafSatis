@@ -37,10 +37,10 @@ function LoadOffers(tip, vl, vl2) {
     else if (Filters.ForCustomer == 2 && vl == 2) Filters.ForCustomer = 0;
     else if (Filters.ForCustomer == 0 && vl == 2) Filters.ForCustomer = 2;
     else Filters.ForCustomer = vl;
-    
+
     console.log(Filters);
   } else if (tip == "STG") {
-    if (Filters.Stage != vl ) {
+    if (Filters.Stage != vl) {
       Filters.Stage = vl;
       Filters.ForCustomer = vl2;
     } else {
@@ -56,45 +56,13 @@ function LoadOffers(tip, vl, vl2) {
       console.log(bi);
       bs = parseInt(bs);
       if (bs == Filters.Stage) {
-        console.log("Yaktim"+bi)
+        console.log("Yaktim" + bi);
         setActive(bi);
       } else {
-        console.log("Söndürdüm !"+bi)
+        console.log("Söndürdüm !" + bi);
         setDeActive(bi);
       }
     }
-
-    /*
-      Customer Inquiry	        261	1
-      Supplier Inquiry	        262	1
-      Confirmed Customer Inquiry	263	1
-      Customer Offer	            264	2
-      Customer Inquiry	        266	2
-      Supplier Inquiry        	267	2
-    */
-    /* if (Filters.Stage == 261) {
-      setActive("SOC_1_261");
-      setDeActive("SOC_1_262");
-      setDeActive("SOC_1_263");
-      setDeActive("SOC_2_264");
-      setDeActive("SOC_2_266");
-      setDeActive("SOC_2_267");
-    } else if (Filters.Stage==262){
-      setDeActive("SOC_1_261");
-      setActive("SOC_1_262");
-      setDeActive("SOC_1_263");
-      setDeActive("SOC_2_264");
-      setDeActive("SOC_2_266");
-      setDeActive("SOC_2_267");
-    } 
-     else {
-      setDeActive("SOC_1_261");
-      setDeActive("SOC_1_262");
-      setDeActive("SOC_1_263");
-      setDeActive("SOC_2_264");
-      setDeActive("SOC_2_266");
-      setDeActive("SOC_2_267");
-    }*/
 
     if (Filters.ForCustomer == 1) {
       $("#Cust1").removeClass("ui-btn-update");
@@ -116,6 +84,22 @@ function LoadOffers(tip, vl, vl2) {
       $("#Cust2").addClass("ui-btn-outline-update");
     }
   }
+var CompanyId=document.getElementById("company_id").value;
+var StartDate=document.getElementById("StartDate").value;
+var FinishDate=document.getElementById("FinishDate").value;
+var SalesPartnerId=document.getElementById("deliver_get_id").value
+var PaperNo=document.getElementById("PaperNo").value
+var RefNo=document.getElementById("customer_ref_no").value
+deliver_get_id
+  /*
+    CompanyId:"",
+        StartDate:"",
+        FinishDate:"",
+        SalesPartnerId:"",
+        PaperNo:"",
+        RefNo:""
+  
+  */ 
 }
 function setActive(id) {
   $("#" + id).removeClass("ui-btn-outline-success");
@@ -125,6 +109,10 @@ function setDeActive(id) {
   $("#" + id).removeClass("ui-btn-success");
   $("#" + id).addClass("ui-btn-outline-success");
 }
+
+
+
+
 //OfferList
 // function getOfferList() {
 //   var Uri = "/AddOns/YafSatis/partner/cfc/OfferService.cfc?method=getOfferList";

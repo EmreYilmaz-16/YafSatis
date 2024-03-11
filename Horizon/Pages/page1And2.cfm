@@ -175,22 +175,7 @@
                         </div>
                     </a>
                 </div>
-            <!---    SOC_1_261
-                SOC_1_262
-                SOC_1_263
-                                
-                SOC_2_264
-                SOC_2_266
-                SOC_2_267
-
-
-                Customer Inquiry	        261	1
-                Supplier Inquiry	        262	1
-                Confirmed Customer Inquiry	263	1
-
-                Customer Offer	            264	2
-                Customer Inquiry	        266	2
-                Supplier Inquiry        	267	2---->
+    
                 <div class="col col-2 d-flex">
                     <a href="javascript://" data-stage="264"  id="SOC_2_264" onclick="LoadOffers('STG',264,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
@@ -264,15 +249,14 @@
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold">DATE (START)</label>
             <div class="input-group">
-                <input type="text">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input type="date" name="StartDate" id="StartDate">
             </div>
         </div>
 
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold">DATE (FINISH)</label>
             <div class="input-group">
-                <input type="text">
+                <input type="date" name="FinishDate" id="FinishDate">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
         </div>
@@ -280,11 +264,12 @@
         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
             <label class="bold">PURCHASE STAFF</label>
             <div class="input-group">
-                <input type="hidden" name="sales_member_id" id="sales_member_id" value="">
-                <input type="hidden" name="sales_member_type" id="sales_member_type" value="">
-                <input name="sales_member_name" type="text" id="sales_member_name" placeholder="Sales Partner " onfocus="AutoComplete_Create('sales_member_name','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_PARTNER_NAME2,MEMBER_NAME2','get_member_autocomplete','\'1,2\',0,0,0','PARTNER_ID2,MEMBER_TYPE','sales_member_id,sales_member_type','','3','250');" value="" autocomplete="off"><div id="sales_member_name_div_2" name="sales_member_name_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 942px; top: 209px; z-index: 159; display: none;"></div>
-                <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_pars&field_id=order_Search_form.sales_member_id&field_name=order_Search_form.sales_member_name&field_type=order_Search_form.sales_member_type&select_list=2,3');"></span>
-            </div>
+										
+                <input type="hidden" name="deliver_get_id" id="deliver_get_id" value="">
+                <input type="text" name="deliver_get" id="deliver_get" value="" onfocus="AutoComplete_Create(" deliver_get','member_name','member_name','get_member_autocomplete','3','employee_id','deliver_get_id','','3','150');'="" autocomplete="off">
+            
+            <span class="input-group-addon btnPointer icon-ellipsis" title="Seçiniz " onclick="windowopen('index.cfm?fuseaction=objects.popup_list_positions&select_list=1&field_name=order_Search_form.deliver_get&field_emp_id2=order_Search_form.deliver_get_id','list');"></span>
+        </div>
         </div>
 
         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
@@ -294,7 +279,7 @@
 
         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
             <label class="bold"><strong>OUR REF</strong></label>
-            <input type="text" name="ref_no" value="ref_no">
+            <input type="text" name="ref_no" id="ref_no">
         </div>
             
         <div class="form-group col col-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-top-20">
