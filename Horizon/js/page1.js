@@ -39,6 +39,25 @@ function LoadOffers(tip, vl, vl2) {
     else Filters.ForCustomer = vl;
 
     console.log(Filters);
+    if (Filters.ForCustomer == 1) {
+      $("#Cust1").removeClass("ui-btn-update");
+
+      $("#Cust1").removeClass("ui-btn-outline-update");
+      $("#Cust1").addClass("ui-btn-update");
+      $("#Cust2").removeClass("ui-btn-update");
+      $("#Cust2").addClass("ui-btn-outline-update");
+    } else if (Filters.ForCustomer == 2) {
+      $("#Cust2").removeClass("ui-btn-update");
+      $("#Cust2").removeClass("ui-btn-outline-update");
+      $("#Cust2").addClass("ui-btn-update");
+      $("#Cust1").removeClass("ui-btn-update");
+      $("#Cust1").addClass("ui-btn-outline-update");
+    } else {
+      $("#Cust2").removeClass("ui-btn-update");
+      $("#Cust1").removeClass("ui-btn-update");
+      $("#Cust1").addClass("ui-btn-outline-update");
+      $("#Cust2").addClass("ui-btn-outline-update");
+    }
   } else if (tip == "STG") {
     if (Filters.Stage != vl) {
       Filters.Stage = vl;
