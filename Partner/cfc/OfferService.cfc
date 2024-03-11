@@ -318,7 +318,7 @@ CROSS APPLY(
 				CTE2
 			WHERE
 				
-                RowNum BETWEEN #ARGUMENTS.START_ROW# and #ARGUMENTS.START_ROW#+(#ARGUMENTS.MAX_ROW#-1)
+                1=1
 
                 
     </cfquery>
