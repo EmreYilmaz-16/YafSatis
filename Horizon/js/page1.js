@@ -90,7 +90,20 @@ var FinishDate=document.getElementById("FinishDate").value;
 var SalesPartnerId=document.getElementById("deliver_get_id").value
 var PaperNo=document.getElementById("PaperNo").value
 var RefNo=document.getElementById("customer_ref_no").value
-deliver_get_id
+Filters.CompanyId=CompanyId;
+Filters.StartDate=StartDate;
+Filters.FinishDate=FinishDate;
+Filters.SalesPartnerId=SalesPartnerId;
+Filters.PaperNo=PaperNo;
+Filters.RefNo=RefNo;
+var FormStr=JSON.stringify(Filters);
+AjaxPageLoad(
+  "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
+  FormStr,
+  "OfferListArea",
+  1,
+  "Yükleniyor"
+);
   /*
     CompanyId:"",
         StartDate:"",
