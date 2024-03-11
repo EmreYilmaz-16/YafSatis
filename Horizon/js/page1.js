@@ -84,26 +84,26 @@ function LoadOffers(tip, vl, vl2) {
       $("#Cust2").addClass("ui-btn-outline-update");
     }
   }
-var CompanyId=document.getElementById("company_id").value;
-var StartDate=document.getElementById("StartDate").value;
-var FinishDate=document.getElementById("FinishDate").value;
-var SalesPartnerId=document.getElementById("deliver_get_id").value
-var PaperNo=document.getElementById("PaperNo").value
-var RefNo=document.getElementById("customer_ref_no").value
-Filters.CompanyId=CompanyId;
-Filters.StartDate=StartDate;
-Filters.FinishDate=FinishDate;
-Filters.SalesPartnerId=SalesPartnerId;
-Filters.PaperNo=PaperNo;
-Filters.RefNo=RefNo;
-var FormStr=JSON.stringify(Filters);
-AjaxPageLoad(
-  "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
-  FormStr,
-  "OfferListArea",
-  1,
-  "Yükleniyor"
-);
+  var CompanyId = document.getElementById("company_id").value;
+  var StartDate = document.getElementById("StartDate").value;
+  var FinishDate = document.getElementById("FinishDate").value;
+  var SalesPartnerId = document.getElementById("deliver_get_id").value;
+  var PaperNo = document.getElementById("PaperNo").value;
+  var RefNo = document.getElementById("customer_ref_no").value;
+  Filters.CompanyId = CompanyId;
+  Filters.StartDate = StartDate;
+  Filters.FinishDate = FinishDate;
+  Filters.SalesPartnerId = SalesPartnerId;
+  Filters.PaperNo = PaperNo;
+  Filters.RefNo = RefNo;
+  var FormStr = JSON.stringify(Filters);
+  AjaxPageLoad(
+    "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
+      FormStr,
+    "OfferListArea",
+    1,
+    "Yükleniyor"
+  );
   /*
     CompanyId:"",
         StartDate:"",
@@ -112,7 +112,7 @@ AjaxPageLoad(
         PaperNo:"",
         RefNo:""
   
-  */ 
+  */
 }
 function setActive(id) {
   $("#" + id).removeClass("ui-btn-outline-success");
@@ -122,9 +122,28 @@ function setDeActive(id) {
   $("#" + id).removeClass("ui-btn-success");
   $("#" + id).addClass("ui-btn-outline-success");
 }
-
-
-
+function TeklifGetir() {
+  var CompanyId = document.getElementById("company_id").value;
+  var StartDate = document.getElementById("StartDate").value;
+  var FinishDate = document.getElementById("FinishDate").value;
+  var SalesPartnerId = document.getElementById("deliver_get_id").value;
+  var PaperNo = document.getElementById("PaperNo").value;
+  var RefNo = document.getElementById("customer_ref_no").value;
+  Filters.CompanyId = CompanyId;
+  Filters.StartDate = StartDate;
+  Filters.FinishDate = FinishDate;
+  Filters.SalesPartnerId = SalesPartnerId;
+  Filters.PaperNo = PaperNo;
+  Filters.RefNo = RefNo;
+  var FormStr = JSON.stringify(Filters);
+  AjaxPageLoad(
+    "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
+      FormStr,
+    "OfferListArea",
+    1,
+    "Yükleniyor"
+  );
+}
 
 //OfferList
 // function getOfferList() {
