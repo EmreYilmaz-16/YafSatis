@@ -290,35 +290,61 @@ CROSS APPLY(
     <cfargument name="OFFER_ID" required="true">
  
  <cfquery name="getOfferHead" datasource="#dsn#">
-        	WITH CTE1 AS(
-            SELECT
-			C.NICKNAME,C.FULLNAME,PO.OFFER_HEAD,PO.OFFER_ID,PO.REF_NO AS OREF ,PO.OFFER_NUMBER as ONUM,E.EMPLOYEE_NAME,E.EMPLOYEE_SURNAME,SM.SHIP_METHOD,PO.OFFER_CURRENCY OCUUR,PO.OFFER_STAGE,PO.OFFER_DATE,PO.DELIVERY_ADDRESS,DP.DELIVERY_PLACE
-			FROM 
-				CatalystQA_1.PBS_OFFER AS PO
-                INNER JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID=PO.COMPANY_ID
-                INNER JOIN CatalystQA.EMPLOYEES AS E ON E.EMPLOYEE_ID=PO.SALES_EMP_ID
-                INNER JOIN CatalystQA.SHIP_METHOD AS SM ON SM.SHIP_METHOD_ID=PO.SHIP_METHOD
-                LEFT JOIN CatalystQA.DELIVERY_PLACES AS DP ON DP.DELIVERY_PLACE_ID=PO.DELIVERY_PLACE
-			WHERE 
-			1=1
-            AND PO.OFFER_ID=#arguments.OFFER_ID#
-            
-             ),
-			CTE2 AS 
-			(
-				SELECT
-					CTE1.*,
-					ROW_NUMBER() OVER (ORDER BY OFFER_ID) AS RowNum,(SELECT COUNT(*) FROM CTE1) AS QUERY_COUNT
-				FROM
-					CTE1
-			)
-			SELECT
-				CTE2.*
-			FROM
-				CTE2
-			WHERE
-				
-                1=1
+      WITH CTE1
+AS (
+	SELECT C.NICKNAME
+		,C.FULLNAME
+		,PO.OFFER_HEAD
+		,PO.OFFER_ID
+		,PO.REF_NO AS OREF
+		,PO.OFFER_NUMBER AS ONUM
+		,E.EMPLOYEE_NAME
+		,E.EMPLOYEE_SURNAME
+		,SM.SHIP_METHOD
+		,PO.OFFER_CURRENCY OCUUR
+		,PO.OFFER_STAGE
+		,PO.OFFER_DATE
+		,PO.DELIVERY_ADDRESS
+		,DP.DELIVERY_PLACE
+		,POC.CONDITION
+		,OCUR.OFFER_CURRENCY AS OFFCRRCNCY
+		,PS.SHIP_NAME
+		,PO.OTHER_MONEY
+		,PO.VALID_DAYS
+		,PO.OFFER_DETAIL
+		,PO.DELIVERDATE
+	FROM CatalystQA_1.PBS_OFFER AS PO
+	INNER JOIN CatalystQA.COMPANY AS C
+		ON C.COMPANY_ID = PO.COMPANY_ID
+	INNER JOIN CatalystQA.EMPLOYEES AS E
+		ON E.EMPLOYEE_ID = PO.SALES_EMP_ID
+	INNER JOIN CatalystQA.SHIP_METHOD AS SM
+		ON SM.SHIP_METHOD_ID = PO.SHIP_METHOD
+	LEFT JOIN CatalystQA.DELIVERY_PLACES AS DP
+		ON DP.DELIVERY_PLACE_ID = PO.DELIVERY_PLACE
+	LEFT JOIN CatalystQA.PBS_OFFER_CONDITIONS AS POC
+		ON POC.ID = PO.OFFER_CONDITION
+	LEFT JOIN CatalystQA_1.OFFER_CURRENCY AS OCUR
+		ON OCUR.OFFER_CURRENCY_ID = PO.OFFER_CURRENCY
+	LEFT JOIN CatalystQA.PBS_SHIPS AS PS
+		ON PS.SHIP_ID = PO.WESSEL_ID
+	WHERE 1 = 1 AND PO.OFFER_ID = #arguments.OFFER_ID#
+	)
+	,CTE2
+AS (
+	SELECT CTE1.*
+		,ROW_NUMBER() OVER (
+			ORDER BY OFFER_ID
+			) AS RowNum
+		,(
+			SELECT COUNT(*)
+			FROM CTE1
+			) AS QUERY_COUNT
+	FROM CTE1
+	)
+SELECT CTE2.*
+FROM CTE2
+WHERE 1 = 1
 
                 
     </cfquery>
@@ -329,7 +355,7 @@ CROSS APPLY(
         
        </cfsavecontent>
        <cffile action="write" file = "c:\GetOfferList.html" output="#control5#"></cffile>
-       OfferItem=structNew();
+      <cfset OfferItem=structNew()>
     <CFLOOP query="getOfferHead">
         <cfscript>
             
@@ -342,12 +368,19 @@ CROSS APPLY(
                 OFFER_NUMBER=ONUM,
                 EMPLOYEE_NAME=EMPLOYEE_NAME,
                 EMPLOYEE_SURNAME=EMPLOYEE_SURNAME,
-                SHIP_METHOD=SHIP_METHOD,
-                OFFER_CURRENCY=OCUUR,
+                SHIP_METHOD=SHIP_METHO,
+                OFFER_CURRENCY=OFFCRRCNCY,
+                OFFER_CURRENCY_ID=OCUUR,
                 OFFER_STAGE=OFFER_STAGE,
                 OFFER_DATE=dateFormat(OFFER_DATE,"dd/mm/yyyy"),
                 DELIVERY_ADDRESS=DELIVERY_ADDRESS,
                 DELIVERY_PLACE=DELIVERY_PLACE,
+                DELIVERDATE=dateFormat(DELIVERDATE,"dd/mm/yyyy"),
+                OFFER_DETAIL=OFFER_DETAIL,
+                VALID_DAYS=VALID_DAYS,
+                OTHER_MONEY=OTHER_MONEY,
+                SHIP_NAME=SHIP_NAME,
+                CONDITION=CONDITION,
                 ROW_NUMBER=RowNum
             };
             
