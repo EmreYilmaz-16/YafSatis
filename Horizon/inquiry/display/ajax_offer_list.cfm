@@ -41,6 +41,7 @@ START_ROW:1,MAX_ROW:20)>
                 #it.OFFER_DATE#
             </td>
             <td>
+                <code>#it.OFFER_NUMBER#</code>
                 #it.REF_NO#
             </td>
             <td>
