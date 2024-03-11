@@ -18,7 +18,11 @@
         width:unset !important;
     }
 </style>
+<cfparam name="attributes.offer_id" default="3">
 <cf_box>
+    <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+    <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <cfset Offer=deserializeJSON(OfferList)>
     <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12">
         <div class="pull-left margin-top-10">
             <span class="margin-right-5"><a href="" class="font-md margin-right-5">YAF DIESEL</a> /</span>
@@ -48,7 +52,7 @@
                         <label>DATE</label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label class="bold">31.01.2024</label>
+                        <span class="bold margin-right-5">:</span><label class="bold"><cfoutput>#Offer.OFFER_DATE#</cfoutput></label>
                     </div>
                 </div>
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
@@ -56,7 +60,7 @@
                         <label ><span class="text-danger">OUR REF</span></label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5 text-danger">:</span><label><span class="text-danger bold">YA - 0000</span></label>
+                        <span class="bold margin-right-5 text-danger">:</span><label><span class="text-danger bold"><cfoutput>#Offer.OFFER_NUMBER#</cfoutput></span></label>
                     </div>
                 </div>
             </div>  
@@ -68,7 +72,7 @@
                         <label>CUSTOMER REF</label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label class="bold">FEV12-24</label>
+                        <span class="bold margin-right-5">:</span><label class="bold"><cfoutput>#Offer.REF_NO#</cfoutput></label>
                     </div>
                 </div>
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
@@ -76,7 +80,7 @@
                         <label ><span>STAFF</span></label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label><span class="bold">TEST</span></label>
+                        <span class="bold margin-right-5">:</span><label><span class="bold"><cfoutput>#Offer.EMPLOYEE_NAME# #Offer.EMPLOYEE_SURNAME#</cfoutput></span></label>
                     </div>
                 </div>
             </div> 
@@ -88,7 +92,7 @@
                         <label>CUSTOMER NAME</label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label class="bold">TEST CUSTOMER NAME</label>
+                        <span class="bold margin-right-5">:</span><label class="bold"><cfoutput>#Offer.NICKNAME#</cfoutput></label>
                     </div>
                 </div>
             </div> 
@@ -100,7 +104,7 @@
                         <label>VESSEL NAME</label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <i class="fa fa-ship color-In padding-2 padding-right-5 padding-left-5 margin-right-5" style="border-radius:3px;"></i><span class="bold margin-right-5">:</span><label class="bold">M/T ABC-0</label>
+                        <i class="fa fa-ship color-In padding-2 padding-right-5 padding-left-5 margin-right-5" style="border-radius:3px;"></i><span class="bold margin-right-5">:</span><label class="bold"><cfoutput>O#Offer.SHIP_NAME#</cfoutput></label>
                     </div>
                 </div>
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
@@ -108,7 +112,7 @@
                         <label ><span>TRANSPORTATION</span></label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label><span class="bold">UNKNOWN</span></label>
+                        <span class="bold margin-right-5">:</span><label><span class="bold"><cfoutput>#Offer.SHIP_METHOD#</cfoutput></span></label>
                     </div>
                 </div>
             </div> 
@@ -138,9 +142,9 @@
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
                         <span class="bold margin-right-5">:</span>
-                        <label class="bold">OEM</label>
+                        <label class="bold"><cfoutput>#Offer.CONDITION#</cfoutput></label>
                         <div class="margin-left-10">
-                            <span class="text-danger">CURRENY :</span><span class="text-danger bold">EU</span>
+                            <span class="text-danger">CURRENY :</span><span class="text-danger bold"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
                         </div>
                     </div>
                 </div>
@@ -149,7 +153,7 @@
                         <label ><span class="">INQUIRY REASON</span></label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label><span class="bold">FROM CUSTOMER</span></label>
+                        <span class="bold margin-right-5">:</span><label><span class="bold"><cfoutput>#Offer.OFFER_CURRENCY#</cfoutput></span></label>
                     </div>
                 </div>
             </div>  
@@ -161,7 +165,7 @@
                         <label>DELIVERY DATE</label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label class="bold">FEV12-24</label>
+                        <span class="bold margin-right-5">:</span><label class="bold"><cfoutput>#Offer.DELIVERDATE#</cfoutput></label>
                     </div>
                 </div>
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
@@ -169,7 +173,7 @@
                         <label ><span>VALIDITY</span></label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label><span class="bold">0 Days</span></label>
+                        <span class="bold margin-right-5">:</span><label><span class="bold"><cfoutput>#Offer.VALID_DAYS#</cfoutput> Days</span></label>
                     </div>
                 </div>
             </div> 
@@ -181,7 +185,7 @@
                         <label>DELIVERY ADDRESS</label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label class="bold">....</label>
+                        <span class="bold margin-right-5">:</span><label class="bold"><cfoutput>#Offer.DELIVERY_PLACE# - #Offer.DELIVERY_ADDRESS#</cfoutput></label>
                     </div>
                 </div>
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
@@ -189,7 +193,7 @@
                         <label ><span>NOTE</span></label>
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
-                        <span class="bold margin-right-5">:</span><label><span class="bold"></span></label>
+                        <span class="bold margin-right-5">:</span><label><span class="bold"><cfoutput>#Offer.OFFER_DETAIL#</cfoutput></span></label>
                     </div>
                 </div>
             </div>
