@@ -270,14 +270,14 @@
             <!---//BILGI Burada Workcube'ün Standart Müşteri Seçim Ekranını Kullanabiliriz Örn : Üstteki Alanlar Burada Bizi Zorunlu tuttuğu yer bir Form İçerisinde Olması---->
         </div>
 
-        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
+        <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold">DATE (START)</label>
             
                 <input type="date" name="StartDate" id="StartDate">
             
         </div>
 
-        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
+        <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold">DATE (FINISH)</label>
             
                 <input type="date" name="FinishDate" id="FinishDate">
