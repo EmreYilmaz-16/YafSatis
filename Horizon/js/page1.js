@@ -1,6 +1,6 @@
 $(document).ready(function () {
   getDashBoard();
-  getOfferList();
+ // getOfferList();
 });
 function getDashBoard() {
   var Uri =
