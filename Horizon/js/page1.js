@@ -47,8 +47,8 @@ function LoadOffers(tip, vl, vl2) {
 
     var exlems = document.getElementsByClassName("filterb");
     for (let index = 0; index < exlems.length; index++) {
-      var bs = exlems[i].getAttribute("data-stage");
-      var bi = exlems[i].id;
+      var bs = exlems[index].getAttribute("data-stage");
+      var bi = exlems[index].id;
       console.log(bs);
       console.log(bi);
       bs = parseInt(bs);
