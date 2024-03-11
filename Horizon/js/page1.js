@@ -32,7 +32,7 @@ function LoadOffers(tip, vl) {
     else if (Filters.ForCustomer == 0 && vl == 1) Filters.ForCustomer = 1;
     else if (Filters.ForCustomer == 2 && vl == 2) Filters.ForCustomer = 0;
     else if (Filters.ForCustomer == 0 && vl == 2) Filters.ForCustomer = 2;
-    else Filters.ForCustomer = 2;
+    else Filters.ForCustomer = vl;
     console.warn(vl);
     console.log(Filters);
   }
