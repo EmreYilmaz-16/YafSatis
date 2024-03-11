@@ -135,7 +135,7 @@
         
             <div class="col col-12 margin-top-5">
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_1_261" onclick="LoadOffers('STG',261,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" data-stage="261" id="SOC_1_261" onclick="LoadOffers('STG',261,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -149,7 +149,7 @@
                 </div>
              
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" data-stage="263"  id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CONFIRMED
                         </div>
@@ -163,7 +163,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_1_262" onclick="LoadOffers('STG',262,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" data-stage="262"  id="SOC_1_262" onclick="LoadOffers('STG',262,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-">
                             SUPPLIER
                         </div>
@@ -192,7 +192,7 @@
                 Customer Inquiry	        266	2
                 Supplier Inquiry        	267	2---->
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_2_264" onclick="LoadOffers('STG',264,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" data-stage="264"  id="SOC_2_264" onclick="LoadOffers('STG',264,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             C. OFFER
                         </div>
@@ -206,7 +206,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_2_266" onclick="LoadOffers('STG',266,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" data-stage="266"  id="SOC_2_266" onclick="LoadOffers('STG',266,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -220,7 +220,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_2_267" onclick="LoadOffers('STG',267,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" data-stage="267"  id="SOC_2_267" onclick="LoadOffers('STG',267,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             SUPPLIER
                         </div>

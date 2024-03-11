@@ -2,6 +2,7 @@ $(document).ready(function () {
   getDashBoard();
   // getOfferList();
 });
+
 function getDashBoard() {
   var Uri =
     "/AddOns/YafSatis/partner/cfc/OfferService.cfc?method=getOfferDashBoard";
@@ -35,9 +36,7 @@ function LoadOffers(tip, vl, vl2) {
     else Filters.ForCustomer = vl;
     console.warn(vl);
     console.log(Filters);
-   
   } else if (tip == "STG") {
-    
     if (Filters.Stage != vl && Filters.ForCustomer != vl2) {
       Filters.Stage = vl;
       Filters.ForCustomer = vl2;
@@ -45,65 +44,51 @@ function LoadOffers(tip, vl, vl2) {
       Filters.Stage = 0;
       Filters.ForCustomer = 0;
     }
-    if (Filters.Stage == 261) {
-      if (vl2 == 1) {
-        $("#SOC_1_261").removeClass("ui-btn-outline-success");
-        $("#SOC_1_261").addClass("ui-btn-success");
 
-        $("#SOC_1_263").removeClass("ui-btn-success");
-        $("#SOC_1_262").removeClass("ui-btn-success");
-        $("#SOC_2_261").removeClass("ui-btn-success");
-        $("#SOC_2_262").removeClass("ui-btn-success");
-        $("#SOC_2_264").removeClass("ui-btn-success");
-
-        $("#SOC_1_263").addClass("ui-btn-outline-success");
-        $("#SOC_1_262").addClass("ui-btn-outline-success");
-        $("#SOC_2_261").addClass("ui-btn-outline-success");
-        $("#SOC_2_262").addClass("ui-btn-outline-success");
-        $("#SOC_2_264").addClass("ui-btn-outline-success");
+    var exlems = document.getElementsByClassName("filterb");
+    for (let index = 0; index < exlems.length; index++) {
+      var bs = exlems[i].getAttribute("data-stage");
+      var bi = exlems[i].id;
+      bs = parseInt(bs);
+      if (bs == Filters.Stage) {
+        setActive(bi);
       } else {
-        $("#SOC_2_261").removeClass("ui-btn-outline-success");
-        $("#SOC_2_261").addClass("ui-btn-success");
-
-        $("#SOC_1_263").removeClass("ui-btn-success");
-        $("#SOC_1_262").removeClass("ui-btn-success");
-        $("#SOC_1_261").removeClass("ui-btn-success");
-        $("#SOC_2_262").removeClass("ui-btn-success");
-        $("#SOC_2_264").removeClass("ui-btn-success");
-
-        $("#SOC_1_263").addClass("ui-btn-outline-success");
-        $("#SOC_1_262").addClass("ui-btn-outline-success");
-        $("#SOC_1_261").addClass("ui-btn-outline-success");
-        $("#SOC_2_262").addClass("ui-btn-outline-success");
-        $("#SOC_2_264").addClass("ui-btn-outline-success");
+        setDeActive(bi);
       }
-      /* 
-      SOC_1_261
-      SOC_1_263
-      SOC_1_262
-      SOC_2_261
-      SOC_2_262
-      SOC_2_264
-      
-      
-      ui-btn-outline-success 
-      ui-btn-success 
-      */
-    }else {
-      $("#SOC_1_261").removeClass("ui-btn-success");
-      $("#SOC_1_263").removeClass("ui-btn-success");
-      $("#SOC_1_262").removeClass("ui-btn-success");
-      $("#SOC_2_261").removeClass("ui-btn-success");
-      $("#SOC_2_262").removeClass("ui-btn-success");
-      $("#SOC_2_264").removeClass("ui-btn-success");
-
-      $("#SOC_1_261").addClass("ui-btn-outline-success");
-      $("#SOC_1_263").addClass("ui-btn-outline-success");
-      $("#SOC_1_262").addClass("ui-btn-outline-success");
-      $("#SOC_2_261").addClass("ui-btn-outline-success");
-      $("#SOC_2_262").addClass("ui-btn-outline-success");
-      $("#SOC_2_264").addClass("ui-btn-outline-success");
     }
+
+    /*
+      Customer Inquiry	        261	1
+      Supplier Inquiry	        262	1
+      Confirmed Customer Inquiry	263	1
+      Customer Offer	            264	2
+      Customer Inquiry	        266	2
+      Supplier Inquiry        	267	2
+    */
+    /* if (Filters.Stage == 261) {
+      setActive("SOC_1_261");
+      setDeActive("SOC_1_262");
+      setDeActive("SOC_1_263");
+      setDeActive("SOC_2_264");
+      setDeActive("SOC_2_266");
+      setDeActive("SOC_2_267");
+    } else if (Filters.Stage==262){
+      setDeActive("SOC_1_261");
+      setActive("SOC_1_262");
+      setDeActive("SOC_1_263");
+      setDeActive("SOC_2_264");
+      setDeActive("SOC_2_266");
+      setDeActive("SOC_2_267");
+    } 
+     else {
+      setDeActive("SOC_1_261");
+      setDeActive("SOC_1_262");
+      setDeActive("SOC_1_263");
+      setDeActive("SOC_2_264");
+      setDeActive("SOC_2_266");
+      setDeActive("SOC_2_267");
+    }*/
+
     if (Filters.ForCustomer == 1) {
       $("#Cust1").removeClass("ui-btn-update");
 
@@ -124,6 +109,14 @@ function LoadOffers(tip, vl, vl2) {
       $("#Cust2").addClass("ui-btn-outline-update");
     }
   }
+}
+function setActive(id) {
+  $("#" + id).removeClass("ui-btn-outline-success");
+  $("#" + id).addClass("ui-btn-success");
+}
+function setDeActive(id) {
+  $("#" + id).removeClass("ui-btn-success");
+  $("#" + id).addClass("ui-btn-outline-success");
 }
 //OfferList
 // function getOfferList() {
