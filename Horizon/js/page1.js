@@ -1,6 +1,6 @@
 $(document).ready(function () {
   getDashBoard();
- // getOfferList();
+  // getOfferList();
 });
 function getDashBoard() {
   var Uri =
@@ -25,14 +25,14 @@ function getDashBoard() {
   });
 }
 
-function LoadOffers(tip,vl) {
+function LoadOffers(tip, vl) {
   if (tip == "Cust") {
     //Filters.ForCustomer
-    if(Filters.ForCustomer==1 && vl==1) Filters.ForCustomer=0; else Filters.ForCustomer=1;
-    if(Filters.ForCustomer==0 && vl==1) Filters.ForCustomer=1; else Filters.ForCustomer=1;
-
-    if(Filters.ForCustomer==2 && vl==2) Filters.ForCustomer=0; else Filters.ForCustomer=2;
-    if(Filters.ForCustomer==0 && vl==2) Filters.ForCustomer=2; else Filters.ForCustomer=2;
+    if (Filters.ForCustomer == 1 && vl == 1) Filters.ForCustomer = 0;
+    else if (Filters.ForCustomer == 0 && vl == 1) Filters.ForCustomer = 1;
+    else if (Filters.ForCustomer == 2 && vl == 2) Filters.ForCustomer = 0;
+    else if (Filters.ForCustomer == 0 && vl == 2) Filters.ForCustomer = 2;
+    else Filters.ForCustomer = 2;
     console.warn(vl);
     console.log(Filters);
   }
