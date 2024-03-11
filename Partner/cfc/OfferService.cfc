@@ -287,7 +287,7 @@ CROSS APPLY(
     <cfreturn replace(serializeJSON(ReturnArr),"//","")><!--- ---->
 </cffunction>
 <cffunction name="getOfferWithOfferId" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-    <cfargument name="OFFER_ID" default="">
+    <cfargument name="OFFER_ID" required="true">
  
  <cfquery name="getOfferHead" datasource="#dsn#">
         	WITH CTE1 AS(
@@ -325,7 +325,7 @@ CROSS APPLY(
      <cfsavecontent  variable="control5">
         <cfdump  var="#CGI#">                
         <cfdump  var="#arguments#">
-        <cfdump  var="#getOffers#">
+        <cfdump  var="#getOfferHead#">
         
        </cfsavecontent>
        <cffile action="write" file = "c:\GetOfferList.html" output="#control5#"></cffile>
