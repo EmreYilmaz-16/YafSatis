@@ -163,14 +163,14 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_1_262" onclick="LoadOffers('STG',262,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_1_262" onclick="LoadOffers('STG',267,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-">
                             SUPPLIER
                         </div>
                         
                         <div class="pull-right padding-4" >
                             <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_1_262">4300</span>Records
+                                <span class="margin-right-5 font-xs" id="OC_1_267">4300</span>Records
                             </div>
                         </div>
                     </a>
