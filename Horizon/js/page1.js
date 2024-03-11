@@ -43,26 +43,27 @@ function LoadOffers(tip, vl, vl2) {
     if (Filters.Stage != vl) {
       Filters.Stage = vl;
       Filters.ForCustomer = vl2;
+      var exlems = document.getElementsByClassName("filterb");
+      for (let index = 0; index < exlems.length; index++) {
+        var bs = exlems[index].getAttribute("data-stage");
+        var bi = exlems[index].id;
+        console.log(bs);
+        console.log(bi);
+        bs = parseInt(bs);
+        if (bs == Filters.Stage) {
+          console.log("Yaktim" + bi);
+          setActive(bi);
+        } else {
+          console.log("Söndürdüm !" + bi);
+          setDeActive(bi);
+        }
+      }
     } else {
       Filters.Stage = 0;
       Filters.ForCustomer = 0;
     }
 
-    var exlems = document.getElementsByClassName("filterb");
-    for (let index = 0; index < exlems.length; index++) {
-      var bs = exlems[index].getAttribute("data-stage");
-      var bi = exlems[index].id;
-      console.log(bs);
-      console.log(bi);
-      bs = parseInt(bs);
-      if (bs == Filters.Stage) {
-        console.log("Yaktim" + bi);
-        setActive(bi);
-      } else {
-        console.log("Söndürdüm !" + bi);
-        setDeActive(bi);
-      }
-    }
+  
 
     if (Filters.ForCustomer == 1) {
       $("#Cust1").removeClass("ui-btn-update");
