@@ -41,7 +41,7 @@ START_ROW:1,MAX_ROW:20)>
                 #it.OFFER_DATE#
             </td>
             <td>
-                <a href="/index.cfm=fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=#it.OFFER_ID#"><code style="color:red">#it.OFFER_NUMBER#</code>
+                <a href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=#it.OFFER_ID#"><code style="color:red">#it.OFFER_NUMBER#</code>
                 <br>#it.REF_NO#
             </a>
             </td>
