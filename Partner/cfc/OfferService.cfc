@@ -286,6 +286,77 @@ CROSS APPLY(
     </CFLOOP>
     <cfreturn replace(serializeJSON(ReturnArr),"//","")><!--- ---->
 </cffunction>
+<cffunction name="getOfferWithOfferId" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="OFFER_ID" default="">
+ 
+ <cfquery name="getOfferHead" datasource="#dsn#">
+        	WITH CTE1 AS(
+            SELECT
+			C.NICKNAME,C.FULLNAME,PO.OFFER_HEAD,PO.OFFER_ID,PO.REF_NO AS OREF ,PO.OFFER_NUMBER as ONUM,E.EMPLOYEE_NAME,E.EMPLOYEE_SURNAME,SM.SHIP_METHOD,PO.OFFER_CURRENCY OCUUR,PO.OFFER_STAGE,PO.OFFER_DATE,PO.DELIVERY_ADDRESS,DP.DELIVERY_PLACE
+			FROM 
+				CatalystQA_1.PBS_OFFER AS PO
+                INNER JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID=PO.COMPANY_ID
+                INNER JOIN CatalystQA.EMPLOYEES AS E ON E.EMPLOYEE_ID=PO.SALES_EMP_ID
+                INNER JOIN CatalystQA.SHIP_METHOD AS SM ON SM.SHIP_METHOD_ID=PO.SHIP_METHOD
+                LEFT JOIN CatalystQA.DELIVERY_PLACES AS DP ON DP.DELIVERY_PLACE_ID=PO.DELIVERY_PLACE
+			WHERE 
+			1=1
+            AND PO.OFFER_ID=#arguments.OFFER_ID#
+            
+             ),
+			CTE2 AS 
+			(
+				SELECT
+					CTE1.*,
+					ROW_NUMBER() OVER (ORDER BY OFFER_ID) AS RowNum,(SELECT COUNT(*) FROM CTE1) AS QUERY_COUNT
+				FROM
+					CTE1
+			)
+			SELECT
+				CTE2.*
+			FROM
+				CTE2
+			WHERE
+				
+                RowNum BETWEEN #ARGUMENTS.START_ROW# and #ARGUMENTS.START_ROW#+(#ARGUMENTS.MAX_ROW#-1)
+
+                
+    </cfquery>
+     <cfsavecontent  variable="control5">
+        <cfdump  var="#CGI#">                
+        <cfdump  var="#arguments#">
+        <cfdump  var="#getOffers#">
+        
+       </cfsavecontent>
+       <cffile action="write" file = "c:\GetOfferList.html" output="#control5#"></cffile>
+       OfferItem=structNew();
+    <CFLOOP query="getOfferHead">
+        <cfscript>
+            
+            OfferItem={
+                NICKNAME=NICKNAME,
+                FULLNAME=FULLNAME,
+                OFFER_HEAD=OFFER_HEAD,
+                OFFER_ID=OFFER_ID,
+                REF_NO=OREF,
+                OFFER_NUMBER=ONUM,
+                EMPLOYEE_NAME=EMPLOYEE_NAME,
+                EMPLOYEE_SURNAME=EMPLOYEE_SURNAME,
+                SHIP_METHOD=SHIP_METHOD,
+                OFFER_CURRENCY=OCUUR,
+                OFFER_STAGE=OFFER_STAGE,
+                OFFER_DATE=dateFormat(OFFER_DATE,"dd/mm/yyyy"),
+                DELIVERY_ADDRESS=DELIVERY_ADDRESS,
+                DELIVERY_PLACE=DELIVERY_PLACE,
+                ROW_NUMBER=RowNum
+            };
+            
+        </cfscript>
+        
+    </CFLOOP>
+    <cfreturn replace(serializeJSON(OfferItem),"//","")>
+</cffunction>
+
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
