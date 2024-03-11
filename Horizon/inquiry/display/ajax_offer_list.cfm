@@ -9,7 +9,7 @@
 
 <cfset OfferList=OfferService.getOfferList(SALES_EMP_ID:Fdata.SalesPartnerId,
 OFFER_CURRENCY:Fdata.ForCustomer,
-OFFER_STAGE.Fdata.Stage,
+OFFER_STAGE:Fdata.Stage,
 OFFER_NUMBER:Fdata.PaperNo,
 REF_NO:Fdata.RefNo,
 START_DATE:Fdata.StartDate,
