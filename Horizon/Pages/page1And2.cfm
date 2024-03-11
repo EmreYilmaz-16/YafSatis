@@ -147,7 +147,7 @@
                         </div>
                     </a>
                 </div>
-
+             
                 <div class="col col-2 d-flex">
                     <a href="javascript://" id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
@@ -163,19 +163,34 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_1_262" onclick="LoadOffers('STG',267,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_1_262" onclick="LoadOffers('STG',262,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-">
                             SUPPLIER
                         </div>
                         
                         <div class="pull-right padding-4" >
                             <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_1_267">4300</span>Records
+                                <span class="margin-right-5 font-xs" id="OC_1_262">4300</span>Records
                             </div>
                         </div>
                     </a>
                 </div>
-                
+            <!---    SOC_1_261
+                SOC_1_262
+                SOC_1_263
+                                
+                SOC_2_264
+                SOC_2_266
+                SOC_2_267
+
+
+                Customer Inquiry	        261	1
+                Supplier Inquiry	        262	1
+                Confirmed Customer Inquiry	263	1
+
+                Customer Offer	            264	2
+                Customer Inquiry	        266	2
+                Supplier Inquiry        	267	2---->
                 <div class="col col-2 d-flex">
                     <a href="javascript://" id="SOC_2_264" onclick="LoadOffers('STG',264,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
@@ -191,7 +206,7 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_2_261" onclick="LoadOffers('STG',266,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_2_266" onclick="LoadOffers('STG',266,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             CUSTOMER
                         </div>
@@ -205,14 +220,14 @@
                 </div>
 
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" id="SOC_2_262" onclick="LoadOffers('STG',262,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
+                    <a href="javascript://" id="SOC_2_267" onclick="LoadOffers('STG',267,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             SUPPLIER
                         </div>
                         
                         <div class="pull-right padding-4" >
                             <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5" id="OC_2_262">4300</span>Records
+                                <span class="margin-right-5" id="OC_2_267">4300</span>Records
                             </div>
                         </div>
                     </a>
