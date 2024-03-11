@@ -4,17 +4,18 @@
 <cfset Fdata=deserializeJSON(attributes.FormData)>
 <cfdump var="#Fdata#">
 <cfset OfferList=arrayNew(1)>
+<cfdump var="#OfferService#">
 <cfabort>
-<!---
-<cfset OfferList=OfferService.getOfferList(SALES_EMP_ID=Fdata.SalesPartnerId,
-OFFER_CURRENCY=Fdata.ForCustomer,
+
+<cfset OfferList=OfferService.getOfferList(SALES_EMP_ID:Fdata.SalesPartnerId,
+OFFER_CURRENCY:Fdata.ForCustomer,
 OFFER_STAGE.Fdata.Stage,
-OFFER_NUMBER=Fdata.PaperNo,
-REF_NO=Fdata.RefNo,
-START_DATE=Fdata.StartDate,
-FINISH_DATE=Fdata.FinishDate,
-START_ROW=1,MAX_ROW=20)>
-<cfset OfferList=deserializeJSON(OfferList)>--->
+OFFER_NUMBER:Fdata.PaperNo,
+REF_NO:Fdata.RefNo,
+START_DATE:Fdata.StartDate,
+FINISH_DATE:Fdata.FinishDate,
+START_ROW:1,MAX_ROW:20)>
+<cfset OfferList=deserializeJSON(OfferList)><!------>
 <!---
 <cfargument name="SALES_EMP_ID" default="">
 <cfargument name="OFFER_CURRENCY" default="">
