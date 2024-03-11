@@ -296,12 +296,12 @@
         </div>
         </div>
 
-        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
+        <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold"><strong>YOUR REF</strong></label>
             <input type="text" name="customer_ref_no" id="customer_ref_no">
         </div>
 
-        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
+        <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold"><strong>OUR REF</strong></label>
             <input type="text" name="PaperNo" id="PaperNo">
         </div>
