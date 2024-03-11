@@ -271,17 +271,17 @@
 
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold">DATE (START)</label>
-            <div class="input-group">
+            
                 <input type="date" name="StartDate" id="StartDate">
-            </div>
+            
         </div>
 
         <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
             <label class="bold">DATE (FINISH)</label>
-            <div class="input-group">
+            
                 <input type="date" name="FinishDate" id="FinishDate">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            </div>
+            
         </div>
 <!---//DIKKAT HTML inputları Kullanırken İd ve name attributeleri genelde yok bunlarıda isimlendirirken aslında kullanacağın servisteki değişkenler ile uyumlu olarak yazarsan javascript tarafında form.serialize yapıp kolaylıkla servise gönderebilirsin ----->
         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
