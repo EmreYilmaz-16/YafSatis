@@ -283,7 +283,7 @@
         </div>
             
         <div class="form-group col col-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-top-20">
-            <a href="javascript://"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="width:85%;"><i class="fa fa-repeat"></i><span class="font-sm">FILTER LIST</span></a>
+            <a href="javascript://" onclick="TeklifGetir()"  is_upd="1" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="width:85%;"><i class="fa fa-repeat"></i><span class="font-sm">FILTER LIST</span></a>
         </div>
     </form>
     </cf_box_elements>
