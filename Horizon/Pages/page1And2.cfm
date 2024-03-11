@@ -1,7 +1,7 @@
 <style>
     .ui-btn-outline-update {
     padding: 0 15px !important;
-    background-color: none !important
+    background-color: none !important;
     color: #ffb822 !important;
     border-radius: 3px;
 }
