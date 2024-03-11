@@ -60,7 +60,7 @@ function LoadOffers(tip, vl, vl2) {
     if (Filters.Stage == 261) {
       if (vl2 == 1) {
         $("#SOC_1_261").removeClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_1_261").addClass("ui-btn-update");
+        $("#SOC_1_261").addClass("ui-btn-success");
 
         $("#SOC_1_263").removeClass("ui-btn-success");
         $("#SOC_1_262").removeClass("ui-btn-success");
@@ -68,14 +68,14 @@ function LoadOffers(tip, vl, vl2) {
         $("#SOC_2_262").removeClass("ui-btn-success");
         $("#SOC_2_264").removeClass("ui-btn-success");
 
-        $("#SOC_1_263").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_1_262").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_2_261").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_2_262").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_2_264").addClass("ui-btn-ui-btn-outline-success");
+        $("#SOC_1_263").addClass("ui-btn-outline-success");
+        $("#SOC_1_262").addClass("ui-btn-outline-success");
+        $("#SOC_2_261").addClass("ui-btn-outline-success");
+        $("#SOC_2_262").addClass("ui-btn-outline-success");
+        $("#SOC_2_264").addClass("ui-btn-outline-success");
       } else {
-        $("#SOC_2_261").removeClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_2_261").addClass("ui-btn-update");
+        $("#SOC_2_261").removeClass("ui-btn-outline-success");
+        $("#SOC_2_261").addClass("ui-btn-success");
 
         $("#SOC_1_263").removeClass("ui-btn-success");
         $("#SOC_1_262").removeClass("ui-btn-success");
@@ -83,11 +83,11 @@ function LoadOffers(tip, vl, vl2) {
         $("#SOC_2_262").removeClass("ui-btn-success");
         $("#SOC_2_264").removeClass("ui-btn-success");
 
-        $("#SOC_1_263").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_1_262").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_1_261").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_2_262").addClass("ui-btn-ui-btn-outline-success");
-        $("#SOC_2_264").addClass("ui-btn-ui-btn-outline-success");
+        $("#SOC_1_263").addClass("ui-btn-outline-success");
+        $("#SOC_1_262").addClass("ui-btn-outline-success");
+        $("#SOC_1_261").addClass("ui-btn-outline-success");
+        $("#SOC_2_262").addClass("ui-btn-outline-success");
+        $("#SOC_2_264").addClass("ui-btn-outline-success");
       }
       /* SOC_1_261
       SOC_1_263
