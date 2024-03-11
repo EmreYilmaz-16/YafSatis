@@ -51,6 +51,16 @@
             },
         </cfoutput>
     ]
+    var Filters={
+        ForCustomer:1,
+        Stage:"",
+        CompanyId:"",
+        StartDate:"",
+        FinishDate:"",
+        SalesPartnerId:"",
+        PaperNo:"",
+        RefNo:""
+    };
 </script>
 
 <!--- Yönlendirme Başlangıç --->
@@ -82,7 +92,7 @@
     <cf_box_elements >
         <div class="col col-12">
             <div class="col col-6 d-flex">
-                <a href="javascript://" class="ui-btn ui-btn-update border border-warning text-dark ui-btn-block" style="height:100%;">
+                <a href="javascript://" onclick="LoadOffers('Cust',1);" class="ui-btn ui-btn-update border border-warning text-dark ui-btn-block" style="height:100%;">
                     <div class="pull-left font-lg padding-5">
                         CUSTOMER INQUIRY
                     </div>
@@ -97,7 +107,7 @@
                 </a>
             </div>
             <div class="col col-6 d-flex">
-                <a href="javascript://" class="ui-btn ui-btn-outline-update border border-warning text-dark ui-btn-block" style="height:100%;">
+                <a href="javascript://" onclick="LoadOffers('Cust',2);" class="ui-btn ui-btn-outline-update border border-warning text-dark ui-btn-block" style="height:100%;">
                     <div class="pull-left font-lg padding-5">
                         INQUIRY FOR YAF STOCK
                     </div>
@@ -272,38 +282,10 @@
 
 <!--- Grid Başlangıç --->
 <cf_box>
-    <cf_ajax_list>
-        <thead>
-            <tr>
-                <th class="drag-enable">DATE<span class="table-handle"><i class="fa fa-sort"></i></span></th>
-                <th class="drag-enable">CUST. REF<span class="table-handle"><i class="fa fa-sort"></i></span></th>
-                <th class="drag-enable">CUSTOMER INFO<span class="table-handle"><i class="fa fa-sort"></i></span></th>
-                <th class="drag-enable">DELIVERY ADDRESS<span class="table-handle"><i class="fa fa-sort"></i></span></th>
-                <th class="drag-enable">TRANSPORTATION<span class="table-handle"><i class="fa fa-sort"></i></span></th>
-                <th width="120"></th>
-            </tr>
-        </thead>
-        <tbody id="OfferList">
-            
-           
-        </tbody>
-    </cf_ajax_list>
-    <div class="ui-pagination">
-        <div class="pagi-left">
-            <ul>
-                <li><a href="javascript://"><i class="fa fa-angle-left"></i></a></li>
-                <li><a href="javascript://"><i class="fa fa-angle-left"></i></a></li>
-                <li><a href="javascript://"><i class="fa fa-angle-right"></i></a></li>
-                <li><a href="javascript://"><i class="fa fa-angle-double-right"></i></a></li>
-                <!--<li><input type="text" value="1"><span>/ 1024</span></li>
-                <li><a href="javascript://"><i class="fa fa-angle-right"></i></a></li>-->
-                
-                <li><a onclick="font_inc("unique_id", +1)" href="javascript://">A+</a></li>
-                <!-- <li><a onclick="font_inc("unique_id", 0)" href="javascript://"><i class="fa fa-refresh"></i></a></li> -->
-                <li><a onclick="font_inc("unique_id", -1)" href="javascript://">A-</a></li>
-            </ul>
-        </div>
+    <div id="OfferListArea">
+
     </div>
+   
 
 </cf_box>
 <!--- Grid Bitiş --->
