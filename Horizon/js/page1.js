@@ -39,10 +39,10 @@ function LoadOffers(tip, vl, vl2) {
   } else if (tip == "STG") {
     if (Filters.Stage != vl) {
       Filters.Stage = vl;
-      Filter.ForCustomer = vl2;
+      Filters.ForCustomer = vl2;
     } else {
       Filters.Stage = 0;
-      Filter.ForCustomer = 0;
+      Filters.ForCustomer = 0;
     }
     if (Filters.Stage == 261) {
       if (vl2 == 1) {
