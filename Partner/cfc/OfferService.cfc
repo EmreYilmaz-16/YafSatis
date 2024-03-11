@@ -223,7 +223,7 @@ CROSS APPLY(
 			1=1
             <CFIF LEN(arguments.SALES_EMP_ID)> and PO.SALES_EMP_ID=#arguments.SALES_EMP_ID#</CFIF>
             <CFIF LEN(arguments.OFFER_CURRENCY) and OFFER_CURRENCY neq 0>  AND PO.OFFER_CURRENCY=#arguments.OFFER_CURRENCY#</CFIF>
-            <CFIF LEN(arguments.OFFER_STAGE)> AND PO.OFFER_STAGE=#arguments.OFFER_STAGE#</CFIF>
+            <CFIF LEN(arguments.OFFER_STAGE) and OFFER_STAGE NEQ 0> AND PO.OFFER_STAGE=#arguments.OFFER_STAGE#</CFIF>
             <CFIF LEN(arguments.OFFER_NUMBER)>AND PO.OFFER_NUMBER='#arguments.OFFER_NUMBER#'</CFIF>
             <CFIF LEN(arguments.REF_NO)> AND PO.REF_NO='#arguments.REF_NO#'</CFIF>
             <CFIF LEN(arguments.START_DATE)>

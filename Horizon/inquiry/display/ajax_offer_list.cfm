@@ -5,7 +5,7 @@
 <cfdump var="#Fdata#">
 <cfset OfferList=arrayNew(1)>
 <cfdump var="#OfferService#">
-<cfabort>
+
 
 <cfset OfferList=OfferService.getOfferList(SALES_EMP_ID:Fdata.SalesPartnerId,
 OFFER_CURRENCY:Fdata.ForCustomer,
