@@ -224,13 +224,13 @@ function addEqRow(Obj, jsn) {
     Obj.PropList +
     '">0</span> Rows Listed<br><span id="TOTALE_' +
     Obj.PropList +
-    '">0 €</span></button>';
+    '">0 '+OfferData.OTHER_MONEY+'</span></button>';
   var btn =
     '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
     Obj.PropList +
     '">0</span> Rows Listed<br><span id="TOTALE_' +
     Obj.PropList +
-    '">0 €</span></button>';
+    '">0 '+OfferData.OTHER_MONEY+'</span></button>';
   btn = $(btn)[0];
   div.appendChild(btn);
   document.getElementById("BasketArea").appendChild(div);
@@ -327,7 +327,7 @@ function addRowCrs(proplist) {
   input.name = "PURCHASE_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -346,7 +346,7 @@ function addRowCrs(proplist) {
   input.name = "SALE_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -365,7 +365,7 @@ function addRowCrs(proplist) {
   input.name = "SALE_DISCOUNT_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_DISCOUNT_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -384,7 +384,7 @@ function addRowCrs(proplist) {
   input.name = "UNIT_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "UNIT_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -403,7 +403,7 @@ function addRowCrs(proplist) {
   input.name = "TOTAL_PRICE_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = CreateOptionList(1, "");
+  input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "TOTAL_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
