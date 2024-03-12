@@ -17,6 +17,10 @@
     .input-group-addon, .input-group-btn{
         width:unset !important;
     }
+    .SubSepet, input {
+    text-align: right;
+    padding: 1px !important;
+}
 </style>
 <cfparam name="attributes.offer_id" default="3">
 <cf_box>

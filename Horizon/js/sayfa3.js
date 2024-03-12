@@ -271,6 +271,7 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
+  input.setAttribute("style",'text-align:left')
   input.name = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("proplist", proplist);
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
@@ -292,6 +293,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "PRODUCT_NAME_" + RowCount;
+  input.setAttribute("style",'text-align:left')
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
