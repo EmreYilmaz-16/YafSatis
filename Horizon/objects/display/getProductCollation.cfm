@@ -34,10 +34,10 @@ SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY A
 <cfoutput query="getProd">
     <tr>
         <TD>
-            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
         </TD>
         <TD>
-            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
+            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#',#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
         </TD>
         <cfloop query="getPrcPrp">
             <cfquery name="getpv" datasource="#dsn1#">
