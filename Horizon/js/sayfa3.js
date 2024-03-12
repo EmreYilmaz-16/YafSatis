@@ -23,21 +23,6 @@ function getCats(el) {
   });
 }
 function getCatProperties(cat_id) {
-  /* $.ajax({
-        url: ServiceUri + "/ProductService.cfc?method=getCatProperties&PRODUCT_CATID="+cat_id,
-        success: function (returnData) {
-          var Obje = JSON.parse(returnData);
-          console.log(Obje);
-          $(el).html("");
-          for (let i = 0; i < Obje.length; i++) {
-            var option = document.createElement("option");
-            option.value = Obje[i].PRODUCT_CATID;
-            option.innerText = Obje[i].PRODUCT_CAT;
-            el.appendChild(option);
-          }
-        },font-size: 7px !important;padding: 3px 7px !important;
-      });*/
-
   AjaxPageLoad(
     "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
       cat_id,
@@ -292,11 +277,11 @@ function addRowCrs(proplist) {
   div.appendChild(input);
   var input=document.createElement("input");
   input.type="hidden";
-  input.name="PRODUCT_ID"+RowCount;
+  input.name="PRODUCT_ID_"+RowCount;
   div.appendChild(input);
   var input=document.createElement("input");
   input.type="hidden";
-  input.name="STOCK_ID"+RowCount;
+  input.name="STOCK_ID_"+RowCount;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -529,6 +514,12 @@ function getProduct(el, rc) {
         }
         document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
           Obje.PRODUCT_NAME;
+
+          document.getElementsByName("PRODUCT_ID_" + rc)[0].value =
+          Obje.PRODUCT_ID;
+          document.getElementsByName("STOCK_ID_" + rc)[0].value =
+          Obje.STOCK_ID;
+          
         document.getElementsByName("QUANTITY_" + rc)[0].value = 1;
         document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
           '<option value="' +
@@ -578,7 +569,9 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
-function UpdateRow(PID,MANCODE,PN,RC,mdl){
+function UpdateRow(PID,SID,MANCODE,PN,RC,mdl){
+  document.getElementsByName("PRODUCT_ID_"+RC)[0].value=PID
+  document.getElementsByName("STOCK_ID_"+RC)[0].value=SID
   document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].value=MANCODE
   document.getElementsByName("PRODUCT_NAME_"+RC)[0].value=PN
   document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].setAttribute("style","color:green;font-weight:bold");

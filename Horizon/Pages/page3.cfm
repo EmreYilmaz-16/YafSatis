@@ -22,6 +22,9 @@
 <cf_box>
     <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
     <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <script>
+        var OfferData=<cfoutput>#OfferList#</cfoutput>
+    </script>
     <cfset Offer=deserializeJSON(OfferList)>
     <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12">
         <div class="pull-left margin-top-10">
@@ -244,6 +247,12 @@
 <!--- .... --->
 <cf_box>
     <div id="BasketArea">
+
+    </div>
+    
+</cf_box>
+<cf_box>
+    <div id="BasketFooter">
 
     </div>
     

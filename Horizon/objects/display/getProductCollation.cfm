@@ -4,7 +4,9 @@
 <cfset prplist=listDeleteAt(attributes.prp_list,1)>
 <cfquery name="getProd" datasource="#dsn#">
     SELECT * FROM (
-SELECT PRODUCT_NAME,P.PRODUCT_ID,MANUFACT_CODE,PRODUCT_CODE,PRODUCT_CODE_2,PU.MAIN_UNIT,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  FROM CatalystQA_product.PRODUCT AS P
+SELECT PRODUCT_NAME,P.PRODUCT_ID,S.STOCK_ID,MANUFACT_CODE,PRODUCT_CODE,PRODUCT_CODE_2,PU.MAIN_UNIT,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  
+FROM CatalystQA_product.PRODUCT AS P
+LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU ON PU.PRODUCT_ID=P.PRODUCT_ID AND PU.IS_MAIN=1
 where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#   
 
@@ -32,10 +34,10 @@ SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY A
 <cfoutput query="getProd">
     <tr>
         <TD>
-            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
         </TD>
         <TD>
-            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
+            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
         </TD>
         <cfloop query="getPrcPrp">
             <cfquery name="getpv" datasource="#dsn1#">
@@ -54,6 +56,7 @@ SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY A
 </cftry>
 
 <cfoutput>
-    <button onclick="closeBoxDraggable('#attributes.modal_id#')">Kapa</button>
+    <a href="javascript://" onclick="closeBoxDraggable('#attributes.modal_id#')" class="ui-wrk-btn ui-wrk-btn-red ui-wrk-btn-addon-left "><i class="fa fa-close"></i><span class="font-xs">Kapat</span></a>
+    
 </cfoutput>
 </cf_box>
