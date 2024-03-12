@@ -528,19 +528,19 @@ function getProduct(el, rc) {
           document.getElementsByName("STOCK_ID_" + rc)[0].value =
           Obje.STOCK_ID;
           
-        document.getElementsByName("QUANTITY_" + rc)[0].value = 1;
+        document.getElementsByName("QUANTITY_" + rc)[0].value = commaSplit(1);
         document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
           '<option value="' +
           Obje.MAIN_UNIT +
           '">' +
           Obje.MAIN_UNIT +
           "</option>";
-        document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = 0;
-        document.getElementsByName("SALE_PRICE_" + rc)[0].value = 0;
-        document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = 0;
-        document.getElementsByName("UNIT_PRICE_" + rc)[0].value = 0;
-        document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = 0;
-        document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = 0;
+        document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = commaSplit(0);
+        document.getElementsByName("SALE_PRICE_" + rc)[0].value = commaSplit(0);
+        document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = commaSplit(0);
+        document.getElementsByName("UNIT_PRICE_" + rc)[0].value = commaSplit(0);
+        document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = commaSplit(0);
+        document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = commaSplit(0);
         document.getElementsByName("DELIVERED_ITEMS_UNIT_" + rc)[0].innerHTML =
           '<option value="' +
           Obje.MAIN_UNIT +
@@ -548,7 +548,7 @@ function getProduct(el, rc) {
           Obje.MAIN_UNIT +
           "</option>";
 
-        document.getElementsByName("WEIGHT_" + rc)[0].value = 0;
+        document.getElementsByName("WEIGHT_" + rc)[0].value = commaSplit(0);
       } else {
         el.setAttribute("style", "color:red;font-weight:bold");
       }
