@@ -552,7 +552,7 @@ function getProduct(el, rc) {
 
         document.getElementsByName("WEIGHT_" + rc)[0].value = commaSplit(0);
       } else {
-        el.setAttribute("style", "color:red;font-weight:bold");
+        el.setAttribute("style", "color:red;font-weight:bold;text-align:left;");
       }
     },
   });
@@ -584,7 +584,7 @@ function UpdateRow(PID,SID,MANCODE,PN,RC,mdl){
   document.getElementsByName("STOCK_ID_"+RC)[0].value=SID
   document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].value=MANCODE
   document.getElementsByName("PRODUCT_NAME_"+RC)[0].value=PN
-  document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].setAttribute("style","color:green;font-weight:bold");
+  document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].setAttribute("style","color:green;font-weight:bold;text-align:left;");
   $(document.getElementsByName("PRODUCT_CODE_2_1")[0].parentElement).find("button").remove();
   closeBoxDraggable(mdl);
 }
