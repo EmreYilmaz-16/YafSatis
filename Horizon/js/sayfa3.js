@@ -510,7 +510,7 @@ function getProduct(el, rc) {
 
       if (Obje.RECORD_COUNT >= 1) {
         if (Obje.RECORD_COUNT > 1) {
-          el.setAttribute("style", "color:orange;font-weight:bold");
+          el.setAttribute("style", "color:orange;font-weight:bold;text-align:left;");
           var btn=document.createElement("button");
           btn.setAttribute("class","btn btn-warning");
           
@@ -520,7 +520,7 @@ function getProduct(el, rc) {
           btn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc="+rc+"&kw="+el.value+"&prp_list="+pL+"')")
 
         } else {
-          el.setAttribute("style", "color:green;font-weight:bold");
+          el.setAttribute("style", "color:green;font-weight:bold;text-align:left;");
         }
         document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
           Obje.PRODUCT_NAME;
