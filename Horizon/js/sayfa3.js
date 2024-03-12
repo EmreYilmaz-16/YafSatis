@@ -54,11 +54,11 @@ function AddEquipment() {
   var PropList = "";
   PropList += PRODUCT_CAT_ID;
   //console.log(Properties)
-  var DataHata=0;
+  var DataHata = 0;
   for (let i = 0; i < Properties.length; i++) {
     var Pelem = Properties[i];
-    var isReq=Pelem.getAttribute("required");
-    
+    var isReq = Pelem.getAttribute("required");
+
     var Pdata = $(Pelem).select2("data")[0];
     console.log($(Pelem).select2("data")[0]);
     var PRODUCT_CAT = Pdata.text;
@@ -70,19 +70,19 @@ function AddEquipment() {
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
         PNAME: PNAME,
       };
-     
+
       console.table(O);
       SelectedValues.push(O);
       PropList += "," + PRODUCT_CAT_ID;
     }
-    if(isReq =="true" && Pdata.id.length==0){
+    if (isReq == "true" && Pdata.id.length == 0) {
       DataHata++;
     }
   }
   ReturnObject.Filters = SelectedValues;
   ReturnObject.PropList = PropList;
   var jsn = JSON.stringify(ReturnObject);
-  if(DataHata>0){
+  if (DataHata > 0) {
     alert("Zorunlu Alanlar var !");
     return false;
   }
@@ -98,7 +98,7 @@ function addEqRow(Obj, jsn) {
   console.log(Obj);
   var div = document.createElement("div");
   div.setAttribute("class", "alert alert-success eq_header");
-  div.setAttribute("style","position:relative")
+  div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PropList);
   var table = document.createElement("table");
   table.setAttribute("class", "EqTableMain");
@@ -224,13 +224,17 @@ function addEqRow(Obj, jsn) {
     Obj.PropList +
     '">0</span> Rows Listed<br><span id="TOTALE_' +
     Obj.PropList +
-    '">0 '+OfferData.OTHER_MONEY+'</span></button>';
+    '">0 ' +
+    OfferData.OTHER_MONEY +
+    "</span></button>";
   var btn =
     '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
     Obj.PropList +
     '">0</span> Rows Listed<br><span id="TOTALE_' +
     Obj.PropList +
-    '">0 '+OfferData.OTHER_MONEY+'</span></button>';
+    '">0 ' +
+    OfferData.OTHER_MONEY +
+    "</span></button>";
   btn = $(btn)[0];
   div.appendChild(btn);
   document.getElementById("BasketArea").appendChild(div);
@@ -242,7 +246,8 @@ function addRowCrs(proplist) {
   var td = document.createElement("td");
   var input = document.createElement("input");
   input.type = "checkbox";
-  input.name = "CBX_" + RowCount;
+  input.name = "CBX";
+  input.id = "CBX_" + RowCount;
   input.setAttribute("class", "SatirSecCbx");
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
@@ -271,18 +276,21 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.setAttribute("style",'text-align:left')
-  input.name = "PRODUCT_CODE_2_" + RowCount;
+  input.setAttribute("style", "text-align:left");
+  input.name = "PRODUCT_CODE_2";
+  input.id = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("proplist", proplist);
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
   div.appendChild(input);
-  var input=document.createElement("input");
-  input.type="hidden";
-  input.name="PRODUCT_ID_"+RowCount;
+  var input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "PRODUCT_ID";
+  input.id = "PRODUCT_ID_" + RowCount;
   div.appendChild(input);
-  var input=document.createElement("input");
-  input.type="hidden";
-  input.name="STOCK_ID_"+RowCount;
+  var input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "STOCK_ID";
+  input.id = "STOCK_ID_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -292,8 +300,9 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "PRODUCT_NAME_" + RowCount;
-  input.setAttribute("style",'text-align:left')
+  input.name = "PRODUCT_NAME";
+  input.id = "PRODUCT_NAME_" + RowCount;
+  input.setAttribute("style", "text-align:left");
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -303,8 +312,9 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "QUANTITY_" + RowCount;
-  input.value=commaSplit(1)
+  input.name = "QUANTITY";
+  input.id = "QUANTITY_" + RowCount;
+  input.value = commaSplit(1);
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -314,7 +324,8 @@ function addRowCrs(proplist) {
   div.setAttribute("class", "form-group");
   var input = document.createElement("select");
   input.setAttribute("type", "text");
-  input.name = "PRODUCT_UNIT_" + RowCount;
+  input.name = "PRODUCT_UNIT";
+  input.id = "PRODUCT_UNIT_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -327,12 +338,14 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "PURCHASE_PRICE_" + RowCount;
-  input.value=commaSplit(1)
+  input.name = "PURCHASE_PRICE";
+  input.id = "PURCHASE_PRICE_" + RowCount;
+  input.value = commaSplit(1);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
-  input.name = "PURCHASE_MONEY_" + RowCount;
+  input.name = "PURCHASE_MONEY";
+  input.id = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -347,8 +360,9 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "SALE_PRICE_" + RowCount;
-  input.value=commaSplit(0)
+  input.name = "SALE_PRICE";
+  input.id = "SALE_PRICE_" + RowCount;
+  input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -367,8 +381,9 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "SALE_DISCOUNT_" + RowCount;
-  input.value=commaSplit(0)
+  input.name = "SALE_DISCOUNT";
+  input.id = "SALE_DISCOUNT_" + RowCount;
+  input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -387,12 +402,14 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "UNIT_PRICE_" + RowCount;
-  input.value=commaSplit(0)
+  input.name = "UNIT_PRICE";
+  input.id = "UNIT_PRICE_" + RowCount;
+  input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
-  input.name = "UNIT_PRICE_MONEY_" + RowCount;
+  input.name = "UNIT_PRICE_MONEY";
+  input.id = "UNIT_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -407,12 +424,14 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "TOTAL_PRICE_" + RowCount;
-  input.value=commaSplit(0)
+  input.name = "TOTAL_PRICE";
+  input.id = "TOTAL_PRICE_" + RowCount;
+  input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
-  input.name = "TOTAL_PRICE_MONEY_" + RowCount;
+  input.name = "TOTAL_PRICE_MONEY";
+  input.id = "TOTAL_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -427,7 +446,8 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "FIRST_REMARK_" + RowCount;
+  input.name = "FIRST_REMARK";
+  input.id = "FIRST_REMARK_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("span");
   input.setAttribute("class", "input-group-addon btnPointer icon-remove");
@@ -444,12 +464,14 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "DELIVERED_ITEMS_" + RowCount;
-  input.value=commaSplit(0)
+  input.name = "DELIVERED_ITEMS";
+  input.id = "DELIVERED_ITEMS_" + RowCount;
+  input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = "";
-  input.name = "DELIVERED_ITEMS_UNIT_" + RowCount;
+  input.name = "DELIVERED_ITEMS_UNIT";
+  input.id = "DELIVERED_ITEMS_UNIT_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -464,12 +486,14 @@ function addRowCrs(proplist) {
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  input.name = "WEIGHT_" + RowCount;
-  input.value=commaSplit(0)
+  input.name = "WEIGHT";
+  input.id = "WEIGHT_" + RowCount;
+  input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = "";
-  input.name = "WEIGHT_UNIT_" + RowCount;
+  input.name = "WEIGHT_UNIT";
+  input.id = "WEIGHT_UNIT_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -491,7 +515,7 @@ function getProduct(el, rc) {
   var keyword = el.value;
 
   var pL = document
-    .getElementsByName("PRODUCT_CODE_2_" + rc)[0]
+    .getElementById("PRODUCT_CODE_2_" + rc)
     .getAttribute("proplist");
   var SearchMainValue = document.getElementById("AddedEquipment_" + pL).value;
   SearchMainValue = JSON.parse(SearchMainValue);
@@ -510,47 +534,58 @@ function getProduct(el, rc) {
 
       if (Obje.RECORD_COUNT >= 1) {
         if (Obje.RECORD_COUNT > 1) {
-          el.setAttribute("style", "color:orange;font-weight:bold;text-align:left;");
-          var btn=document.createElement("button");
-          btn.setAttribute("class","btn btn-warning");
-          
-          btn.innerHTML="<i class='icn-md fa fa-search'></i>";
+          el.setAttribute(
+            "style",
+            "color:orange;font-weight:bold;text-align:left;"
+          );
+          var btn = document.createElement("button");
+          btn.setAttribute("class", "btn btn-warning");
+
+          btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
           el.parentElement.appendChild(btn);
-          el.parentElement.setAttribute("style","display:flex");
-          btn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc="+rc+"&kw="+el.value+"&prp_list="+pL+"')")
-
+          el.parentElement.setAttribute("style", "display:flex");
+          btn.setAttribute(
+            "onclick",
+            "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
+              rc +
+              "&kw=" +
+              el.value +
+              "&prp_list=" +
+              pL +
+              "')"
+          );
         } else {
-          el.setAttribute("style", "color:green;font-weight:bold;text-align:left;");
+          el.setAttribute(
+            "style",
+            "color:green;font-weight:bold;text-align:left;"
+          );
         }
-        document.getElementsByName("PRODUCT_NAME_" + rc)[0].value =
-          Obje.PRODUCT_NAME;
+        document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
 
-          document.getElementsByName("PRODUCT_ID_" + rc)[0].value =
-          Obje.PRODUCT_ID;
-          document.getElementsByName("STOCK_ID_" + rc)[0].value =
-          Obje.STOCK_ID;
-          
-        document.getElementsByName("QUANTITY_" + rc)[0].value = commaSplit(1);
-        document.getElementsByName("PRODUCT_UNIT_" + rc)[0].innerHTML =
+        document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
+        document.getElementById("STOCK_ID_" + rc).value = Obje.STOCK_ID;
+
+        document.getElementById("QUANTITY_" + rc).value = commaSplit(1);
+        document.getElementById("PRODUCT_UNIT_" + rc).innerHTML =
           '<option value="' +
           Obje.MAIN_UNIT +
           '">' +
           Obje.MAIN_UNIT +
           "</option>";
-        document.getElementsByName("PURCHASE_PRICE_" + rc)[0].value = commaSplit(0);
-        document.getElementsByName("SALE_PRICE_" + rc)[0].value = commaSplit(0);
-        document.getElementsByName("SALE_DISCOUNT_" + rc)[0].value = commaSplit(0);
-        document.getElementsByName("UNIT_PRICE_" + rc)[0].value = commaSplit(0);
-        document.getElementsByName("TOTAL_PRICE_" + rc)[0].value = commaSplit(0);
-        document.getElementsByName("DELIVERED_ITEMS_" + rc)[0].value = commaSplit(0);
-        document.getElementsByName("DELIVERED_ITEMS_UNIT_" + rc)[0].innerHTML =
+        document.getElementById("PURCHASE_PRICE_" + rc).value = commaSplit(0);
+        document.getElementById("SALE_PRICE_" + rc).value = commaSplit(0);
+        document.getElementById("SALE_DISCOUNT_" + rc).value = commaSplit(0);
+        document.getElementById("UNIT_PRICE_" + rc).value = commaSplit(0);
+        document.getElementById("TOTAL_PRICE_" + rc).value = commaSplit(0);
+        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(0);
+        document.getElementById("DELIVERED_ITEMS_UNIT_" + rc).innerHTML =
           '<option value="' +
           Obje.MAIN_UNIT +
           '">' +
           Obje.MAIN_UNIT +
           "</option>";
 
-        document.getElementsByName("WEIGHT_" + rc)[0].value = commaSplit(0);
+        document.getElementById("WEIGHT_" + rc).value = commaSplit(0);
       } else {
         el.setAttribute("style", "color:red;font-weight:bold;text-align:left;");
       }
@@ -579,12 +614,16 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
-function UpdateRow(PID,SID,MANCODE,PN,RC,mdl){
-  document.getElementsByName("PRODUCT_ID_"+RC)[0].value=PID
-  document.getElementsByName("STOCK_ID_"+RC)[0].value=SID
-  document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].value=MANCODE
-  document.getElementsByName("PRODUCT_NAME_"+RC)[0].value=PN
-  document.getElementsByName("PRODUCT_CODE_2_"+RC)[0].setAttribute("style","color:green;font-weight:bold;text-align:left;");
-  $(document.getElementsByName("PRODUCT_CODE_2_1")[0].parentElement).find("button").remove();
+function UpdateRow(PID, SID, MANCODE, PN, RC, mdl) {
+  document.getElementById("PRODUCT_ID_" + RC).value = PID;
+  document.getElementById("STOCK_ID_" + RC).value = SID;
+  document.getElementById("PRODUCT_CODE_2_" + RC).value = MANCODE;
+  document.getElementById("PRODUCT_NAME_" + RC).value = PN;
+  document
+    .getElementById("PRODUCT_CODE_2_" + RC)
+    .setAttribute("style", "color:green;font-weight:bold;text-align:left;");
+  $(document.getElementById("PRODUCT_CODE_2_" + RC).parentElement)
+    .find("button")
+    .remove();
   closeBoxDraggable(mdl);
 }
