@@ -302,6 +302,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "QUANTITY_" + RowCount;
+  input.value=commaSplit(1)
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -325,6 +326,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "PURCHASE_PRICE_" + RowCount;
+  input.value=commaSplit(1)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -344,6 +346,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "SALE_PRICE_" + RowCount;
+  input.value=commaSplit(0)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -363,6 +366,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "SALE_DISCOUNT_" + RowCount;
+  input.value=commaSplit(0)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -382,6 +386,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "UNIT_PRICE_" + RowCount;
+  input.value=commaSplit(0)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -401,6 +406,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "TOTAL_PRICE_" + RowCount;
+  input.value=commaSplit(0)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -437,6 +443,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS_" + RowCount;
+  input.value=commaSplit(0)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = "";
@@ -456,6 +463,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "WEIGHT_" + RowCount;
+  input.value=commaSplit(0)
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = "";
