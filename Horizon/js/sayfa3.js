@@ -292,6 +292,12 @@ function addRowCrs(proplist) {
   input.name = "STOCK_ID";
   input.id = "STOCK_ID_" + RowCount;
   div.appendChild(input);
+  var input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "TAX";
+  input.id = "TAX_" + RowCount;
+  div.appendChild(input);
+
   td.appendChild(div);
   tr.appendChild(td);
 
@@ -564,7 +570,7 @@ function getProduct(el, rc) {
 
         document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
         document.getElementById("STOCK_ID_" + rc).value = Obje.STOCK_ID;
-
+document.getElementById("TAX_" + rc).value = Obje.TAX;
         document.getElementById("QUANTITY_" + rc).value = commaSplit(1);
         document.getElementById("PRODUCT_UNIT_" + rc).innerHTML =
           '<option value="' +
@@ -614,8 +620,9 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
-function UpdateRow(PID, SID, MANCODE, PN, RC, mdl) {
+function UpdateRow(PID, SID, TAX,MANCODE, PN, RC, mdl) {
   document.getElementById("PRODUCT_ID_" + RC).value = PID;
+  document.getElementById("TAX_" + RC).value = TAX;
   document.getElementById("STOCK_ID_" + RC).value = SID;
   document.getElementById("PRODUCT_CODE_2_" + RC).value = MANCODE;
   document.getElementById("PRODUCT_NAME_" + RC).value = PN;
