@@ -292,6 +292,7 @@ function addRowCrs(proplist) {
   input.name = "STOCK_ID";
   input.id = "STOCK_ID_" + RowCount;
   div.appendChild(input);
+  
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "TAX";
