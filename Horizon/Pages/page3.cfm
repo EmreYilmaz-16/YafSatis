@@ -1,6 +1,49 @@
 <!--<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />---->
 
 <!--- Yönlendirme Başlangıç --->
+<cfquery name="getMoney" datasource="#dsn#">
+    SELECT (
+            SELECT RATE1
+            FROM #DSN#.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM #DSN#.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE1
+        ,(
+            SELECT RATE2
+            FROM #DSN#.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM #DSN#.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE2
+        ,SM.MONEY
+    FROM #DSN#.SETUP_MONEY AS SM
+    WHERE SM.PERIOD_ID = #session.ep.period_id#
+</cfquery>
+<script>
+    var DataSources={
+        DSN:"<cfoutput>#dsn#</cfoutput>",
+        DSN1:"<cfoutput>#dsn1#</cfoutput>",
+        DSN2:"<cfoutput>#dsn2#</cfoutput>",
+        DSN3:"<cfoutput>#dsn3#</cfoutput>",
+    }
+    var ACTIVE_COMPANY="<CFOUTPUT>#session.ep.company_id#</CFOUTPUT>";
+    var MONEY_ARR=[
+        <cfoutput query="getMoney">
+            {
+                RATE1:#RATE1#,
+                RATE2:#RATE2#,
+                MONEY:'#MONEY#',
+                SELECTED:0
+            },
+        </cfoutput>
+    ]
+    
+</script>
 
 <style>
 *{
