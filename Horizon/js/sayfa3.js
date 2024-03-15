@@ -395,7 +395,8 @@ function addRowCrs(proplist) {
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
-  input.name = "SALE_DISCOUNT_MONEY_" + RowCount;
+  input.name = "SALE_DISCOUNT_MONEY" ;
+  input.id = "SALE_DISCOUNT_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
