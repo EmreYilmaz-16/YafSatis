@@ -215,6 +215,10 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
     },
     success: function (retdat) {
       console.log("Kaydettim");
+      var Obj=JSON.parse(retdat);
+      if(Obj.STATUS == 1){
+        window.location.href="sale.emptypopup_hrz_pbs_sayfa3&offer_id="+Obj.OFFER_ID
+      }
     },
   });
 }

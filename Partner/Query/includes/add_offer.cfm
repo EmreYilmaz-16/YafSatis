@@ -205,6 +205,7 @@
 			)
 		</cfquery>
 		<cfset GET_MAX_OFFER.max_id = GET_MAX_OFFER.IDENTITYCOL>
+		<CFSET RETURNED_OFFER_ID=GET_MAX_OFFER.IDENTITYCOL>
         <cfset dsn_type=dsn3>
 		<cfif len(attributes.rows_)>
 		<cfloop from="1" to="#attributes.rows_#" index="I">
