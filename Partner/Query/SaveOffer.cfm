@@ -68,6 +68,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.consumer_id="">
 <cfset attributes.reserved=1>
 <CFSET attributes.SALES_EMP_ID=FormData.SALES_EMP_ID>
+<CFSET attributes.SALES_EMP =FormData.SALES_EMP>
 <CFSET attributes.PROJECT_HEAD ="">
 <CFSET attributes.WESSEL_ID=FormData.SHIP_ID>
 <CFSET attributes.TRANSIT_WAREHOUSE=FormData.TRANSIT_WAREHOUSE>
