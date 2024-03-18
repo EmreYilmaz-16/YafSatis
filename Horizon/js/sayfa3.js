@@ -292,7 +292,7 @@ function addRowCrs(proplist) {
   input.name = "STOCK_ID";
   input.id = "STOCK_ID_" + RowCount;
   div.appendChild(input);
-  
+
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "TAX";
@@ -322,6 +322,7 @@ function addRowCrs(proplist) {
   input.name = "QUANTITY";
   input.id = "QUANTITY_" + RowCount;
   input.value = commaSplit(1);
+  input.setAttribute("onchange","AlayiniHesapla()")
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -370,11 +371,13 @@ function addRowCrs(proplist) {
   input.name = "SALE_PRICE";
   input.id = "SALE_PRICE_" + RowCount;
   input.value = commaSplit(0);
+  input.setAttribute("onchange","AlayiniHesapla()")
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_MONEY";
   input.id = "SALE_MONEY_" + RowCount;
+  input.setAttribute("readonly","yes")
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -392,10 +395,12 @@ function addRowCrs(proplist) {
   input.name = "SALE_DISCOUNT";
   input.id = "SALE_DISCOUNT_" + RowCount;
   input.value = commaSplit(0);
+  input.setAttribute("onchange","AlayiniHesapla()")
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
-  input.name = "SALE_DISCOUNT_MONEY" ;
+  input.name = "SALE_DISCOUNT_MONEY";
+  input.setAttribute("readonly","yes")
   input.id = "SALE_DISCOUNT_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -414,12 +419,14 @@ function addRowCrs(proplist) {
   input.name = "UNIT_PRICE";
   input.id = "UNIT_PRICE_" + RowCount;
   input.value = commaSplit(0);
+  input.setAttribute("readonly","yes")
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "UNIT_PRICE_MONEY";
   input.id = "UNIT_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
+  input.setAttribute("readonly","yes")
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
@@ -435,12 +442,14 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "TOTAL_PRICE";
   input.id = "TOTAL_PRICE_" + RowCount;
+  input.setAttribute("readonly","yes")
   input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "TOTAL_PRICE_MONEY";
   input.id = "TOTAL_PRICE_MONEY_" + RowCount;
+  input.setAttribute("readonly","yes")
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -573,7 +582,7 @@ function getProduct(el, rc) {
 
         document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
         document.getElementById("STOCK_ID_" + rc).value = Obje.STOCK_ID;
-document.getElementById("TAX_" + rc).value = Obje.TAX;
+        document.getElementById("TAX_" + rc).value = Obje.TAX;
         document.getElementById("QUANTITY_" + rc).value = commaSplit(1);
         document.getElementById("PRODUCT_UNIT_" + rc).innerHTML =
           '<option value="' +
@@ -593,7 +602,7 @@ document.getElementById("TAX_" + rc).value = Obje.TAX;
           '">' +
           Obje.MAIN_UNIT +
           "</option>";
-
+          AlayiniHesapla();
         document.getElementById("WEIGHT_" + rc).value = commaSplit(0);
       } else {
         el.setAttribute("style", "color:red;font-weight:bold;text-align:left;");
@@ -623,7 +632,7 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
-function UpdateRow(PID, SID, TAX,MANCODE, PN, RC, mdl) {
+function UpdateRow(PID, SID, TAX, MANCODE, PN, RC, mdl) {
   document.getElementById("PRODUCT_ID_" + RC).value = PID;
   document.getElementById("TAX_" + RC).value = TAX;
   document.getElementById("STOCK_ID_" + RC).value = SID;
@@ -636,4 +645,190 @@ function UpdateRow(PID, SID, TAX,MANCODE, PN, RC, mdl) {
     .find("button")
     .remove();
   closeBoxDraggable(mdl);
+  AlayiniHesapla();
+}
+
+var AktifSepet = [];
+var OfferSettings = {
+  IS_TAX_ZERO: 1,
+};
+var OrderFooter = {
+  NET_TOTAL: 0,
+  PRICE: 0,
+  OTHER_MONEY: "TL",
+};
+function AlayiniHesapla() {
+ AktifSepet=[];
+  OrderFooter = {
+  NET_TOTAL: 0,
+  PRICE: 0,
+  OTHER_MONEY: "TL",
+};
+  var SepetSeperatorler = document.getElementById("BasketArea").children;
+  for (let i = 0; i < SepetSeperatorler.length; i++) {
+    var Seperator = SepetSeperatorler[i];
+    var PropList = Seperator.getAttribute("data-proplist");
+    // console.log(PropList)
+    var Sepet = document.getElementById("SubSepetBody_" + PropList);
+    var SeperatorToplam = 0;
+    var Jcount = Sepet.children.length;
+    document.getElementById("RC_" + PropList).innerText = Jcount;
+    var SEPET_SIRA = 0;
+    var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+    console.table(AKTIF_KUR);
+    for (let j = 0; j < Sepet.children.length; j++) {
+      var SepetItem = Sepet.children[j];
+      SEPET_SIRA++;
+      // console.log(SepetItem)
+      var PRODUCT_ID = DegeriGetir(SepetItem, "PRODUCT_ID", 1);
+      var PRODUCT_NAME = DegeriGetir(SepetItem, "PRODUCT_NAME", 0);
+      var PRODUCT_CODE_2 = DegeriGetir(SepetItem, "PRODUCT_CODE_2", 0);
+
+      var TAX_RATE = 0;
+      if (OfferSettings.IS_TAX_ZERO == 0)
+        TAX_RATE = DegeriGetir(SepetItem, "TAX", 2, 0);
+      var STOCK_ID = DegeriGetir(SepetItem, "STOCK_ID", 1);
+      var AMOUNT = DegeriGetir(SepetItem, "QUANTITY", 2, 1);
+      var PRODUCT_UNIT = DegeriGetir(SepetItem, "PRODUCT_UNIT", 0);
+      var PURCHASE_PRICE = DegeriGetir(SepetItem, "PURCHASE_PRICE", 2, 1);
+      var PURCHASE_MONEY = DegeriGetir(SepetItem, "PURCHASE_MONEY", 0);
+      var SALE_PRICE = DegeriGetir(SepetItem, "SALE_PRICE", 2, 1);
+      var SALE_MONEY = DegeriGetir(SepetItem, "SALE_MONEY", 0);
+      var SALE_DISCOUNT = DegeriGetir(SepetItem, "SALE_DISCOUNT", 2, 1);
+      var SALE_DISCOUNT_MONEY = DegeriGetir(
+        SepetItem,
+        "SALE_DISCOUNT_MONEY",
+        0,
+        0
+      );
+      var TOTAL_PRICE_MONEY = DegeriGetir(SepetItem, "TOTAL_PRICE_MONEY", 0, 0);
+      var UNIT_PRICE = SALE_PRICE - SALE_DISCOUNT;
+      DegerYaz(SepetItem, "UNIT_PRICE", 2, UNIT_PRICE);
+      var TOTAL_PRICE = 0;
+      if (AKTIF_KUR.MONEY == TOTAL_PRICE_MONEY) {
+        TOTAL_PRICE = UNIT_PRICE * AMOUNT;
+      } else {
+        var Cx = MONEY_ARR.findIndex((p) => p.MONEY == TOTAL_PRICE_MONEY);
+        var SatirKur = MONEY_ARR[Cx];
+        var CRROS_RATE = AKTIF_KUR.RATE2 / SatirKur.RATE2;
+        console.log(CRROS_RATE);
+        TOTAL_PRICE = UNIT_PRICE * AMOUNT * CRROS_RATE;
+      }
+
+      var PRICE_OTHER = SALE_PRICE;
+      var PRICE = SALE_PRICE * AKTIF_KUR.RATE2;
+
+      DegerYaz(SepetItem, "TOTAL_PRICE", 2, TOTAL_PRICE);
+      var TL_TOTAL_PRICE = UNIT_PRICE * AMOUNT * AKTIF_KUR.RATE2;
+
+      var TAX = (TL_TOTAL_PRICE * TAX_RATE) / 100;
+      var WITH_TAX = TL_TOTAL_PRICE + TAX;
+
+      var Urun = {
+        PRODUCT_ID: PRODUCT_ID,
+        STOCK_ID: STOCK_ID,
+        PRODUCT_NAME: PRODUCT_NAME,
+        PRODUCT_CODE_2: PRODUCT_CODE_2,
+        AMOUNT: AMOUNT,
+        PRICE_OTHER: PRICE_OTHER, //workcube standart alan
+        PRICE: PRICE, //workcube standart alan
+        OTHER_MONEY: OfferData.OTHER_MONEY, //WORKCUBE STANDART ALAN
+        OTHER_MONEY_VALUE: TOTAL_PRICE, //WORKCUBE STANDART ALAN
+        DISCOUNT_COST: SALE_DISCOUNT, //WORKCUBE STANDART ALAN
+        TL_TOTAL_PRICE: TL_TOTAL_PRICE,
+        PRODUCT_UNIT: PRODUCT_UNIT,
+        PURCHASE_PRICE: PURCHASE_PRICE,
+        PURCHASE_MONEY: PURCHASE_MONEY,
+        SALE_PRICE: SALE_PRICE,
+        SALE_PRICE: SALE_PRICE,
+        SALE_MONEY: SALE_MONEY,
+        SALE_DISCOUNT: SALE_DISCOUNT,
+
+        SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
+        UNIT_PRICE: UNIT_PRICE,
+        TOTAL_PRICE: TOTAL_PRICE,
+        TOTAL_PRICE_MONEY: TOTAL_PRICE_MONEY,
+        TAX_RATE: TAX_RATE,
+        TAX: TAX,
+        WITH_TAX: WITH_TAX,
+        RATE2: AKTIF_KUR.RATE2,
+        SEPET_SIRA: SEPET_SIRA,
+      };
+      Urun.TLF = Urun.OTHER_MONEY_VALUE * AKTIF_KUR.RATE2;
+      if (Urun.TOTAL_PRICE_MONEY == AKTIF_KUR.MONEY) {
+        SeperatorToplam += Urun.TOTAL_PRICE;
+      } else {
+        var cbx = MONEY_ARR.findIndex((p) => p.MONEY == Urun.TOTAL_PRICE_MONEY);
+        var r2 = MONEY_ARR[cbx].RATE2;
+        SeperatorToplam += Urun.TOTAL_PRICE * r2;
+      }
+      OrderFooter.NET_TOTAL += Urun.TL_TOTAL_PRICE;
+      AktifSepet.push(Urun);
+    }
+    document.getElementById("TOTALE_" + PropList).innerText =
+      commaSplit(SeperatorToplam);
+  }
+}
+
+function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
+  // console.log(arguments)
+  var DonusDegeri = $(Satir)
+    .find("input[name='" + Name + "']")
+    .val();
+  var DVX = 0;
+  if (DonusDegeri) {
+    if (tip == 0) {
+      DVX = DonusDegeri;
+    } else if (tip == 1) {
+      DVX = parseInt(DonusDegeri);
+    } else if (tip == 2) {
+      DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+    }
+    if (up_row == 1) {
+      if (tip == 2 || tip == 1) {
+        $(Satir)
+          .find("input[name='" + Name + "']")
+          .val(commaSplit(DVX));
+      }
+    }
+  } else {
+    var DonusDegeri = $(Satir)
+      .find("select[name='" + Name + "']")
+      .val();
+    if (tip == 0) {
+      DVX = DonusDegeri;
+    } else if (tip == 1) {
+      DVX = parseInt(DonusDegeri);
+    } else if (tip == 2) {
+      DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+    }
+  }
+  return DVX;
+}
+function DegerYaz(Satir, Name, tip = 0, vals) {
+  var DonusDegeri = $(Satir).find("input[name='" + Name + "']")[0];
+  var DVX = 0;
+  if (DonusDegeri) {
+    if (tip == 0) {
+      DVX = vals;
+    } else if (tip == 1) {
+      DVX = commaSplit(vals);
+    } else if (tip == 2) {
+      DVX = commaSplit(vals);
+    }
+  } else {
+    DonusDegeri = $(Satir).find("select[name='" + Name + "']")[0];
+    if (tip == 0) {
+      DVX = vals;
+    } else if (tip == 1) {
+      DVX = parseInt(vals);
+    } else if (tip == 2) {
+      DVX = parseFloat(filterNum(commaSplit(vals)));
+    }
+  }
+  $(DonusDegeri).val(DVX);
+}
+function KurGetir(money) {
+  var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
+  return MONEY_ARR[ix];
 }
