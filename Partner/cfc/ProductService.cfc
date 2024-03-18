@@ -139,7 +139,7 @@ WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#'
 <cfsavecontent  variable="control5">
     <cfdump  var="#CGI#">                
     <cfdump  var="#getProd#">
-    
+    <cfdump  var="#FData#">
     
    </cfsavecontent>
    <cffile action="write" file = "c:\SearchProduct.html" output="#control5#"></cffile>
