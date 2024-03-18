@@ -139,7 +139,7 @@ WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#'
 </cfquery>
 <cfsavecontent  variable="control5">
     <cfdump  var="#CGI#">                
-    <cfdump  var="#getSearchParams#">
+    
     <cfdump  var="#getProd#">
     <cfdump  var="#FData#">
     
