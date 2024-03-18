@@ -129,11 +129,16 @@ FROM (
 	WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
 	) AS TT
 WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
-<cfloop query ="getSearchParams" > 
+<cfloop array="#FData.SearchMainValue.Filters#">
+   <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#%,'</cfif>
+</cfloop>
+
+<!---<cfloop query ="getSearchParams" > 
     
         AND DTP LIKE '%#SEARCH_PARAM#,%' 
     
-</cfloop>
+</cfloop>--->
+
 
 </cfquery>
 <cfsavecontent  variable="control5">
