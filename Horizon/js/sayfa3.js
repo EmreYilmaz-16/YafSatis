@@ -834,30 +834,38 @@ function KurGetir(money) {
   return MONEY_ARR[ix];
 }
 
-function OzetOlustur() {
-  var T_OZET = "";
-  var Seperators = document.getElementById("BasketArea").children;
-  console.log(Seperators);
-  for (let i = 0; i < Seperators.length; i++) {
-    var aSeperator = Seperators[i];
-    var tx = $(aSeperator).find("table");
-    var BB = tx[0].children[0].cells;
-    T_OZET += "<p>";
-    var PropList = aSeperator.getAttribute("data-proplist");
-    // console.log(PropList)
-    var Sepet = document.getElementById("SubSepetBody_" + PropList);
-    console.log(Sepet.children.length);
-    for (let j = 0; j < BB.length; j++) {
-      var B = BB[j];
+function OzetOlustur(){
+  var T_OZET="<ul>";
+  var Seperators=document.getElementById("BasketArea").children
+  console.log(Seperators)
+  for(let i=0;i<Seperators.length;i++){
+      var aSeperator=Seperators[i];
+      var tx=$(aSeperator).find("table");
+      var BB=tx[0].children[0].cells;
+      T_OZET+="<li><table class='table'><tr><td>"
+      var PropList = aSeperator.getAttribute("data-proplist");
+  // console.log(PropList)
+  var Sepet = document.getElementById("SubSepetBody_" + PropList);
+      console.log(Sepet.children.length)
+      for(let j=0;j<BB.length;j++){
+          var B=BB[j]
+          
+         try{ 
+             T_OZET+=B.lastChild.innerText 
+            
+            }catch {
 
-      try {
-        T_OZET += B.lastChild.innerText + "->";
-      } catch {}
-    }
+             
+            }
+          
+      }
 
-    //T_OZET+="</p>"
-    T_OZET += "= " + Sepet.children.length + "</p>";
+      //T_OZET+="</p>"
+      T_OZET+="</td><td> "+Sepet.children.length+"</</td></tr></table></li>"
+      
   }
-  console.log(T_OZET);
-  document.getElementById("OzetAlani").html = T_OZET;
+  T_OZET+="</ul>"
+console.log(T_OZET)  
+  $("#OzetAlani").html(T_OZET);
+  
 }
