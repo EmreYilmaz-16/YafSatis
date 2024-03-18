@@ -136,7 +136,13 @@ WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#'
 </cfloop>
 
 </cfquery>
-
+<cfsavecontent  variable="control5">
+    <cfdump  var="#CGI#">                
+    <cfdump  var="#getProd#">
+    
+    
+   </cfsavecontent>
+   <cffile action="write" file = "c:\SearchProduct.html" output="#control5#"></cffile>
 <!-----
     	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
 			INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
