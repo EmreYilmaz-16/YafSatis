@@ -130,7 +130,7 @@ FROM (
 	) AS TT
 WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
 <cfloop array="#FData.SearchMainValue.Filters#" item="it">
-   <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#%,'</cfif>
+   <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
 </cfloop>
 
 
