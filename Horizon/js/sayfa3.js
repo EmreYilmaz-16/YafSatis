@@ -104,6 +104,11 @@ function addEqRow(Obj, jsn) {
   table.setAttribute("class", "EqTableMain");
   var tr = document.createElement("tr");
   var td = document.createElement("td");
+  var b0 = document.createElement("button");
+  b0.setAttribute("class", "ui-wrk-btn");
+  var spn = '<span class="icn-md icon-down"></span>';
+  b0.innerHTML = spn;
+  b0.setAttribute("onclick", "$('#SLO_'" + Obj.PropList + ").toggle()");
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
   var spn = '<span class="icn-md fa fa-check-square-o"></span>';
@@ -193,6 +198,7 @@ function addEqRow(Obj, jsn) {
   div.appendChild(table);
   var div2 = document.createElement("div");
   div2.setAttribute("style", "background:white");
+  div2.setAttribute("id", "SLO_" + Obj.PropList);
   var Table = document.createElement("table");
   Table.setAttribute("class", "SubSepet table");
   var thead = document.createElement("thead");
@@ -242,6 +248,7 @@ function addEqRow(Obj, jsn) {
 }
 
 function addRowCrs(proplist) {
+  $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
   var td = document.createElement("td");
   var input = document.createElement("input");
@@ -655,7 +662,7 @@ var OfferSettings = {
 var OrderFooter = {
   NET_TOTAL: 0,
   PRICE: 0,
-  TOTAL_PRICE:0,
+  TOTAL_PRICE: 0,
   OTHER_MONEY: "TL",
 };
 function AlayiniHesapla() {
@@ -663,7 +670,7 @@ function AlayiniHesapla() {
   OrderFooter = {
     NET_TOTAL: 0,
     PRICE: 0,
-    TOTAL_PRICE:0,
+    TOTAL_PRICE: 0,
     OTHER_MONEY: "TL",
   };
   var SepetSeperatorler = document.getElementById("BasketArea").children;
@@ -764,13 +771,13 @@ function AlayiniHesapla() {
         var r2 = MONEY_ARR[cbx].RATE2;
         SeperatorToplam += Urun.TOTAL_PRICE * r2;
       }
-      
+
       OrderFooter.NET_TOTAL += Urun.TL_TOTAL_PRICE;
       AktifSepet.push(Urun);
     }
     document.getElementById("TOTALE_" + PropList).innerText =
       commaSplit(SeperatorToplam);
-      OrderFooter.TOTAL_PRICE+=SeperatorToplam;
+    OrderFooter.TOTAL_PRICE += SeperatorToplam;
   }
   OzetOlustur();
 }
@@ -838,39 +845,33 @@ function KurGetir(money) {
   return MONEY_ARR[ix];
 }
 
-function OzetOlustur(){
-  var T_OZET="<ul>";
-  var Seperators=document.getElementById("BasketArea").children
-  console.log(Seperators)
-  for(let i=0;i<Seperators.length;i++){
-      var aSeperator=Seperators[i];
-      var tx=$(aSeperator).find("table");
-      var BB=tx[0].children[0].cells;
-      T_OZET+="<li><table class='table'><tr><td>"
-      var PropList = aSeperator.getAttribute("data-proplist");
-  // console.log(PropList)
-  var Sepet = document.getElementById("SubSepetBody_" + PropList);
-      console.log(Sepet.children.length)
-      for(let j=0;j<BB.length;j++){
-          var B=BB[j]
-          
-         try{ 
-             T_OZET+=B.lastChild.innerText +'->'
-            
-            }catch {
+function OzetOlustur() {
+  var T_OZET = "<ul>";
+  var Seperators = document.getElementById("BasketArea").children;
+  console.log(Seperators);
+  for (let i = 0; i < Seperators.length; i++) {
+    var aSeperator = Seperators[i];
+    var tx = $(aSeperator).find("table");
+    var BB = tx[0].children[0].cells;
+    T_OZET += "<li><table class='table'><tr><td>";
+    var PropList = aSeperator.getAttribute("data-proplist");
+    // console.log(PropList)
+    var Sepet = document.getElementById("SubSepetBody_" + PropList);
+    console.log(Sepet.children.length);
+    for (let j = 0; j < BB.length; j++) {
+      var B = BB[j];
 
-             
-            }
-          
-      }
+      try {
+        T_OZET += B.lastChild.innerText + "->";
+      } catch {}
+    }
 
-      //T_OZET+="</p>"
-      T_OZET+="</td><td> "+Sepet.children.length+"</</td></tr></table></li>"
-      
+    //T_OZET+="</p>"
+    T_OZET +=
+      "</td><td> " + Sepet.children.length + "</</td></tr></table></li>";
   }
-  T_OZET+="</ul>"
-console.log(T_OZET)  
+  T_OZET += "</ul>";
+  console.log(T_OZET);
   $("#OzetAlani").html(T_OZET);
-  
 }
-OzetOlustur()
+OzetOlustur();
