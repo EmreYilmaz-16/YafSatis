@@ -842,7 +842,7 @@ function OzetOlustur(){
       var aSeperator=Seperators[i];
       var tx=$(aSeperator).find("table");
       var BB=tx[0].children[0].cells;
-      T_OZET+="<li><table class='table'><tr>"
+      T_OZET+="<li><table class='table'><tr><td>"
       var PropList = aSeperator.getAttribute("data-proplist");
   // console.log(PropList)
   var Sepet = document.getElementById("SubSepetBody_" + PropList);
@@ -851,7 +851,7 @@ function OzetOlustur(){
           var B=BB[j]
           
          try{ 
-             T_OZET+="<td>"+B.lastChild.innerText +"</td>"
+             T_OZET+=B.lastChild.innerText +'->'
             
             }catch {
 
@@ -861,7 +861,7 @@ function OzetOlustur(){
       }
 
       //T_OZET+="</p>"
-      T_OZET+="<td> "+Sepet.children.length+"</</td></tr></table></li>"
+      T_OZET+="</td><td> "+Sepet.children.length+"</</td></tr></table></li>"
       
   }
   T_OZET+="</ul>"
@@ -869,3 +869,4 @@ console.log(T_OZET)
   $("#OzetAlani").html(T_OZET);
   
 }
+OzetOlustur()
