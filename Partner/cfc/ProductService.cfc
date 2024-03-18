@@ -100,7 +100,7 @@ INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_
   WHERE 1=1
   <cfif arrayLen(FData.SearchMainValue.Filters) gt 1>
   AND  PROPERTY_DETAIL_ID IN (
-        <cfloop array="#FData.SearchMainValue.Filters#" item="it"><cfif it.PNAME neq "EQUIPMENT"></cfif>
+        <cfloop array="#FData.SearchMainValue.Filters#" item="it"><cfif it.PNAME.trim() neq "EQUIPMENT"></cfif>
         #it.PRODUCT_CAT_ID#,
         </cfloop>0
 )
