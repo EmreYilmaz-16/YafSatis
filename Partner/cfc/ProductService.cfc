@@ -92,7 +92,7 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
         <cfargument name="FormData">
 
 <cfset FData=deserializeJSON(arguments.FormData)>
-
+<!----
 <cfquery name="getSearchParams" datasource="#dsn#">
     select PP.PROPERTY+'-'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID) as SEARCH_PARAM from CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
@@ -107,7 +107,7 @@ INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_
 </cfif>
 
 </cfquery>
-
+---->
 
 
 
@@ -133,11 +133,7 @@ WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#'
    <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#%,'</cfif>
 </cfloop>
 
-<!---<cfloop query ="getSearchParams" > 
-    
-        AND DTP LIKE '%#SEARCH_PARAM#,%' 
-    
-</cfloop>--->
+
 
 
 </cfquery>
