@@ -322,7 +322,7 @@ function addRowCrs(proplist) {
   input.name = "QUANTITY";
   input.id = "QUANTITY_" + RowCount;
   input.value = commaSplit(1);
-  input.setAttribute("onchange","AlayiniHesapla()")
+  input.setAttribute("onchange", "AlayiniHesapla()");
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
@@ -371,13 +371,13 @@ function addRowCrs(proplist) {
   input.name = "SALE_PRICE";
   input.id = "SALE_PRICE_" + RowCount;
   input.value = commaSplit(0);
-  input.setAttribute("onchange","AlayiniHesapla()")
+  input.setAttribute("onchange", "AlayiniHesapla()");
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_MONEY";
   input.id = "SALE_MONEY_" + RowCount;
-  input.setAttribute("readonly","yes")
+  input.setAttribute("readonly", "yes");
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -395,12 +395,12 @@ function addRowCrs(proplist) {
   input.name = "SALE_DISCOUNT";
   input.id = "SALE_DISCOUNT_" + RowCount;
   input.value = commaSplit(0);
-  input.setAttribute("onchange","AlayiniHesapla()")
+  input.setAttribute("onchange", "AlayiniHesapla()");
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_DISCOUNT_MONEY";
-  input.setAttribute("readonly","yes")
+  input.setAttribute("readonly", "yes");
   input.id = "SALE_DISCOUNT_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -419,14 +419,14 @@ function addRowCrs(proplist) {
   input.name = "UNIT_PRICE";
   input.id = "UNIT_PRICE_" + RowCount;
   input.value = commaSplit(0);
-  input.setAttribute("readonly","yes")
+  input.setAttribute("readonly", "yes");
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "UNIT_PRICE_MONEY";
   input.id = "UNIT_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
-  input.setAttribute("readonly","yes")
+  input.setAttribute("readonly", "yes");
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
@@ -442,14 +442,14 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "TOTAL_PRICE";
   input.id = "TOTAL_PRICE_" + RowCount;
-  input.setAttribute("readonly","yes")
+  input.setAttribute("readonly", "yes");
   input.value = commaSplit(0);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "TOTAL_PRICE_MONEY";
   input.id = "TOTAL_PRICE_MONEY_" + RowCount;
-  input.setAttribute("readonly","yes")
+  input.setAttribute("readonly", "yes");
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -602,7 +602,7 @@ function getProduct(el, rc) {
           '">' +
           Obje.MAIN_UNIT +
           "</option>";
-          AlayiniHesapla();
+        AlayiniHesapla();
         document.getElementById("WEIGHT_" + rc).value = commaSplit(0);
       } else {
         el.setAttribute("style", "color:red;font-weight:bold;text-align:left;");
@@ -658,12 +658,12 @@ var OrderFooter = {
   OTHER_MONEY: "TL",
 };
 function AlayiniHesapla() {
- AktifSepet=[];
+  AktifSepet = [];
   OrderFooter = {
-  NET_TOTAL: 0,
-  PRICE: 0,
-  OTHER_MONEY: "TL",
-};
+    NET_TOTAL: 0,
+    PRICE: 0,
+    OTHER_MONEY: "TL",
+  };
   var SepetSeperatorler = document.getElementById("BasketArea").children;
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
@@ -768,6 +768,7 @@ function AlayiniHesapla() {
     document.getElementById("TOTALE_" + PropList).innerText =
       commaSplit(SeperatorToplam);
   }
+  OzetOlustur();
 }
 
 function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
@@ -831,4 +832,32 @@ function DegerYaz(Satir, Name, tip = 0, vals) {
 function KurGetir(money) {
   var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
   return MONEY_ARR[ix];
+}
+
+function OzetOlustur() {
+  var T_OZET = "";
+  var Seperators = document.getElementById("BasketArea").children;
+  console.log(Seperators);
+  for (let i = 0; i < Seperators.length; i++) {
+    var aSeperator = Seperators[i];
+    var tx = $(aSeperator).find("table");
+    var BB = tx[0].children[0].cells;
+    T_OZET += "<p>";
+    var PropList = aSeperator.getAttribute("data-proplist");
+    // console.log(PropList)
+    var Sepet = document.getElementById("SubSepetBody_" + PropList);
+    console.log(Sepet.children.length);
+    for (let j = 0; j < BB.length; j++) {
+      var B = BB[j];
+
+      try {
+        T_OZET += B.lastChild.innerText + "->";
+      } catch {}
+    }
+
+    //T_OZET+="</p>"
+    T_OZET += "= " + Sepet.children.length + "</p>";
+  }
+  console.log(T_OZET);
+  document.getElementById("OzetAlani").html = T_OZET;
 }
