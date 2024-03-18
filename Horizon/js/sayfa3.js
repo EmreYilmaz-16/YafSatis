@@ -655,6 +655,7 @@ var OfferSettings = {
 var OrderFooter = {
   NET_TOTAL: 0,
   PRICE: 0,
+  TOTAL_PRICE:0,
   OTHER_MONEY: "TL",
 };
 function AlayiniHesapla() {
@@ -662,6 +663,7 @@ function AlayiniHesapla() {
   OrderFooter = {
     NET_TOTAL: 0,
     PRICE: 0,
+    TOTAL_PRICE:0,
     OTHER_MONEY: "TL",
   };
   var SepetSeperatorler = document.getElementById("BasketArea").children;
@@ -762,11 +764,13 @@ function AlayiniHesapla() {
         var r2 = MONEY_ARR[cbx].RATE2;
         SeperatorToplam += Urun.TOTAL_PRICE * r2;
       }
+      
       OrderFooter.NET_TOTAL += Urun.TL_TOTAL_PRICE;
       AktifSepet.push(Urun);
     }
     document.getElementById("TOTALE_" + PropList).innerText =
       commaSplit(SeperatorToplam);
+      OrderFooter.TOTAL_PRICE+=SeperatorToplam;
   }
   OzetOlustur();
 }

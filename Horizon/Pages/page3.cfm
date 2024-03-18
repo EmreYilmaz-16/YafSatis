@@ -311,6 +311,9 @@
 <div id="OzetAlani">
 
 </div>
+<div id="SubTotalArea">
+    
+</div>
             </div>
         </div>
     </div>
