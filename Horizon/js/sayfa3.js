@@ -920,5 +920,14 @@ $("#total_discount_wanted").val(commaSplit(OrderFooter.total_discount_wanted))
 $("#total_discount_wanted_").val(commaSplit(OrderFooter.total_discount_wanted*AKTIF_KUR.RATE2))
 $("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted))
 $("#total_tax_wanted_").val(commaSplit(OrderFooter.total_tax_wanted*AKTIF_KUR.RATE2))
+
+OrderFooter.brut_total_wanted_=OrderFooter.brut_total_wanted*AKTIF_KUR.RATE2
+OrderFooter.genel_indirim__=OrderFooter.genel_indirim_*AKTIF_KUR.RATE2
+OrderFooter.net_total_wanted_=OrderFooter.net_total_wanted*AKTIF_KUR.RATE2
+OrderFooter.total_default_=OrderFooter.total_default*AKTIF_KUR.RATE2
+OrderFooter.total_discount_wanted_=OrderFooter.total_discount_wanted*AKTIF_KUR.RATE2
+OrderFooter.total_tax_wanted_=OrderFooter.total_tax_wanted*AKTIF_KUR.RATE2
+
+
 }
 

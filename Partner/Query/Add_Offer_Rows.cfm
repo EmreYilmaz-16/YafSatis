@@ -1,3 +1,4 @@
+
 <cfquery name="Del" datasource="#dsn3#">
     DELETE FROM PBS_OFFER_ROW WHERE OFFER_ID=#attributes.OFFER_ID#;
 </cfquery>
