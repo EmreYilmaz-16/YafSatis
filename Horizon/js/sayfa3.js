@@ -793,6 +793,7 @@ function AlayiniHesapla() {
   if (FlDis.length > 0) {
     FlDis = filterNum(commaSplit(FlDis));
     FlDis = parseFloat(FlDis);
+    document.getElementById("genel_indirim_").value = commaSplit(FlDis);
   } else {
     document.getElementById("genel_indirim_").value = commaSplit(0);
     FlDis = 0;
