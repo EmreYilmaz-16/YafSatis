@@ -1,5 +1,6 @@
 <cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
+    <cfset dsn3="#dsn#_1">
     <cffunction name="getOfferCurrencies" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfquery name="getAll" datasource="#dsn#">
             select OFFER_CURRENCY_ID,OFFER_CURRENCY  from CatalystQA_1.OFFER_CURRENCY
