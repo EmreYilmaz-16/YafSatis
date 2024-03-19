@@ -660,18 +660,24 @@ var OfferSettings = {
   IS_TAX_ZERO: 1,
 };
 var OrderFooter = {
-  NET_TOTAL: 0,
-  PRICE: 0,
-  TOTAL_PRICE: 0,
-  OTHER_MONEY: "TL",
+  total_default: 0,
+  genel_indirim_: 0,
+  total_discount_wanted: 0,
+  brut_total_wanted: 0,
+  total_tax_wanted: 0,
+  net_total_wanted: 0,
+  other_money: "TL",
 };
 function AlayiniHesapla() {
   AktifSepet = [];
-  OrderFooter = {
-    NET_TOTAL: 0,
-    PRICE: 0,
-    TOTAL_PRICE: 0,
-    OTHER_MONEY: "TL",
+  var OrderFooter = {
+    total_default: 0,
+    genel_indirim_: 0,
+    total_discount_wanted: 0,
+    brut_total_wanted: 0,
+    total_tax_wanted: 0,
+    net_total_wanted: 0,
+    other_money: "TL",
   };
   var SepetSeperatorler = document.getElementById("BasketArea").children;
   for (let i = 0; i < SepetSeperatorler.length; i++) {
@@ -763,7 +769,7 @@ function AlayiniHesapla() {
         RATE2: AKTIF_KUR.RATE2,
         SEPET_SIRA: SEPET_SIRA,
       };
-      
+
       Urun.TLF = Urun.OTHER_MONEY_VALUE * AKTIF_KUR.RATE2;
       if (Urun.TOTAL_PRICE_MONEY == AKTIF_KUR.MONEY) {
         SeperatorToplam += Urun.TOTAL_PRICE;
@@ -773,15 +779,32 @@ function AlayiniHesapla() {
         SeperatorToplam += Urun.TOTAL_PRICE * r2;
       }
 
-      OrderFooter.NET_TOTAL += Urun.TL_TOTAL_PRICE;
+      OrderFooter.total_default += Urun.PRICE_OTHER * AMOUNT;
+      OrderFooter.total_discount_wanted +=
+        Urun.PRICE_OTHER * Urun.AMOUNT - Urun.UNIT_PRICE * Urun.AMOUNT;
       AktifSepet.push(Urun);
-      
     }
     document.getElementById("TOTALE_" + PropList).innerText =
       commaSplit(SeperatorToplam);
     OrderFooter.TOTAL_PRICE += SeperatorToplam;
   }
-  console.table(AktifSepet)
+  console.table(AktifSepet);
+  var FlDis = document.getElementById("genel_indirim_").value;
+  if (FlDis.length > 0) {
+    FlDis = filterNum(commaSplit(FlDis));
+    FlDis = parseFloat(FlDis);
+  } else {
+    document.getElementById("genel_indirim_").value = commaSplit(0);
+    FlDis = 0;
+  }
+  OrderFooter.total_discount_wanted += FlDis;
+  OrderFooter.brut_total_wanted =
+    OrderFooter.total_default - OrderFooter.total_discount_wanted;
+  OrderFooter.total_tax_wanted = 0;
+  OrderFooter.net_total_wanted =
+    OrderFooter.total_default -
+    OrderFooter.total_discount_default +
+    OrderFooter.total_tax_default;
   OzetOlustur();
 }
 
@@ -876,5 +899,20 @@ function OzetOlustur() {
   T_OZET += "</ul>";
   console.log(T_OZET);
   $("#OzetAlani").html(T_OZET);
+/*
+OrderFooter.brut_total_wanted
+OrderFooter.genel_indirim_
+OrderFooter.net_total_wanted
+OrderFooter.other_money
+OrderFooter.total_default
+OrderFooter.total_discount_wanted
+OrderFooter.total_tax_wanted
+*/
+$("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted))
+$("#genel_indirim_").val(commaSplit(OrderFooter.genel_indirim_))
+$("#net_total_wanted").val(commaSplit(OrderFooter.net_total_wanted))
+$("#total_default").val(commaSplit(OrderFooter.total_default))
+$("#total_discount_wanted").val(commaSplit(OrderFooter.total_discount_wanted))
+$("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted))
 }
-OzetOlustur();
+
