@@ -763,6 +763,7 @@ function AlayiniHesapla() {
         RATE2: AKTIF_KUR.RATE2,
         SEPET_SIRA: SEPET_SIRA,
       };
+      console.table(Urun)
       Urun.TLF = Urun.OTHER_MONEY_VALUE * AKTIF_KUR.RATE2;
       if (Urun.TOTAL_PRICE_MONEY == AKTIF_KUR.MONEY) {
         SeperatorToplam += Urun.TOTAL_PRICE;
