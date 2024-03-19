@@ -1,4 +1,6 @@
-
+<cfquery name="Del" datasource="#dsn3#">
+    DELETE FROM PBS_OFFER_ROW WHERE OFFER_ID=#attributes.OFFER_ID#;
+</cfquery>
 
 <cfloop from="1" to="#attributes.rows_#" index="I">
     <cf_date tarih="attributes.deliver_date#i#">  
