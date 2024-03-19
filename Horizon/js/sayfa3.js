@@ -684,7 +684,8 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
-    
+    var JSON_STRINGIM_=document.getElementById("AddedEquipment_"+PropList).value;
+    var JSON_STRINGIM=JSON.parse(JSON_STRINGIM_);
     // console.log(PropList)
     var Sepet = document.getElementById("SubSepetBody_" + PropList);
     var SeperatorToplam = 0;
@@ -761,6 +762,7 @@ function AlayiniHesapla() {
         SALE_MONEY: SALE_MONEY,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST:PropList,
+        JSON_STRINGIM:JSON_STRINGIM,
         SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
         UNIT_PRICE: UNIT_PRICE,
         TOTAL_PRICE: TOTAL_PRICE,
