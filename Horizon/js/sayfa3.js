@@ -25,7 +25,7 @@ function getCats(el) {
 function getCatProperties(cat_id) {
   AjaxPageLoad(
     "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
-      cat_id,
+    cat_id,
     "PROP_AREA",
     1,
     "Yükleniyor"
@@ -97,7 +97,7 @@ function addEqRow(Obj, jsn) {
   }
   console.log(Obj);
   var div = document.createElement("div");
-  
+
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PropList);
@@ -248,7 +248,7 @@ function addEqRow(Obj, jsn) {
   EqArr.push(Obj.PropList);
 }
 
-function addRowCrs(proplist) {
+function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", TAX, MANUFACT_CODE = "", QUANTITY = 1, PRODUCT_UNIT = "", PURCHASE_PRICE = 0, PURCHASE_MONEY = "", SALE_PRICE = 0, SALE_DISCOUNT = 0, UNIT_PRICE = 0, TOTAL_PRICE = 0, FIRST_REMARK = "",DELIVERED_ITEMS=0,WEIGHT=0) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
   var td = document.createElement("td");
@@ -286,6 +286,7 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.setAttribute("style", "text-align:left");
   input.name = "PRODUCT_CODE_2";
+  input.value = MANUFACT_CODE;
   input.id = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("proplist", proplist);
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
@@ -294,16 +295,19 @@ function addRowCrs(proplist) {
   input.type = "hidden";
   input.name = "PRODUCT_ID";
   input.id = "PRODUCT_ID_" + RowCount;
+  input.value = PRODUCT_ID
   div.appendChild(input);
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "STOCK_ID";
   input.id = "STOCK_ID_" + RowCount;
+  input.value = STOCK_ID
   div.appendChild(input);
 
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "TAX";
+  input.value = TAX
   input.id = "TAX_" + RowCount;
   div.appendChild(input);
 
@@ -316,6 +320,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "PRODUCT_NAME";
+  input.value = PRODUCT_NAME
   input.id = "PRODUCT_NAME_" + RowCount;
   input.setAttribute("style", "text-align:left");
   div.appendChild(input);
@@ -328,8 +333,9 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "QUANTITY";
+
   input.id = "QUANTITY_" + RowCount;
-  input.value = commaSplit(1);
+  input.value = commaSplit(QUANTITY);
   input.setAttribute("onchange", "AlayiniHesapla()");
   div.appendChild(input);
   td.appendChild(div);
@@ -341,6 +347,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("select");
   input.setAttribute("type", "text");
   input.name = "PRODUCT_UNIT";
+  input.value = PRODUCT_UNIT;
   input.id = "PRODUCT_UNIT_" + RowCount;
   div.appendChild(input);
   td.appendChild(div);
@@ -356,10 +363,13 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "PURCHASE_PRICE";
   input.id = "PURCHASE_PRICE_" + RowCount;
-  input.value = commaSplit(1);
+  input.value = commaSplit(PURCHASE_PRICE);
   div2.appendChild(input);
   var input = document.createElement("select");
-  input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
+  if (PURCHASE_MONEY.length == 0) {
+    PURCHASE_MONEY = OfferData.OTHER_MONEY
+  }
+  input.innerHTML = CreateOptionList(1, PURCHASE_MONEY);
   input.name = "PURCHASE_MONEY";
   input.id = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
@@ -378,7 +388,7 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "SALE_PRICE";
   input.id = "SALE_PRICE_" + RowCount;
-  input.value = commaSplit(0);
+  input.value = commaSplit(SALE_PRICE);
   input.setAttribute("onchange", "AlayiniHesapla()");
   div2.appendChild(input);
   var input = document.createElement("select");
@@ -402,7 +412,7 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "SALE_DISCOUNT";
   input.id = "SALE_DISCOUNT_" + RowCount;
-  input.value = commaSplit(0);
+  input.value = commaSplit(SALE_DISCOUNT);
   input.setAttribute("onchange", "AlayiniHesapla()");
   div2.appendChild(input);
   var input = document.createElement("select");
@@ -426,7 +436,7 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "UNIT_PRICE";
   input.id = "UNIT_PRICE_" + RowCount;
-  input.value = commaSplit(0);
+  input.value = commaSplit(UNIT_PRICE);
   input.setAttribute("readonly", "yes");
   div2.appendChild(input);
   var input = document.createElement("select");
@@ -449,9 +459,10 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "TOTAL_PRICE";
+
   input.id = "TOTAL_PRICE_" + RowCount;
   input.setAttribute("readonly", "yes");
-  input.value = commaSplit(0);
+  input.value = commaSplit(TOTAL_PRICE);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
@@ -473,6 +484,7 @@ function addRowCrs(proplist) {
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "FIRST_REMARK";
+  input.value = FIRST_REMARK
   input.id = "FIRST_REMARK_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("span");
@@ -492,7 +504,7 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS";
   input.id = "DELIVERED_ITEMS_" + RowCount;
-  input.value = commaSplit(0);
+  input.value = commaSplit(DELIVERED_ITEMS);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = "";
@@ -514,7 +526,7 @@ function addRowCrs(proplist) {
   input.setAttribute("type", "text");
   input.name = "WEIGHT";
   input.id = "WEIGHT_" + RowCount;
-  input.value = commaSplit(0);
+  input.value = commaSplit(WEIGHT);
   div2.appendChild(input);
   var input = document.createElement("select");
   input.innerHTML = "";
@@ -573,12 +585,12 @@ function getProduct(el, rc) {
           btn.setAttribute(
             "onclick",
             "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
-              rc +
-              "&kw=" +
-              el.value +
-              "&prp_list=" +
-              pL +
-              "')"
+            rc +
+            "&kw=" +
+            el.value +
+            "&prp_list=" +
+            pL +
+            "')"
           );
         } else {
           el.setAttribute(
@@ -671,7 +683,7 @@ var OrderFooter = {
 };
 function AlayiniHesapla() {
   AktifSepet = [];
-   OrderFooter = {
+  OrderFooter = {
     total_default: 0,
     genel_indirim_: 0,
     total_discount_wanted: 0,
@@ -684,8 +696,8 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
-    var JSON_STRINGIM_=document.getElementById("AddedEquipment_"+PropList).value;
-    var JSON_STRINGIM=JSON.parse(JSON_STRINGIM_);
+    var JSON_STRINGIM_ = document.getElementById("AddedEquipment_" + PropList).value;
+    var JSON_STRINGIM = JSON.parse(JSON_STRINGIM_);
     // console.log(PropList)
     var Sepet = document.getElementById("SubSepetBody_" + PropList);
     var SeperatorToplam = 0;
@@ -761,8 +773,8 @@ function AlayiniHesapla() {
         SALE_PRICE: SALE_PRICE,
         SALE_MONEY: SALE_MONEY,
         SALE_DISCOUNT: SALE_DISCOUNT,
-        PROP_LIST:PropList,
-        JSON_STRINGIM:JSON_STRINGIM,
+        PROP_LIST: PropList,
+        JSON_STRINGIM: JSON_STRINGIM,
         SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
         UNIT_PRICE: UNIT_PRICE,
         TOTAL_PRICE: TOTAL_PRICE,
@@ -798,16 +810,16 @@ function AlayiniHesapla() {
     FlDis = filterNum(commaSplit(FlDis));
     FlDis = parseFloat(FlDis);
     document.getElementById("genel_indirim_").value = commaSplit(FlDis);
-    OrderFooter.genel_indirim_=FlDis;
+    OrderFooter.genel_indirim_ = FlDis;
   } else {
     document.getElementById("genel_indirim_").value = commaSplit(0);
     FlDis = 0;
-    OrderFooter.genel_indirim_=FlDis;
+    OrderFooter.genel_indirim_ = FlDis;
   }
   OrderFooter.total_discount_wanted += FlDis;
-  OrderFooter.brut_total_wanted =(OrderFooter.total_default - OrderFooter.total_discount_wanted);
+  OrderFooter.brut_total_wanted = (OrderFooter.total_default - OrderFooter.total_discount_wanted);
   OrderFooter.total_tax_wanted = 0;
-  OrderFooter.net_total_wanted =(OrderFooter.total_default -OrderFooter.total_discount_wanted) + OrderFooter.total_tax_wanted;
+  OrderFooter.net_total_wanted = (OrderFooter.total_default - OrderFooter.total_discount_wanted) + OrderFooter.total_tax_wanted;
   OzetOlustur();
 }
 
@@ -892,7 +904,7 @@ function OzetOlustur() {
 
       try {
         T_OZET += B.lastChild.innerText + "->";
-      } catch {}
+      } catch { }
     }
 
     //T_OZET+="</p>"
@@ -902,35 +914,35 @@ function OzetOlustur() {
   T_OZET += "</ul>";
   console.log(T_OZET);
   $("#OzetAlani").html(T_OZET);
-/*
-OrderFooter.brut_total_wanted
-OrderFooter.genel_indirim_
-OrderFooter.net_total_wanted
-OrderFooter.other_money
-OrderFooter.total_default
-OrderFooter.total_discount_wanted
-OrderFooter.total_tax_wanted
-*/
-var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
-$("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted))
-$("#brut_total_wanted_").val(commaSplit(OrderFooter.brut_total_wanted*AKTIF_KUR.RATE2))
-$("#genel_indirim_").val(commaSplit(OrderFooter.genel_indirim_))
-$("#genel_indirim__").val(commaSplit(OrderFooter.genel_indirim_*AKTIF_KUR.RATE2))
-$("#net_total_wanted").val(commaSplit(OrderFooter.net_total_wanted))
-$("#net_total_wanted_").val(commaSplit(OrderFooter.net_total_wanted*AKTIF_KUR.RATE2))
-$("#total_default").val(commaSplit(OrderFooter.total_default))
-$("#total_default_").val(commaSplit(OrderFooter.total_default*AKTIF_KUR.RATE2))
-$("#total_discount_wanted").val(commaSplit(OrderFooter.total_discount_wanted))
-$("#total_discount_wanted_").val(commaSplit(OrderFooter.total_discount_wanted*AKTIF_KUR.RATE2))
-$("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted))
-$("#total_tax_wanted_").val(commaSplit(OrderFooter.total_tax_wanted*AKTIF_KUR.RATE2))
+  /*
+  OrderFooter.brut_total_wanted
+  OrderFooter.genel_indirim_
+  OrderFooter.net_total_wanted
+  OrderFooter.other_money
+  OrderFooter.total_default
+  OrderFooter.total_discount_wanted
+  OrderFooter.total_tax_wanted
+  */
+  var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+  $("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted))
+  $("#brut_total_wanted_").val(commaSplit(OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2))
+  $("#genel_indirim_").val(commaSplit(OrderFooter.genel_indirim_))
+  $("#genel_indirim__").val(commaSplit(OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2))
+  $("#net_total_wanted").val(commaSplit(OrderFooter.net_total_wanted))
+  $("#net_total_wanted_").val(commaSplit(OrderFooter.net_total_wanted * AKTIF_KUR.RATE2))
+  $("#total_default").val(commaSplit(OrderFooter.total_default))
+  $("#total_default_").val(commaSplit(OrderFooter.total_default * AKTIF_KUR.RATE2))
+  $("#total_discount_wanted").val(commaSplit(OrderFooter.total_discount_wanted))
+  $("#total_discount_wanted_").val(commaSplit(OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2))
+  $("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted))
+  $("#total_tax_wanted_").val(commaSplit(OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2))
 
-OrderFooter.brut_total_wanted_=OrderFooter.brut_total_wanted*AKTIF_KUR.RATE2
-OrderFooter.genel_indirim__=OrderFooter.genel_indirim_*AKTIF_KUR.RATE2
-OrderFooter.net_total_wanted_=OrderFooter.net_total_wanted*AKTIF_KUR.RATE2
-OrderFooter.total_default_=OrderFooter.total_default*AKTIF_KUR.RATE2
-OrderFooter.total_discount_wanted_=OrderFooter.total_discount_wanted*AKTIF_KUR.RATE2
-OrderFooter.total_tax_wanted_=OrderFooter.total_tax_wanted*AKTIF_KUR.RATE2
+  OrderFooter.brut_total_wanted_ = OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2
+  OrderFooter.genel_indirim__ = OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2
+  OrderFooter.net_total_wanted_ = OrderFooter.net_total_wanted * AKTIF_KUR.RATE2
+  OrderFooter.total_default_ = OrderFooter.total_default * AKTIF_KUR.RATE2
+  OrderFooter.total_discount_wanted_ = OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2
+  OrderFooter.total_tax_wanted_ = OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2
 
 
 }
