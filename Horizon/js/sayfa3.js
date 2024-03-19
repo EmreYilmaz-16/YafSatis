@@ -344,11 +344,15 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
-  var input = document.createElement("input");
-  input.setAttribute("type", "text");
+  var input = document.createElement("select");
+  var opt=document.createElement("option");
+  opt.value=PRODUCT_UNIT;
+  opt.innerText=PRODUCT_UNIT;
+  
   input.name = "PRODUCT_UNIT";
-  input.value = PRODUCT_UNIT;
+  
   input.id = "PRODUCT_UNIT_" + RowCount;
+  input.appendChild(opt);
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
