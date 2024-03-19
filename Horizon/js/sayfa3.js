@@ -247,7 +247,7 @@ function addEqRow(Obj, jsn) {
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
-
+//addRowCrs('32,50004,50005', "10",  "10",  "Anti-polishing ring", 0,  "100 003",  1,  "Adet",  0,  "TL",  200,  0, 200,  200,  "",0,0) 
 function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", TAX, MANUFACT_CODE = "", QUANTITY = 1, PRODUCT_UNIT = "", PURCHASE_PRICE = 0, PURCHASE_MONEY = "", SALE_PRICE = 0, SALE_DISCOUNT = 0, UNIT_PRICE = 0, TOTAL_PRICE = 0, FIRST_REMARK = "",DELIVERED_ITEMS=0,WEIGHT=0) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -344,7 +344,7 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
-  var input = document.createElement("select");
+  var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "PRODUCT_UNIT";
   input.value = PRODUCT_UNIT;
