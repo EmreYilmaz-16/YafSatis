@@ -90,9 +90,20 @@
 
 <!--- Information Başlangıç --->
 <cfquery name="GETrOWS" datasource="#DSN3#">
-    SELECT * FROM PBS_OFFER_ROW WHERE OFFER_ID=#attributes.OFFER_ID#
+    SELECT POR.*,0 AS PURCHASE_PRICE,'TL' AS PURCHASE_MONEY,'' AS FIRST_REMARK,S.MANUFACT_CODE FROM PBS_OFFER_ROW AS POR LEFT JOIN STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID WHERE OFFER_ID=#attributes.OFFER_ID#
 </cfquery>
 <cfdump var="#GETrOWS#">
+<script>
+   $(document).ready(function(){<cfoutput query="GETrOWS" group="PROP_LIST">
+        var excalibur=#JSON_STRINGIM#
+        addEqRow(excalibur, JSON.stringify(excalibur)) 
+        <cfoutput>
+          //  addRowCrs('#PROP_LIST#')
+          addRowCrs('#PROP_LIST#', "#PRODUCT_ID#",  "#STOCK_ID#",  "#PRODUCT_NAME#", #TAX#,  "#MANUFACT_CODE#",  #QUANTITY#,  "#UNIT#",  #PURCHASE_PRICE#,  "#PURCHASE_MONEY#",  #PRICE_OTHER#,  #DISCOUNT_COST#, #OTHER_MONEY_VALUE#,  #OTHER_MONEY_VALUE*QUANTITY#,  "#FIRST_REMARK#",0,0) 
+        </cfoutput>
+    </cfoutput>
+}) 
+</script>
 <cf_box>
     <cf_box_elements>
         <!--- 1. Grid --->
