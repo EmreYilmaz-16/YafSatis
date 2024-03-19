@@ -89,7 +89,8 @@
             
             
             PBS_OFFER_ROW_CURRENCY,
-            ROW_NUMBER_PBS
+            ROW_NUMBER_PBS,
+            PROP_LIST
             <cfif isdefined('attributes.row_exp_center_id#i#') and len(evaluate("attributes.row_exp_center_id#i#")) and isdefined('attributes.row_exp_center_name#i#') and len(evaluate("attributes.row_exp_center_name#i#"))>,EXPENSE_CENTER_ID</cfif>
             <cfif isdefined('attributes.row_exp_item_id#i#') and len(evaluate("attributes.row_exp_item_id#i#")) and isdefined('attributes.row_exp_item_name#i#') and len(evaluate("attributes.row_exp_item_name#i#"))>,EXPENSE_ITEM_ID</cfif>
             <cfif isdefined('attributes.row_activity_id#i#') and len(evaluate("attributes.row_activity_id#i#"))>,ACTIVITY_TYPE_ID</cfif>
@@ -219,6 +220,7 @@
             
                 <cfif isDefined('attributes.PBS_OFFER_ROW_CURRENCY#i#')> '#evaluate('attributes.PBS_OFFER_ROW_CURRENCY#i#')#'<CFELSE>,NULL</cfif>
                     <cfif isDefined('attributes.ROW_NUMBER_PBS#i#')> #evaluate('attributes.ROW_NUMBER_PBS#i#')#<CFELSE>,NULL</cfif>
+                        <cfif isDefined('attributes.PROP_LIST#i#')> '#evaluate('attributes.PROP_LIST#i#')#'<CFELSE>,NULL</cfif>
             <cfif isDefined('attributes.converted_sid#i#') and len(evaluate("attributes.converted_sid#i#"))>,#evaluate("attributes.converted_sid#i#")#</cfif>
             <cfif isdefined('attributes.row_exp_center_id#i#') and len(evaluate("attributes.row_exp_center_id#i#")) and isdefined('attributes.row_exp_center_name#i#') and len(evaluate("attributes.row_exp_center_name#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_exp_center_id#i#')#"></cfif>
         <cfif isdefined('attributes.row_exp_item_id#i#') and len(evaluate("attributes.row_exp_item_id#i#")) and isdefined('attributes.row_exp_item_name#i#') and len(evaluate("attributes.row_exp_item_name#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_exp_item_id#i#')#"></cfif>

@@ -424,7 +424,7 @@ WHERE 1 = 1
         <cfset "attributes.price_other#i#"=it.PRICE_OTHER>
         <cfset "attributes.iskonto_tutar#i#"=it.SALE_DISCOUNT>
         <CFSET 'attributes.ROW_NUMBER_PBS#i#'=it.SEPET_SIRA>
-        <CFSET 'attributes.PROP_LIST#i#'=it.SEPET_SIRA>
+        <CFSET 'attributes.PROP_LIST#i#'=it.PROP_LIST>
     </cfloop>
     <cftry>
     <cfinclude template="../Query/Add_Offer_Rows.cfm">
