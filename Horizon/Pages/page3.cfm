@@ -312,7 +312,7 @@
 
 </div>
 <div id="SubTotalArea">
-    <table>
+    <cf_big_list>
         <tr>
             <td>
                 Toplam
@@ -373,7 +373,7 @@
                 </div>
             </td>
         </tr>
-    </table>
+    </cf_big_list>
 </div>
             </div>
         </div>
