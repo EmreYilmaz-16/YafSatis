@@ -392,11 +392,23 @@ WHERE 1 = 1
     <cfreturn replace(serializeJSON(OfferItem),"//","")>
 </cffunction>
 
+<cffunction name="SAVE_OFFER_ROWS" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="Data">
+    <cfset FormData=deserializeJSON(arguments.Data)>
+    <cfdump var="#FormData#">
+
+    <cfreturn replace(serializeJSON(FormData),"//","")>
+
+</cffunction>
+
+
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
 	<cfset wrk_sql_value = "#replaceNoCase(trim(evaluate("#gelen#")),"'","''","ALL")#">
 	<cfreturn wrk_sql_value>
 </cffunction>
+
+
 </cfcomponent>
 
