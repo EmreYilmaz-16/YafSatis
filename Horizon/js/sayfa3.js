@@ -683,6 +683,7 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
+    
     // console.log(PropList)
     var Sepet = document.getElementById("SubSepetBody_" + PropList);
     var SeperatorToplam = 0;
@@ -758,7 +759,7 @@ function AlayiniHesapla() {
         SALE_PRICE: SALE_PRICE,
         SALE_MONEY: SALE_MONEY,
         SALE_DISCOUNT: SALE_DISCOUNT,
-
+        PROP_LIST:PropList,
         SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
         UNIT_PRICE: UNIT_PRICE,
         TOTAL_PRICE: TOTAL_PRICE,
