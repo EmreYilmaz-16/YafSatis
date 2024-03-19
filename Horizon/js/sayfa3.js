@@ -97,6 +97,7 @@ function addEqRow(Obj, jsn) {
   }
   console.log(Obj);
   var div = document.createElement("div");
+  
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PropList);
