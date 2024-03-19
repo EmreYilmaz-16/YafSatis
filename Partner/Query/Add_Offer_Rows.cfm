@@ -213,7 +213,7 @@
             
             
             
-                <cfif isDefined('attributes.PBS_OFFER_ROW_CURRENCY#i#')> '#evaluate('attributes.PBS_OFFER_ROW_CURRENCY#i#')#'<CFELSE>NULL</cfif>
+                <cfif isDefined('attributes.PBS_OFFER_ROW_CURRENCY#i#')> '#evaluate('attributes.PBS_OFFER_ROW_CURRENCY#i#')#'<CFELSE>,NULL</cfif>
             <cfif isDefined('attributes.converted_sid#i#') and len(evaluate("attributes.converted_sid#i#"))>,#evaluate("attributes.converted_sid#i#")#</cfif>
             <cfif isdefined('attributes.row_exp_center_id#i#') and len(evaluate("attributes.row_exp_center_id#i#")) and isdefined('attributes.row_exp_center_name#i#') and len(evaluate("attributes.row_exp_center_name#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_exp_center_id#i#')#"></cfif>
         <cfif isdefined('attributes.row_exp_item_id#i#') and len(evaluate("attributes.row_exp_item_id#i#")) and isdefined('attributes.row_exp_item_name#i#') and len(evaluate("attributes.row_exp_item_name#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_exp_item_id#i#')#"></cfif>
