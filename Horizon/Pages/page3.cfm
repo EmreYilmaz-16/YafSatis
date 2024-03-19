@@ -312,7 +312,68 @@
 
 </div>
 <div id="SubTotalArea">
-    
+    <table>
+        <tr>
+            <td>
+                Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_default" id="total_default" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Fatura Altı İndirim
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="genel_indirim_" id="genel_indirim_" >
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Toplam İndirim
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_discount_wanted" id="total_discount_wanted" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                KDV'siz Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="brut_total_wanted" id="brut_total_wanted" readonly >
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                KDV Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_tax_wanted" id="total_tax_wanted" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                KDV'li Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="net_total_wanted" id="net_total_wanted" readonly>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
             </div>
         </div>
