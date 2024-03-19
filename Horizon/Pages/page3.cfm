@@ -315,7 +315,7 @@
     <cf_grid_list>
         <thead>
             <tr>
-                <th colspan="2">
+                <th colspan="3">
                     Toplamlar
                 </th>
             </tr>
@@ -330,6 +330,11 @@
                     <input type="text" name="total_default" id="total_default" readonly>
                 </div>
             </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_default_" id="total_default_" readonly>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -338,6 +343,11 @@
             <td>
                 <div class="form-group">
                     <input type="text" onchange="AlayiniHesapla()" name="genel_indirim_" id="genel_indirim_" >
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" onchange="AlayiniHesapla()" name="genel_indirim__" id="genel_indirim__" readonly>
                 </div>
             </td>
         </tr>
@@ -350,6 +360,11 @@
                     <input type="text" name="total_discount_wanted" id="total_discount_wanted" readonly>
                 </div>
             </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_discount_wanted_" id="total_discount_wanted_" readonly>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -358,6 +373,11 @@
             <td>
                 <div class="form-group">
                     <input type="text" name="brut_total_wanted" id="brut_total_wanted" readonly >
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="brut_total_wanted_" id="brut_total_wanted_" readonly >
                 </div>
             </td>
         </tr>
@@ -370,6 +390,11 @@
                     <input type="text" name="total_tax_wanted" id="total_tax_wanted" readonly>
                 </div>
             </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_tax_wanted_" id="total_tax_wanted_" readonly>
+                </div>
+            </td>
         </tr>
         <tr>
             <td>
@@ -378,6 +403,11 @@
             <td>
                 <div class="form-group">
                     <input type="text" name="net_total_wanted" id="net_total_wanted" readonly>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="net_total_wanted_" id="net_total_wanted_" readonly>
                 </div>
             </td>
         </tr>
