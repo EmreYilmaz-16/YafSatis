@@ -798,13 +798,9 @@ function AlayiniHesapla() {
     FlDis = 0;
   }
   OrderFooter.total_discount_wanted += FlDis;
-  OrderFooter.brut_total_wanted =
-    OrderFooter.total_default - OrderFooter.total_discount_wanted;
+  OrderFooter.brut_total_wanted =(OrderFooter.total_default - OrderFooter.total_discount_wanted);
   OrderFooter.total_tax_wanted = 0;
-  OrderFooter.net_total_wanted =
-    OrderFooter.total_default -
-    OrderFooter.total_discount_wanted +
-    OrderFooter.total_tax_default;
+  OrderFooter.net_total_wanted =(OrderFooter.total_default -OrderFooter.total_discount_wanted) + OrderFooter.total_tax_wanted;
   OzetOlustur();
 }
 
