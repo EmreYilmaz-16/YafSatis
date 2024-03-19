@@ -312,7 +312,15 @@
 
 </div>
 <div id="SubTotalArea">
-    <cf_big_list>
+    <cf_grid_list>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    Toplamlar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
         <tr>
             <td>
                 Toplam
@@ -373,7 +381,8 @@
                 </div>
             </td>
         </tr>
-    </cf_big_list>
+    </tbody>
+    </cf_grid_list>
 </div>
             </div>
         </div>
