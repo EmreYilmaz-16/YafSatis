@@ -763,7 +763,7 @@ function AlayiniHesapla() {
         RATE2: AKTIF_KUR.RATE2,
         SEPET_SIRA: SEPET_SIRA,
       };
-      console.table(Urun)
+      
       Urun.TLF = Urun.OTHER_MONEY_VALUE * AKTIF_KUR.RATE2;
       if (Urun.TOTAL_PRICE_MONEY == AKTIF_KUR.MONEY) {
         SeperatorToplam += Urun.TOTAL_PRICE;
@@ -775,11 +775,13 @@ function AlayiniHesapla() {
 
       OrderFooter.NET_TOTAL += Urun.TL_TOTAL_PRICE;
       AktifSepet.push(Urun);
+      
     }
     document.getElementById("TOTALE_" + PropList).innerText =
       commaSplit(SeperatorToplam);
     OrderFooter.TOTAL_PRICE += SeperatorToplam;
   }
+  console.table(AktifSepet)
   OzetOlustur();
 }
 
