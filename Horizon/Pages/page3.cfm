@@ -89,8 +89,10 @@
 </cf_box>
 
 <!--- Information Başlangıç --->
-
-
+<cfquery name="GETrOWS" datasource="#DSN3#">
+    SELECT * FROM PBS_OFFER_ROW WHERE OFFER_ID=#attributes.OFFER_ID#
+</cfquery>
+<cfdump var="#GETrOWS#">
 <cf_box>
     <cf_box_elements>
         <!--- 1. Grid --->
