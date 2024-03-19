@@ -670,7 +670,7 @@ var OrderFooter = {
 };
 function AlayiniHesapla() {
   AktifSepet = [];
-  var OrderFooter = {
+   OrderFooter = {
     total_default: 0,
     genel_indirim_: 0,
     total_discount_wanted: 0,
