@@ -396,7 +396,32 @@ WHERE 1 = 1
     <cfargument name="Data">
     <cfset FormData=deserializeJSON(arguments.Data)>
     <cfdump var="#FormData#">
-
+    <CFSET attributes.OFFER_ID=FormData.OFFER_HEADER.OFFER_ID>
+    <cfloop array="#FormData.ROWS#" item="it" index="i">
+        <cfquery name="GETU" datasource="#dsn#">
+            SELECT * FROM CatalystQA.CatalystQA_product.PRODUCT_UNIT WHERE PRODUCT_ID=#it.PRODUCT_ID# AND IS_MAIN=1
+        </cfquery>
+        <cfset "attributes.deliver_date#i#"=dateFormat(now(),"dd/mm/yyyy")>
+        <cfset "attributes.price#i#"=it.PRICE>
+        <cfset "attributes.product_id#i#"=it.PRODUCT_ID>
+        <cfset "attributes.stock_id#i#"=it.STOCK_ID>
+        <cfset "attributes.amount#i#"=it.AMOUNT>
+        <cfset "attributes.unit#i#"=it.PRODUCT_UNIT>
+        <cfset "attributes.unit_id#i#"=GETU.PRODUCT_UNIT_ID>
+        <cfset "attributes.tax#i#"=it.TAX>
+        <cfset "attributes.product_name#i#"=it.PRODUCT_NAME>
+        <cfset "attributes.other_money_#i#"=it.OTHER_MONEY>
+        <cfset "attributes.other_money_value_#i#"=it.OTHER_MONEY_VALUE>
+        <cfset "attributes.price_other#i#"=it.PRICE_OTHER>
+        <cfset "attributes.iskonto_tutar#i#"=it.SALE_DISCOUNT>
+        
+    </cfloop>
+    <cftry>
+    <cfinclude template="../Query/Add_Offer_Rows.cfm">
+    <cfcatch>
+        <cfdump var="#cfcatch#">
+    </cfcatch>
+</cftry>
     <cfreturn replace(serializeJSON(FormData),"//","")>
 
 </cffunction>
