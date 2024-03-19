@@ -397,6 +397,7 @@ WHERE 1 = 1
     <cfset FormData=deserializeJSON(arguments.Data)>
     <cfdump var="#FormData#">
     <CFSET attributes.OFFER_ID=FormData.OFFER_HEADER.OFFER_ID>
+    <cfset attributes.ROWS_=arrayLen(FormData.ROWS)>
     <cfloop array="#FormData.ROWS#" item="it" index="i">
         <cfquery name="GETU" datasource="#dsn#">
             SELECT * FROM CatalystQA.CatalystQA_product.PRODUCT_UNIT WHERE PRODUCT_ID=#it.PRODUCT_ID# AND IS_MAIN=1
