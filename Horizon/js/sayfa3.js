@@ -794,9 +794,11 @@ function AlayiniHesapla() {
     FlDis = filterNum(commaSplit(FlDis));
     FlDis = parseFloat(FlDis);
     document.getElementById("genel_indirim_").value = commaSplit(FlDis);
+    OrderFooter.genel_indirim_=FlDis;
   } else {
     document.getElementById("genel_indirim_").value = commaSplit(0);
     FlDis = 0;
+    OrderFooter.genel_indirim_=FlDis;
   }
   OrderFooter.total_discount_wanted += FlDis;
   OrderFooter.brut_total_wanted =(OrderFooter.total_default - OrderFooter.total_discount_wanted);
