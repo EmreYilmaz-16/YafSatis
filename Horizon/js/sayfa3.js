@@ -803,7 +803,7 @@ function AlayiniHesapla() {
   OrderFooter.total_tax_wanted = 0;
   OrderFooter.net_total_wanted =
     OrderFooter.total_default -
-    OrderFooter.total_discount_default +
+    OrderFooter.total_discount_wanted +
     OrderFooter.total_tax_default;
   OzetOlustur();
 }
