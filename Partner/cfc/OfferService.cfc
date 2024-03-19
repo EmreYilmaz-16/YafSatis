@@ -399,7 +399,7 @@ WHERE 1 = 1
     <cfdump var="#FormData#">
     <CFSET attributes.OFFER_ID=FormData.OFFER_HEADER.OFFER_ID>
     <cfquery name="UP" datasource="#DSN3#">
-        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.ORDER_FOOTER.net_total_wanted#
+        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.OFFER_FOOTER.net_total_wanted#
         WHERE OFFER_ID=#attributes.OFFER_ID#
     </cfquery>
     
