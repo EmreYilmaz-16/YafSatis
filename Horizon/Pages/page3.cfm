@@ -337,7 +337,7 @@
             </td>
             <td>
                 <div class="form-group">
-                    <input type="text" name="genel_indirim_" id="genel_indirim_" >
+                    <input type="text" onchange="AlayiniHesapla()" name="genel_indirim_" id="genel_indirim_" >
                 </div>
             </td>
         </tr>
