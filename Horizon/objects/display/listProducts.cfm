@@ -12,6 +12,16 @@
 <div id="APX_1">
 
 </div>
+<cf_ajax_list>
+    <thead id="Th000">
+        <th>Part No</th>
+        <th>Ürün</th>
+        <th></th>
+    </thead>
+    <tbody id="Tb000">
+        
+    </tbody>
+</cf_ajax_list>
 </cf_box>
 <script>
     $(document).ready(function (){
@@ -126,6 +136,47 @@ Label.innerText=Obj[i].PROPERTY
     },success:function (params) {
         var Obj=JSON.parse(params);
         console.log(Obj)
+        for(let i=0;i<Obj.OTHER_PROPERTIES.length;i++){
+            var aProperty=Obj.OTHER_PROPERTIES[i];
+            
+            var div=document.createElement("div");
+                    div.setAttribute("class","form-group");
+var Label=document.createElement("label");
+Label.innerText=aProperty.PROPERTY
+                    var Sel=document.createElement("Select");
+                    Sel.setAttribute("style","margin-left:5px");
+                    Sel.setAttribute("onchange","propduzenle(this)");
+                    Sel.setAttribute("data-propertyId",aProperty.PROPERTY_ID)
+                    Sel.id="SELECT_00_"+Obj[i].PROPERTY_ID;
+                    var Opt=document.createElement("option");
+                    Opt.value="";
+                    Opt.innerText="Seç";
+                    Sel.appendChild(Opt);
+                    
+                    for(let j=0;j<aProperty.VARIATIONS.length;j++){
+                        var opt=document.createElement("option")
+                        opt.value=aProperty.VARIATIONS[j].PROPERTY_DETAIL_ID
+                        opt.innerText=aProperty.VARIATIONS[j].PROPERTY_DETAIL
+                        Sel.appendChild(opt)
+                    }
+                    div.appendChild(Label)
+                    div.appendChild(Sel)
+                    document.getElementById("APX_0").appendChild(div)
+        }
+        for(let i=0;i<Obj.PRODUCTS.length;i++){
+           var aProduct=Obj.PRODUCTS[i];
+            var tr=document.createElement("tr");
+            var td=document.createElement("td");
+            td.innerText=aProduct.MANUFACT_CODE;
+            tr.appendChild(td)
+            var td=document.createElement("td");
+            td.innerText=aProduct.PRODUCT_NAME;
+            tr.appendChild(td)
+            var td=document.createElement("td");
+            td.innerHtml=aProduct.DTP;
+            tr.appendChild(td)
+            document.getElementById("Tb000").appendChild(tr)
+        }
     }
     })}
 </script>
