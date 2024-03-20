@@ -13,7 +13,9 @@
         var p_list=document.getElementById("PropList_0").value;
         var es=document.getElementById("AddedEquipment_"+p_list)
         console.log(es.value);
+        document.getElementById("PropList_1").value=es.value;
         var PS=JSON.parse(es.value);
+        
         LoadProps(PS.PRODUCT_CAT_ID);
     })
     function LoadProps(Pcat){
@@ -34,13 +36,16 @@ Label.innerText=Obj[i].PROPERTY
                     div.appendChild(Sel)
                     document.getElementById("APX_0").appendChild(div)
                     
-                    getOptions(Pcat,Obj[i].PROPERTY_ID,PS)
+                    getOptions(Pcat,Obj[i].PROPERTY_ID)
                 }
             }
         })
     }
 
-    function getOptions(PRODUCT_CAT_ID,PROPERTY_ID,SELECTED_ID,PS){
+    function getOptions(PRODUCT_CAT_ID,PROPERTY_ID,SELECTED_ID){
+       console.log(arguments);
+        var PSL=document.getElementById("PropList_1").value
+        var PS=JSON.parse(PSL);
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+PRODUCT_CAT_ID+"&PROPERTY_ID="+PROPERTY_ID,
             success:function (params) {
