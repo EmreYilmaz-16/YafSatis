@@ -90,76 +90,121 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
 
     <cffunction name="SearchProduct" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
+        <cfset FData=deserializeJSON(arguments.FormData)>
+        <cfquery name="getProd" datasource="#dsn#">
+            SELECT *
+            FROM (
+                SELECT PRODUCT_NAME, P.MANUFACT_CODE, PRODUCT_CODE, PRODUCT_CODE_2,P.PRODUCT_ID,S.STOCK_ID, PU.MAIN_UNIT,P.TAX, (
+                        SELECT CONVERT(VARCHAR,PP.PROPERTY )+'-' + CONVERT(VARCHAR, PROPERTY_DETAIL_ID) + ','
+                        FROM CatalystQA_product.PRODUCT_DT_PROPERTIES
+                        INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
+                        INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
+                        WHERE PRODUCT_ID = P.PRODUCT_ID
+                        FOR XML PATH('')
+                        ) AS DTP
+                FROM CatalystQA_product.PRODUCT AS P
+                LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
+                LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
+                    ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
+                WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
+                ) AS TT
+            WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
+            <cfloop array="#FData.SearchMainValue.Filters#" item="it">
+            <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
+            </cfloop>
+        </cfquery>
+        <cfsavecontent  variable="control5">
+            <cfdump  var="#CGI#">                
+            <cfdump  var="#getProd#">
+            <cfdump  var="#FData#">    
+        </cfsavecontent>
+        <cffile action="write" file = "c:\SearchProduct.html" output="#control5#"></cffile>
+        <CFSET P=structNew()>
+        <cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
+        <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
+        <cfset P.STOCK_ID=getProd.STOCK_ID>
+        <cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
+        <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
+        <CFSET P.TAX=getProd.TAX>
+        <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
+        <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
+        <cfset P.RECORD_COUNT=getProd.recordcount>
+        <cfreturn replace(serializeJSON(P),"//","")>
+    </cffunction>
+    <cffunction name="SearchProductPopup" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="FormData">
+        <cfset FData=deserializeJSON(arguments.FormData)>
+        <cfquery name="getProd" datasource="#dsn#">
+            SELECT *
+            FROM (
+                SELECT PRODUCT_NAME, P.MANUFACT_CODE, PRODUCT_CODE, PRODUCT_CODE_2,P.PRODUCT_ID,S.STOCK_ID, PU.MAIN_UNIT,P.TAX, (
+                        SELECT CONVERT(VARCHAR,PP.PROPERTY )+'-' + CONVERT(VARCHAR, PROPERTY_DETAIL_ID) + ','
+                        FROM CatalystQA_product.PRODUCT_DT_PROPERTIES
+                        INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
+                        INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
+                        WHERE PRODUCT_ID = P.PRODUCT_ID
+                        FOR XML PATH('')
+                        ) AS DTP
+                FROM CatalystQA_product.PRODUCT AS P
+                LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
+                LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
+                    ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
+                WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
+                ) AS TT
+            WHERE 1 = 1 <cfif len(FData.keyword)>
+                 AND (
+                    MANUFACT_CODE LIKE '%#FData.keyword#%' OR
+                    PRODUCT_NAME LIKE '%#FData.keyword#%' 
+                    )
+                </cfif>
+            <cfloop array="#FData.SearchMainValue.Filters#" item="it">
+            <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
+            </cfloop>
+        </cfquery>
+        <cfset PID_LIST=valueList(getProd.PRODUCT_ID)>
 
-<cfset FData=deserializeJSON(arguments.FormData)>
-<!----
-<cfquery name="getSearchParams" datasource="#dsn#">
-    select PP.PROPERTY+'-'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID) as SEARCH_PARAM from CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
-INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
-
-  WHERE 1=1
-  <cfif arrayLen(FData.SearchMainValue.Filters) gt 1>
-  AND  PROPERTY_DETAIL_ID IN (
-        <cfloop array="#FData.SearchMainValue.Filters#" item="it"><cfif it.PNAME.trim() neq "EQUIPMENT"></cfif>
-        #it.PRODUCT_CAT_ID#,
-        </cfloop>0
-)
-</cfif>
-
-</cfquery>
----->
-
-
-
-<cfquery name="getProd" datasource="#dsn#">
- SELECT *
-FROM (
-	SELECT PRODUCT_NAME, P.MANUFACT_CODE, PRODUCT_CODE, PRODUCT_CODE_2,P.PRODUCT_ID,S.STOCK_ID, PU.MAIN_UNIT,P.TAX, (
-			SELECT CONVERT(VARCHAR,PP.PROPERTY )+'-' + CONVERT(VARCHAR, PROPERTY_DETAIL_ID) + ','
-			FROM CatalystQA_product.PRODUCT_DT_PROPERTIES
-            INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
-			INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
-			WHERE PRODUCT_ID = P.PRODUCT_ID
-			FOR XML PATH('')
-			) AS DTP
-	FROM CatalystQA_product.PRODUCT AS P
-    LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
-	LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
-		ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
-	WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
-	) AS TT
-WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
-<cfloop array="#FData.SearchMainValue.Filters#" item="it">
-   <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
-</cfloop>
-
-
-
-
-</cfquery>
-<cfsavecontent  variable="control5">
-    <cfdump  var="#CGI#">                
-    
-    <cfdump  var="#getProd#">
-    <cfdump  var="#FData#">
-    
-   </cfsavecontent>
-   <cffile action="write" file = "c:\SearchProduct.html" output="#control5#"></cffile>
-<!-----
-    	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
-			INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
-
-            ----->
-<CFSET P=structNew()>
-<cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
-<cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
-<cfset P.STOCK_ID=getProd.STOCK_ID>
-<cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
-<cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
-<CFSET P.TAX=getProd.TAX>
-<cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
-<cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
-<cfset P.RECORD_COUNT=getProd.recordcount>
-<cfreturn replace(serializeJSON(P),"//","")>
+        <cfsavecontent  variable="control5">
+            <cfdump  var="#CGI#">                
+            <cfdump  var="#getProd#">
+            <cfdump  var="#FData#">    
+        </cfsavecontent>
+        <cffile action="write" file = "c:\SearchProduct.html" output="#control5#"></cffile>
+        <cfquery name="getOtherProperties" datasource="#dsn#">
+            SELECT DISTINCT PDP.PROPERTY_ID,PROPERTY,(SELECT PROPERTY_DETAIL_ID,PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD WHERE PPD.PRPT_ID=PDP.PROPERTY_ID FOR JSON PATH) as TKFS FROM CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
+INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPERTY_ID
+ WHERE PRODUCT_ID IN (#PID_LIST#)
+AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#FData.SearchMainValue.PRODUCT_CAT_ID#)
+        </cfquery> 
+        <CFSET ReturnData=structNew()>
+        <cfset PSA=arrayNew(1)>
+        <cfloop query="getOtherProperties">
+            <cfset PP=structNew()>
+            <cfset PP.PROPERTY=PROPERTY>
+            <cfset PP.PROPERTY_ID=PROPERTY_ID>
+            <cfset PP.VARIATIONS=deserializeJSON(TKFS)>
+            <cfscript>
+                arrayAppend(PSA,PP);
+            </cfscript>
+        </cfloop>
+        <cfset ReturnData.OTHER_PROPERTIES=PSA>
+        <cfset ReturnData.PRODUCT_COUNT=getProd.recordcount>
+        <CFSET PRODUCTS=arrayNew(1)>
+        <cfloop query="getProd">
+        <CFSET P=structNew()>
+        <cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
+        <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
+        <cfset P.STOCK_ID=getProd.STOCK_ID>
+        <cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
+        <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
+        <CFSET P.TAX=getProd.TAX>
+        <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
+        <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
+        
+        <cfscript>
+            arrayAppend(PRODUCTS,P);
+        </cfscript>        
+    </cfloop>
+    <CFSET ReturnData.PRODUCTS=PRODUCTS>
+        <cfreturn replace(serializeJSON(ReturnData),"//","")>
     </cffunction>
 </cfcomponent>

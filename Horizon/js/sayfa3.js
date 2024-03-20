@@ -48,6 +48,7 @@ function AddEquipment() {
     PRODUCT_CAT: PRODUCT_CAT,
     PRODUCT_CAT_ID: PRODUCT_CAT_ID,
     PNAME: "EQUIPMENT",
+    PROP_ID:0
   };
   SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
@@ -60,6 +61,7 @@ function AddEquipment() {
     var isReq = Pelem.getAttribute("required");
 
     var Pdata = $(Pelem).select2("data")[0];
+    var PROP_ID=Pdata.element.parentElement.getAttribute("data-property_id")
     console.log($(Pelem).select2("data")[0]);
     var PRODUCT_CAT = Pdata.text;
     var PRODUCT_CAT_ID = Pdata.id;
@@ -69,6 +71,8 @@ function AddEquipment() {
         PRODUCT_CAT: PRODUCT_CAT,
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
         PNAME: PNAME,
+        PROP_ID:PROP_ID,
+        
       };
 
       console.table(O);

@@ -1,6 +1,7 @@
 ﻿<cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <input type="hidden" name="PropList_0" id="PropList_0" value="<cfoutput>#attributes.PropList#</cfoutput>">
 <input type="hidden" name="PropList_1" id="PropList_1" value="">
+
 <div id="APX_0" style="display:flex">
 <div class="form-group">
     <label>Keyword</label>
@@ -35,6 +36,8 @@ var Label=document.createElement("label");
 Label.innerText=Obj[i].PROPERTY
                     var Sel=document.createElement("Select");
                     Sel.setAttribute("style","margin-left:5px");
+                    Sel.setAttribute("onchange","propduzenle(this)");
+                    Sel.setAttribute("data-propertyId",Obj[i].PROPERTY_ID)
                     Sel.id="SELECT_00_"+Obj[i].PROPERTY_ID;
                     var Opt=document.createElement("option");
                     Opt.value="";
@@ -81,7 +84,9 @@ Label.innerText=Obj[i].PROPERTY
             }
         })
     }
-    
+    function propduzenle(el) {
+        var PropId=el.getAttribute(data-propertyId)
+    }
     function LoadProducts(){
 
     }
