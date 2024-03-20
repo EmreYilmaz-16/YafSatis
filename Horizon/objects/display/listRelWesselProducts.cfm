@@ -96,7 +96,7 @@
         var MANUFACT_CODE=$("#MANUFACT_CODE"+iiix).val()
         
         var Ro={
-            Filters:JSON.parse(JSON_STRINGIM),
+            Filters:JSON.parse(JSON_STRINGIM).Filters,
             PropList:PROP_LIST
         }
         var jsn = JSON.stringify(Ro);
