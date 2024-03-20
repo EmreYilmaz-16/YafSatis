@@ -107,7 +107,8 @@
     var ix=el.options[el.selectedIndex].innerText
     if(el.value.length==0){
         $("#my1 tr").filter(function() {
-      $(this).toggle()
+      $(this).show()
+      return false;
     });
     console.log(el)
      $("#my1 tr").filter(function() {
@@ -120,7 +121,8 @@ function filterPP2(el){
     console.log(el)
     if(el.value.length==0){
         $("#my1 tr").filter(function() {
-      $(this).toggle()
+      $(this).show();
+      return false;
     });
     }
      $("#my1 tr").filter(function() {
