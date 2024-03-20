@@ -135,7 +135,7 @@ Label.innerText=Obje[i].PROPERTY
                     div.appendChild(Sel)
                     document.getElementById("PROP_AREA_00001").appendChild(div)
                     
-                    getOptions(cat_id,Obj[i].PROPERTY_ID)
+                    getOptions(cat_id,Obje[i].PROPERTY_ID)
             }
         }
     })
