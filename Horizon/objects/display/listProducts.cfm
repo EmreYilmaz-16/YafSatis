@@ -136,6 +136,8 @@ Label.innerText=Obj[i].PROPERTY
     },success:function (params) {
         var Obj=JSON.parse(params);
         console.log(Obj)
+        $("#APX_1").html("");
+        $("#Tb000").html("");
         for(let i=0;i<Obj.OTHER_PROPERTIES.length;i++){
             var aProperty=Obj.OTHER_PROPERTIES[i];
             
