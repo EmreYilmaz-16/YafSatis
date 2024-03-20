@@ -30,7 +30,7 @@
         </tr>
     </table>
 </cf_box>
-<cf_ajax_list>
+<cf_ajax_list id="my1">
     <thead>
         <tr>
             <th>
@@ -96,4 +96,11 @@
         addEqRow(Ro, jsn)
         addRowCrs(PROP_LIST, PRODUCT_ID,  STOCK_ID,  PRODUCT_NAME, 0,  MANUFACT_CODE,  1,  MAIN_UNIT,  0,  "TL",  0,  0, 0,  0,  "",0,0) 
     }
+    function filterPP(el){
+    var ix=el.options[el.selectedIndex].innerText
+    console.log(el)
+     $("#my1 tr").filter(function() {
+      $(this).toggle($(this).text().indexOf(ix) > -1)
+    });
+}
 </script>
