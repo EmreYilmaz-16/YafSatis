@@ -163,11 +163,16 @@ function addEqRow(Obj, jsn) {
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
+  b6.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
   diva.appendChild(b1);
   diva.appendChild(b2);
   diva.appendChild(b3);
   diva.appendChild(b4);
   diva.appendChild(b5);
+  diva.appendChild(b6);
   td.appendChild(diva);
   tr.appendChild(td);
   var svk_st = 8;
