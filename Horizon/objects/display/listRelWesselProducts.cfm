@@ -84,6 +84,7 @@
 
 </cf_box>
 <script>
+var EMRECIMMMMM="";
     function EkleCanimBenim(iiix) {
         var PROP_LIST=$("#PROP_LIST"+iiix).val()
         var PRODUCT_ID=$("#PRODUCT_ID"+iiix).val()
@@ -94,7 +95,7 @@
         console.log(JSON_STRINGIM)
         var PRODUCT_NAME=$("#PRODUCT_NAME"+iiix).val()
         var MANUFACT_CODE=$("#MANUFACT_CODE"+iiix).val()
-        
+        EMRECIMMMMM=JSON.parse(JSON_STRINGIM);
         var Ro={
             Filters:JSON.parse(JSON_STRINGIM),
             PropList:PROP_LIST
