@@ -136,13 +136,13 @@ function addEqRow(Obj, jsn) {
   b4.innerHTML = spn;
 
   var b5 = document.createElement("button");
-  b5.setAttribute("class", "ui-wrk-btn");
+  b5.setAttribute("class", "ui-wrk-btn ");
   b5.setAttribute("style", "background:#292424 !important;color:white");
   b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
 
   var b6 = document.createElement("button");
-  b6.setAttribute("class", "ui-wrk-btn");
-  b6.setAttribute("style", "background:#292424 !important;color:white");
+  b6.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+  
   b6.innerHTML = '<span class="icn-md icon-filter"></span>';
   b6.setAttribute("onclick","lookProducts('"+Obj.PropList+"')")
   var diva = document.createElement("div");
