@@ -120,7 +120,6 @@ function setMoney(el) {
   $("#rate1").val(MoneyArr[ix].RATE1);
   $("#rate2").val(MoneyArr[ix].RATE2);
   $("#selected_money").val(MoneyArr[ix].MONEY);
-  
 }
 
 function getOfferPriorities(el) {
@@ -150,8 +149,9 @@ function SaveOfferHeader() {
   var REF_NO = $("#AddRefNo").val();
   var OFFER_DATE = $("#start_date").val();
   var SHIP_METHOD_ID = $("#SHIP_METHOD_ID").val();
-  var ix=document.getElementById("SHIP_METHOD_ID").options.selectedIndex
-var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
+  var ix = document.getElementById("SHIP_METHOD_ID").options.selectedIndex;
+  var SHIP_METHOD =
+    document.getElementById("SHIP_METHOD_ID").options[ix].innerText;
   var PRIORITY = $("#PRIORITY").val();
   var VALID_DAYS = $("#validDay").val();
   var VALID_DATE = $("#validtyDate").val();
@@ -160,7 +160,7 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
   var DELIVERY_DATE = $("#delivery_date").val();
   var DELIVERY_TYIME = $("#DVTime").val();
   var MONEY = $("#MONEY").val();
-  if(MONEY.length==0) $("#Money")
+  if (MONEY.length == 0) $("#Money");
   var OFFER_CONDITION = $("#OFFER_CONDITION").val();
   var OFFER_DETAIL = $("#OfferDetail").val();
   var PROPERTY1 = $("#PROPERTY1").val();
@@ -168,11 +168,11 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
   var PROPERTY3 = $("#PROPERTY3").val();
   var PROPERTY4 = $("#PROPERTY4").val();
   var OFFER_MONEY = $("#selected_money").val();
-  var RATE1=$("#rate1").val();
-  var RATE2=$("#rate2").val();
-  var ACTIVECOMPANY =$("#ACTIVECOMPANY").val();
-  var SALES_EMP_ID =$("#SALES_EMP_ID").val();
-  var SALES_EMP =$("#SALES_EMP").val();
+  var RATE1 = $("#rate1").val();
+  var RATE2 = $("#rate2").val();
+  var ACTIVECOMPANY = $("#ACTIVECOMPANY").val();
+  var SALES_EMP_ID = $("#SALES_EMP_ID").val();
+  var SALES_EMP = $("#SALES_EMP").val();
 
   var O = {
     OFFER_CURRENCY: OFFER_CURRENCY,
@@ -184,7 +184,7 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
     REF_NO: REF_NO,
     OFFER_DATE: OFFER_DATE,
     SHIP_METHOD_ID: SHIP_METHOD_ID,
-    SHIP_METHOD:SHIP_METHOD,
+    SHIP_METHOD: SHIP_METHOD,
     PRIORITY: PRIORITY,
     VALID_DAYS: VALID_DAYS,
     VALID_DATE: VALID_DATE,
@@ -199,14 +199,14 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
     PROPERTY2: PROPERTY2,
     PROPERTY3: PROPERTY3,
     PROPERTY4: PROPERTY4,
-    KURLAR:MONEY_ARR,
-    OFFER_MONEY:OFFER_MONEY,
-    DATA_SOURCES:DataSources,
-    RATE1:RATE1,
-    RATE2:RATE2,
-    ACTIVECOMPANY:ACTIVECOMPANY,
-    SALES_EMP_ID:SALES_EMP_ID,
-    SALES_EMP:SALES_EMP,
+    KURLAR: MONEY_ARR,
+    OFFER_MONEY: OFFER_MONEY,
+    DATA_SOURCES: DataSources,
+    RATE1: RATE1,
+    RATE2: RATE2,
+    ACTIVECOMPANY: ACTIVECOMPANY,
+    SALES_EMP_ID: SALES_EMP_ID,
+    SALES_EMP: SALES_EMP,
   };
 
   $.ajax({
@@ -216,9 +216,11 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
     },
     success: function (retdat) {
       console.log("Kaydettim");
-      var Obj=JSON.parse(retdat);
-      if(Obj.STATUS == 1){
-        window.location.href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id="+Obj.OFFER_ID
+      var Obj = JSON.parse(retdat);
+      if (Obj.STATUS == 1) {
+        window.location.href =
+          "/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=" +
+          Obj.OFFER_ID;
       }
     },
   });
@@ -228,3 +230,5 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
  * <input type="hidden" name="rate1" id="rate1">
                                 <input type="hidden" name="rate2" id="rate2">
  */
+
+
