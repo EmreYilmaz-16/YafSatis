@@ -105,7 +105,7 @@
     }
     function filterPP(el){
     var ix=el.options[el.selectedIndex].innerText
-    if(ix.trim().length==0){
+    if(el.value.length==0){
         $("#my1 tr").filter(function() {
       $(this).toggle()
     });
@@ -118,7 +118,7 @@
 function filterPP2(el){
     var ix=el.options[el.selectedIndex].innerText
     console.log(el)
-    if(ix.trim().length==0){
+    if(el.value.length==0){
         $("#my1 tr").filter(function() {
       $(this).toggle()
     });
