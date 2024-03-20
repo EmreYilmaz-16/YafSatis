@@ -161,7 +161,7 @@ Label.innerText=aProperty.PROPERTY
                     }
                     div.appendChild(Label)
                     div.appendChild(Sel)
-                    document.getElementById("APX_0").appendChild(div)
+                    document.getElementById("APX_1").appendChild(div)
         }
         for(let i=0;i<Obj.PRODUCTS.length;i++){
            var aProduct=Obj.PRODUCTS[i];
