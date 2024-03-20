@@ -135,6 +135,12 @@ function addEqRow(Obj, jsn) {
   b5.setAttribute("class", "ui-wrk-btn");
   b5.setAttribute("style", "background:#292424 !important;color:white");
   b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
+
+  var b6 = document.createElement("button");
+  b6.setAttribute("class", "ui-wrk-btn");
+  b6.setAttribute("style", "background:#292424 !important;color:white");
+  b6.innerHTML = '<span class="icn-md icon-filter"></span>';
+  b6.setAttribute("onclick","lookProducts('"+Obj.PropList+"')")
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
   b1.setAttribute(
@@ -951,3 +957,7 @@ function OzetOlustur() {
 
 }
 
+function lookProducts(proplist){
+  openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_products_pbs&proplist='+proplist)
+
+}

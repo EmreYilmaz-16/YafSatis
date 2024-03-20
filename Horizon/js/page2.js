@@ -160,6 +160,7 @@ var SHIP_METHOD=document.getElementById("SHIP_METHOD_ID").options[ix].innerText
   var DELIVERY_DATE = $("#delivery_date").val();
   var DELIVERY_TYIME = $("#DVTime").val();
   var MONEY = $("#MONEY").val();
+  if(MONEY.length==0) $("#Money")
   var OFFER_CONDITION = $("#OFFER_CONDITION").val();
   var OFFER_DETAIL = $("#OfferDetail").val();
   var PROPERTY1 = $("#PROPERTY1").val();
