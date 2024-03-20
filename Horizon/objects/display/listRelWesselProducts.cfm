@@ -110,8 +110,10 @@
         if (el.value.length == 0) {
             $("#my1 tr").filter(function () {
             $(this).show();
-            return false;
-    });}
+            
+    });
+    return false;
+}
     console.log(el);
     $("#my1 tr").filter(function () {
       $(this).toggle($(this).text().indexOf(ix) > -1);
@@ -126,8 +128,9 @@ function filterPP2(el) {
   if (el.value.length == 0) {
     $("#my1 tr").filter(function () {
       $(this).show();
-      return false;
+      
     });
+    return false;
   }
   $("#my1 tr").filter(function () {
     $(this).toggle($(this).text().indexOf(ix) > -1);
