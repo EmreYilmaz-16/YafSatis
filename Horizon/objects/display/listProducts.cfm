@@ -11,14 +11,15 @@
         var p_list=document.getElementById("PropList_0").value;
         var es=document.getElementById("AddedEquipment_"+p_list)
         console.log(es.value);
-        
+        var PS=JSON.parse(es.value);
+        LoadProps(PS.PRODUCT_CAT_ID);
     })
     function LoadProps(Pcat){
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getCatProperties&PRODUCT_CATID="+Pcat,
             success:function(retdat){
                 var Obj=JSON.parse(retdat);
-                console.log(obj)
+                console.log(Obj)
             }
         })
     }
