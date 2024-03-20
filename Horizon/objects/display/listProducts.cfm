@@ -85,7 +85,10 @@ Label.innerText=Obj[i].PROPERTY
         })
     }
     function propduzenle(el) {
-        var PropId=el.getAttribute(data-propertyId)
+        var PropId=el.getAttribute("data-propertyId");
+        var PSL=document.getElementById("PropList_1").value
+        var PS=JSON.parse(PSL);
+        console.log(PS);
     }
     function LoadProducts(){
 
