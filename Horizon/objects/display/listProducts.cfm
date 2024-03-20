@@ -27,6 +27,8 @@
 var Label=document.createElement("label");
 Label.innerText=Obj[i].PROPERTY
                     var Sel=document.createElement("Select");
+                    Sel.setAttribute("style","margin-left:5px");
+                    
                     div.appendChild(Label)
                     div.appendChild(Sel)
                     document.getElementById("APX_0").appendChild(div)
@@ -35,5 +37,14 @@ Label.innerText=Obj[i].PROPERTY
         })
     }
 
+    function getOptions(PRODUCT_CAT_ID,PROPERTY_ID){
+        $.ajax({
+            url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+Pcat+"&PROPERTY_ID="+PROPERTY_ID,
+            success:function (params) {
+                var Obj=JSON.parse(params);
+                console.log(Obj);
+            }
+        })
+    }
     
 </script>
