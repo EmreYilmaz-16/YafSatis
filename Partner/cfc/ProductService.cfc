@@ -175,11 +175,12 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
             <cfdump  var="#getProd#">
             <cfdump  var="#FData#">    
         </cfsavecontent>
+        <CFSET PID_LIST=listAppend(PID_LIST,"0")>
         <cffile action="write" file = "c:\SearchProduct.html" output="#control5#"></cffile>
         <cfquery name="getOtherProperties" datasource="#dsn#">
             SELECT DISTINCT PDP.PROPERTY_ID,PROPERTY,(SELECT PROPERTY_DETAIL_ID,PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD WHERE PPD.PRPT_ID=PDP.PROPERTY_ID FOR JSON PATH) as TKFS FROM CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPERTY_ID
- WHERE PRODUCT_ID IN (#PID_LIST#,0)
+ WHERE PRODUCT_ID IN (#PID_LIST#)
 AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#FData.SearchMainValue.PRODUCT_CAT_ID#)
         </cfquery> 
         <CFSET ReturnData=structNew()>
