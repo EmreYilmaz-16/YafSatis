@@ -20,7 +20,7 @@
                     <select name="EQ0001" id="EQ0001">
                         <option value="">Seç</option>
                         <cfoutput>
-                            <cfloop array="Equipments" item="it">
+                            <cfloop array="#Equipments#" item="it">
                                 <option value="#it.PRODUCT_CATID#">#it.PRODUCT_CAT#</option>
                             </cfloop>
                         </cfoutput>
