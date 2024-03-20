@@ -89,7 +89,7 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
     </cffunction>
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="WesselId">
-        <cfquery name="getProd" datasource="#dsn3#">
+        <cfquery name="getProd" datasource="#dsn#">
             select S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,POR.PROP_LIST,POR.JSON_STRINGIM,PU.MAIN_UNIT,S.PRODUCT_CODE,S.TAX,S.PRODUCT_CODE_2 from CatalystQA_1.PBS_OFFER_ROW AS POR 
         INNER JOIN CatalystQA_1.PBS_OFFER AS PO ON POR.OFFER_ID=PO.OFFER_ID
         INNER JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
