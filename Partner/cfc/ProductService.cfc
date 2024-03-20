@@ -98,6 +98,7 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
         </cfquery>
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="getProd">
+        <cfset P=structNew()>
             <cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
         <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
         <cfset P.STOCK_ID=getProd.STOCK_ID>
