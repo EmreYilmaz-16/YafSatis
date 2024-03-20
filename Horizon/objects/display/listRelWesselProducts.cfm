@@ -28,7 +28,7 @@
                 </div>
             </td>
             <td>
-                <div id="PROP_AREA_00001">
+                <div id="PROP_AREA_00001" style="display:flex">
 
                 </div> 
             </td>
