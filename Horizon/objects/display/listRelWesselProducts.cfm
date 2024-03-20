@@ -34,7 +34,7 @@
                     <input type="hidden" name="STOCK_ID" id="STOCK_ID#ix#" value="#it.STOCK_ID#">
                     <input type="hidden" name="MAIN_UNIT" id="MAIN_UNIT#ix#" value="#it.MAIN_UNIT#">
                     <input type="hidden" name="TAX" id="TAX#ix#" value="#it.TAX#">
-                    <input type="hidden" name="JSON_STRINGIM" id="JSON_STRINGIM#ix#" value="#it.JSON_STRINGIM#">
+                    <input type="hidden" name="JSON_STRINGIM" id="JSON_STRINGIM#ix#" value='#it.JSON_STRINGIM#'>
                 </td>
                 <td>
                     #it.PRODUCT_NAME#
