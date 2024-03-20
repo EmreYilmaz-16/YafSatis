@@ -97,7 +97,7 @@ var EMRECIMMMMM="";
         var MANUFACT_CODE=$("#MANUFACT_CODE"+iiix).val()
         EMRECIMMMMM=JSON.parse(JSON_STRINGIM);
         var Ro={
-            Filters:JSON_STRINGIM,
+            Filters:EMRECIMMMMM.Filters,
             PropList:PROP_LIST
         }
         var jsn = JSON.stringify(Ro);
