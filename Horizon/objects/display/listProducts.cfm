@@ -9,7 +9,7 @@
 </div>
 </div>
 <button onclick="LoadProducts()">Ara</button>
-<div id="APX_1">
+<div id="APX_1" style="display:flex">
 
 </div>
 <cf_ajax_list>
