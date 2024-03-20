@@ -35,7 +35,7 @@
         </tr>
     </table>
 </cf_box>
-<cf_ajax_list id="my1">
+<cf_ajax_list >
     <thead>
         <tr>
             <th>
@@ -50,6 +50,7 @@
         </tr>
     </thead>
     <cfoutput>
+        <tbody id="my1">
         <cfloop array="#WesselProducts#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
                 <td>
@@ -78,6 +79,7 @@
             </tr>
         </cfloop>
     </cfoutput>
+</tbody>
 </cf_ajax_list>
 
 </cf_box>
