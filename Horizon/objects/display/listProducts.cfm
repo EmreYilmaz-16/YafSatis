@@ -123,6 +123,9 @@ Label.innerText=Obj[i].PROPERTY
     url: ServiceUri + "/ProductService.cfc?method=SearchProductPopup",
     data: {
       FormData: JSON.stringify(Search),
-    },
+    },success:function (params) {
+        var Obj=JSON.parse(params);
+        console.log(Obj)
+    }
     })}
 </script>
