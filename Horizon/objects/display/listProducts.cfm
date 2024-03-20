@@ -3,6 +3,7 @@
 <input type="hidden" name="PropList_1" id="PropList_1" value="">
 <div id="APX_0" style="display:flex">
 <div class="form-group">
+    <label>Keyword</label>
     <input type="text" name="keyword_000" id="keyword_000">
 </div>
 </div>
