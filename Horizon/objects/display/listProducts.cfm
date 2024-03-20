@@ -55,7 +55,7 @@ Label.innerText=Obj[i].PROPERTY
                 for(let i=0;i<Obj.length;i++){
                     var aVariation=Obj[i];
                     var SelectedVar=PS.Filters.find(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID.toString());
-                    console.log(SelectedVar);
+                    console.table(SelectedVar);
                     var Opt=document.createElement("option");
                     Opt.value=aVariation.PROPERTY_DETAIL_ID;
                     Opt.innerText=aVariation.PROPERTY_DETAIL
