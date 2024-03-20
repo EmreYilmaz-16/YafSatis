@@ -104,21 +104,21 @@
         addRowCrs(PROP_LIST, PRODUCT_ID,  STOCK_ID,  PRODUCT_NAME, 0,  MANUFACT_CODE,  1,  MAIN_UNIT,  0,  "TL",  0,  0, 0,  0,  "",0,0) 
     }
     function filterPP(el) {
-  var ix = el.options[el.selectedIndex].innerText;
-  console.log(el.value);
-  console.log(el.value.length);
-  if (el.value.length == 0) {
-    $("#my1 tr").filter(function () {
-      $(this).show();
-      return false;
-    });
+        var ix = el.options[el.selectedIndex].innerText;
+        console.log(el.value);
+        console.log(el.value.length);
+        if (el.value.length == 0) {
+            $("#my1 tr").filter(function () {
+            $(this).show();
+            return false;
+    });}
     console.log(el);
     $("#my1 tr").filter(function () {
       $(this).toggle($(this).text().indexOf(ix) > -1);
     });
     Cra(el.value);
   }
-}
+
 function filterPP2(el) {
   var ix = el.options[el.selectedIndex].innerText;
   console.log(el.value);
