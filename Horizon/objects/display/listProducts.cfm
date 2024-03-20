@@ -71,9 +71,10 @@ Label.innerText=Obj[i].PROPERTY
                     Opt.innerText=aVariation.PROPERTY_DETAIL
                     if(SelectedVar != -1){
                         Opt.setAttribute("selected","true");
+                        document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).setAttribute("readonly","true");
                     }
                     document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).appendChild(Opt);
-                    document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).setAttribute("readonly","true");
+                    
                   //  console.log(aVariation);
                 }
             }
