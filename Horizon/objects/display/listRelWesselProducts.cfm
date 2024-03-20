@@ -109,7 +109,14 @@
     });
     Cra(el.value);
 }
-
+function filterPP2(el){
+    var ix=el.options[el.selectedIndex].innerText
+    console.log(el)
+     $("#my1 tr").filter(function() {
+      $(this).toggle($(this).text().indexOf(ix) > -1)
+    });
+  //  Cra(el.value);
+}
 function Cra(cat_id) {
    $("#PROP_AREA_00001").html("");
     $.ajax({
@@ -124,7 +131,7 @@ var Label=document.createElement("label");
 Label.innerText=Obje[i].PROPERTY
                     var Sel=document.createElement("Select");
                     Sel.setAttribute("style","margin-left:5px");
-                    Sel.setAttribute("onchange","propduzenle(this)");
+                    Sel.setAttribute("onchange","filterPP2(this)");
                     Sel.setAttribute("data-propertyId",Obje[i].PROPERTY_ID)
                     Sel.id="SELECT_00_"+Obje[i].PROPERTY_ID;
                     var Opt=document.createElement("option");
