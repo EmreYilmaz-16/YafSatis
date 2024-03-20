@@ -95,8 +95,8 @@ Label.innerText=Obj[i].PROPERTY
         })
     }
     function propduzenle(el) {
-        var PRODUCT_CAT=s.options[s.selectedIndex].innerText;
-        var PRODUCT_CAT_ID=s.options[s.selectedIndex].value;
+        var PRODUCT_CAT=el.options[el.selectedIndex].innerText;
+        var PRODUCT_CAT_ID=el.options[el.selectedIndex].value;
         var PropId=el.getAttribute("data-propertyId");
         var PSL=document.getElementById("PropList_1").value
         var PS=JSON.parse(PSL);
