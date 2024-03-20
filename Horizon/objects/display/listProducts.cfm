@@ -138,6 +138,8 @@ Label.innerText=Obj[i].PROPERTY
         console.log(Obj)
         $("#APX_1").html("");
         $("#Tb000").html("");
+        var PSL=document.getElementById("PropList_1").value
+        var PS=JSON.parse(PSL);
         for(let i=0;i<Obj.OTHER_PROPERTIES.length;i++){
             var aProperty=Obj.OTHER_PROPERTIES[i];
             
@@ -154,12 +156,17 @@ Label.innerText=aProperty.PROPERTY
                     Opt.value="";
                     Opt.innerText="Seç";
                     Sel.appendChild(Opt);
-                    
+                  
                     for(let j=0;j<aProperty.VARIATIONS.length;j++){
                         var opt=document.createElement("option")
                         opt.value=aProperty.VARIATIONS[j].PROPERTY_DETAIL_ID
                         opt.innerText=aProperty.VARIATIONS[j].PROPERTY_DETAIL
                         Sel.appendChild(opt)
+                        var SelectedVar=PS.Filters.findIndex(p=>p.PRODUCT_CAT_ID==aProperty.VARIATIONS[j].PROPERTY_DETAIL_ID.toString());
+                        if(SelectedVar != -1){
+                            opt.setAttribute("selected","true");
+                       // document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).setAttribute("disabled","true");
+                    }
                     }
                     div.appendChild(Label)
                     div.appendChild(Sel)
