@@ -105,6 +105,10 @@
     }
     function filterPP(el){
     var ix=el.options[el.selectedIndex].innerText
+    if(ix.length==0){
+        $("#my1 tr").filter(function() {
+      $(this).toggle()
+    });
     console.log(el)
      $("#my1 tr").filter(function() {
       $(this).toggle($(this).text().indexOf(ix) > -1)
@@ -114,6 +118,11 @@
 function filterPP2(el){
     var ix=el.options[el.selectedIndex].innerText
     console.log(el)
+    if(ix.length==0){
+        $("#my1 tr").filter(function() {
+      $(this).toggle()
+    });
+    }
      $("#my1 tr").filter(function() {
       $(this).toggle($(this).text().indexOf(ix) > -1)
     });
