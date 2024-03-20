@@ -144,7 +144,14 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
                         INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
                         WHERE PRODUCT_ID = P.PRODUCT_ID
                         FOR XML PATH('')
-                        ) AS DTP
+                        ) AS DTP,(
+                        SELECT  CONVERT(VARCHAR, PROPERTY_DETAIL) + '->'
+                        FROM CatalystQA_product.PRODUCT_DT_PROPERTIES
+                        INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
+                        INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
+                        WHERE PRODUCT_ID = P.PRODUCT_ID
+                        FOR XML PATH('')
+                        ) AS DTP2
                 FROM CatalystQA_product.PRODUCT AS P
                 LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
@@ -197,6 +204,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
         <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
         <CFSET P.TAX=getProd.TAX>
+        <cfset P.DTP=DTP2>
         <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
         <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
         
