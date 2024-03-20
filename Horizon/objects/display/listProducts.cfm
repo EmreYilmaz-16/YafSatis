@@ -85,10 +85,30 @@ Label.innerText=Obj[i].PROPERTY
         })
     }
     function propduzenle(el) {
+        var PRODUCT_CAT=s.options[s.selectedIndex].innerText;
+        var PRODUCT_CAT_ID=s.options[s.selectedIndex].value;
         var PropId=el.getAttribute("data-propertyId");
         var PSL=document.getElementById("PropList_1").value
         var PS=JSON.parse(PSL);
         console.log(PS);
+        var ix=PS.Filters.findIndex(p=>p.PROP_ID==PropId);
+        if(ix == -1){
+            var Ox={
+                PNAME:"REV",
+                PRODUCT_CAT:PRODUCT_CAT,
+                PRODUCT_CAT_ID:PRODUCT_CAT_ID,
+                PROP_ID:PropId
+            }
+            el.Filters.push(Ox)
+        }else{
+            var Ox={
+                PNAME:"REV",
+                PRODUCT_CAT:PRODUCT_CAT,
+                PRODUCT_CAT_ID:PRODUCT_CAT_ID,
+                PROP_ID:PropId
+            }
+            el.Filters[ix]=Ox;
+        }
     }
     function LoadProducts(){
 
