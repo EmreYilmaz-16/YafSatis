@@ -1,9 +1,10 @@
-<cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
+﻿<cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <input type="hidden" name="PropList_0" id="PropList_0" value="<cfoutput>#attributes.PropList#</cfoutput>">
 <input type="hidden" name="PropList_1" id="PropList_1" value="">
 <div id="APX_0" style="display:flex">
 
 </div>
+<button>Ara</button>
 <div id="APX_1">
 
 </div>
