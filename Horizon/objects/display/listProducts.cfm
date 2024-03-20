@@ -182,7 +182,7 @@ Label.innerText=aProperty.PROPERTY
             td.innerText=aProduct.PRODUCT_NAME;
             tr.appendChild(td)
             var td=document.createElement("td");
-            td.innerText=aProduct.DTP;
+            td.innerHTML=aProduct.DTP;
             tr.appendChild(td)
             document.getElementById("Tb000").appendChild(tr)
         }
