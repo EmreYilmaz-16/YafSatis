@@ -40,7 +40,7 @@ Label.innerText=Obj[i].PROPERTY
 
     function getOptions(PRODUCT_CAT_ID,PROPERTY_ID){
         $.ajax({
-            url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+Pcat+"&PROPERTY_ID="+PROPERTY_ID,
+            url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+PRODUCT_CAT_ID+"&PROPERTY_ID="+PROPERTY_ID,
             success:function (params) {
                 var Obj=JSON.parse(params);
                 console.log(Obj);
