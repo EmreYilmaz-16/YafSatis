@@ -27,6 +27,11 @@
                     </select>
                 </div>
             </td>
+            <td>
+                <div id="PROP_AREA_00001">
+
+                </div> 
+            </td>
         </tr>
     </table>
 </cf_box>
@@ -102,5 +107,35 @@
      $("#my1 tr").filter(function() {
       $(this).toggle($(this).text().indexOf(ix) > -1)
     });
+}
+
+function Cra(cat_id) {
+    $.ajax({
+        url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getCatProperties&PRODUCT_CATID="+cat_id,
+        success:function(retdat){
+            var Obje=JSON.parse(retdat);
+            for(let i=0;i<Obje.length;i++){
+                var PRP=Obje[i];
+                var div=document.createElement("div");
+                    div.setAttribute("class","form-group");
+var Label=document.createElement("label");
+Label.innerText=Obj[i].PROPERTY
+                    var Sel=document.createElement("Select");
+                    Sel.setAttribute("style","margin-left:5px");
+                    Sel.setAttribute("onchange","propduzenle(this)");
+                    Sel.setAttribute("data-propertyId",Obje[i].PROPERTY_ID)
+                    Sel.id="SELECT_00_"+Obje[i].PROPERTY_ID;
+                    var Opt=document.createElement("option");
+                    Opt.value="";
+                    Opt.innerText="Seç";
+                    Sel.appendChild(Opt);
+                    div.appendChild(Label)
+                    div.appendChild(Sel)
+                    document.getElementById("PROP_AREA_00001").appendChild(div)
+                    
+                   // getOptions(Pcat,Obj[i].PROPERTY_ID)
+            }
+        }
+    })
 }
 </script>
