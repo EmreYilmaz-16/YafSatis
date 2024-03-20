@@ -138,6 +138,7 @@ Label.innerText=Obj[i].PROPERTY
         console.log(Obj)
         $("#APX_1").html("");
         $("#Tb000").html("");
+        var PropList=document.getElementById("PropList_0").value;
         var PSL=document.getElementById("PropList_1").value
         var PS=JSON.parse(PSL);
         for(let i=0;i<Obj.OTHER_PROPERTIES.length;i++){
@@ -176,6 +177,11 @@ Label.innerText=aProperty.PROPERTY
            var aProduct=Obj.PRODUCTS[i];
             var tr=document.createElement("tr");
             var td=document.createElement("td");
+            //addRowCrs('32,50004,50005', "10",  "10",  "Anti-polishing ring", 0,  "100 003",  1,  "Adet",  0,  "TL",  200,  0, 200,  200,  "",0,0) 
+            var a=document.createElement("a");
+            a.href="#";
+            a.innerText=aProduct.MANUFACT_CODE;
+            a.setAttribute("onclick","addRowCrs('"+PropList+"', "+aProduct.PRODUCT_ID+",  "+aProduct.STOCK_ID+",  '"+aProduct.PRODUCT_NAME+"', 0,  '"+aProduct.MANUFACT_CODE+"',  1,  '"+aProduct.MAIN_UNIT+"',  0,  'TL',  0,  0, 0,  0,  '',0,0)")
             td.innerText=aProduct.MANUFACT_CODE;
             tr.appendChild(td)
             var td=document.createElement("td");
