@@ -28,10 +28,11 @@ var Label=document.createElement("label");
 Label.innerText=Obj[i].PROPERTY
                     var Sel=document.createElement("Select");
                     Sel.setAttribute("style","margin-left:5px");
-                    
+                    Sel.id="SELECT_00_"+Obj[i].PROPERTY_ID;
                     div.appendChild(Label)
                     div.appendChild(Sel)
                     document.getElementById("APX_0").appendChild(div)
+                    getOptions(Pcat,Obj[i].PROPERTY_ID)
                 }
             }
         })
@@ -43,6 +44,10 @@ Label.innerText=Obj[i].PROPERTY
             success:function (params) {
                 var Obj=JSON.parse(params);
                 console.log(Obj);
+                for(let i=0;i<Obj.length;i++){
+                    var aVariation=Obj[i];
+                    console.log(aVariation);
+                }
             }
         })
     }
