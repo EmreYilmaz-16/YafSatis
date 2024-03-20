@@ -87,6 +87,34 @@ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRO
           </cfloop>
           <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
+    <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="WesselId">
+        <cfquery name="getProd" datasource="#dsn3#">
+            select S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,POR.PROP_LIST,POR.JSON_STRINGIM,PU.MAIN_UNIT,S.PRODUCT_CODE,S.TAX,S.PRODUCT_CODE_2 from CatalystQA_1.PBS_OFFER_ROW AS POR 
+        INNER JOIN CatalystQA_1.PBS_OFFER AS PO ON POR.OFFER_ID=PO.OFFER_ID
+        INNER JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
+        INNER JOIN CatalystQA_product.PRODUCT_UNIT AS PU ON PU.PRODUCT_ID=S.PRODUCT_ID AND PU.IS_MAIN=1
+        WHERE PO.WESSEL_ID=#arguments.WesselId#
+        </cfquery>
+        <cfset ReturnArr=arrayNew(1)>
+        <cfloop query="getProd">
+            <cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
+        <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
+        <cfset P.STOCK_ID=getProd.STOCK_ID>
+        <cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
+        <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
+        <CFSET P.TAX=getProd.TAX>
+        <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
+        <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
+        <cfset P.RECORD_COUNT=getProd.recordcount>
+        <cfset P.PROP_LIST=getProd.PROP_LIST>
+        <cfset P.JSON_STRINGIM=getProd.JSON_STRINGIM>
+        <cfscript>
+            arrayAppend(ReturnArr,P);
+        </cfscript>
+        </cfloop>
+        <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
 
     <cffunction name="SearchProduct" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">

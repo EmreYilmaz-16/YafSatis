@@ -312,6 +312,7 @@ AS (
 		,POC.CONDITION
 		,OCUR.OFFER_CURRENCY AS OFFCRRCNCY
 		,PS.SHIP_NAME
+        ,PO.WESSEL_ID
 		,PO.OTHER_MONEY
 		,PO.VALID_DAYS
 		,PO.OFFER_DETAIL
@@ -384,6 +385,7 @@ WHERE 1 = 1
                 OTHER_MONEY=OTHER_MONEY,
                 SHIP_NAME=SHIP_NAME,
                 CONDITION=CONDITION,
+                WESSEL_ID=WESSEL_ID,
                 ROW_NUMBER=RowNum
             };
             
