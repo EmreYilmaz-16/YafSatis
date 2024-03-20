@@ -54,12 +54,15 @@ Label.innerText=Obj[i].PROPERTY
                 console.log(Obj);
                 for(let i=0;i<Obj.length;i++){
                     var aVariation=Obj[i];
-                    var SelectedVar=PS.Filters.find(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID.toString());
-                    console.table(SelectedVar);
+                    var SelectedVar=PS.Filters.findIndex(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID.toString());
+                    
                     var Opt=document.createElement("option");
                     Opt.value=aVariation.PROPERTY_DETAIL_ID;
                     Opt.innerText=aVariation.PROPERTY_DETAIL
-                    
+                    if(SelectedVar != -1){
+                        Opt.setAttribute("selected","true");
+                    }
+                    document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).appendChild(Opt);
                   //  console.log(aVariation);
                 }
             }
