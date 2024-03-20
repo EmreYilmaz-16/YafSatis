@@ -22,8 +22,12 @@
                 var Obj=JSON.parse(retdat);
                 console.log(Obj)
                 for(let i=0;i<Obj.length;i++){
+                    var div=document.createElement("div");
+                    div.setAttribute("class","form-group");
+
                     var Sel=document.createElement("Select");
-                    document.getElementById("APX_0").appendChild(Sel)
+                    div.appendChild(Sel)
+                    document.getElementById("APX_0").appendChild(div)
                 }
             }
         })
