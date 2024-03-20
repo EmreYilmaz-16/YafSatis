@@ -118,7 +118,7 @@
     $("#my1 tr").filter(function () {
       $(this).toggle($(this).text().indexOf(ix) > -1);
     });
-    Cra(el.value);
+   // Cra(el.value);
   }
 
 function filterPP2(el) {
