@@ -53,7 +53,7 @@ Label.innerText=Obj[i].PROPERTY
                 var Obj=JSON.parse(params);
                 console.log(Obj);
                 if(Obj.length==0){
-                    $("#SELECT_00_"+PROPERTY_ID).remove();
+                    $("#SELECT_00_"+PROPERTY_ID).parent().remove();
                 }
                 for(let i=0;i<Obj.length;i++){
                     var aVariation=Obj[i];
