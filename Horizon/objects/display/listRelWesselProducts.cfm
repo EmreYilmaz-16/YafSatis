@@ -107,9 +107,11 @@
      $("#my1 tr").filter(function() {
       $(this).toggle($(this).text().indexOf(ix) > -1)
     });
+    Cra(el.value);
 }
 
 function Cra(cat_id) {
+   $("#PROP_AREA_00001").html("");
     $.ajax({
         url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getCatProperties&PRODUCT_CATID="+cat_id,
         success:function(retdat){
