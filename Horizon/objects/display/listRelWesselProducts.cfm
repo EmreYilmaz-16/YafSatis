@@ -121,7 +121,7 @@ function Cra(cat_id) {
                 var div=document.createElement("div");
                     div.setAttribute("class","form-group");
 var Label=document.createElement("label");
-Label.innerText=Obj[i].PROPERTY
+Label.innerText=Obje[i].PROPERTY
                     var Sel=document.createElement("Select");
                     Sel.setAttribute("style","margin-left:5px");
                     Sel.setAttribute("onchange","propduzenle(this)");
