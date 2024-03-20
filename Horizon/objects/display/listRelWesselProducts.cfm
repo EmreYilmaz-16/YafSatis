@@ -17,7 +17,7 @@
                     <label>
                         Equipment
                     </label>
-                    <select name="EQ0001" id="EQ0001">
+                    <select name="EQ0001" id="EQ0001" onchange="filterPP(this)">
                         <option value="">Seç</option>
                         <cfoutput>
                             <cfloop array="#Equipments#" item="it">
