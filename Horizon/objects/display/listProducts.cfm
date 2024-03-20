@@ -182,7 +182,7 @@ Label.innerText=aProperty.PROPERTY
             a.href="#";
             a.innerText=aProduct.MANUFACT_CODE;
             a.setAttribute("onclick","addRowCrs('"+PropList+"', "+aProduct.PRODUCT_ID+",  "+aProduct.STOCK_ID+",  '"+aProduct.PRODUCT_NAME+"', 0,  '"+aProduct.MANUFACT_CODE+"',  1,  '"+aProduct.MAIN_UNIT+"',  0,  'TL',  0,  0, 0,  0,  '',0,0)")
-            td.innerText=aProduct.MANUFACT_CODE;
+            td.appendChild(a);
             tr.appendChild(td)
             var td=document.createElement("td");
             td.innerText=aProduct.PRODUCT_NAME;
