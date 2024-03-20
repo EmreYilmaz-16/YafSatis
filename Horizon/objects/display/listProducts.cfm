@@ -46,6 +46,7 @@ Label.innerText=Obj[i].PROPERTY
        console.log(arguments);
         var PSL=document.getElementById("PropList_1").value
         var PS=JSON.parse(PSL);
+        console.log(PS)
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+PRODUCT_CAT_ID+"&PROPERTY_ID="+PROPERTY_ID,
             success:function (params) {
@@ -53,7 +54,7 @@ Label.innerText=Obj[i].PROPERTY
                 console.log(Obj);
                 for(let i=0;i<Obj.length;i++){
                     var aVariation=Obj[i];
-                    var SelectedVar=PS.Filters.find(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID);
+                    var SelectedVar=PS.Filters.find(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID.toString());
                     console.log(SelectedVar);
                     var Opt=document.createElement("option");
                     Opt.value=aVariation.PROPERTY_DETAIL_ID;
