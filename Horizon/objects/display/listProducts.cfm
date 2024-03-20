@@ -99,7 +99,7 @@ Label.innerText=Obj[i].PROPERTY
                 PRODUCT_CAT_ID:PRODUCT_CAT_ID,
                 PROP_ID:PropId
             }
-            el.Filters.push(Ox)
+            PS.Filters.push(Ox)
         }else{
             var Ox={
                 PNAME:"REV",
@@ -107,8 +107,9 @@ Label.innerText=Obj[i].PROPERTY
                 PRODUCT_CAT_ID:PRODUCT_CAT_ID,
                 PROP_ID:PropId
             }
-            el.Filters[ix]=Ox;
+            PS.Filters[ix]=Ox;
         }
+        document.getElementById("PropList_1").value=JSON.stringify(PS);
     }
     function LoadProducts(){
 
