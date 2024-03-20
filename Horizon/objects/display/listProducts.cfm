@@ -1,5 +1,6 @@
 <cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <input type="hidden" name="PropList_0" id="PropList_0" value="<cfoutput>#attributes.PropList#</cfoutput>">
+<input type="hidden" name="PropList_1" id="PropList_1" value="">
 <div id="APX_0" style="display:flex">
 
 </div>
@@ -32,13 +33,14 @@ Label.innerText=Obj[i].PROPERTY
                     div.appendChild(Label)
                     div.appendChild(Sel)
                     document.getElementById("APX_0").appendChild(div)
-                    getOptions(Pcat,Obj[i].PROPERTY_ID)
+                    
+                    getOptions(Pcat,Obj[i].PROPERTY_ID,PS)
                 }
             }
         })
     }
 
-    function getOptions(PRODUCT_CAT_ID,PROPERTY_ID){
+    function getOptions(PRODUCT_CAT_ID,PROPERTY_ID,SELECTED_ID,PS){
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+PRODUCT_CAT_ID+"&PROPERTY_ID="+PROPERTY_ID,
             success:function (params) {
@@ -46,7 +48,13 @@ Label.innerText=Obj[i].PROPERTY
                 console.log(Obj);
                 for(let i=0;i<Obj.length;i++){
                     var aVariation=Obj[i];
-                    console.log(aVariation);
+                    var SelectedVar=PS.Filters.find(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID);
+                    console.log(SelectedVar);
+                    var Opt=document.createElement("option");
+                    Opt.value=aVariation.PROPERTY_DETAIL_ID;
+                    Opt.innerText=aVariation.PROPERTY_DETAIL
+                    
+                  //  console.log(aVariation);
                 }
             }
         })
