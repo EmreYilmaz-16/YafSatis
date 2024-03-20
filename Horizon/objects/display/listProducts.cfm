@@ -52,6 +52,9 @@ Label.innerText=Obj[i].PROPERTY
             success:function (params) {
                 var Obj=JSON.parse(params);
                 console.log(Obj);
+                if(Obj.length==0){
+                    $("#SELECT_00_"+PROPERTY_ID).remove();
+                }
                 for(let i=0;i<Obj.length;i++){
                     var aVariation=Obj[i];
                     var SelectedVar=PS.Filters.findIndex(p=>p.PRODUCT_CAT_ID==aVariation.PROPERTY_DETAIL_ID.toString());
