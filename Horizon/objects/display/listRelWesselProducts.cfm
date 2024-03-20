@@ -142,9 +142,9 @@ Label.innerText=Obje[i].PROPERTY
 }
 function getOptions(PRODUCT_CAT_ID,PROPERTY_ID,SELECTED_ID){
        console.log(arguments);
-        var PSL=document.getElementById("PropList_1").value
-        var PS=JSON.parse(PSL);
-        console.log(PS)
+        //var PSL=document.getElementById("PropList_1").value
+        //var PS=JSON.parse(PSL);
+        //console.log(PS)
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ProductService.cfc?method=getPropertyDetailsWithCatId&PRODUCT_CATID="+PRODUCT_CAT_ID+"&PROPERTY_ID="+PROPERTY_ID,
             success:function (params) {
