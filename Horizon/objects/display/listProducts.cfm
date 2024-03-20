@@ -2,7 +2,9 @@
 <input type="hidden" name="PropList_0" id="PropList_0" value="<cfoutput>#attributes.PropList#</cfoutput>">
 <input type="hidden" name="PropList_1" id="PropList_1" value="">
 <div id="APX_0" style="display:flex">
-
+<div class="form-group">
+    <input type="text" name="keyword_000" id="keyword_000">
+</div>
 </div>
 <button>Ara</button>
 <div id="APX_1">
@@ -71,10 +73,14 @@ Label.innerText=Obj[i].PROPERTY
                         Opt.setAttribute("selected","true");
                     }
                     document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).appendChild(Opt);
+                    document.getElementById("SELECT_00_"+aVariation.PROPERTY_ID).setAttribute("readonly","true");
                   //  console.log(aVariation);
                 }
             }
         })
     }
     
+    function LoadProducts(){
+
+    }
 </script>
