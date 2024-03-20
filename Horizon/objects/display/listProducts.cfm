@@ -8,7 +8,7 @@
     <input type="text" name="keyword_000" id="keyword_000">
 </div>
 </div>
-<button>Ara</button>
+<button onclick="LoadProducts()">Ara</button>
 <div id="APX_1">
 
 </div>
@@ -112,6 +112,17 @@ Label.innerText=Obj[i].PROPERTY
         document.getElementById("PropList_1").value=JSON.stringify(PS);
     }
     function LoadProducts(){
+       var SearchMainValue=JSON.parse(document.getElementById("PropList_1").value)
+       var keyword=document.getElementById("keyword_000").value;
+        var Search = {
+        SearchMainValue: SearchMainValue,
+        keyword: keyword,
+        };
 
-    }
+  $.ajax({
+    url: ServiceUri + "/ProductService.cfc?method=SearchProductPopup",
+    data: {
+      FormData: JSON.stringify(Search),
+    },
+    })}
 </script>
