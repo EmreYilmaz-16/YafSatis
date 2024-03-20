@@ -39,6 +39,11 @@
                 <td>
                     #it.PRODUCT_NAME#
                 </td>
+                <TD>
+                    <cfloop array="#it.JSON_STRINGIM.Filters#" item="it2" index="jx">
+                        #it2.PRODUCT_CAT#
+                    </cfloop>
+                </TD>
             </tr>
         </cfloop>
     </cfoutput>
