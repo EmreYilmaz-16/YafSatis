@@ -4,7 +4,7 @@
 
 <cfset getWesselProducts=ProductService.getWesselProducts(attributes.WesselId)>
 <cfset WesselProducts=deserializeJSON(getWesselProducts)>
-<cf_box title="Ürünler">
+<cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
 
 <cf_ajax_list>
     <thead>
