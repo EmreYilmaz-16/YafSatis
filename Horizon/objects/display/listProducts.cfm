@@ -1,3 +1,4 @@
+<cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <input type="hidden" name="PropList_0" id="PropList_0" value="<cfoutput>#attributes.PropList#</cfoutput>">
 <div id="APX_0">
 
@@ -5,7 +6,7 @@
 <div id="APX_1">
 
 </div>
-
+</cf_box>
 <script>
     $(document).ready(function (){
         var p_list=document.getElementById("PropList_0").value;
@@ -20,7 +21,13 @@
             success:function(retdat){
                 var Obj=JSON.parse(retdat);
                 console.log(Obj)
+                for(let i=0;i<Obj.length;i++){
+                    var Sel=document.createElement("Select");
+                    document.getElementById("APX_0").appendChild(Sel)
+                }
             }
         })
     }
+
+    
 </script>
