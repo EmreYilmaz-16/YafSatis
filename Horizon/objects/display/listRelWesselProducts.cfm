@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <cfoutput>
-        <cfloop array="WesselProducts" item="it" index="ix">
+        <cfloop array="#WesselProducts#" item="it" index="ix">
             <tr>
                 <td>
                     <a href="##" onclick="EkleCanimBenim(#ix#)">
