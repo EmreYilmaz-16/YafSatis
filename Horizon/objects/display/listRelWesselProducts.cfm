@@ -106,6 +106,7 @@
     function filterPP(el){
     var ix=el.options[el.selectedIndex].innerText
     console.log(el.value);
+    console.log(el.value.length);
     if(el.value.length==0){
         $("#my1 tr").filter(function() {
       $(this).show()
@@ -120,6 +121,7 @@
 function filterPP2(el){
     var ix=el.options[el.selectedIndex].innerText
     console.log(el.value);
+    console.log(el.value.length);
     if(el.value.length==0){
         $("#my1 tr").filter(function() {
       $(this).show();
