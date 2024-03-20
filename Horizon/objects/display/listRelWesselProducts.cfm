@@ -96,12 +96,9 @@ var EMRECIMMMMM="";
         var PRODUCT_NAME=$("#PRODUCT_NAME"+iiix).val()
         var MANUFACT_CODE=$("#MANUFACT_CODE"+iiix).val()
         EMRECIMMMMM=JSON.parse(JSON_STRINGIM);
-        var Ro={
-            Filters:EMRECIMMMMM.Filters,
-            PropList:PROP_LIST
-        }
-        var jsn = JSON.stringify(Ro);
-        addEqRow(Ro, jsn)
+        
+        var jsn = JSON.stringify(EMRECIMMMMM);
+        addEqRow(EMRECIMMMMM, jsn)
         addRowCrs(PROP_LIST, PRODUCT_ID,  STOCK_ID,  PRODUCT_NAME, 0,  MANUFACT_CODE,  1,  MAIN_UNIT,  0,  "TL",  0,  0, 0,  0,  "",0,0) 
     }
     function filterPP(el) {
