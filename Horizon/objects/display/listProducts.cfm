@@ -147,7 +147,7 @@ Label.innerText=aProperty.PROPERTY
                     Sel.setAttribute("style","margin-left:5px");
                     Sel.setAttribute("onchange","propduzenle(this)");
                     Sel.setAttribute("data-propertyId",aProperty.PROPERTY_ID)
-                    Sel.id="SELECT_00_"+Obj[i].PROPERTY_ID;
+                    Sel.id="SELECT_00_"+aProperty.PROPERTY_ID;
                     var Opt=document.createElement("option");
                     Opt.value="";
                     Opt.innerText="Seç";
