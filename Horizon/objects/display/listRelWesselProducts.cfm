@@ -42,7 +42,7 @@
                 <TD>
                     <cfset KMK=deserializeJSON(it.JSON_STRINGIM)>
                     
-                    <cfloop array="#KMK#" item="it2" index="jx">
+                    <cfloop array="#KMK.Filters#" item="it2" index="jx">
                         #it2.PRODUCT_CAT#-&lt;
                     </cfloop>
                 </TD>
