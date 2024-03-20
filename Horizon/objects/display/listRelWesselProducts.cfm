@@ -9,7 +9,27 @@
 
 
 <cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
-    <cfdump var="#Equipments#">
+<cf_box>
+    <table>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label>
+                        Equipment
+                    </label>
+                    <select name="EQ0001" id="EQ0001">
+                        <option value="">Seç</option>
+                        <cfoutput>
+                            <cfloop array="Equipments" item="it">
+                                <option value="#it.PRODUCT_CATID#">#it.PRODUCT_CAT#</option>
+                            </cfloop>
+                        </cfoutput>
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </table>
+</cf_box>
 <cf_ajax_list>
     <thead>
         <tr>
@@ -26,7 +46,7 @@
     </thead>
     <cfoutput>
         <cfloop array="#WesselProducts#" item="it" index="ix">
-            <tr>
+            <tr data-proplist="#it.PROP_LIST#">
                 <td>
                     <a href="##" onclick="EkleCanimBenim(#ix#)">
                     #it.MANUFACT_CODE#
