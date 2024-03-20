@@ -32,6 +32,10 @@ Label.innerText=Obj[i].PROPERTY
                     var Sel=document.createElement("Select");
                     Sel.setAttribute("style","margin-left:5px");
                     Sel.id="SELECT_00_"+Obj[i].PROPERTY_ID;
+                    var Opt=document.createElement("option");
+                    Opt.value="";
+                    Opt.innerText="Seç";
+                    Sel.appendChild(Opt);
                     div.appendChild(Label)
                     div.appendChild(Sel)
                     document.getElementById("APX_0").appendChild(div)
