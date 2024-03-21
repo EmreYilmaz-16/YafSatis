@@ -12,7 +12,10 @@
     background: #ffbe0b;
     color: white;
  }
- 
+ .OsButton-orange:hover{
+    background: #ffbe0b;
+    color: white;
+ }
  .OsButton-blue{
     background: #3a86ff;
     color: white;
