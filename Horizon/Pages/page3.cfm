@@ -66,7 +66,7 @@
     text-align: right;
     padding: 1px !important;
 }
-#notifications-main , *{
+#notifications-main  *{
     font-size:14pt !important;
 }
 </style>
