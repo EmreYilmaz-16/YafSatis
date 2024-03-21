@@ -266,7 +266,24 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col col-3 col-sm-3 col-md-3 col-lg-3 col-xs-12">
+                <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col col-4 col-md-4 col-sm-4 col-xs-12">
+                        <label>DELIVERY ADDRESS</label>
+                    </div>
+                    <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
+                        <span class="bold margin-right-5">:</span><label class="bold"><cfoutput>#Offer.DELIVERY_PLACE# - #Offer.DELIVERY_ADDRESS#</cfoutput></label>
+                    </div>
+                </div>
+                <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col col-4 col-md-4 col-sm-4 col-xs-12">
+                        <label ><span>NOTE</span></label>
+                    </div>
+                    <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
+                        <span class="bold margin-right-5">:</span><label><span class="bold"><cfoutput>#Offer.OFFER_DETAIL#</cfoutput></span></label>
+                    </div>
+                </div>
+            </div>
         </div>
     </cf_box_elements>
 
