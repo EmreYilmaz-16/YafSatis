@@ -266,13 +266,13 @@ $.notification = function(message, options){
         for (let i = 0; i < message.length; i++) {
             if(options.messageType == 'success'){
                 let color = ['var(--notify-bg-green-one)','var(--notify-bg-green-two)']
-                actionShowMsg(message[i],options,color,'😄')
+                actionShowMsg(message[i],options,color,'')
             }else if(options.messageType == 'warning'){
                 let color = ['var(--notify-bg-yellow-one)','var(--notify-bg-yellow-two)']
-                actionShowMsg(message[i],options,color,'😕')
+                actionShowMsg(message[i],options,color,'')
             }else if(options.messageType == 'error'){
                 let color = ['var(--notify-bg-red-one)','var(--notify-bg-red-two)']
-                actionShowMsg(message[i],options,color,'😓')
+                actionShowMsg(message[i],options,color,'')
             }else{
                 throw 'Error: MessageType inválido!'
                 // caso falte algum dado exibir este error throw new UserException()
