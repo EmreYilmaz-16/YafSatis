@@ -66,6 +66,9 @@
     text-align: right;
     padding: 1px !important;
 }
+#notifications-main , *{
+    font-size:14pt !important;
+}
 </style>
 <cfparam name="attributes.offer_id" default="3">
 <cf_box>
