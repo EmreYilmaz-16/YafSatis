@@ -88,7 +88,7 @@
         </div>
         <div class="pull-right">
             <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-envelope"></i>QUOTATION MAIL</a>
-            <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
+            <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=OfferStatus&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OLD_PROCESS_CAT=#Offer.OFFER_STAGE#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
         </div>
     </div>
 </cf_box>
