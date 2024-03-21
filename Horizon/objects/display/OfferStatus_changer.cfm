@@ -96,7 +96,7 @@
     <button class="OsButton OsButton-red" style="width:100%">
         CANCEL WITHOUT ORDER
     </button>
-    <button class="OsButton OsButton-light" style="width:100%">
+    <button class="OsButton OsButton-light" onclick="closeBoxDraggable('<cfoutput>#attributes.modal_id#</cfoutput>')" style="width:100%">
         CANCEL WITHOUT CHANGE
     </button>
 </div>
