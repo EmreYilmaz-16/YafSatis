@@ -1,8 +1,7 @@
 <style>
     .OsButton{
         width: 100%;
-    height: 100px;
-    
+    height: 100px;    
     font-weight: bold;
     font-size: 20pt !important;
     border: none;        
@@ -13,38 +12,58 @@
     color: white;
  }
  .OsButton-orange:hover{
-    background: #ffbe0b;
+    background: #d6a00a;
     color: white;
  }
  .OsButton-blue{
     background: #3a86ff;
     color: white;
  }
- .OsButton-lblue{
-    background: #00b4d8;
+ .OsButton-blue:hover{
+    background: #3373da;
     color: white;
  }
  .OsButton-lblue{
     background: #00b4d8;
     color: white;
  }
+ .OsButton-lblue:hover{
+    background: #039ebd;
+    color: white;
+ }
+
  .OsButton-green{
     background: #6a994e;
+    color: white;
+ }
+ .OsButton-green:hover{
+    background: #4d7039;
     color: white;
  }
  .OsButton-dark{
     background: #000814;
     color: #ffbe0b;
  }
+ .OsButton-dark:hover{
+    background: #000000;
+    color: #ffbe0b;
+ }
  .OsButton-light{
     background: #e9ecef;
+    color: #000814;
+ }
+ .OsButton-light:hover{
+    background: #b9bcbe;
     color: #000814;
  }
  .OsButton-red{
     background: #ef233c;
     color: white;
  }
- 
+ .OsButton-red:hover{
+    background: #bd1b2e;
+    color: white;
+ }
  
 </style>
 <cfoutput>
