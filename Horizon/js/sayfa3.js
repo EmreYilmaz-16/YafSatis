@@ -985,17 +985,7 @@ $.ajax({
         data:JSON.stringify(BasketData)
     },
     success:function(retDat){
-      $.toast({
-        
-          title:"Warning Message",
-        
-          message:"This is a warning message.",
-        
-          type:"warning",
-        
-          duration: 2000,
-        
-        });
+     
     }
     
 })
