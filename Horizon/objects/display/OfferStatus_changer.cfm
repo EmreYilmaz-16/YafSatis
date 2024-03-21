@@ -5,8 +5,8 @@
     
     font-weight: bold;
     font-size: 20pt !important;
-    border: none;
-    border-radius: 15px;
+    border: none;        
+    margin: 5px;
 }
  .OsButton-orange{
     background: #ffbe0b;
@@ -50,8 +50,8 @@
 
 </cfoutput>
 <cf_box>
-<div style="display:flex">
-    <div style="width:50%">
+<div style="display:flex;flex-wrap: wrap;">
+    <div style="width:50%;padding:5px">
         <button class="OsButton OsButton-orange"  style="width:100%">
             CUSTOMER INQUIRY
         </button>
@@ -60,7 +60,7 @@
         </button>
        
     </div>
-    <div style="width:50%">
+    <div style="width:50%;padding:5px">
         <button  class="OsButton OsButton-lblue" style="width:100%">
           CONFIRMED CUSTOMER INQUIRY
         </button>
