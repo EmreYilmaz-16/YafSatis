@@ -3,10 +3,14 @@
     <cf_box>
     <cfinclude template="getWessels.cfm">
 </cf_box>
-</cfif>
-<cfif attributes.ListType  eq "catProps">
+
+<cfelseif attributes.ListType  eq "catProps">
     <cfinclude template="getCatProps.cfm">
-</cfif>
-<cfif attributes.ListType  eq "getCollation">
+
+<cfelseif attributes.ListType  eq "getCollation">
     <cfinclude template="getProductCollation.cfm">
+
+<cfelseif attributes.ListType  eq "OfferStatus">
+    <cfinclude template="OfferStatus_changer.cfm">
+
 </cfif>

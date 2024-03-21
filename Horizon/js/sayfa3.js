@@ -971,3 +971,32 @@ function lookProducts(proplist){
   openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_products_pbs&proplist='+proplist)
 
 }
+
+function SaveOffer(){
+  AlayiniHesapla();
+  var BasketData=new Object();
+  BasketData.OFFER_HEADER=OfferData
+  BasketData.ROWS=AktifSepet;
+  BasketData.OFFER_FOOTER=OrderFooter
+
+$.ajax({
+  url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_OFFER_ROWS",
+    data:{
+        data:JSON.stringify(BasketData)
+    },
+    success:function(retDat){
+      $.toast({
+        
+          title:"Warning Message",
+        
+          message:"This is a warning message.",
+        
+          type:"warning",
+        
+          duration: 2000,
+        
+        });
+    }
+    
+})
+}
