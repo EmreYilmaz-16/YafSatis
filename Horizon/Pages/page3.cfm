@@ -268,7 +268,7 @@
             </div>
             <div class="col col-3 col-sm-3 col-md-3 col-lg-3 col-xs-12">
                 <div class="margin-right-5 paddingNone margin-0">
-                    <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left "><i class="fa fa-success"></i><span class="font-xs">Kaydet</span></a>
+                    <a href="javascript://" onclick="SaveOffer()" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left "><i class="fa fa-check-circle"></i><span class="font-xs">Kaydet</span></a>
                 </div>
             </div>
         </div>
