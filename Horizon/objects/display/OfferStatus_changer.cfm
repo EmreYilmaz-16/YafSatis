@@ -41,11 +41,11 @@
     color: white;
  }
  .OsButton-dark{
-    background: #000814;
+    background: #063173;
     color: #ffbe0b;
  }
  .OsButton-dark:hover{
-    background: #000000;
+    background: #042350;
     color: #ffbe0b;
  }
  .OsButton-light{
