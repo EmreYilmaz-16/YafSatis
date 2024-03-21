@@ -985,7 +985,12 @@ $.ajax({
         data:JSON.stringify(BasketData)
     },
     success:function(retDat){
-     
+      $.notification(
+        ["Kayıt Edildi"],
+        {
+          messageType: 'success',
+        }
+      )
     }
     
 })
