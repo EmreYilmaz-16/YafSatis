@@ -207,11 +207,12 @@ CROSS APPLY(
     <cfargument name="OFFER_STAGE" default="">
     <cfargument name="OFFER_NUMBER" default="">
     <cfargument name="REF_NO" default="">
-    
+    <cfargument name="COMPANY_ID" default="">
    <cfargument name="START_DATE" default="">
     <cfargument name="FINISH_DATE" default="">
     <cfargument name="START_ROW" default="1">
     <cfargument name="MAX_ROW" default="20">
+    
  <cfquery name="getOffers" datasource="#dsn#">
         	WITH CTE1 AS(
             SELECT
@@ -225,6 +226,7 @@ CROSS APPLY(
 			WHERE 
 			1=1
             <CFIF LEN(arguments.SALES_EMP_ID)> and PO.SALES_EMP_ID=#arguments.SALES_EMP_ID#</CFIF>
+            <CFIF LEN(arguments.COMPANY_ID)> and PO.COMPANY_ID=#arguments.COMPANY_ID#</CFIF>
             <CFIF LEN(arguments.OFFER_CURRENCY) and OFFER_CURRENCY neq 0>  AND PO.OFFER_CURRENCY=#arguments.OFFER_CURRENCY#</CFIF>
             <CFIF LEN(arguments.OFFER_STAGE) and OFFER_STAGE NEQ 0> AND PO.OFFER_STAGE=#arguments.OFFER_STAGE#</CFIF>
             <CFIF LEN(arguments.OFFER_NUMBER)>AND PO.OFFER_NUMBER='#arguments.OFFER_NUMBER#'</CFIF>

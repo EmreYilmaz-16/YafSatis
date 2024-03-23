@@ -8,6 +8,7 @@ OFFER_NUMBER:Fdata.PaperNo,
 REF_NO:Fdata.RefNo,
 START_DATE:Fdata.StartDate,
 FINISH_DATE:Fdata.FinishDate,
+COMPANY_ID:Fdata.COMPANY_ID,
 START_ROW:1,MAX_ROW:20)>
 <cfset OfferList=deserializeJSON(OfferList)><!------>
 

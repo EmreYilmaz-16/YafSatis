@@ -66,27 +66,28 @@
  }
  
 </style>
+
 <cfoutput>
 <input type="hidden" name="OFFER_ID_00" id="OFFER_ID_00" value="#attributes.OFFER_ID#">
 <input type="hidden" name="OLD_PROCESS_CAT_00" id="OLD_PROCESS_CAT_00" value="#attributes.OLD_PROCESS_CAT#">
-
+<input type="hidden" name="OFFER_CURRENCY_ID_00" id="OFFER_CURRENCY_ID_00" value="#attributes.OFFER_CURRENCY_ID#">
 </cfoutput>
 <cf_box>
 <div style="display:flex;flex-wrap: wrap;">
     <div style="width:50%;padding:5px">
-        <button class="OsButton OsButton-orange"  style="width:100%">
+        <button class="OsButton OsButton-orange" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>261<cfelse>266</cfif>)"  style="width:100%">
             CUSTOMER INQUIRY
         </button>
-        <button class="OsButton OsButton-green"  style="width:100%">
+        <button class="OsButton OsButton-green" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>262<cfelse>267</cfif>)"  style="width:100%">
             SUPPLIER INQUIRY
         </button>
        
     </div>
     <div style="width:50%;padding:5px">
-        <button  class="OsButton OsButton-lblue" style="width:100%">
+        <button  class="OsButton OsButton-lblue" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>263<cfelse>266</cfif>)" style="width:100%">
           CONFIRMED CUSTOMER INQUIRY
         </button>
-        <button class="OsButton OsButton-blue" style="width:100%">
+        <button class="OsButton OsButton-blue" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>261<cfelse>264</cfif>)" style="width:100%">
             CUSTOMER OFFER
         </button>
     </div>
@@ -101,3 +102,48 @@
     </button>
 </div>
 </cf_box>
+
+<script>
+    function SetSurec(STAGE) {
+        
+    }
+</script>
+
+[
+  
+  {
+    "PROCESS_ROW_ID": 261,
+    "STAGE": "Customer Inquiry",
+    "DETAIL": "1"
+  },
+  {
+    "PROCESS_ROW_ID": 262,
+    "STAGE": "Supplier Inquiry",
+    "DETAIL": "1"
+  },
+  {
+    "PROCESS_ROW_ID": 263,
+    "STAGE": "Confirmed Customer Inquiry",
+    "DETAIL": "1"
+  },
+  {
+    "PROCESS_ROW_ID": 264,
+    "STAGE": "Customer Offer",
+    "DETAIL": "2"
+  },
+  {
+    "PROCESS_ROW_ID": 265,
+    "STAGE": "Order Process",
+    "DETAIL": "0"
+  },
+  {
+    "PROCESS_ROW_ID": 266,
+    "STAGE": "Customer Inquiry",
+    "DETAIL": "2"
+  },
+  {
+    "PROCESS_ROW_ID": 267,
+    "STAGE": "Supplier Inquiry",
+    "DETAIL": "2"
+  }
+]
