@@ -150,7 +150,8 @@ function TeklifGetir() {
   var SalesPartnerId = document.getElementById("deliver_get_id").value;
   var PaperNo = document.getElementById("PaperNo").value;
   var RefNo = document.getElementById("customer_ref_no").value;
-  Filters.COMPANY_ID = CompanyId;
+  var member_name=document.getElementById("member_name").value;
+  if(member_name.length>0)  Filters.COMPANY_ID = CompanyId; else Filters.COMPANY_ID="";
   Filters.StartDate = StartDate;
   Filters.FinishDate = FinishDate;
   Filters.SalesPartnerId = SalesPartnerId;
