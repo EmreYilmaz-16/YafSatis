@@ -179,6 +179,11 @@ function addEqRow(Obj, jsn) {
   diva.appendChild(b5);
   diva.appendChild(b6);
   td.appendChild(diva);
+  var input=document.createElement("input");
+  input.id="SeperatorRC_"+Obj.PropList
+  input.name="SeperatorRC_"+Obj.PropList
+  input.value=1;
+  td.appendChild(input);
   tr.appendChild(td);
   var svk_st = 8;
 
@@ -286,15 +291,19 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
-  b2.innerText = RowCount;
+  var rc2=document.getElementById("SeperatorRC_"+proplist).value;
+  rc2=parseInt(rc2);
+
+  b2.innerText = rc2;
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
   div.appendChild(b1);
   div.appendChild(b2);
+  rc2++;
   td.appendChild(div);
   tr.appendChild(td);
-
+  document.getElementById("SeperatorRC_"+proplist).value=rc2;
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
