@@ -182,6 +182,7 @@ function addEqRow(Obj, jsn) {
   var input=document.createElement("input");
   input.id="SeperatorRC_"+Obj.PropList
   input.name="SeperatorRC_"+Obj.PropList
+  input.type="hidden";
   input.value=1;
   td.appendChild(input);
   tr.appendChild(td);
