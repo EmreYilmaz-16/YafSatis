@@ -81,7 +81,7 @@
 <div style="display:flex;flex-wrap: wrap;">
     
       <cfoutput query="getStages" >
-         <button class="OsButton OsButton-orange" onclick="SetSurec(#PROCESS_ROW_ID#,'#attributes.modal_id#')"  style="width:100%;position: relative;">
+         <button class="OsButton OsButton-orange" onclick="SetSurec(#PROCESS_ROW_ID#,#attributes.OFFER_ID#,'#attributes.modal_id#')"  style="width:100%;position: relative;">
             #STAGE#
             <cfif attributes.OLD_PROCESS_CAT eq PROCESS_ROW_ID>
             <span class="fa fa-check-square" style="position: absolute;left: 10px;top: 45%;"></span>
