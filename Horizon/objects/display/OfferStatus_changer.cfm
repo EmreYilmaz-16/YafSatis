@@ -68,6 +68,7 @@
 </style>
 
 <cfoutput>
+   <cfparam name="OFFER_CURRENCY_ID_00" default="1">
 <input type="hidden" name="OFFER_ID_00" id="OFFER_ID_00" value="#attributes.OFFER_ID#">
 <input type="hidden" name="OLD_PROCESS_CAT_00" id="OLD_PROCESS_CAT_00" value="#attributes.OLD_PROCESS_CAT#">
 <input type="hidden" name="OFFER_CURRENCY_ID_00" id="OFFER_CURRENCY_ID_00" value="#attributes.OFFER_CURRENCY_ID#">
@@ -109,41 +110,3 @@
     }
 </script>
 
-[
-  
-  {
-    "PROCESS_ROW_ID": 261,
-    "STAGE": "Customer Inquiry",
-    "DETAIL": "1"
-  },
-  {
-    "PROCESS_ROW_ID": 262,
-    "STAGE": "Supplier Inquiry",
-    "DETAIL": "1"
-  },
-  {
-    "PROCESS_ROW_ID": 263,
-    "STAGE": "Confirmed Customer Inquiry",
-    "DETAIL": "1"
-  },
-  {
-    "PROCESS_ROW_ID": 264,
-    "STAGE": "Customer Offer",
-    "DETAIL": "2"
-  },
-  {
-    "PROCESS_ROW_ID": 265,
-    "STAGE": "Order Process",
-    "DETAIL": "0"
-  },
-  {
-    "PROCESS_ROW_ID": 266,
-    "STAGE": "Customer Inquiry",
-    "DETAIL": "2"
-  },
-  {
-    "PROCESS_ROW_ID": 267,
-    "STAGE": "Supplier Inquiry",
-    "DETAIL": "2"
-  }
-]
