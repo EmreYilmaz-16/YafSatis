@@ -69,29 +69,27 @@
 
 <cfoutput>
    <cfparam name="attributes.OFFER_CURRENCY_ID" default="1">
+   <cfquery name="getStages" datasource="#dsn#">
+      select PROCESS_ROW_ID,STAGE,DETAIL,CASE WHEN DETAIL ='1' THEN 'FOR CUTOMER' ELSE 'FOR YAF STOCK' END AS 'INQUIRY REASON' 
+      from CatalystQA.PROCESS_TYPE_ROWS where PROCESS_ID=193 AND DETAIL NOT IN ('0','3') AND DETAIL='#attributes.OFFER_CURRENCY_ID#'
+   </cfquery>
 <input type="hidden" name="OFFER_ID_00" id="OFFER_ID_00" value="#attributes.OFFER_ID#">
 <input type="hidden" name="OLD_PROCESS_CAT_00" id="OLD_PROCESS_CAT_00" value="#attributes.OLD_PROCESS_CAT#">
 <input type="hidden" name="OFFER_CURRENCY_ID_00" id="OFFER_CURRENCY_ID_00" value="#attributes.OFFER_CURRENCY_ID#">
 </cfoutput>
 <cf_box>
 <div style="display:flex;flex-wrap: wrap;">
-    <div style="width:50%;padding:5px">
-        <button class="OsButton OsButton-orange" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>261<cfelse>266</cfif>)"  style="width:100%">
-            CUSTOMER INQUIRY
+    
+      <cfoutput query="getStages" >
+         <button class="OsButton OsButton-orange"  style="width:100%">
+            #STAGE#
         </button>
-        <button class="OsButton OsButton-green" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>262<cfelse>267</cfif>)"  style="width:100%">
-            SUPPLIER INQUIRY
-        </button>
+      </cfoutput>
+      
+    
        
-    </div>
-    <div style="width:50%;padding:5px">
-        <button  class="OsButton OsButton-lblue" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>263<cfelse>266</cfif>)" style="width:100%">
-          CONFIRMED CUSTOMER INQUIRY
-        </button>
-        <button class="OsButton OsButton-blue" onchange="SetSurec(<cfif attributes.OFFER_CURRENCY_ID eq 1>261<cfelse>264</cfif>)" style="width:100%">
-            CUSTOMER OFFER
-        </button>
-    </div>
+   
+    
     <button class="OsButton OsButton-dark"  style="width:100%">
         ORDER PROCESS
     </button>
