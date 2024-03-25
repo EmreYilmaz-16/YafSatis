@@ -81,7 +81,7 @@
 <div style="display:flex;flex-wrap: wrap;">
     
       <cfoutput query="getStages" >
-         <button class="OsButton OsButton-orange"  style="width:100%;position: relative;">
+         <button class="OsButton OsButton-orange" onclick="SetSurec(#PROCESS_ROW_ID#,'#attributes.modal_id#')"  style="width:100%;position: relative;">
             #STAGE#
             <cfif attributes.OLD_PROCESS_CAT eq PROCESS_ROW_ID>
             <span class="fa fa-check-square" style="position: absolute;left: 10px;top: 45%;"></span>
@@ -107,8 +107,13 @@
 </cf_box>
 
 <script>
-    function SetSurec(STAGE) {
-        
+    function SetSurec(STAGE,OFFER_ID,MODAL_ID) {
+        $.ajax({
+         url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc=method=SetOfferStage&STAGE="+STAGE+"&OFFER_ID="+OFFER_ID,
+         success:function (params) {
+            closeBoxDraggable(MODAL_ID)
+         }
+        })
     }
 </script>
 

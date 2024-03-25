@@ -440,7 +440,13 @@ WHERE 1 = 1
     <cfreturn replace(serializeJSON(FormData),"//","")>
 
 </cffunction>
-
+<cffunction name="SetOfferStage" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="OfferId">
+    <cfargument name="Stage">
+    <cfquery name="up" datasource="#dsn#">
+        UPDATE PBS_OFFER SET OFFER_STAGE=#arguments.Stage# WHERE OFFER_ID=#arguments.OFFER_ID#
+    </cfquery>
+</cffunction> 
 
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
