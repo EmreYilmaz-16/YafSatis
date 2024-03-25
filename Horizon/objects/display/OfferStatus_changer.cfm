@@ -109,7 +109,7 @@
 <script>
     function SetSurec(STAGE,OFFER_ID,MODAL_ID) {
         $.ajax({
-         url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc=method=SetOfferStage&STAGE="+STAGE+"&OFFER_ID="+OFFER_ID,
+         url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SetOfferStage&STAGE="+STAGE+"&OFFER_ID="+OFFER_ID,
          success:function (params) {
             closeBoxDraggable(MODAL_ID)
          }
