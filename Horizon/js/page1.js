@@ -144,6 +144,17 @@ function setDeActive(id) {
   $("#" + id).addClass("ui-btn-outline-success");
 }
 function TeklifGetir() {
+ var Filters=FiltreleriAl();
+  var FormStr = JSON.stringify(Filters);
+  AjaxPageLoad(
+    "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
+      FormStr,
+    "OfferListArea",
+    1,
+    "Yükleniyor"
+  );
+}
+function FiltreleriAl(){
   var CompanyId = document.getElementById("company_id").value;
   var StartDate = document.getElementById("StartDate").value;
   var FinishDate = document.getElementById("FinishDate").value;
@@ -157,14 +168,7 @@ function TeklifGetir() {
   Filters.SalesPartnerId = SalesPartnerId;
   Filters.PaperNo = PaperNo;
   Filters.RefNo = RefNo;
-  var FormStr = JSON.stringify(Filters);
-  AjaxPageLoad(
-    "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
-      FormStr,
-    "OfferListArea",
-    1,
-    "Yükleniyor"
-  );
+  return Filters;
 }
 
 //OfferList
@@ -197,3 +201,7 @@ function TeklifGetir() {
 //     },
 //   });
 // }
+
+function Sayfala(i){
+
+}

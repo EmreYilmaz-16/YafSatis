@@ -1,5 +1,7 @@
 <cfparam name="attributes.START_ROW" default="1">
-
+<cfparam name="attributes.Sayfa" default="1">
+<input type="hidden" name="Sayfa" id="Sayfa" value="<cfoutput>#attributes.Sayfa#</cfoutput>">
+<input type="hidden" name="START_ROW" id="START_ROW" value="<cfoutput>#attributes.START_ROW#</cfoutput>">
 
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset Fdata=deserializeJSON(attributes.FormData)>
@@ -15,7 +17,7 @@ COMPANY_ID:Fdata.COMPANY_ID,
 START_ROW:attributes.START_ROW,MAX_ROW:20)>
 <cfset OfferData=deserializeJSON(OfferList)><!------>
 <cfset OfferList=OfferData.OFFERS>
-OFFERS
+
 
 <!---
 <cfargument name="SALES_EMP_ID" default="">
@@ -68,18 +70,8 @@ OFFERS
 <div class="ui-pagination">
     <div class="pagi-left">
         <ul>
-            <li><a href="javascript://"><i class="fa fa-angle-left"></i></a></li>
-            <li><a href="javascript://"><i class="fa fa-angle-left"></i></a></li>
-            <li><a href="javascript://"><i class="fa fa-angle-right"></i></a></li>
-            <li><a href="javascript://"><i class="fa fa-angle-double-right"></i></a></li>
-            <!--<li><input type="text" value="1"><span>/ 1024</span></li>
-            <li><a href="javascript://"><i class="fa fa-angle-right"></i></a></li>-->
-            
-            <li><a onclick="font_inc("unique_id", +1)" href="javascript://">A+</a></li>
-            <!-- <li><a onclick="font_inc("unique_id", 0)" href="javascript://"><i class="fa fa-refresh"></i></a></li> -->
-            <li><a onclick="font_inc("unique_id", -1)" href="javascript://">A-</a></li>
+            <li><a href="javascript://" onclick="Sayfala(-1)"><i class="fa fa-angle-left"></i></a></li>            
+            <li><a href="javascript://" onclick="Sayfala(1)"><i class="fa fa-angle-right"></i></a></li>            
         </ul>
     </div>
 </div>
-
-
