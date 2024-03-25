@@ -264,6 +264,7 @@ CROSS APPLY(
         
        </cfsavecontent>
        <cffile action="write" file = "c:\GetOfferList.html" output="#control5#"></cffile>
+       <cfset ReturnData.QUERY_COUNT=getOffers.QUERY_COUNT>
     <cfset ReturnArr=arrayNew(1)>
     <CFLOOP query="getOffers">
         <cfscript>
@@ -289,7 +290,8 @@ CROSS APPLY(
         </cfscript>
         
     </CFLOOP>
-    <cfreturn replace(serializeJSON(ReturnArr),"//","")><!--- ---->
+    <cfset ReturnData.OFFERS=ReturnArr>
+    <cfreturn replace(serializeJSON(ReturnData),"//","")><!--- ---->
 </cffunction>
 <cffunction name="getOfferWithOfferId" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="OFFER_ID" required="true">

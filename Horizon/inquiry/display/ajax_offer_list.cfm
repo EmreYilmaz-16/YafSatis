@@ -1,6 +1,5 @@
 <cfparam name="attributes.START_ROW" default="1">
-<cfset mr=20>
-<cfset MAX_ROW=(attributes.START_ROW+mr)-1>
+
 
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset Fdata=deserializeJSON(attributes.FormData)>
@@ -13,9 +12,10 @@ REF_NO:Fdata.RefNo,
 START_DATE:Fdata.StartDate,
 FINISH_DATE:Fdata.FinishDate,
 COMPANY_ID:Fdata.COMPANY_ID,
-START_ROW:attributes.START_ROW,MAX_ROW:MAX_ROW)>
-<cfset OfferList=deserializeJSON(OfferList)><!------>
-
+START_ROW:attributes.START_ROW,MAX_ROW:20)>
+<cfset OfferData=deserializeJSON(OfferList)><!------>
+<cfset OfferList=OfferData.OFFERS>
+OFFERS
 
 <!---
 <cfargument name="SALES_EMP_ID" default="">
