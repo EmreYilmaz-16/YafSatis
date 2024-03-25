@@ -443,7 +443,7 @@ WHERE 1 = 1
 <cffunction name="SetOfferStage" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="OfferId">
     <cfargument name="Stage">
-    <cfquery name="up" datasource="#dsn#">
+    <cfquery name="up" datasource="#DSN3#">
         UPDATE PBS_OFFER SET OFFER_STAGE=#arguments.Stage# WHERE OFFER_ID=#arguments.OfferId#
     </cfquery>
 </cffunction> 
