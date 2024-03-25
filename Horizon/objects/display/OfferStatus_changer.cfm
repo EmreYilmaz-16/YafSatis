@@ -81,9 +81,13 @@
 <div style="display:flex;flex-wrap: wrap;">
     
       <cfoutput query="getStages" >
-         <button class="OsButton OsButton-orange"  style="width:100%">
+         <button class="OsButton OsButton-orange"  style="width:100%;position: relative;">
             #STAGE#
-        </button>
+            <cfif attributes.OLD_PROCESS_CAT eq PROCESS_ROW_ID>
+            <span class="fa fa-check-square" style="position: absolute;left: 10px;top: 45%;"></span>
+         </cfif>
+         </button>
+
       </cfoutput>
       
     
