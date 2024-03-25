@@ -68,7 +68,7 @@
 </style>
 
 <cfoutput>
-   <cfparam name="OFFER_CURRENCY_ID_00" default="1">
+   <cfparam name="attributes.OFFER_CURRENCY_ID_00" default="1">
 <input type="hidden" name="OFFER_ID_00" id="OFFER_ID_00" value="#attributes.OFFER_ID#">
 <input type="hidden" name="OLD_PROCESS_CAT_00" id="OLD_PROCESS_CAT_00" value="#attributes.OLD_PROCESS_CAT#">
 <input type="hidden" name="OFFER_CURRENCY_ID_00" id="OFFER_CURRENCY_ID_00" value="#attributes.OFFER_CURRENCY_ID#">
