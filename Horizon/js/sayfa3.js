@@ -759,8 +759,8 @@ function MoveRow(FromRow){
   document.getElementById("PRODUCT_CODE_2_"+ToRow).value  =O.FromRowData.PRODUCT_CODE  
   document.getElementById("TAX_"+FromRow).value=O.ToRowData.TAX
   document.getElementById("TAX_"+ToRow).value  =O.FromRowData.TAX 
-  document.getElementById("PRODUCT_NAME_"+FromRow).value=O.FromRowData.PRODUCT_NAME
-  document.getElementById("PRODUCT_NAME_"+ToRow).value =O.ToRowData.PRODUCT_NAME       
+  document.getElementById("PRODUCT_NAME_"+FromRow).value=O.ToRowData.PRODUCT_NAME
+  document.getElementById("PRODUCT_NAME_"+ToRow).value =O.FromRowData.PRODUCT_NAME       
   document.getElementById("QUANTITY_"+FromRow).value=O.ToRowData.QUANTITY
   document.getElementById("QUANTITY_"+ToRow).value=O.FromRowData.QUANTITY
   document.getElementById("PRODUCT_UNIT_"+FromRow).value=O.ToRowData.UNIT
