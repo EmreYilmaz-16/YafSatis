@@ -444,7 +444,7 @@ WHERE 1 = 1
     <cfargument name="OfferId">
     <cfargument name="Stage">
     <cfquery name="up" datasource="#dsn#">
-        UPDATE PBS_OFFER SET OFFER_STAGE=#arguments.Stage# WHERE OFFER_ID=#arguments.OFFER_ID#
+        UPDATE PBS_OFFER SET OFFER_STAGE=#arguments.Stage# WHERE OFFER_ID=#arguments.OfferId#
     </cfquery>
 </cffunction> 
 
