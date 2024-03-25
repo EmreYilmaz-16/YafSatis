@@ -663,7 +663,7 @@ function getProduct(el, rc) {
 }
 function MoveRow(FromRow){
   var ToRow=prompt("To Row");
-  
+
   var FromStockId=document.getElementById("STOCK_ID_"+FromRow).value
   var ToStockId=document.getElementById("STOCK_ID_"+ToRow).value    
   var FromProductId=document.getElementById("PRODUCT_ID_"+FromRow).value
@@ -690,10 +690,10 @@ function MoveRow(FromRow){
   var ToSaleDiscount=document.getElementById("SALE_DISCOUNT_"+ToRow).value
   var FromSaleDiscountMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value
   var ToSaleDiscountMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value
-  var FromUnitPrice=document.getElementById("SALE_DISCOUNT_"+FromRow).value
-  var ToUnitPrice=document.getElementById("SALE_DISCOUNT_"+ToRow).value
-  var FromUnitPriceMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value
-  var ToUnitPriceMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value
+  var FromUnitPrice=document.getElementById("UNIT_PRICE_"+FromRow).value
+  var ToUnitPrice=document.getElementById("UNIT_PRICE_"+ToRow).value
+  var FromUnitPriceMoney=document.getElementById("UNIT_PRICE_MONEY_"+FromRow).value
+  var ToUnitPriceMoney=document.getElementById("UNIT_PRICE_MONEY_"+ToRow).value
     var FromTotalPrice=document.getElementById("TOTAL_PRICE_"+FromRow).value
   var ToTotalPrice=document.getElementById("TOTAL_PRICE_"+ToRow).value
   var FromTotalPriceMoney=document.getElementById("TOTAL_PRICE_MONEY_"+FromRow).value
@@ -751,6 +751,43 @@ function MoveRow(FromRow){
   console.table(O.FromRowData)
   console.table(O.ToRowData)
   console.table(O)
+  document.getElementById("STOCK_ID_"+FromRow).value=O.ToRowData.STOCK_ID
+  document.getElementById("STOCK_ID_"+ToRow).value=O.FromRowData.STOCK_ID
+ document.getElementById("PRODUCT_ID_"+FromRow).value=O.ToRowData.PRODUCT_ID
+  document.getElementById("PRODUCT_ID_"+ToRow).value =O.FromRowData.PRODUCT_ID  
+  document.getElementById("PRODUCT_CODE_2_"+FromRow).value=O.ToRowData.PRODUCT_CODE
+  document.getElementById("PRODUCT_CODE_2_"+ToRow).value  =O.FromRowData.PRODUCT_CODE  
+  document.getElementById("TAX_"+FromRow).value=O.ToRowData.TAX
+  document.getElementById("TAX_"+ToRow).value  =O.FromRowData.TAX 
+  document.getElementById("PRODUCT_NAME_"+FromRow).value=O.FromRowData.PRODUCT_NAME
+  document.getElementById("PRODUCT_NAME_"+ToRow).value =O.ToRowData.PRODUCT_NAME       
+  document.getElementById("QUANTITY_"+FromRow).value=O.ToRowData.QUANTITY
+  document.getElementById("QUANTITY_"+ToRow).value=O.FromRowData.QUANTITY
+  document.getElementById("PRODUCT_UNIT_"+FromRow).value=O.ToRowData.UNIT
+  document.getElementById("PRODUCT_UNIT_"+ToRow).value=O.FromRowData.UNIT
+  document.getElementById("PURCHASE_PRICE_"+FromRow).value=O.ToRowData.PURCHASE_PRICE
+  document.getElementById("PURCHASE_PRICE_"+ToRow).value=O.FromRowData.PURCHASE_PRICE
+  document.getElementById("PURCHASE_MONEY_"+FromRow).value=O.ToRowData.PURCHASE_MONEY
+  document.getElementById("PURCHASE_MONEY_"+ToRow).value=O.FromRowData.PURCHASE_MONEY
+  document.getElementById("SALE_PRICE_"+FromRow).value=O.ToRowData.SALE_PRICE
+  document.getElementById("SALE_PRICE_"+ToRow).value=O.FromRowData.SALE_PRICE
+  document.getElementById("SALE_MONEY_"+FromRow).value=O.ToRowData.SALE_MONEY
+  document.getElementById("SALE_MONEY_"+ToRow).value=O.FromRowData.SALE_MONEY
+  document.getElementById("SALE_DISCOUNT_"+FromRow).value=O.ToRowData.SALE_DISCOUNT
+  document.getElementById("SALE_DISCOUNT_"+ToRow).value=O.FromRowData.SALE_DISCOUNT
+  document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value=O.ToRowData.SALE_DISCOUNT_MONEY
+  document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value=O.FromRowData.SALE_DISCOUNT_MONEY
+  document.getElementById("UNIT_PRICE_"+FromRow).value =O.ToRowData.UNIT_PRICE
+  document.getElementById("UNIT_PRICE_"+ToRow).value=O.FromRowData.UNIT_PRICE
+  document.getElementById("UNIT_PRICE_MONEY_"+FromRow).value=O.ToRowData.UNIT_PRICE_MONEY
+  document.getElementById("UNIT_PRICE_MONEY_"+ToRow).value=O.FromRowData.UNIT_PRICE_MONEY
+  document.getElementById("TOTAL_PRICE_"+FromRow).value=O.ToRowData.TOTAL_PRICE
+  document.getElementById("TOTAL_PRICE_"+ToRow).value=O.FromRowData.TOTAL_PRICE
+  document.getElementById("TOTAL_PRICE_MONEY_"+FromRow).value=O.ToRowData.TOTAL_PRICE_MONEY
+  document.getElementById("TOTAL_PRICE_MONEY_"+ToRow).value=O.FromRowData.TOTAL_PRICE_MONEY
+  document.getElementById("FIRST_REMARK_"+FromRow).value =O.ToRowData.FIRST_REMARK
+  document.getElementById("FIRST_REMARK_"+ToRow).value=O.FromRowData.FIRST_REMARK
+  AlayiniHesapla();
   }
 
 function CreateOptionList(tip, selval = "EUR") {
