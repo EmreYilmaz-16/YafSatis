@@ -296,6 +296,7 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   rc2=parseInt(rc2);
 
   b2.innerText = rc2;
+  b2.setAttribute("onclick","MoveRow("+rc2+")")
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -660,6 +661,97 @@ function getProduct(el, rc) {
     },
   });
 }
+function MoveRow(FromRow){
+  var ToRow=prompt("To Row");
+  
+  var FromStockId=document.getElementById("STOCK_ID_"+FromRow).value
+  var ToStockId=document.getElementById("STOCK_ID_"+ToRow).value    
+  var FromProductId=document.getElementById("PRODUCT_ID_"+FromRow).value
+  var ToProductId=document.getElementById("PRODUCT_ID_"+ToRow).value    
+  var FromProductCode=document.getElementById("PRODUCT_CODE_2_"+FromRow).value
+  var ToProductCode=document.getElementById("PRODUCT_CODE_2_"+ToRow).value    
+  var FromTax=document.getElementById("TAX_"+FromRow).value
+  var ToTax=document.getElementById("TAX_"+ToRow).value    
+  var FromProductName=document.getElementById("PRODUCT_NAME_"+FromRow).value
+  var ToProductName=document.getElementById("PRODUCT_NAME_"+ToRow).value        
+  var FromQuantity=document.getElementById("QUANTITY_"+FromRow).value
+  var ToQuantity=document.getElementById("QUANTITY_"+ToRow).value
+  var FromUnit=document.getElementById("PRODUCT_UNIT_"+FromRow).value
+  var ToUnit=document.getElementById("PRODUCT_UNIT_"+ToRow).value
+  var FromPurchasePrice=document.getElementById("PURCHASE_PRICE_"+FromRow).value
+  var ToPurchasePrice=document.getElementById("PURCHASE_PRICE_"+ToRow).value
+  var FromPurchaseMoney=document.getElementById("PURCHASE_MONEY_"+FromRow).value
+  var ToPurchaseMoney=document.getElementById("PURCHASE_MONEY_"+ToRow).value
+  var FromSalePrice=document.getElementById("SALE_PRICE_"+FromRow).value
+  var ToSalePrice=document.getElementById("SALE_PRICE_"+ToRow).value
+  var FromSaleMoney=document.getElementById("SALE_MONEY_"+FromRow).value
+  var ToSaleMoney=document.getElementById("SALE_MONEY_"+ToRow).value
+  var FromSaleDiscount=document.getElementById("SALE_DISCOUNT_"+FromRow).value
+  var ToSaleDiscount=document.getElementById("SALE_DISCOUNT_"+ToRow).value
+  var FromSaleDiscountMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value
+  var ToSaleDiscountMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value
+  var FromUnitPrice=document.getElementById("SALE_DISCOUNT_"+FromRow).value
+  var ToUnitPrice=document.getElementById("SALE_DISCOUNT_"+ToRow).value
+  var FromUnitPriceMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value
+  var ToUnitPriceMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value
+    var FromTotalPrice=document.getElementById("TOTAL_PRICE_"+FromRow).value
+  var ToTotalPrice=document.getElementById("TOTAL_PRICE_"+ToRow).value
+  var FromTotalPriceMoney=document.getElementById("TOTAL_PRICE_MONEY_"+FromRow).value
+  var ToTotalPriceMoney=document.getElementById("TOTAL_PRICE_MONEY_"+ToRow).value
+   var FromFirstRemark=document.getElementById("FIRST_REMARK_"+FromRow).value
+  var ToFirstRemark=document.getElementById("FIRST_REMARK_"+ToRow).value
+  //TOTAL_PRICE_1
+  //TOTAL_PRICE_MONEY_1
+  var O={
+         
+      FromRowData:{
+              ROW_ID:FromRow,
+              STOCK_ID:FromStockId,
+              PRODUCT_ID:FromProductId,
+              PRODUCT_CODE:FromProductCode,
+              TAX:FromTax,
+              PRODUCT_NAME:FromProductName,
+              QUANTITY:FromQuantity,
+              UNIT:FromUnit,
+              PURCHASE_PRICE:FromPurchasePrice,
+              PURCHASE_MONEY:FromPurchaseMoney,
+              SALE_PRICE:FromSalePrice,
+              SALE_MONEY:FromSaleMoney,
+              SALE_DISCOUNT:FromSaleDiscount,
+              SALE_DISCOUNT_MONEY:FromSaleDiscountMoney,
+              UNIT_PRICE:FromUnitPrice,
+              UNIT_PRICE_MONEY:FromUnitPriceMoney,
+              TOTAL_PRICE:FromTotalPrice,
+              TOTAL_PRICE_MONEY:FromTotalPriceMoney,
+              FIRST_REMARK:FromFirstRemark
+          },
+          ToRowData:{
+              ROW_ID:ToRow,
+              STOCK_ID:ToStockId,                
+              PRODUCT_ID:ToProductId,    
+              PRODUCT_CODE:ToProductCode,    
+              TAX:ToTax,    
+              PRODUCT_NAME:ToProductName,    
+              QUANTITY:ToQuantity,    
+              UNIT:ToUnit,
+              PURCHASE_PRICE:ToPurchasePrice,
+              PURCHASE_MONEY:ToPurchaseMoney,
+              SALE_PRICE:ToSalePrice,
+              SALE_MONEY:ToSaleMoney,
+              SALE_DISCOUNT:ToSaleDiscount,
+              SALE_DISCOUNT_MONEY:ToSaleDiscountMoney,
+              UNIT_PRICE:ToUnitPrice,
+              UNIT_PRICE_MONEY:ToUnitPriceMoney,
+              TOTAL_PRICE:ToTotalPrice,
+              TOTAL_PRICE_MONEY:ToTotalPriceMoney,
+              FIRST_REMARK:ToFirstRemark
+          }
+  }
+  
+  console.table(O.FromRowData)
+  console.table(O.ToRowData)
+  console.table(O)
+  }
 
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
