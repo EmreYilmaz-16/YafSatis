@@ -1,9 +1,9 @@
 <style>
     .OsButton{
         width: 100%;
-    height: 100px;    
+    height: 70px;    
     font-weight: bold;
-    font-size: 20pt !important;
+    font-size: 16pt !important;
     border: none;        
     margin: 5px;
 }
