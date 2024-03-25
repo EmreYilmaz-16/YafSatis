@@ -1,4 +1,4 @@
-
+<cf_box title="Gemiler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <div class="form-group">
 <input type="text" onkeyup="GetShips(this,event)" placeholder="Keyword">
 </div>
@@ -84,3 +84,5 @@ var CustomerId="<cfoutput>#attributes.CustomerId#</cfoutput>"
 
 
 
+
+</cf_box>

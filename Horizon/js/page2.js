@@ -103,6 +103,10 @@ function getMoney(el) {
       var Obje = JSON.parse(returnData);
       console.log(Obje);
       $(el).html("");
+      var option = document.createElement("option");
+      option.value ="";
+      option.innerText = "Seçiniz";
+      el.appendChild(option);
       for (let i = 0; i < Obje.length; i++) {
         var option = document.createElement("option");
         option.value = Obje[i].MONEY;
