@@ -959,7 +959,9 @@ function SeciliSil(PropList = "7,50014,50015") {
       }
     }
   }
+  if (RCS == 0) RCS = 1;
   document.getElementById("SeperatorRC_" + PropList).value = RCS;
+
   TumSatirlariDuzenle();
   AlayiniHesapla();
 }
