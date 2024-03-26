@@ -1,6 +1,6 @@
 
 
-<cf_box>
+<cf_box title="Vessel" scroll="1" collapsable="1" resize="1" popup_box="1" id="SV00001">
    <form name="ShipForm">
     <div class="form-group">
         <label>
@@ -8,8 +8,8 @@
         </label>
         <input type="text" name="VESSEL_NAME" id="VESSEL_NAME">
     </div>
-    <div style="display:flex">
-        <div style="width:50%">
+    <div style="display:flex;justify-content: space-between;">
+        <div style="width:45%">
             <cf_box title="Customer Invoice Info" id="SV00002">
                 <div class="form-group" id="item-company_name">
                     <label>COMPANY</label>        
@@ -31,7 +31,7 @@
             </div>
             </cf_box>
         </div>
-        <div style="width:50%">
+        <div style="width:45%">
             <cf_box title="Care Of Invoice Info" id="SV00003">
                 <div class="form-group" id="item-company_name">
                     <label>COMPANY</label>        
