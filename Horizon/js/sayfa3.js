@@ -11,7 +11,7 @@ function getCats(el) {
     url: ServiceUri + "/ProductService.cfc?method=getCats",
     success: function (returnData) {
       var Obje = JSON.parse(returnData);
-     // console.log(Obje);
+      // console.log(Obje);
       $(el).html("");
       for (let i = 0; i < Obje.length; i++) {
         var option = document.createElement("option");
@@ -132,7 +132,7 @@ function addEqRow(Obj, jsn) {
   var b4 = document.createElement("button");
   b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
   var spn = '<span class="icn-md icon-remove"></span>';
-
+  b4.setAttribute("onclick", "SeciliSil('" + Obj.PropList + "')");
   b4.innerHTML = spn;
 
   var b5 = document.createElement("button");
@@ -887,7 +887,6 @@ function SeperatorSil(PropList = "7,50014,50015") {
   }
   TumSatirlariDuzenle();
   AlayiniHesapla();
-
 }
 
 function TumSatirlariDuzenle() {
@@ -900,15 +899,15 @@ function TumSatirlariDuzenle() {
     var Sepet = document.getElementById("SubSepetBody_" + PropList_).children;
     for (let j = 0; j < Sepet.length; j++) {
       var SepetItem = Sepet[j];
-     // console.log(SepetItem);
+      // console.log(SepetItem);
       var inputs = SepetItem.getElementsByTagName("input");
       var Selects = SepetItem.getElementsByTagName("select");
       var Buttons = SepetItem.getElementsByTagName("button");
       var ARR = [];
-     // console.log(inputs);
+      // console.log(inputs);
       for (let x = 0; x < inputs.length; x++) {
         var ix = inputs[x];
-       // console.log(ix.id);
+        // console.log(ix.id);
         ix.id = ix.name + "_" + RowCount_;
         //console.log(ix.id);
       }
@@ -929,11 +928,39 @@ function TumSatirlariDuzenle() {
       }
       RowCount_++;
     }
-    
   }
-  RowCount=RowCount_;
+  RowCount = RowCount_;
 }
-
+function SeciliSil(PropList = "7,50014,50015") {
+  var Sepet = document.getElementById("SubSepetBody_" + PropList).children;
+  for (let i = 0; i < Sepet.length; i++) {
+    var SR = Sepet[i];
+    var Cbx = $(SR).find("input[type='checkbox']")[0];
+    // console.log(Cbx)
+    if ($(Cbx).is(":checked")) {
+      SR.remove();
+    }
+  }
+  var RCS = 0;
+  var Sepet = document.getElementById("SubSepetBody_" + PropList).children;
+  for (let i = 0; i < Sepet.length; i++) {
+    RCS++;
+    var SepetItem = Sepet[i];
+    var Buttons = SepetItem.getElementsByTagName("button");
+    console.log(Buttons);
+    for (let x = 0; x < Buttons.length; x++) {
+      var ix = Buttons[x];
+      var BtnAtt = ix.getAttribute("onclick");
+      if (BtnAtt) {
+        console.log("BTNATT=" + BtnAtt);
+        ix.innerText = RCS;
+      } else {
+        // ix.innerText = RowCount_;
+      }
+    }
+  }
+  document.getElementById("SeperatorRC_" + PropList).value = RCS;
+}
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
     var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
@@ -1207,7 +1234,7 @@ function OzetOlustur() {
     var PropList = aSeperator.getAttribute("data-proplist");
     // console.log(PropList)
     var Sepet = document.getElementById("SubSepetBody_" + PropList);
-   // console.log(Sepet.children.length);
+    // console.log(Sepet.children.length);
     for (let j = 0; j < BB.length; j++) {
       var B = BB[j];
 
