@@ -960,6 +960,8 @@ function SeciliSil(PropList = "7,50014,50015") {
     }
   }
   document.getElementById("SeperatorRC_" + PropList).value = RCS;
+  TumSatirlariDuzenle();
+  AlayiniHesapla();
 }
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
