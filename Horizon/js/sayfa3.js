@@ -887,6 +887,7 @@ function SeperatorSil(PropList = "7,50014,50015") {
   }
   TumSatirlariDuzenle();
   AlayiniHesapla();
+
 }
 
 function TumSatirlariDuzenle() {
@@ -930,6 +931,7 @@ function TumSatirlariDuzenle() {
     }
     
   }
+  RowCount=RowCount_;
 }
 
 function CreateOptionList(tip, selval = "EUR") {
