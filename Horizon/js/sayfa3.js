@@ -11,7 +11,7 @@ function getCats(el) {
     url: ServiceUri + "/ProductService.cfc?method=getCats",
     success: function (returnData) {
       var Obje = JSON.parse(returnData);
-      console.log(Obje);
+     // console.log(Obje);
       $(el).html("");
       for (let i = 0; i < Obje.length; i++) {
         var option = document.createElement("option");
@@ -25,7 +25,7 @@ function getCats(el) {
 function getCatProperties(cat_id) {
   AjaxPageLoad(
     "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
-    cat_id,
+      cat_id,
     "PROP_AREA",
     1,
     "Yükleniyor"
@@ -42,13 +42,13 @@ function AddEquipment() {
     PRODUCT_CAT: PRODUCT_CAT,
     PRODUCT_CAT_ID: PRODUCT_CAT_ID,
   };
-  console.table(ReturnObject);
+  //console.table(ReturnObject);
   var SelectedValues = [];
   var ox = {
     PRODUCT_CAT: PRODUCT_CAT,
     PRODUCT_CAT_ID: PRODUCT_CAT_ID,
     PNAME: "EQUIPMENT",
-    PROP_ID:0
+    PROP_ID: 0,
   };
   SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
@@ -61,8 +61,8 @@ function AddEquipment() {
     var isReq = Pelem.getAttribute("required");
 
     var Pdata = $(Pelem).select2("data")[0];
-    var PROP_ID=Pdata.element.parentElement.getAttribute("data-property_id")
-    console.log($(Pelem).select2("data")[0]);
+    var PROP_ID = Pdata.element.parentElement.getAttribute("data-property_id");
+    //console.log($(Pelem).select2("data")[0]);
     var PRODUCT_CAT = Pdata.text;
     var PRODUCT_CAT_ID = Pdata.id;
     var PNAME = Pdata.title;
@@ -71,11 +71,10 @@ function AddEquipment() {
         PRODUCT_CAT: PRODUCT_CAT,
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
         PNAME: PNAME,
-        PROP_ID:PROP_ID,
-        
+        PROP_ID: PROP_ID,
       };
 
-      console.table(O);
+      //console.table(O);
       SelectedValues.push(O);
       PropList += "," + PRODUCT_CAT_ID;
     }
@@ -86,7 +85,7 @@ function AddEquipment() {
   ReturnObject.Filters = SelectedValues;
   ReturnObject.PropList = PropList;
   var jsn = JSON.stringify(ReturnObject);
-  console.log(ReturnObject);
+  //console.log(ReturnObject);
   if (DataHata > 0) {
     alert("Zorunlu Alanlar var !");
     return false;
@@ -100,7 +99,7 @@ function addEqRow(Obj, jsn) {
   if (exxx != -1) {
     return false;
   }
-  console.log(Obj);
+  //console.log(Obj);
   var div = document.createElement("div");
 
   div.setAttribute("class", "alert alert-success eq_header");
@@ -139,13 +138,14 @@ function addEqRow(Obj, jsn) {
   var b5 = document.createElement("button");
   b5.setAttribute("class", "ui-wrk-btn ");
   b5.setAttribute("style", "background:#292424 !important;color:white");
+  b5.setAttribute("onclick", "SeperatorSil('" + Obj.PropList + "')");
   b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
 
   var b6 = document.createElement("button");
   b6.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
-  
+
   b6.innerHTML = '<span class="icn-md icon-filter"></span>';
-  b6.setAttribute("onclick","lookProducts('"+Obj.PropList+"')")
+  b6.setAttribute("onclick", "lookProducts('" + Obj.PropList + "')");
   var diva = document.createElement("div");
   diva.setAttribute("style", "display:flex");
   b1.setAttribute(
@@ -179,11 +179,11 @@ function addEqRow(Obj, jsn) {
   diva.appendChild(b5);
   diva.appendChild(b6);
   td.appendChild(diva);
-  var input=document.createElement("input");
-  input.id="SeperatorRC_"+Obj.PropList
-  input.name="SeperatorRC_"+Obj.PropList
-  input.type="hidden";
-  input.value=1;
+  var input = document.createElement("input");
+  input.id = "SeperatorRC_" + Obj.PropList;
+  input.name = "SeperatorRC_" + Obj.PropList;
+  input.type = "hidden";
+  input.value = 1;
   td.appendChild(input);
   tr.appendChild(td);
   var svk_st = 8;
@@ -269,8 +269,26 @@ function addEqRow(Obj, jsn) {
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
-//addRowCrs('32,50004,50005', "10",  "10",  "Anti-polishing ring", 0,  "100 003",  1,  "Adet",  0,  "TL",  200,  0, 200,  200,  "",0,0) 
-function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", TAX, MANUFACT_CODE = "", QUANTITY = 1, PRODUCT_UNIT = "", PURCHASE_PRICE = 0, PURCHASE_MONEY = "", SALE_PRICE = 0, SALE_DISCOUNT = 0, UNIT_PRICE = 0, TOTAL_PRICE = 0, FIRST_REMARK = "",DELIVERED_ITEMS=0,WEIGHT=0) {
+//addRowCrs('32,50004,50005', "10",  "10",  "Anti-polishing ring", 0,  "100 003",  1,  "Adet",  0,  "TL",  200,  0, 200,  200,  "",0,0)
+function addRowCrs(
+  proplist,
+  PRODUCT_ID = "",
+  STOCK_ID = "",
+  PRODUCT_NAME = "",
+  TAX,
+  MANUFACT_CODE = "",
+  QUANTITY = 1,
+  PRODUCT_UNIT = "",
+  PURCHASE_PRICE = 0,
+  PURCHASE_MONEY = "",
+  SALE_PRICE = 0,
+  SALE_DISCOUNT = 0,
+  UNIT_PRICE = 0,
+  TOTAL_PRICE = 0,
+  FIRST_REMARK = "",
+  DELIVERED_ITEMS = 0,
+  WEIGHT = 0
+) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
   var td = document.createElement("td");
@@ -292,11 +310,11 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
-  var rc2=document.getElementById("SeperatorRC_"+proplist).value;
-  rc2=parseInt(rc2);
+  var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
+  rc2 = parseInt(rc2);
 
   b2.innerText = rc2;
-  b2.setAttribute("onclick","MoveRow("+rc2+")")
+  b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -305,7 +323,7 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
-  document.getElementById("SeperatorRC_"+proplist).value=rc2;
+  document.getElementById("SeperatorRC_" + proplist).value = rc2;
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
@@ -322,19 +340,19 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   input.type = "hidden";
   input.name = "PRODUCT_ID";
   input.id = "PRODUCT_ID_" + RowCount;
-  input.value = PRODUCT_ID
+  input.value = PRODUCT_ID;
   div.appendChild(input);
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "STOCK_ID";
   input.id = "STOCK_ID_" + RowCount;
-  input.value = STOCK_ID
+  input.value = STOCK_ID;
   div.appendChild(input);
 
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "TAX";
-  input.value = TAX
+  input.value = TAX;
   input.id = "TAX_" + RowCount;
   div.appendChild(input);
 
@@ -347,7 +365,7 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "PRODUCT_NAME";
-  input.value = PRODUCT_NAME
+  input.value = PRODUCT_NAME;
   input.id = "PRODUCT_NAME_" + RowCount;
   input.setAttribute("style", "text-align:left");
   div.appendChild(input);
@@ -372,12 +390,12 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("select");
-  var opt=document.createElement("option");
-  opt.value=PRODUCT_UNIT;
-  opt.innerText=PRODUCT_UNIT;
-  
+  var opt = document.createElement("option");
+  opt.value = PRODUCT_UNIT;
+  opt.innerText = PRODUCT_UNIT;
+
   input.name = "PRODUCT_UNIT";
-  
+
   input.id = "PRODUCT_UNIT_" + RowCount;
   input.appendChild(opt);
   div.appendChild(input);
@@ -398,7 +416,7 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   div2.appendChild(input);
   var input = document.createElement("select");
   if (PURCHASE_MONEY.length == 0) {
-    PURCHASE_MONEY = OfferData.OTHER_MONEY
+    PURCHASE_MONEY = OfferData.OTHER_MONEY;
   }
   input.innerHTML = CreateOptionList(1, PURCHASE_MONEY);
   input.name = "PURCHASE_MONEY";
@@ -515,7 +533,7 @@ function addRowCrs(proplist, PRODUCT_ID = "", STOCK_ID = "", PRODUCT_NAME = "", 
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.name = "FIRST_REMARK";
-  input.value = FIRST_REMARK
+  input.value = FIRST_REMARK;
   input.id = "FIRST_REMARK_" + RowCount;
   div2.appendChild(input);
   var input = document.createElement("span");
@@ -616,12 +634,12 @@ function getProduct(el, rc) {
           btn.setAttribute(
             "onclick",
             "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
-            rc +
-            "&kw=" +
-            el.value +
-            "&prp_list=" +
-            pL +
-            "')"
+              rc +
+              "&kw=" +
+              el.value +
+              "&prp_list=" +
+              pL +
+              "')"
           );
         } else {
           el.setAttribute(
@@ -661,134 +679,258 @@ function getProduct(el, rc) {
     },
   });
 }
-function MoveRow(FromRow){
-  var ToRow=prompt("To Row");
+function MoveRow(FromRow) {
+  var ToRow = prompt("To Row");
 
-  var FromStockId=document.getElementById("STOCK_ID_"+FromRow).value
-  var ToStockId=document.getElementById("STOCK_ID_"+ToRow).value    
-  var FromProductId=document.getElementById("PRODUCT_ID_"+FromRow).value
-  var ToProductId=document.getElementById("PRODUCT_ID_"+ToRow).value    
-  var FromProductCode=document.getElementById("PRODUCT_CODE_2_"+FromRow).value
-  var ToProductCode=document.getElementById("PRODUCT_CODE_2_"+ToRow).value    
-  var FromTax=document.getElementById("TAX_"+FromRow).value
-  var ToTax=document.getElementById("TAX_"+ToRow).value    
-  var FromProductName=document.getElementById("PRODUCT_NAME_"+FromRow).value
-  var ToProductName=document.getElementById("PRODUCT_NAME_"+ToRow).value        
-  var FromQuantity=document.getElementById("QUANTITY_"+FromRow).value
-  var ToQuantity=document.getElementById("QUANTITY_"+ToRow).value
-  var FromUnit=document.getElementById("PRODUCT_UNIT_"+FromRow).value
-  var ToUnit=document.getElementById("PRODUCT_UNIT_"+ToRow).value
-  var FromPurchasePrice=document.getElementById("PURCHASE_PRICE_"+FromRow).value
-  var ToPurchasePrice=document.getElementById("PURCHASE_PRICE_"+ToRow).value
-  var FromPurchaseMoney=document.getElementById("PURCHASE_MONEY_"+FromRow).value
-  var ToPurchaseMoney=document.getElementById("PURCHASE_MONEY_"+ToRow).value
-  var FromSalePrice=document.getElementById("SALE_PRICE_"+FromRow).value
-  var ToSalePrice=document.getElementById("SALE_PRICE_"+ToRow).value
-  var FromSaleMoney=document.getElementById("SALE_MONEY_"+FromRow).value
-  var ToSaleMoney=document.getElementById("SALE_MONEY_"+ToRow).value
-  var FromSaleDiscount=document.getElementById("SALE_DISCOUNT_"+FromRow).value
-  var ToSaleDiscount=document.getElementById("SALE_DISCOUNT_"+ToRow).value
-  var FromSaleDiscountMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value
-  var ToSaleDiscountMoney=document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value
-  var FromUnitPrice=document.getElementById("UNIT_PRICE_"+FromRow).value
-  var ToUnitPrice=document.getElementById("UNIT_PRICE_"+ToRow).value
-  var FromUnitPriceMoney=document.getElementById("UNIT_PRICE_MONEY_"+FromRow).value
-  var ToUnitPriceMoney=document.getElementById("UNIT_PRICE_MONEY_"+ToRow).value
-    var FromTotalPrice=document.getElementById("TOTAL_PRICE_"+FromRow).value
-  var ToTotalPrice=document.getElementById("TOTAL_PRICE_"+ToRow).value
-  var FromTotalPriceMoney=document.getElementById("TOTAL_PRICE_MONEY_"+FromRow).value
-  var ToTotalPriceMoney=document.getElementById("TOTAL_PRICE_MONEY_"+ToRow).value
-   var FromFirstRemark=document.getElementById("FIRST_REMARK_"+FromRow).value
-  var ToFirstRemark=document.getElementById("FIRST_REMARK_"+ToRow).value
+  var FromStockId = document.getElementById("STOCK_ID_" + FromRow).value;
+  var ToStockId = document.getElementById("STOCK_ID_" + ToRow).value;
+  var FromProductId = document.getElementById("PRODUCT_ID_" + FromRow).value;
+  var ToProductId = document.getElementById("PRODUCT_ID_" + ToRow).value;
+  var FromProductCode = document.getElementById(
+    "PRODUCT_CODE_2_" + FromRow
+  ).value;
+  var ToProductCode = document.getElementById("PRODUCT_CODE_2_" + ToRow).value;
+  var FromTax = document.getElementById("TAX_" + FromRow).value;
+  var ToTax = document.getElementById("TAX_" + ToRow).value;
+  var FromProductName = document.getElementById(
+    "PRODUCT_NAME_" + FromRow
+  ).value;
+  var ToProductName = document.getElementById("PRODUCT_NAME_" + ToRow).value;
+  var FromQuantity = document.getElementById("QUANTITY_" + FromRow).value;
+  var ToQuantity = document.getElementById("QUANTITY_" + ToRow).value;
+  var FromUnit = document.getElementById("PRODUCT_UNIT_" + FromRow).value;
+  var ToUnit = document.getElementById("PRODUCT_UNIT_" + ToRow).value;
+  var FromPurchasePrice = document.getElementById(
+    "PURCHASE_PRICE_" + FromRow
+  ).value;
+  var ToPurchasePrice = document.getElementById(
+    "PURCHASE_PRICE_" + ToRow
+  ).value;
+  var FromPurchaseMoney = document.getElementById(
+    "PURCHASE_MONEY_" + FromRow
+  ).value;
+  var ToPurchaseMoney = document.getElementById(
+    "PURCHASE_MONEY_" + ToRow
+  ).value;
+  var FromSalePrice = document.getElementById("SALE_PRICE_" + FromRow).value;
+  var ToSalePrice = document.getElementById("SALE_PRICE_" + ToRow).value;
+  var FromSaleMoney = document.getElementById("SALE_MONEY_" + FromRow).value;
+  var ToSaleMoney = document.getElementById("SALE_MONEY_" + ToRow).value;
+  var FromSaleDiscount = document.getElementById(
+    "SALE_DISCOUNT_" + FromRow
+  ).value;
+  var ToSaleDiscount = document.getElementById("SALE_DISCOUNT_" + ToRow).value;
+  var FromSaleDiscountMoney = document.getElementById(
+    "SALE_DISCOUNT_MONEY_" + FromRow
+  ).value;
+  var ToSaleDiscountMoney = document.getElementById(
+    "SALE_DISCOUNT_MONEY_" + ToRow
+  ).value;
+  var FromUnitPrice = document.getElementById("UNIT_PRICE_" + FromRow).value;
+  var ToUnitPrice = document.getElementById("UNIT_PRICE_" + ToRow).value;
+  var FromUnitPriceMoney = document.getElementById(
+    "UNIT_PRICE_MONEY_" + FromRow
+  ).value;
+  var ToUnitPriceMoney = document.getElementById(
+    "UNIT_PRICE_MONEY_" + ToRow
+  ).value;
+  var FromTotalPrice = document.getElementById("TOTAL_PRICE_" + FromRow).value;
+  var ToTotalPrice = document.getElementById("TOTAL_PRICE_" + ToRow).value;
+  var FromTotalPriceMoney = document.getElementById(
+    "TOTAL_PRICE_MONEY_" + FromRow
+  ).value;
+  var ToTotalPriceMoney = document.getElementById(
+    "TOTAL_PRICE_MONEY_" + ToRow
+  ).value;
+  var FromFirstRemark = document.getElementById(
+    "FIRST_REMARK_" + FromRow
+  ).value;
+  var ToFirstRemark = document.getElementById("FIRST_REMARK_" + ToRow).value;
   //TOTAL_PRICE_1
   //TOTAL_PRICE_MONEY_1
-  var O={
-         
-      FromRowData:{
-              ROW_ID:FromRow,
-              STOCK_ID:FromStockId,
-              PRODUCT_ID:FromProductId,
-              PRODUCT_CODE:FromProductCode,
-              TAX:FromTax,
-              PRODUCT_NAME:FromProductName,
-              QUANTITY:FromQuantity,
-              UNIT:FromUnit,
-              PURCHASE_PRICE:FromPurchasePrice,
-              PURCHASE_MONEY:FromPurchaseMoney,
-              SALE_PRICE:FromSalePrice,
-              SALE_MONEY:FromSaleMoney,
-              SALE_DISCOUNT:FromSaleDiscount,
-              SALE_DISCOUNT_MONEY:FromSaleDiscountMoney,
-              UNIT_PRICE:FromUnitPrice,
-              UNIT_PRICE_MONEY:FromUnitPriceMoney,
-              TOTAL_PRICE:FromTotalPrice,
-              TOTAL_PRICE_MONEY:FromTotalPriceMoney,
-              FIRST_REMARK:FromFirstRemark
-          },
-          ToRowData:{
-              ROW_ID:ToRow,
-              STOCK_ID:ToStockId,                
-              PRODUCT_ID:ToProductId,    
-              PRODUCT_CODE:ToProductCode,    
-              TAX:ToTax,    
-              PRODUCT_NAME:ToProductName,    
-              QUANTITY:ToQuantity,    
-              UNIT:ToUnit,
-              PURCHASE_PRICE:ToPurchasePrice,
-              PURCHASE_MONEY:ToPurchaseMoney,
-              SALE_PRICE:ToSalePrice,
-              SALE_MONEY:ToSaleMoney,
-              SALE_DISCOUNT:ToSaleDiscount,
-              SALE_DISCOUNT_MONEY:ToSaleDiscountMoney,
-              UNIT_PRICE:ToUnitPrice,
-              UNIT_PRICE_MONEY:ToUnitPriceMoney,
-              TOTAL_PRICE:ToTotalPrice,
-              TOTAL_PRICE_MONEY:ToTotalPriceMoney,
-              FIRST_REMARK:ToFirstRemark
-          }
-  }
-  
-  console.table(O.FromRowData)
-  console.table(O.ToRowData)
-  console.table(O)
-  document.getElementById("STOCK_ID_"+FromRow).value=O.ToRowData.STOCK_ID
-  document.getElementById("STOCK_ID_"+ToRow).value=O.FromRowData.STOCK_ID
- document.getElementById("PRODUCT_ID_"+FromRow).value=O.ToRowData.PRODUCT_ID
-  document.getElementById("PRODUCT_ID_"+ToRow).value =O.FromRowData.PRODUCT_ID  
-  document.getElementById("PRODUCT_CODE_2_"+FromRow).value=O.ToRowData.PRODUCT_CODE
-  document.getElementById("PRODUCT_CODE_2_"+ToRow).value  =O.FromRowData.PRODUCT_CODE  
-  document.getElementById("TAX_"+FromRow).value=O.ToRowData.TAX
-  document.getElementById("TAX_"+ToRow).value  =O.FromRowData.TAX 
-  document.getElementById("PRODUCT_NAME_"+FromRow).value=O.ToRowData.PRODUCT_NAME
-  document.getElementById("PRODUCT_NAME_"+ToRow).value =O.FromRowData.PRODUCT_NAME       
-  document.getElementById("QUANTITY_"+FromRow).value=O.ToRowData.QUANTITY
-  document.getElementById("QUANTITY_"+ToRow).value=O.FromRowData.QUANTITY
-  document.getElementById("PRODUCT_UNIT_"+FromRow).value=O.ToRowData.UNIT
-  document.getElementById("PRODUCT_UNIT_"+ToRow).value=O.FromRowData.UNIT
-  document.getElementById("PURCHASE_PRICE_"+FromRow).value=O.ToRowData.PURCHASE_PRICE
-  document.getElementById("PURCHASE_PRICE_"+ToRow).value=O.FromRowData.PURCHASE_PRICE
-  document.getElementById("PURCHASE_MONEY_"+FromRow).value=O.ToRowData.PURCHASE_MONEY
-  document.getElementById("PURCHASE_MONEY_"+ToRow).value=O.FromRowData.PURCHASE_MONEY
-  document.getElementById("SALE_PRICE_"+FromRow).value=O.ToRowData.SALE_PRICE
-  document.getElementById("SALE_PRICE_"+ToRow).value=O.FromRowData.SALE_PRICE
-  document.getElementById("SALE_MONEY_"+FromRow).value=O.ToRowData.SALE_MONEY
-  document.getElementById("SALE_MONEY_"+ToRow).value=O.FromRowData.SALE_MONEY
-  document.getElementById("SALE_DISCOUNT_"+FromRow).value=O.ToRowData.SALE_DISCOUNT
-  document.getElementById("SALE_DISCOUNT_"+ToRow).value=O.FromRowData.SALE_DISCOUNT
-  document.getElementById("SALE_DISCOUNT_MONEY_"+FromRow).value=O.ToRowData.SALE_DISCOUNT_MONEY
-  document.getElementById("SALE_DISCOUNT_MONEY_"+ToRow).value=O.FromRowData.SALE_DISCOUNT_MONEY
-  document.getElementById("UNIT_PRICE_"+FromRow).value =O.ToRowData.UNIT_PRICE
-  document.getElementById("UNIT_PRICE_"+ToRow).value=O.FromRowData.UNIT_PRICE
-  document.getElementById("UNIT_PRICE_MONEY_"+FromRow).value=O.ToRowData.UNIT_PRICE_MONEY
-  document.getElementById("UNIT_PRICE_MONEY_"+ToRow).value=O.FromRowData.UNIT_PRICE_MONEY
-  document.getElementById("TOTAL_PRICE_"+FromRow).value=O.ToRowData.TOTAL_PRICE
-  document.getElementById("TOTAL_PRICE_"+ToRow).value=O.FromRowData.TOTAL_PRICE
-  document.getElementById("TOTAL_PRICE_MONEY_"+FromRow).value=O.ToRowData.TOTAL_PRICE_MONEY
-  document.getElementById("TOTAL_PRICE_MONEY_"+ToRow).value=O.FromRowData.TOTAL_PRICE_MONEY
-  document.getElementById("FIRST_REMARK_"+FromRow).value =O.ToRowData.FIRST_REMARK
-  document.getElementById("FIRST_REMARK_"+ToRow).value=O.FromRowData.FIRST_REMARK
+  var O = {
+    FromRowData: {
+      ROW_ID: FromRow,
+      STOCK_ID: FromStockId,
+      PRODUCT_ID: FromProductId,
+      PRODUCT_CODE: FromProductCode,
+      TAX: FromTax,
+      PRODUCT_NAME: FromProductName,
+      QUANTITY: FromQuantity,
+      UNIT: FromUnit,
+      PURCHASE_PRICE: FromPurchasePrice,
+      PURCHASE_MONEY: FromPurchaseMoney,
+      SALE_PRICE: FromSalePrice,
+      SALE_MONEY: FromSaleMoney,
+      SALE_DISCOUNT: FromSaleDiscount,
+      SALE_DISCOUNT_MONEY: FromSaleDiscountMoney,
+      UNIT_PRICE: FromUnitPrice,
+      UNIT_PRICE_MONEY: FromUnitPriceMoney,
+      TOTAL_PRICE: FromTotalPrice,
+      TOTAL_PRICE_MONEY: FromTotalPriceMoney,
+      FIRST_REMARK: FromFirstRemark,
+    },
+    ToRowData: {
+      ROW_ID: ToRow,
+      STOCK_ID: ToStockId,
+      PRODUCT_ID: ToProductId,
+      PRODUCT_CODE: ToProductCode,
+      TAX: ToTax,
+      PRODUCT_NAME: ToProductName,
+      QUANTITY: ToQuantity,
+      UNIT: ToUnit,
+      PURCHASE_PRICE: ToPurchasePrice,
+      PURCHASE_MONEY: ToPurchaseMoney,
+      SALE_PRICE: ToSalePrice,
+      SALE_MONEY: ToSaleMoney,
+      SALE_DISCOUNT: ToSaleDiscount,
+      SALE_DISCOUNT_MONEY: ToSaleDiscountMoney,
+      UNIT_PRICE: ToUnitPrice,
+      UNIT_PRICE_MONEY: ToUnitPriceMoney,
+      TOTAL_PRICE: ToTotalPrice,
+      TOTAL_PRICE_MONEY: ToTotalPriceMoney,
+      FIRST_REMARK: ToFirstRemark,
+    },
+  };
+
+  // console.table(O.FromRowData);
+  // console.table(O.ToRowData);
+  // console.table(O);
+  document.getElementById("STOCK_ID_" + FromRow).value = O.ToRowData.STOCK_ID;
+  document.getElementById("STOCK_ID_" + ToRow).value = O.FromRowData.STOCK_ID;
+  document.getElementById("PRODUCT_ID_" + FromRow).value =
+    O.ToRowData.PRODUCT_ID;
+  document.getElementById("PRODUCT_ID_" + ToRow).value =
+    O.FromRowData.PRODUCT_ID;
+  document.getElementById("PRODUCT_CODE_2_" + FromRow).value =
+    O.ToRowData.PRODUCT_CODE;
+  document.getElementById("PRODUCT_CODE_2_" + ToRow).value =
+    O.FromRowData.PRODUCT_CODE;
+  document.getElementById("TAX_" + FromRow).value = O.ToRowData.TAX;
+  document.getElementById("TAX_" + ToRow).value = O.FromRowData.TAX;
+  document.getElementById("PRODUCT_NAME_" + FromRow).value =
+    O.ToRowData.PRODUCT_NAME;
+  document.getElementById("PRODUCT_NAME_" + ToRow).value =
+    O.FromRowData.PRODUCT_NAME;
+  document.getElementById("QUANTITY_" + FromRow).value = O.ToRowData.QUANTITY;
+  document.getElementById("QUANTITY_" + ToRow).value = O.FromRowData.QUANTITY;
+  document.getElementById("PRODUCT_UNIT_" + FromRow).value = O.ToRowData.UNIT;
+  document.getElementById("PRODUCT_UNIT_" + ToRow).value = O.FromRowData.UNIT;
+  document.getElementById("PURCHASE_PRICE_" + FromRow).value =
+    O.ToRowData.PURCHASE_PRICE;
+  document.getElementById("PURCHASE_PRICE_" + ToRow).value =
+    O.FromRowData.PURCHASE_PRICE;
+  document.getElementById("PURCHASE_MONEY_" + FromRow).value =
+    O.ToRowData.PURCHASE_MONEY;
+  document.getElementById("PURCHASE_MONEY_" + ToRow).value =
+    O.FromRowData.PURCHASE_MONEY;
+  document.getElementById("SALE_PRICE_" + FromRow).value =
+    O.ToRowData.SALE_PRICE;
+  document.getElementById("SALE_PRICE_" + ToRow).value =
+    O.FromRowData.SALE_PRICE;
+  document.getElementById("SALE_MONEY_" + FromRow).value =
+    O.ToRowData.SALE_MONEY;
+  document.getElementById("SALE_MONEY_" + ToRow).value =
+    O.FromRowData.SALE_MONEY;
+  document.getElementById("SALE_DISCOUNT_" + FromRow).value =
+    O.ToRowData.SALE_DISCOUNT;
+  document.getElementById("SALE_DISCOUNT_" + ToRow).value =
+    O.FromRowData.SALE_DISCOUNT;
+  document.getElementById("SALE_DISCOUNT_MONEY_" + FromRow).value =
+    O.ToRowData.SALE_DISCOUNT_MONEY;
+  document.getElementById("SALE_DISCOUNT_MONEY_" + ToRow).value =
+    O.FromRowData.SALE_DISCOUNT_MONEY;
+  document.getElementById("UNIT_PRICE_" + FromRow).value =
+    O.ToRowData.UNIT_PRICE;
+  document.getElementById("UNIT_PRICE_" + ToRow).value =
+    O.FromRowData.UNIT_PRICE;
+  document.getElementById("UNIT_PRICE_MONEY_" + FromRow).value =
+    O.ToRowData.UNIT_PRICE_MONEY;
+  document.getElementById("UNIT_PRICE_MONEY_" + ToRow).value =
+    O.FromRowData.UNIT_PRICE_MONEY;
+  document.getElementById("TOTAL_PRICE_" + FromRow).value =
+    O.ToRowData.TOTAL_PRICE;
+  document.getElementById("TOTAL_PRICE_" + ToRow).value =
+    O.FromRowData.TOTAL_PRICE;
+  document.getElementById("TOTAL_PRICE_MONEY_" + FromRow).value =
+    O.ToRowData.TOTAL_PRICE_MONEY;
+  document.getElementById("TOTAL_PRICE_MONEY_" + ToRow).value =
+    O.FromRowData.TOTAL_PRICE_MONEY;
+  document.getElementById("FIRST_REMARK_" + FromRow).value =
+    O.ToRowData.FIRST_REMARK;
+  document.getElementById("FIRST_REMARK_" + ToRow).value =
+    O.FromRowData.FIRST_REMARK;
   AlayiniHesapla();
+}
+/*
+TODO: SEPERATOR SIL FONKSIYONU YAZILACAK
+TODO: SEPRATOR SILDEN SONRA GENEL SATIR DUZENLEME YAZILACAK {
+  1-BÜTÜN SATIR ELEMANLARININ IDLERİNİ VE SATIRLA İLGİLİ OLAN VERİLERİ DEĞİŞTİRECEL
+  2-ROW COUNT VERİSİNİ GÜNCEL SATIR MİKTARI İLE GÜNCELLEYECEK
+}
+TODO: SEÇMELİ SATIR SİLME YAZILACAK 
+TODO: SEÇMELİ SATIR SİLME SONRASI SEPRATOR DUZENLEME YAZILACAK {
+  1-SEPERATOR SATIRLARI DÖNGÜYE GİRECEK
+  2-İDL
+}
+*/
+function SeperatorSil(PropList = "7,50014,50015") {
+  var Basket = document.getElementById("BasketArea");
+  var BasketSperators = Basket.children;
+  for (let i = 0; i < BasketSperators.length; i++) {
+    var Seperator = BasketSperators[i];
+    var PropList_ = Seperator.getAttribute("data-proplist");
+    //console.log(PropList_);
+    if (PropList_ == PropList) {
+      Seperator.remove();
+    }
   }
+  TumSatirlariDuzenle();
+  AlayiniHesapla();
+}
+
+function TumSatirlariDuzenle() {
+  var RowCount_ = 1;
+  var Basket = document.getElementById("BasketArea");
+  var BasketSperators = Basket.children;
+  for (let i = 0; i < BasketSperators.length; i++) {
+    var Seperator = BasketSperators[i];
+    var PropList_ = Seperator.getAttribute("data-proplist");
+    var Sepet = document.getElementById("SubSepetBody_" + PropList_).children;
+    for (let j = 0; j < Sepet.length; j++) {
+      var SepetItem = Sepet[j];
+     // console.log(SepetItem);
+      var inputs = SepetItem.getElementsByTagName("input");
+      var Selects = SepetItem.getElementsByTagName("select");
+      var Buttons = SepetItem.getElementsByTagName("button");
+      var ARR = [];
+     // console.log(inputs);
+      for (let x = 0; x < inputs.length; x++) {
+        var ix = inputs[x];
+       // console.log(ix.id);
+        ix.id = ix.name + "_" + RowCount_;
+        //console.log(ix.id);
+      }
+      for (let x = 0; x < Selects.length; x++) {
+        var ix = Selects[x];
+        //console.log(ix.id);
+        ix.id = ix.name + "_" + RowCount_;
+        //console.log(ix.id);
+      }
+      for (let x = 0; x < Buttons.length; x++) {
+        var ix = Buttons[x];
+        var BtnAtt = ix.getAttribute("onclick");
+        if (BtnAtt) {
+          //console.log("BTNATT=" + BtnAtt);
+        } else {
+          ix.innerText = RowCount_;
+        }
+      }
+      RowCount_++;
+    }
+    
+  }
+}
 
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
@@ -805,7 +947,7 @@ function CreateOptionList(tip, selval = "EUR") {
           "<option  value='" + element + "'>" + element + "</option>";
       }
     }
-    console.log(ReturnStr);
+    //console.log(ReturnStr);
     var o = $("ReturnStr");
     return ReturnStr;
     console.log(o);
@@ -855,7 +997,9 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
-    var JSON_STRINGIM_ = document.getElementById("AddedEquipment_" + PropList).value;
+    var JSON_STRINGIM_ = document.getElementById(
+      "AddedEquipment_" + PropList
+    ).value;
     var JSON_STRINGIM = JSON.parse(JSON_STRINGIM_);
     // console.log(PropList)
     var Sepet = document.getElementById("SubSepetBody_" + PropList);
@@ -864,7 +1008,7 @@ function AlayiniHesapla() {
     document.getElementById("RC_" + PropList).innerText = Jcount;
     var SEPET_SIRA = 0;
     var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
-    console.table(AKTIF_KUR);
+    //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
       SEPET_SIRA++;
@@ -900,7 +1044,7 @@ function AlayiniHesapla() {
         var Cx = MONEY_ARR.findIndex((p) => p.MONEY == TOTAL_PRICE_MONEY);
         var SatirKur = MONEY_ARR[Cx];
         var CRROS_RATE = AKTIF_KUR.RATE2 / SatirKur.RATE2;
-        console.log(CRROS_RATE);
+        //console.log(CRROS_RATE);
         TOTAL_PRICE = UNIT_PRICE * AMOUNT * CRROS_RATE;
       }
 
@@ -963,7 +1107,7 @@ function AlayiniHesapla() {
       commaSplit(SeperatorToplam);
     OrderFooter.TOTAL_PRICE += SeperatorToplam;
   }
-  console.table(AktifSepet);
+  //console.table(AktifSepet);
   var FlDis = document.getElementById("genel_indirim_").value;
   if (FlDis.length > 0) {
     FlDis = filterNum(commaSplit(FlDis));
@@ -976,9 +1120,13 @@ function AlayiniHesapla() {
     OrderFooter.genel_indirim_ = FlDis;
   }
   OrderFooter.total_discount_wanted += FlDis;
-  OrderFooter.brut_total_wanted = (OrderFooter.total_default - OrderFooter.total_discount_wanted);
+  OrderFooter.brut_total_wanted =
+    OrderFooter.total_default - OrderFooter.total_discount_wanted;
   OrderFooter.total_tax_wanted = 0;
-  OrderFooter.net_total_wanted = (OrderFooter.total_default - OrderFooter.total_discount_wanted) + OrderFooter.total_tax_wanted;
+  OrderFooter.net_total_wanted =
+    OrderFooter.total_default -
+    OrderFooter.total_discount_wanted +
+    OrderFooter.total_tax_wanted;
   OzetOlustur();
 }
 
@@ -1048,7 +1196,7 @@ function KurGetir(money) {
 function OzetOlustur() {
   var T_OZET = "<ul>";
   var Seperators = document.getElementById("BasketArea").children;
-  console.log(Seperators);
+  //console.log(Seperators);
   for (let i = 0; i < Seperators.length; i++) {
     var aSeperator = Seperators[i];
     var tx = $(aSeperator).find("table");
@@ -1057,13 +1205,13 @@ function OzetOlustur() {
     var PropList = aSeperator.getAttribute("data-proplist");
     // console.log(PropList)
     var Sepet = document.getElementById("SubSepetBody_" + PropList);
-    console.log(Sepet.children.length);
+   // console.log(Sepet.children.length);
     for (let j = 0; j < BB.length; j++) {
       var B = BB[j];
 
       try {
         T_OZET += B.lastChild.innerText + "->";
-      } catch { }
+      } catch {}
     }
 
     //T_OZET+="</p>"
@@ -1071,7 +1219,7 @@ function OzetOlustur() {
       "</td><td> " + Sepet.children.length + "</</td></tr></table></li>";
   }
   T_OZET += "</ul>";
-  console.log(T_OZET);
+  //console.log(T_OZET);
   $("#OzetAlani").html(T_OZET);
   /*
   OrderFooter.brut_total_wanted
@@ -1083,54 +1231,68 @@ function OzetOlustur() {
   OrderFooter.total_tax_wanted
   */
   var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
-  $("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted))
-  $("#brut_total_wanted_").val(commaSplit(OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2))
-  $("#genel_indirim_").val(commaSplit(OrderFooter.genel_indirim_))
-  $("#genel_indirim__").val(commaSplit(OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2))
-  $("#net_total_wanted").val(commaSplit(OrderFooter.net_total_wanted))
-  $("#net_total_wanted_").val(commaSplit(OrderFooter.net_total_wanted * AKTIF_KUR.RATE2))
-  $("#total_default").val(commaSplit(OrderFooter.total_default))
-  $("#total_default_").val(commaSplit(OrderFooter.total_default * AKTIF_KUR.RATE2))
-  $("#total_discount_wanted").val(commaSplit(OrderFooter.total_discount_wanted))
-  $("#total_discount_wanted_").val(commaSplit(OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2))
-  $("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted))
-  $("#total_tax_wanted_").val(commaSplit(OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2))
+  $("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted));
+  $("#brut_total_wanted_").val(
+    commaSplit(OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2)
+  );
+  $("#genel_indirim_").val(commaSplit(OrderFooter.genel_indirim_));
+  $("#genel_indirim__").val(
+    commaSplit(OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2)
+  );
+  $("#net_total_wanted").val(commaSplit(OrderFooter.net_total_wanted));
+  $("#net_total_wanted_").val(
+    commaSplit(OrderFooter.net_total_wanted * AKTIF_KUR.RATE2)
+  );
+  $("#total_default").val(commaSplit(OrderFooter.total_default));
+  $("#total_default_").val(
+    commaSplit(OrderFooter.total_default * AKTIF_KUR.RATE2)
+  );
+  $("#total_discount_wanted").val(
+    commaSplit(OrderFooter.total_discount_wanted)
+  );
+  $("#total_discount_wanted_").val(
+    commaSplit(OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2)
+  );
+  $("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted));
+  $("#total_tax_wanted_").val(
+    commaSplit(OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2)
+  );
 
-  OrderFooter.brut_total_wanted_ = OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2
-  OrderFooter.genel_indirim__ = OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2
-  OrderFooter.net_total_wanted_ = OrderFooter.net_total_wanted * AKTIF_KUR.RATE2
-  OrderFooter.total_default_ = OrderFooter.total_default * AKTIF_KUR.RATE2
-  OrderFooter.total_discount_wanted_ = OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2
-  OrderFooter.total_tax_wanted_ = OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2
-
-
+  OrderFooter.brut_total_wanted_ =
+    OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2;
+  OrderFooter.genel_indirim__ = OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2;
+  OrderFooter.net_total_wanted_ =
+    OrderFooter.net_total_wanted * AKTIF_KUR.RATE2;
+  OrderFooter.total_default_ = OrderFooter.total_default * AKTIF_KUR.RATE2;
+  OrderFooter.total_discount_wanted_ =
+    OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2;
+  OrderFooter.total_tax_wanted_ =
+    OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2;
 }
 
-function lookProducts(proplist){
-  openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_products_pbs&proplist='+proplist)
-
+function lookProducts(proplist) {
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_list_products_pbs&proplist=" +
+      proplist
+  );
 }
 
-function SaveOffer(){
+function SaveOffer() {
   AlayiniHesapla();
-  var BasketData=new Object();
-  BasketData.OFFER_HEADER=OfferData
-  BasketData.ROWS=AktifSepet;
-  BasketData.OFFER_FOOTER=OrderFooter
+  var BasketData = new Object();
+  BasketData.OFFER_HEADER = OfferData;
+  BasketData.ROWS = AktifSepet;
+  BasketData.OFFER_FOOTER = OrderFooter;
 
-$.ajax({
-  url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_OFFER_ROWS",
-    data:{
-        data:JSON.stringify(BasketData)
+  $.ajax({
+    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_OFFER_ROWS",
+    data: {
+      data: JSON.stringify(BasketData),
     },
-    success:function(retDat){
-      $.notification(
-        ["Kayıt Edildi"],
-        {
-          messageType: 'success',
-        }
-      )
-    }
-    
-})
+    success: function (retDat) {
+      $.notification(["Kayıt Edildi"], {
+        messageType: "success",
+      });
+    },
+  });
 }
