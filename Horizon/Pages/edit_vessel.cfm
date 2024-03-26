@@ -1,6 +1,6 @@
 
 
-<cf_box title="Vessel" scroll="1" collapsable="1" resize="1" popup_box="1" id="SV00001">
+<cf_box>
    <form name="ShipForm">
     <div class="form-group">
         <label>
