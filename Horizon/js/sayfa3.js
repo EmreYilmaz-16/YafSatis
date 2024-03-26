@@ -444,7 +444,7 @@ function addRowCrs(
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_MONEY";
   input.id = "SALE_MONEY_" + RowCount;
-  input.setAttribute("readonly", "yes");
+  input.setAttribute("disabled", "yes");
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
@@ -467,7 +467,7 @@ function addRowCrs(
   var input = document.createElement("select");
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "SALE_DISCOUNT_MONEY";
-  input.setAttribute("readonly", "yes");
+  input.setAttribute("disabled", "yes");
   input.id = "SALE_DISCOUNT_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
@@ -493,7 +493,7 @@ function addRowCrs(
   input.name = "UNIT_PRICE_MONEY";
   input.id = "UNIT_PRICE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
-  input.setAttribute("readonly", "yes");
+  input.setAttribute("disabled", "yes");
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
@@ -517,7 +517,7 @@ function addRowCrs(
   input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
   input.name = "TOTAL_PRICE_MONEY";
   input.id = "TOTAL_PRICE_MONEY_" + RowCount;
-  input.setAttribute("readonly", "yes");
+  input.setAttribute("disabled", "yes");
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
