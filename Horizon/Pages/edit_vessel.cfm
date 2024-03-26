@@ -1,4 +1,38 @@
 
+
+<cf_box title="Vessel" scroll="1" collapsable="1" resize="1" popup_box="1">
+   <form name="ShipForm">
+   <div style="display:flex">
+        <div style="width:50%">
+            <cf_box title="Customer Invoice Info"></cf_box>
+        </div>
+        <div style="width:50%">
+            <cf_box title="Care Of Invoice Info"></cf_box>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>
+            Vessel Name
+        </label>
+        <input type="text" name="VESSEL_NAME" id="VESSEL_NAME">
+    </div>
+    
+    <div class="form-group" id="item-company_name">
+        <label>CUSTOMER INVOICE INFO  *</label>        
+            <div class="input-group">
+                <input type="hidden" name="company_id" id="company_id" value="">	
+                <input name="company_name" type="text" id="company_name" value="" onfocus="AutoComplete_Create('company_name','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1\'','COMPANY_ID,PARTNER_CODE,MEMBER_TYPE,MEMBER_PARTNER_NAME,WORK_ADDRESS_DETAIL,COM_CITY','company_id,member_id,member_type,member_name,company_address,service_city_id,county_id','','3','150',true,'fill_saleszone()');" autocomplete="off">                
+                <input type="hidden" name="member_id" id="member_id" value="">
+                <input type="hidden" name="member_type" id="member_type" value="">
+                <input type="text" name="member_name" id="member_name" value="">
+                <span class="input-group-addon icon-ellipsis btnPointer" onclick="windowopen('index.cfm?fuseaction=objects.popup_list_all_pars&is_period_kontrol=0&field_partner=add_service.member_id&field_consumer=add_service.member_id&field_name=add_service.member_name&field_comp_id=add_service.company_id&field_comp_name=add_service.company_name&field_type=add_service.member_type&field_city=add_service.service_city_id&field_address=add_service.company_address&select_list=8,7&call_function=fill_saleszone()','list','popup_list_all_pars');" title="Başvuru Yapan Seç "></span>
+            </div>        
+    </div>
+    
+
+</form>
+</cf_box>
+<cfabort>
 <cf_box title="EDIT VESSEL" scroll="1" collapsable="1" resize="1" popup_box="1">
     <div class="ui-form-list padding-5">
 
