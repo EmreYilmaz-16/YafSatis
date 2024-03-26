@@ -1,6 +1,6 @@
 
 
-<cf_box title="Vessel" scroll="1" collapsable="1" resize="1" popup_box="1">
+<cf_box title="Vessel" scroll="1" collapsable="1" resize="1" popup_box="1" id="SV00001">
    <form name="ShipForm">
     <div class="form-group">
         <label>
@@ -10,9 +10,9 @@
     </div>
     <div style="display:flex">
         <div style="width:50%">
-            <cf_box title="Customer Invoice Info">
+            <cf_box title="Customer Invoice Info" id="SV00002">
                 <div class="form-group" id="item-company_name">
-                    <label>CUSTOMER</label>        
+                    <label>COMPANY</label>        
                         <div class="input-group">
                             <input type="hidden" name="company_id" id="company_id" value="">	
                             <input name="company_name" type="text" id="company_name" value="" onfocus="AutoComplete_Create('company_name','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1\'','COMPANY_ID,PARTNER_CODE,MEMBER_TYPE,MEMBER_PARTNER_NAME,WORK_ADDRESS_DETAIL,COM_CITY','company_id,member_id,member_type,member_name,company_address,service_city_id,county_id','','3','150',true,'fill_saleszone()');" autocomplete="off">                
@@ -32,9 +32,9 @@
             </cf_box>
         </div>
         <div style="width:50%">
-            <cf_box title="Care Of Invoice Info">
+            <cf_box title="Care Of Invoice Info" id="SV00003">
                 <div class="form-group" id="item-company_name">
-                    <label>CUSTOMER</label>        
+                    <label>COMPANY</label>        
                         <div class="input-group">
                             <input type="hidden" name="company_id_1" id="company_id_1" value="">	
                             <input name="company_name_1" type="text" id="company_name_1" value="" onfocus="AutoComplete_Create('company_name_1','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1\'','COMPANY_ID,PARTNER_CODE,MEMBER_TYPE,MEMBER_PARTNER_NAME,WORK_ADDRESS_DETAIL,COM_CITY','company_id_1,member_id_1,member_type_1,member_name_1,company_address_1,service_city_id_1,county_id_1','','3','150',true,'fill_saleszone()');" autocomplete="off">                
