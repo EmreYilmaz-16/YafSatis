@@ -1,4 +1,4 @@
-
+﻿
 <cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
 <cfset ShipTypes_=ShipService.getShipTypes()>
 <cfset ShipTypes=deserializeJSON(ShipTypes_)>
