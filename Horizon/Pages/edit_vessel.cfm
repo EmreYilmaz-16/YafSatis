@@ -29,8 +29,9 @@
                 <label>
                     Build Year
                 </label>
-                    <option value="">Seç</option>
+                   
                 <select name="BUILD_YEAR">
+                    <option value="">Seç</option>
                     <cfoutput>
                     <cfloop from="1980" to="#year(now())#" index="i">
                         <option value="#i#">#i#</option>
