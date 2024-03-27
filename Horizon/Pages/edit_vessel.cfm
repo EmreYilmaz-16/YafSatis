@@ -155,16 +155,8 @@
             </cf_box>
         </div>
     </div>
-    <div style="display:flex;justify-content: space-between;">
-        <div style="width:45%">
-           
-        </div>
-        <div style="width:45%">
-            
-        </div>
-    </div>
-    
-    
+    <hr>
+    <button class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left">Kaydet</button>
  
     
 
