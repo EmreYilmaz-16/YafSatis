@@ -38,6 +38,50 @@
                 </cfoutput>
                 </select>
             </div> 
+            <div class="form-group">
+                <label>
+                    IMO Number
+                </label>
+                <input type="text" name="IMO_NO" id="IMO_NO">
+            </div> 
+            <div class="form-group">
+                <label>
+                    Hull Number
+                </label>
+                <input type="text" name="HULL_NO" id="HULL_NO">
+            </div>
+            <div class="form-group">
+                <label>
+                    Ship Yard
+                </label>
+                <input type="text" name="SHIP_YARD" id="SHIP_YARD">
+            </div>
+            <div class="row">
+                <div class="col col-3">
+                    <div class="form-group">
+                        <label>
+                            Dead Weight Tonnage
+                        </label>
+                        <input type="text" name="DEAD_WEIGHT_TONNAGE" id="DEAD_WEIGHT_TONNAGE">
+                    </div>
+                </div>
+                <div class="col col-3">
+                    <div class="form-group">
+                        <label>
+                            Gross Tonnage
+                        </label>
+                        <input type="text" name="GROSS_TONNAGE" id="GROSS_TONNAGE">
+                    </div>
+                </div>
+                <div class="col col-3">
+                    <div class="form-group">
+                        <label>
+                           Flag
+                        </label>
+                        <input type="text" name="FLAG" id="FLAG">
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col col-3">
             <cf_box title="Customer Invoice Info" id="SV00002">
