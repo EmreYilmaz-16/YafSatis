@@ -76,12 +76,40 @@
                 <div class="col col-3">
                     <div class="form-group">
                         <label>
-                           Flag
+                           Length
                         </label>
-                        <input type="text" name="FLAG" id="FLAG">
+                        <input type="text" name="LENGTH" id="LENGTH">
                     </div>
                 </div>
             </div>
+            <div class="col col-3">
+                <div class="form-group">
+                    <label>
+                       Width
+                    </label>
+                    <input type="text" name="WIDTH" id="WIDTH">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-6">
+                <div class="form-group">
+                    <label>
+                       Flag
+                    </label>
+                    <input type="text" name="FLAG" id="FLAG">
+                </div>
+            </div>
+        </div>
+        <div class="col col-6">
+            <div class="form-group">
+                <label>
+                   Class
+                </label>
+                <input type="text" name="CLASSF" id="CLASSF">
+            </div>
+        </div>
+        </div>
         </div>
         <div class="col col-3">
             <cf_box title="Customer Invoice Info" id="SV00002">
