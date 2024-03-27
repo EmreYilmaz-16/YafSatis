@@ -32,7 +32,7 @@
                     <option value="">Seç</option>
                 <select name="BUILD_YEAR">
                     <cfoutput>
-                    <cfloop from="1980" to="#year(now)#" index="i">
+                    <cfloop from="1980" to="#year(now())#" index="i">
                         <option value="#i#">#i#</option>
                     </cfloop>
                 </cfoutput>
