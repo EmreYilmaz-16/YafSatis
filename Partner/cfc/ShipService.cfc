@@ -51,6 +51,21 @@
         </cfloop>
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
+    <cffunction name="getShipTypes" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfquery name="GetST" datasource="#dsn#">
+            SELECT SHIP_TYPE_ID,SHIP_TYPE FROM CatalystQA.PBS_SHIP_TYPES
+        </cfquery>
+        <cfset ReturnArr=arrayNew(1)>
+        <cfloop query="GetST">
+            <cfset Item=structNew()>
+            <cfset Item.SHIP_TYPE_ID=SHIP_TYPE_ID>
+            <cfset Item.SHIP_TYPE=SHIP_TYPE>
+            <cfscript>
+                arrayAppend(returnArr,Item);
+            </cfscript>
+        </cfloop>
+        <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
 
     <cffunction name="AddShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="SHIP_NAME">

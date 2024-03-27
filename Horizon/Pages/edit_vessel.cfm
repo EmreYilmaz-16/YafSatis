@@ -1,16 +1,43 @@
 
-
+<cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
+<cfset ShipTypes_=ShipService.getShipTypes()>
+<cfset ShipTypes=deserializeJSON(ShipTypes_)>
 <cf_box title="Vessel" scroll="1" collapsable="1" resize="1" popup_box="1" id="SV00001">
    <form name="ShipForm">
-    <div class="form-group">
-        <label>
-            Vessel Name
-        </label>
-        <input type="text" name="VESSEL_NAME" id="VESSEL_NAME">
-    </div>
+ 
     <div class="row">
         <div class="col col-9">
-            
+            <div class="form-group">
+                <label>
+                    Vessel Name
+                </label>
+                <input type="text" name="VESSEL_NAME" id="VESSEL_NAME">
+            </div>            
+            <div class="form-group">
+                <label>
+                    Ship Type
+                </label>
+                <select name="SHIP_TYPE">
+                    <cfoutput>
+                    <cfloop array="#ShipTypes#" item="it">
+                        <option value="#it.SHIP_TYPE_ID#">#it.SHIP_TYPE#</option>
+                    </cfloop>
+                </cfoutput>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Build Year
+                </label>
+                    <option value="">Seç</option>
+                <select name="BUILD_YEAR">
+                    <cfoutput>
+                    <cfloop from="1980" to="#year(now)#" index="i">
+                        <option value="#i#">#i#</option>
+                    </cfloop>
+                </cfoutput>
+                </select>
+            </div> 
         </div>
         <div class="col col-3">
             <cf_box title="Customer Invoice Info" id="SV00002">
