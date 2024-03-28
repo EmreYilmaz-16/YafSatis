@@ -6,8 +6,14 @@
         </div>
     </div>
     <div class="col col-10">                    
-        <div style="width:150px">
+        <div style="width:33%">
             <canvas id="myChart"></canvas>
+        </div>
+        <div style="width:33%">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div style="width:33%">
+            <canvas id="myChart3"></canvas>
         </div>
     </div>                        
  </div>
@@ -16,6 +22,11 @@
 
  <script> 
  $(document).ready(function(){
+    MainT();
+ })  
+
+
+ function MainT(){
     const ctx = document.getElementById('myChart');
     var SF=wrk_safe_query("getOCS_1","dsn")
     const data = {
@@ -38,5 +49,53 @@ const config = {
 }
 
 new Chart(ctx, config);
- })  
+ }
+ function TT1(){
+    const ctx = document.getElementById('myChart2');
+    var SF=wrk_safe_query("getOCS_2","dsn")
+    const data = {
+  labels: SF.OCS,
+  datasets: [{
+    label: 'Inquiries',
+    data: SF.TF,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)'
+      
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config = {
+  type: 'doughnut',
+  data: data,
+}
+
+new Chart(ctx, config);
+ }
+ function TT2(){
+    const ctx = document.getElementById('myChart3');
+    var SF=wrk_safe_query("getOCS_3","dsn")
+    const data = {
+  labels: SF.OCS,
+  datasets: [{
+    label: 'Inquiries',
+    data: SF.TF,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)'
+      
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config = {
+  type: 'doughnut',
+  data: data,
+}
+
+new Chart(ctx, config);
+ }
  </script>
