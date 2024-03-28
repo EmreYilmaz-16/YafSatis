@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <cfoutput>
-        <cfloop array="ShipList" item="it">
+        <cfloop array="#ShipList#" item="it">
         <tr>
             <td>#it.SHIP_NAME#</td>
             <td>#it.BUILD_YEAR#</td>
