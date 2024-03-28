@@ -1,4 +1,4 @@
-<cf_box title="Gemi">
+<cf_box title="Vessel Detail" scroll="1" collapsable="1" resize="1" popup_box="1">
 <cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
 <cfset ShipTypes_=ShipService.getShipTypes()>
 <cfset ShipList_=ShipService.GetShips(ShipId:attributes.ShipId)>
