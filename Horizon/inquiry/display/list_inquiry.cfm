@@ -5,13 +5,11 @@
             <button style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
         </div>
     </div>
-    <div class="col col-10">
-        <div>
+    <div class="col col-10">                    
+        <div style="width:150px">
             <canvas id="myChart"></canvas>
-          </div>
-          
-          
-    </div>
+        </div>
+    </div>                        
  </div>
 
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
