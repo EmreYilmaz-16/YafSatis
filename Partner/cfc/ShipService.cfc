@@ -184,7 +184,7 @@ INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
      VALUES
            (#res.IDENTITYCOL#
            ,#FormData.CUSTOMER_ID#
-           ,getdate()>
+           ,getdate()
            ,1
            ,1
            ,#FormData.CUSTOMER_EMP_ID#)
