@@ -156,7 +156,7 @@
         </div>
     </div>
     <hr>
-    <button class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left">Kaydet</button>
+    <button class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="AddShip(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" >Kaydet</button>
  
     
 
@@ -255,13 +255,17 @@
         }
         
     }
-    function AddShip(){
+    function AddShip(EmpId,modal){
+        
         var FormData=getFormData() 
+        FormData.RECORD_EMP=EmpId;
         if(FormData != false){
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=AddShip",
             data:{
                 FData:JSON.stringify(FormData)
+            },success:function(){
+                closeBoxDraggable(modal)
             }
         })}
     }
