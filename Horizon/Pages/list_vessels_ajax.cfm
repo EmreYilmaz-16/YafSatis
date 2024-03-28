@@ -13,14 +13,14 @@
     </thead>
     <tbody>
         <cfoutput>
-        <cfloop>
+        <cfloop array="ShipList" item="it">
         <tr>
-            <td>#SHIP_NAME#</td>
-            <td>#BUILD_YEAR#</td>
-            <td>#SHIP_TYPE#</td>
-            <td>#CUSTOMER_NICKNAME#</td>
-            <td>#CUSTOMER_NAME# #CUSTOMER_SURNAME#</td>
-            <td>#IMO_NUMBER#</td>
+            <td>#it.SHIP_NAME#</td>
+            <td>#it.BUILD_YEAR#</td>
+            <td>#it.SHIP_TYPE#</td>
+            <td>#it.CUSTOMER_NICKNAME#</td>
+            <td>#it.CUSTOMER_NAME# #CUSTOMER_SURNAME#</td>
+            <td>#it.IMO_NUMBER#</td>
         </tr>
     </cfloop>
     </cfoutput>
