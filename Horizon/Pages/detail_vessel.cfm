@@ -8,7 +8,7 @@
 
 <cfoutput>
 <cfset GEMI=ShipList[1]>
-<table>
+<cf_big_list>
     <tr>
         <td colspan="2">
             #GEMI.SHIP_NAME#
@@ -41,7 +41,7 @@
     </tr>
     <tr>
         <td>
-            <table>
+            <cf_big_list>
                 <tr>                    
                     <td colspan="3">
                         #GEMI.CUSTOMER_FULLNAME#
@@ -62,10 +62,10 @@
                         #GEMI.CUSTOMER_MAIL# 
                     </td>
                 </tr>
-            </table>
+            </cf_big_list>
         </td>
     </tr>
-</table>
+</cf_big_list>
 
 </cfoutput>
 
