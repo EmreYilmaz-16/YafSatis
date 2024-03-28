@@ -1,53 +1,37 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<cf_box title="Inquiry List">
-    <div class="row">
-        <div class="col col-6" >
-            <div class="row">
-                <div class="col col-12">
-                    <button class="form-control btn btn-outline-warning">CUSTOMER INQUIRY</button>
-                </div>
-            </div>        
-            <div class="row">
-                <div class="col col-4">
-                    <button class="form-control btn btn-outline-primary">CUSTOMER</button>
-                </div>
-                <div class="col col-4">
-                    <button class="form-control btn btn-outline-primary">CONFIRMED</button>
-                </div>
-                <div class="col col-4">
-                    <button class="form-control btn btn-outline-primary">SUPLIER</button>
-                </div>
-            </div>
-        </div>
-        <div class="col col-6" >
-            <div class="row">
-                <div class="col col-12">
-                    <button class="form-control btn btn-outline-warning">INQUIRY FOR YAF STOCK</button>
-                </div>
-            </div>        
-            <div class="row">
-                <div class="col col-4">
-                    <button class="form-control btn btn-outline-primary">C.OFFER</button>
-                </div>
-                <div class="col col-4">
-                    <button class="form-control btn btn-outline-primary">CUSTOMER</button>
-                </div>
-                <div class="col col-4">
-                    <button class="form-control btn btn-outline-primary">SUPLIER</button>
-                </div>
-            </div>
+<div class="row">         
+    <div class="col col-2">
+        <div style="display:flex;flex-direction: column;">
+            <button style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>
+            <button style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
         </div>
     </div>
-</cf_box>
+    <div class="col col-10">
+        <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          
+          
+    </div>
+ </div>
 
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-
-
-
-
-<script>
-    $(document).ready(function (params) {
-        
-    })
-</script>
+ <script> 
+ $(document).ready(function(){
+    const ctx = document.getElementById('myChart');
+    var SF=wrk_safe_query("getOCS_1","dsn")
+    const data = {
+  labels: SF.OCS,
+  datasets: [{
+    label: 'Inquiries %',
+    data: SF.TF,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)'
+      
+    ],
+    hoverOffset: 4
+  }]
+};
+ })  
+ </script>
