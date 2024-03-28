@@ -30,12 +30,15 @@
         <th>LENGTH</th>
     </tr>
 </thead>
+
     <tr>
         <td>#GEMI.GROSS_TONNAGE#</td>
         <td>#GEMI.DEAD_WEIGHT_TONNAGE#</td>
         <td>#GEMI.WIDTH#</td>
         <td>#GEMI.LENGTH#</td>
     </tr>
+</cf_big_list>
+<cf_big_list>
     <tr>
         <td colspan="2">
             Customer
