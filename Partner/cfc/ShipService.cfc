@@ -161,7 +161,7 @@
             ,<cfif len(FormData.WIDTH)>#FormData.WIDTH#<cfelse>NULL</cfif> 
             ,<cfif len(FormData.SHIP_TYPE)>#FormData.SHIP_TYPE#<cfelse>NULL</cfif> 
             ,GETDATE()
-           ,<cfif len(FormData.RECORD_EMP)>#FormData.RECORD_EMP#<cfelse>NULL</cfif>
+           ,<cfif isDefined("FormData.RECORD_EMP") and  len(FormData.RECORD_EMP)>#FormData.RECORD_EMP#<cfelse>NULL</cfif>
            ,1
            ,<cfif len(FormData.IMO_NUMBER)>'#FormData.IMO_NUMBER#'<cfelse>NULL</cfif> 
             ,<cfif len(FormData.CAREOF_NICKNAME)>#FormData.CAREOF_ID#<cfelse>NULL</cfif>
