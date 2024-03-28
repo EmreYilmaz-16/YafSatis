@@ -19,7 +19,7 @@
             <td>#it.BUILD_YEAR#</td>
             <td>#it.SHIP_TYPE#</td>
             <td>#it.CUSTOMER_NICKNAME#</td>
-            <td>#it.CUSTOMER_NAME# #CUSTOMER_SURNAME#</td>
+            <td>#it.CUSTOMER_NAME# #it.CUSTOMER_SURNAME#</td>
             <td>#it.IMO_NUMBER#</td>
         </tr>
     </cfloop>
