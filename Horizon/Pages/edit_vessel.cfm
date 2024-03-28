@@ -11,13 +11,13 @@
                 <label>
                     Vessel Name
                 </label>
-                <input type="text" name="VESSEL_NAME" id="VESSEL_NAME">
+                <input type="text" name="SHIP_NAME" id="SHIP_NAME">
             </div>            
             <div class="form-group">
                 <label>
                     Ship Type
                 </label>
-                <select name="SHIP_TYPE">
+                <select name="SHIP_TYPE" id="SHIP_TYPE">
                     <cfoutput>
                     <cfloop array="#ShipTypes#" item="it">
                         <option value="#it.SHIP_TYPE_ID#">#it.SHIP_TYPE#</option>
@@ -30,7 +30,7 @@
                     Build Year
                 </label>
                    
-                <select name="BUILD_YEAR">
+                <select name="BUILD_YEAR" id="BUILD_YEAR">
                     <option value="">Seç</option>
                     <cfoutput>
                     <cfloop from="1980" to="#year(now())#" index="i">
@@ -43,13 +43,13 @@
                 <label>
                     IMO Number
                 </label>
-                <input type="text" name="IMO_NO" id="IMO_NO">
+                <input type="text" name="IMO_NUMBER" id="IMO_NUMBER">
             </div> 
             <div class="form-group">
                 <label>
                     Hull Number
                 </label>
-                <input type="text" name="HULL_NO" id="HULL_NO">
+                <input type="text" name="HULL_NUMBER" id="HULL_NUMBER">
             </div>
             <div class="form-group">
                 <label>
@@ -162,6 +162,88 @@
 
 </form>
 </cf_box>
+<!---
+    item=structNew();
+                item.SHIP_ID=SHIP_ID;
+                item.SHIP_NAME=SHIP_NAME;
+                item.BUILD_YEAR=BUILD_YEAR;
+                item.GROSS_TONNAGE=GROSS_TONNAGE;
+                item.DEAD_WEIGHT_TONNAGE=DEAD_WEIGHT_TONNAGE;
+                item.LENGTH=LENGTH;
+                item.WIDTH=WIDTH;
+                item.ACTION_TYPE=ACTION_TYPE;
+                item.SHIP_TYPE=SHIP_TYPE;
+                item.CUSTOMER_NICKNAME=CUSTOMER_NICKNAME;
+                item.CUSTOMER_FULLNAME=CUSTOMER_FULLNAME;
+                item.CUSTOMER_NAME=CUSTOMER_NAME;
+                item.CUSTOMER_SURNAME=CUSTOMER_SURNAME;
+                item.CUSTOMER_MAIL=CUSTOMER_MAIL;
+                item.CUSTOMER_TELCODE=CUSTOMER_TELCODE;
+                item.CUSTOMER_TEL=CUSTOMER_TEL;
+                item.CARE_OF_NICKNAME=CARE_OF_NICKNAME;
+                item.CARE_OF_FULLNAME=CARE_OF_FULLNAME;
+                item.CARE_OF_NAME=CARE_OF_NAME;
+                item.CARE_OF_SURNAME=CARE_OF_SURNAME;
+                item.CARE_OF_MAIL=CARE_OF_MAIL;
+                item.CARE_OF_TELCODE=CARE_OF_TELCODE;
+                item.CARE_OF_TEL=CARE_OF_TEL;
+                item.IMO_NUMBER=IMO_NUMBER;
+                item.HULL_NUMBER=HULL_NUMBER;
+                item.SHIP_YARD=SHIP_YARD;
+                item.FLAG=FLAG;
+                item.CLASS=CLASS;
+    
+    ----->
+<script>
+    function getFormData() {
+        var SHIP_ID=document.getElementById("SHIP_ID").value;
+        var SHIP_NAME=document.getElementById("SHIP_NAME").value;
+        var BUILD_YEAR=document.getElementById("BUILD_YEAR").value;
+        var GROSS_TONNAGE=document.getElementById("GROSS_TONNAGE").value;
+        var DEAD_WEIGHT_TONNAGE=document.getElementById("DEAD_WEIGHT_TONNAGE").value;
+        var LENGTH=document.getElementById("LENGTH").value;
+        var WIDTH=document.getElementById("WIDTH").value;
+        var SHIP_TYPE=document.getElementById("SHIP_TYPE").value;
+        var CUSTOMER_NICKNAME=document.getElementById("company_name").value;
+        var CUSTOMER_ID=document.getElementById("company_id").value;
+        var CUSTOMER_NAME=document.getElementById("member_name").value;
+        var CUSTOMER_EMP_ID=document.getElementById("member_id").value;
+        var CAREOF_NICKNAME=document.getElementById("company_name_1").value;
+        var CAREOF_ID=document.getElementById("company_id_1").value;
+        var CAREOF_NAME=document.getElementById("member_name_1").value;
+        var CAREOF_EMP_ID=document.getElementById("member_id_1").value;
+        var IMO_NUMBER=document.getElementById("IMO_NUMBER").value;
+        var HULL_NUMBER=document.getElementById("HULL_NUMBER").value;
+        var SHIP_YARD=document.getElementById("SHIP_YARD").value;
+        var FLAG=document.getElementById("FLAG").value;
+        var CLASS=document.getElementById("CLASSF").value;
+        var FormData={
+            SHIP_ID:SHIP_ID,
+            SHIP_NAME:SHIP_NAME,
+            BUILD_YEAR:BUILD_YEAR,
+            GROSS_TONNAGE:GROSS_TONNAGE,
+            DEAD_WEIGHT_TONNAGE:DEAD_WEIGHT_TONNAGE,
+            LENGTH:LENGTH,
+            WIDTH:WIDTH,
+            SHIP_TYPE:SHIP_TYPE,
+            CUSTOMER_NICKNAME:CUSTOMER_NICKNAME,
+            CUSTOMER_ID:CUSTOMER_ID,
+            CUSTOMER_NAME:CUSTOMER_NAME,
+            CUSTOMER_EMP_ID:CUSTOMER_EMP_ID,
+            CAREOF_NICKNAME:CAREOF_NICKNAME,
+            CAREOF_ID:CAREOF_ID,
+            CAREOF_NAME:CAREOF_NAME,
+            CAREOF_EMP_ID:CAREOF_EMP_ID,
+            IMO_NUMBER:IMO_NUMBER,
+            HULL_NUMBER:HULL_NUMBER,
+            SHIP_YARD:SHIP_YARD,
+            FLAG:FLAG,
+            CLASS:CLASS,
+
+        }
+        return FormData;
+    }
+</script>
 <cfabort>
 <cf_box title="EDIT VESSEL" scroll="1" collapsable="1" resize="1" popup_box="1">
     <div class="ui-form-list padding-5">
