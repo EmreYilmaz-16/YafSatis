@@ -39,6 +39,7 @@
     </tr>
 </cf_big_list>
 <cf_big_list>
+    <thead>
     <tr>
         <th colspan="2">
             Customer
@@ -47,8 +48,9 @@
             Care Of
         </th>
     </tr>
+</thead>
     <tr>
-        <td>
+        <td style="width:50%">
             <cf_big_list>
                 <tr>                    
                     <td colspan="3">
@@ -72,7 +74,7 @@
                 </tr>
             </cf_big_list>
         </td>
-        <td>
+        <td style="width:50%">
             <cf_big_list>
                 <tr>                    
                     <td colspan="3">
