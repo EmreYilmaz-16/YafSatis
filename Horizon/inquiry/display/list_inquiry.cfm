@@ -52,11 +52,20 @@
     ],
     hoverOffset: 4
   }]
+  
 };
 
 const config = {
   type: 'doughnut',
   data: data,
+  options: {
+        plugins: {
+            subtitle: {
+                display: true,
+                text: 'Inquries'
+            }
+        }
+    }
 }
 
 new Chart(ctx, config);
@@ -81,6 +90,14 @@ new Chart(ctx, config);
 const config = {
   type: 'doughnut',
   data: data,
+  options: {
+        plugins: {
+            subtitle: {
+                display: true,
+                text: 'For Customer'
+            }
+        }
+    }
 }
 
 new Chart(ctx, config);
@@ -105,6 +122,14 @@ new Chart(ctx, config);
 const config = {
   type: 'doughnut',
   data: data,
+  options: {
+        plugins: {
+            subtitle: {
+                display: true,
+                text: 'For Yaf Stock'
+            }
+        }
+    }
 }
 
 new Chart(ctx, config);
