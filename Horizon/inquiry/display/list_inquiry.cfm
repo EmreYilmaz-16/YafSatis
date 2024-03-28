@@ -78,7 +78,7 @@ new Chart(ctx, config);
   datasets: [{
     label: 'Inquiries',
     data: SF.TF,
-    backgroundColor: SF.CF,
+    
     hoverOffset: 4
   }]
 };
@@ -106,7 +106,7 @@ new Chart(ctx, config);
   datasets: [{
     label: 'Inquiries',
     data: SF.TF,
-    backgroundColor: SF.CF,
+    
     hoverOffset: 4
   }]
 };
