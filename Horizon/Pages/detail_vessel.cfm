@@ -44,22 +44,22 @@
             <table>
                 <tr>                    
                     <td colspan="3">
-                        #CUSTOMER_FULLNAME#
+                        #GEMI.CUSTOMER_FULLNAME#
                     </td>
                     
                 </tr>
                 <tr>
                     <td>
                         <b style="width:100%">Contact Person</b>
-                        #CUSTOMER_NAME# #CUSTOMER_SURNAME#
+                        #GEMI.CUSTOMER_NAME# #GEMI.CUSTOMER_SURNAME#
                     </td>
                     <td>
                         <b style="width:100%">Ship Phone</b>
-                        #CUSTOMER_TELCODE# #CUSTOMER_TEL#
+                        #GEMI.CUSTOMER_TELCODE# #GEMI.CUSTOMER_TEL#
                     </td>
                     <td>
                         <b style="width:100%">Ship Mail</b>
-                        #CUSTOMER_MAIL# 
+                        #GEMI.CUSTOMER_MAIL# 
                     </td>
                 </tr>
             </table>
