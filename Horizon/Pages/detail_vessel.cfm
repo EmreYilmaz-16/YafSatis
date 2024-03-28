@@ -21,12 +21,14 @@
         <td>Ship Type</td>
         <td>:#GEMI.SHIP_TYPE#</td>
     </tr>
+    <thead>
     <tr>
         <th>Gross Tonnage</th>
         <th>Dead Weight Tonnage</th>
         <th>Width</th>
         <th>LENGTH</th>
     </tr>
+</thead>
     <tr>
         <td>#GEMI.GROSS_TONNAGE#</td>
         <td>#GEMI.DEAD_WEIGHT_TONNAGE#</td>
