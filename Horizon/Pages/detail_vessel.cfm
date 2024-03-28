@@ -41,10 +41,10 @@
 <cf_big_list>
     <thead>
     <tr>
-        <th colspan="2">
+        <th >
             Customer
         </th>
-        <th colspan="2">
+        <th >
             Care Of
         </th>
     </tr>
