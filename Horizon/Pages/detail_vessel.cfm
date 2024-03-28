@@ -13,13 +13,13 @@
             #GEMI.SHIP_NAME#
     </div>
         
-    <table>
+    <table style="width:100%">
     <tr>
-        <td>Build Year</td>
+        <td style="font-weight:bold">Build Year</td>
         <td>:#GEMI.BUILD_YEAR#</td>
-        <td>Ship Type</td>
+        <td style="font-weight:bold">Ship Type</td>
         <td>:#GEMI.SHIP_TYPE#</td>
-        <td>Class</td>
+        <td style="font-weight:bold">Class</td>
         <td>:#GEMI.CLASS#</td>
     </tr>
 </table>
