@@ -11,7 +11,7 @@
 <table>
     <tr>
         <td colspan="2">
-            #GEMI#
+            #GEMI.SHIP_NAME#
         </td>
         
     </tr>
