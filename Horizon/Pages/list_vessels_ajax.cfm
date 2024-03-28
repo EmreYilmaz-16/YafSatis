@@ -8,7 +8,12 @@
 <cf_grid_list>
     <thead>
         <tr>
-            <th></th>
+            <th>Vessel Name</th>
+            <th>Build Year</th>
+            <th>Ship Type</th>
+            <th>Customer</th>
+            <th>Partner</th>
+            <th>IMO Number</th>
         </tr>
     </thead>
     <tbody>
