@@ -13,7 +13,7 @@
             #GEMI.SHIP_NAME#
     </div>
         
-    <table style="width:100%">
+    <cf_big_list style="width:100%">
     <tr>
         <td style="font-weight:bold">Build Year</td>
         <td>:#GEMI.BUILD_YEAR#</td>
@@ -22,7 +22,7 @@
         <td style="font-weight:bold">Class</td>
         <td>:#GEMI.CLASS#</td>
     </tr>
-</table>
+</cf_big_list>
     <cf_big_list>
     <thead>
     <tr>
