@@ -56,7 +56,7 @@
 };
 
 const config = {
-  type: 'doughnut',
+  type: 'bar',
   data: data,
   options: {
         plugins: {
@@ -84,7 +84,7 @@ new Chart(ctx, config);
 };
 
 const config = {
-  type: 'doughnut',
+  type: 'bar',
   data: data,
   options: {
         plugins: {
@@ -112,7 +112,7 @@ new Chart(ctx, config);
 };
 
 const config = {
-  type: 'doughnut',
+  type: 'bar',
   data: data,
   options: {
         plugins: {
