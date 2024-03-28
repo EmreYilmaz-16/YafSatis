@@ -129,20 +129,12 @@
     </cffunction>
 
     <cffunction name="AddShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-        <cfargument name="SHIP_NAME">
-        <cfargument name="BUILD_YEAR">
-        <cfargument name="GROSS_TONNAGE">
-        <cfargument name="DEAD_WEIGHT_TONNAGE">
-        <cfargument name="LENGTH">
-        <cfargument name="WIDTH">
-        <cfargument name="SHIP_TYPE_ID">
-        <cfargument name="RECORD_EMP">
-        <cfargument name="CustomerId" default="">
-        <cfargument name="ACTION_TYPE" default="">
+        <cfargument name="FData">
+        <cfset FormData=deserializeJSON(arguments.FData)>
        <cftry>
        
        <cfquery name="Add" datasource="#dsn#" result="res">
-            INSERT INTO [CatalystQA].[PBS_SHIPS]
+          INSERT INTO [CatalystQA].[PBS_SHIPS]
            ([SHIP_NAME]
            ,[BUILD_YEAR]
            ,[GROSS_TONNAGE]
@@ -152,32 +144,50 @@
            ,[SHIP_TYPE_ID]
            ,[RECORD_DATE]
            ,[RECORD_EMP]
-           ,[IS_SHIP_ALIVE])
+           ,[IS_SHIP_ALIVE]
+           ,[IMO_NUMBER]
+           ,[CARE_OF_COMPANY]
+           ,[CARE_OF_PARTNER_ID]
+           ,[HULL_NUMBER]
+           ,[SHIP_YARD]
+           ,[FLAG]
+           ,[CLASS])
      VALUES
-           ('#arguments.SHIP_NAME#'
-           ,<cfif len(arguments.BUILD_YEAR)>#arguments.BUILD_YEAR#<cfelse>NULL</cfif> 
-           ,<cfif len(arguments.GROSS_TONNAGE)>#arguments.GROSS_TONNAGE#<cfelse>NULL</cfif> 
-           ,<cfif len(arguments.DEAD_WEIGHT_TONNAGE)>#arguments.DEAD_WEIGHT_TONNAGE#<cfelse>NULL</cfif> 
-           ,<cfif len(arguments.LENGTH)>#arguments.LENGTH#<cfelse>NULL</cfif> 
-           ,<cfif len(arguments.WIDTH)>#arguments.WIDTH#<cfelse>NULL</cfif> 
-           ,<cfif len(arguments.SHIP_TYPE_ID)>#arguments.SHIP_TYPE_ID#<cfelse>NULL</cfif> 
-           ,GETDATE()
-           ,<cfif len(arguments.RECORD_EMP)>#arguments.RECORD_EMP#<cfelse>NULL</cfif>           
-           ,1)
+           ('#FormData.SHIP_NAME#'
+           ,<cfif len(FormData.BUILD_YEAR)>#FormData.BUILD_YEAR#<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.GROSS_TONNAGE)>#FormData.GROSS_TONNAGE#<cfelse>NULL</cfif> 
+           ,<cfif len(FormData.DEAD_WEIGHT_TONNAGE)>#FormData.DEAD_WEIGHT_TONNAGE#<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.LENGTH)>#FormData.LENGTH#<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.WIDTH)>#FormData.WIDTH#<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.SHIP_TYPE_ID)>#FormData.SHIP_TYPE_ID#<cfelse>NULL</cfif> 
+            ,GETDATE()
+           ,<cfif len(FormData.RECORD_EMP)>#FormData.RECORD_EMP#<cfelse>NULL</cfif>
+           ,1
+           ,<cfif len(FormData.IMO_NUMBER)>'#FormData.IMO_NUMBER#'<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.CAREOF_NICKNAME)>#FormData.CAREOF_ID#<cfelse>NULL</cfif>
+            ,<cfif len(FormData.CAREOF_NAME)>#FormData.CAREOF_EMP_ID#<cfelse>NULL</cfif>
+            ,<cfif len(FormData.HULL_NUMBER)>'#FormData.HULL_NUMBER#'<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.SHIP_YARD)>'#FormData.SHIP_YARD#'<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.FLAG)>'#FormData.FLAG#'<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.CLASS)>'#FormData.CLASS#'<cfelse>NULL</cfif> )
         </cfquery>
+
         <cfquery name="ins2" datasource="#dsn#">
-            INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
+            
+INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
            ([SHIP_ID]
            ,[COMPANY_ID]
            ,[ACTION_DATE]
            ,[ACTION_TYPE]
-           ,[SHIP_STATUS])
+           ,[SHIP_STATUS]
+           ,[PARTNER_ID])
      VALUES
            (#res.IDENTITYCOL#
-           ,#arguments.CustomerId#
-           ,GETDATE()
-           ,#arguments.ACTION_TYPE#
-           ,1)
+           ,#FormData.CUSTOMER_ID#
+           ,getdate()>
+           ,1
+           ,1
+           ,#FormData.CUSTOMER_EMP_ID#)
         </cfquery>
         <cfreturn GetShips(ShipId=res.IDENTITYCOL)>
         <cfcatch>
@@ -188,6 +198,8 @@
                 <cfdump var="#cfcatch#">
                </cfsavecontent>
                <cffile action="write" file = "c:\CfCatchAddShip.html" output="#control5#"></cffile>
+
+
             <cfreturn replace(serializeJSON(cfcatch),"//","")>
             
         </cfcatch>

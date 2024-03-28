@@ -225,7 +225,7 @@
             DEAD_WEIGHT_TONNAGE:DEAD_WEIGHT_TONNAGE,
             LENGTH:LENGTH,
             WIDTH:WIDTH,
-            SHIP_TYPE:SHIP_TYPE,
+            SHIP_TYPE_ID:SHIP_TYPE,
             CUSTOMER_NICKNAME:CUSTOMER_NICKNAME,
             CUSTOMER_ID:CUSTOMER_ID,
             CUSTOMER_NAME:CUSTOMER_NAME,
@@ -242,6 +242,15 @@
 
         }
         return FormData;
+    }
+    function AddShip(){
+        var FormData=getFormData() 
+        $.ajax({
+            url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=AddShip",
+            data:{
+                FData:JSON.stringify(FormData)
+            }
+        })
     }
 </script>
 <cfabort>
