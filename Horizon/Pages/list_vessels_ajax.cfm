@@ -14,6 +14,7 @@
             <th>Customer</th>
             <th>Partner</th>
             <th>IMO Number</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +27,10 @@
             <td>#it.CUSTOMER_NICKNAME#</td>
             <td>#it.CUSTOMER_NAME# #it.CUSTOMER_SURNAME#</td>
             <td>#it.IMO_NUMBER#</td>
+            <td>
+                <a href="javascript://"><span class="icn-md fa fa-edit"></span>.fa-edit </a>
+                <a href="javascript://"><span class="icn-md fa fa-search"></span>.fa-search</a>
+            </td>
         </tr>
     </cfloop>
     </cfoutput>
