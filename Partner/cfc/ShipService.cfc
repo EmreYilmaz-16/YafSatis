@@ -9,12 +9,49 @@
         <cfargument name="RowCount" default="20">
         <cfargument name="Page" default="1">
         <cfquery name="getShip" datasource="#dsn#"> 
-            SELECT TOP #arguments.RowCount# S.SHIP_NAME,S.BUILD_YEAR,S.GROSS_TONNAGE,S.DEAD_WEIGHT_TONNAGE,S.LENGTH,S.WIDTH,ST.SHIP_TYPE,C.NICKNAME,C.FULLNAME,S.SHIP_ID,SAC.ACTION_TYPE FROM CatalystQA.PBS_SHIPS AS S
-	        INNER JOIN CatalystQA.PBS_SHIP_TYPES AS ST ON ST.SHIP_TYPE_ID =S.SHIP_TYPE_ID
-	        INNER JOIN CatalystQA.PBS_SHIP_COMPANY_RELATION AS SC ON SC.SHIP_ID=S.SHIP_ID AND SHIP_STATUS =1
-	        INNER JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID=SC.COMPANY_ID
-	        INNER JOIN CatalystQA.PBS_SHIP_ACTION_TYPES AS SAC ON SAC.SHIP_ACTION_TYPE_ID=SC.ACTION_TYPE
-	        WHERE 1=1 
+           SELECT 
+                S.SHIP_NAME        
+                ,S.BUILD_YEAR
+                ,S.GROSS_TONNAGE
+                ,S.DEAD_WEIGHT_TONNAGE
+                ,S.LENGTH
+                ,S.WIDTH
+                ,ST.SHIP_TYPE
+                ,C.NICKNAME AS CUSTOMER_NICKNAME
+                ,C.FULLNAME AS CUSTOMER_FULLNAME
+                ,CP.COMPANY_PARTNER_NAME AS CUSTOMER_NAME
+                ,CP.COMPANY_PARTNER_SURNAME AS CUSTOMER_SURNAME
+                ,CP.MAIL AS CUSTOMER_MAIL
+                ,CP.COMPANY_PARTNER_TELCODE AS CUSTOMER_TELCODE
+                ,CP.COMPANY_PARTNER_TEL AS CUSTOMER_TEL
+                ,C2.NICKNAME AS CARE_OF_NICKNAME
+                ,C2.FULLNAME AS CARE_OF_FULLNAME
+                ,CP2.COMPANY_PARTNER_NAME AS CARE_OF_NAME
+                ,CP2.COMPANY_PARTNER_SURNAME AS CARE_OF_SURNAME
+                ,CP2.MAIL AS CARE_OF_MAIL
+                ,CP2.COMPANY_PARTNER_TELCODE AS CARE_OF_TELCODE
+                ,CP2.COMPANY_PARTNER_TEL AS CARE_OF_TEL
+                ,S.SHIP_ID
+                ,SAC.ACTION_TYPE
+                ,S.IMO_NUMBER
+                ,S.HULL_NUMBER
+                ,S.SHIP_YARD
+                ,S.FLAG
+                ,S.CLASS
+            FROM CatalystQA.PBS_SHIPS AS S
+            INNER JOIN CatalystQA.PBS_SHIP_TYPES AS ST
+                ON ST.SHIP_TYPE_ID = S.SHIP_TYPE_ID
+            INNER JOIN CatalystQA.PBS_SHIP_COMPANY_RELATION AS SC
+                ON SC.SHIP_ID = S.SHIP_ID AND SHIP_STATUS = 1
+            INNER JOIN CatalystQA.COMPANY AS C
+                ON C.COMPANY_ID = SC.COMPANY_ID
+            LEFT JOIN CatalystQA.COMPANY_PARTNER AS CP ON CP.PARTNER_ID=SC.PARTNER_ID
+            LEFT JOIN CatalystQA.COMPANY AS C2
+                ON C2.COMPANY_ID = S.CARE_OF_COMPANY  
+            LEFT JOIN CatalystQA.COMPANY_PARTNER AS CP2 ON CP2.PARTNER_ID=S.CARE_OF_PARTNER_ID              
+            INNER JOIN CatalystQA.PBS_SHIP_ACTION_TYPES AS SAC
+                ON SAC.SHIP_ACTION_TYPE_ID = SC.ACTION_TYPE
+            WHERE 1 = 1
             <cfif len(arguments.ShipStatus)>
                 AND S.IS_SHIP_ALIVE =#arguments.ShipStatus#
             </cfif>
@@ -31,6 +68,13 @@
                 AND S.SHIP_TYPE_ID =#arguments.ShipType#
             </cfif>
         </cfquery>
+        <!-----[IMO_NUMBER] [nvarchar](50) NULL,
+	[CARE_OF_COMPANY] [int] NULL,
+	[CARE_OF_PARTNER_ID] [int] NULL,
+	[HULL_NUMBER] [nvarchar](50) NULL,
+	[SHIP_YARD] [nvarchar](50) NULL,
+	[FLAG] [nvarchar](50) NULL,
+	[CLASS] [nvarchar](50) NULL,----->
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="getShip">
             <cfscript>
@@ -44,8 +88,25 @@
                 item.WIDTH=WIDTH;
                 item.ACTION_TYPE=ACTION_TYPE;
                 item.SHIP_TYPE=SHIP_TYPE;
-                item.NICKNAME=NICKNAME;
-                item.FULLNAME=FULLNAME;
+                item.CUSTOMER_NICKNAME=CUSTOMER_NICKNAME;
+                item.CUSTOMER_FULLNAME=CUSTOMER_FULLNAME;
+                item.CUSTOMER_NAME=CUSTOMER_NAME;
+                item.CUSTOMER_SURNAME=CUSTOMER_SURNAME;
+                item.CUSTOMER_MAIL=CUSTOMER_MAIL;
+                item.CUSTOMER_TELCODE=CUSTOMER_TELCODE;
+                item.CUSTOMER_TEL=CUSTOMER_TEL;
+                item.CARE_OF_NICKNAME=CARE_OF_NICKNAME;
+                item.CARE_OF_FULLNAME=CARE_OF_FULLNAME;
+                item.CARE_OF_NAME=CARE_OF_NAME;
+                item.CARE_OF_SURNAME=CARE_OF_SURNAME;
+                item.CARE_OF_MAIL=CARE_OF_MAIL;
+                item.CARE_OF_TELCODE=CARE_OF_TELCODE;
+                item.CARE_OF_TEL=CARE_OF_TEL;
+                item.IMO_NUMBER=IMO_NUMBER;
+                item.HULL_NUMBER=HULL_NUMBER;
+                item.SHIP_YARD=SHIP_YARD;
+                item.FLAG=FLAG;
+                item.CLASS=CLASS;
                 arrayAppend(ReturnArr,item);
             </cfscript>
         </cfloop>
