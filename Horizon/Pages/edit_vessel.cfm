@@ -196,7 +196,7 @@
     ----->
 <script>
     function getFormData() {
-        var SHIP_ID=document.getElementById("SHIP_ID").value;
+        var SHIP_ID=0//document.getElementById("SHIP_ID").value;
         var SHIP_NAME=document.getElementById("SHIP_NAME").value;
         var BUILD_YEAR=document.getElementById("BUILD_YEAR").value;
         var GROSS_TONNAGE=document.getElementById("GROSS_TONNAGE").value;
