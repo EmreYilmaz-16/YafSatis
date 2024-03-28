@@ -23,6 +23,8 @@
  <script> 
  $(document).ready(function(){
     MainT();
+    TT1();
+    TT2();
  })  
 
 
