@@ -217,6 +217,13 @@
         var SHIP_YARD=document.getElementById("SHIP_YARD").value;
         var FLAG=document.getElementById("FLAG").value;
         var CLASS=document.getElementById("CLASSF").value;
+        var HataArr=[];
+        if(CUSTOMER_ID.length==0){
+            HataArr.push("member_name")
+        }
+        if(SHIP_NAME.length==0){
+            HataArr.push("SHIP_NAME")
+        }
         var FormData={
             SHIP_ID:SHIP_ID,
             SHIP_NAME:SHIP_NAME,
@@ -241,16 +248,22 @@
             CLASS:CLASS,
 
         }
-        return FormData;
+        if(HataArr.length==0){
+            return FormData;
+        }else{
+            return false;
+        }
+        
     }
     function AddShip(){
         var FormData=getFormData() 
+        if(FormData != false){
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=AddShip",
             data:{
                 FData:JSON.stringify(FormData)
             }
-        })
+        })}
     }
 </script>
 <cfabort>
