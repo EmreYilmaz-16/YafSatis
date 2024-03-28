@@ -28,8 +28,8 @@
             <td>#it.CUSTOMER_NAME# #it.CUSTOMER_SURNAME#</td>
             <td>#it.IMO_NUMBER#</td>
             <td>
-                <a href="javascript://"><span class="icn-md fa fa-edit"></span>.fa-edit </a>
-                <a href="javascript://"><span class="icn-md fa fa-search"></span>.fa-search</a>
+                <a href="javascript://"><span class="icn-md fa fa-edit"></span></a>
+                <a href="javascript://"><span class="icn-md fa fa-search"></span></a>
             </td>
         </tr>
     </cfloop>
