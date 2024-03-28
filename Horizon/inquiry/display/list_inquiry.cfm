@@ -3,7 +3,7 @@
 
     <div class="col col-2">
 <cf_box>
-        <div style="display:flex;flex-direction: column;">
+        <div style="display:flex;flex-direction: column;height:100vh">
             <button style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>
             <button style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
         </div>
@@ -11,7 +11,7 @@
     </div>
     <div class="col col-10">      
     <cf_box>
-        <div style="display:flex">
+        <div style="display:flex;height:100vh">
         <div style="width:30%">
             <canvas id="myChart"></canvas>
         </div>
@@ -33,6 +33,7 @@
     MainT();
     TT1();
     TT2();
+    document.body.setAttribute("style","overflow: hidden;")
  })  
 
 
