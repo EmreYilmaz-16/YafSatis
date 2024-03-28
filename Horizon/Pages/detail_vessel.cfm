@@ -19,6 +19,8 @@
         <td>:#GEMI.BUILD_YEAR#</td>
         <td>Ship Type</td>
         <td>:#GEMI.SHIP_TYPE#</td>
+        <td>Class</td>
+        <td>:#GEMI.CLASS#</td>
     </tr>
 </table>
     <cf_big_list>
@@ -98,6 +100,31 @@
                 </tr>
             </cf_big_list>
         </td>
+    </tr>
+</cf_big_list>
+<cf_big_list>
+    <thead>
+        <tr>
+            <th>
+                IMO Number
+            </th>
+            <th>
+                Hull Number
+            </th>
+            <th>
+                Ship Yard
+            </th>
+            <th>
+                Flag
+            </th>
+        </tr>
+        
+    </thead>
+    <tr>
+        <td>#GEMI.IMO_NUMBER#</td>
+        <td>#GEMI.HULL_NUMBER#</td>
+        <td>#GEMI.SHIP_YARD#</td>
+        <td>#GEMI.FLAG#</td>
     </tr>
 </cf_big_list>
 
