@@ -40,10 +40,12 @@
 </cf_big_list>
 <cf_big_list>
     <tr>
-        <td colspan="2">
+        <th colspan="2">
             Customer
-        </td>
-        
+        </th>
+        <th colspan="2">
+            Care Of
+        </th>
     </tr>
     <tr>
         <td>
@@ -66,6 +68,30 @@
                     <td>
                         <b style="width:100%">Ship Mail</b>
                         #GEMI.CUSTOMER_MAIL# 
+                    </td>
+                </tr>
+            </cf_big_list>
+        </td>
+        <td>
+            <cf_big_list>
+                <tr>                    
+                    <td colspan="3">
+                        #GEMI.CARE_OF_FULLNAME#
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <b style="width:100%">Contact Person</b>
+                        #GEMI.CARE_OF_NAME# #GEMI.CARE_OF_SURNAME#
+                    </td>
+                    <td>
+                        <b style="width:100%">Ship Phone</b>
+                        #GEMI.CARE_OF_TELCODE# #GEMI.CARE_OF_TEL#
+                    </td>
+                    <td>
+                        <b style="width:100%">Ship Mail</b>
+                        #GEMI.CARE_OF_MAIL# 
                     </td>
                 </tr>
             </cf_big_list>
