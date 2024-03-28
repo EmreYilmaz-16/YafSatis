@@ -8,19 +8,20 @@
 
 <cfoutput>
 <cfset GEMI=ShipList[1]>
-<cf_big_list>
-    <tr>
-        <td colspan="2">
+
+   <div style="text-align:center;color:green;font-weight:bold;font-size:14pt">
             #GEMI.SHIP_NAME#
-        </td>
+    </div>
         
-    </tr>
+    <table>
     <tr>
         <td>Build Year</td>
         <td>:#GEMI.BUILD_YEAR#</td>
         <td>Ship Type</td>
         <td>:#GEMI.SHIP_TYPE#</td>
     </tr>
+</table>
+    <cf_big_list>
     <thead>
     <tr>
         <th>Gross Tonnage</th>
