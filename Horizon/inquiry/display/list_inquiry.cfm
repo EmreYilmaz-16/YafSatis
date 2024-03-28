@@ -33,5 +33,12 @@
     hoverOffset: 4
   }]
 };
+
+const config = {
+  type: 'doughnut',
+  data: data,
+}
+
+new Chart(ctx, config);
  })  
  </script>
