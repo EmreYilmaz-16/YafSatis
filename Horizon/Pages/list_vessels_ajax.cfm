@@ -14,7 +14,9 @@
             <th>Customer</th>
             <th>Partner</th>
             <th>IMO Number</th>
-            <th></th>
+            <th>
+                <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_add_vessel')"><span class="icn-md fa fa-plus"></span></a>
+            </th>
         </tr>
     </thead>
     <tbody>
