@@ -116,7 +116,7 @@
         </div>
         
         <div class="col col-3">
-            <cf_box title="Customer Invoice Info" id="SV00002">
+            <cf_box title="Customer Invoice Info" id="SV00002" scroll="0" collapsable="0" resize="0" popup_box="0"> 
                 <div class="form-group" id="item-company_name">
                     <label>COMPANY</label>        
                         <div class="input-group">
@@ -135,7 +135,7 @@
                                  
             </div>
             </cf_box>
-            <cf_box title="Care Of Invoice Info" id="SV00003">
+            <cf_box title="Care Of Invoice Info" id="SV00003" scroll="0" collapsable="0" resize="0" popup_box="0">
                 <div class="form-group" id="item-company_name">
                     <label>COMPANY</label>        
                         <div class="input-group">
