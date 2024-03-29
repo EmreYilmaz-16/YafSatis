@@ -185,4 +185,4 @@ new Chart(ctx, config);
  </script>
 
 
-<script src="/AddOns/YafSatis/Horizon/js/page1.js"></script>
+<script src="/AddOns/YafSatis/Horizon/js/page_wl.js"></script>
