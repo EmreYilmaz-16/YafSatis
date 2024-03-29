@@ -1,3 +1,55 @@
+<cfquery name="getMoney" datasource="#dsn#">
+  SELECT (
+          SELECT RATE1
+          FROM #DSN#.MONEY_HISTORY
+          WHERE MONEY_HISTORY_ID = (
+                  SELECT MAX(MONEY_HISTORY_ID)
+                  FROM #DSN#.MONEY_HISTORY
+                  WHERE MONEY = SM.MONEY
+                  )
+          ) AS RATE1
+      ,(
+          SELECT RATE2
+          FROM #DSN#.MONEY_HISTORY
+          WHERE MONEY_HISTORY_ID = (
+                  SELECT MAX(MONEY_HISTORY_ID)
+                  FROM #DSN#.MONEY_HISTORY
+                  WHERE MONEY = SM.MONEY
+                  )
+          ) AS RATE2
+      ,SM.MONEY
+  FROM #DSN#.SETUP_MONEY AS SM
+  WHERE SM.PERIOD_ID = #session.ep.period_id#
+</cfquery>
+<script>
+  var DataSources={
+      DSN:"<cfoutput>#dsn#</cfoutput>",
+      DSN1:"<cfoutput>#dsn1#</cfoutput>",
+      DSN2:"<cfoutput>#dsn2#</cfoutput>",
+      DSN3:"<cfoutput>#dsn3#</cfoutput>",
+  }
+  var ACTIVE_COMPANY="<CFOUTPUT>#session.ep.company_id#</CFOUTPUT>";
+  var MONEY_ARR=[
+      <cfoutput query="getMoney">
+          {
+              RATE1:#RATE1#,
+              RATE2:#RATE2#,
+              MONEY:'#MONEY#',
+              SELECTED:0
+          },
+      </cfoutput>
+  ]
+  var Filters={
+      ForCustomer:1,
+      Stage:0,
+      CompanyId:"",
+      StartDate:"",
+      FinishDate:"",
+      SalesPartnerId:"",
+      PaperNo:"",
+      RefNo:""
+  };
+</script>
 
 <div class="row">         
 
@@ -131,3 +183,6 @@ const config = {
 new Chart(ctx, config);
  }
  </script>
+
+
+<script src="/AddOns/YafSatis/Horizon/js/page1.js"></script>
