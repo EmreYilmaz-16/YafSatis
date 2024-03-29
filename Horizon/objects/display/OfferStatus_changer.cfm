@@ -78,6 +78,7 @@
 <input type="hidden" name="OFFER_CURRENCY_ID_00" id="OFFER_CURRENCY_ID_00" value="#attributes.OFFER_CURRENCY_ID#">
 </cfoutput>
 <cf_box>
+   
 <div style="display:flex;flex-wrap: wrap;">
     
       <cfoutput query="getStages" >
