@@ -142,9 +142,9 @@
                         <div class="input-group">
                             <input type="hidden" name="company_id_1" id="company_id_1" value="<cfoutput>#GEMI.CARE_OF_COMPANY_ID#</cfoutput>">	
                             <input name="company_name_1" type="text" id="company_name_1" value="<cfoutput>#GEMI.CARE_OF_FULLNAME#</cfoutput>" onfocus="AutoComplete_Create('company_name_1','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1\'','COMPANY_ID,PARTNER_CODE,MEMBER_TYPE,MEMBER_PARTNER_NAME,WORK_ADDRESS_DETAIL,COM_CITY','company_id_1,member_id_1,member_type_1,member_name_1,company_address_1,service_city_id_1,county_id_1','','3','150',true,'fill_saleszone()');" autocomplete="off">                
-                            <input type="hidden" name="member_id_1" id="member_id_1" value="<cfoutput>#GEMI.CARE_OF_PARTNER_ID#</cfoutput>">
-                            <input type="hidden" name="member_type_1" id="member_type_1" value="1">
-                            <input type="text" name="member_name_1" id="member_name_1" value="<cfoutput>#GEMI.CARE_OF_NAME# #GEMI.CARE_OF_SURNAME#</cfoutput>">
+                            <input type="hidden" name="member_id_1" id="member_id_1" readonly value="<cfoutput>#GEMI.CARE_OF_PARTNER_ID#</cfoutput>">
+                            <input type="hidden" name="member_type_1" id="member_type_1" readonly value="1">
+                            <input type="text" name="member_name_1" id="member_name_1" readonly value="<cfoutput>#GEMI.CARE_OF_NAME# #GEMI.CARE_OF_SURNAME#</cfoutput>">
                             <span class="input-group-addon icon-ellipsis btnPointer" onclick="windowopen('index.cfm?fuseaction=objects.popup_list_all_pars&is_period_kontrol=0&field_partner=ShipForm.member_id_1&field_consumer=ShipForm.member_id_1&field_name=ShipForm.member_name_1&field_comp_id=ShipForm.company_id_1&field_comp_name=ShipForm.company_name_1&field_type=ShipForm.member_type_1&field_city=ShipForm.service_city_id_1&field_address=ShipForm.company_address_1&select_list=8,7&call_function=fill_saleszone()','list','popup_list_all_pars');" title="Başvuru Yapan Seç "></span>
                         </div>        
                 </div>
@@ -152,7 +152,7 @@
                     <label class="col col-4 col-sm-12">Adres </label>
                     <div class="col col-8 col-sm-12">
                         
-                        <textarea name="company_address_1" id="company_address_1" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
+                        <textarea name="company_address_1" id="company_address_1" readonly message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
                     </div>                
             </div>
             </cf_box>
