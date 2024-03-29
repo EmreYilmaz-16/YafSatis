@@ -261,7 +261,7 @@ INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
            ,[ACTION_DATE]
            ,[ACTION_TYPE]
            ,[SHIP_STATUS]
-           ,[PARTNER_ID]))
+           ,[PARTNER_ID])
 VALUES
    (#FormData.SHIP_ID#
    ,#FormData.CUSTOMER_ID#
