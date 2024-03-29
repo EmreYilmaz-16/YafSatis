@@ -78,6 +78,7 @@
                 <tr style="height: 60px;">
                     <td colspan="3" >
                         <b style="width:100%;display:block">Address</b>
+                        #GEMI.CUSTOMER_ADRESS#
                     </td>
                 </tr>
             </cf_big_list>
@@ -107,6 +108,7 @@
                 <tr style="height: 60px;">
                     <td colspan="3" >
                         <b style="width:100%;display:block">Address</b>
+                        #GEMI.CARE_OF_ADRESS#
                     </td>
                 </tr>
             </cf_big_list>

@@ -9,8 +9,7 @@
         <cfargument name="RowCount" default="20">
         <cfargument name="Page" default="1">
         <cfquery name="getShip" datasource="#dsn#"> 
-           SELECT 
-                S.SHIP_NAME        
+            SELECT S.SHIP_NAME
                 ,S.BUILD_YEAR
                 ,S.GROSS_TONNAGE
                 ,S.DEAD_WEIGHT_TONNAGE
@@ -19,18 +18,20 @@
                 ,ST.SHIP_TYPE
                 ,C.NICKNAME AS CUSTOMER_NICKNAME
                 ,C.FULLNAME AS CUSTOMER_FULLNAME
-                ,CP.COMPANY_PARTNER_NAME AS CUSTOMER_NAME
-                ,CP.COMPANY_PARTNER_SURNAME AS CUSTOMER_SURNAME
-                ,CP.MAIL AS CUSTOMER_MAIL
-                ,CP.COMPANY_PARTNER_TELCODE AS CUSTOMER_TELCODE
-                ,CP.COMPANY_PARTNER_TEL AS CUSTOMER_TEL
+                ,C.COMPANY_PARTNER_NAME AS CUSTOMER_NAME
+                ,C.COMPANY_PARTNER_SURNAME AS CUSTOMER_SURNAME
+                ,C.MAIL AS CUSTOMER_MAIL
+                ,C.COMPANY_PARTNER_TELCODE AS CUSTOMER_TELCODE
+                ,C.COMPANY_PARTNER_TEL AS CUSTOMER_TEL
+                ,C.ADRESS AS CUSTOMER_ADRESS
                 ,C2.NICKNAME AS CARE_OF_NICKNAME
                 ,C2.FULLNAME AS CARE_OF_FULLNAME
-                ,CP2.COMPANY_PARTNER_NAME AS CARE_OF_NAME
-                ,CP2.COMPANY_PARTNER_SURNAME AS CARE_OF_SURNAME
-                ,CP2.MAIL AS CARE_OF_MAIL
-                ,CP2.COMPANY_PARTNER_TELCODE AS CARE_OF_TELCODE
-                ,CP2.COMPANY_PARTNER_TEL AS CARE_OF_TEL
+                ,C2.COMPANY_PARTNER_NAME AS CARE_OF_NAME
+                ,C2.COMPANY_PARTNER_SURNAME AS CARE_OF_SURNAME
+                ,C2.MAIL AS CARE_OF_MAIL
+                ,C2.COMPANY_PARTNER_TELCODE AS CARE_OF_TELCODE
+                ,C2.COMPANY_PARTNER_TEL AS CARE_OF_TEL
+                ,C2.ADRESS AS CARE_OF_ADRESS
                 ,S.SHIP_ID
                 ,SAC.ACTION_TYPE
                 ,S.IMO_NUMBER
@@ -39,19 +40,39 @@
                 ,S.FLAG
                 ,S.CLASS
             FROM CatalystQA.PBS_SHIPS AS S
-            INNER JOIN CatalystQA.PBS_SHIP_TYPES AS ST
-                ON ST.SHIP_TYPE_ID = S.SHIP_TYPE_ID
-            INNER JOIN CatalystQA.PBS_SHIP_COMPANY_RELATION AS SC
-                ON SC.SHIP_ID = S.SHIP_ID AND SHIP_STATUS = 1
-            INNER JOIN CatalystQA.COMPANY AS C
-                ON C.COMPANY_ID = SC.COMPANY_ID
-            LEFT JOIN CatalystQA.COMPANY_PARTNER AS CP ON CP.PARTNER_ID=SC.PARTNER_ID
-            LEFT JOIN CatalystQA.COMPANY AS C2
-                ON C2.COMPANY_ID = S.CARE_OF_COMPANY  
-            LEFT JOIN CatalystQA.COMPANY_PARTNER AS CP2 ON CP2.PARTNER_ID=S.CARE_OF_PARTNER_ID              
-            INNER JOIN CatalystQA.PBS_SHIP_ACTION_TYPES AS SAC
-                ON SAC.SHIP_ACTION_TYPE_ID = SC.ACTION_TYPE
-            WHERE 1 = 1
+            INNER JOIN CatalystQA.PBS_SHIP_TYPES AS ST ON ST.SHIP_TYPE_ID = S.SHIP_TYPE_ID
+            INNER JOIN CatalystQA.PBS_SHIP_COMPANY_RELATION AS SC ON SC.SHIP_ID = S.SHIP_ID
+                AND SHIP_STATUS = 1
+            LEFT JOIN (
+                SELECT CP.COMPANY_PARTNER_NAME
+                    ,CP.PARTNER_ID
+                    ,CP.COMPANY_PARTNER_SURNAME
+                    ,ISNULL(CB.COMPBRANCH_ADDRESS, C.COMPANY_ADDRESS) AS ADRESS
+                    ,CP.COMPANY_PARTNER_TELCODE
+                    ,CP.COMPANY_PARTNER_TEL
+                    ,C.NICKNAME
+                    ,C.FULLNAME
+                    ,CP.MAIL
+                FROM CatalystQA.COMPANY_PARTNER CP
+                LEFT JOIN CatalystQA.COMPANY_BRANCH AS CB ON CB.BRANCH_ID = CP.COMPBRANCH_ID
+                LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID = CP.COMPANY_ID
+                ) AS C ON C.PARTNER_ID = SC.PARTNER_ID
+            LEFT JOIN (
+                SELECT CP.COMPANY_PARTNER_NAME
+                    ,CP.PARTNER_ID
+                    ,CP.COMPANY_PARTNER_SURNAME
+                    ,ISNULL(CB.COMPBRANCH_ADDRESS, C.COMPANY_ADDRESS) AS ADRESS
+                    ,CP.COMPANY_PARTNER_TELCODE
+                    ,CP.COMPANY_PARTNER_TEL
+                    ,C.NICKNAME
+                    ,C.FULLNAME
+                    ,CP.MAIL
+                FROM CatalystQA.COMPANY_PARTNER CP
+                LEFT JOIN CatalystQA.COMPANY_BRANCH AS CB ON CB.BRANCH_ID = CP.COMPBRANCH_ID
+                LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID = CP.COMPANY_ID
+                ) AS C2 ON C2.PARTNER_ID = S.CARE_OF_PARTNER_ID
+            INNER JOIN CatalystQA.PBS_SHIP_ACTION_TYPES AS SAC ON SAC.SHIP_ACTION_TYPE_ID = SC.ACTION_TYPE
+            WHERE 1 = 1          
             <cfif len(arguments.ShipStatus)>
                 AND S.IS_SHIP_ALIVE =#arguments.ShipStatus#
             </cfif>
@@ -95,6 +116,7 @@
                 item.CUSTOMER_MAIL=CUSTOMER_MAIL;
                 item.CUSTOMER_TELCODE=CUSTOMER_TELCODE;
                 item.CUSTOMER_TEL=CUSTOMER_TEL;
+                item.CUSTOMER_ADRESS=CUSTOMER_ADRESS;
                 item.CARE_OF_NICKNAME=CARE_OF_NICKNAME;
                 item.CARE_OF_FULLNAME=CARE_OF_FULLNAME;
                 item.CARE_OF_NAME=CARE_OF_NAME;
@@ -102,6 +124,7 @@
                 item.CARE_OF_MAIL=CARE_OF_MAIL;
                 item.CARE_OF_TELCODE=CARE_OF_TELCODE;
                 item.CARE_OF_TEL=CARE_OF_TEL;
+                item.CARE_OF_ADRESS=CARE_OF_ADRESS;
                 item.IMO_NUMBER=IMO_NUMBER;
                 item.HULL_NUMBER=HULL_NUMBER;
                 item.SHIP_YARD=SHIP_YARD;
