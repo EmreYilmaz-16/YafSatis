@@ -132,9 +132,7 @@
                     <label class="col col-4 col-sm-12">Adres </label>
                     <div class="col col-8 col-sm-12">
                         
-                        <textarea name="company_address" id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);">
-                            <cfoutput>#GEMI.CUSTOMER_ADRESS#</cfoutput>
-                        </textarea>
+                        <textarea name="company_address" readonly id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CUSTOMER_ADRESS#</cfoutput></textarea>
                     </div>                
             </div>
             </cf_box>
@@ -154,9 +152,7 @@
                     <label class="col col-4 col-sm-12">Adres </label>
                     <div class="col col-8 col-sm-12">
                         
-                        <textarea name="company_address_1" id="company_address_1" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);">
-                            <cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput>
-                        </textarea>
+                        <textarea name="company_address_1" id="company_address_1" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
                     </div>                
             </div>
             </cf_box>
