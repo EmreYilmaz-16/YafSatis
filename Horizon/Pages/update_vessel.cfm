@@ -158,7 +158,7 @@
         </div>
     </div>
     <hr>
-    <button class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="AddShip(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" >Kaydet</button>
+    <button type="button" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="AddShip(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" >Kaydet</button>
  
     
 
