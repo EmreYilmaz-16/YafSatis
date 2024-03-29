@@ -302,7 +302,7 @@ VALUES
            DEAD_WEIGHT_TONNAGE=#FormData.DEAD_WEIGHT_TONNAGE#,
            LENGTH=#FormData.LENGTH#,
            WIDTH=#FormData.WIDTH#,
-           SHIP_TYPE_ID=#FormData.SHIP_TYPE#,
+           SHIP_TYPE_ID=#FormData.SHIP_TYPE_ID#,
            UPDATE_DATE=GETDATE(),
            UPDATE_EMP=#FormData.UPDATE_EMP#,
            IMO_NUMBER='#FormData.IMO_NUMBER#',
