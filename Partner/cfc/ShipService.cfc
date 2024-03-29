@@ -198,7 +198,7 @@
            ,<cfif len(FormData.DEAD_WEIGHT_TONNAGE)>#FormData.DEAD_WEIGHT_TONNAGE#<cfelse>NULL</cfif> 
             ,<cfif len(FormData.LENGTH)>#FormData.LENGTH#<cfelse>NULL</cfif> 
             ,<cfif len(FormData.WIDTH)>#FormData.WIDTH#<cfelse>NULL</cfif> 
-            ,<cfif len(FormData.SHIP_TYPE)>#FormData.SHIP_TYPE#<cfelse>NULL</cfif> 
+            ,<cfif len(FormData.SHIP_TYPE)>#FormData.SHIP_TYPE_ID#<cfelse>NULL</cfif> 
             ,GETDATE()
            ,<cfif isDefined("FormData.RECORD_EMP") and  len(FormData.RECORD_EMP)>#FormData.RECORD_EMP#<cfelse>NULL</cfif>
            ,1
