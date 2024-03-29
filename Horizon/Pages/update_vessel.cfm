@@ -131,7 +131,7 @@
                 <div class="form-group" id="item-company_address">
                     <label>Adres </label>
                     
-                        <textarea rows="10" name="company_address" readonly id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CUSTOMER_ADRESS#</cfoutput></textarea>
+                        <textarea rows="5" name="company_address" readonly id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CUSTOMER_ADRESS#</cfoutput></textarea>
                                  
             </div>
             </cf_box>
@@ -151,7 +151,7 @@
                     <label >Adres </label>
                     
                         
-                        <textarea rows="10" name="company_address_1" id="company_address_1" readonly message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
+                        <textarea rows="5" name="company_address_1" id="company_address_1" readonly message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
                                   
             </div>
             </cf_box>
