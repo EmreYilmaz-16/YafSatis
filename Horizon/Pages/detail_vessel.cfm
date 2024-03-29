@@ -9,7 +9,7 @@
 <cfoutput>
 
 
-   <div style="text-align:center;color:green;font-weight:bold;font-size:14pt">
+   <div style="text-align:center;color:green;font-weight:bold;font-size:14pt;padding: 10px;border: solid 1px green;margin-bottom: 5px;">
             #GEMI.SHIP_NAME#
     </div>
         
