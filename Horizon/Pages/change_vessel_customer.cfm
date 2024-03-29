@@ -79,13 +79,23 @@
         var CUSTOMER_NICKNAME=document.getElementById("company_name").value;
         var CUSTOMER_ID=document.getElementById("company_id").value;
         var CUSTOMER_NAME=document.getElementById("member_name").value;
-        var CUSTOMER_EMP_ID=document.getElementById("member_id").value;              
+        var CUSTOMER_EMP_ID=document.getElementById("member_id").value;  
+        var ACTION_TYPE=1;
+        var aclist=document.getElementsByName("SHIP_ACTION_TYPE_ID");
+for(let i=0;i<aclist.length;i++){
+    var ac=aclist[i];
+    if($(ac).is(":checked")){
+        ACTION_TYPE=ac.value
+    }
+}
+        
         var FormData={
             SHIP_ID:SHIP_ID,          
             CUSTOMER_NICKNAME:CUSTOMER_NICKNAME,
             CUSTOMER_ID:CUSTOMER_ID,
             CUSTOMER_NAME:CUSTOMER_NAME,
-            CUSTOMER_EMP_ID:CUSTOMER_EMP_ID,            
+            CUSTOMER_EMP_ID:CUSTOMER_EMP_ID,      
+            ACTION_TYPE:ACTION_TYPE      
         }
         
         
