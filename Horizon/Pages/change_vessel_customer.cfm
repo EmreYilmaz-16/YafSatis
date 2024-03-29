@@ -55,7 +55,7 @@
                 <label class="col col-4 col-sm-12">Adres </label>
                 <div class="col col-8 col-sm-12">
                     
-                    <textarea name="company_address" id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"></textarea>
+                    <textarea name="company_address" id="company_address"  maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"></textarea>
                 </div>                
         </div>
     </cfform>
