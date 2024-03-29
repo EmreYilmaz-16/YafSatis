@@ -4,10 +4,10 @@
 <cfset ShipList_=ShipService.GetShips(ShipId:attributes.ShipId)>
 <cfset ShipTypes=deserializeJSON(ShipTypes_)>
 <cfset ShipList=deserializeJSON(ShipList_)>
-
+<cfset GEMI=ShipList[1]>
 
 <cfoutput>
-<cfset GEMI=ShipList[1]>
+
 
    <div style="text-align:center;color:green;font-weight:bold;font-size:14pt">
             #GEMI.SHIP_NAME#

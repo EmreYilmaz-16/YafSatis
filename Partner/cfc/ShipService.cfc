@@ -16,6 +16,7 @@
                 ,S.LENGTH
                 ,S.WIDTH
                 ,ST.SHIP_TYPE
+                ,ST.SHIP_TYPE_ID
                 ,C.NICKNAME AS CUSTOMER_NICKNAME
                 ,C.FULLNAME AS CUSTOMER_FULLNAME
                 ,C.COMPANY_PARTNER_NAME AS CUSTOMER_NAME
@@ -24,6 +25,8 @@
                 ,C.COMPANY_PARTNER_TELCODE AS CUSTOMER_TELCODE
                 ,C.COMPANY_PARTNER_TEL AS CUSTOMER_TEL
                 ,C.ADRESS AS CUSTOMER_ADRESS
+                ,C.COMPANY_ID AS CUSTOMER_COMPANY_ID
+                ,C.PARTNER_ID AS CUSTOMER_PARTNER_ID
                 ,C2.NICKNAME AS CARE_OF_NICKNAME
                 ,C2.FULLNAME AS CARE_OF_FULLNAME
                 ,C2.COMPANY_PARTNER_NAME AS CARE_OF_NAME
@@ -32,6 +35,8 @@
                 ,C2.COMPANY_PARTNER_TELCODE AS CARE_OF_TELCODE
                 ,C2.COMPANY_PARTNER_TEL AS CARE_OF_TEL
                 ,C2.ADRESS AS CARE_OF_ADRESS
+                ,C2.COMPANY_ID AS CARE_OF_COMPANY_ID
+                ,C2.PARTNER_ID AS CARE_OF_PARTNER_ID 
                 ,S.SHIP_ID
                 ,SAC.ACTION_TYPE
                 ,S.IMO_NUMBER
@@ -53,6 +58,8 @@
                     ,C.NICKNAME
                     ,C.FULLNAME
                     ,CP.MAIL
+                    ,C.COMPANY_ID
+                    
                 FROM CatalystQA.COMPANY_PARTNER CP
                 LEFT JOIN CatalystQA.COMPANY_BRANCH AS CB ON CB.BRANCH_ID = CP.COMPBRANCH_ID
                 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID = CP.COMPANY_ID
@@ -67,6 +74,7 @@
                     ,C.NICKNAME
                     ,C.FULLNAME
                     ,CP.MAIL
+                    ,C.COMPANY_ID
                 FROM CatalystQA.COMPANY_PARTNER CP
                 LEFT JOIN CatalystQA.COMPANY_BRANCH AS CB ON CB.BRANCH_ID = CP.COMPBRANCH_ID
                 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID = CP.COMPANY_ID
@@ -95,7 +103,10 @@
 	[HULL_NUMBER] [nvarchar](50) NULL,
 	[SHIP_YARD] [nvarchar](50) NULL,
 	[FLAG] [nvarchar](50) NULL,
-	[CLASS] [nvarchar](50) NULL,----->
+	[CLASS] [nvarchar](50) NULL,
+    -- CARE_OF_PARTNER_ID CARE_OF_COMPANY_ID CUSTOMER_COMPANY_ID CUSTOMER_PARTNER_ID
+    
+    ----->
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="getShip">
             <cfscript>
@@ -106,6 +117,7 @@
                 item.GROSS_TONNAGE=GROSS_TONNAGE;
                 item.DEAD_WEIGHT_TONNAGE=DEAD_WEIGHT_TONNAGE;
                 item.LENGTH=LENGTH;
+                item.SHIP_TYPE_ID=SHIP_TYPE_ID;
                 item.WIDTH=WIDTH;
                 item.ACTION_TYPE=ACTION_TYPE;
                 item.SHIP_TYPE=SHIP_TYPE;
@@ -117,6 +129,8 @@
                 item.CUSTOMER_TELCODE=CUSTOMER_TELCODE;
                 item.CUSTOMER_TEL=CUSTOMER_TEL;
                 item.CUSTOMER_ADRESS=CUSTOMER_ADRESS;
+                item.CUSTOMER_COMPANY_ID=CUSTOMER_COMPANY_ID;
+                item.CUSTOMER_PARTNER_ID=CUSTOMER_PARTNER_ID;
                 item.CARE_OF_NICKNAME=CARE_OF_NICKNAME;
                 item.CARE_OF_FULLNAME=CARE_OF_FULLNAME;
                 item.CARE_OF_NAME=CARE_OF_NAME;
@@ -125,6 +139,8 @@
                 item.CARE_OF_TELCODE=CARE_OF_TELCODE;
                 item.CARE_OF_TEL=CARE_OF_TEL;
                 item.CARE_OF_ADRESS=CARE_OF_ADRESS;
+                item.CARE_OF_PARTNER_ID=CARE_OF_PARTNER_ID;
+                item.CARE_OF_COMPANY_ID=CARE_OF_COMPANY_ID;
                 item.IMO_NUMBER=IMO_NUMBER;
                 item.HULL_NUMBER=HULL_NUMBER;
                 item.SHIP_YARD=SHIP_YARD;
