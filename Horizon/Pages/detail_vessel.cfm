@@ -34,10 +34,10 @@
 </thead>
 
     <tr>
-        <td>#GEMI.GROSS_TONNAGE#</td>
-        <td>#GEMI.DEAD_WEIGHT_TONNAGE#</td>
-        <td>#GEMI.WIDTH#</td>
-        <td>#GEMI.LENGTH#</td>
+        <td>#tlformat(GEMI.GROSS_TONNAGE)#</td>
+        <td>#tlformat(GEMI.DEAD_WEIGHT_TONNAGE)#</td>
+        <td>#tlformat(GEMI.WIDTH)#</td>
+        <td>#tlformat(GEMI.LENGTH)#</td>
     </tr>
 </cf_big_list>
 <cf_big_list>
