@@ -267,7 +267,8 @@ VALUES
    ,#FormData.CUSTOMER_ID#
    ,GETDATE()
    ,#FormData.ACTION_TYPE#
-   ,1)
+   ,1
+   ,#FormData.CUSTOMER_EMP_ID#)
 </cfquery>
 <cfreturn GetShips(ShipId=arguments.SHIP_ID) >
     </cffunction>
