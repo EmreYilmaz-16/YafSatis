@@ -67,7 +67,7 @@
                 </label>
             </cfloop>
         </div>
-        <button type="button" class="ui-wrk-btn ui-wrk-btn-success " onclick="MoveShip()">Transfer Et</button>
+        <button type="button" class="ui-wrk-btn ui-wrk-btn-success " onclick="MoveShip(#session.ep.userid#,'#attributes.modal_id#')">Transfer Et</button>
     </cfform>
         </div>
     
