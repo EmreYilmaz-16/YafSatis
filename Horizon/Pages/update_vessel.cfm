@@ -260,7 +260,7 @@
     function AddShip(EmpId,modal){
         
         var FormData=getFormData() 
-        FormData.RECORD_EMP=EmpId;
+        FormData.UPDATE_EMP=EmpId;
         if(FormData != false){
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=UpdateShip",
