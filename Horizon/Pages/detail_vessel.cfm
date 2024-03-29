@@ -75,9 +75,9 @@
                     </td>
                     
                 </tr>
-                <tr>
-                    <td colspan="3" style="heigtht:60px">
-
+                <tr style="height: 60px;">
+                    <td colspan="3" >
+                        <b style="width:100%">Address</b>
                     </td>
                 </tr>
             </cf_big_list>
@@ -104,9 +104,9 @@
                         #GEMI.CARE_OF_MAIL# 
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="3" style="heigtht:60px">
-
+                <tr style="height: 60px;">
+                    <td colspan="3" >
+                        <b style="width:100%">Address</b>
                     </td>
                 </tr>
             </cf_big_list>
