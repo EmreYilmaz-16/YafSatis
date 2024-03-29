@@ -129,11 +129,10 @@
                         </div>        
                 </div>
                 <div class="form-group" id="item-company_address">
-                    <label class="col col-4 col-sm-12">Adres </label>
-                    <div class="col col-8 col-sm-12">
-                        
-                        <textarea name="company_address" readonly id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CUSTOMER_ADRESS#</cfoutput></textarea>
-                    </div>                
+                    <label>Adres </label>
+                    
+                        <textarea rows="10" name="company_address" readonly id="company_address" message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CUSTOMER_ADRESS#</cfoutput></textarea>
+                                 
             </div>
             </cf_box>
             <cf_box title="Care Of Invoice Info" id="SV00003">
@@ -149,11 +148,11 @@
                         </div>        
                 </div>
                 <div class="form-group" id="item-company_address">
-                    <label class="col col-4 col-sm-12">Adres </label>
-                    <div class="col col-8 col-sm-12">
+                    <label >Adres </label>
+                    
                         
-                        <textarea name="company_address_1" id="company_address_1" readonly message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
-                    </div>                
+                        <textarea rows="10" name="company_address_1" id="company_address_1" readonly message="#message#" maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"><cfoutput>#GEMI.CARE_OF_ADRESS#</cfoutput></textarea>
+                                  
             </div>
             </cf_box>
         </div>
