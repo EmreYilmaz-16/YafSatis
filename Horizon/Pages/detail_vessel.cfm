@@ -62,22 +62,22 @@
                 </tr>
                 <tr>
                     <td>
-                        <b style="width:100%">Contact Person</b>
+                        <b style="width:100%;display:block">Contact Person</b>
                         #GEMI.CUSTOMER_NAME# #GEMI.CUSTOMER_SURNAME#
                     </td>
                     <td>
-                        <b style="width:100%">Ship Phone</b>
+                        <b style="width:100%;display:block">Ship Phone</b>
                         #GEMI.CUSTOMER_TELCODE# #GEMI.CUSTOMER_TEL#
                     </td>
                     <td>
-                        <b style="width:100%">Ship Mail</b>
+                        <b style="width:100%;display:block">Ship Mail</b>
                         #GEMI.CUSTOMER_MAIL# 
                     </td>
                     
                 </tr>
                 <tr style="height: 60px;">
                     <td colspan="3" >
-                        <b style="width:100%">Address</b>
+                        <b style="width:100%;display:block">Address</b>
                     </td>
                 </tr>
             </cf_big_list>
@@ -92,21 +92,21 @@
                 </tr>
                 <tr>
                     <td>
-                        <b style="width:100%">Contact Person</b>
+                        <b style="width:100%;display:block">Contact Person</b>
                         #GEMI.CARE_OF_NAME# #GEMI.CARE_OF_SURNAME#
                     </td>
                     <td>
-                        <b style="width:100%">Ship Phone</b>
+                        <b style="width:100%;display:block">Ship Phone</b>
                         #GEMI.CARE_OF_TELCODE# #GEMI.CARE_OF_TEL#
                     </td>
                     <td>
-                        <b style="width:100%">Ship Mail</b>
+                        <b style="width:100%;display:block">Ship Mail</b>
                         #GEMI.CARE_OF_MAIL# 
                     </td>
                 </tr>
                 <tr style="height: 60px;">
                     <td colspan="3" >
-                        <b style="width:100%">Address</b>
+                        <b style="width:100%;display:block">Address</b>
                     </td>
                 </tr>
             </cf_big_list>
