@@ -263,7 +263,7 @@
         FormData.RECORD_EMP=EmpId;
         if(FormData != false){
         $.ajax({
-            url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=AddShip",
+            url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=UpdateShip",
             data:{
                 FData:JSON.stringify(FormData)
             },success:function(){

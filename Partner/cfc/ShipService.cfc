@@ -273,29 +273,46 @@ VALUES
 <cfreturn GetShips(ShipId=arguments.SHIP_ID) >
     </cffunction>
     <cffunction name="UpdateShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json"> 
-        <cfargument name="SHIP_ID">
-        <cfargument name="SHIP_NAME">        
-        <cfargument name="BUILD_YEAR">
-        <cfargument name="GROSS_TONNAGE">
-        <cfargument name="DEAD_WEIGHT_TONNAGE">
-        <cfargument name="LENGTH">
-        <cfargument name="WIDTH">
-        <cfargument name="SHIP_TYPE_ID">
-        <cfargument name="UPDATE_EMP">        
+        <cfargument name="FData">
+        <cfset FormData=deserializeJSON(arguments.FData)>      
        <cftry>
-       
+       <!-------
+        ([SHIP_NAME]
+           ,[BUILD_YEAR]
+           ,[GROSS_TONNAGE]
+           ,[DEAD_WEIGHT_TONNAGE]
+           ,[LENGTH]
+           ,[WIDTH]
+           ,[SHIP_TYPE_ID]
+           ,[RECORD_DATE]
+           ,[RECORD_EMP]
+           ,[IS_SHIP_ALIVE]
+           ,[IMO_NUMBER]
+           ,[CARE_OF_COMPANY]
+           ,[CARE_OF_PARTNER_ID]
+           ,[HULL_NUMBER]
+           ,[SHIP_YARD]
+           ,[FLAG]
+           ,[CLASS])------>
        <cfquery name="Add" datasource="#dsn#" result="res">
            UPDATE [CatalystQA].[PBS_SHIPS] SET 
-           SHIP_NAME='#arguments.SHIP_NAME#',
-           BUILD_YEAR=#arguments.BUILD_YEAR#,
-           GROSS_TONNAGE=#arguments.GROSS_TONNAGE#,
-           DEAD_WEIGHT_TONNAGE=#arguments.DEAD_WEIGHT_TONNAGE#,
-           LENGTH=#arguments.LENGTH#,
-           WIDTH=#arguments.WIDTH#,
-           SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#,
+           SHIP_NAME='#FormData.SHIP_NAME#',
+           BUILD_YEAR=#FormData.BUILD_YEAR#,
+           GROSS_TONNAGE=#FormData.GROSS_TONNAGE#,
+           DEAD_WEIGHT_TONNAGE=#FormData.DEAD_WEIGHT_TONNAGE#,
+           LENGTH=#FormData.LENGTH#,
+           WIDTH=#FormData.WIDTH#,
+           SHIP_TYPE_ID=#FormData.SHIP_TYPE#,
            UPDATE_DATE=GETDATE(),
-           UPDATE_EMP=#arguments.UPDATE_EMP#
-           WHERE SHIP_ID=#arguments.SHIP_ID#
+           UPDATE_EMP=#FormData.UPDATE_EMP#,
+           IMO_NUMBER='#FormData.IMO_NUMBER#',
+           HULL_NUMBER='#FormData.HULL_NUMBER#',
+           SHIP_YARD='#FormData.SHIP_YARD#',
+           FLAG='#FormData.FLAG#',
+           CLASS='#FormData.CLASS#',
+           CARE_OF_COMPANY=<CFIF LEN(FormData.CAREOF_NICKNAME)>#FormData.CAREOF_ID#<CFELSE>NULL</CFIF>,
+            CARE_OF_PARTNER_ID=<CFIF LEN(FormData.CAREOF_NAME)>#FormData.CAREOF_EMP_ID#<CFELSE>NULL</CFIF>
+           WHERE SHIP_ID=#FormData.SHIP_ID#
         </cfquery>        
         <cfreturn GetShips(ShipId=arguments.SHIP_ID)>
         <cfcatch>
