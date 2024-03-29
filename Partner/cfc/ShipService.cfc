@@ -314,7 +314,7 @@ VALUES
             CARE_OF_PARTNER_ID=<CFIF LEN(FormData.CAREOF_NICKNAME)>#FormData.CAREOF_EMP_ID#<CFELSE>NULL</CFIF>
            WHERE SHIP_ID=#FormData.SHIP_ID#
         </cfquery>        
-        <cfreturn GetShips(ShipId=arguments.SHIP_ID)>
+        <cfreturn GetShips(ShipId=FormData.SHIP_ID)>
         <cfcatch>
             <cfsavecontent  variable="control5">
                 <cfdump  var="#CGI#">                
