@@ -79,7 +79,7 @@
                 LEFT JOIN CatalystQA.COMPANY_BRANCH AS CB ON CB.BRANCH_ID = CP.COMPBRANCH_ID
                 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID = CP.COMPANY_ID
                 ) AS C2 ON C2.PARTNER_ID = S.CARE_OF_PARTNER_ID
-            INNER JOIN CatalystQA.PBS_SHIP_ACTION_TYPES AS SAC ON SAC.SHIP_ACTION_TYPE_ID = SC.ACTION_TYPE
+            LEFT JOIN CatalystQA.PBS_SHIP_ACTION_TYPES AS SAC ON SAC.SHIP_ACTION_TYPE_ID = SC.ACTION_TYPE
             WHERE 1 = 1          
             <cfif len(arguments.ShipStatus)>
                 AND S.IS_SHIP_ALIVE =#arguments.ShipStatus#
