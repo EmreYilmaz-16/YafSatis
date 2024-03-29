@@ -60,7 +60,7 @@
                     </td>
                     
                 </tr>
-                <tr>
+                <tr style="text-align:center">
                     <td>
                         <b style="width:100%;display:block">Contact Person</b>
                         #GEMI.CUSTOMER_NAME# #GEMI.CUSTOMER_SURNAME#
@@ -90,7 +90,7 @@
                     </td>
                     
                 </tr>
-                <tr>
+                <tr style="text-align:center">
                     <td>
                         <b style="width:100%;display:block">Contact Person</b>
                         #GEMI.CARE_OF_NAME# #GEMI.CARE_OF_SURNAME#
