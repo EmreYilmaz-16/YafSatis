@@ -311,7 +311,7 @@ VALUES
            FLAG='#FormData.FLAG#',
            CLASS='#FormData.CLASS#',
            CARE_OF_COMPANY=<CFIF LEN(FormData.CAREOF_NICKNAME)>#FormData.CAREOF_ID#<CFELSE>NULL</CFIF>,
-            CARE_OF_PARTNER_ID=<CFIF LEN(FormData.CAREOF_NAME)>#FormData.CAREOF_EMP_ID#<CFELSE>NULL</CFIF>
+            CARE_OF_PARTNER_ID=<CFIF LEN(FormData.CAREOF_NICKNAME)>#FormData.CAREOF_EMP_ID#<CFELSE>NULL</CFIF>
            WHERE SHIP_ID=#FormData.SHIP_ID#
         </cfquery>        
         <cfreturn GetShips(ShipId=arguments.SHIP_ID)>
