@@ -244,34 +244,34 @@ INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
         </cfcatch>
        </cftry>
     </cffunction>
-    <cffunction name="MoveShip">
-        <cfargument name="SHIP_ID">
-        <cfargument name="ToCustomerId">
-        <cfargument name="ACTION_TYPE">
+    <cffunction name="MoveShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="FData">
+        <cfset FormData=deserializeJSON(arguments.FData)>
 
         <cfquery name="upLs" datasource="#dsn#">
-            select * from PBS_SHIP_COMPANY_RELATION where SHIP_ID=#SHIP_ID# AND SHIP_STATUS=1
+            select * from PBS_SHIP_COMPANY_RELATION where SHIP_ID=#FormData.SHIP_ID# AND SHIP_STATUS=1
         </cfquery>
 <cfquery name="upd" datasource="#dsn#">
-    UPDATE PBS_SHIP_COMPANY_RELATION SET SHIP_STATUS=0 WHERE ID=#upLs.ID#
+    UPDATE PBS_SHIP_COMPANY_RELATION SET SHIP_STATUS=0 WHERE SHIP_ID=#FormData.SHIP_ID#
 </cfquery>
 <cfquery name="ins2" datasource="#dsn#">
     INSERT INTO [CatalystQA].[PBS_SHIP_COMPANY_RELATION]
    ([SHIP_ID]
-   ,[COMPANY_ID]
-   ,[ACTION_DATE]
-   ,[ACTION_TYPE]
-   ,[SHIP_STATUS])
+           ,[COMPANY_ID]
+           ,[ACTION_DATE]
+           ,[ACTION_TYPE]
+           ,[SHIP_STATUS]
+           ,[PARTNER_ID]))
 VALUES
-   (#res.IDENTITYCOL#
-   ,#arguments.ToCustomerId#
+   (#FormData.SHIP_ID#
+   ,#FormData.CUSTOMER_ID#
    ,GETDATE()
-   ,#arguments.ACTION_TYPE#
+   ,#FormData.ACTION_TYPE#
    ,1)
 </cfquery>
-<cfreturn GetShips(ShipId=arguments.SHIP_ID)>
+<cfreturn GetShips(ShipId=arguments.SHIP_ID) >
     </cffunction>
-    <cffunction name="UpdateShip">
+    <cffunction name="UpdateShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json"> 
         <cfargument name="SHIP_ID">
         <cfargument name="SHIP_NAME">        
         <cfargument name="BUILD_YEAR">
@@ -310,6 +310,22 @@ VALUES
         </cfcatch>
        </cftry>
     </cffunction>
- 
+    <cffunction name="getActionTypes" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfquery name="GetST" datasource="#dsn#">
+            SELECT TOP (1000) [SHIP_ACTION_TYPE_ID]
+      ,[ACTION_TYPE]
+  FROM [CatalystQA].[CatalystQA].[PBS_SHIP_ACTION_TYPES]
+        </cfquery>
+         <cfset ReturnArr=arrayNew(1)>
+         <cfloop query="GetST">
+             <cfset Item=structNew()>
+             <cfset Item.SHIP_ACTION_TYPE_ID=SHIP_ACTION_TYPE_ID>
+             <cfset Item.ACTION_TYPE=ACTION_TYPE>
+             <cfscript>
+                 arrayAppend(returnArr,Item);
+             </cfscript>
+         </cfloop>
+         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
    
 </cfcomponent>

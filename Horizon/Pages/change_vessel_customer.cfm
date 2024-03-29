@@ -1,8 +1,8 @@
 <cf_box title="Vessel Detail" scroll="1" collapsable="1" resize="1" popup_box="1">
     <cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
-    <cfset ShipTypes_=ShipService.getShipTypes()>
+    <cfset ActionTypes_=ShipService.getActionTypes()>
     <cfset ShipList_=ShipService.GetShips(ShipId:attributes.ShipId)>
-    <cfset ShipTypes=deserializeJSON(ShipTypes_)>
+    <cfset ActionTypes=deserializeJSON(ActionTypes_)>
     <cfset ShipList=deserializeJSON(ShipList_)>
     <cfset GEMI=ShipList[1]>
     
@@ -40,6 +40,7 @@
         </div>
         <div>
             <cfform name="ShipForm">
+                <input type="hidden" name="SHIP_ID" id="SHIP_ID" value="#attributes.ShipId#">
             <div class="form-group" id="item-company_name">
                 <label>COMPANY</label>        
                     <div class="input-group">
@@ -58,7 +59,48 @@
                     <textarea name="company_address" id="company_address"  maxlength="200" onkeyup="return ismaxlength(this);" onblur="return ismaxlength(this);"></textarea>
                 </div>                
         </div>
+        <div>
+            <b>Transfer Nedeni</b>
+            <cfloop array="#ActionTypes#" item="it">
+                <label>
+                    <input type="radio" name="SHIP_ACTION_TYPE_ID" value="#it.SHIP_ACTION_TYPE_ID#">#it.ACTION_TYPE#
+                </label>
+            </cfloop>
+        </div>
     </cfform>
         </div>
     
 </cfoutput>
+
+<script>
+    function getFormData() {
+        var SHIP_ID=document.getElementById("SHIP_ID").value;      
+        var CUSTOMER_NICKNAME=document.getElementById("company_name").value;
+        var CUSTOMER_ID=document.getElementById("company_id").value;
+        var CUSTOMER_NAME=document.getElementById("member_name").value;
+        var CUSTOMER_EMP_ID=document.getElementById("member_id").value;              
+        var FormData={
+            SHIP_ID:SHIP_ID,          
+            CUSTOMER_NICKNAME:CUSTOMER_NICKNAME,
+            CUSTOMER_ID:CUSTOMER_ID,
+            CUSTOMER_NAME:CUSTOMER_NAME,
+            CUSTOMER_EMP_ID:CUSTOMER_EMP_ID,            
+        }
+        
+        
+    }
+    function AddShip(EmpId,modal){
+        
+        var FormData=getFormData() 
+        FormData.RECORD_EMP=EmpId;
+        if(FormData != false){
+        $.ajax({
+            url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=AddShip",
+            data:{
+                FData:JSON.stringify(FormData)
+            },success:function(){
+                closeBoxDraggable(modal)
+            }
+        })}
+    }
+</script>
