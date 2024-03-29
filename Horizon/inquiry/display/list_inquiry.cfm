@@ -4,7 +4,7 @@
     <div class="col col-2">
 <cf_box>
         <div style="display:flex;flex-direction: column;height:100vh">
-            <button style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
+            <button onclick="window.location.href='/index.cfm?fuseaction=sale.hrz_pbs_sayfa1'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
             <hr>
             <button onclick="window.location.href='/index.cfm?fuseaction=sale.list_vessels'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>
             
