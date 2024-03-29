@@ -120,12 +120,12 @@
                 <div class="form-group" id="item-company_name">
                     <label>COMPANY</label>        
                         <div class="input-group">
-                            <input type="hidden" name="company_id" id="company_id" value="<cfoutput>#GEMI.CUSTOMER_COMPANY_ID#</cfoutput>">	
-                            <input name="company_name" type="text" id="company_name" value="<cfoutput>#GEMI.CUSTOMER_FULLNAME#</cfoutput>" onfocus="AutoComplete_Create('company_name','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1\'','COMPANY_ID,PARTNER_CODE,MEMBER_TYPE,MEMBER_PARTNER_NAME,WORK_ADDRESS_DETAIL,COM_CITY','company_id,member_id,member_type,member_name,company_address,service_city_id,county_id','','3','150',true,'fill_saleszone()');" autocomplete="off">                
-                            <input type="hidden" name="member_id" id="member_id" value="<cfoutput>#GEMI.CUSTOMER_PARTNER_ID#</cfoutput>">
-                            <input type="hidden" name="member_type" id="member_type" value="1">
-                            <input type="text" name="member_name" id="member_name" value="<cfoutput>#GEMI.CUSTOMER_NAME# #GEMI.CUSTOMER_SURNAME#</cfoutput>">
-                            <span class="input-group-addon icon-ellipsis btnPointer" onclick="windowopen('index.cfm?fuseaction=objects.popup_list_all_pars&is_period_kontrol=0&field_partner=ShipForm.member_id&field_consumer=ShipForm.member_id&field_name=ShipForm.member_name&field_comp_id=ShipForm.company_id&field_comp_name=ShipForm.company_name&field_type=ShipForm.member_type&field_city=ShipForm.service_city_id&field_address=ShipForm.company_address&select_list=8,7&call_function=fill_saleszone()','list','popup_list_all_pars');" title="Başvuru Yapan Seç "></span>
+                            <input type="hidden" name="company_id" id="company_id"  readonly value="<cfoutput>#GEMI.CUSTOMER_COMPANY_ID#</cfoutput>">	
+                            <input name="company_name" type="text" id="company_name" readonly value="<cfoutput>#GEMI.CUSTOMER_FULLNAME#</cfoutput>" onfocus="AutoComplete_Create('company_name','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1\'','COMPANY_ID,PARTNER_CODE,MEMBER_TYPE,MEMBER_PARTNER_NAME,WORK_ADDRESS_DETAIL,COM_CITY','company_id,member_id,member_type,member_name,company_address,service_city_id,county_id','','3','150',true,'fill_saleszone()');" autocomplete="off">                
+                            <input type="hidden" name="member_id" id="member_id" readonly value="<cfoutput>#GEMI.CUSTOMER_PARTNER_ID#</cfoutput>">
+                            <input type="hidden" name="member_type" id="member_type" readonly value="1">
+                            <input type="text" name="member_name" id="member_name" readonly value="<cfoutput>#GEMI.CUSTOMER_NAME# #GEMI.CUSTOMER_SURNAME#</cfoutput>">
+                          
                         </div>        
                 </div>
                 <div class="form-group" id="item-company_address">

@@ -30,6 +30,7 @@
             <td>
                 <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=sales.emptypopup_update_vessel&ShipId=#it.SHIP_ID#')"><span class="icn-md fa fa-edit"></span></a>
                 <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=sales.emptypopup_detail_vessel&ShipId=#it.SHIP_ID#')"><span class="icn-md fa fa-search"></span></a>
+                
             </td>
         </tr>
     </cfloop>

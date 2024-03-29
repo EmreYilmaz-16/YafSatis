@@ -143,6 +143,7 @@
 
 </cfoutput>
 
+<a onclick="openBoxDraggable('index.cfm?fuseaction=sale.emptypopup_change_vessel_customer&ShipId=<cfoutput>#attributes.ShipId#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><span class="icn-md icon-exchange"></span>Transfer Ship</a>
 </cf_box>
 <!----
       item.SHIP_ID=SHIP_ID;
