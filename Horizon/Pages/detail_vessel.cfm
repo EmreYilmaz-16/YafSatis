@@ -73,6 +73,12 @@
                         <b style="width:100%">Ship Mail</b>
                         #GEMI.CUSTOMER_MAIL# 
                     </td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="3" style="heigtht:60px">
+
+                    </td>
                 </tr>
             </cf_big_list>
         </td>
@@ -96,6 +102,11 @@
                     <td>
                         <b style="width:100%">Ship Mail</b>
                         #GEMI.CARE_OF_MAIL# 
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="heigtht:60px">
+
                     </td>
                 </tr>
             </cf_big_list>
