@@ -67,13 +67,14 @@
                 </label>
             </cfloop>
         </div>
+        <button type="button" class="ui-wrk-btn ui-wrk-btn-success " onclick="MoveShip()">Transfer Et</button>
     </cfform>
         </div>
     
 </cfoutput>
 
 <script>
-    function getFormData() {
+    function getFormMoveShipData() {
         var SHIP_ID=document.getElementById("SHIP_ID").value;      
         var CUSTOMER_NICKNAME=document.getElementById("company_name").value;
         var CUSTOMER_ID=document.getElementById("company_id").value;
@@ -89,13 +90,13 @@
         
         
     }
-    function AddShip(EmpId,modal){
+    function MoveShip(EmpId,modal){
         
-        var FormData=getFormData() 
+        var FormData=getFormMoveShipData() 
         FormData.RECORD_EMP=EmpId;
         if(FormData != false){
         $.ajax({
-            url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=AddShip",
+            url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=MoveShip",
             data:{
                 FData:JSON.stringify(FormData)
             },success:function(){
