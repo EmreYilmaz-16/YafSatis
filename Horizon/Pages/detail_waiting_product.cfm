@@ -7,6 +7,12 @@ WHERE VP_ID=#attributes.VP_ID#
 </cfquery>
 <cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
 <cfoutput>
+    <div>
+        #getProducts.PART_NUMBER#
+    </div>
+    <div>
+        #getProducts.PRODUCT_NAME#
+    </div>
 <cfloop array="#DFS.Filters#" item="it">
     <button>
         <b>#it.PNAME#</b>
@@ -40,7 +46,10 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
         </th>
         <th>
             Ürün
-        </th>    
+        </th>   
+        <th>
+            Equipment
+        </th> 
         <th>
 
         </th>
@@ -54,7 +63,10 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
             </td>
             <td>
                 #PRODUCT_NAME#
-            </td>           
+            </td> 
+            <td>
+                #PRODUCT_CAT#
+            </td>          
             <td>
                 <cfset DF=deserializeJSON(JSN_V)>
                 
