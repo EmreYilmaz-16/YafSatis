@@ -445,7 +445,13 @@ WHERE 1 = 1
         <CFSET 'attributes.IS_VIRTUAL#i#'=it.IS_VIRTUAL>
         <cfset 'attributes.row_unique_relation_id#i#'=it.UNIQUE_RELATION_ID>
         <cfif it.IS_VIRTUAL eq 1>
-            <cfquery name="INS" datasource="#dsn#" result="RES">
+           <cfquery name="ihbgs" datasource="#dsn3#">
+                SELECT * FROM VIRTUAL_PRODUCTS_PBS WHERE OFFER_ROW_REL='#it.UNIQUE_RELATION_ID#'
+           </cfquery>
+           <CFIF ihbgs.recordCount neq 0>
+
+           <cfelse>
+           <cfquery name="INS" datasource="#dsn#" result="RES">
                 INSERT INTO CatalystQA_1.VIRTUAL_PRODUCTS_PBS (
                     PRODUCT_NAME,PRODUCT_UNIT,OFFER_ROW_REL,JSON_STRINGIM,PART_NUMBER
                 )
@@ -455,6 +461,7 @@ WHERE 1 = 1
             </cfquery>
               <cfset "attributes.product_id#i#"=RES.GENERATEDKEY>
               <cfset "attributes.stock_id#i#"=RES.GENERATEDKEY>
+            </CFIF>
         </cfif>
     </cfloop>
     <cfdump var="#attributes#">
