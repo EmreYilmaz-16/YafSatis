@@ -98,7 +98,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
     </cfoutput>
     <tr>
         <td colspan="5" style="text-align:right">
-            <button type="button">Bu Varyasonlar İle Yeni Ürün Oluştur ve Kullan</button>
+            <button onclick="UseThis(3,'<cfoutput>#getProducts.OFFER_ROW_REL#</cfoutput>',0,0)" type="button">Bu Varyasonlar İle Yeni Ürün Oluştur ve Kullan</button>
         </td>
     </tr>
 </tbody>
