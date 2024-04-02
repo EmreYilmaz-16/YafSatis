@@ -13,7 +13,7 @@ WHERE VP_ID=#attributes.VP_ID#
     <div style="font-size: 20pt;color: green;font-weight: bold;margin-bottom: 5px;text-align: center;">
         #getProducts.PRODUCT_NAME#
     </div>
-    <div style="text-align: center;display: flex;justify-content: center">
+    <div style="text-align: center;display: flex;justify-content: center;margin-bottom:10px">
 
     
 <cfloop array="#DFS.Filters#" item="it">
