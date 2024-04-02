@@ -25,6 +25,9 @@ WHERE POR.IS_VIRTUAL =1
 <tbody>
     <cfoutput query="getProducts">
         <tr>
+            <td>SALES.EMPTYPOPUP_DETAİL_VİRTUAL_PRODUCT
+                <a href="javascript://" onclick='openBoxDraggable("index.cfm?fuseaction=sales.emptypopup_detail_virtual_product&VP_ID=#VP_ID#")' ><span class="icn-md icon-search"></span></a>
+            </td>
             <td>
                 #PART_NUMBER#
             </td>
