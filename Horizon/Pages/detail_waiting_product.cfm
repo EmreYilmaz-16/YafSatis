@@ -6,6 +6,7 @@ WHERE VP_ID=#attributes.VP_ID#
 
 </cfquery>
 <cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
+<cfoutput>
 <cfloop array="#DFS.Filters#" item="it">
     <button>
         <b>#it.PNAME#</b>
@@ -13,6 +14,8 @@ WHERE VP_ID=#attributes.VP_ID#
         #it.PRODUCT_CAT#
     </button>
 </cfloop>
+</cfoutput>
+
 <cfquery name="SameCode" datasource="#dsn3#">
     SELECT  S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,
 (
@@ -28,7 +31,7 @@ LEFT JOIN CatalystQA_1.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
 
 WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
 </cfquery>
-
+<cf_box title="Benzer Ürünler">
 <cf_big_list>
     <thead>
     <tr>
@@ -80,6 +83,6 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
     </tr>
 </tbody>
 </cf_big_list>
-
+</cf_box>
 
 </cf_box>
