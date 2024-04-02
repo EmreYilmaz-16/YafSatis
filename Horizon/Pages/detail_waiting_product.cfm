@@ -7,12 +7,15 @@ WHERE VP_ID=#attributes.VP_ID#
 </cfquery>
 <cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
 <cfoutput>
-    <div>
+    <div style="font-size: 20pt;font-weight: bold;color: orange;border-bottom: solid 1px black;text-align: center;">
         #getProducts.PART_NUMBER#
     </div>
-    <div>
+    <div style="font-size: 20pt;color: green;font-weight: bold;margin-bottom: 5px;text-align: center;">
         #getProducts.PRODUCT_NAME#
     </div>
+    <div style="text-align: center;display: flex;justify-content: center">
+
+    
 <cfloop array="#DFS.Filters#" item="it">
     <button>
         <b>#it.PNAME#</b>
@@ -20,6 +23,7 @@ WHERE VP_ID=#attributes.VP_ID#
         #it.PRODUCT_CAT#
     </button>
 </cfloop>
+</div>
 </cfoutput>
 
 <cfquery name="SameCode" datasource="#dsn3#">
