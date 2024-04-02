@@ -38,7 +38,7 @@ WHERE POR.IS_VIRTUAL =1
                 <cfset DF=deserializeJSON(JSON_STRINGIM)>
                 <cfloop array="#DF.Filters#" item="it">
                     <button>
-                        #it.PNAME#
+                        <b>#it.PNAME#</b>
                         <br>
                         #it.PRODUCT_CAT#
                     </button>
