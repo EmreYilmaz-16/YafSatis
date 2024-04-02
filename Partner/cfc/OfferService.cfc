@@ -434,6 +434,7 @@ WHERE 1 = 1
         <CFSET 'attributes.PROP_LIST#i#'=it.PROP_LIST>
         <CFSET 'attributes.JSON_STRINGIM#i#'=serializeJSON(it.JSON_STRINGIM)>
     </cfloop>
+    <cfdump var="#attributes#">
     <cftry>
     <cfinclude template="../Query/Add_Offer_Rows.cfm">
     <cfcatch>
