@@ -4,13 +4,25 @@ LEFT JOIN CatalystQA_1.PBS_OFFER_ROW AS POR ON POR.UNIQUE_RELATION_ID=VPS.OFFER_
 WHERE POR.IS_VIRTUAL =1
 
 </cfquery>
-
-<table>
+<cf_box title="Bekleyen Sanal Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
+<cf_big_list>
+    <thead>
     <tr>
-        <td>
+        <th>
+            Part No
+        </th>
+        <th>
+            Ürün
+        </th>
+        <th>
+            Birim
+        </th>
+        <th>
 
-        </td>
+        </th>
     </tr>
+</thead>
+<tbody>
     <cfoutput query="getProducts">
         <tr>
             <td>
@@ -23,8 +35,18 @@ WHERE POR.IS_VIRTUAL =1
                 #PRODUCT_UNIT#
             </td>
             <td>
-                #JSON_STRINGIM#
+                <cfset DF=deserializeJSON(JSON_STRINGIM)>
+                <cfloop array="#DF.Filters#" item="it">
+                    <button>
+                        #it.PNAME#
+                        <br>
+                        #it.PRODUCT_CAT#
+                    </button>
+                </cfloop>
+                
             </td>
         </tr>
     </cfoutput>
-</table>
+</tbody>
+</cf_big_list>
+</cf_box>
