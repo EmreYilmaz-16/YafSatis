@@ -423,12 +423,15 @@ WHERE 1 = 1
         <cfset "attributes.product_id#i#"=it.PRODUCT_ID>
         <cfset "attributes.stock_id#i#"=it.STOCK_ID>
         <cfset "attributes.amount#i#"=it.AMOUNT>
+        <cfset UNITA="">
         <cfif it.STOCK_ID eq 0>
             <cfset "attributes.unit#i#"=it.PRODUCT_UNIT>
             <cfset "attributes.unit_id#i#"=0>
+            <cfset UNITA=it.PRODUCT_UNIT>
         <cfelse>
         <cfset "attributes.unit#i#"=GETU.MAIN_UNIT>
         <cfset "attributes.unit_id#i#"=GETU.PRODUCT_UNIT_ID>
+        <cfset UNITA=GETU.MAIN_UNIT>
     </cfif>
         <cfset "attributes.tax#i#"=it.TAX>
         <cfset "attributes.product_name#i#"=it.PRODUCT_NAME>
@@ -440,6 +443,17 @@ WHERE 1 = 1
         <CFSET 'attributes.PROP_LIST#i#'=it.PROP_LIST>
         <CFSET 'attributes.JSON_STRINGIM#i#'=serializeJSON(it.JSON_STRINGIM)>
         <CFSET 'attributes.IS_VIRTUAL#i#'=serializeJSON(it.IS_VIRTUAL)>
+        <cfset 'attributes.row_unique_relation_id#i#'=it.UNIQUE_RELATION_ID>
+        <cfif it.IS_VIRTUAL eq 1>
+            <cfquery name="INS" datasource="#dsn#">
+                INSERT INTO CatalystQA_1.VIRTUAL_PRODUCTS_PBS (
+    PRODUCT_NAME,PRODUCT_UNIT,OFFER_ROW_REL,JSON_STRINGIM
+)
+VALUES (
+    '#it.PRODUCT_NAME#','#UNITA#','#it.UNIQUE_RELATION_ID#','#it.JSON_STRINGIM#'
+)
+            </cfquery>
+        </cfif>
     </cfloop>
     <cfdump var="#attributes#">
     <cftry>

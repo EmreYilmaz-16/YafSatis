@@ -288,7 +288,8 @@ function addRowCrs(
   FIRST_REMARK = "",
   DELIVERED_ITEMS = 0,
   WEIGHT = 0,
-  IS_VIRTUAL = 0
+  IS_VIRTUAL = 0,
+  UNIQUE_RELATION_ID=""
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -303,6 +304,15 @@ function addRowCrs(
   input2.name = "IS_VIRTUAL";
   input2.id = "IS_VIRTUAL_" + RowCount;
 
+  var input3 = document.createElement("input");
+  input3.type = "hidden";
+  input3.name = "UNIQUE_RELATION_ID";
+  input3.id = "UNIQUE_RELATION_ID_" + RowCount;
+  if(UNIQUE_RELATION_ID.length>0){
+    input3.value=UNIQUE_RELATION_ID
+  }else{
+    input3.value=GenerateUniqueId();
+  }
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
   b1.setAttribute(
@@ -325,6 +335,7 @@ function addRowCrs(
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
   div.appendChild(input2);
+  div.appendChild(input3);
   div.appendChild(b1);
   div.appendChild(b2);
   rc2++;
@@ -1083,6 +1094,7 @@ function AlayiniHesapla() {
       var SALE_PRICE = DegeriGetir(SepetItem, "SALE_PRICE", 2, 1);
       var SALE_MONEY = DegeriGetir(SepetItem, "SALE_MONEY", 0);
       var SALE_DISCOUNT = DegeriGetir(SepetItem, "SALE_DISCOUNT", 2, 1);
+      var UNIQUE_RELATION_ID=DegeriGetir(SepetItem,"UNIQUE_RELATION_ID",0);
       var SALE_DISCOUNT_MONEY = DegeriGetir(
         SepetItem,
         "SALE_DISCOUNT_MONEY",
@@ -1131,6 +1143,7 @@ function AlayiniHesapla() {
         SALE_PRICE: SALE_PRICE,
         SALE_MONEY: SALE_MONEY,
         IS_VIRTUAL:IS_VIRTUAL,
+        UNIQUE_RELATION_ID:UNIQUE_RELATION_ID,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
         JSON_STRINGIM: JSON_STRINGIM,
@@ -1185,7 +1198,18 @@ function AlayiniHesapla() {
     OrderFooter.total_tax_wanted;
   OzetOlustur();
 }
-
+function GenerateUniqueId() {
+  var d = new Date();
+  var dy = d - 1;
+  var dd = d.toISOString().split("T")[0];
+  var ds = d.toISOString().split("T")[1];
+  var dd1 = dd.replaceAll("-", "");
+  var ds1 = ds.replaceAll(":", "");
+  ds1 = ds1.replaceAll(".", "");
+  console.log(ds1);
+  var RelId = "PBS" + generalParamsSatis.userData.user_id + "" + dd1 + "" + ds1;
+  return RelId;
+}
 function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
   // console.log(arguments)
   var DonusDegeri = $(Satir)
