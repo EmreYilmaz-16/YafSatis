@@ -25,7 +25,7 @@ WHERE VP_ID=#attributes.VP_ID#
 </cfloop>
 </div>
 <input type="hidden" name="FRMPRP" id="FRMPRP" value='#getProducts.JSON_STRINGIM#'>
-<input type="hidden" name="UNIQUE_RELATION_ID" id="UNIQUE_RELATION_ID" value='#getProducts.UNIQUE_RELATION_ID#'>
+<input type="hidden" name="UNIQUE_RELATION_ID" id="UNIQUE_RELATION_ID" value='#getProducts.OFFER_ROW_REL#'>
 </cfoutput>
 
 <cfquery name="SameCode" datasource="#dsn3#">
