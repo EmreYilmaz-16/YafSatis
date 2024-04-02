@@ -107,6 +107,8 @@ OUTER APPLY (
               <cfset Listem=listAppend(Listem,RELATED_VARIATION_ID)>
           </cfloop>
           <cfdump var="#Listem#">
+          <cfset Listem=listRemoveDuplicates(Listem)>
+          <cfdump var="#Listem#">
           <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
