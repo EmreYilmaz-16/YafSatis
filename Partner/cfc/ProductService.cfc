@@ -91,12 +91,17 @@ OUTER APPLY (
         <cfset Listem="">
           <cfset ReturnArr=arrayNew(1)>
           <cfloop query="getAll">
-            
+            <cfset LISTEX=RELATED_VARIATION_ID>
+            <cfset LISTEX=listRemoveDuplicates(LISTEX)>
+            <cfquery name="GETPRPT" datasource="#DSN#">
+                SELECT DISTINCT PRPT_ID FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL WHERE PROPERTY_DETAIL_ID IN (#LISTEX#)
+            </cfquery>
+
             <cfscript>
                   item={
                    PROPERTY_DETAIL=PROPERTY_DETAIL,
                      PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
-                     IS_SUB_PRPT=PRPT,
+                     IS_SUB_PRPT=valueList(GETPRPT.PRPT_ID),
                      PROPERTY=PROPERTY,
                      PROPERTY_ID=PROPERTY_ID,
                      RELATED_VARIATION_ID=RELATED_VARIATION_ID
