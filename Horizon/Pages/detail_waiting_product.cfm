@@ -108,7 +108,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 
 
 <script>
-    function UseThis(UnRelId,PID,SID) {
+    function UseThis(tip,UnRelId,PID,SID,jsmv="") {
         
     }
 </script>
