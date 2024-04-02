@@ -59,8 +59,17 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
                 </cfloop>
                 
             </td>
+            <td>
+                <button type="button">Bunu Kullan</button>
+                <button type="button">Varyasyonları Aktar ve Kullan</button>
+            </td>
         </tr>
     </cfoutput>
+    <tr>
+        <td colspan="4" style="text-align:right">
+            <button type="button">Bu Varyasonlar İle Yeni Ürün Oluştur ve Kullan</button>
+        </td>
+    </tr>
 </tbody>
 </cf_big_list>
 
