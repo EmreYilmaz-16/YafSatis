@@ -58,6 +58,7 @@
         <div style="display:flex;flex-direction: column;height:100vh">
             <button onclick="window.location.href='/index.cfm?fuseaction=sale.hrz_pbs_sayfa1'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
             <button onclick='openBoxDraggable("index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #cbbf22;border-radius: 10px;background: #fff02aa8;font-weight: bold;color: white;margin: 5px;">Add Inquiry </button>
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #cbbf22;border-radius: 10px;background: #fff02aa8;font-weight: bold;color: white;margin: 5px;">List Waiting Virtual Products </button>
             <hr>
             <button onclick="window.location.href='/index.cfm?fuseaction=sale.list_vessels'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>            
             <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_vessel")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #874444;border-radius: 10px;background: #ff828294;font-weight: bold;color: white;margin: 5px;">Add Vessel</button>
