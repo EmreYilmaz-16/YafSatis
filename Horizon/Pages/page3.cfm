@@ -105,7 +105,7 @@
     LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
     WHERE OFFER_ID=#attributes.OFFER_ID#
 </cfquery>
-
+<cfdump var="#GETrOWS#">
 <script>
    $(document).ready(function(){<cfoutput query="GETrOWS" group="PROP_LIST">
         var excalibur=#JSON_STRINGIM#
