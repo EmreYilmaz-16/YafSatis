@@ -447,11 +447,11 @@ WHERE 1 = 1
         <cfif it.IS_VIRTUAL eq 1>
             <cfquery name="INS" datasource="#dsn#">
                 INSERT INTO CatalystQA_1.VIRTUAL_PRODUCTS_PBS (
-    PRODUCT_NAME,PRODUCT_UNIT,OFFER_ROW_REL,JSON_STRINGIM,PART_NUMBER
-)
-VALUES (
-    '#it.PRODUCT_NAME#','#UNITA#','#it.UNIQUE_RELATION_ID#','#it.JSON_STRINGIM#','#it.PRODUCT_CODE_2#'
-)
+                    PRODUCT_NAME,PRODUCT_UNIT,OFFER_ROW_REL,JSON_STRINGIM,PART_NUMBER
+                )
+                VALUES (
+                    '#it.PRODUCT_NAME#','#UNITA#','#it.UNIQUE_RELATION_ID#','#it.JSON_STRINGIM#','#it.PRODUCT_CODE_2#'
+                )
             </cfquery>
         </cfif>
     </cfloop>
