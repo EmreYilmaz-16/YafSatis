@@ -46,7 +46,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
             </td>           
             <td>
                 <cfset DF=deserializeJSON(JSN_V)>
-                <cfdump var="#DF#">
+                
                 
                 <cfloop array="#DF#" item="it">
                     <cfif isDefined("it.PROPERTY_DETAIL")>
