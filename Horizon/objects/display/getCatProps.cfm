@@ -45,6 +45,9 @@
             pcat:pcat,
             prpt:prpt
         });
+        try {
+            
+        
         var SelEleman=$(el).select2('data')[0];
         console.log(SelEleman);
         var relVar=SelEleman.element.getAttribute('data-related_variation_id')
@@ -94,6 +97,9 @@
 
             }
         })
+    } catch {
+            
+        }
         return true;
     }
 </script>
