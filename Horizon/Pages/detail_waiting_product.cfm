@@ -25,6 +25,7 @@ WHERE VP_ID=#attributes.VP_ID#
 </cfloop>
 </div>
 <input type="hidden" name="FRMPRP" id="FRMPRP" value='#getProducts.JSON_STRINGIM#'>
+<input type="hidden" name="UNIQUE_RELATION_ID" id="UNIQUE_RELATION_ID" value='#getProducts.UNIQUE_RELATION_ID#'>
 </cfoutput>
 
 <cfquery name="SameCode" datasource="#dsn3#">
@@ -76,6 +77,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
                 #PRODUCT_CAT#
             </td>          
             <td>
+                <cftry>
                 <cfset DF=deserializeJSON(JSN_V)>
                 
                 
@@ -89,6 +91,10 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
                 </cfif>
                 </cfloop>
                 
+                <cfcatch>
+                        
+                </cfcatch>
+            </cftry>
             </td>
             <td>
                 <button onclick="UseThis(1,'#getProducts.OFFER_ROW_REL#',#PRODUCT_ID#,#STOCK_ID#)" type="button">Bunu Kullan</button>
@@ -108,8 +114,11 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 </cf_box>
 
 
-<script>
+<script>    
     function UseThis(tip,UnRelId,PID,SID,jsmv="") {
-        
-    }
+          var jstring=document.getElementById("FRMPRP").value  
+          console.log(jstring)  
+          var JsonObject=JSON.parse(jstring)
+          console.log(JsonObject)
+        }
 </script>

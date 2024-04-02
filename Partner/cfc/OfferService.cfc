@@ -481,6 +481,10 @@ WHERE 1 = 1
         UPDATE PBS_OFFER SET OFFER_STAGE=#arguments.Stage# WHERE OFFER_ID=#arguments.OfferId#
     </cfquery>
 </cffunction> 
+<cffunction name="UseThis" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="FData">
+    <cfset FormData=deserializeJSON(arguments.FData)>
+</cffunction>
 
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
