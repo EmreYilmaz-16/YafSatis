@@ -8,6 +8,7 @@ WHERE POR.IS_VIRTUAL =1
 <cf_big_list>
     <thead>
     <tr>
+        <th></th>
         <th>
             Part No
         </th>
@@ -20,12 +21,13 @@ WHERE POR.IS_VIRTUAL =1
         <th>
 
         </th>
+        
     </tr>
 </thead>
 <tbody>
     <cfoutput query="getProducts">
         <tr>
-            <td>SALES.EMPTYPOPUP_DETAİL_VİRTUAL_PRODUCT
+            <td>
                 <a href="javascript://" onclick='openBoxDraggable("index.cfm?fuseaction=sales.emptypopup_detail_virtual_product&VP_ID=#VP_ID#")' ><span class="icn-md icon-search"></span></a>
             </td>
             <td>
