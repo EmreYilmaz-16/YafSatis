@@ -303,7 +303,7 @@ function addRowCrs(
   input2.type = "hidden";
   input2.name = "IS_VIRTUAL";
   input2.id = "IS_VIRTUAL_" + RowCount;
-
+  input2.value=IS_VIRTUAL;
   var input3 = document.createElement("input");
   input3.type = "hidden";
   input3.name = "UNIQUE_RELATION_ID";
