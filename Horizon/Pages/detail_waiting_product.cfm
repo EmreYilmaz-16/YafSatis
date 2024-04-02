@@ -24,7 +24,7 @@ WHERE VP_ID=#attributes.VP_ID#
     </button>
 </cfloop>
 </div>
-<input type="hidden" name="FRMPRP" id="FRMPRP" value="#getProducts.JSON_STRINGIM#">
+<input type="hidden" name="FRMPRP" id="FRMPRP" value='#getProducts.JSON_STRINGIM#'>
 </cfoutput>
 
 <cfquery name="SameCode" datasource="#dsn3#">
