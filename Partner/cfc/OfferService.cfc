@@ -442,7 +442,7 @@ WHERE 1 = 1
         <CFSET 'attributes.ROW_NUMBER_PBS#i#'=it.SEPET_SIRA>
         <CFSET 'attributes.PROP_LIST#i#'=it.PROP_LIST>
         <CFSET 'attributes.JSON_STRINGIM#i#'=serializeJSON(it.JSON_STRINGIM)>
-        <CFSET 'attributes.IS_VIRTUAL#i#'=serializeJSON(it.IS_VIRTUAL)>
+        <CFSET 'attributes.IS_VIRTUAL#i#'=it.IS_VIRTUAL>
         <cfset 'attributes.row_unique_relation_id#i#'=it.UNIQUE_RELATION_ID>
         <cfif it.IS_VIRTUAL eq 1>
             <cfquery name="INS" datasource="#dsn#">
@@ -450,7 +450,7 @@ WHERE 1 = 1
                     PRODUCT_NAME,PRODUCT_UNIT,OFFER_ROW_REL,JSON_STRINGIM,PART_NUMBER
                 )
                 VALUES (
-                    '#it.PRODUCT_NAME#','#UNITA#','#it.UNIQUE_RELATION_ID#','#it.JSON_STRINGIM#','#it.PRODUCT_CODE_2#'
+                    '#it.PRODUCT_NAME#','#UNITA#','#it.UNIQUE_RELATION_ID#','#serializeJSON(it.JSON_STRINGIM)#','#it.PRODUCT_CODE_2#'
                 )
             </cfquery>
         </cfif>
