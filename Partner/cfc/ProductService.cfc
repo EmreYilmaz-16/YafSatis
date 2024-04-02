@@ -99,7 +99,7 @@ OUTER APPLY (
         /*AND PPD.RELATED_VARIATION_ID LIKE '%#arguments.RELATED_VAR_ID#%'*/ </cfif>
         </cfquery>
         
-        <cfdump var="#getAll#">
+        
         <cfset Listem="">
           <cfset ReturnArr=arrayNew(1)>
           <cfloop query="getAll">
