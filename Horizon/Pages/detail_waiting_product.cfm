@@ -1,10 +1,18 @@
+<cf_box title="Bekleyen Sanal Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <cfquery name="getProducts" datasource="#dsn3#">
     SELECT VPS.*,POR.IS_VIRTUAL FROM CatalystQA_1.VIRTUAL_PRODUCTS_PBS AS VPS
 LEFT JOIN CatalystQA_1.PBS_OFFER_ROW AS POR ON POR.UNIQUE_RELATION_ID=VPS.OFFER_ROW_REL
 WHERE VP_ID=#attributes.VP_ID#
 
 </cfquery>
-
+<cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
+<cfloop array="#DFS.Filters#" item="it">
+    <button>
+        <b>#it.PNAME#</b>
+        <br>
+        #it.PRODUCT_CAT#
+    </button>
+</cfloop>
 <cfquery name="SameCode" datasource="#dsn3#">
     SELECT  S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,
 (
@@ -74,3 +82,4 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 </cf_big_list>
 
 
+</cf_box>
