@@ -99,7 +99,7 @@ OUTER APPLY (
                      IS_SUB_PRPT=PRPT,
                      PROPERTY=PROPERTY,
                      PROPERTY_ID=PROPERTY_ID,
-                     RELATED_VARIATION_ID=RELATED_VARIATION_ID,
+                     RELATED_VARIATION_ID=RELATED_VARIATION_ID
 
                   };
                   arrayAppend(ReturnArr,item);
