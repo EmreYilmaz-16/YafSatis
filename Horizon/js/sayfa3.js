@@ -689,6 +689,13 @@ function getProduct(el, rc) {
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
+        var SF=wrk_safe_query("getAllUnits","dsn")
+        for(let i=0;i<SF.recordcount;i++){
+          var Opt=document.createElement("option");
+          Opt.value=SF.UNIT[i];
+          Opt.innerText=SF.UNIT[i];
+          document.getElementById("PRODUCT_UNIT_" + rc).appendChild(Opt);
+        }
       }
     },
   });
