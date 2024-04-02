@@ -91,7 +91,7 @@ OUTER APPLY (
         <cfset Listem="">
           <cfset ReturnArr=arrayNew(1)>
           <cfloop query="getAll">
-            <cfset Listem=listAppend(Listem,RELATED_VARIATION_ID)>
+            
             <cfscript>
                   item={
                    PROPERTY_DETAIL=PROPERTY_DETAIL,
@@ -99,14 +99,14 @@ OUTER APPLY (
                      IS_SUB_PRPT=PRPT,
                      PROPERTY=PROPERTY,
                      PROPERTY_ID=PROPERTY_ID,
-                     RELATED_VARIATION_ID=RELATED_VARIATION_ID
+                     RELATED_VARIATION_ID=RELATED_VARIATION_ID,
 
                   };
                   arrayAppend(ReturnArr,item);
               </cfscript>
-            
+              <cfset Listem=listAppend(Listem,RELATED_VARIATION_ID)>
           </cfloop>
-          
+          <cfdump var="#Listem#">
           <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
