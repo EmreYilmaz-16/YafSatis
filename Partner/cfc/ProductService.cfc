@@ -87,7 +87,7 @@ OUTER APPLY (
         AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > AND PPD.RELATED_VARIATION_ID LIKE '%#arguments.RELATED_VAR_ID#%' </cfif>
         </cfquery>
         
-        <cfdump var="#getAll#">
+        
         <cfset Listem="">
           <cfset ReturnArr=arrayNew(1)>
           <cfloop query="getAll">
@@ -115,9 +115,9 @@ OUTER APPLY (
               </cfscript>
               <cfset Listem=listAppend(Listem,RELATED_VARIATION_ID)>
           </cfloop>
-          <cfdump var="#Listem#">
+          
           <cfset Listem=listRemoveDuplicates(Listem)>
-          <cfdump var="#Listem#">
+          
           <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
