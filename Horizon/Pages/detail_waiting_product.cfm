@@ -57,6 +57,9 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
         <th>
 
         </th>
+        <th>
+
+        </th>
     </tr>
 </thead>
 <tbody>
@@ -93,7 +96,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
         </tr>
     </cfoutput>
     <tr>
-        <td colspan="4" style="text-align:right">
+        <td colspan="5" style="text-align:right">
             <button type="button">Bu Varyasonlar İle Yeni Ürün Oluştur ve Kullan</button>
         </td>
     </tr>
