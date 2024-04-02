@@ -44,7 +44,12 @@
             },
         </cfoutput>
     ]
-    
+    var generalParamsSatis={
+        userData{
+            user_id=<cfoutput>#session.ep.user_id#</cfoutput>
+        }
+    }
+
 </script>
 
 <style>
