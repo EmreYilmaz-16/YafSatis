@@ -687,6 +687,8 @@ function getProduct(el, rc) {
       } else {
         el.setAttribute("style", "color:red;font-weight:bold;text-align:left;background:black");
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
+        document.getElementById("IS_PRODUCT_ID_" + rc).value = 0;
+        document.getElementById("IS_STOCK_ID_" + rc).value = 0;
       }
     },
   });
