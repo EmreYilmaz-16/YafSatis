@@ -40,6 +40,11 @@
         $('.propss').select2();
     })
     function iliskiliDataOlustur(el,pcat,prpt){
+        console.log(el);
+        console.table({
+            pcat:pcat,
+            prpt:prpt
+        });
         var SelEleman=$(el).select2('data')[0];
         console.log(SelEleman);
         var relVar=SelEleman.element.getAttribute('data-related_variation_id')
