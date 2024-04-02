@@ -91,7 +91,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
             </td>
             <td>
                 <button onclick="UseThis(1,'#getProducts.OFFER_ROW_REL#',#PRODUCT_ID#,#STOCK_ID#,'')" type="button">Bunu Kullan</button>
-                <button onclick="UseThis(2,'#getProducts.OFFER_ROW_REL#',#PRODUCT_ID#,#STOCK_ID#,'#getProducts.JSON_STRINGIM#')"type="button">Varyasyonları Aktar ve Kullan</button>
+                <button onclick="UseThis(2,'#getProducts.OFFER_ROW_REL#',#PRODUCT_ID#,#STOCK_ID#,#getProducts.JSON_STRINGIM#)"type="button">Varyasyonları Aktar ve Kullan</button>
             </td>
         </tr>
     </cfoutput>
