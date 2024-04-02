@@ -1068,6 +1068,7 @@ function AlayiniHesapla() {
       SEPET_SIRA++;
       // console.log(SepetItem)
       var PRODUCT_ID = DegeriGetir(SepetItem, "PRODUCT_ID", 1);
+      var IS_VIRTUAL = DegeriGetir(SepetItem, "IS_VIRTUAL", 1);
       var PRODUCT_NAME = DegeriGetir(SepetItem, "PRODUCT_NAME", 0);
       var PRODUCT_CODE_2 = DegeriGetir(SepetItem, "PRODUCT_CODE_2", 0);
 
@@ -1129,6 +1130,7 @@ function AlayiniHesapla() {
         SALE_PRICE: SALE_PRICE,
         SALE_PRICE: SALE_PRICE,
         SALE_MONEY: SALE_MONEY,
+        IS_VIRTUAL:IS_VIRTUAL,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
         JSON_STRINGIM: JSON_STRINGIM,
