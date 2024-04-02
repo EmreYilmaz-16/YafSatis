@@ -10,6 +10,7 @@
 <cfloop array="#CatProperties#" item="it">
     <cfset CatPropertieDetailsJson=ProductService.getPropertyDetailsWithCatId(PROPERTY_ID=it.PROPERTY_ID,PRODUCT_CATID=attributes.PRODUCT_CATID)>
     <cfset CatPropertieDetails=deserializeJSON(CatPropertieDetailsJson)>
+    <cfdump var="#CatPropertieDetails#">
     <cfset RElprp="">
     <cfloop array="#CatPropertieDetails#" item="itx">
         <cfset RElprp="#RElprp#,#itx.IS_SUB_PRPT#">
