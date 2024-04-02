@@ -198,6 +198,7 @@ OUTER APPLY (
         <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
         <cfset P.STOCK_ID=getProd.STOCK_ID>
         <cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
+        <cfset P.IS_VIRTUAL=0>
         <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
         <CFSET P.TAX=getProd.TAX>
         <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>

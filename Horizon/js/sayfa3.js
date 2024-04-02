@@ -649,16 +649,13 @@ function getProduct(el, rc) {
               "')"
           );
         } else {
-          if(Obje.IS_VIRTUAL ==0){
+          
           el.setAttribute(
             "style",
             "color:green;font-weight:bold;text-align:left;"
-          );}else{
-            el.setAttribute(
-              "style",
-              "color:orange;font-weight:bold;text-align:left;background:black"
-            );
-          }
+          );
+            
+          
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
 
@@ -688,7 +685,8 @@ function getProduct(el, rc) {
         AlayiniHesapla();
         document.getElementById("WEIGHT_" + rc).value = commaSplit(0);
       } else {
-        el.setAttribute("style", "color:red;font-weight:bold;text-align:left;");
+        el.setAttribute("style", "color:red;font-weight:bold;text-align:left;background:black");
+        document.getElementById("IS_VIRTUAL_" + rc).value = 1;
       }
     },
   });
