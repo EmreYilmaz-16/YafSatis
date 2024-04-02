@@ -287,7 +287,8 @@ function addRowCrs(
   TOTAL_PRICE = 0,
   FIRST_REMARK = "",
   DELIVERED_ITEMS = 0,
-  WEIGHT = 0
+  WEIGHT = 0,
+  IS_VIRTUAL = 0
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -297,6 +298,11 @@ function addRowCrs(
   input.name = "CBX";
   input.id = "CBX_" + RowCount;
   input.setAttribute("class", "SatirSecCbx");
+  var input2 = document.createElement("input");
+  input2.type = "hidden";
+  input2.name = "IS_VIRTUAL";
+  input2.id = "IS_VIRTUAL_" + RowCount;
+
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
   b1.setAttribute(
@@ -318,6 +324,7 @@ function addRowCrs(
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
+  div.appendChild(input2);
   div.appendChild(b1);
   div.appendChild(b2);
   rc2++;
@@ -642,14 +649,21 @@ function getProduct(el, rc) {
               "')"
           );
         } else {
+          if(Obje.IS_VIRTUAL ==0){
           el.setAttribute(
             "style",
             "color:green;font-weight:bold;text-align:left;"
-          );
+          );}else{
+            el.setAttribute(
+              "style",
+              "color:orange;font-weight:bold;text-align:left;background:black"
+            );
+          }
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
 
         document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
+        document.getElementById("IS_VIRTUAL_" + rc).value = Obje.IS_VIRTUAL;
         document.getElementById("STOCK_ID_" + rc).value = Obje.STOCK_ID;
         document.getElementById("TAX_" + rc).value = Obje.TAX;
         document.getElementById("QUANTITY_" + rc).value = commaSplit(1);
