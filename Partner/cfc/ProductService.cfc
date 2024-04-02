@@ -62,6 +62,11 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfargument name="PRODUCT_CATID">
         <cfargument name="RELATED_VAR_ID" default="">
         <cfargument name="RELATED_PROP_ID" default="">
+        <CFIF LEN(arguments.RELATED_VAR_ID)>
+            <cfquery name="GETrELPRPR" datasource="#DSN#">
+                SELECT RELATED_VARIATION_ID FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL WHERE PROPERTY_DETAIL_ID=#arguments.RELATED_VAR_ID#
+            </cfquery>
+        </CFIF>
         <cfquery name="getAll" datasource="#dsn#">
    SELECT DISTINCT PPD.PROPERTY_DETAIL
 	,PPD.PROPERTY_DETAIL_ID
@@ -84,7 +89,14 @@ OUTER APPLY (
 		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
 		) */--AND PPD.PRPT_ID = 4
    <cfif len(arguments.RELATED_PROP_ID)> 
-        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > AND PPD.RELATED_VARIATION_ID LIKE '%#arguments.RELATED_VAR_ID#%' </cfif>
+        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > 
+            AND  PPD.PROPERTY_DETAIL_ID IN(
+                <cfloop list="#GETrELPRPR.RELATED_VARIATION_ID#" item="it">
+                    #it#,
+                </cfloop>
+                0
+            )
+        /*AND PPD.RELATED_VARIATION_ID LIKE '%#arguments.RELATED_VAR_ID#%'*/ </cfif>
         </cfquery>
         
         <cfdump var="#getAll#">
