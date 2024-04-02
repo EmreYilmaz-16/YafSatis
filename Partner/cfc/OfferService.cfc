@@ -414,7 +414,8 @@ WHERE 1 = 1
     <cfset attributes.ROWS_=arrayLen(FormData.ROWS)>
     
     <cfloop array="#FormData.ROWS#" item="it" index="i">
-        <cfquery name="GETU" datasource="#dsn#">
+       
+       <cfquery name="GETU" datasource="#dsn#">
             SELECT * FROM CatalystQA.CatalystQA_product.PRODUCT_UNIT WHERE PRODUCT_ID=#it.PRODUCT_ID# AND IS_MAIN=1
         </cfquery>
         <cfset "attributes.deliver_date#i#"=dateFormat(now(),"dd/mm/yyyy")>
@@ -422,8 +423,13 @@ WHERE 1 = 1
         <cfset "attributes.product_id#i#"=it.PRODUCT_ID>
         <cfset "attributes.stock_id#i#"=it.STOCK_ID>
         <cfset "attributes.amount#i#"=it.AMOUNT>
+        <cfif it.STOCK_ID eq 0>
+            <cfset "attributes.unit#i#"=it.PRODUCT_UNIT>
+            <cfset "attributes.unit_id#i#"=0>
+        <cfelse>
         <cfset "attributes.unit#i#"=GETU.MAIN_UNIT>
         <cfset "attributes.unit_id#i#"=GETU.PRODUCT_UNIT_ID>
+    </cfif>
         <cfset "attributes.tax#i#"=it.TAX>
         <cfset "attributes.product_name#i#"=it.PRODUCT_NAME>
         <cfset "attributes.other_money_#i#"=it.OTHER_MONEY>
