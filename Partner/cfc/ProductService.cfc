@@ -119,9 +119,9 @@ OUTER APPLY (
 		SELECT PRODUCT_ID
 		FROM CatalystQA_product.PRODUCT
 		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
-		) */--AND PPD.PRPT_ID = 4
+		) --AND PPD.PRPT_ID = 4
    <cfif len(arguments.RELATED_PROP_ID)> 
-        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
+        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>*/
             </cfquery>
         </cfif>
 
