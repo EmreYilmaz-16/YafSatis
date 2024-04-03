@@ -98,7 +98,33 @@ OUTER APPLY (
             )
         /*AND PPD.RELATED_VARIATION_ID LIKE '%#arguments.RELATED_VAR_ID#%'*/ </cfif>
         </cfquery>
-        
+        <cfif getAll.recordCount eq 0>
+            <cfquery name="getAll" datasource="#dsn#">
+                 SELECT DISTINCT PPD.PROPERTY_DETAIL
+	,PPD.PROPERTY_DETAIL_ID
+	,T.PRPT
+	,PP.PROPERTY
+	,PP.PROPERTY_ID
+    ,RELATED_VARIATION_ID
+FROM  CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
+	
+INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP
+	ON PP.PROPERTY_ID = PPD.PRPT_ID
+OUTER APPLY (
+	SELECT DISTINCT (PRPT_ID) AS PRPT
+	FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2
+	WHERE PP2.RELATED_VARIATION_ID LIKE '%'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID)+'%'
+	) AS T WHERE 1=1
+/*WHERE PRODUCT_ID IN (
+		SELECT PRODUCT_ID
+		FROM CatalystQA_product.PRODUCT
+		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
+		) */--AND PPD.PRPT_ID = 4
+   <cfif len(arguments.RELATED_PROP_ID)> 
+        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
+            </cfquery>
+        </cfif>
+
         
         <cfset Listem="">
           <cfset ReturnArr=arrayNew(1)>

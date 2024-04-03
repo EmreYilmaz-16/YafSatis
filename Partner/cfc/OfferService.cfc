@@ -484,6 +484,43 @@ WHERE 1 = 1
 <cffunction name="UseThis" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="FData">
     <cfset FormData=deserializeJSON(arguments.FData)>
+
+    <cfif FormData.Tip eq 1>
+        <!---
+            Teklifi Güncellee    
+        ---->
+        <cfquery name="Up" datasource="#dsn3#">
+            UPDATE PBS_OFFER_ROW SET IS_VIRTUAL=0,PRODUCT_ID=#FormData.PRODUCT_ID#,STOCK_ID=#FormData.STOCK_ID#
+            WHERE UNIQUE_RELATION_ID='#FormData.UNIQUE_RELATION_ID#'
+        </cfquery>
+    
+    <cfelseif FormData.Tip eq 2>
+        <cfloop array="#FormData.AddedProperties#" item="it">
+            <cfquery name="ishvpp" datasource="#dsn#">
+
+            </cfquery>
+            <cfif ishvpp.recordCount eq 0>
+<cfquery name="INS" datasource="#DSN#">
+ INSERT INTO CatalystQA_product.PRODUCT_DT_PROPERTIES (
+    PRODUCT_ID,PROPERTY_ID,VARIATION_ID,RECORD_EMP,RECORD_DATE,AMOUNT
+ )
+ values(
+    0,0,0,0,GETDATE(),0
+ )
+</cfquery>
+</cfif>
+        </cfloop>
+        <!---
+            Ürün Özelliklerini Aktar Teklifi Güncelle
+        ---->
+    <cfelseif FormData.Tip eq 3>
+        <!---
+            Yeni Ürün Oluştur Teklifi Güncelle
+        --->
+
+    </cfif>
+
+
 </cffunction>
 
 <cffunction name="wrk_eval" returntype="string" output="false">
