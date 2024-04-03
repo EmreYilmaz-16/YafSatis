@@ -22,7 +22,7 @@
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY# <cfif it.IS_AMOUNT EQ 1><span style="color:red;font-weight:bold">*</span></cfif></label>
            
             <select <cfif listlen(RElprp) gt 0>
-                onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#)"
+                onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#,'#it.PROPERTY#')"
             </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
                 
                 <option value="">Seç</option>
@@ -39,11 +39,12 @@
     $(document).ready(function(){
         $('.propss').select2();
     })
-    function iliskiliDataOlustur(el,pcat,prpt){
+    function iliskiliDataOlustur(el,pcat,prpt,pfrs){
         console.log(el);
         console.table({
             pcat:pcat,
-            prpt:prpt
+            prpt:prpt,
+            pfrs:pfrs
         });
         try {
             
@@ -79,6 +80,12 @@
 //                  }
 //                 }
                 $(e).html("");
+                var option=document.createElement("option");
+                option.value=""
+                    option.innerText="Seç"
+                    option.setAttribute("data-related_variation_id","")
+                    option.setAttribute("title",pfrs)
+                    e.appendChild(option);
                 $(e).val(null).trigger('change');
                 for (let index = 0; index < Obj.length; index++) {
                     const element = Obj[index];
