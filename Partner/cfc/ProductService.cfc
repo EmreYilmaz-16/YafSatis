@@ -89,7 +89,7 @@ OUTER APPLY (
 		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
 		) */--AND PPD.PRPT_ID = 4
    <cfif len(arguments.RELATED_PROP_ID)> 
-        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > 
+        AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > 
             AND  PPD.PROPERTY_DETAIL_ID IN(
                 <cfloop list="#GETrELPRPR.RELATED_VARIATION_ID#" item="it">
                     #it#,
@@ -121,7 +121,7 @@ OUTER APPLY (
 		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
 		) --AND PPD.PRPT_ID = 4*/
    <cfif len(arguments.RELATED_PROP_ID)> 
-        AND PPD.PRPT_ID IN (0#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
+        AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
             </cfquery>
         </cfif>
 
