@@ -246,7 +246,7 @@ OUTER APPLY (
                         WHERE PRODUCT_ID = P.PRODUCT_ID
                         FOR XML PATH('')
                         ) AS DTP,(
-                        SELECT  CONVERT(VARCHAR, PROPERTY_DETAIL) + '->'
+                        SELECT  '<button> <b>'+CONVERT(VARCHAR, PROPERTY) + '</b><br>'+PROPERTY_DETAIL+'</button>'
                         FROM CatalystQA_product.PRODUCT_DT_PROPERTIES
                         INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
                         INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
