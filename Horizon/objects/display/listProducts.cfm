@@ -188,7 +188,7 @@ Label.innerText=aProperty.PROPERTY
             td.innerText=aProduct.PRODUCT_NAME;
             tr.appendChild(td)
             var td=document.createElement("td");
-            td.innerHTML=aProduct.DTP;
+            $(td).html(aProduct.DTP);
             tr.appendChild(td)
             document.getElementById("Tb000").appendChild(tr)
         }
