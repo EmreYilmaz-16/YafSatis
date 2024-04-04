@@ -18,18 +18,15 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
 
 <cf_ajax_list>
     <cfquery name="getPrcPrp" datasource="#dsn1#">
-SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP 
-	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PCP.PROPERTY_ID
-	WHERE PRODUCT_CAT_ID=#listGetAt(attributes.prp_list,1)# ORDER BY LINE_VALUE
+ select PROPERTY,PROPERTY_DETAIL from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
+ LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
+ LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS P ON P.PROPERTY_ID=PPD.PRPT_ID
+  WHERE PRODUCT_ID=#PRODUCT_ID# AND PDP.VARIATION_ID IS NOT NULL
     </cfquery>
     <tr>
         <th>Part No</th>
         <th>Ürün</th>
-        <cfloop query="getPrcPrp">
-            <th>
-                <cfoutput>#PROPERTY#</cfoutput>
-            </th>
-        </cfloop>
+     
     </tr>
 <cfoutput query="getProd">
     <tr>
@@ -39,14 +36,14 @@ SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY A
         <TD>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#',#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
         </TD>
-        <cfloop query="getPrcPrp">
-            <cfquery name="getpv" datasource="#dsn1#">
-                	select PPD.PROPERTY_DETAIL from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP 
-	INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
-	where PRODUCT_ID=#getProd.PRODUCT_ID# AND VARIATION_ID IS NOT NULL AND PROPERTY_ID=#getPrcPrp.PROPERTY_ID#
-            </cfquery>
-            <td>#getpv.PROPERTY_DETAIL#</td>
-        </cfloop>
+        <td>
+            <cfloop query="getPrcPrp">
+                <button style="text-align:center">
+                    <b>#PROPERTY#</b><br>
+                    #PROPERTY_DETAIL#
+                </button>
+            </cfloop>
+        </td>
     </tr>
 </cfoutput>
 </cf_ajax_list>
