@@ -17,18 +17,19 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
 </cfquery>
 
 <cf_ajax_list>
-    <cfquery name="getPrcPrp" datasource="#dsn1#">
- select PROPERTY,PROPERTY_DETAIL from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
- LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
- LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS P ON P.PROPERTY_ID=PPD.PRPT_ID
-  WHERE PRODUCT_ID=#PRODUCT_ID# AND PDP.VARIATION_ID IS NOT NULL
-    </cfquery>
+
     <tr>
         <th>Part No</th>
         <th>Ürün</th>
      
     </tr>
 <cfoutput query="getProd">
+    <cfquery name="getPrcPrp" datasource="#dsn1#">
+        select PROPERTY,PROPERTY_DETAIL from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
+        LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
+        LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS P ON P.PROPERTY_ID=PPD.PRPT_ID
+         WHERE PRODUCT_ID=#PRODUCT_ID# AND PDP.VARIATION_ID IS NOT NULL
+           </cfquery>
     <tr>
         <TD>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
