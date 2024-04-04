@@ -188,7 +188,15 @@ Label.innerText=aProperty.PROPERTY
             td.innerText=aProduct.PRODUCT_NAME;
             tr.appendChild(td)
             var td=document.createElement("td");
-            $(td).html(aProduct.DTP);
+            //$(td).html(aProduct.DTP)
+            //console.log(OS2);
+            var OS2=JSON.parse(aProduct.DTP)
+            console.log(OS2)
+            var MSTR="";
+            for(let j=0;j<OS2.length;j++){
+                MSTR+="<button style='text-align:center'><b>"+OS2[j].PROPERTY+"</b><br>"+OS2[j].PROPERTY_DETAIL+"</button>";
+            }
+            $(td).html(MSTR)
             tr.appendChild(td)
             document.getElementById("Tb000").appendChild(tr)
         }
