@@ -195,9 +195,9 @@ Label.innerText=aProperty.PROPERTY
             var MSTR="";
             for(let j=0;j<OS2.length;j++){
               if(OS2[j].IS_AMOUNT){
-                MSTR+="<button style='text-align:center;color:red'><b>"+OS2[j].PROPERTY+"</b><br>"+OS2[j].PROPERTY_DETAIL+"</button>";
+                MSTR+="<button style='text-align:center;'><b style='color:orange'>"+OS2[j].PROPERTY+"</b><br>"+OS2[j].PROPERTY_DETAIL+"</button>";
               }else{
-                MSTR+="<button style='text-align:center;color:green'><b>"+OS2[j].PROPERTY+"</b><br>"+OS2[j].PROPERTY_DETAIL+"</button>";}
+                MSTR+="<button style='text-align:center'><b>"+OS2[j].PROPERTY+"</b><br>"+OS2[j].PROPERTY_DETAIL+"</button>";}
             }
             $(td).html(MSTR)
             tr.appendChild(td)
