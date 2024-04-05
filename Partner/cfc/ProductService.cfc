@@ -205,7 +205,14 @@ OUTER APPLY (
                         INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
                         WHERE PRODUCT_ID = P.PRODUCT_ID
                         FOR XML PATH('')
-                        ) AS DTP
+                        ) AS DTP,
+                        (
+                            SELECT COUNT(*) FROM CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
+LEFT JOIN CatalystQA_product.PRODUCT_CAT_PROPERTY AS PP ON PDP.PROPERTY_ID=PP.PROPERTY_ID AND PP.PRODUCT_CAT_ID=#FData.SearchMainValue.PRODUCT_CAT_ID#
+WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
+
+
+                        ) AS EXTRA_PROPT
                 FROM CatalystQA_product.PRODUCT AS P
                 LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
@@ -238,6 +245,7 @@ OUTER APPLY (
         <CFSET P.TAX=getProd.TAX>
         <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
         <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
+        <CFSET P.EXTRA_PROPT=EXTRA_PROPT>
         <cfset P.RECORD_COUNT=getProd.recordcount>
         <cfreturn replace(serializeJSON(P),"//","")>
     </cffunction>
