@@ -276,7 +276,10 @@ OUTER APPLY (
                     )
                 </cfif>
             <cfloop array="#FData.SearchMainValue.Filters#" item="it">
-            <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
+            <cfif it.PNAME.trim() neq "EQUIPMENT"> 
+                <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
+            AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
+            </cfif>
             </cfloop>
         </cfquery>
         <cfset PID_LIST=valueList(getProd.PRODUCT_ID)>
