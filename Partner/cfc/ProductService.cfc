@@ -214,7 +214,12 @@ OUTER APPLY (
                 ) AS TT
             WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
             <cfloop array="#FData.SearchMainValue.Filters#" item="it">
-            <cfif it.PNAME.trim() neq "EQUIPMENT"> AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'</cfif>
+            <cfif it.PNAME.trim() neq "EQUIPMENT"> 
+                <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
+                AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'
+            </cfif>
+            
+        </cfif>
             </cfloop>
         </cfquery>
         <cfsavecontent  variable="control5">
