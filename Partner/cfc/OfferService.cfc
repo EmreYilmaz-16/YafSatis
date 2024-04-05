@@ -497,7 +497,8 @@ WHERE 1 = 1
     <cfelseif FormData.Tip eq 2>
         <cfloop array="#FormData.AddedProperties#" item="it">
             <cfquery name="ishvpp" datasource="#dsn#">
-
+                SELECT PRODUCT_ID,PROPERTY_ID,VARIATION_ID,RECORD_EMP,RECORD_DATE,AMOUNT FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=#FORMDATA.PRODUCT_ID#
+                AND PROPERTY_ID=#it.PROPERTY_ID# AND VARIATION_ID=#it.VARIATION_ID#
             </cfquery>
             <cfif ishvpp.recordCount eq 0>
 <cfquery name="INS" datasource="#DSN#">
@@ -505,9 +506,14 @@ WHERE 1 = 1
     PRODUCT_ID,PROPERTY_ID,VARIATION_ID,RECORD_EMP,RECORD_DATE,AMOUNT
  )
  values(
-    0,0,0,0,GETDATE(),0
+    #FORMDATA.PRODUCT_ID#,#it.PROPERTY_ID#,#it.VARIATION_ID#,#FormData.RECORD_EMP#,GETDATE(),0
  )
 </cfquery>
+<cfquery name="Up" datasource="#dsn3#">
+    UPDATE PBS_OFFER_ROW SET IS_VIRTUAL=0,PRODUCT_ID=#FormData.PRODUCT_ID#,STOCK_ID=#FormData.STOCK_ID#
+    WHERE UNIQUE_RELATION_ID='#FormData.UNIQUE_RELATION_ID#'
+</cfquery>
+
 </cfif>
         </cfloop>
         <!---
