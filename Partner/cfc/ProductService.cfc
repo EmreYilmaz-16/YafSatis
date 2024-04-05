@@ -245,7 +245,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
         <CFSET P.TAX=getProd.TAX>
         <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
         <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
-        <CFSET P.EXTRA_PROPT=EXTRA_PROPT>
+        <CFSET P.EXTRA_PROPT=getProd.EXTRA_PROPT>
         <cfset P.RECORD_COUNT=getProd.recordcount>
         <cfreturn replace(serializeJSON(P),"//","")>
     </cffunction>
