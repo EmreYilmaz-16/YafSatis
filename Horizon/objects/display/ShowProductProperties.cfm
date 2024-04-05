@@ -2,7 +2,7 @@
 
 
 <cfquery name="getProductProperties" datasource="#dsn1#">
-                                select PROPERTY,PROPERTY_DETAIL,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT from 
+                                select PROPERTY,PROPERTY_DETAIL,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT,ISNULL(PCP.PROPERTY_ID,-153) AS FK from 
                                 CatalystQA_product.PRODUCT AS P 
                                LEFT JOIN  CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP ON PDP.PRODUCT_ID=P.PRODUCT_ID
  LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
@@ -18,6 +18,9 @@
     <td>
         <cfif IS_AMOUNT eq 1>
             <span style="color:red;font-weight:bold;font-size:12pt !important;display:block">*</span>
+        </cfif>
+        <cfif FK eq -153>
+            <span style="color:red;font-weight:bold;font-size:14pt !important;display:block">!</span>
         </cfif>
         #PROPERTY#
         <br>
