@@ -13,4 +13,6 @@
 <cfelseif attributes.ListType  eq "OfferStatus">
     <cfinclude template="OfferStatus_changer.cfm">
 
+<cfelseif attributes.ListType  eq "ShowProductProperties">
+    <cfinclude template="ShowProductProperties.cfm">
 </cfif>

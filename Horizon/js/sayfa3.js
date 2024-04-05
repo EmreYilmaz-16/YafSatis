@@ -674,10 +674,32 @@ function getProduct(el, rc) {
               "')"
           );
         } else {
+         if(Obje.EXTRA_PROPT >0){
+          el.setAttribute(
+            "style",
+            "color:green;font-weight:bold;text-align:left;background:black"
+          )
+          var btn = document.createElement("button");
+          btn.setAttribute("class", "btn btn-success");
+
+          btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
+          el.parentElement.appendChild(btn);
+          el.parentElement.setAttribute("style", "display:flex");
+          btn.setAttribute(
+            "onclick",
+            "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=" +
+              rc +
+              "&PID=" +
+              Obje.PRODUCT_ID +
+              "&prp_list=" +
+              pL +
+              "')"
+          );
+         }else{
           el.setAttribute(
             "style",
             "color:green;font-weight:bold;text-align:left;"
-          );
+          );}
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
 
