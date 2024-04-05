@@ -22,7 +22,7 @@
         <cfif FK eq -153>
             <span style="color:red;font-weight:bold;font-size:14pt !important;display:block">!</span>
         </cfif>
-        #PROPERTY#
+       <b> #PROPERTY#</b>
         <br>
         #PROPERTY_DETAIL#
     </td>
