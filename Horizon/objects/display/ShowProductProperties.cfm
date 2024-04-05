@@ -12,6 +12,9 @@
     <tr>
 <cfoutput query="getProductProperties">
     <td>
+        <cfif IS_AMOUNT eq 1>
+            <span style="color:red;font-weight:bold;font-size:12pt !important;display:block">*</span>
+        </cfif>
         #PROPERTY#
         <br>
         #PROPERTY_DETAIL#
