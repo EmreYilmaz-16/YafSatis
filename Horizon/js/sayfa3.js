@@ -49,6 +49,7 @@ function AddEquipment() {
     PRODUCT_CAT_ID: PRODUCT_CAT_ID,
     PNAME: "EQUIPMENT",
     PROP_ID: 0,
+    IS_OPTIONAL:0
   };
   SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
