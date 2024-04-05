@@ -62,7 +62,10 @@ function AddEquipment() {
 
     var Pdata = $(Pelem).select2("data")[0];
     var PROP_ID = Pdata.element.parentElement.getAttribute("data-property_id");
+    var is_optional =
+      Pdata.element.parentElement.getAttribute("data-is_optional");
     //console.log($(Pelem).select2("data")[0]);
+    console.log(is_optional);
     var PRODUCT_CAT = Pdata.text;
     var PRODUCT_CAT_ID = Pdata.id;
     var PNAME = Pdata.title;
@@ -72,6 +75,7 @@ function AddEquipment() {
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
         PNAME: PNAME,
         PROP_ID: PROP_ID,
+        IS_OPTIONAL: is_optional,
       };
 
       //console.table(O);
@@ -289,7 +293,7 @@ function addRowCrs(
   DELIVERED_ITEMS = 0,
   WEIGHT = 0,
   IS_VIRTUAL = 0,
-  UNIQUE_RELATION_ID=""
+  UNIQUE_RELATION_ID = ""
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -303,15 +307,15 @@ function addRowCrs(
   input2.type = "hidden";
   input2.name = "IS_VIRTUAL";
   input2.id = "IS_VIRTUAL_" + RowCount;
-  input2.value=IS_VIRTUAL;
+  input2.value = IS_VIRTUAL;
   var input3 = document.createElement("input");
   input3.type = "hidden";
   input3.name = "UNIQUE_RELATION_ID";
   input3.id = "UNIQUE_RELATION_ID_" + RowCount;
-  if(UNIQUE_RELATION_ID.length>0){
-    input3.value=UNIQUE_RELATION_ID
-  }else{
-    input3.value=GenerateUniqueId();
+  if (UNIQUE_RELATION_ID.length > 0) {
+    input3.value = UNIQUE_RELATION_ID;
+  } else {
+    input3.value = GenerateUniqueId();
   }
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
@@ -347,16 +351,19 @@ function addRowCrs(
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
-  
+
   input.name = "PRODUCT_CODE_2";
   input.value = MANUFACT_CODE;
   input.id = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("proplist", proplist);
-if(IS_VIRTUAL ==1){
-  input.setAttribute("style", "color:red;font-weight:bold;text-align:left;background:black;");
-}else{
-  input.setAttribute("style", "text-align:left");
-}
+  if (IS_VIRTUAL == 1) {
+    input.setAttribute(
+      "style",
+      "color:red;font-weight:bold;text-align:left;background:black;"
+    );
+  } else {
+    input.setAttribute("style", "text-align:left");
+  }
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
 
   div.appendChild(input);
@@ -666,13 +673,10 @@ function getProduct(el, rc) {
               "')"
           );
         } else {
-          
           el.setAttribute(
             "style",
             "color:green;font-weight:bold;text-align:left;"
           );
-            
-          
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
 
@@ -702,15 +706,18 @@ function getProduct(el, rc) {
         AlayiniHesapla();
         document.getElementById("WEIGHT_" + rc).value = commaSplit(0);
       } else {
-        el.setAttribute("style", "color:red;font-weight:bold;text-align:left;background:black");
+        el.setAttribute(
+          "style",
+          "color:red;font-weight:bold;text-align:left;background:black"
+        );
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
-        var SF=wrk_safe_query("getAllUnits","dsn")
-        for(let i=0;i<SF.recordcount;i++){
-          var Opt=document.createElement("option");
-          Opt.value=SF.UNIT[i];
-          Opt.innerText=SF.UNIT[i];
+        var SF = wrk_safe_query("getAllUnits", "dsn");
+        for (let i = 0; i < SF.recordcount; i++) {
+          var Opt = document.createElement("option");
+          Opt.value = SF.UNIT[i];
+          Opt.innerText = SF.UNIT[i];
           document.getElementById("PRODUCT_UNIT_" + rc).appendChild(Opt);
         }
       }
@@ -1100,7 +1107,7 @@ function AlayiniHesapla() {
       var SALE_PRICE = DegeriGetir(SepetItem, "SALE_PRICE", 2, 1);
       var SALE_MONEY = DegeriGetir(SepetItem, "SALE_MONEY", 0);
       var SALE_DISCOUNT = DegeriGetir(SepetItem, "SALE_DISCOUNT", 2, 1);
-      var UNIQUE_RELATION_ID=DegeriGetir(SepetItem,"UNIQUE_RELATION_ID",0);
+      var UNIQUE_RELATION_ID = DegeriGetir(SepetItem, "UNIQUE_RELATION_ID", 0);
       var SALE_DISCOUNT_MONEY = DegeriGetir(
         SepetItem,
         "SALE_DISCOUNT_MONEY",
@@ -1148,8 +1155,8 @@ function AlayiniHesapla() {
         SALE_PRICE: SALE_PRICE,
         SALE_PRICE: SALE_PRICE,
         SALE_MONEY: SALE_MONEY,
-        IS_VIRTUAL:IS_VIRTUAL,
-        UNIQUE_RELATION_ID:UNIQUE_RELATION_ID,
+        IS_VIRTUAL: IS_VIRTUAL,
+        UNIQUE_RELATION_ID: UNIQUE_RELATION_ID,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
         JSON_STRINGIM: JSON_STRINGIM,
