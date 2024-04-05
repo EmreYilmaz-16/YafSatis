@@ -48,6 +48,7 @@ Label.innerText=Obj[i].PROPERTY
                     Sel.setAttribute("style","margin-left:5px");
                     Sel.setAttribute("onchange","propduzenle(this)");
                     Sel.setAttribute("data-propertyId",Obj[i].PROPERTY_ID)
+                    
                     Sel.id="SELECT_00_"+Obj[i].PROPERTY_ID;
                     var Opt=document.createElement("option");
                     Opt.value="";
@@ -107,7 +108,8 @@ Label.innerText=Obj[i].PROPERTY
                 PNAME:"REV",
                 PRODUCT_CAT:PRODUCT_CAT,
                 PRODUCT_CAT_ID:PRODUCT_CAT_ID,
-                PROP_ID:PropId
+                PROP_ID:PropId,
+                IS_OPTIONAL:0
             }
             PS.Filters.push(Ox)
         }else{
@@ -115,7 +117,8 @@ Label.innerText=Obj[i].PROPERTY
                 PNAME:"REV",
                 PRODUCT_CAT:PRODUCT_CAT,
                 PRODUCT_CAT_ID:PRODUCT_CAT_ID,
-                PROP_ID:PropId
+                PROP_ID:PropId,
+                IS_OPTIONAL:0
             }
             PS.Filters[ix]=Ox;
         }
