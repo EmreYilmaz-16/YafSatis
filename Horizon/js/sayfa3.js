@@ -89,7 +89,7 @@ function AddEquipment() {
   ReturnObject.Filters = SelectedValues;
   ReturnObject.PropList = PropList;
   var jsn = JSON.stringify(ReturnObject);
-  //console.log(ReturnObject);
+  console.log(ReturnObject);
   if (DataHata > 0) {
     alert("Zorunlu Alanlar var !");
     return false;
