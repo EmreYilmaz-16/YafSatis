@@ -1,3 +1,4 @@
+<cf_box title="Gemiler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <cfdump var="#attributes#">
 
 <cfquery name="getProductProperties" datasource="#dsn1#">
@@ -25,3 +26,4 @@
 </cfoutput>
 </tr>
 </table>
+</cf_box>
