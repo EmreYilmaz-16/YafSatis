@@ -1,5 +1,5 @@
 <cf_box title="Gemiler" scroll="1" collapsable="1" resize="1" popup_box="1">
-<cfdump var="#attributes#">
+
 
 <cfquery name="getProductProperties" datasource="#dsn1#">
                                 select PROPERTY,PROPERTY_DETAIL,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT from 
@@ -12,7 +12,7 @@
   WHERE PDP.PRODUCT_ID=#attributes.PID# AND PDP.VARIATION_ID IS NOT NULL
 </cfquery>
 
-<table>
+<cf_big_list>
     <tr>
 <cfoutput query="getProductProperties">
     <td>
@@ -26,4 +26,4 @@
 </cfoutput>
 </tr>
 </table>
-</cf_box>
+</cf_big_list>
