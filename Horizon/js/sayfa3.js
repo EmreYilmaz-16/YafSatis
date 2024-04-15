@@ -1432,8 +1432,12 @@ function AddToCons() {
     var CompCb = cmp_l[i];
     if ($(CompCb).is(":checked")) {
       var Ax = SelectedCompArr.findIndex((p) => p.COMPANY_ID == CompCb.value);
-      var nnmc = document.getElementById("comp_sel_mb_" + CompCb.value).innerText;
-      var nnnn = document.getElementById("comp_sel_nn_" + CompCb.value).innerText;
+      var nnmc = document.getElementById(
+        "comp_sel_mb_" + CompCb.value
+      ).innerText;
+      var nnnn = document.getElementById(
+        "comp_sel_nn_" + CompCb.value
+      ).innerText;
       if (Ax == -1) {
         var OX = {
           COMPANY_ID: CompCb.value,
@@ -1447,22 +1451,26 @@ function AddToCons() {
             if ($(PidCb).is(":checked")) {
               var PIDX = document.getElementById("PRODUCT_ID_" + (j + 1)).value;
               var SIDX = document.getElementById("STOCK_ID_" + (j + 1)).value;
-              var PRODUCT_NAMEX = document.getElementById("PRODUCT_NAME_" + (j + 1)).value;
-              var PRODUCT_CODE_2X = document.getElementById("PRODUCT_CODE_2_" + (j + 1)).value;
+              var PRODUCT_NAMEX = document.getElementById(
+                "PRODUCT_NAME_" + (j + 1)
+              ).value;
+              var PRODUCT_CODE_2X = document.getElementById(
+                "PRODUCT_CODE_2_" + (j + 1)
+              ).value;
               var QUANTITYX = document.getElementById(
                 "QUANTITY_" + (j + 1)
               ).value;
               var UNIQUE_RELATION_IDX = document.getElementById(
                 "UNIQUE_RELATION_ID_" + (j + 1)
               ).value;
-              
+
               var TX = {
                 PID: PIDX,
                 SID: SIDX,
                 QUANTITY: QUANTITYX,
                 UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
-                PRODUCT_NAME:PRODUCT_NAMEX,
-                PRODUCT_CODE_2:PRODUCT_CODE_2X,
+                PRODUCT_NAME: PRODUCT_NAMEX,
+                PRODUCT_CODE_2: PRODUCT_CODE_2X,
               };
               OX.PIDS.push(TX);
             }
@@ -1477,8 +1485,12 @@ function AddToCons() {
             console.log(str);
             var PIDX = document.getElementById("PRODUCT_ID_" + (j + 1)).value;
             var SIDX = document.getElementById("STOCK_ID_" + (j + 1)).value;
-            var PRODUCT_NAMEX = document.getElementById("PRODUCT_NAME_" + (j + 1)).value;
-            var PRODUCT_CODE_2X = document.getElementById("PRODUCT_CODE_2_" + (j + 1)).value;
+            var PRODUCT_NAMEX = document.getElementById(
+              "PRODUCT_NAME_" + (j + 1)
+            ).value;
+            var PRODUCT_CODE_2X = document.getElementById(
+              "PRODUCT_CODE_2_" + (j + 1)
+            ).value;
             var QUANTITYX = document.getElementById(
               "QUANTITY_" + (j + 1)
             ).value;
@@ -1496,8 +1508,8 @@ function AddToCons() {
                   SID: SIDX,
                   QUANTITY: QUANTITYX,
                   UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
-                  PRODUCT_NAME:PRODUCT_NAMEX,
-                  PRODUCT_CODE_2:PRODUCT_CODE_2X,
+                  PRODUCT_NAME: PRODUCT_NAMEX,
+                  PRODUCT_CODE_2: PRODUCT_CODE_2X,
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
@@ -1507,54 +1519,57 @@ function AddToCons() {
       }
     }
   }
-  TedarikYaz()
+  TedarikYaz();
 }
 
 function TedarikYaz() {
-  $("#tedarik").html("")
-for(let i=0;i<SelectedCompArr.length;i++){
-    var AComp=SelectedCompArr[i];
-    console.table(AComp)
-    var Table=document.createElement("table")
-    Table.setAttribute("class","table table-sm table-stripped")
-       Table.setAttribute("style","border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;");
-    var tr=document.createElement("tr");
-    var td=document.createElement("th");
-    td.innerText=AComp.MEMBER_CODE
-    td.setAttribute("style","color:#fb6b5b;width:10%")
-    
-    tr.appendChild(td)
-    var td=document.createElement("th");
-    td.innerText=AComp.NICKNAME
-    td.setAttribute("style","color:#fb6b5b")
-    tr.appendChild(td)
- //   tr.setAttribute("style","background: #e1e1e170;")
-    tr.setAttribute("onclick","$('#tr_"+AComp.COMPANY_ID+"').toggle()");
-    Table.appendChild(tr)
-    var tr=document.createElement("tr")
-    var td=document.createElement("td")
-    td.setAttribute("colspan","2")
-    var table2=document.createElement("table")
-    table2.setAttribute("class","table table-sm table-stripped")
-    for(let j=0;j<AComp.PIDS.length;j++){
-       var Aproduct=AComp.PIDS[j]
-        var _tr=document.createElement("tr")
-        var _td=document.createElement("td")
-        _td.innerText=Aproduct.PRODUCT_CODE_2;
-        _tr.appendChild(_td)
-         var _td=document.createElement("td")
-        _td.innerText=Aproduct.PRODUCT_NAME;
-        _tr.appendChild(_td)
-           var _td=document.createElement("td")
-        _td.innerText=Aproduct.QUANTITY;
-        _tr.appendChild(_td)
-        table2.appendChild(_tr)
+  $("#tedarik").html("");
+  for (let i = 0; i < SelectedCompArr.length; i++) {
+    var AComp = SelectedCompArr[i];
+    console.table(AComp);
+    var Table = document.createElement("table");
+    Table.setAttribute("class", "table table-sm table-stripped");
+    Table.setAttribute(
+      "style",
+      "border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;"
+    );
+    var tr = document.createElement("tr");
+    var td = document.createElement("th");
+    td.innerText = AComp.MEMBER_CODE;
+    td.setAttribute("style", "color:#fb6b5b;width:10%");
+
+    tr.appendChild(td);
+    var td = document.createElement("th");
+    td.innerText = AComp.NICKNAME;
+    td.setAttribute("style", "color:#fb6b5b");
+    tr.appendChild(td);
+    //   tr.setAttribute("style","background: #e1e1e170;")
+    tr.setAttribute("onclick", "$('#tr_" + AComp.COMPANY_ID + "').toggle()");
+    Table.appendChild(tr);
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    td.setAttribute("colspan", "2");
+    var table2 = document.createElement("table");
+    table2.setAttribute("class", "table table-sm table-stripped");
+    for (let j = 0; j < AComp.PIDS.length; j++) {
+      var Aproduct = AComp.PIDS[j];
+      var _tr = document.createElement("tr");
+      var _td = document.createElement("td");
+      _td.innerText = Aproduct.PRODUCT_CODE_2;
+      _tr.appendChild(_td);
+      var _td = document.createElement("td");
+      _td.innerText = Aproduct.PRODUCT_NAME;
+      _tr.appendChild(_td);
+      var _td = document.createElement("td");
+      _td.innerText = Aproduct.QUANTITY;
+      _tr.appendChild(_td);
+      table2.appendChild(_tr);
     }
-    td.appendChild(table2)
-    tr.appendChild(td)
-    tr.setAttribute("style","display:none")
-    tr.id="tr_"+AComp.COMPANY_ID
-    Table.appendChild(tr)
-    document.getElementById("tedarik").appendChild(Table)
-}
+    td.appendChild(table2);
+    tr.appendChild(td);
+    tr.setAttribute("style", "display:none");
+    tr.id = "tr_" + AComp.COMPANY_ID;
+    Table.appendChild(tr);
+    document.getElementById("tedarik").appendChild(Table);
+  }
 }
