@@ -348,7 +348,7 @@
 
                 </div>
                 <div style="display:flex;justify-content: flex-end;">
-                    <button class="ui-wrk-btn ui-wrk-btn-success">
+                    <button class="ui-wrk-btn ui-wrk-btn-success" onclick="AddPurchaseOffer()">
                         Tedarik Taleplerini Oluştur
                     </button>
                     <button class="ui-wrk-btn ui-wrk-btn-warning" >

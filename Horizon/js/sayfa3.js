@@ -1578,3 +1578,15 @@ function TedarikYaz() {
     document.getElementById("tedarik").appendChild(Table);
   }
 }
+
+function AddPurchaseOffer(){
+  $.ajax({
+    url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddPurchaseOffer",
+    data:{
+      FormData:JSON.stringify(SelectedCompArr)
+    },
+    success:function(retDat){
+      
+    }
+  })
+}

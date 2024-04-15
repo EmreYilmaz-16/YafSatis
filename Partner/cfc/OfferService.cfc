@@ -529,6 +529,10 @@ WHERE 1 = 1
 
 </cffunction>
 
+<cffunction name="AddPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfdump var="#attributes#">
+
+</cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
