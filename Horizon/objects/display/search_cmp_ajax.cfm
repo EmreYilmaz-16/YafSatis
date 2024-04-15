@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th></th>
+            <th>Member Code</th>
             <th>Consumer</th>
         </tr>
     </thead>
@@ -21,6 +22,12 @@
         <tr>
             <td>
                 <input type="checkbox" name="comp_sel_cb" id="comp_sel_cb" value="#COMPANY_ID#">
+            </td>
+            <TD>
+                #MEMBER_CODE#
+            </TD>
+            <td>
+                #NICKNAME#
             </td>
         </tr>
     </cfoutput>
