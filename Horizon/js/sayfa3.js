@@ -1447,18 +1447,22 @@ function AddToCons() {
             if ($(PidCb).is(":checked")) {
               var PIDX = document.getElementById("PRODUCT_ID_" + (j + 1)).value;
               var SIDX = document.getElementById("STOCK_ID_" + (j + 1)).value;
+              var PRODUCT_NAMEX = document.getElementById("PRODUCT_NAME_" + (j + 1)).value;
+              var PRODUCT_CODE_2X = document.getElementById("PRODUCT_CODE_2_" + (j + 1)).value;
               var QUANTITYX = document.getElementById(
                 "QUANTITY_" + (j + 1)
               ).value;
               var UNIQUE_RELATION_IDX = document.getElementById(
                 "UNIQUE_RELATION_ID_" + (j + 1)
               ).value;
-
+              
               var TX = {
                 PID: PIDX,
                 SID: SIDX,
                 QUANTITY: QUANTITYX,
                 UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
+                PRODUCT_NAME:PRODUCT_NAMEX,
+                PRODUCT_CODE_2:PRODUCT_CODE_2X,
               };
               OX.PIDS.push(TX);
             }
@@ -1473,6 +1477,8 @@ function AddToCons() {
             console.log(str);
             var PIDX = document.getElementById("PRODUCT_ID_" + (j + 1)).value;
             var SIDX = document.getElementById("STOCK_ID_" + (j + 1)).value;
+            var PRODUCT_NAMEX = document.getElementById("PRODUCT_NAME_" + (j + 1)).value;
+            var PRODUCT_CODE_2X = document.getElementById("PRODUCT_CODE_2_" + (j + 1)).value;
             var QUANTITYX = document.getElementById(
               "QUANTITY_" + (j + 1)
             ).value;
@@ -1490,6 +1496,8 @@ function AddToCons() {
                   SID: SIDX,
                   QUANTITY: QUANTITYX,
                   UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
+                  PRODUCT_NAME:PRODUCT_NAMEX,
+                  PRODUCT_CODE_2:PRODUCT_CODE_2X,
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
