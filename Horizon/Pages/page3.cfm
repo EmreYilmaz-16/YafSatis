@@ -333,7 +333,12 @@
     <div id="BasketFooter">
         <div class="row">
             <div class="col col-4">
+ <div class="form-group">
+    <input type="text" id="text_cpm_search" name="text_cpm_search">
+ </div>
+                <div id="text_cpm_search_result_area">
 
+                </div>
             </div>
             <div class="col col-4">
 

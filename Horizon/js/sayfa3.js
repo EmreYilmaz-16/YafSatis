@@ -1412,3 +1412,17 @@ function SaveOffer() {
     },
   });
 }
+
+function get_consumer(el="",ev=""){
+  if(el == ""){
+    AjaxPageLoad(
+      "index.cfm?fuseaction=objects.emptypopup_get_company_partner&KEYWORD="+el.value,
+      "text_cpm_search_result_area",
+      1,
+      "Yükleniyor"
+    );
+
+  }
+  
+
+}
