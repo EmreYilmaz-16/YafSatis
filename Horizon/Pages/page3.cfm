@@ -334,7 +334,7 @@
         <div class="row">
             <div class="col col-4">
  <div class="form-group">
-    <input type="text" id="text_cpm_search" name="text_cpm_search">
+    <input type="text" id="text_cpm_search" name="text_cpm_search" onkeyup="get_consumer(this,event)">
  </div>
                 <div id="text_cpm_search_result_area">
 

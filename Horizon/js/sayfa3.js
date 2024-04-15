@@ -5,6 +5,7 @@ $(document).ready(function () {
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
   getCats(e);
+  get_consumer("","");
 });
 function getCats(el) {
   $.ajax({
