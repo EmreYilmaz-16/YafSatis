@@ -1444,7 +1444,7 @@ function AddToCons() {
             var SIDX = document.getElementById("STOCK_ID_" + (j+1)).value;
             var QUANTITYX = document.getElementById("QUANTITY_" + (j+1)).value;
             var UNIQUE_RELATION_IDX = document.getElementById(
-              "UNIQUE_RELATION_ID_" + j+1
+              "UNIQUE_RELATION_ID_" + (j+1)
             ).value;
             
             var TX = {
@@ -1460,11 +1460,11 @@ function AddToCons() {
       } else {
         for (let j = 0; j <= pid_l.length; j++) {
           var PidCb = pid_l[j];
-          var PIDX = document.getElementById("PRODUCT_ID_" + j+1).value;
-          var SIDX = document.getElementById("STOCK_ID_" + j+1).value;
-          var QUANTITYX = document.getElementById("QUANTITY_" + j+1).value;
+          var PIDX = document.getElementById("PRODUCT_ID_" + (j+1)).value;
+          var SIDX = document.getElementById("STOCK_ID_" + (j+1)).value;
+          var QUANTITYX = document.getElementById("QUANTITY_" + (j+1)).value;
           var UNIQUE_RELATION_IDX = document.getElementById(
-            "UNIQUE_RELATION_ID_" + j+1
+            "UNIQUE_RELATION_ID_" + (j+1)
           ).value;
 
           if ($(PidCb).is(":checked")) {
