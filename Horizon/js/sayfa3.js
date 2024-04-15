@@ -1438,49 +1438,59 @@ function AddToCons() {
           PIDS: [],
         };
         for (let j = 0; j <= pid_l.length; j++) {
-          var PidCb = pid_l[j];
-          if ($(PidCb).is(":checked")) {
-            var PIDX = document.getElementById("PRODUCT_ID_" + (j+1)).value;
-            var SIDX = document.getElementById("STOCK_ID_" + (j+1)).value;
-            var QUANTITYX = document.getElementById("QUANTITY_" + (j+1)).value;
-            var UNIQUE_RELATION_IDX = document.getElementById(
-              "UNIQUE_RELATION_ID_" + (j+1)
-            ).value;
-            
-            var TX = {
-              PID: PIDX,
-              SID: SIDX,
-              QUANTITY: QUANTITYX,
-              UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
-            };
-            OX.PIDS.push(TX);
-          }
-        }
-        SelectedCompArr.push(OX);
-      } else {
-        for (let j = 0; j <= pid_l.length; j++) {
-          var PidCb = pid_l[j];
-          var PIDX = document.getElementById("PRODUCT_ID_" + (j+1)).value;
-          var SIDX = document.getElementById("STOCK_ID_" + (j+1)).value;
-          var QUANTITYX = document.getElementById("QUANTITY_" + (j+1)).value;
-          var UNIQUE_RELATION_IDX = document.getElementById(
-            "UNIQUE_RELATION_ID_" + (j+1)
-          ).value;
+          try {
+            var PidCb = pid_l[j];
+            if ($(PidCb).is(":checked")) {
+              var PIDX = document.getElementById("PRODUCT_ID_" + (j + 1)).value;
+              var SIDX = document.getElementById("STOCK_ID_" + (j + 1)).value;
+              var QUANTITYX = document.getElementById(
+                "QUANTITY_" + (j + 1)
+              ).value;
+              var UNIQUE_RELATION_IDX = document.getElementById(
+                "UNIQUE_RELATION_ID_" + (j + 1)
+              ).value;
 
-          if ($(PidCb).is(":checked")) {
-            var FX = SelectedCompArr[Ax].PIDS.findIndex(
-              (p) => p.UNIQUE_RELATION_ID == UNIQUE_RELATION_IDX
-            );
-            if (FX == -1) {
               var TX = {
                 PID: PIDX,
                 SID: SIDX,
                 QUANTITY: QUANTITYX,
                 UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
               };
-              SelectedCompArr[Ax].PIDS.push(TX);
+              OX.PIDS.push(TX);
             }
-          }
+          } catch (error) {}
+        }
+        SelectedCompArr.push(OX);
+      } else {
+        for (let j = 0; j <= pid_l.length; j++) {
+          try {
+            var PidCb = pid_l[j];
+            var str = "PRODUCT_ID_" + (j + 1);
+            console.log(str);
+            var PIDX = document.getElementById("PRODUCT_ID_" + (j + 1)).value;
+            var SIDX = document.getElementById("STOCK_ID_" + (j + 1)).value;
+            var QUANTITYX = document.getElementById(
+              "QUANTITY_" + (j + 1)
+            ).value;
+            var UNIQUE_RELATION_IDX = document.getElementById(
+              "UNIQUE_RELATION_ID_" + (j + 1)
+            ).value;
+
+            if ($(PidCb).is(":checked")) {
+              var FX = SelectedCompArr[Ax].PIDS.findIndex(
+                (p) => p.UNIQUE_RELATION_ID == UNIQUE_RELATION_IDX
+              );
+              if (FX == -1) {
+                var TX = {
+                  PID: PIDX,
+                  SID: SIDX,
+                  QUANTITY: QUANTITYX,
+                  UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
+                };
+                SelectedCompArr[Ax].PIDS.push(TX);
+              }
+            }
+          } catch (error) {}
         }
       }
     }
