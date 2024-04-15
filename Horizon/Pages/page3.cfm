@@ -344,8 +344,13 @@
                 </div>
             </div>
             <div class="col col-4">
-                <div id="tedarik">
-                    
+                <div id="tedarik" style="max-height: 20vh;height: 72vh;overflow-x: hidden;overflow-y: scroll;">
+
+                </div>
+                <div>
+                    <button>
+                        Tedarik Taleplerini Oluştur
+                    </button>
                 </div>
             </div>
             <div class="col col-4">
