@@ -5,7 +5,7 @@ $(document).ready(function () {
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
   getCats(e);
-  get_consumer("","");
+  get_consumer("", "");
 });
 function getCats(el) {
   $.ajax({
@@ -50,7 +50,7 @@ function AddEquipment() {
     PRODUCT_CAT_ID: PRODUCT_CAT_ID,
     PNAME: "EQUIPMENT",
     PROP_ID: 0,
-    IS_OPTIONAL:0
+    IS_OPTIONAL: 0,
   };
   SelectedValues.push(ox);
   var Properties = document.getElementsByClassName("propss");
@@ -675,32 +675,33 @@ function getProduct(el, rc) {
               "')"
           );
         } else {
-         if(Obje.EXTRA_PROPT >0){
-          el.setAttribute(
-            "style",
-            "color:green;font-weight:bold;text-align:left;background:black"
-          )
-          var btn = document.createElement("button");
-          btn.setAttribute("class", "btn btn-success");
+          if (Obje.EXTRA_PROPT > 0) {
+            el.setAttribute(
+              "style",
+              "color:green;font-weight:bold;text-align:left;background:black"
+            );
+            var btn = document.createElement("button");
+            btn.setAttribute("class", "btn btn-success");
 
-          btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
-          el.parentElement.appendChild(btn);
-          el.parentElement.setAttribute("style", "display:flex");
-          btn.setAttribute(
-            "onclick",
-            "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=" +
-              rc +
-              "&PID=" +
-              Obje.PRODUCT_ID +
-              "&prp_list=" +
-              pL +
-              "')"
-          );
-         }else{
-          el.setAttribute(
-            "style",
-            "color:green;font-weight:bold;text-align:left;"
-          );}
+            btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
+            el.parentElement.appendChild(btn);
+            el.parentElement.setAttribute("style", "display:flex");
+            btn.setAttribute(
+              "onclick",
+              "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=" +
+                rc +
+                "&PID=" +
+                Obje.PRODUCT_ID +
+                "&prp_list=" +
+                pL +
+                "')"
+            );
+          } else {
+            el.setAttribute(
+              "style",
+              "color:green;font-weight:bold;text-align:left;"
+            );
+          }
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
 
@@ -1414,74 +1415,74 @@ function SaveOffer() {
   });
 }
 
-function get_consumer(el="",ev=""){
-  
-    AjaxPageLoad(
-      "index.cfm?fuseaction=objects.emptypopup_get_company_partner&KEYWORD="+el.value,
-      "text_cpm_search_result_area",
-      1,
-      "Yükleniyor"
-    );
-
-  
-  
-
+function get_consumer(el = "", ev = "") {
+  AjaxPageLoad(
+    "index.cfm?fuseaction=objects.emptypopup_get_company_partner&KEYWORD=" +
+      el.value,
+    "text_cpm_search_result_area",
+    1,
+    "Yükleniyor"
+  );
 }
-var SelectedCompArr=[];
-function AddToCons(){
-  var cmp_l=document.getElementsByName("comp_sel_cb")
-var pid_l=document.getElementsByName("CBX")
-for(let i=0;i<cmp_l.length;i++){
-    var CompCb=cmp_l[i];
-    if($(CompCb).is(":checked")){
-        var Ax=SelectedCompArr.findIndex(p=>p.COMPANY_ID==CompCb.value)
-        if(Ax == -1){
-           var OX={
-               COMPANY_ID:CompCb.value,
-               PIDS:[]
-           }
-            for(let j=1;j<=pid_l.length;j++){
-            var PidCb=pid_l[j];
-            if($(PidCb).is(":checked")){
-                var PIDX=document.getElementById("PRODUCT_ID_"+j).value
-                var SIDX=document.getElementById("STOCK_ID_"+j).value
-                var QUANTITYX=document.getElementById("QUANTITY_"+j).value
-                var UNIQUE_RELATION_IDX=document.getElementById("UNIQUE_RELATION_ID_"+j).value
-                UNIQUE_RELATION_ID_1
-                var TX={
-                    PID:PIDX,
-                    SID:SIDX,
-                    QUANTITY:QUANTITYX,
-                    UNIQUE_RELATION_ID:UNIQUE_RELATION_IDX
-                };
-                OX.PIDS.push(TX)
-            }
-            }
-            SelectedCompArr.push(OX)
-        }else{
-
-                for(let j=1;j<=pid_l.length;j++){                    
-                    var PidCb=pid_l[j];
-                      var PIDX=document.getElementById("PRODUCT_ID_"+j).value
-                var SIDX=document.getElementById("STOCK_ID_"+j).value
-                var QUANTITYX=document.getElementById("QUANTITY_"+j).value
-                var UNIQUE_RELATION_IDX=document.getElementById("UNIQUE_RELATION_ID_"+j).value
-                    
-                    if($(PidCb).is(":checked")){
-                        var FX=SelectedCompArr[Ax].PIDS.findIndex(p=>p.UNIQUE_RELATION_ID==UNIQUE_RELATION_IDX)
-                        if(FX==-1){
-                            var TX={
-                                PID:PIDX,
-                                SID:SIDX,
-                                QUANTITY:QUANTITYX,
-                                UNIQUE_RELATION_ID:UNIQUE_RELATION_IDX
-                            };
-                            SelectedCompArr[Ax].PIDS.push(TX)
-                        }
-                    }
-                }
-            
-           }
+var SelectedCompArr = [];
+function AddToCons() {
+  var cmp_l = document.getElementsByName("comp_sel_cb");
+  var pid_l = document.getElementsByName("CBX");
+  for (let i = 0; i < cmp_l.length; i++) {
+    var CompCb = cmp_l[i];
+    if ($(CompCb).is(":checked")) {
+      var Ax = SelectedCompArr.findIndex((p) => p.COMPANY_ID == CompCb.value);
+      if (Ax == -1) {
+        var OX = {
+          COMPANY_ID: CompCb.value,
+          PIDS: [],
+        };
+        for (let j = 1; j <= pid_l.length; j++) {
+          var PidCb = pid_l[j];
+          if ($(PidCb).is(":checked")) {
+            var PIDX = document.getElementById("PRODUCT_ID_" + j).value;
+            var SIDX = document.getElementById("STOCK_ID_" + j).value;
+            var QUANTITYX = document.getElementById("QUANTITY_" + j).value;
+            var UNIQUE_RELATION_IDX = document.getElementById(
+              "UNIQUE_RELATION_ID_" + j
+            ).value;
+            UNIQUE_RELATION_ID_1;
+            var TX = {
+              PID: PIDX,
+              SID: SIDX,
+              QUANTITY: QUANTITYX,
+              UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
+            };
+            OX.PIDS.push(TX);
+          }
         }
+        SelectedCompArr.push(OX);
+      } else {
+        for (let j = 0; j <= pid_l.length; j++) {
+          var PidCb = pid_l[j];
+          var PIDX = document.getElementById("PRODUCT_ID_" + j+1).value;
+          var SIDX = document.getElementById("STOCK_ID_" + j+1).value;
+          var QUANTITYX = document.getElementById("QUANTITY_" + j+1).value;
+          var UNIQUE_RELATION_IDX = document.getElementById(
+            "UNIQUE_RELATION_ID_" + j+1
+          ).value;
+
+          if ($(PidCb).is(":checked")) {
+            var FX = SelectedCompArr[Ax].PIDS.findIndex(
+              (p) => p.UNIQUE_RELATION_ID == UNIQUE_RELATION_IDX
+            );
+            if (FX == -1) {
+              var TX = {
+                PID: PIDX,
+                SID: SIDX,
+                QUANTITY: QUANTITYX,
+                UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
+              };
+              SelectedCompArr[Ax].PIDS.push(TX);
+            }
+          }
+        }
+      }
     }
+  }
 }
