@@ -1507,6 +1507,54 @@ function AddToCons() {
       }
     }
   }
+  TedarikYaz()
 }
 
-function TedarikYaz() {}
+function TedarikYaz() {
+  $("#tedarik").html("")
+for(let i=0;i<SelectedCompArr.length;i++){
+    var AComp=SelectedCompArr[i];
+    console.table(AComp)
+    var Table=document.createElement("table")
+    Table.setAttribute("class","table table-sm table-stripped")
+       Table.setAttribute("style","border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;");
+    var tr=document.createElement("tr");
+    var td=document.createElement("th");
+    td.innerText=AComp.MEMBER_CODE
+    td.setAttribute("style","color:#fb6b5b;width:10%")
+    
+    tr.appendChild(td)
+    var td=document.createElement("th");
+    td.innerText=AComp.NICKNAME
+    td.setAttribute("style","color:#fb6b5b")
+    tr.appendChild(td)
+ //   tr.setAttribute("style","background: #e1e1e170;")
+    tr.setAttribute("onclick","$('#tr_"+AComp.COMPANY_ID+"').toggle()");
+    Table.appendChild(tr)
+    var tr=document.createElement("tr")
+    var td=document.createElement("td")
+    td.setAttribute("colspan","2")
+    var table2=document.createElement("table")
+    table2.setAttribute("class","table table-sm table-stripped")
+    for(let j=0;j<AComp.PIDS.length;j++){
+       var Aproduct=AComp.PIDS[j]
+        var _tr=document.createElement("tr")
+        var _td=document.createElement("td")
+        _td.innerText=Aproduct.PRODUCT_CODE_2;
+        _tr.appendChild(_td)
+         var _td=document.createElement("td")
+        _td.innerText=Aproduct.PRODUCT_NAME;
+        _tr.appendChild(_td)
+           var _td=document.createElement("td")
+        _td.innerText=Aproduct.QUANTITY;
+        _tr.appendChild(_td)
+        table2.appendChild(_tr)
+    }
+    td.appendChild(table2)
+    tr.appendChild(td)
+    tr.setAttribute("style","display:none")
+    tr.id="tr_"+AComp.COMPANY_ID
+    Table.appendChild(tr)
+    document.getElementById("tedarik").appendChild(Table)
+}
+}
