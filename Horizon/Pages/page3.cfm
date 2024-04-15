@@ -347,11 +347,11 @@
                 <div id="tedarik" style="max-height: 25vh;height: 72vh;overflow-x: hidden;overflow-y: scroll;">
 
                 </div>
-                <div style="display:flex">
-                    <button class="ui-wrk-btn ui-wrk-btn-success" style="float:right">
+                <div style="display:flex;justify-content: flex-end;">
+                    <button class="ui-wrk-btn ui-wrk-btn-success">
                         Tedarik Taleplerini Oluştur
                     </button>
-                    <button class="ui-wrk-btn ui-wrk-btn-warning" style="float:right">
+                    <button class="ui-wrk-btn ui-wrk-btn-warning" >
                         Tedarik Taleplerini Oluştur ve Mail Gönder
                     </button>
                 </div>
