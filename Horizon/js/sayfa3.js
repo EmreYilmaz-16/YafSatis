@@ -1427,3 +1427,61 @@ function get_consumer(el="",ev=""){
   
 
 }
+var SelectedCompArr=[];
+function AddToCons(){
+  var cmp_l=document.getElementsByName("comp_sel_cb")
+var pid_l=document.getElementsByName("CBX")
+for(let i=0;i<cmp_l.length;i++){
+    var CompCb=cmp_l[i];
+    if($(CompCb).is(":checked")){
+        var Ax=SelectedCompArr.findIndex(p=>p.COMPANY_ID==CompCb.value)
+        if(Ax == -1){
+           var OX={
+               COMPANY_ID:CompCb.value,
+               PIDS:[]
+           }
+            for(let j=1;j<=pid_l.length;j++){
+            var PidCb=pid_l[j];
+            if($(PidCb).is(":checked")){
+                var PIDX=document.getElementById("PRODUCT_ID_"+j).value
+                var SIDX=document.getElementById("STOCK_ID_"+j).value
+                var QUANTITYX=document.getElementById("QUANTITY_"+j).value
+                var UNIQUE_RELATION_IDX=document.getElementById("UNIQUE_RELATION_ID_"+j).value
+                UNIQUE_RELATION_ID_1
+                var TX={
+                    PID:PIDX,
+                    SID:SIDX,
+                    QUANTITY:QUANTITYX,
+                    UNIQUE_RELATION_ID:UNIQUE_RELATION_IDX
+                };
+                OX.PIDS.push(TX)
+            }
+            }
+            SelectedCompArr.push(OX)
+        }else{
+
+                for(let j=1;j<=pid_l.length;j++){                    
+                    var PidCb=pid_l[j];
+                      var PIDX=document.getElementById("PRODUCT_ID_"+j).value
+                var SIDX=document.getElementById("STOCK_ID_"+j).value
+                var QUANTITYX=document.getElementById("QUANTITY_"+j).value
+                var UNIQUE_RELATION_IDX=document.getElementById("UNIQUE_RELATION_ID_"+j).value
+                    
+                    if($(PidCb).is(":checked")){
+                        var FX=SelectedCompArr[Ax].PIDS.findIndex(p=>p.UNIQUE_RELATION_ID==UNIQUE_RELATION_IDX)
+                        if(FX==-1){
+                            var TX={
+                                PID:PIDX,
+                                SID:SIDX,
+                                QUANTITY:QUANTITYX,
+                                UNIQUE_RELATION_ID:UNIQUE_RELATION_IDX
+                            };
+                            SelectedCompArr[Ax].PIDS.push(TX)
+                        }
+                    }
+                }
+            
+           }
+        }
+    }
+}

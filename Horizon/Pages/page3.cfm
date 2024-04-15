@@ -333,12 +333,12 @@
     <div id="BasketFooter">
         <div class="row">
             <div class="col col-4">
- <div class="form-group">
-    <div class="input-group">
-    <input type="text" id="text_cpm_search" name="text_cpm_search" onkeyup="get_consumer(this,event)">
-    <span class="input-group-addon btnPointer fa fa-arrow-right"></span>
-</div>
- </div>
+                <div class="form-group">
+                    <div class="input-group" style="display:flex">
+                        <input type="text" id="text_cpm_search" name="text_cpm_search" onkeyup="get_consumer(this,event)">
+                        <span class="input-group-addon btnPointer fa fa-arrow-right" onclick="AddToCons()"></span>
+                    </div>
+                </div>
                 <div id="text_cpm_search_result_area">
 
                 </div>
