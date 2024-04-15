@@ -1437,16 +1437,16 @@ function AddToCons() {
           COMPANY_ID: CompCb.value,
           PIDS: [],
         };
-        for (let j = 1; j <= pid_l.length; j++) {
+        for (let j = 0; j <= pid_l.length; j++) {
           var PidCb = pid_l[j];
           if ($(PidCb).is(":checked")) {
-            var PIDX = document.getElementById("PRODUCT_ID_" + j).value;
-            var SIDX = document.getElementById("STOCK_ID_" + j).value;
-            var QUANTITYX = document.getElementById("QUANTITY_" + j).value;
+            var PIDX = document.getElementById("PRODUCT_ID_" + j+1).value;
+            var SIDX = document.getElementById("STOCK_ID_" + j+1).value;
+            var QUANTITYX = document.getElementById("QUANTITY_" + j+1).value;
             var UNIQUE_RELATION_IDX = document.getElementById(
-              "UNIQUE_RELATION_ID_" + j
+              "UNIQUE_RELATION_ID_" + j+1
             ).value;
-            UNIQUE_RELATION_ID_1;
+            
             var TX = {
               PID: PIDX,
               SID: SIDX,
