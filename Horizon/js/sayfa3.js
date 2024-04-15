@@ -1540,8 +1540,13 @@ function TedarikYaz() {
 
     tr.appendChild(td);
     var td = document.createElement("th");
+  
     td.innerText = AComp.NICKNAME;
+  var span=document.createElement("span");
+  span.innerText=AComp.PIDS.length;
+  span.setAttribute("style","    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;")  
     td.setAttribute("style", "color:#fb6b5b");
+    td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
     tr.setAttribute("onclick", "$('#tr_" + AComp.COMPANY_ID + "').toggle()");
