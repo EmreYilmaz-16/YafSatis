@@ -344,7 +344,7 @@
                 </div>
             </div>
             <div class="col col-4">
-                <div id="tedarik" style="max-height: 20vh;height: 72vh;overflow-x: hidden;overflow-y: scroll;">
+                <div id="tedarik" style="max-height: 25vh;height: 72vh;overflow-x: hidden;overflow-y: scroll;">
 
                 </div>
                 <div>
