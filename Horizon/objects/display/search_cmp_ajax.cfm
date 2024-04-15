@@ -23,10 +23,10 @@
             <td>
                 <input type="checkbox" name="comp_sel_cb" id="comp_sel_cb" value="#COMPANY_ID#">
             </td>
-            <TD>
+            <TD id="comp_sel_mb_#COMPANY_ID#">
                 #MEMBER_CODE#
             </TD>
-            <td>
+            <td id="comp_sel_nn_#COMPANY_ID#">
                 #NICKNAME#
             </td>
         </tr>

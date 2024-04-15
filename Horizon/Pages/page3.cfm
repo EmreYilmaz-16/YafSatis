@@ -344,7 +344,9 @@
                 </div>
             </div>
             <div class="col col-4">
-
+                <div id="tedarik">
+                    
+                </div>
             </div>
             <div class="col col-4">
 <div id="OzetAlani">
