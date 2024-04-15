@@ -1432,13 +1432,13 @@ function AddToCons() {
     var CompCb = cmp_l[i];
     if ($(CompCb).is(":checked")) {
       var Ax = SelectedCompArr.findIndex((p) => p.COMPANY_ID == CompCb.value);
-      var nnmc=document.getElementById("comp_sel_mb_"+CompCb.value);
-      var nnnn=document.getElementById("comp_sel_nn_"+CompCb.value);
+      var nnmc = document.getElementById("comp_sel_mb_" + CompCb.value).value;
+      var nnnn = document.getElementById("comp_sel_nn_" + CompCb.value).value;
       if (Ax == -1) {
         var OX = {
           COMPANY_ID: CompCb.value,
-          NICKNAME:nnnn,
-          MEMBER_CODE:nnmc,
+          NICKNAME: nnnn,
+          MEMBER_CODE: nnmc,
           PIDS: [],
         };
         for (let j = 0; j <= pid_l.length; j++) {
@@ -1501,6 +1501,4 @@ function AddToCons() {
   }
 }
 
-function TedarikYaz(){
-
-}
+function TedarikYaz() {}
