@@ -1432,8 +1432,8 @@ function AddToCons() {
     var CompCb = cmp_l[i];
     if ($(CompCb).is(":checked")) {
       var Ax = SelectedCompArr.findIndex((p) => p.COMPANY_ID == CompCb.value);
-      var nnmc = document.getElementById("comp_sel_mb_" + CompCb.value).value;
-      var nnnn = document.getElementById("comp_sel_nn_" + CompCb.value).value;
+      var nnmc = document.getElementById("comp_sel_mb_" + CompCb.value).innerText;
+      var nnnn = document.getElementById("comp_sel_nn_" + CompCb.value).innerText;
       if (Ax == -1) {
         var OX = {
           COMPANY_ID: CompCb.value,
