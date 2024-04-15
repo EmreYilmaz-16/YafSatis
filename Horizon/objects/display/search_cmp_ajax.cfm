@@ -1,5 +1,5 @@
 <cfquery name="getcmp" datasource="#dsn#">
-    SELECT TOP 20 * FROM COMPANY  WHERE 1=1 
+    SELECT TOP 10 * FROM COMPANY  WHERE 1=1 
     <CFIF isDefined("ATTRIBUTES.KEYWORD") and len(attributes.KEYWORD) gte 3>
         AND (
             NICKNAME LIKE '%#attributes.KEYWORD#%' OR
