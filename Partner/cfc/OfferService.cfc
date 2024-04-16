@@ -539,7 +539,7 @@ WHERE 1 = 1
 <CFSET attributes.to_par_ids=",">
 
 
-    <cfloop array="#_FormData#" item="#it#">
+    <cfloop array="#_FormData#" item="#it#" index="ix">
       <!------  <cfquery name="GETCOMP" datasource="#DSN#">
             SELECT * FROM COMPANY  WHERE COMPANY_ID=#it.COMPANY_ID#
         </cfquery>
