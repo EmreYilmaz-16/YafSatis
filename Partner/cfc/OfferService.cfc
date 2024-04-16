@@ -444,6 +444,7 @@ WHERE 1 = 1
         <CFSET 'attributes.JSON_STRINGIM#i#'=serializeJSON(it.JSON_STRINGIM)>
         <CFSET 'attributes.IS_VIRTUAL#i#'=it.IS_VIRTUAL>
         <cfset 'attributes.row_unique_relation_id#i#'=it.UNIQUE_RELATION_ID>
+        <cfset 'attributes.wrk_row_id#i#'=it.UNIQUE_RELATION_ID>
         <cfif it.IS_VIRTUAL eq 1>
            <cfquery name="ihbgs" datasource="#dsn3#">
                 SELECT * FROM VIRTUAL_PRODUCTS_PBS WHERE OFFER_ROW_REL='#it.UNIQUE_RELATION_ID#'
@@ -582,6 +583,7 @@ WHERE 1 = 1
         <cfset "attributes.tax#iy#"=GETP.TAX>
         <cfset "attributes.product_name#iy#"=PR.PRODUCT_NAME>
         <cfset 'attributes.row_unique_relation_id#iy#'=PR.UNIQUE_RELATION_ID>
+        <cfset 'attributes.wrk_row_relation_id#iy#'=PR.UNIQUE_RELATION_ID>
     </cfloop>
     <cftry>
     <cfinclude template="/AddOns/YafSatis/Partner/Query/includes/add_purchase_offer.cfm">
