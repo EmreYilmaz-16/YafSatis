@@ -544,8 +544,10 @@ WHERE 1 = 1
         SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
     </cfquery>
     <cfdump var="#getCompanyInfo#">
+    <CFSET attributes.to_comp_ids="#attributes.to_comp_ids#,#Item.COMPANY_ID#">
+    <CFSET attributes.to_par_ids="#attributes.to_par_ids#,#getCompanyInfo.MANAGER_PARTNER_ID#">
 </cfloop>
-
+<cfdump var="#attributes#">
     
 </cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
