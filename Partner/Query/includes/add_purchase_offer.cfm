@@ -177,7 +177,7 @@
 				<cfif isdefined("offer_due_date") and len(offer_due_date)>#offer_due_date#<cfelse>NULL</cfif>,
 				<cfif isdefined("attributes.project_id") and len(attributes.project_id)>#attributes.PROJECT_ID#<cfelse>NULL</cfif>,
 				<cfif isdefined("attributes.internaldemand_id_list") and ListLen(attributes.internaldemand_id_list) eq 1>#attributes.internaldemand_id_list#<cfelse>NULL</cfif>,
-				<cfif isdefined("attributes.related_offer_id") and len(attributes.related_offer_id)>#related_offer_id#<cfelse>NULL</cfif>,
+				<cfif isdefined("attributes.related_offer_id") and len(attributes.related_offer_id)>#attributes.related_offer_id#<cfelse>NULL</cfif>,
 				<cfif isdefined("attributes.ref_no") and len(attributes.ref_no)><cfqueryparam cfsqltype="cf_sql_varchar" value="#attributes.ref_no#"><cfelse>NULL</cfif>,
 				<cfif isdefined("attributes.work_id") and len(attributes.work_id)>#attributes.work_id#<cfelse>NULL</cfif>,
 				<cfif isDefined("attributes.revision_offer_id") and len(attributes.revision_offer_id)><cfqueryparam cfsqltype="cf_sql_integer" value="#attributes.revision_offer_id#"><cfelse>NULL</cfif>,
@@ -193,28 +193,7 @@
 				,<cfif isdefined("attributes.genel_indirim") and len(attributes.genel_indirim)>#attributes.genel_indirim#<cfelse>NULL</cfif>
 			)
 	</cfquery>
-    <cfif isDefined('attributes.related_offer_id') and len(attributes.related_offer_id)>
-    	<cfquery name="GET_ALL_REL_OFFERS" datasource="#DSN3#">
-       		SELECT 
-            	OFFER_TO, 
-                OFFER_TO_PARTNER 
-            FROM 
-            	OFFER 
-            WHERE 
-            	OFFER_ID = <cfqueryparam cfsqltype="cf_sql_integer" value="#attributes.related_offer_id#">
-        </cfquery>
-		<cfset comp_list = replacelist(get_all_rel_offers.offer_to,attributes.old_company_ids,attributes.company_ids,'All')>
-		<cfset part_list = replacelist(get_all_rel_offers.offer_to_partner,attributes.old_partner_ids,attributes.partner_ids,'All')>
-        <cfquery name="UPD_OFFER" datasource="#DSN3#">
-        	UPDATE
-            	OFFER
-            SET
-            	OFFER_TO = '#comp_list#',
-            	OFFER_TO_PARTNER = '#part_list#'
-            WHERE
-            	OFFER_ID = <cfqueryparam cfsqltype="cf_sql_integer" value="#attributes.related_offer_id#">
-        </cfquery>
-    </cfif>
+
 	<cfif attributes.rows_ neq 0>
 		<cfloop from="1" to="#attributes.rows_#" index="i">
 			<cf_date tarih="attributes.deliver_date#i#">
