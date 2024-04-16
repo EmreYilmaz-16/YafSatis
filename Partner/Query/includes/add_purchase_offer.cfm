@@ -8,14 +8,15 @@
 <cfelseif not isdefined("attributes.rows_") and isdefined('attributes.price') and len(attributes.price)>
 	<cfset attributes.price_tutar = attributes.price>
 </cfif>
-<cfscript>
+<!---<cfscript>
 	if(isdefined("partner_ids")) to_par_ids = partner_ids;
 	if(isdefined("company_ids")) to_comp_ids = company_ids;
 	if(isdefined("company_ids")) to_cons_ids = consumer_ids;
 	if(isdefined("to_par_ids")) CC_PART = ListSort(to_par_ids,"Numeric", "Desc") ; else CC_PART = "";
 	if(isdefined("to_comp_ids")) CC_COMP = ListSort(to_comp_ids,"Numeric", "Desc") ; else CC_COMP  = "";
 	if(isdefined("to_cons_ids")) CC_CONS = ListSort(to_cons_ids,"Numeric", "Desc") ; else CC_CONS = "";
-</cfscript>
+</cfscript>---->
+<cfset workcube_mode=1>
 <cf_date tarih = "attributes.offer_date">
 <cfif isdefined("attributes.basket_due_value") and len(attributes.basket_due_value)>
 	<cfset offer_due_date = date_add("d",attributes.basket_due_value,attributes.offer_date)>
@@ -217,10 +218,7 @@
 	<cfif attributes.rows_ neq 0>
 		<cfloop from="1" to="#attributes.rows_#" index="i">
 			<cf_date tarih="attributes.deliver_date#i#">
-			<cfif session.ep.our_company_info.spect_type and isdefined('attributes.is_production#i#') and evaluate('attributes.is_production#i#') eq 1 and not isdefined('attributes.spect_id#i#') or not len(evaluate('attributes.spect_id#i#'))>
-            	<cfset dsn_type=dsn3>
-				<cfinclude template="../../objects/query/add_basket_spec.cfm">
-			</cfif>
+			
 			<cfquery name="ADD_PRODUCT_TO_OFFER" datasource="#DSN3#">
 				INSERT INTO 
 					PBS_OFFER_ROW 
@@ -414,99 +412,17 @@
 			<cfset row_id = I>
 			<cfset ACTION_TYPE_ID = 1>
 			<cfset attributes.product_id = evaluate("attributes.product_id#i#")>
-			<cfinclude template="add_assortment_textile_js.cfm">
-			<cfinclude template="add_department_information.cfm">			
+					
 			<!--- //  urun asortileri --->					
 
 			<!--- bütçe rezerve kontrolü --->
-			<cfif isdefined('attributes.process_cat') and len(attributes.process_cat) and isdefined("get_type.IS_BUDGET_RESERVED_CONTROL") and get_type.IS_BUDGET_RESERVED_CONTROL eq 1>
-				<cfif isdefined('attributes.other_money_value_#i#') and len(evaluate("attributes.other_money_value_#i#"))>
-					<cfset other_money_val = evaluate('attributes.other_money_value_#i#')>
-				<cfelse>
-					<cfset other_money_val =''>
-				</cfif>
-				<cfif isdefined('attributes.other_money_#i#') and len(evaluate("attributes.other_money_#i#"))>
-					<cfset other_money = evaluate('attributes.other_money_#i#')>
-				<cfelse>
-					<cfset other_money = ''>
-				</cfif>
-				<cfscript>
-					butceci(
-					action_id : MAX_ID.IDENTITYCOL,
-					muhasebe_db : dsn3,
-					is_income_expense : true,
-					period_id:session.ep.period_id,
-					process_type : get_type.process_type,
-					product_tax: evaluate("attributes.tax#i#"),//kdv
-					stock_id: evaluate("attributes.stock_id#i#"),
-					product_id: evaluate("attributes.product_id#i#"),
-					nettotal : wrk_round(evaluate("attributes.price#i#") * evaluate("attributes.amount#i#")),
-					other_money_value : other_money_val,
-					action_currency : other_money,
-					currency_multiplier : attributes.currency_multiplier,
-					expense_date : attributes.offer_date,
-					expense_center_id : iif((isdefined("attributes.row_exp_center_id#i#") and len(evaluate('attributes.row_exp_center_id#i#'))),evaluate("attributes.row_exp_center_id#i#"),0),
-					expense_item_id : iif((isdefined("attributes.row_exp_item_id#i#") and len(evaluate('attributes.row_exp_item_id#i#'))),evaluate("attributes.row_exp_item_id#i#"),0),
-					detail : '#GET_OFFER_CODE.OFFER_NO#-#GET_OFFER_CODE.OFFER_NUMBER# Nolu Teklif',
-					paper_no : '#GET_OFFER_CODE.OFFER_NO#-#GET_OFFER_CODE.OFFER_NUMBER#',
-					branch_id : ListGetAt(session.ep.user_location,2,"-"),
-					discounttotal: iif((isdefined("form.genel_indirim") and len('form.genel_indirim')),"#form.genel_indirim#",0),
-					project_id: iif(isdefined("attributes.project_id") and len(attributes.project_id), "attributes.project_id", DE('')),
-					reserv_type :1, //expense_reserved_rows tablosuna gelir olarak yazılsın.
-					activity_type : evaluate("attributes.row_activity_id#i#"),
-					invoice_row_id:attributes.ROW_MAIN_ID
-					);
-				</cfscript>
-			</cfif>
+			
 
 		</cfloop>	
 	</cfif>
-	<cfscript>
-		basket_kur_ekle(action_id:MAX_ID.IDENTITYCOL,table_type_id:4,process_type:0);
-		if(isdefined('attributes.internaldemand_id_list') and len(attributes.internaldemand_id_list)) //teklif ic talepten olusturulacaksa
-		{
-			add_internaldemand_row_relation(
-				to_related_action_id:MAX_ID.IDENTITYCOL,
-				to_related_action_type:3,
-				action_status:0
-				);
-		}
-	</cfscript>
-	<!---Ek Bilgiler--->
-    <cfset attributes.info_id = MAX_ID.IDENTITYCOL>
-    <cfset attributes.is_upd = 0>
-    <cfset attributes.info_type_id = -30>
-    <cfinclude template="../../objects/query/add_info_plus2.cfm">
-	<!---Ek Bilgiler--->
-	<cf_workcube_process
-		is_upd='1' 
-		data_source='#dsn3#' 
-		old_process_line='0'
-		process_stage='#attributes.process_stage#' 
-		record_member='#session.ep.userid#' 
-		record_date='#now()#' 
-		action_table='OFFER'
-		action_column='OFFER_ID'
-		action_id='#MAX_ID.IDENTITYCOL#'
-		action_page='index.cfm?fuseaction=purchase.list_offer&event=upd&offer_id=#MAX_ID.IDENTITYCOL#' 
-		warning_description='Teklif : #GET_OFFER_CODE.OFFER_NO#-#GET_OFFER_CODE.OFFER_NUMBER#'
-		paper_no='#GET_OFFER_CODE.OFFER_NO#-#GET_OFFER_CODE.OFFER_NUMBER#'>
+	
 		
-		<cfif isdefined("attributes.process_cat") and len(attributes.process_cat)>
-			<cf_workcube_process_cat 
-				process_cat="#attributes.process_cat#"
-				action_id = "#MAX_ID.IDENTITYCOL#"
-				action_table="OFFER"
-				action_column="OFFER_ID"
-				is_action_file = 1
-				action_page='#request.self#?fuseaction=purchase.list_offer&event=upd&offer_id=#MAX_ID.IDENTITYCOL#'
-				action_file_name='#get_type.action_file_name#'
-				action_db_type = '#dsn3#'
-				is_template_action_file = '#get_type.action_file_from_template#'>
-		</cfif>			
 		
 	</cftransaction>
 </cflock>
-<script type="text/javascript">
-	window.location.href="<cfoutput>#request.self#?fuseaction=purchase.list_offer&event=upd&offer_id=#MAX_ID.IDENTITYCOL#</cfoutput>";
-</script>
+

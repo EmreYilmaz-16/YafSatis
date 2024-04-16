@@ -532,23 +532,58 @@ WHERE 1 = 1
 <cffunction name="AddPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfdump var="#arguments#">
     <cfset _FormData=deserializeJSON(arguments.FormData)>
-    <cfdump var="#_FormData#">
+    
 <cfset form.active_company=1>
 
 <CFSET attributes.to_comp_ids="">
 <CFSET attributes.to_par_ids="">
-<cfset attributes.DELIVERDATE =dateFormat(now(),"dd/mm/yyyy")>
+<cfset FORM.OFFER_HEAD="Teklif İstiyoruz">
+<cfset FORM.OFFER_DETAIL ="">
+<cfset FORM.PROCESS_STAGE  =67>
+<cfset attributes.PROCESS_STAGE  =67>
+<cfset attributes.PROCESS_STAGE  =67>
+<cfset attributes.OPPORTUNITY_ID   ="">
+<cfset attributes.OFFER_DATE  =dateFormat(now(),"dd/mm/yyyy")>
+
 <cfloop from="1" to="#arrayLen(_FormData)#" index="ix">
     <cfset Item=_FormData[ix]>
-    <cfdump var="#Item#">
-   <!---- <cfquery name="getCompanyInfo" datasource="#dsn#">
+    
+    
+    <cfquery name="getCompanyInfo" datasource="#dsn#">
         SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
     </cfquery>
     <cfdump var="#getCompanyInfo#">
-    <CFSET attributes.to_comp_ids="#attributes.to_comp_ids#,#Item.COMPANY_ID#">
-    <CFSET attributes.to_par_ids="#attributes.to_par_ids#,#getCompanyInfo.MANAGER_PARTNER_ID#">----->
+   <cfset attributes.COMPANY_ID=Item.COMPANY_ID>
+   <cfset attributes.PARTNER_ID=getCompanyInfo.MANAGER_PARTNER_ID>
+   <CFSET CC_COMP=Item.COMPANY_ID>
+   <CFSET CC_PART=getCompanyInfo.MANAGER_PARTNER_ID>
+   <CFSET CC_CONS ="">
+    <CFSET attributes.ROWS_ =arrayLen(Item.PIDS)>
+    <cfloop from="1" to="#attributes.ROWS_#" index="iy">
+        <cfset Pr=ITEM.PIDS[iy]>
+        <cfset "attributes.spect_id#iy#"="">
+        <cfset "attributes.price#iy#"=0>
+        <cfset "attributes.product_id#iy#"=PR.PID>
+        <cfset "attributes.stock_id#iy#"=PR.SID>
+        <cfset "attributes.amount#iy#"=PR.QUANTITY>
+        <cfquery name="getu" datasource="#dsn#">
+            select * from CatalystQA_product.PRODUCT_UNIT WHERE PRODUCT_ID=#PR.PID# AND IS_MAIN=1
+        </cfquery>
+        <cfquery name="GETP" datasource="#DSN#">
+            SELECT * FROM CatalystQA_product.PRODUCT WHERE PRODUCT_ID=#PR.PID#
+        </cfquery>
+        <CFIF isDefined("PR.PRODUCT_UNIT") and len(PR.PRODUCT_UNIT)>
+        <cfset "attributes.unit#iy#"=PR.PRODUCT_UNIT>
+        <CFELSE>
+            <cfset "attributes.unit#iy#"=getu.MAIN_UNIT>
+        </CFIF>
+        <cfset "attributes.unit_id#iy#"=getu.PRODUCT_UNIT_ID>
+        <cfset "attributes.tax#iy#"=GETP.TAX>
+        <cfset "attributes.product_name#iy#"=PR.PRODUCT_NAME>
+        <cfset 'attributes.row_unique_relation_id#iy#'=PR.UNIQUE_RELATION_ID>
+    </cfloop>
     <cftry>
-    <cfinclude template="/AddOns/YafSatis/Partner/Query/includes/add_offer.cfm">
+    <cfinclude template="/AddOns/YafSatis/Partner/Query/includes/add_purchase_offer.cfm">
 <cfcatch>
     <cfdump var="#cfcatch#">
 </cfcatch>
