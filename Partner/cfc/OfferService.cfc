@@ -533,6 +533,20 @@ WHERE 1 = 1
     <cfdump var="#arguments#">
     <cfset _FormData=deserializeJSON(arguments.FormData)>
     <cfdump var="#_FormData#">
+<cfset form.active_company=1>
+
+<CFSET attributes.to_comp_ids="">
+<CFSET attributes.to_par_ids="">
+
+
+    <cfloop array="#_FormData#" item="#it#">
+        <cfquery name="GETCOMP" datasource="#DSN#">
+            SELECT * FROM COMPANY AS C  WHERE COMPANY_ID=#it.COMPANY_ID#
+        </cfquery>
+        <CFSET attributes.to_comp_ids=listAppend(attributes.to_comp_ids,it.COMPANY_ID)>
+        <CFSET attributes.to_par_ids=listAppend(attributes.to_comp_ids,GETCOMP.MANAGER_PARTNER_ID)>
+    </cfloop>
+    <cfdump var="#attributes#">
 </cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
