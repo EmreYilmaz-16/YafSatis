@@ -540,6 +540,10 @@ WHERE 1 = 1
 <cfloop from="1" to="#arrayLen(_FormData)#" index="ix">
     <cfset Item=_FormData[ix]>
     <cfdump var="#Item#">
+    <cfquery name="getCompanyInfo" datasource="#dsn#">
+        SELECT * FROM COMPANY WHERE COMPANY_ID=#it.COMPANY_ID#
+    </cfquery>
+    <cfdump var="#getCompanyInfo#">
 </cfloop>
 
     
