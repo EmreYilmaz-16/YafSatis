@@ -1463,14 +1463,18 @@ function AddToCons() {
               var UNIQUE_RELATION_IDX = document.getElementById(
                 "UNIQUE_RELATION_ID_" + (j + 1)
               ).value;
+              var PRODUCT_UNITX = document.getElementById(
+                "PRODUCT_UNIT_" + (j + 1)
+              ).value;
 
               var TX = {
                 PID: PIDX,
                 SID: SIDX,
-                QUANTITY: QUANTITYX,
+                QUANTITY: filterNum(QUANTITYX),
                 UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
                 PRODUCT_NAME: PRODUCT_NAMEX,
                 PRODUCT_CODE_2: PRODUCT_CODE_2X,
+                PRODUCT_UNIT:PRODUCT_UNITX
               };
               OX.PIDS.push(TX);
             }
@@ -1497,6 +1501,9 @@ function AddToCons() {
             var UNIQUE_RELATION_IDX = document.getElementById(
               "UNIQUE_RELATION_ID_" + (j + 1)
             ).value;
+            var PRODUCT_UNITX = document.getElementById(
+              "PRODUCT_UNIT_" + (j + 1)
+            ).value;
 
             if ($(PidCb).is(":checked")) {
               var FX = SelectedCompArr[Ax].PIDS.findIndex(
@@ -1506,10 +1513,11 @@ function AddToCons() {
                 var TX = {
                   PID: PIDX,
                   SID: SIDX,
-                  QUANTITY: QUANTITYX,
+                  QUANTITY: filterNum(QUANTITYX),
                   UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
                   PRODUCT_NAME: PRODUCT_NAMEX,
                   PRODUCT_CODE_2: PRODUCT_CODE_2X,
+                  PRODUCT_UNIT:PRODUCT_UNITX
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
