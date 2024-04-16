@@ -541,7 +541,7 @@ WHERE 1 = 1
     <cfset Item=_FormData[ix]>
     <cfdump var="#Item#">
     <cfquery name="getCompanyInfo" datasource="#dsn#">
-        SELECT * FROM COMPANY WHERE COMPANY_ID=#it.COMPANY_ID#
+        SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
     </cfquery>
     <cfdump var="#getCompanyInfo#">
 </cfloop>
