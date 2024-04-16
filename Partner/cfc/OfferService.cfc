@@ -537,16 +537,16 @@ WHERE 1 = 1
 
 <CFSET attributes.to_comp_ids=",">
 <CFSET attributes.to_par_ids=",">
-<!------
+
 
     <cfloop array="#_FormData#" item="#it#">
-        <cfquery name="GETCOMP" datasource="#DSN#">
+      <!------  <cfquery name="GETCOMP" datasource="#DSN#">
             SELECT * FROM COMPANY  WHERE COMPANY_ID=#it.COMPANY_ID#
         </cfquery>
         <CFSET attributes.to_comp_ids="#attributes.to_comp_ids#,#it.COMPANY_ID#">
-        <!----<CFSET attributes.to_par_ids=listAppend(attributes.to_comp_ids,GETCOMP.MANAGER_PARTNER_ID)>----->
+        <!----<CFSET attributes.to_par_ids=listAppend(attributes.to_comp_ids,GETCOMP.MANAGER_PARTNER_ID)>----->----->
     </cfloop>
-    <cfdump var="#attributes#">----->
+    <cfdump var="#attributes#">
 </cffunction>
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
