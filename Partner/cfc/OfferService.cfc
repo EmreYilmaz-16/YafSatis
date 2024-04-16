@@ -537,6 +537,7 @@ WHERE 1 = 1
 
 <CFSET attributes.to_comp_ids="">
 <CFSET attributes.to_par_ids="">
+<cfset attributes.DELIVERDATE =dateFormat(now(),"dd/mm/yyyy")>
 <cfloop from="1" to="#arrayLen(_FormData)#" index="ix">
     <cfset Item=_FormData[ix]>
     <cfdump var="#Item#">
