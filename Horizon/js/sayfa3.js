@@ -1590,7 +1590,7 @@ function TedarikYaz() {
 function AddPurchaseOffer(){
   var OfferId=getParameterByName("offer_id");
   var OS={
-    OfferId:OfferId,
+    OFFER_ID:OfferId,
     FormData:SelectedCompArr
   }
   $.ajax({
