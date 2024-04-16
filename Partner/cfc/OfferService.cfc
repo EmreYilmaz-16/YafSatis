@@ -555,6 +555,7 @@ WHERE 1 = 1
     <cfdump var="#getCompanyInfo#">
    <cfset attributes.COMPANY_ID=Item.COMPANY_ID>
    <cfset attributes.PARTNER_ID=getCompanyInfo.MANAGER_PARTNER_ID>
+   <cfset attributes.related_offer_id=__FormData.OFFER_ID>
    <CFSET CC_COMP=Item.COMPANY_ID>
    <CFSET CC_PART=getCompanyInfo.MANAGER_PARTNER_ID>
    <CFSET CC_CONS ="">
