@@ -535,17 +535,24 @@ WHERE 1 = 1
     <cfdump var="#_FormData#">
 <cfset form.active_company=1>
 
-<CFSET attributes.to_comp_ids=",">
-<CFSET attributes.to_par_ids=",">
+<CFSET attributes.to_comp_ids="">
+<CFSET attributes.to_par_ids="">
 <cfloop from="1" to="#arrayLen(_FormData)#" index="ix">
     <cfset Item=_FormData[ix]>
     <cfdump var="#Item#">
-    <cfquery name="getCompanyInfo" datasource="#dsn#">
+   <!---- <cfquery name="getCompanyInfo" datasource="#dsn#">
         SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
     </cfquery>
     <cfdump var="#getCompanyInfo#">
     <CFSET attributes.to_comp_ids="#attributes.to_comp_ids#,#Item.COMPANY_ID#">
-    <CFSET attributes.to_par_ids="#attributes.to_par_ids#,#getCompanyInfo.MANAGER_PARTNER_ID#">
+    <CFSET attributes.to_par_ids="#attributes.to_par_ids#,#getCompanyInfo.MANAGER_PARTNER_ID#">----->
+    <cftry>
+    <cfinclude template="/AddOns/YafSatis/Partner/Query/includes/add_offer.cfm">
+<cfcatch>
+    <cfdump var="#cfcatch#">
+</cfcatch>
+</cftry>
+
 </cfloop>
 <cfdump var="#attributes#">
     
