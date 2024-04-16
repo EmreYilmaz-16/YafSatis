@@ -1588,10 +1588,15 @@ function TedarikYaz() {
 }
 
 function AddPurchaseOffer(){
+  var OfferId=getParameterByName("offer_id");
+  var OS={
+    OfferId:OfferId,
+    FormData:SelectedCompArr
+  }
   $.ajax({
     url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddPurchaseOffer",
     data:{
-      FormData:JSON.stringify(SelectedCompArr)
+      FormData:JSON.stringify(OS)
     },
     success:function(retDat){
       

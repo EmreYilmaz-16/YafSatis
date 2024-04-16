@@ -531,8 +531,8 @@ WHERE 1 = 1
 
 <cffunction name="AddPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfdump var="#arguments#">
-    <cfset _FormData=deserializeJSON(arguments.FormData)>
-    
+    <cfset __FormData=deserializeJSON(arguments.FormData)>
+    <cfset _FormData=__FormData.FormData>
 <cfset form.active_company=1>
 
 <CFSET attributes.to_comp_ids="">
