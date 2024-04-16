@@ -541,7 +541,7 @@ WHERE 1 = 1
 
     <cfloop array="#_FormData#" item="#it#">
         <cfquery name="GETCOMP" datasource="#DSN#">
-            SELECT * FROM COMPANY AS C  WHERE COMPANY_ID=#it.COMPANY_ID#
+            SELECT * FROM COMPANY  WHERE COMPANY_ID=#it.COMPANY_ID#
         </cfquery>
         <CFSET attributes.to_comp_ids=listAppend(attributes.to_comp_ids,it.COMPANY_ID)>
         <CFSET attributes.to_par_ids=listAppend(attributes.to_comp_ids,GETCOMP.MANAGER_PARTNER_ID)>
