@@ -596,6 +596,60 @@ WHERE 1 = 1
 <cfdump var="#attributes#">
     
 </cffunction>
+
+<cffunction name="getPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+<cfargument name="offer_id">
+<cfquery name="getOffer" datasource="#dsn3#">
+    SELECT C.NICKNAME,C.FULLNAME,DELIVERDATE,OFFER_ID FROM CatalystQA_1.PBS_OFFER AS PO 
+LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN(REPLACE(PO.OFFER_TO,',',''))
+WHERE PO.OFFER_ID=#arguments.OFFER_ID#
+</cfquery>
+<cfquery name="getOfferROW" datasource="#dsn3#">
+SELECT POR1.PRODUCT_NAME
+	,POR1.QUANTITY
+	,POR2.PROP_LIST
+	,POR2.JSON_STRINGIM
+	,POR2.PRICE
+	,POR2.PRICE_OTHER
+	,POR2.DISCOUNT_COST
+	,POR2.UNIT
+	,CASE WHEN POR2.IS_VIRTUAL = 1 THEN VP.PART_NUMBER ELSE S.MANUFACT_CODE END AS PART_NUMBER
+	,POR2.UNIQUE_RELATION_ID
+FROM CatalystQA_1.PBS_OFFER_ROW AS POR1
+LEFT JOIN CatalystQA_1.PBS_OFFER AS PO
+	ON PO.OFFER_ID = POR1.OFFER_ID
+LEFT JOIN CatalystQA_1.PBS_OFFER_ROW AS POR2
+	ON POR2.WRK_ROW_ID = POR1.WRK_ROW_RELATION_ID
+LEFT JOIN CatalystQA_1.STOCKS AS S
+	ON S.STOCK_ID = POR2.STOCK_ID
+LEFT JOIN CatalystQA_1.VIRTUAL_PRODUCTS_PBS AS VP
+	ON VP.VP_ID = POR2.STOCK_ID
+WHERE POR1.OFFER_ID=#arguments.OFFER_ID#
+</cfquery>
+<CFSET OFFER_DATA=structNew()>
+<CFSET OFFER_DATA.NICKNAME=getOffer.NICKNAME>
+<CFSET OFFER_DATA.OFFER_ID=getOffer.OFFER_ID>
+<CFSET OFFER_DATA.FULLNAME=getOffer.FULLNAME>
+<CFSET OFFER_DATA.DELIVERDATE=getOffer.DELIVERDATE>
+<CFSET OFFER_DATA.OFFER_ROWS=arrayNew(1)>
+<CFLOOP query="getOfferROW">
+    <CFSET RowItem=structNew()>
+    <cfset RowItem.PRODUCT_NAME=PRODUCT_NAME>
+    <cfset RowItem.QUANTITY=QUANTITY>
+    <cfset RowItem.PROP_LIST=PROP_LIST>
+    <cfset RowItem.JSON_STRINGIM=deserializeJSON(JSON_STRINGIM)>
+    <cfset RowItem.PRICE=PRICE>
+    <cfset RowItem.PRICE_OTHER=PRICE_OTHER>
+    <cfset RowItem.DISCOUNT_COST=DISCOUNT_COST>
+    <cfset RowItem.UNIT=UNIT>
+    <cfset RowItem.PART_NUMBER=PART_NUMBER>
+    <cfscript>
+        arrayAppend(OFFER_DATA.OFFER_ROWS,RowItem)
+    </cfscript>
+</CFLOOP>
+<cfreturn replace(serializeJSON(OFFER_DATA),"//","")>
+</cffunction>
+
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
