@@ -1,0 +1,17 @@
+WBO/Controller/purchaseOfferController.cfc          ------  yeni event eklendi
+WBO/Controller/purchaseTechinalPointController.cfc  ------  yeni eventler eklendi
+
+***************************************************************************************
+SAYFALAR EKLENDİ 
+V16\purchase\display\details_offer_ta_special.cfm
+V16\purchase\display\emptypopup_get_technical_average_point_special.cfm
+V16\purchase\display\list_coming_offer_special.cfm
+V16\purchase\display\list_offer_comparison_special.cfm
+V16\purchase\display\technical_point_special.cfm
+V16\purchase\form\ajax_offer_ta_special.cfm
+V16\purchase\query\add_technical_point_special.cfm
+V16\purchase\query\get_offer_detail_special.cfm
+
+****************************************************************************************
+TABLO EKLENDİ
+@company_dsn@.PURCHASE_TECHNICAL_POINT_PBS
