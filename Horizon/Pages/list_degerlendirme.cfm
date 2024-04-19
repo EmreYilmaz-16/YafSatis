@@ -24,7 +24,7 @@
             </tr>
 <tr>
     <th style="color:red;font-weight:bold">
-        #it.OFFER_NUMBER#
+        <a href="##" onclick="windowopen('index.cfm?fuseaction=purchase.list_offer&event=spc&offer_id=#it.OFFER_ID#','wide')">#it.OFFER_NUMBER#</a>
     </th>
     <th style="color:red;font-weight:bold">
         #it.COMPANY_FULLNAME#
