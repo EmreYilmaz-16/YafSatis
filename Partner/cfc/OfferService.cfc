@@ -644,11 +644,68 @@ WHERE POR1.OFFER_ID=#arguments.OFFER_ID#
     <cfset RowItem.UNIT=UNIT>
     <cfset RowItem.PART_NUMBER=PART_NUMBER>
     <cfscript>
-        arrayAppend(OFFER_DATA.OFFER_ROWS,RowItem)
+        arrayAppend(OFFER_DATA.OFFER_ROWS,RowItem);
     </cfscript>
 </CFLOOP>
 <cfreturn replace(serializeJSON(OFFER_DATA),"//","")>
 </cffunction>
+
+<cffunction name="listPurchaseOffers" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfquery name="GETPO" datasource="#DSN3#">
+        SELECT PO.OFFER_NUMBER AS PURCHASE_OFFER_NUMBER
+    ,C.NICKNAME AS PURCHASE_COMPANY_NICKNAME    
+	,C.FULLNAME AS PURCHASE_COMPANY_FULLNAME
+	,PO.OFFER_DATE AS PURHASE_OFFER_DATE
+    ,PO.DELIVERDATE AS PURCHASE_DELIVER_DATE
+	,PO.OFFER_ID AS PURCHASE_OFFER_ID
+    ,PO.OFFER_STAGE AS PURCHASE_STAGE
+    ,'----------' AS AYRIM
+    ,C2.NICKNAME AS SALES_COMPANY_NICKNAME
+    ,C2.FULLNAME AS SALES_COMPANY_FULLNAME
+	,PO2.OFFER_NUMBER AS SALES_OFFER_NUMBER
+    ,PO2.OFFER_DATE AS SALES_OFFER_DATE
+    ,PO2.DELIVERDATE AS SALES_DELIVER_DATE
+    ,PO2.OFFER_ID AS SALES_OFFER_ID
+    ,PO2.OFFER_STAGE AS SALES_STAGE
+FROM CatalystQA_1.PBS_OFFER AS PO
+LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN (REPLACE(PO.OFFER_TO, ',', ''))
+LEFT JOIN CatalystQA_1.PBS_OFFER AS PO2 ON PO2.OFFER_ID = PO.FOR_OFFER_ID
+LEFT JOIN CatalystQA.COMPANY AS C2 ON C2.COMPANY_ID = PO2.COMPANY_ID
+WHERE 1=1
+AND PO2.OFFER_NUMBER IS NOT NULL
+    </cfquery>
+    <CFSET RETURN_ARR=arrayNew()>
+    <CFLOOP query="GETPO" group="SALES_OFFER_ID">
+        <CFSET MAIN_OFFER=structNew()>
+        <cfset MAIN_OFFER.OFFER_ID=SALES_OFFER_ID>
+        <cfset MAIN_OFFER.COMPANY_NICKNAME=SALES_COMPANY_NICKNAME>
+        <cfset MAIN_OFFER.COMPANY_FULLNAME=SALES_COMPANY_FULLNAME>
+        <cfset MAIN_OFFER.OFFER_NUMBER=SALES_OFFER_NUMBER>
+        <cfset MAIN_OFFER.OFFER_DATE=SALES_OFFER_DATE>
+        <cfset MAIN_OFFER.DELIVER_DATE=SALES_DELIVER_DATE>
+        <cfset MAIN_OFFER.STAGE=SALES_STAGE>
+        <CFSET MAIN_OFFER.REL_OFFERS=arrayNew()>
+        <cfloop>
+            <CFSET SUB_OFFER=structNew()>
+            <cfset SUB_OFFER.OFFER_ID=PURCHASE_OFFER_ID>
+            <cfset SUB_OFFER.COMPANY_NICKNAME=PURCHASE_COMPANY_NICKNAME>
+            <cfset SUB_OFFER.COMPANY_FULLNAME=PURCHASE_COMPANY_FULLNAME>
+            <cfset SUB_OFFER.OFFER_NUMBER=PURCHASE_OFFER_NUMBER>
+            <cfset SUB_OFFER.OFFER_DATE=PURHASE_OFFER_DATE>
+            <cfset SUB_OFFER.DELIVER_DATE=PURCHASE_DELIVER_DATE>
+            <cfset SUB_OFFER.STAGE=PURCHASE_STAGE>
+            <cfscript>
+                arrayAppend(MAIN_OFFER.REL_OFFERS,SUB_OFFER);
+            </cfscript>
+        </cfloop>
+
+        <cfscript>
+            arrayAppend(RETURN_ARR,MAIN_OFFER);
+        </cfscript>
+    </CFLOOP>
+    <cfreturn replace(serializeJSON(RETURN_ARR),"//","")>
+</cffunction>
+
 
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
