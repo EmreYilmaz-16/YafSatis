@@ -8,19 +8,33 @@
 <cfloop array="#OfferData#"  item="it">
     <cf_grid_list>
         <thead>
+            <tr>
+                <th>
+                    Teklif No
+                </th>
+                <th>
+                    Müşteri
+                </th>
+                <th>
+                    Teklif Tarihi
+                </th>
+                <th>
+                    Teslim Tarihi
+                </th>
+            </tr>
 <tr>
-    <td style="color:red;font-weight:bold">
+    <th style="color:red;font-weight:bold">
         #it.OFFER_NUMBER#
-    </td>
-    <td style="color:red;font-weight:bold">
+    </th>
+    <th style="color:red;font-weight:bold">
         #it.COMPANY_FULLNAME#
-    </td>
-    <td style="color:red;font-weight:bold">
+    </th>
+    <th style="color:red;font-weight:bold">
         #it.OFFER_DATE#
-    </td>
-    <td style="color:red;font-weight:bold"> 
+    </th>
+    <th style="color:red;font-weight:bold"> 
         #it.DELIVER_DATE#
-    </td>
+    </th>
 </tr>
 </thead>
 <tr>
