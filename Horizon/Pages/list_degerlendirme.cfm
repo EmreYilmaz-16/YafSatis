@@ -3,23 +3,26 @@
 
 <cfset _OfferData=OfferService.listPurchaseOffers()>
 <cfset OfferData=deserializeJSON(_OfferData)>
-<cf_grid_list>
+<cf_box>
     <cfoutput>
 <cfloop array="#OfferData#"  item="it">
+    <cf_grid_list>
+        <thead>
 <tr>
-    <td>
+    <td style="color:red;font-weight:bold">
         #it.OFFER_NUMBER#
     </td>
-    <td>
+    <td style="color:red;font-weight:bold">
         #it.COMPANY_FULLNAME#
     </td>
-    <td>
+    <td style="color:red;font-weight:bold">
         #it.OFFER_DATE#
     </td>
-    <td>
+    <td style="color:red;font-weight:bold"> 
         #it.DELIVER_DATE#
     </td>
 </tr>
+</thead>
 <tr>
     <td colspan="4">
         <cf_grid_list>
@@ -42,7 +45,10 @@
         </cf_grid_list>
     </td>
 </tr>
+</cf_grid_list>
 </cfloop>
 
 </cfoutput>
-</cf_grid_list>
+
+
+</cf_box>
