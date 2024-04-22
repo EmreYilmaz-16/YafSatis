@@ -73,6 +73,8 @@
 </script>
 </cfoutput>
 <script>
+var EqArr = [];
+var RowCount = 1;
     function addEqRow(Obj, jsn) {
   var exxx = EqArr.findIndex((p) => p == Obj.PropList);
   if (exxx != -1) {
