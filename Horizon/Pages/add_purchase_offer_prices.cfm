@@ -170,7 +170,7 @@ var RowCount = 1;
   input.value = 1;
   td.appendChild(input);
   tr.appendChild(td);
-  var svk_st = 8;
+  var svk_st = 10;
 
   for (let index = 0; index < Obj.Filters.length; index++) {
     const element = Obj.Filters[index];
@@ -189,7 +189,7 @@ var RowCount = 1;
   var sv_kalan = 0;
   if (Obj.Filters.length < 12) {
     sv_kalan_ = 12 - Obj.Filters.length;
-    sv_kalan = sv_kalan_ * 8;
+    sv_kalan = sv_kalan_ * 10;
     var td = document.createElement("td");
     td.setAttribute("style", "width:" + sv_kalan + "%");
     tr.appendChild(td);
@@ -333,6 +333,7 @@ function addRowCrs(
   input.value = MANUFACT_CODE;
   input.id = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("proplist", proplist);
+  input.setAttribute("readonly","true");
   div.appendChild(input);
   var input = document.createElement("input");
   input.type = "hidden";
