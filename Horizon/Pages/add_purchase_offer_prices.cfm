@@ -57,8 +57,21 @@
     </div>
 </cf_box>
 <!---------->
-
-
+<cfoutput>
+<script>
+    $(document).ready(function(){
+        <cfloop from="1" to="#arraylen(OfferData.PROP_ARR)#" index="i">
+            <cfset Item=OfferData.PROP_ARR[i]>
+            var excalibur=#Item.JSON_STRINGIM#
+            addEqRow(excalibur, JSON.stringify(excalibur)) 
+            <cfloop from="1" to="#arraylen(Item.OFFER_ROWS)#" index="j">
+                <cfset ROWA=Item.OFFER_ROWS[j]>
+                addRowCrs('#Item.PROP_LIST#', "#ROWA.PRODUCT_ID#",  "#ROWA.STOCK_ID#",  "#ROWA.PRODUCT_NAME#", 0,  "#ROWA.PART_NUMBER#",  #ROWA.QUANTITY#,  "#ROWA.UNIT#",  #ROWA.PRICE#,  "#ROWA.OTHER_MONEY#",  #ROWA.PRICE_OTHER#,  #ROWA.DISCOUNT_COST#, #0#,  #0*ROWA.QUANTITY#,  "",0,0,#ROWA.IS_VIRTUAL#,'#ROWA.UNIQUE_RELATION_ID#') 
+            </cfloop>
+        </cfloop>
+    })
+</script>
+</cfoutput>
 <script>
     function addEqRow(Obj, jsn) {
   var exxx = EqArr.findIndex((p) => p == Obj.PropList);
