@@ -933,7 +933,7 @@ function AlayiniHesapla() {
     OrderFooter.total_default -
     OrderFooter.total_discount_wanted +
     OrderFooter.total_tax_wanted;
- // OzetOlustur();
+ OzetOlustur();
 }
 function KurGetir(money) {
   var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
@@ -998,4 +998,47 @@ function DegerYaz(Satir, Name, tip = 0, vals) {
   }
   $(DonusDegeri).val(DVX);
 }
+
+function OzetOlustur() {
+  
+  var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+  $("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted));
+  $("#brut_total_wanted_").val(
+    commaSplit(OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2)
+  );
+  $("#genel_indirim_").val(commaSplit(OrderFooter.genel_indirim_));
+  $("#genel_indirim__").val(
+    commaSplit(OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2)
+  );
+  $("#net_total_wanted").val(commaSplit(OrderFooter.net_total_wanted));
+  $("#net_total_wanted_").val(
+    commaSplit(OrderFooter.net_total_wanted * AKTIF_KUR.RATE2)
+  );
+  $("#total_default").val(commaSplit(OrderFooter.total_default));
+  $("#total_default_").val(
+    commaSplit(OrderFooter.total_default * AKTIF_KUR.RATE2)
+  );
+  $("#total_discount_wanted").val(
+    commaSplit(OrderFooter.total_discount_wanted)
+  );
+  $("#total_discount_wanted_").val(
+    commaSplit(OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2)
+  );
+  $("#total_tax_wanted").val(commaSplit(OrderFooter.total_tax_wanted));
+  $("#total_tax_wanted_").val(
+    commaSplit(OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2)
+  );
+
+  OrderFooter.brut_total_wanted_ =
+    OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2;
+  OrderFooter.genel_indirim__ = OrderFooter.genel_indirim_ * AKTIF_KUR.RATE2;
+  OrderFooter.net_total_wanted_ =
+    OrderFooter.net_total_wanted * AKTIF_KUR.RATE2;
+  OrderFooter.total_default_ = OrderFooter.total_default * AKTIF_KUR.RATE2;
+  OrderFooter.total_discount_wanted_ =
+    OrderFooter.total_discount_wanted * AKTIF_KUR.RATE2;
+  OrderFooter.total_tax_wanted_ =
+    OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2;
+}
+
 </script>
