@@ -7,7 +7,10 @@
 
 <cfdump var="#OfferData#">
 <cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
-       
+    <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <script>
+        var OfferData=<cfoutput>#OfferList#</cfoutput>
+    </script>      
     
 
 <div style="display:flex">
