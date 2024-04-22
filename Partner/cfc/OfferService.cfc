@@ -631,20 +631,27 @@ WHERE POR1.OFFER_ID=#arguments.OFFER_ID#
 <CFSET OFFER_DATA.OFFER_ID=getOffer.OFFER_ID>
 <CFSET OFFER_DATA.FULLNAME=getOffer.FULLNAME>
 <CFSET OFFER_DATA.DELIVERDATE=getOffer.DELIVERDATE>
-<CFSET OFFER_DATA.OFFER_ROWS=arrayNew(1)>
-<CFLOOP query="getOfferROW">
-    <CFSET RowItem=structNew()>
-    <cfset RowItem.PRODUCT_NAME=PRODUCT_NAME>
-    <cfset RowItem.QUANTITY=QUANTITY>
-    <cfset RowItem.PROP_LIST=PROP_LIST>
-    <cfset RowItem.JSON_STRINGIM=deserializeJSON(JSON_STRINGIM)>
-    <cfset RowItem.PRICE=PRICE>
-    <cfset RowItem.PRICE_OTHER=PRICE_OTHER>
-    <cfset RowItem.DISCOUNT_COST=DISCOUNT_COST>
-    <cfset RowItem.UNIT=UNIT>
-    <cfset RowItem.PART_NUMBER=PART_NUMBER>
+<CFSET OFFER_DATA.PROP_ARR=arrayNew(1)>
+<CFLOOP query="getOfferROW" group="PROP_LIST">
+   <CFSET PROP_ITEM=structNew()>
+    <cfset PROP_ITEM.PROP_LIST=PROP_LIST>
+    <cfset PROP_ITEM.JSON_STRINGIM=JSON_STRINGIM>
+    <cfset PROP_ITEM.OFFER_ROWS=arrayNew(1)>
+    <cfloop>
+        <CFSET RowItem=structNew()>
+        <cfset RowItem.PRODUCT_NAME=PRODUCT_NAME>
+        <cfset RowItem.QUANTITY=QUANTITY>
+        <cfset RowItem.PRICE=PRICE>
+        <cfset RowItem.PRICE_OTHER=PRICE_OTHER>
+        <cfset RowItem.DISCOUNT_COST=DISCOUNT_COST>
+        <cfset RowItem.UNIT=UNIT>
+        <cfset RowItem.PART_NUMBER=PART_NUMBER>
+        <cfscript>
+            arrayAppend(PROP_ITEM.OFFER_ROWS,RowItem);
+        </cfscript>
+    </cfloop>
     <cfscript>
-        arrayAppend(OFFER_DATA.OFFER_ROWS,RowItem);
+        arrayAppend(OFFER_DATA.PROP_ARR,PROP_ITEM);
     </cfscript>
 </CFLOOP>
 <cfreturn replace(serializeJSON(OFFER_DATA),"//","")>
