@@ -162,7 +162,7 @@ var RowCount = 1;
   diva.appendChild(b4);
   diva.appendChild(b5);
   diva.appendChild(b6);
-  td.appendChild(diva);
+  //td.appendChild(diva);
   var input = document.createElement("input");
   input.id = "SeperatorRC_" + Obj.PropList;
   input.name = "SeperatorRC_" + Obj.PropList;
