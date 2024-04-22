@@ -82,7 +82,7 @@
     </div>
     <div class="form-group">
         <label>General Discount %</label>
-        <input type="text" name="GENERAL_DISCOUNT">
+        <input type="text" id="GENERAL_DISCOUNT" name="GENERAL_DISCOUNT">
     </div>    
     <div class="form-group">
         <label>Currency</label>
@@ -135,7 +135,7 @@
                 </div>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <td>
                 Fatura Altı İndirim
             </td>
