@@ -909,8 +909,8 @@ function AlayiniHesapla() {
         Urun.PRICE_OTHER * Urun.AMOUNT - Urun.UNIT_PRICE * Urun.AMOUNT;
       AktifSepet.push(Urun);
     }
-    document.getElementById("TOTALE_" + PropList).innerText =
-      commaSplit(SeperatorToplam);
+    // document.getElementById("TOTALE_" + PropList).innerText =
+    //   commaSplit(SeperatorToplam);
     OrderFooter.TOTAL_PRICE += SeperatorToplam;
   }
   //console.table(AktifSepet);
