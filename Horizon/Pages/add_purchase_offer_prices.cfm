@@ -610,7 +610,9 @@ function thCrate(innerText,dn) {
   th.innerText = innerText;
   if(dn){
   th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted");}else{
-    th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted;display:none");}
+    th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted");
+th.setAttribute("style","display:none");
+}
   return th;
 }
 function CreateOptionList(tip, selval = "EUR") {
