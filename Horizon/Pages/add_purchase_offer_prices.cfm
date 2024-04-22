@@ -6,7 +6,7 @@
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
 
 
-<cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US"></cf_box>
+<cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
        
     
 
