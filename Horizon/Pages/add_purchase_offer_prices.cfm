@@ -315,7 +315,7 @@ function addRowCrs(
   div.appendChild(input2);
   div.appendChild(input3);
   div.appendChild(b1);
-  div.appendChild(b2);
+  
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
