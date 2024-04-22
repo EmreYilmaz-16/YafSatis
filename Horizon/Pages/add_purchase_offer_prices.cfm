@@ -280,6 +280,7 @@ function addRowCrs(
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
   var td = document.createElement("td");
+  td.setAttribute("style","vertical-align:middle;font-weight:bold");
   var input = document.createElement("input");
   input.type = "checkbox";
   input.name = "CBX";
