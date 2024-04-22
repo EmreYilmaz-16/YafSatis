@@ -36,14 +36,14 @@
     </div>    
     <div class="form-group">
         <label>Currency</label>
-        <select name="MONEY">
+        
             <option value="">Seç</option>
             <cfoutput>
                 <cfloop array="#MoneyArr#" item="#it#">
-                    <option value="#it.MONEY#">#it.MONEY#</option>
+                    <cfdump var="#it#">
                 </cfloop>
             </cfoutput>
-        </select>
+            <select name="MONEY"> </select>
     </div>
     <div class="form-group">
         <label>Delivery Times</label>
