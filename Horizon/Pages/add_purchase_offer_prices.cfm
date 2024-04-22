@@ -871,4 +871,27 @@ function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
   }
   return DVX;
 }
+function DegerYaz(Satir, Name, tip = 0, vals) {
+  var DonusDegeri = $(Satir).find("input[name='" + Name + "']")[0];
+  var DVX = 0;
+  if (DonusDegeri) {
+    if (tip == 0) {
+      DVX = vals;
+    } else if (tip == 1) {
+      DVX = commaSplit(vals);
+    } else if (tip == 2) {
+      DVX = commaSplit(vals);
+    }
+  } else {
+    DonusDegeri = $(Satir).find("select[name='" + Name + "']")[0];
+    if (tip == 0) {
+      DVX = vals;
+    } else if (tip == 1) {
+      DVX = parseInt(vals);
+    } else if (tip == 2) {
+      DVX = parseFloat(filterNum(commaSplit(vals)));
+    }
+  }
+  $(DonusDegeri).val(DVX);
+}
 </script>
