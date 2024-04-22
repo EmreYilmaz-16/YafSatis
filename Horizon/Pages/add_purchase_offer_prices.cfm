@@ -13,7 +13,7 @@
     </div>
 </div>
 <cfdump var="#MoneyArr#">
-<!-----
+
 <div class="display:flex">
     <div class="form-group">
         <label>DELIVER FEE</label>
@@ -52,4 +52,4 @@
 </div>
 
 
------>
+<!---------->
