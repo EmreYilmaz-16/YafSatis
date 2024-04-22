@@ -210,19 +210,19 @@ var RowCount = 1;
   Table.setAttribute("class", "SubSepet table");
   var thead = document.createElement("thead");
   var tr = document.createElement("tr");
-  tr.appendChild(thCrate("#"));
-  tr.appendChild(thCrate("Part No"));
-  tr.appendChild(thCrate("Part Name"));
-  tr.appendChild(thCrate("Quantity"));
-  tr.appendChild(thCrate("Unit"));
-  tr.appendChild(thCrate("Purchase Price"));
-  tr.appendChild(thCrate("Sales Price"));
-  tr.appendChild(thCrate("Sales Discount"));
-  tr.appendChild(thCrate("Unit Price"));
-  tr.appendChild(thCrate("Total Price"));
-  tr.appendChild(thCrate("First Remark"));
-  tr.appendChild(thCrate("Delivered Items"));
-  tr.appendChild(thCrate("Weight"));
+  tr.appendChild(thCrate("#",true));
+  tr.appendChild(thCrate("Part No",true));
+  tr.appendChild(thCrate("Part Name",true));
+  tr.appendChild(thCrate("Quantity",true));
+  tr.appendChild(thCrate("Unit",true));
+  tr.appendChild(thCrate("Purchase Price",false));
+  tr.appendChild(thCrate("Sales Price",true));
+  tr.appendChild(thCrate("Sales Discount",false));
+  tr.appendChild(thCrate("Unit Price",true));
+  tr.appendChild(thCrate("Total Price",false));
+  tr.appendChild(thCrate("First Remark",true));
+  tr.appendChild(thCrate("Delivered Items",true));
+  tr.appendChild(thCrate("Weight",true));
 
   thead.appendChild(tr);
   Table.appendChild(thead);
@@ -414,6 +414,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   var td = document.createElement("td");
+  td.setAttribute("style","display:none")
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
@@ -463,6 +464,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   var td = document.createElement("td");
+  td.setAttribute("style","display:none")
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
@@ -511,6 +513,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   var td = document.createElement("td");
+  td.setAttribute("style","display:none")
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
@@ -555,6 +558,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   var td = document.createElement("td");
+  td.setAttribute("style","display:none")
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var div2 = document.createElement("div");
@@ -601,10 +605,12 @@ function addRowCrs(
   RowCount++;
 }
 
-function thCrate(innerText) {
+function thCrate(innerText,dn) {
   var th = document.createElement("th");
   th.innerText = innerText;
-  th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted");
+  if(dn){
+  th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted");}else{
+    th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted;display:none");}
   return th;
 }
 function CreateOptionList(tip, selval = "EUR") {
