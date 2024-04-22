@@ -86,7 +86,7 @@
     </div>    
     <div class="form-group">
         <label>Currency</label>
-        <select name="MONEY">
+        <select id="MONEY" name="MONEY" onchange="AlayiniHesapla()">
             <option value="">Seç</option>
             <cfoutput>
                 <cfloop from="1" to="#arrayLen(MoneyArr)#" index="ix">
@@ -705,7 +705,7 @@ function AlayiniHesapla() {
     var Jcount = Sepet.children.length;
     document.getElementById("RC_" + PropList).innerText = Jcount;
     var SEPET_SIRA = 0;
-    var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+    var AKTIF_KUR = KurGetir(document.getElementById("MONEY").value);
     //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
