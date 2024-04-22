@@ -221,7 +221,7 @@ var RowCount = 1;
   tr.appendChild(thCrate("Unit Price",true));
   tr.appendChild(thCrate("Total Price",false));
   tr.appendChild(thCrate("First Remark",true));
-  tr.appendChild(thCrate("Delivered Items",true));
+  tr.appendChild(thCrate("Delivered Items",false));
   tr.appendChild(thCrate("Weight",true));
 
   thead.appendChild(tr);
@@ -297,24 +297,18 @@ function addRowCrs(
   } else {
     input3.value = GenerateUniqueId();
   }
-  var b1 = document.createElement("button");
-  b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
-  b1.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
+  var b1 = document.createElement("span");
+  
+  
   b1.innerText = RowCount;
-  var b2 = document.createElement("button");
-  b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
-  b2.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
+  var b2 = document.createElement("span");
+  
+  
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
 
   b2.innerText = rc2;
-  b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
+  
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
