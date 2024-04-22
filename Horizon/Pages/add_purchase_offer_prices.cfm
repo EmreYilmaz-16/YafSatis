@@ -7,11 +7,13 @@
 
 <cfdump var="#OfferData#">
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
-<!-----<div>
+<div>
     <div class="alert alert-warning">
         <cfoutput>#OfferData.NICKNAME#</cfoutput>
     </div>
 </div>
+<cfdump var="#MoneyArr#">
+<!-----
 <div class="display:flex">
     <div class="form-group">
         <label>DELIVER FEE</label>
