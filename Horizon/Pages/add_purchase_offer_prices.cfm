@@ -188,8 +188,8 @@ var RowCount = 1;
   var sv_kalan_ = 0;
   var sv_kalan = 0;
   if (Obj.Filters.length < 12) {
-    sv_kalan_ = 12 - Obj.Filters.length;
-    sv_kalan = sv_kalan_ * 10;
+    sv_kalan_ = 100 - (Obj.Filters.length;*svk_st)
+    sv_kalan = sv_kalan_
     var td = document.createElement("td");
     td.setAttribute("style", "width:" + sv_kalan + "%");
     tr.appendChild(td);
