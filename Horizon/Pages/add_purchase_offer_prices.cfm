@@ -624,4 +624,156 @@ function CreateOptionList(tip, selval = "EUR") {
     console.log(o);
   }
 }
+
+function AlayiniHesapla() {
+  AktifSepet = [];
+  OrderFooter = {
+    total_default: 0,
+    genel_indirim_: 0,
+    total_discount_wanted: 0,
+    brut_total_wanted: 0,
+    total_tax_wanted: 0,
+    net_total_wanted: 0,
+    other_money: "TL",
+  };
+  var SepetSeperatorler = document.getElementById("BasketArea").children;
+  for (let i = 0; i < SepetSeperatorler.length; i++) {
+    var Seperator = SepetSeperatorler[i];
+    var PropList = Seperator.getAttribute("data-proplist");
+    var JSON_STRINGIM_ = document.getElementById(
+      "AddedEquipment_" + PropList
+    ).value;
+    var JSON_STRINGIM = JSON.parse(JSON_STRINGIM_);
+    // console.log(PropList)
+    var Sepet = document.getElementById("SubSepetBody_" + PropList);
+    var SeperatorToplam = 0;
+    var Jcount = Sepet.children.length;
+    document.getElementById("RC_" + PropList).innerText = Jcount;
+    var SEPET_SIRA = 0;
+    var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+    //console.table(AKTIF_KUR);
+    for (let j = 0; j < Sepet.children.length; j++) {
+      var SepetItem = Sepet.children[j];
+      SEPET_SIRA++;
+      // console.log(SepetItem)
+      var PRODUCT_ID = DegeriGetir(SepetItem, "PRODUCT_ID", 1);
+      var IS_VIRTUAL = DegeriGetir(SepetItem, "IS_VIRTUAL", 1);
+      var PRODUCT_NAME = DegeriGetir(SepetItem, "PRODUCT_NAME", 0);
+      var PRODUCT_CODE_2 = DegeriGetir(SepetItem, "PRODUCT_CODE_2", 0);
+
+      var TAX_RATE = 0;
+      if (OfferSettings.IS_TAX_ZERO == 0)
+        TAX_RATE = DegeriGetir(SepetItem, "TAX", 2, 0);
+      var STOCK_ID = DegeriGetir(SepetItem, "STOCK_ID", 1);
+      var AMOUNT = DegeriGetir(SepetItem, "QUANTITY", 2, 1);
+      var PRODUCT_UNIT = DegeriGetir(SepetItem, "PRODUCT_UNIT", 0);
+      var PURCHASE_PRICE = DegeriGetir(SepetItem, "PURCHASE_PRICE", 2, 1);
+      var PURCHASE_MONEY = DegeriGetir(SepetItem, "PURCHASE_MONEY", 0);
+      var SALE_PRICE = DegeriGetir(SepetItem, "SALE_PRICE", 2, 1);
+      var SALE_MONEY = DegeriGetir(SepetItem, "SALE_MONEY", 0);
+      var SALE_DISCOUNT = DegeriGetir(SepetItem, "SALE_DISCOUNT", 2, 1);
+      var UNIQUE_RELATION_ID = DegeriGetir(SepetItem, "UNIQUE_RELATION_ID", 0);
+      var SALE_DISCOUNT_MONEY = DegeriGetir(
+        SepetItem,
+        "SALE_DISCOUNT_MONEY",
+        0,
+        0
+      );
+      var TOTAL_PRICE_MONEY = DegeriGetir(SepetItem, "TOTAL_PRICE_MONEY", 0, 0);
+      var UNIT_PRICE = SALE_PRICE - SALE_DISCOUNT;
+      DegerYaz(SepetItem, "UNIT_PRICE", 2, UNIT_PRICE);
+      var TOTAL_PRICE = 0;
+      if (AKTIF_KUR.MONEY == TOTAL_PRICE_MONEY) {
+        TOTAL_PRICE = UNIT_PRICE * AMOUNT;
+      } else {
+        var Cx = MONEY_ARR.findIndex((p) => p.MONEY == TOTAL_PRICE_MONEY);
+        var SatirKur = MONEY_ARR[Cx];
+        var CRROS_RATE = AKTIF_KUR.RATE2 / SatirKur.RATE2;
+        //console.log(CRROS_RATE);
+        TOTAL_PRICE = UNIT_PRICE * AMOUNT * CRROS_RATE;
+      }
+
+      var PRICE_OTHER = SALE_PRICE;
+      var PRICE = SALE_PRICE * AKTIF_KUR.RATE2;
+
+      DegerYaz(SepetItem, "TOTAL_PRICE", 2, TOTAL_PRICE);
+      var TL_TOTAL_PRICE = UNIT_PRICE * AMOUNT * AKTIF_KUR.RATE2;
+
+      var TAX = (TL_TOTAL_PRICE * TAX_RATE) / 100;
+      var WITH_TAX = TL_TOTAL_PRICE + TAX;
+
+      var Urun = {
+        PRODUCT_ID: PRODUCT_ID,
+        STOCK_ID: STOCK_ID,
+        PRODUCT_NAME: PRODUCT_NAME,
+        PRODUCT_CODE_2: PRODUCT_CODE_2,
+        AMOUNT: AMOUNT,
+        PRICE_OTHER: PRICE_OTHER, //workcube standart alan
+        PRICE: PRICE, //workcube standart alan
+        OTHER_MONEY: OfferData.OTHER_MONEY, //WORKCUBE STANDART ALAN
+        OTHER_MONEY_VALUE: TOTAL_PRICE, //WORKCUBE STANDART ALAN
+        DISCOUNT_COST: SALE_DISCOUNT, //WORKCUBE STANDART ALAN
+        TL_TOTAL_PRICE: TL_TOTAL_PRICE,
+        PRODUCT_UNIT: PRODUCT_UNIT,
+        PURCHASE_PRICE: PURCHASE_PRICE,
+        PURCHASE_MONEY: PURCHASE_MONEY,
+        SALE_PRICE: SALE_PRICE,
+        SALE_PRICE: SALE_PRICE,
+        SALE_MONEY: SALE_MONEY,
+        IS_VIRTUAL: IS_VIRTUAL,
+        UNIQUE_RELATION_ID: UNIQUE_RELATION_ID,
+        SALE_DISCOUNT: SALE_DISCOUNT,
+        PROP_LIST: PropList,
+        JSON_STRINGIM: JSON_STRINGIM,
+        SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
+        UNIT_PRICE: UNIT_PRICE,
+        TOTAL_PRICE: TOTAL_PRICE,
+        TOTAL_PRICE_MONEY: TOTAL_PRICE_MONEY,
+        TAX_RATE: TAX_RATE,
+        TAX: TAX,
+        WITH_TAX: WITH_TAX,
+        RATE2: AKTIF_KUR.RATE2,
+        SEPET_SIRA: SEPET_SIRA,
+      };
+
+      Urun.TLF = Urun.OTHER_MONEY_VALUE * AKTIF_KUR.RATE2;
+      if (Urun.TOTAL_PRICE_MONEY == AKTIF_KUR.MONEY) {
+        SeperatorToplam += Urun.TOTAL_PRICE;
+      } else {
+        var cbx = MONEY_ARR.findIndex((p) => p.MONEY == Urun.TOTAL_PRICE_MONEY);
+        var r2 = MONEY_ARR[cbx].RATE2;
+        SeperatorToplam += Urun.TOTAL_PRICE * r2;
+      }
+
+      OrderFooter.total_default += Urun.PRICE_OTHER * AMOUNT;
+      OrderFooter.total_discount_wanted +=
+        Urun.PRICE_OTHER * Urun.AMOUNT - Urun.UNIT_PRICE * Urun.AMOUNT;
+      AktifSepet.push(Urun);
+    }
+    document.getElementById("TOTALE_" + PropList).innerText =
+      commaSplit(SeperatorToplam);
+    OrderFooter.TOTAL_PRICE += SeperatorToplam;
+  }
+  //console.table(AktifSepet);
+  var FlDis = document.getElementById("genel_indirim_").value;
+  if (FlDis.length > 0) {
+    FlDis = filterNum(commaSplit(FlDis));
+    FlDis = parseFloat(FlDis);
+    document.getElementById("genel_indirim_").value = commaSplit(FlDis);
+    OrderFooter.genel_indirim_ = FlDis;
+  } else {
+    document.getElementById("genel_indirim_").value = commaSplit(0);
+    FlDis = 0;
+    OrderFooter.genel_indirim_ = FlDis;
+  }
+  OrderFooter.total_discount_wanted += FlDis;
+  OrderFooter.brut_total_wanted =
+    OrderFooter.total_default - OrderFooter.total_discount_wanted;
+  OrderFooter.total_tax_wanted = 0;
+  OrderFooter.net_total_wanted =
+    OrderFooter.total_default -
+    OrderFooter.total_discount_wanted +
+    OrderFooter.total_tax_wanted;
+  OzetOlustur();
+}
 </script>
