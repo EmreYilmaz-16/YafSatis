@@ -233,7 +233,7 @@ var RowCount = 1;
   div2.appendChild(Table);
   div.appendChild(div2);
   var btn =
-    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
+    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;display:none"><span id="RC_' +
     Obj.PropList +
     '">0</span> Rows Listed<br><span id="TOTALE_' +
     Obj.PropList +
@@ -241,7 +241,7 @@ var RowCount = 1;
     OfferData.OTHER_MONEY +
     "</span></button>";
   var btn =
-    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
+    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;display:none"><span id="RC_' +
     Obj.PropList +
     '">0</span> Rows Listed<br><span id="TOTALE_' +
     Obj.PropList +
@@ -249,7 +249,9 @@ var RowCount = 1;
     OfferData.OTHER_MONEY +
     "</span></button>";
   btn = $(btn)[0];
+  
   div.appendChild(btn);
+  
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
 }
