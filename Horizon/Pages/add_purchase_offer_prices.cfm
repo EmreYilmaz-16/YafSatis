@@ -4,10 +4,10 @@
 <cfset _OfferData=OfferService.getPurchaseOffer(attributes.offer_id)>
 
 <cfset OfferData=deserializeJSON(_OfferData)>
-<!-----
+
 <cfdump var="#OfferData#">
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
-<div>
+<!-----<div>
     <div class="alert alert-warning">
         <cfoutput>#OfferData.NICKNAME#</cfoutput>
     </div>
