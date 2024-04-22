@@ -1,9 +1,60 @@
-﻿<cfset attributes.offer_id=32>
+﻿
+<cfset attributes.offer_id=32>
+
+
 <CFSET OfferService=createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 
 <cfset _OfferData=OfferService.getPurchaseOffer(attributes.offer_id)>
 <cfset OfferData=deserializeJSON(_OfferData)>
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
+<cfquery name="getMoney" datasource="#dsn#">
+    SELECT (
+            SELECT RATE1
+            FROM #DSN#.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM #DSN#.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE1
+        ,(
+            SELECT RATE2
+            FROM #DSN#.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM #DSN#.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE2
+        ,SM.MONEY
+    FROM #DSN#.SETUP_MONEY AS SM
+    WHERE SM.PERIOD_ID = #session.ep.period_id#
+</cfquery>
+<script>
+    var DataSources={
+        DSN:"<cfoutput>#dsn#</cfoutput>",
+        DSN1:"<cfoutput>#dsn1#</cfoutput>",
+        DSN2:"<cfoutput>#dsn2#</cfoutput>",
+        DSN3:"<cfoutput>#dsn3#</cfoutput>",
+    }
+    var ACTIVE_COMPANY="<CFOUTPUT>#session.ep.company_id#</CFOUTPUT>";
+    var MONEY_ARR=[
+        <cfoutput query="getMoney">
+            {
+                RATE1:#RATE1#,
+                RATE2:#RATE2#,
+                MONEY:'#MONEY#',
+                SELECTED:0
+            },
+        </cfoutput>
+    ]
+    var generalParamsSatis={
+        userData:{
+            user_id:<cfoutput>#session.ep.userid#</cfoutput>
+        }
+    }
+
+</script>
 
 <cfdump var="#OfferData#">
 <cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
@@ -774,6 +825,10 @@ function AlayiniHesapla() {
     OrderFooter.total_default -
     OrderFooter.total_discount_wanted +
     OrderFooter.total_tax_wanted;
-  OzetOlustur();
+ // OzetOlustur();
+}
+function KurGetir(money) {
+  var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
+  return MONEY_ARR[ix];
 }
 </script>
