@@ -1,4 +1,4 @@
-<cfset attributes.offer_id=32>
+﻿<cfset attributes.offer_id=32>
 <CFSET OfferService=createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 
 <cfset _OfferData=OfferService.getPurchaseOffer(attributes.offer_id)>
@@ -8,8 +8,8 @@
     <div class="alert alert-warning">
        DEAR <cfoutput>#OfferData.NICKNAME#</cfoutput> , YOU CAN CREATE AND SEND YOUR OFFER TO US
     </div>
-</div>
-<div class="display:flex">
+
+<div style="display:flex">
     <div class="form-group">
         <label>DELIVER FEE</label>
         <select name="DELIVER_FEE">
@@ -47,6 +47,6 @@
         <input type="text" name="DELIVERY_TIMES">
     </div> 
 </div>
-
+</div>
 
 <!---------->
