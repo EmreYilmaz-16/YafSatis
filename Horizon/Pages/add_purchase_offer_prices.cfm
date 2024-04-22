@@ -41,6 +41,8 @@
             <cfoutput>
                 <cfloop from="1" to="#arrayLen(MoneyArr)#" index="ix">
                 #ix#
+                    <cfset item=MoneyArr[ix]>
+                    <cfdump var="#item#">
                 </cfloop>
             </cfoutput>
             <select name="MONEY"> </select>
