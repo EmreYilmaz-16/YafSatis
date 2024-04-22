@@ -831,4 +831,40 @@ function KurGetir(money) {
   var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
   return MONEY_ARR[ix];
 }
+
+function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
+  // console.log(arguments)
+  var DonusDegeri = $(Satir)
+    .find("input[name='" + Name + "']")
+    .val();
+  var DVX = 0;
+  if (DonusDegeri) {
+    if (tip == 0) {
+      DVX = DonusDegeri;
+    } else if (tip == 1) {
+      DVX = parseInt(DonusDegeri);
+    } else if (tip == 2) {
+      DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+    }
+    if (up_row == 1) {
+      if (tip == 2 || tip == 1) {
+        $(Satir)
+          .find("input[name='" + Name + "']")
+          .val(commaSplit(DVX));
+      }
+    }
+  } else {
+    var DonusDegeri = $(Satir)
+      .find("select[name='" + Name + "']")
+      .val();
+    if (tip == 0) {
+      DVX = DonusDegeri;
+    } else if (tip == 1) {
+      DVX = parseInt(DonusDegeri);
+    } else if (tip == 2) {
+      DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+    }
+  }
+  return DVX;
+}
 </script>
