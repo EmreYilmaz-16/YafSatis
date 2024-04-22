@@ -607,4 +607,25 @@ function thCrate(innerText) {
   th.setAttribute("class", "tablesorter-header tablesorter-headerUnSorted");
   return th;
 }
+function CreateOptionList(tip, selval = "EUR") {
+  if (tip == 1) {
+    var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
+    var array = paraBirimleri.MONEY;
+    var ReturnStr = "";
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      if (selval == element) {
+        ReturnStr +=
+          "<option  selected value='" + element + "'>" + element + "</option>";
+      } else {
+        ReturnStr +=
+          "<option  value='" + element + "'>" + element + "</option>";
+      }
+    }
+    //console.log(ReturnStr);
+    var o = $("ReturnStr");
+    return ReturnStr;
+    console.log(o);
+  }
+}
 </script>
