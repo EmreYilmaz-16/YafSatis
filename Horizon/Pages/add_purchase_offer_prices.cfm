@@ -127,6 +127,10 @@
 </script>
 </cfoutput>
 <script>
+var AktifSepet = [];
+var OfferSettings = {
+  IS_TAX_ZERO: 1,
+};
 var EqArr = [];
 var RowCount = 1;
     function addEqRow(Obj, jsn) {
