@@ -311,7 +311,7 @@ function addRowCrs(
   
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
-  div.appendChild(input);
+  
   div.appendChild(input2);
   div.appendChild(input3);
   div.appendChild(b1);
