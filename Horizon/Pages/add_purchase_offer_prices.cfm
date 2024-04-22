@@ -4,10 +4,11 @@
 <cfset _OfferData=OfferService.getPurchaseOffer(attributes.offer_id)>
 <cfset OfferData=deserializeJSON(_OfferData)>
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
-<div>
-    <div class="alert alert-warning">
-       DEAR <cfoutput>#OfferData.NICKNAME#</cfoutput> , YOU CAN CREATE AND SEND YOUR OFFER TO US
-    </div>
+
+
+<cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US"></cf_box>
+       
+    
 
 <div style="display:flex">
     <div class="form-group">
@@ -47,6 +48,6 @@
         <input type="text" name="DELIVERY_TIMES">
     </div> 
 </div>
-</div>
+</cf_box>
 
 <!---------->
