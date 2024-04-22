@@ -833,7 +833,7 @@ function AlayiniHesapla() {
       var disc_=document.getElementById("GENERAL_DISCOUNT").value
       var disc=parseFloat(filterNum(commaSplit(disc_)))
       var Hdisc=(SALE_PRICE*disc)/100
-      DegerYaz(SepetItem,"SALE_DISCOUNT",commaSplit(Hdisc));
+      DegerYaz(SepetItem,"SALE_DISCOUNT",Hdisc);
       var SALE_DISCOUNT = DegeriGetir(SepetItem, "SALE_DISCOUNT", 2, 1);
       var UNIQUE_RELATION_ID = DegeriGetir(SepetItem, "UNIQUE_RELATION_ID", 0);
       var SALE_DISCOUNT_MONEY = DegeriGetir(
