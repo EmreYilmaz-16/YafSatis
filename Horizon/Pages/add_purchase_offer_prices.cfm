@@ -39,8 +39,8 @@
         
             <option value="">Seç</option>
             <cfoutput>
-                <cfloop array="#MoneyArr#" item="#it#">
-                    <cfdump var="#it#">
+                <cfloop from="1" to="#arrayLen(MoneyArr)#" index="ix">
+                #ix#
                 </cfloop>
             </cfoutput>
             <select name="MONEY"> </select>
