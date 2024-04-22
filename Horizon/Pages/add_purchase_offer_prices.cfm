@@ -82,7 +82,7 @@
     </div>
     <div class="form-group">
         <label>General Discount %</label>
-        <input type="text" id="GENERAL_DISCOUNT" name="GENERAL_DISCOUNT">
+        <input type="text" id="GENERAL_DISCOUNT" name="GENERAL_DISCOUNT" onchange="indirimYuzdeHesap()">
     </div>    
     <div class="form-group">
         <label>Currency</label>
@@ -830,6 +830,10 @@ function AlayiniHesapla() {
       var PURCHASE_MONEY = DegeriGetir(SepetItem, "PURCHASE_MONEY", 0);
       var SALE_PRICE = DegeriGetir(SepetItem, "SALE_PRICE", 2, 1);
       var SALE_MONEY = DegeriGetir(SepetItem, "SALE_MONEY", 0);
+      var disc_=document.getElementById("GENERAL_DISCOUNT").value
+      var disc=parseFloat(filterNum(commaSplit(disc_)))
+      var Hdisc=(SALE_PRICE*disc)/100
+      DegerYaz(SepetItem,"SALE_DISCOUNT",commaSplit(Hdisc));
       var SALE_DISCOUNT = DegeriGetir(SepetItem, "SALE_DISCOUNT", 2, 1);
       var UNIQUE_RELATION_ID = DegeriGetir(SepetItem, "UNIQUE_RELATION_ID", 0);
       var SALE_DISCOUNT_MONEY = DegeriGetir(
@@ -1040,5 +1044,21 @@ function OzetOlustur() {
   OrderFooter.total_tax_wanted_ =
     OrderFooter.total_tax_wanted * AKTIF_KUR.RATE2;
 }
-
+function indirimYuzdeHesap(){
+    var disc_=document.getElementById("GENERAL_DISCOUNT").value
+var disc=parseFloat(filterNum(commaSplit(disc_)))
+var BasketItems=document.getElementsByClassName("SubSepet")
+for(let i=0;i<BasketItems.length;i++){
+ var Rows=BasketItems[i].tBodies[i].children;
+    for(let j=0;j<Rows.length;j++){
+        var PRC=document.getElementById("SALE_PRICE_"+(j+1)).value;
+        PRC=parseFloat(filterNum(commaSplit(PRC)))
+        console.log(PRC)
+        var Hdisc=(PRC*disc)/100
+        console.log(Hdisc)
+        document.getElementById("SALE_DISCOUNT_"+(j+1)).value=commaSplit(Hdisc)
+        AlayiniHesapla()
+    }
+}
+}
 </script>
