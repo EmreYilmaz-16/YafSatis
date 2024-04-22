@@ -333,16 +333,6 @@ function addRowCrs(
   input.value = MANUFACT_CODE;
   input.id = "PRODUCT_CODE_2_" + RowCount;
   input.setAttribute("proplist", proplist);
-  if (IS_VIRTUAL == 1) {
-    input.setAttribute(
-      "style",
-      "color:red;font-weight:bold;text-align:left;background:black;"
-    );
-  } else {
-    input.setAttribute("style", "text-align:left");
-  }
-  input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
-
   div.appendChild(input);
   var input = document.createElement("input");
   input.type = "hidden";
