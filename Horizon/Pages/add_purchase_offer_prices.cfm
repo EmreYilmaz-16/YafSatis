@@ -1001,7 +1001,7 @@ function DegerYaz(Satir, Name, tip = 0, vals) {
 
 function OzetOlustur() {
   
-  var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+  var AKTIF_KUR = KurGetir(document.getElementById("MONEY").value);
   $("#brut_total_wanted").val(commaSplit(OrderFooter.brut_total_wanted));
   $("#brut_total_wanted_").val(
     commaSplit(OrderFooter.brut_total_wanted * AKTIF_KUR.RATE2)
