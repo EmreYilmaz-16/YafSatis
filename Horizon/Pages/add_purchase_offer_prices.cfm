@@ -2,6 +2,7 @@
 <CFSET OfferService=createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 
 <cfset _OfferData=OfferService.getPurchaseOffer(attributes.offer_id)>
+<!-----
 <cfset OfferData=deserializeJSON(_OfferData)>
 <cfdump var="#OfferData#">
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
@@ -48,3 +49,4 @@
 </div>
 
 
+----->
