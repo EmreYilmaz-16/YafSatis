@@ -1001,6 +1001,7 @@ function DegerYaz(Satir, Name, tip = 0, vals) {
       DVX = parseFloat(filterNum(commaSplit(vals)));
     }
   }
+  console.log(DVX);
   $(DonusDegeri).val(DVX);
 }
 
