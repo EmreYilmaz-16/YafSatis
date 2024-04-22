@@ -109,6 +109,110 @@
     <div id="BasketArea">
 
     </div>
+    
+<div id="SubTotalArea">
+    <cf_grid_list>
+        <thead>
+            <tr>
+                <th colspan="3">
+                    Toplamlar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_default" id="total_default" readonly>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_default_" id="total_default_" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Fatura Altı İndirim
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" onchange="AlayiniHesapla()" name="genel_indirim_" id="genel_indirim_" >
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" onchange="AlayiniHesapla()" name="genel_indirim__" id="genel_indirim__" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Toplam İndirim
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_discount_wanted" id="total_discount_wanted" readonly>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_discount_wanted_" id="total_discount_wanted_" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                KDV'siz Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="brut_total_wanted" id="brut_total_wanted" readonly >
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="brut_total_wanted_" id="brut_total_wanted_" readonly >
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                KDV Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_tax_wanted" id="total_tax_wanted" readonly>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="total_tax_wanted_" id="total_tax_wanted_" readonly>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                KDV'li Toplam
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="net_total_wanted" id="net_total_wanted" readonly>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="text" name="net_total_wanted_" id="net_total_wanted_" readonly>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    </cf_grid_list>
+</div>
 </cf_box>
 <!---------->
 <cfoutput>
