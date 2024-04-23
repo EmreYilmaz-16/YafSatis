@@ -102,7 +102,7 @@
         <input type="text" name="DELIVERY_TIMES">
     </div> 
     <div class="form-group">
-        <button class="ui-wrk-btn ui-wrk-btn-success" onclick="KaydetCanim()">
+        <button class="ui-wrk-btn ui-wrk-btn-success" onclick="SaveOffer()">
           Kaydet
         </button>
     </div>
