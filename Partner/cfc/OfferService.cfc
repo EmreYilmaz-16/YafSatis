@@ -727,6 +727,59 @@ AND PO2.OFFER_NUMBER IS NOT NULL
     <cfargument name="data">
     <cfset FormData=deserializeJSON(arguments.data)>
     <cfdump var="#FormData#">
+    <CFSET attributes.OFFER_ID=FormData.OFFER_ID>
+    <cfquery name="UP" datasource="#DSN3#">
+        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.OFFER_FOOTER.net_total_wanted#
+        WHERE OFFER_ID=#attributes.OFFER_ID#
+    </cfquery>
+
+    <cfloop array="#FormData.ROWS#" item="it" index="i">
+      
+        <cfquery name="GETU" datasource="#dsn#">
+            SELECT * FROM CatalystQA.CatalystQA_product.PRODUCT_UNIT WHERE PRODUCT_ID=#it.PRODUCT_ID# AND IS_MAIN=1
+        </cfquery>
+        <cfset "attributes.deliver_date#i#"=dateFormat(now(),"dd/mm/yyyy")>
+        <cfset "attributes.price#i#"=it.PRICE>
+        <cfset "attributes.product_id#i#"=it.PRODUCT_ID>
+        <cfset "attributes.stock_id#i#"=it.STOCK_ID>
+        <cfset "attributes.amount#i#"=it.AMOUNT>
+        <cfset UNITA="">
+        <cfif it.STOCK_ID eq 0>
+            <cfset "attributes.unit#i#"=it.PRODUCT_UNIT>
+            <cfset "attributes.unit_id#i#"=0>
+            <cfset UNITA=it.PRODUCT_UNIT>
+        <cfelse>
+        <cfset "attributes.unit#i#"=GETU.MAIN_UNIT>
+        <cfset "attributes.unit_id#i#"=GETU.PRODUCT_UNIT_ID>
+        <cfset UNITA=GETU.MAIN_UNIT>
+    </cfif>
+        <cfset "attributes.tax#i#"=it.TAX>
+        <cfset "attributes.product_name#i#"=it.PRODUCT_NAME>
+        <cfset "attributes.other_money_#i#"=it.OTHER_MONEY>
+        <cfset "attributes.other_money_value_#i#"=it.OTHER_MONEY_VALUE>
+        <cfset "attributes.price_other#i#"=it.PRICE_OTHER>
+        <cfset "attributes.iskonto_tutar#i#"=it.SALE_DISCOUNT>
+        <CFSET 'attributes.ROW_NUMBER_PBS#i#'=it.SEPET_SIRA>
+        <CFSET 'attributes.PROP_LIST#i#'=it.PROP_LIST>
+        <CFSET 'attributes.JSON_STRINGIM#i#'=serializeJSON(it.JSON_STRINGIM)>
+        <CFSET 'attributes.IS_VIRTUAL#i#'=it.IS_VIRTUAL>
+        <cfset 'attributes.row_unique_relation_id#i#'=it.UNIQUE_RELATION_ID>
+        <cfset 'attributes.wrk_row_id#i#'=it.UNIQUE_RELATION_ID>
+      
+        <cfquery name="updrows" datasource="#dsn3#">
+           UPDATE PBS_OFFER_ROW SET PRICE=#evaluate('attributes.price#i#')#, 
+           PRICE_OTHER=#evaluate('attributes.price_other#i#')#,
+           TAX=#evaluate('attributes.tax#i#')#,
+           OTHER_MONEY='#evaluate('attributes.other_money_#i#')#',
+           OTHER_MONEY_VALUE=#evaluate('attributes.other_money_value_#i#')#,
+           DISCOUNT_COST=#evaluate('attributes.iskonto_tutar#i#')#,
+           EXTRA_PRICE_TOTAL=0
+           
+           WHERE OFFER_ID=#attributes.OFFER_ID# AND UNIQUE_RELATION_ID=#it.UNIQUE_RELATION_ID#
+        </cfquery>
+    </cfloop>
+
+
 </cffunction>
 
 <cffunction name="wrk_eval" returntype="string" output="false">
