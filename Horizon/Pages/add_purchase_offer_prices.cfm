@@ -1,5 +1,5 @@
 ﻿
-<cfset attributes.offer_id=32>
+<cfparam name="attributes.offer_id" default="32">
 
 
 <CFSET OfferService=createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>

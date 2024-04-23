@@ -21,6 +21,7 @@
                 <th>
                     Teslim Tarihi
                 </th>
+                
             </tr>
 <tr>
     <th style="color:red;font-weight:bold">
@@ -53,6 +54,9 @@
                     </td>
                     <td>
                         #it2.DELIVER_DATE#
+                    </td>
+                    <td>
+                        <a onclick="window.location.href='index.cfm?fuseaction=purchase.emptypopup_add_offer_price_pbs&'"<span class="fa fa-plus"></span>
                     </td>
                 </tr>
             </cfloop>
