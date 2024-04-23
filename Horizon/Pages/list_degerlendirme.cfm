@@ -56,7 +56,7 @@
                         #it2.DELIVER_DATE#
                     </td>
                     <td>
-                        <a onclick="window.location.href='index.cfm?fuseaction=purchase.emptypopup_add_offer_price_pbs&'"<span class="fa fa-plus"></span>
+                        <a onclick="window.location.href='index.cfm?fuseaction=purchase.emptypopup_add_offer_price_pbs&offer_id=#it2.OFFER_ID#'"><span class="fa fa-plus"></span></a>
                     </td>
                 </tr>
             </cfloop>
