@@ -56,7 +56,7 @@
 
 </script>
 
-<cfdump var="#OfferData#">
+<cfhtmltopdf destination="test.pdf">
 <cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
     <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
     <script>
@@ -221,6 +221,7 @@
 </cf_box>
 <!---------->
 <cfoutput>
+
 <script>
     $(document).ready(function(){
         <cfloop from="1" to="#arraylen(OfferData.PROP_ARR)#" index="i">
@@ -236,3 +237,4 @@
 </script>
 </cfoutput>
 <script src="/AddOns/YafSatis/Horizon/js/add_purchase_offer_prices.js"></script>
+</cfhtmltopdf>

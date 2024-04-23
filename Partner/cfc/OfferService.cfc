@@ -540,9 +540,9 @@ WHERE 1 = 1
 <CFSET attributes.to_par_ids="">
 <cfset FORM.OFFER_HEAD="Teklif İstiyoruz">
 <cfset FORM.OFFER_DETAIL ="">
-<cfset FORM.PROCESS_STAGE  =67>
-<cfset attributes.PROCESS_STAGE  =67>
-<cfset attributes.PROCESS_STAGE  =67>
+<cfset FORM.PROCESS_STAGE  =269>
+<cfset attributes.PROCESS_STAGE  =269>
+<cfset attributes.PROCESS_STAGE  =269>
 <cfset attributes.OPPORTUNITY_ID   ="">
 <cfset attributes.OFFER_DATE  =dateFormat(now(),"dd/mm/yyyy")>
 
