@@ -704,6 +704,7 @@ function AlayiniHesapla() {
     OrderFooter.total_discount_wanted +
     OrderFooter.total_tax_wanted;
   OzetOlustur();
+  paraBirimleriniEsitle();
 }
 function KurGetir(money) {
   var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
@@ -837,7 +838,7 @@ function SaveOffer() {
   BasketData.OFFER_HEADER = OfferData;
   BasketData.ROWS = AktifSepet;
   BasketData.OFFER_FOOTER = OrderFooter;
-/*
+  /*
   $.ajax({
     url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_OFFER_ROWS",
     data: {
@@ -849,5 +850,17 @@ function SaveOffer() {
       });
     },
   });*/
-  console.log(BasketData)
+  console.log(BasketData);
+}
+function paraBirimleriniEsitle() {
+  var sm = document.getElementsByName("SALE_MONEY");
+  var um = document.getElementsByName("UNIT_PRICE_MONEY");
+  var sdm = document.getElementsByName("SALE_DISCOUNT_MONEY");
+  var tpm = document.getElementsByName("TOTAL_PRICE_MONEY");
+  for (let i = 0; i < sm.length; i++) {
+    sm[i].value = document.getElementById("MONEY").value;
+    um[i].value = document.getElementById("MONEY").value;
+    sdm[i].value = document.getElementById("MONEY").value;
+    tpm[i].value = document.getElementById("MONEY").value;
+  }
 }
