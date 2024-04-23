@@ -551,7 +551,8 @@ function CreateOptionList(tip, selval = "EUR") {
 }
 
 function AlayiniHesapla() {
-  AktifSepet = [];
+    paraBirimleriniEsitle();
+    AktifSepet = [];
   OrderFooter = {
     total_default: 0,
     genel_indirim_: 0,
@@ -704,7 +705,7 @@ function AlayiniHesapla() {
     OrderFooter.total_discount_wanted +
     OrderFooter.total_tax_wanted;
   OzetOlustur();
-  paraBirimleriniEsitle();
+  
 }
 function KurGetir(money) {
   var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
