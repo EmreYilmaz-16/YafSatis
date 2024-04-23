@@ -56,7 +56,7 @@
 
 </script>
 
-<cfhtmltopdf destination="test.pdf">
+<cfhtmltopdf destination="c:/test.pdf">
 <cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
     <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
     <script>
