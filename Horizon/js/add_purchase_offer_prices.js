@@ -833,15 +833,27 @@ function indirimYuzdeHesap() {
     }
   }
 }
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
 function SaveOffer() {
   AlayiniHesapla();
   var BasketData = new Object();
   BasketData.OFFER_HEADER = OfferData;
   BasketData.ROWS = AktifSepet;
   BasketData.OFFER_FOOTER = OrderFooter;
-  /*
+  BasketData.Kurlar=MONEY_ARR;
+  BasketData.AKTIF_KUR=document.getElementById("MONEY").value
+  BasketData.OFFER_ID=getParameterByName("offer_id");
+
   $.ajax({
-    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_OFFER_ROWS",
+    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_PURCHASE_OFFER_PRICES",
     data: {
       data: JSON.stringify(BasketData),
     },
@@ -850,7 +862,7 @@ function SaveOffer() {
         messageType: "success",
       });
     },
-  });*/
+  });
   console.log(BasketData);
 }
 function paraBirimleriniEsitle() {

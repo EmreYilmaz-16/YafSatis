@@ -723,6 +723,11 @@ AND PO2.OFFER_NUMBER IS NOT NULL
     <cfreturn replace(serializeJSON(RETURN_ARR),"//","")>
 </cffunction>
 
+<cffunction name="SAVE_PURCHASE_OFFER_PRICES" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="data">
+    <cfset FormData=deserializeJSON(arguments.data)>
+    <cfdump var="#FormData#">
+</cffunction>
 
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
