@@ -851,7 +851,10 @@ function SaveOffer() {
   BasketData.Kurlar=MONEY_ARR;
   BasketData.AKTIF_KUR=document.getElementById("MONEY").value
   BasketData.OFFER_ID=getParameterByName("offer_id");
-
+BasketData.DELIVER_FEE=document.getElementsByName("DELIVER_FEE")[0].value
+BasketData.TAX_STATUS=document.getElementsByName("TAX_STATUS")[0].value
+BasketData.GENERAL_DISCOUNT=document.getElementsByName("GENERAL_DISCOUNT")[0].value
+BasketData.DELIVERY_TIMES=document.getElementsByName("DELIVERY_TIMES")[0].value
   $.ajax({
     url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_PURCHASE_OFFER_PRICES",
     data: {
