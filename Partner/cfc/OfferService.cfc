@@ -775,7 +775,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
            DISCOUNT_COST=#evaluate('attributes.iskonto_tutar#i#')#,
            EXTRA_PRICE_TOTAL=0
            
-           WHERE OFFER_ID=#attributes.OFFER_ID# AND UNIQUE_RELATION_ID=#it.UNIQUE_RELATION_ID#
+           WHERE OFFER_ID=#attributes.OFFER_ID# AND UNIQUE_RELATION_ID='#it.UNIQUE_RELATION_ID#'
         </cfquery>
     </cfloop>
 
