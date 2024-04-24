@@ -729,7 +729,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
     <cfdump var="#FormData#">
     <CFSET attributes.OFFER_ID=FormData.OFFER_ID>
     <cfquery name="UP" datasource="#DSN3#">
-        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.OFFER_FOOTER.net_total_wanted#,OTHER_MONEY='#FORMDATA.AKTIF_KUR#'
+        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.OFFER_FOOTER.net_total_wanted#,OTHER_MONEY='#FORMDATA.AKTIF_KUR#',
         DELIVER_FEE='#FORMDATA.DELIVER_FEE#' ,TAX_STATUS ='#FORMDATA.TAX_STATUS#',GENERAL_DISCOUNT_RATE =<CFIF LEN(FORMDATA.GENERAL_DISCOUNT)>#FORMDATA.GENERAL_DISCOUNT#<CFELSE>0</CFIF>
         WHERE OFFER_ID=#attributes.OFFER_ID#
     </cfquery>
