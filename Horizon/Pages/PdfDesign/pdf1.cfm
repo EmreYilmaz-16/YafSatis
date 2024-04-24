@@ -482,9 +482,10 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                         </tr>
                     </thead>
                     <tbody>
+                        <CFSET IIIX=1>
                          <cfoutput> <tr class="table-tr">
                          
-                            <td>#CURRENTROW#</td>
+                            <td>#IIIX#</td>
                             <td>#MN_CODE#</td>
                             <td>#PRODUCT_NAME#</td>
                             <td>#QUANTITY#</td>
@@ -493,6 +494,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                             <td>#OTHER_MONEY_VALUE# EU</td>
                            <td>#PRODUCT_NAME2#</td>
                         </tr>
+                        <CFSET IIIX=IIIX+1>
                     </cfoutput><!------->
                      
                     </tbody>
