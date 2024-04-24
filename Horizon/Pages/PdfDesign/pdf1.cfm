@@ -482,7 +482,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                         </tr>
                     </thead>
                     <tbody>
-                       <!---  <cfoutput> <tr class="table-tr">
+                         <cfoutput> <tr class="table-tr">
                          
                             <td>0</td>
                             <td>#MN_CODE#</td>
@@ -493,7 +493,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                             <td>#OTHER_MONEY_VALUE# EU</td>
                            <td>#PRODUCT_NAME2#</td>
                         </tr>
-                    </cfoutput>---->
+                    </cfoutput><!------->
                         <tr>
                             <td>2</td>
                             <td>3037MK2</td>
