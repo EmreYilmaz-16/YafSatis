@@ -780,7 +780,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
         </cfquery>
     </cfloop>
     <cfquery name="ihv" datasource="#dsn3#">
-        SELECT * FROM PBS_OFFER_MONEY WHERE ACTION_ID=#PBS_OFFER_MONEY# 
+        SELECT * FROM PBS_OFFER_MONEY WHERE ACTION_ID=#attributes.OFFER_ID# 
     </cfquery>
     <CFIF ihv.recordCount EQ 0>
     <cfloop from="1" to="#arrayLen(FORMDATA.Kurlar)#"  index="fnc_i">
