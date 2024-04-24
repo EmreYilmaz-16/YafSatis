@@ -69,20 +69,20 @@
         <label>DELIVER FEE</label>
         <select name="DELIVER_FEE">
             <option value="">Seç</option>
-            <option value="1">Need Charge</option>
+            <option value="1" <cfif OfferData.DELIVER_FEE eq 1>selected</cfif>>Need Charge</option>
         </select>
     </div>
     <div class="form-group">
         <label>Tax Status</label>
         <select name="TAX_STATUS">
             <option value="">Seç</option>
-            <option value="1">With Tax</option>
-            <option value="1">Without Tax</option>
+            <option value="1" <cfif OfferData.TAX_STATUS eq 1>selected</cfif>>With Tax</option>
+            <option value="2" <cfif OfferData.TAX_STATUS eq 2>selected</cfif>>Without Tax</option>
         </select>
     </div>
     <div class="form-group">
         <label>General Discount %</label>
-        <input type="text" id="GENERAL_DISCOUNT" name="GENERAL_DISCOUNT" onchange="indirimYuzdeHesap()">
+        <input type="text" id="GENERAL_DISCOUNT" name="GENERAL_DISCOUNT" onchange="indirimYuzdeHesap()" value="<cfoutput>#OfferData.GENERAL_DISCOUNT_RATE#</cfoutput>">
     </div>    
     <div class="form-group">
         <label>Currency</label>
@@ -92,7 +92,7 @@
                 <cfloop from="1" to="#arrayLen(MoneyArr)#" index="ix">
                 
                     <cfset item=MoneyArr[ix]>
-                <option value="#item.MONEY#">#item.MONEY#</option>
+                <option value="#item.MONEY#" <cfif OfferData.OTHER_MONEY eq item.MONEY>selected</cfif>>#item.MONEY#</option>
                 </cfloop>
             </cfoutput>
              </select>
