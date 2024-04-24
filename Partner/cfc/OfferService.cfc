@@ -779,6 +779,10 @@ AND PO2.OFFER_NUMBER IS NOT NULL
            WHERE OFFER_ID=#attributes.OFFER_ID# AND UNIQUE_RELATION_ID='#it.UNIQUE_RELATION_ID#'
         </cfquery>
     </cfloop>
+    <cfquery name="ihv" datasource="#dsn3#">
+        SELECT * FROM PBS_OFFER_MONEY WHERE ACTION_ID=#PBS_OFFER_MONEY# 
+    </cfquery>
+    <CFIF ihv.recordCount EQ 0>
     <cfloop from="1" to="#arrayLen(FORMDATA.Kurlar)#" item="it" index="fnc_i">
 		<cfquery name="add_money_obj_bskt" datasource="#DSN3#">
 			INSERT INTO PBS_OFFER_MONEY
@@ -803,6 +807,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 			)
 		</cfquery>
 	</cfloop>
+</CFIF>
 </cffunction>
 
 <cffunction name="wrk_eval" returntype="string" output="false">
