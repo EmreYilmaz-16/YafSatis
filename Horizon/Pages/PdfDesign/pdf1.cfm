@@ -484,7 +484,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                     <tbody>
                          <cfoutput> <tr class="table-tr">
                          
-                            <td>0</td>
+                            <td>#CURRENTROW#</td>
                             <td>#MN_CODE#</td>
                             <td>#PRODUCT_NAME#</td>
                             <td>#QUANTITY#</td>
