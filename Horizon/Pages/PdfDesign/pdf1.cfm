@@ -438,7 +438,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
 
                 <div class="div-elements">
                     <p class="input-value">
-                        <cfoutput>#ourcompanyinfo.COMPANY_ADDRESS#</cfoutput>
+                        <cfoutput>#Offer.COMPANY_ADDRESS#</cfoutput>
                     </p>
                 </div>
             </div>
