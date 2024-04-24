@@ -402,7 +402,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY PLACE</div>
-                    <div class="input-value"><span>:</span> UNKNOWN (EXW/EUROPE)</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.DELIVERY_PLACE#</cfoutput> (<cfoutput>#Offer.DELIVERY_ADDRESS#</cfoutput>)</div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">VALIDITY</div>
