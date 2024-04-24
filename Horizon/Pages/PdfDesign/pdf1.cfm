@@ -455,20 +455,14 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
             <div class="table-top">
                 <div class="table-top-div">
                    <CFSET JD=deserializeJSON(JSON_STRINGIM)>
-                   <cfdump var="#JD#">
+                  
+                   <cfloop array="#JD.Filters#" item="it">
                     <div class="table-top-elements">
-                        <p style="font-weight: 700; font-size: 10px;">AIR COMPRESSOR</span>
+                        <p style="font-size: 10px;">#it.PNAME#</p>
+                        <p style="font-weight: 700; font-size: 10px;">#it.PRODUCT_CAT#</p>
                     </div>
-
-                    <div class="table-top-elements">
-                        <p style="font-size: 10px;">BRAND</p>
-                        <p style="font-weight: 700; font-size: 10px;">SPERRE</p>
-                    </div>
-
-                    <div class="table-top-elements">
-                        <p class="font-size: 10px;">TYPE</p>
-                        <p style="font-weight: 700; font-size: 10px;">HL2/105</p>
-                    </div>
+                </cfloop>
+                
                 </div>
             </div>
 
