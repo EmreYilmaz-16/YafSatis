@@ -204,7 +204,7 @@
                         <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
-                        <a href="javascript://" onclick="windowopen('/Addons/YafSatis/Horizon/Pages/PdfDesign/pdf1.cfm?offer_id=<cfoutput>#attributes.offer_id#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-print"></i>Yazdır</a>
+                        <a href="javascript://" onclick="windowopen('/Addons/YafSatis/Horizon/Pages/PdfDesign/pdf1.cfm?offer_id=<cfoutput>#attributes.offer_id#</cfoutput>','wide')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-print"></i>Yazdır</a>
                     </div>
                     
                 </div>
