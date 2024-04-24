@@ -398,7 +398,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY TIME</div>
-                    <div class="input-value"><span>:</span> <cfoutput>#Offer.DELIVERDATE#</cfoutput>(<cfoutput>#dateDiff("w",Offer.OFFER_DATE,Offer.DELIVERDATE)#</cfoutput>W/DAYS)</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.DELIVERDATE#</cfoutput>(<cfoutput>#dateDiff("w",Offer.DELIVERDATE,Offer.OFFER_DATE)#</cfoutput>W/DAYS)</div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY PLACE</div>
