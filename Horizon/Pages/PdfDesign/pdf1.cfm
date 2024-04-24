@@ -362,7 +362,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
     var OfferData=<cfoutput>#OfferList#</cfoutput>
 </script>
 <cfset Offer=deserializeJSON(OfferList)>
-<cfdump var="#Offer#">
+
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
@@ -549,3 +549,9 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/JS/assets/lib/jquery/jquery-min.js"></script>
+<script>
+    $(document).ready(function (params) {
+        window.print()
+    })
+</script>
