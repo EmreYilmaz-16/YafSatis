@@ -438,14 +438,19 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
 
                 <div class="div-elements">
                     <p class="input-value">
-                        SELIMIYE MAH. SELIMIYE ISKELE CAD. NO:20/1
-                        USKUDAR - ISTANBUL - TURKEY
+                        <cfoutput>#ourcompanyinfo.COMPANY_ADDRESS#</cfoutput>
                     </p>
                 </div>
             </div>
         </div>
-
+        <cfquery name="GETrOWS" datasource="#DSN3#">
+            SELECT POR.*,0 AS PURCHASE_PRICE,'TL' AS PURCHASE_MONEY,'' AS FIRST_REMARK,
+            CASE WHEN POR.IS_VIRTUAL <>1 THEN     S.MANUFACT_CODE ELSE VPP.PART_NUMBER END AS MN_CODE FROM PBS_OFFER_ROW AS POR LEFT JOIN STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID 
+            LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
+            WHERE OFFER_ID=#attributes.OFFER_ID#
+        </cfquery>
         <!-- TABLE -->
+        <cfoutput query="GETrOWS" group="PROP_LIST">
         <div class="table-div">
             <div class="table-top">
                 <div class="table-top-div">
@@ -504,6 +509,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                 </table>
             </div>
         </div>
+    </cfoutput>
         <div class="page-text-div">
             <p class="page-text">
                 ACCORDING TO SOLAS CHAPTER II-1 PART A-1 REGULATION 3-5,WE HEREBY DECLARETHATTHE OFFERED PARTS DO
