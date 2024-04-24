@@ -421,19 +421,19 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
             <div class="right-div">
                 <div class="div-elements">
                     <div class="input-title">IMO NO</div>
-                    <div class="input-value"><span>:</span></div>
+                    <div class="input-value"><span>:</span><cfoutput>#Offer.IMO_NUMBER#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">VESSEL NAME</div>
-                    <div class="input-value"><span>:</span></div>
+                    <div class="input-value"><span>:</span><cfoutput>#Offer.SHIP_NAME#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">FROM</div>
-                    <div class="input-value"><span>:</span> YANA BAKIR</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.EMPLOYEE_NAME#</cfoutput> <cfoutput>#Offer.EMPLOYEE_SURNAME#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">TO</div>
-                    <div class="input-value" style="font-weight: 700;"><span>:</span> SOLNA DENIZCILIK</div>
+                    <div class="input-value" style="font-weight: 700;"><span>:</span> <cfoutput>#Offer.FULLNAME#</cfoutput></div>
                 </div>
 
                 <div class="div-elements">
