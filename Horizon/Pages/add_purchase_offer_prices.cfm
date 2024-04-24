@@ -1,4 +1,4 @@
-﻿
+﻿<script src="/AddOns/YafSatis/Content/Js/notifications/notifications.js"></script>
 <cfparam name="attributes.offer_id" default="32">
 
 

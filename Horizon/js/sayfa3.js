@@ -1599,7 +1599,9 @@ function AddPurchaseOffer(){
       FormData:JSON.stringify(OS)
     },
     success:function(retDat){
-      
+      $.notification(["Kayıt Edildi"], {
+        messageType: "success",
+      })
     }
   })
 }
