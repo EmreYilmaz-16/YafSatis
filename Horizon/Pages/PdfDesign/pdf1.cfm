@@ -530,11 +530,11 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                 <div class="total-price-div">
                     <div class="total-pirce-top">
                         <p class="total-price-top-left">QUOTATION SUBTOTAL :</p>
-                        <p class="total-price-top-right"><CFOUTPUT>#Offer.OTHER_MONEY_VALUE# #Offer.OTHER_MONEY#</CFOUTPUT></p>
+                        <p class="total-price-top-right"><CFOUTPUT>#TLFORMAT(Offer.OTHER_MONEY_VALUE)# #Offer.OTHER_MONEY#</CFOUTPUT></p>
                     </div>
                     <div class="total-price-bottom">
                         <p class="total-price-bottom-left">TOTAL AMOUNT:</p>
-                        <p class="total-price-bottom-right"><CFOUTPUT>#Offer.OTHER_MONEY_VALUE# #Offer.OTHER_MONEY#</CFOUTPUT></p>
+                        <p class="total-price-bottom-right"><CFOUTPUT>#TLFORMAT(Offer.OTHER_MONEY_VALUE)# #Offer.OTHER_MONEY#</CFOUTPUT></p>
                     </div>
                 </div>
             </div>
