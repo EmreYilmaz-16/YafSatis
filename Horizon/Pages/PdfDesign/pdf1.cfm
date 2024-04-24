@@ -482,12 +482,12 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table-tr">
-                          <cfoutput>
+                       <!---  <cfoutput> <tr class="table-tr">
+                         
                             <td>0</td>
                             <td>#MN_CODE#</td>
                             <td>#PRODUCT_NAME#</td>
-                           <!---  <td>#QUANTITY#</td>
+                            <td>#QUANTITY#</td>
                             <td>#UNIT#</td>
                             <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
                             <td>#OTHER_MONEY_VALUE# EU</td>
