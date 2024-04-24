@@ -449,6 +449,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
             LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
             WHERE OFFER_ID=#attributes.OFFER_ID#
         </cfquery>
+        <cfdump var="##"
         <!-- TABLE -->
         <cfoutput query="GETrOWS" group="PROP_LIST">
         <div class="table-div">
@@ -482,15 +483,17 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                     </thead>
                     <tbody>
                         <tr class="table-tr">
-                            <td>1</td>
-                            <td>3036MK2</td>
-                            <td>OVERHAUL KIT, LP VALVE</td>
-                            <td>3</td>
-                            <td>SET</td>
-                            <td>83.05 EU</td>
-                            <td>249.16 EU</td>
-                            <td>OFFERED AS LP VLV REPAIR KIT</td>
+                          <cfoutput>
+                            <td>#currentrow#</td>
+                            <td>#MN_CODE#</td>
+                            <td>#PRODUCT_NAME#</td>
+                            <td>#QUANTITY#</td>
+                            <td>#UNIT#</td>
+                            <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
+                            <td>#OTHER_MONEY_VALUE# EU</td>
+                            <td>#PRODUCT_NAME2#</td>
                         </tr>
+                    </cfoutput>
                         <tr>
                             <td>2</td>
                             <td>3037MK2</td>
