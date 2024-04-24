@@ -755,7 +755,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
     </cfif>
         <cfset "attributes.tax#i#"=it.TAX>
         <cfset "attributes.product_name#i#"=it.PRODUCT_NAME>
-        <cfset "attributes.other_money_#i#"=it.OTHER_MONEY>
+        <cfset "attributes.other_money_#i#"=it.SALE_MONEY>
         <cfset "attributes.other_money_value_#i#"=it.OTHER_MONEY_VALUE>
         <cfset "attributes.price_other#i#"=it.PRICE_OTHER>
         <cfset "attributes.iskonto_tutar#i#"=it.SALE_DISCOUNT>
