@@ -386,19 +386,19 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
             <div class="left-div">
                 <div class="div-elements">
                     <div class="input-title">DATE</div>
-                    <div class="input-value"><span>:</span> 25.3.2024</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.OFFER_DATE#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">YOUR REF NO</div>
-                    <div class="input-value"><span>:</span></div>
+                    <div class="input-value"><span>:</span><cfoutput>#Offer.REF_NO#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">OUR REF NO</div>
-                    <div class="input-value"><span>:</span> YA -56574</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.OFFER_NUMBER#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY TIME</div>
-                    <div class="input-value"><span>:</span> 25.3.2024(2W/DAYS)</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.DELIVERDATE#</cfoutput>(<cfoutput>#dateDiff("w",Offer.OFFER_DATE,Offer.DELIVERDATE)#</cfoutput>W/DAYS)</div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY PLACE</div>
