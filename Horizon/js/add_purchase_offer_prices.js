@@ -551,8 +551,8 @@ function CreateOptionList(tip, selval = "EUR") {
 }
 
 function AlayiniHesapla() {
-    paraBirimleriniEsitle();
-    AktifSepet = [];
+  paraBirimleriniEsitle();
+  AktifSepet = [];
   OrderFooter = {
     total_default: 0,
     genel_indirim_: 0,
@@ -705,7 +705,6 @@ function AlayiniHesapla() {
     OrderFooter.total_discount_wanted +
     OrderFooter.total_tax_wanted;
   OzetOlustur();
-  
 }
 function KurGetir(money) {
   var ix = MONEY_ARR.findIndex((p) => p.MONEY == money);
@@ -834,27 +833,29 @@ function indirimYuzdeHesap() {
   }
 }
 function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-  }
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 function SaveOffer() {
   AlayiniHesapla();
   var BasketData = new Object();
   BasketData.OFFER_HEADER = OfferData;
   BasketData.ROWS = AktifSepet;
   BasketData.OFFER_FOOTER = OrderFooter;
-  BasketData.Kurlar=MONEY_ARR;
-  BasketData.AKTIF_KUR=document.getElementById("MONEY").value
-  BasketData.OFFER_ID=getParameterByName("offer_id");
-BasketData.DELIVER_FEE=document.getElementsByName("DELIVER_FEE")[0].value
-BasketData.TAX_STATUS=document.getElementsByName("TAX_STATUS")[0].value
-BasketData.GENERAL_DISCOUNT=document.getElementsByName("GENERAL_DISCOUNT")[0].value
-BasketData.DELIVERY_TIMES=document.getElementsByName("DELIVERY_TIMES")[0].value
+  BasketData.Kurlar = MONEY_ARR;
+  BasketData.AKTIF_KUR = document.getElementById("MONEY").value;
+  BasketData.OFFER_ID = getParameterByName("offer_id");
+  BasketData.DELIVER_FEE = document.getElementsByName("DELIVER_FEE")[0].value;
+  BasketData.TAX_STATUS = document.getElementsByName("TAX_STATUS")[0].value;
+  BasketData.GENERAL_DISCOUNT =
+    document.getElementsByName("GENERAL_DISCOUNT")[0].value;
+  BasketData.DELIVERY_TIMES =
+    document.getElementsByName("DELIVERY_TIMES")[0].value;
   $.ajax({
     url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_PURCHASE_OFFER_PRICES",
     data: {
