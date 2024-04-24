@@ -783,8 +783,9 @@ AND PO2.OFFER_NUMBER IS NOT NULL
         SELECT * FROM PBS_OFFER_MONEY WHERE ACTION_ID=#PBS_OFFER_MONEY# 
     </cfquery>
     <CFIF ihv.recordCount EQ 0>
-    <cfloop from="1" to="#arrayLen(FORMDATA.Kurlar)#" item="it" index="fnc_i">
-		<cfquery name="add_money_obj_bskt" datasource="#DSN3#">
+    <cfloop from="1" to="#arrayLen(FORMDATA.Kurlar)#"  index="fnc_i">
+		<CFSET it=FormData.Kurlar[fnc_i]>
+        <cfquery name="add_money_obj_bskt" datasource="#dsn3#">
 			INSERT INTO PBS_OFFER_MONEY
 			(
 				ACTION_ID,
