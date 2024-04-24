@@ -443,7 +443,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                 </div>
             </div>
         </div>
-        <cfquery name="GETrOWS" datasource="#DSN3#">
+        <cfquery name="GETrOWS" datasource="#dsn3#">
             SELECT POR.*,0 AS PURCHASE_PRICE,'TL' AS PURCHASE_MONEY,'' AS FIRST_REMARK,
             CASE WHEN POR.IS_VIRTUAL <>1 THEN     S.MANUFACT_CODE ELSE VPP.PART_NUMBER END AS MN_CODE FROM PBS_OFFER_ROW AS POR LEFT JOIN STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID 
             LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
