@@ -347,8 +347,21 @@
         }
     }
 </style>
+<cfquery name="ourcompanyinfo" datasource="#dsn#">
+SELECT COMPANY_NAME,NICK_NAME,WEB,EMAIL,ADDRESS,SC.CITY_NAME,SCO.COUNTRY_NAME,SCT.COUNTY_NAME,OUR_COMPANY.COMP_ID FROM CatalystQA.OUR_COMPANY
+LEFT JOIN CatalystQA.SETUP_COUNTRY SCO ON SCO.COUNTRY_ID=OUR_COMPANY.COUNTRY_ID
+LEFT JOIN CatalystQA.SETUP_COUNTY SCT ON SCT.COUNTY_ID=OUR_COMPANY.COUNTY_ID
+LEFT JOIN CatalystQA.SETUP_CITY SC ON SC.CITY_ID=OUR_COMPANY.CITY_ID
+WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
+</cfquery>
 
-
+<cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+<cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+<script>
+    var OfferData=<cfoutput>#OfferList#</cfoutput>
+</script>
+<cfset Offer=deserializeJSON(OfferList)>
+<cfdump var="#Offer#">
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
@@ -358,9 +371,8 @@
 
 
             <div class="header-titles">
-                <h1 class="header-top-title">YAF DIESELSHIP SPARE PARTSTRADING LTD. CO
-                    <span class="header-sub-title">EVLIYA CELEBI MAH. RAUF ORBAY CAD.YAF GROUP IS MER. NO:39/2TUZLA
-                        ISTANBUL</span>
+                <h1 class="header-top-title"><cfoutput>#ourcompanyinfo.COMPANY_NAME#</cfoutput>
+                    <span class="header-sub-title"><cfoutput>#ourcompanyinfo.ADDRESS#  #ourcompanyinfo.COUNTY_NAME# #ourcompanyinfo.CITY_NAME# </cfoutput></span>
                 </h1>
                 <h2 class="header-big-text">
                     QUANTATION
@@ -510,8 +522,8 @@
                         <p>0090 850 225 23 00</p>
                     </div>
                     <div class="total-left-info-right">
-                        <a href="mailto:info@yafdiesel.com.trf" target="_blank">INFO@YAFDIESEL.COM.TR</a>
-                        <a href="www.yafdiesel.com.trf" target="_blank">WWW.YAFDIESEL.COM.TR</a>
+                        <a href="mailto:info@yafdiesel.com.tr" target="_blank">INFO@YAFDIESEL.COM.TR</a>
+                        <a href="www.yafdiesel.com.tr" target="_blank">WWW.YAFDIESEL.COM.TR</a>
                     </div>
                 </div>
             </div>
