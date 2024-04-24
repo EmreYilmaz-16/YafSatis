@@ -487,10 +487,10 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                             <td>#currentrow#</td>
                             <td>#MN_CODE#</td>
                             <td>#PRODUCT_NAME#</td>
-                            <td>#QUANTITY#</td>
+                           <!---  <td>#QUANTITY#</td>
                             <td>#UNIT#</td>
                             <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
-                          <!---   <td>#OTHER_MONEY_VALUE# EU</td>
+                            <td>#OTHER_MONEY_VALUE# EU</td>
                            <td>#PRODUCT_NAME2#</td>---->
                         </tr>
                     </cfoutput>
