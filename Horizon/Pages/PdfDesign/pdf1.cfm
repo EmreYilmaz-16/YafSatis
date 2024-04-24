@@ -449,7 +449,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
             LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
             WHERE OFFER_ID=#attributes.OFFER_ID#
         </cfquery>
-        <cfdump var="##"
+        
         <!-- TABLE -->
         <cfoutput query="GETrOWS" group="PROP_LIST">
         <div class="table-div">
