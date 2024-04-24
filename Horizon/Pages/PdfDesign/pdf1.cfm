@@ -367,8 +367,8 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
     <div class="div-container">
         <!-- HEADER -->
         <div class="header-div">
-            <img src="/AddOns/muraterennar/test_projects/assets/logodeneme.png" alt="banner" class="banner-img">
-            <img src="/AddOns/muraterennar/test_projects/assets/iso9001_logo.png" alt="banner" class="h-auto iso-img">
+            <img src="/AddOns/YafSatis/Content/img/logodeneme.png" alt="banner" class="banner-img">
+            <img src="/AddOns/YafSatis/Content/img/iso9001_logo.png" alt="banner" class="h-auto iso-img">
 
 
             <div class="header-titles">
@@ -406,11 +406,11 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                 </div>
                 <div class="div-elements">
                     <div class="input-title">VALIDITY</div>
-                    <div class="input-value"><span>:</span> 30 DAYS</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.VALID_DAYS#</cfoutput> DAYS</div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">CONDITION</div>
-                    <div class="input-value"><span>:</span> OEM</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.CONDITION#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">PAYMENT TERM</div>
