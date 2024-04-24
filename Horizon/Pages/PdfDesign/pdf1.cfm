@@ -362,7 +362,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
     var OfferData=<cfoutput>#OfferList#</cfoutput>
 </script>
 <cfset Offer=deserializeJSON(OfferList)>
-<cfdump var="#Offer#">
+
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
