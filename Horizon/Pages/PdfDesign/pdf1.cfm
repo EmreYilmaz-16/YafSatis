@@ -491,9 +491,9 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                             <td>#UNIT#</td>
                             <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
                             <td>#OTHER_MONEY_VALUE# EU</td>
-                           <td>#PRODUCT_NAME2#</td>---->
+                           <td>#PRODUCT_NAME2#</td>
                         </tr>
-                    </cfoutput>
+                    </cfoutput>---->
                         <tr>
                             <td>2</td>
                             <td>3037MK2</td>
