@@ -729,7 +729,8 @@ AND PO2.OFFER_NUMBER IS NOT NULL
     <cfdump var="#FormData#">
     <CFSET attributes.OFFER_ID=FormData.OFFER_ID>
     <cfquery name="UP" datasource="#DSN3#">
-        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.OFFER_FOOTER.net_total_wanted#
+        UPDATE PBS_OFFER SET NETTOTAL=#FormData.OFFER_FOOTER.brut_total_wanted_#,PRICE=#FormData.OFFER_FOOTER.brut_total_wanted_#,OTHER_MONEY_VALUE=#FormData.OFFER_FOOTER.net_total_wanted#,OTHER_MONEY='#FORMDATA.AKTIF_KUR#'
+        DELIVER_FEE='#FORMDATA.DELIVER_FEE#' ,TAX_STATUS ='#FORMDATA.TAX_STATUS#',GENERAL_DISCOUNT_RATE =<CFIF LEN(FORMDATA.GENERAL_DISCOUNT)>#FORMDATA.GENERAL_DISCOUNT#<CFELSE>0</CFIF>
         WHERE OFFER_ID=#attributes.OFFER_ID#
     </cfquery>
 
@@ -778,8 +779,30 @@ AND PO2.OFFER_NUMBER IS NOT NULL
            WHERE OFFER_ID=#attributes.OFFER_ID# AND UNIQUE_RELATION_ID='#it.UNIQUE_RELATION_ID#'
         </cfquery>
     </cfloop>
-
-
+    <cfloop from="1" to="#arrayLen(FORMDATA.Kurlar)#" item="it" index="fnc_i">
+		<cfquery name="add_money_obj_bskt" datasource="#DSN3#">
+			INSERT INTO PBS_OFFER_MONEY
+			(
+				ACTION_ID,
+				MONEY_TYPE,
+				RATE2,
+				RATE1,
+				IS_SELECTED
+			)
+			VALUES
+			(
+				#attributes.OFFER_ID#,
+				'#it.MONEY#',
+				#it.RATE2#,
+				#it.RATE1#,
+				<cfif it.MONEY EQ FORMDATA.AKTIF_KUR>
+					1
+				<cfelse>
+					0
+				</cfif>					
+			)
+		</cfquery>
+	</cfloop>
 </cffunction>
 
 <cffunction name="wrk_eval" returntype="string" output="false">
@@ -788,7 +811,6 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 	<cfset wrk_sql_value = "#replaceNoCase(trim(evaluate("#gelen#")),"'","''","ALL")#">
 	<cfreturn wrk_sql_value>
 </cffunction>
-
 
 </cfcomponent>
 
