@@ -494,16 +494,7 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                            <td>#PRODUCT_NAME2#</td>
                         </tr>
                     </cfoutput><!------->
-                        <tr>
-                            <td>2</td>
-                            <td>3037MK2</td>
-                            <td>OVERHAUL KIT, HP VALVE</td>
-                            <td>5</td>
-                            <td>SET</td>
-                            <td>51.54 EU</td>
-                            <td>257.72 EU</td>
-                            <td></td>
-                        </tr>
+                     
                     </tbody>
                 </table>
             </div>
