@@ -454,6 +454,8 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
         <div class="table-div">
             <div class="table-top">
                 <div class="table-top-div">
+                   <CFSET JD=deserializeJSON(JSON_STRINGIM)>
+                   <cfdump var="#JD#">
                     <div class="table-top-elements">
                         <p style="font-weight: 700; font-size: 10px;">AIR COMPRESSOR</span>
                     </div>
