@@ -56,7 +56,7 @@
 
 </script>
 
-<cfhtmltopdf destination="c:/test.pdf">
+
 <cf_box title="DEAR #OfferData.NICKNAME# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
     <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
     <script>
@@ -237,4 +237,3 @@
 </script>
 </cfoutput>
 <script src="/AddOns/YafSatis/Horizon/js/add_purchase_offer_prices.js"></script>
-</cfhtmltopdf>
