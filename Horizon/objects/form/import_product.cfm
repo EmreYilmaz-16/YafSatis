@@ -99,11 +99,11 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
             LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
             LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
                 ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
-            WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CATID#
+            WHERE PRODUCT_CATID = #PRODUCT_CATID#
             ) AS TT
         WHERE 1 = 1 AND MANUFACT_CODE = '#COL_4#' 
         <cfloop list="#VARIATION_ID_LIST#" item="it">                
-            AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'                    
+            AND DTP LIKE '%#it#,%'                    
         </cfloop>
     </cfquery>
 <cfif getProd.recordCount>
