@@ -108,7 +108,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
     </cfquery>
     >
 <cfif getProd.recordCount>
-  
+    <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>
 <cfelse>
     <cfset barcode=getBarcode()>
     <cfset UrunAdi=COL_1>
@@ -154,10 +154,73 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
     </cfscript>
     <cfset attributes.HIERARCHY =is_hv_product_cat.HIERARCHY>
     <cfinclude template="../query/add_import_product.cfm">
+    <cfset RECORDED_PRODUCT_ID=GET_PID.PRODUCT_ID>
+</cfif>
+<CFSET VARIATION_ID_LIST="">
+<CFSET LN=1>
+<cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
+    <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
+    <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
+    <cfset PROPERTY=evaluate("get_invoice_no.COL_#i+2#")>
+    <cfset VARIATION=evaluate("get_invoice_no.COL_#i+3#")>
+<cfoutput>
+    
+    IS_IMPORTANT: #IS_IMPORTANT#<br>
+    C/P: #CP#<br>
+    PROPERTY: #PROPERTY#<br>
+    VARIATION: #VARIATION#<br>
+
+</cfoutput>
+<cfquery name="isHvProperty" datasource="#dsn1#">  
+SELECT * FROM PRODUCT_PROPERTY WHERE PROPERTY='#PROPERTY#' AND P_C='#CP#'
+</cfquery>
+<cfif isHvProperty.recordCount>
+    <CFSET PROPERTY_ID=isHvProperty.PROPERTY_ID>
+<cfelse>
+    <cfquery name="ins" datasource="#dsn1#" result="PROPERTY_INSERT_RESULT">
+        INSERT INTO PRODUCT_PROPERTY (PROPERTY,IS_ACTIVE,P_C) values('#PROPERTY#',1,'#CP#')
+    </cfquery>
+    <CFSET PROPERTY_ID=PROPERTY_INSERT_RESULT.IDENTITYCOL>
 </cfif>
 
+<cfif len(VARIATION)>
+<cfquery name="isHvVariation" datasource="#dsn1#">
+    SELECT * FROM PRODUCT_PROPERTY_DETAIL WHERE PROPERTY_DETAIL='#VARIATION#' AND PRPT_ID=#PROPERTY_ID#
+</cfquery>
+<cfif isHvVariation.recordCount>
+    <CFSET PROPERTY_DETAIL_ID=isHvVariation.PROPERTY_DETAIL_ID>
+<cfelse>
+    <cfquery name="ins" datasource="#dsn1#" result="PROPERTY_DETAIL_INSERT_RESULT">
+        INSERT INTO PRODUCT_PROPERTY_DETAIL (PRPT_ID,PROPERTY_DETAIL,IS_ACTIVE) VALUES (#PROPERTY_ID#,'#VARIATION#',1)
+    </cfquery>
+    <CFSET PROPERTY_DETAIL_ID=PROPERTY_DETAIL_INSERT_RESULT.IDENTITYCOL>
+</cfif>
+
+<CFSET VARIATION_ID_LIST=listAppend(VARIATION_ID_LIST,PROPERTY_DETAIL_ID)>
+
+</cfif>
+<cfquery name="ins" datasource="#dsn1#">
+    INSERT INTO PRODUCT_DT_PROPERTIES (PRODUCT_ID,PROPERTY_ID,VARIATION_ID,LINE_VALUE,IS_OPTIONAL,IS_EXIT)
+    VALUES (
+        #RECORDED_PRODUCT_ID#,
+        #PROPERTY_ID#,
+        #PROPERTY_DETAIL_ID#,
+        #LN#,
+        #IS_IMPORTANT#,
+        #IS_IMPORTANT#
+    )
+
+    
 
 
+ 
+</cfquery>
+<CFSET LN=LN+1>
+</cfloop>
+
+
+
+</cfloop>
 </cfif>
 </div>
 </cfif>
