@@ -106,8 +106,52 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
             AND DTP LIKE '%#it#,%'                    
         </cfloop>
     </cfquery>
+    >
 <cfif getProd.recordCount>
-    Ürün Var
+    <cfset barcode=getBarcode()>
+    <cfset UrunAdi=COL_1>
+    <cfscript>
+        kategori_id=PRODUCT_CATID;   
+        urun_adi=UrunAdi; 
+        detail='#COL_6#'; 
+        detail_2='';
+        satis_kdv=0;
+        ALIS_KDV=0;
+        is_inventory=1;
+        is_production=0;
+        is_sales=1;
+        is_purchase=1;
+        is_internet=0;
+        is_extranet=0;
+        birim = COL_2;
+        dimention = "";
+        volume = "";
+        weight = "";
+        surec_id=29;
+        fiyat_yetkisi = 1;
+        uretici_urun_kodu="";
+        brand_id="";
+        short_code = '';
+        short_code_id = '';
+        product_code_2='';
+        is_limited_stock="";
+        min_margin="";
+        max_margin="";
+        shelf_life="";
+        segment_id="";
+        bsmv="";
+        oiv="";
+        IS_ZERO_STOCK=0;
+        IS_QUALITY=0;
+        alis_fiyat_kdvsiz = 0
+        satis_fiyat_kdvli = 0
+        alis_fiyat_kdvli = 0
+        sales_money = "TL"
+        cesit_adi='';
+        purchase_money = "TL"
+    </cfscript>
+    <cfset attributes.HIERARCHY =is_hv_product_cat.HIERARCHY>
+    <cfinclude template="../query/add_import_product.cfm">
 <cfelse>
     Ürün Kaydet
 </cfif>
@@ -122,7 +166,49 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
 
 </cfif>
 
+<cffunction name="getBarcode">
+      
+    <cfif  1 eq 1>
+        <cfquery name="get_barcode_no" datasource="#dsn1#">
+            SELECT PRODUCT_NO AS BARCODE FROM PRODUCT_NO
+        </cfquery>
+        <cfset barcode_on_taki = '100000000000'>
+        <cfset barcode = get_barcode_no.barcode>
+        <cfset barcode_len = len(barcode)>
+        <cfset barcode = left(barcode_on_taki,12-barcode_len)&barcode> 
+    <cfelse>
+        <cfquery name="get_barcode_no" datasource="#dsn1#">
+            SELECT LEFT(BARCODE, 12) AS BARCODE FROM PRODUCT_NO
+        </cfquery>
+        <cfset barcode = (get_barcode_no.barcode*1)+1>
+        <cfquery name="upd_barcode_no" datasource="#dsn1#">
+            UPDATE PRODUCT_NO SET BARCODE = '#barcode#X'
+        </cfquery>
+    </cfif>
 
+        <cfset barcode_tek = 0>
+        <cfset barcode_cift =0>
+        <cfif len(barcode) eq 12>
+            <cfloop from="1" to="11" step="2" index="i">
+                <cfset barcode_kontrol_1 = mid(barcode,i,1)>
+                <cfset barcode_kontrol_2 = mid(barcode,i+1,1)>
+                <cfset barcode_tek = (barcode_tek*1) + (barcode_kontrol_1*1)>
+                <cfset barcode_cift = (barcode_cift*1) + (barcode_kontrol_2*1)>
+            </cfloop>
+            <cfset barcode_toplam = (barcode_cift*3)+(barcode_tek*1)>
+            <cfset barcode_control_char = right(barcode_toplam,1)*1>
+            <cfif barcode_control_char gt 0>
+            <cfset barcode_control_char = 10-barcode_control_char>
+        <cfelse>
+            <cfset barcode_control_char = 0>
+        </cfif>
+        <cfset barcode_no = '#barcode##barcode_control_char#'>
+    <cfelse>
+        <cfset barcode_no = ''>
+    </cfif>
+    
+
+</cffunction>
 
 
 <script>    
