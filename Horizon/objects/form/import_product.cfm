@@ -25,10 +25,10 @@
 <cfdump var="#ressa#">
 
 <cfloop from="7" to="#listLen(ressa.COLUMNLIST)-4#" index="i" step="4">
-    <cfset IS_IMPORTANT=evaluate("COL_#i#")>
-    <cfset CP=evaluate("COL_#i+1#")>
-    <cfset PROP=evaluate("COL_#i+2#")>
-    <cfset VARS=evaluate("COL_#i+3#")>
+    <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
+    <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
+    <cfset PROP=evaluate("get_invoice_no.COL_#i+2#")>
+    <cfset VARS=evaluate("get_invoice_no.COL_#i+3#")>
 <cfoutput>
     IS_IMPORTANT: #IS_IMPORTANT#<br>
     C/P: #CP#<br>
