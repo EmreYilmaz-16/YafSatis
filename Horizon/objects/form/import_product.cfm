@@ -16,13 +16,13 @@
 
     <cfspreadsheet  action="read" src = "#expandPath("./ExDosyalar/#attributes.fileName#")#" query = "res">
 
-	<cfquery name = "get_invoice_no" dbtype = "query">
+	<cfquery name = "get_invoice_no" dbtype = "query" result="ressa">
 		SELECT *                 
 		FROM
 			res     
 	</cfquery>
 
-<cfdump var="#get_invoice_no#">
+<cfdump var="#ressa#">
 
 
 
