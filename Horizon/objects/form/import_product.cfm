@@ -26,7 +26,7 @@
 
 <cfloop query="get_invoice_no">
     <div class="alert alert-danger">
-<cfloop from="7" to="#listLen(ressa.COLUMNLIST)-4#" index="i" step="4">
+<cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
     <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
     <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
     <cfset PROP=evaluate("get_invoice_no.COL_#i+2#")>
