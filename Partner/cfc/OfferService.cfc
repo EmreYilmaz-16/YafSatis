@@ -820,6 +820,21 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 </CFIF>
 </cffunction>
 
+<cffunction name="sendPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+<cfargument name="Offer_ID">
+<cfargument name="mail_type">
+<cfargument name="FromMail" required="true">
+<cfargument name="ToMailList" required="true">
+<cfargument name="subject" required="true">
+<cfset attributes.Offer_Id=arguments.Offer_ID>
+
+<cfmail to = "#arguments.ToMailList#" from = "#arguments.FromMail#" subject = "#arguments.subject#">             
+    <cfif arguments.mail_type eq 1>
+        <cfinclude template="/AddOns/YafSatis/Horizon/Pages/pdf_empty.cfm">
+    </cfif>
+</cfmail> 
+</cffunction>
+
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">

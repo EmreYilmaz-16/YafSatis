@@ -1615,3 +1615,9 @@ function getParameterByName(name, url) {
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+function loadRelOffers(){
+  var r=wrk_safe_query("GETREO_OFFERS")
+  for(let i=0;i<r.recordcount;i++){
+    
+  }
+}
