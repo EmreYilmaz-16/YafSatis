@@ -24,7 +24,7 @@
 
 <cfdump var="#ressa#">
 
-<cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
+<cfloop from="7" to="#listLen(ressa.COLUMNLIST)-4#" index="i" step="4">
     <cfset IS_IMPORTANT=evaluate("COL_#i#")>
     <cfset CP=evaluate("COL_#i+1#")>
     <cfset PROP=evaluate("COL_#i+2#")>
