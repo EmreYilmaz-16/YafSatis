@@ -31,10 +31,12 @@
     <cfset PROP=evaluate("get_invoice_no.COL_#i+2#")>
     <cfset VARS=evaluate("get_invoice_no.COL_#i+3#")>
 <cfoutput>
+    <div class="alert alert-danger">
     IS_IMPORTANT: #IS_IMPORTANT#<br>
     C/P: #CP#<br>
     PROPERTY: #PROP#<br>
     VARIATION: #VARS#<br>
+</div>
 </cfoutput>
 
 
