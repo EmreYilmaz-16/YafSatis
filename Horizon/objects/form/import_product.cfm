@@ -108,6 +108,8 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
     </cfquery>
     >
 <cfif getProd.recordCount>
+  
+<cfelse>
     <cfset barcode=getBarcode()>
     <cfset UrunAdi=COL_1>
     <cfscript>
@@ -152,8 +154,6 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
     </cfscript>
     <cfset attributes.HIERARCHY =is_hv_product_cat.HIERARCHY>
     <cfinclude template="../query/add_import_product.cfm">
-<cfelse>
-    Ürün Kaydet
 </cfif>
 
 
