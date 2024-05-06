@@ -4,7 +4,8 @@
     <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
 <cfelse>
 <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
-<cfif session.ep.user_id eq 9>
+</cfif>
+
 
 <cfset CatPropertiesJson=ProductService.getCatProperties(PRODUCT_CATID=attributes.PRODUCT_CATID)>
 <cfset CatProperties=deserializeJSON(CatPropertiesJson)>
