@@ -20,12 +20,13 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
 
     <tr>
         <th>Part No</th>
+        <th>Ürün Kodu</th>
         <th>Ürün</th>
      
     </tr>
 <cfoutput query="getProd">
     <cfquery name="getPrcPrp" datasource="#dsn1#">
-         select PROPERTY,PROPERTY_DETAIL,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
+         select PROPERTY,PROPERTY_DETAIL,PRODUCT_CODE,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
  LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
  LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
  LEFT JOIN CatalystQA_product.PRODUCT AS P ON P.PRODUCT_ID=PDP.PRODUCT_ID
@@ -35,6 +36,9 @@ where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#
     <tr>
         <TD>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+        </TD>
+        <TD>
+            <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#PRODUCT_CODE#</a>
         </TD>
         <TD>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#',#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
