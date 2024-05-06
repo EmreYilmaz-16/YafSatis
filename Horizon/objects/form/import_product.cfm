@@ -197,6 +197,17 @@
                                 </cfquery>
                             </cfif>
                         </cfif>
+
+                        <cfquery name="ihvs1" datasource="#dsn1#">
+                            SELECT * FROM CatalystQA_product.PRODUCT_CAT_VARIATIONS WHERE PRODUCT_CATID=#PRODUCT_CATID# AND PROPERTY_ID=#PROPERTY_ID# AND VARIATION_ID=#PROPERTY_DETAIL_ID#
+                        </cfquery>
+                        <cfif ihvs1.recordCount>
+                        <cfelse>
+                            <cfquery name="INS" datasource="#dsn1#">
+                                INSERT INTO PRODUCT_CAT_VARIATIONS (PRODUCT_CATID,PROPERTY_ID,VARIATION_ID) VALUES(#PRODUCT_CATID#,#PROPERTY_ID#,#PROPERTY_DETAIL_ID#)
+                            </cfquery>
+                        </cfif>
+
                     </cfloop>                
                 </cfif>            
         </cfif>

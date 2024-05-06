@@ -2,7 +2,7 @@
     <cfset dsn = application.systemParam.systemParam().dsn>
     <cffunction name="getCats" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfquery name="getAll" datasource="#dsn#">
-            SELECT PRODUCT_CATID,PRODUCT_CAT FROM CatalystQA_product.PRODUCT_CAT
+            SELECT PRODUCT_CATID,PRODUCT_CAT FROM CatalystQA_product.PRODUCT_CAT ORDER BY PRODUCT_CAT
         </cfquery>
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="getAll">
