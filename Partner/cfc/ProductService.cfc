@@ -125,6 +125,7 @@ OUTER APPLY (
 		) --AND PPD.PRPT_ID = 4*/
    <cfif len(arguments.RELATED_PROP_ID)> 
         AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
+        ORDER BY PROPERTY_DETAIL
             </cfquery>
         </cfif>
 
