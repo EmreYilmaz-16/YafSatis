@@ -114,11 +114,12 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
                 ) AS T WHERE 1=1        
                 <cfif len(arguments.RELATED_PROP_ID)> 
                 AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
-        
+                    ORDER BY PROPERTY_DETAIL
+
+                </cfquery>
         
         </cfif>
-        ORDER BY PROPERTY_DETAIL
-</cfquery>
+        
 
         <cfset Listem="">
         <cfset ReturnArr=arrayNew(1)>
