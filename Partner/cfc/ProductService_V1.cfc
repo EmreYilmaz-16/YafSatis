@@ -95,7 +95,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
             </cfloop>
             0
             )
-            </cfif>)
+            </cfif>) as ttt
             WHERE PROPERTY_DETAIL_ID IN (
                 select VARIATION_ID from CatalystQA_product.PRODUCT_CAT_VARIATIONS WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#
             )
@@ -120,7 +120,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
                 ) AS T WHERE 1=1        
                 <cfif len(arguments.RELATED_PROP_ID)> 
                 AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
-             )
+             ) as ttt
              WHERE PROPERTY_DETAIL_ID IN (
                 select VARIATION_ID from CatalystQA_product.PRODUCT_CAT_VARIATIONS WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#
             )
