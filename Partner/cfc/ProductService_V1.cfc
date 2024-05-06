@@ -2,7 +2,7 @@
     <cfset dsn = application.systemParam.systemParam().dsn>
     <cffunction name="getCats" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfquery name="getAll" datasource="#dsn#">
-            SELECT PRODUCT_CATID,PRODUCT_CAT FROM CatalystQA_product.PRODUCT_CAT
+            SELECT PRODUCT_CATID,PRODUCT_CAT FROM CatalystQA_product.PRODUCT_CAT ORDER BY PRODUCT_CAT
         </cfquery>
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="getAll">
@@ -43,7 +43,8 @@
                 SELECT PP1.PROPERTY_DETAIL,PP1.PROPERTY_DETAIL_ID,T.PRPT FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP1 
 CROSS APPLY (
   SELECT DISTINCT(PRPT_ID) AS PRPT FROM   CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2 WHERE PP2.RELATED_VARIATION_ID=PP1.PROPERTY_DETAIL_ID ) AS T
-WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
+WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID# 
+        ORDER BY PROPERTY_DETAIL
         </cfquery>
                <cfset ReturnArr=arrayNew(1)>
                <cfloop query="getAll">
@@ -69,98 +70,99 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
             </cfquery>
         </CFIF>
         <cfquery name="getAll" datasource="#dsn#">
-   SELECT DISTINCT PPD.PROPERTY_DETAIL
-	,PPD.PROPERTY_DETAIL_ID
-	,T.PRPT
-	,PP.PROPERTY
-	,PP.PROPERTY_ID
-    ,RELATED_VARIATION_ID
-    ,ISNULL(PCP.IS_AMOUNT,0) IS_AMOUNT
-FROM  CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
-	
-INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP
-	ON PP.PROPERTY_ID = PPD.PRPT_ID
-    LEFT JOIN CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP ON PCP.PROPERTY_ID=PP.PROPERTY_ID AND PCP.PRODUCT_CAT_ID=#arguments.PRODUCT_CATID#
-OUTER APPLY (
-	SELECT DISTINCT (PRPT_ID) AS PRPT
-	FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2
-	WHERE PP2.RELATED_VARIATION_ID LIKE '%'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID)+'%'
-	) AS T WHERE 1=1
-/*WHERE PRODUCT_ID IN (
-		SELECT PRODUCT_ID
-		FROM CatalystQA_product.PRODUCT
-		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
-		) */--AND PPD.PRPT_ID = 4
-   <cfif len(arguments.RELATED_PROP_ID)> 
-        AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > 
+          SELECT * FROM (
+            SELECT DISTINCT PPD.PROPERTY_DETAIL
+            ,PPD.PROPERTY_DETAIL_ID
+            ,T.PRPT
+            ,PP.PROPERTY
+            ,PP.PROPERTY_ID
+            ,RELATED_VARIATION_ID
+            ,ISNULL(PCP.IS_AMOUNT,0) IS_AMOUNT
+            FROM  CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
+            INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP
+            ON PP.PROPERTY_ID = PPD.PRPT_ID
+            LEFT JOIN CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP ON PCP.PROPERTY_ID=PP.PROPERTY_ID AND PCP.PRODUCT_CAT_ID=#arguments.PRODUCT_CATID#
+            OUTER APPLY (
+                SELECT DISTINCT (PRPT_ID) AS PRPT
+                FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2
+                WHERE PP2.RELATED_VARIATION_ID LIKE '%'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID)+'%'
+            ) AS T WHERE 1=1        
+            <cfif len(arguments.RELATED_PROP_ID)> 
+            AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif> <cfif len(arguments.RELATED_VAR_ID) > 
             AND  PPD.PROPERTY_DETAIL_ID IN(
-                <cfloop list="#GETrELPRPR.RELATED_VARIATION_ID#" item="it">
-                    #it#,
-                </cfloop>
-                0
+            <cfloop list="#GETrELPRPR.RELATED_VARIATION_ID#" item="it">
+            #it#,
+            </cfloop>
+            0
             )
-        /*AND PPD.RELATED_VARIATION_ID LIKE '%#arguments.RELATED_VAR_ID#%'*/ </cfif>
+            </cfif>)
+            WHERE PROPERTY_DETAIL_ID IN (
+                select VARIATION_ID from CatalystQA_product.PRODUCT_CAT_VARIATIONS WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#
+            )
+            ORDER BY PROPERTY_DETAIL
         </cfquery>
         <cfif getAll.recordCount eq 0>
             <cfquery name="getAll" datasource="#dsn#">
-                 SELECT DISTINCT PPD.PROPERTY_DETAIL
-	,PPD.PROPERTY_DETAIL_ID
-	,T.PRPT
-	,PP.PROPERTY
-	,PP.PROPERTY_ID
-    ,RELATED_VARIATION_ID
-FROM  CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
-	
-INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP
-	ON PP.PROPERTY_ID = PPD.PRPT_ID
-OUTER APPLY (
-	SELECT DISTINCT (PRPT_ID) AS PRPT
-	FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2
-	WHERE PP2.RELATED_VARIATION_ID LIKE '%'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID)+'%'
-	) AS T WHERE 1=1
-/*WHERE PRODUCT_ID IN (
-		SELECT PRODUCT_ID
-		FROM CatalystQA_product.PRODUCT
-		WHERE PRODUCT_CATID = #arguments.PRODUCT_CATID#
-		) --AND PPD.PRPT_ID = 4*/
-   <cfif len(arguments.RELATED_PROP_ID)> 
-        AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
-            </cfquery>
-        </cfif>
+             SELECT * FROM (
+                SELECT DISTINCT PPD.PROPERTY_DETAIL
+                ,PPD.PROPERTY_DETAIL_ID
+                ,T.PRPT
+                ,PP.PROPERTY
+                ,PP.PROPERTY_ID
+                ,RELATED_VARIATION_ID
+                FROM  CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD
+                INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP
+                ON PP.PROPERTY_ID = PPD.PRPT_ID
+                OUTER APPLY (
+                    SELECT DISTINCT (PRPT_ID) AS PRPT
+                    FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PP2
+                    WHERE PP2.RELATED_VARIATION_ID LIKE '%'+CONVERT(VARCHAR,PPD.PROPERTY_DETAIL_ID)+'%'
+                ) AS T WHERE 1=1        
+                <cfif len(arguments.RELATED_PROP_ID)> 
+                AND PPD.PRPT_ID IN (#arguments.RELATED_PROP_ID#) <cfelse> AND PPD.PRPT_ID = #arguments.PROPERTY_ID# </cfif>
+             )
+             WHERE PROPERTY_DETAIL_ID IN (
+                select VARIATION_ID from CatalystQA_product.PRODUCT_CAT_VARIATIONS WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#
+            )
+                    ORDER BY PROPERTY_DETAIL
 
+                </cfquery>
         
+        </cfif>
+        
+
         <cfset Listem="">
-          <cfset ReturnArr=arrayNew(1)>
-          <cfloop query="getAll">
-            <cfset LISTEX=RELATED_VARIATION_ID>
-            <cfset LISTEX=listRemoveDuplicates(LISTEX)>
-            <CFSET RLPRP="">
-           <CFIF LISTLEN(LISTEX) GT 0>
-           <cfquery name="GETPRPT" datasource="#DSN#">
-                SELECT DISTINCT PRPT_ID FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL WHERE PROPERTY_DETAIL_ID IN (#LISTEX#)
-            </cfquery>
-            <CFSET RLPRP=valueList(GETPRPT.PRPT_ID)>
-</CFIF>
+        <cfset ReturnArr=arrayNew(1)>
+        <cfloop query="getAll">
+        <cfset LISTEX=RELATED_VARIATION_ID>
+        <cfset LISTEX=listRemoveDuplicates(LISTEX)>
+        <CFSET RLPRP="">
+        <CFIF LISTLEN(LISTEX) GT 0>
+        <cfquery name="GETPRPT" datasource="#DSN#">
+        SELECT DISTINCT PRPT_ID FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL WHERE PROPERTY_DETAIL_ID IN (#LISTEX#)
+        </cfquery>
+        <CFSET RLPRP=valueList(GETPRPT.PRPT_ID)>
+        </CFIF>
 
-            <cfscript>
-                  item={
-                   PROPERTY_DETAIL=PROPERTY_DETAIL,
-                     PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
-                     IS_SUB_PRPT=RLPRP,
-                     PROPERTY=PROPERTY,
-                     PROPERTY_ID=PROPERTY_ID,
-                     RELATED_VARIATION_ID=RELATED_VARIATION_ID,
-                     IS_AMOUNT=IS_AMOUNT
+        <cfscript>
+        item={
+        PROPERTY_DETAIL=PROPERTY_DETAIL,
+        PROPERTY_DETAIL_ID=PROPERTY_DETAIL_ID,
+        IS_SUB_PRPT=RLPRP,
+        PROPERTY=PROPERTY,
+        PROPERTY_ID=PROPERTY_ID,
+        RELATED_VARIATION_ID=RELATED_VARIATION_ID,
+        IS_AMOUNT=IS_AMOUNT
 
-                  };
-                  arrayAppend(ReturnArr,item);
-              </cfscript>
-              <cfset Listem=listAppend(Listem,RELATED_VARIATION_ID)>
-          </cfloop>
-          
-          <cfset Listem=listRemoveDuplicates(Listem)>
-          
-          <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+        };
+        arrayAppend(ReturnArr,item);
+        </cfscript>
+        <cfset Listem=listAppend(Listem,RELATED_VARIATION_ID)>
+        </cfloop>
+
+        <cfset Listem=listRemoveDuplicates(Listem)>
+
+        <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="WesselId">

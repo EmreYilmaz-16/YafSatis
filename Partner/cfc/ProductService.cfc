@@ -70,6 +70,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
             </cfquery>
         </CFIF>
         <cfquery name="getAll" datasource="#dsn#">
+          
             SELECT DISTINCT PPD.PROPERTY_DETAIL
             ,PPD.PROPERTY_DETAIL_ID
             ,T.PRPT
