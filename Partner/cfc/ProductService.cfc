@@ -95,6 +95,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
             0
             )
             </cfif>
+            ORDER BY PROPERTY_DETAIL
         </cfquery>
         <cfif getAll.recordCount eq 0>
             <cfquery name="getAll" datasource="#dsn#">
