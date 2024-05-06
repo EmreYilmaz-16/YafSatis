@@ -119,7 +119,7 @@
                             brand_id="";
                             short_code = '';
                             short_code_id = '';
-                            product_code_2='';
+                            product_code_2='#COL_5#';
                             is_limited_stock="";
                             min_margin="";
                             max_margin="";
