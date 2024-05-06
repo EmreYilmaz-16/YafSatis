@@ -198,7 +198,10 @@
     </cfloop>
               <cfquery name="isghj" datasource="#dsn1#">
                             TRUNCATE TABLE CatalystQA_product.PRODUCT_PROPERTY_OUR_COMPANY
-                            GO
+                            
+                        </cfquery>
+                        <cfquery name="isghj" datasource="#dsn1#">
+                            
 INSERT INTO CatalystQA_product.PRODUCT_PROPERTY_OUR_COMPANY(PROPERTY_ID,OUR_COMPANY_ID)
 SELECT PROPERTY_ID,1 AS OUR_COMPANY_ID  FROM  CatalystQA_product.PRODUCT_PROPERTY
                         </cfquery>
