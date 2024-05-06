@@ -52,6 +52,7 @@
                         </cfif>
                         <CFSET VARIATION_ID_LIST=listAppend(VARIATION_ID_LIST,PROPERTY_DETAIL_ID)>
                     </cfif>
+                 
                 </cfloop>
                 <cfquery name="is_hv_product_cat" datasource="#dsn1#">
                     SELECT * FROM CatalystQA_product.PRODUCT_CAT WHERE HIERARCHY='#COL_3#'
@@ -146,12 +147,14 @@
                         </cfquery>
                         <cfif isHvProperty.recordCount>
                             <CFSET PROPERTY_ID=isHvProperty.PROPERTY_ID>
+                            
                         <cfelse>
                             <cfquery name="ins" datasource="#dsn1#" result="PROPERTY_INSERT_RESULT">
                                 INSERT INTO PRODUCT_PROPERTY (PROPERTY,IS_ACTIVE,P_C) values('#PROPERTY#',1,'#CP#')
                             </cfquery>
                             <CFSET PROPERTY_ID=PROPERTY_INSERT_RESULT.IDENTITYCOL>
                         </cfif>
+          
                         <cfif len(VARIATION)>
                             <cfquery name="isHvVariation" datasource="#dsn1#">
                                 SELECT * FROM PRODUCT_PROPERTY_DETAIL WHERE PROPERTY_DETAIL='#VARIATION#' AND PRPT_ID=#PROPERTY_ID#
@@ -178,10 +181,27 @@
                             </cfquery>
                             <CFSET LN=LN+1>
                         </cfif>
+                        <cfif  CP EQ "C">
+                            <cfquery name="ihvpc" datasource="#dsn1#">
+                                SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PROPERTY_ID=4 AND PRODUCT_CAT_ID=32                            
+                            </cfquery>
+                            <cfif ihvpc.recordCount >
+                            <cfelse>
+                                <cfquery name="ins" datasource="#dsn1#">
+                                    INSERT INTO CatalystQA_product.PRODUCT_CAT_PROPERTY (PRODUCT_CAT_ID,PROPERTY_ID,IS_OPTIONAL,IS_AMOUNT) VALUES (#PRODUCT_CATID#,#PROPERTY_ID#,#PROPERTY_DETAIL_ID#,<cfif IS_IMPORTANT eq 1>0<cfelse>1</cfif>,#IS_IMPORTANT#)
+                                </cfquery>
+                            </cfif>
+                        </cfif>
                     </cfloop>                
                 </cfif>            
         </cfif>
     </cfloop>
+              <cfquery name="isghj" datasource="#dsn1#">
+                            TRUNCATE TABLE CatalystQA_product.PRODUCT_PROPERTY_OUR_COMPANY
+                            GO
+INSERT INTO CatalystQA_product.PRODUCT_PROPERTY_OUR_COMPANY(PROPERTY_ID,OUR_COMPANY_ID)
+SELECT PROPERTY_ID,1 AS OUR_COMPANY_ID  FROM  CatalystQA_product.PRODUCT_PROPERTY
+                        </cfquery>
 </cfif>
 
 <cffunction name="getBarcode">
