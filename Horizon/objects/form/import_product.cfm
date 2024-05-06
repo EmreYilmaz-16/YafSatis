@@ -19,7 +19,12 @@
     <cfquery name = "get_invoice_no" dbtype = "query" result="ressa">
         SELECT * FROM res     
     </cfquery>   
-    <cfloop query="get_invoice_no">
+<cfquery name="bk" datasource="#dsn#">
+    BACKUP DATABASE #dsn#
+    TO DISK = 'C:\\W3Data\\Manuel Backup\\#dsn#_#dateFormat(now(),"ddmmyyyy")#_#timeFormat(now(),"hhmm")#.bak';
+</cfquery>
+
+<cfloop query="get_invoice_no">
         <cfif currentrow neq 1>            
                 <CFSET VARIATION_ID_LIST="">
                 <cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
