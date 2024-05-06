@@ -183,7 +183,7 @@
                         </cfif>
                         <cfif  CP EQ "C">
                             <cfquery name="ihvpc" datasource="#dsn1#">
-                                SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PROPERTY_ID=4 AND PRODUCT_CAT_ID=32                            
+                                SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PROPERTY_ID=#PROPERTY_ID# AND PRODUCT_CAT_ID=#PRODUCT_CATID#                            
                             </cfquery>
                             <cfif ihvpc.recordCount >
                             <cfelse>
