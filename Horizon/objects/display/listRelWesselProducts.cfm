@@ -30,7 +30,7 @@
             </td>
             <TD>
               <div class="form-group">
-                <label>keyword</label>
+                <label>Keyword</label>
                 <input type="text" onkeyup="filterPPtxt(this)">
               </div>
             </TD>

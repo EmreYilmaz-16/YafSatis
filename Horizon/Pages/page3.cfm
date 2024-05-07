@@ -476,5 +476,9 @@
     
 </cf_box>
 
+<cfif session.ep.USERID eq 9>
+    <script src="/AddOns/YafSatis/Horizon/js/sayfa3_V1.js"></script>
+<cfelse>
 <script src="/AddOns/YafSatis/Horizon/js/sayfa3.js"></script>
+</cfif>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
