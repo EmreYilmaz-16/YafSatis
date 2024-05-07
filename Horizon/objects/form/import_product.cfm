@@ -27,7 +27,7 @@
 <cfloop query="get_invoice_no">
         <cfif currentrow neq 1>            
                 <CFSET VARIATION_ID_LIST="">
-                <cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
+                <cfloop from="8" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
                     <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
                     <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
                     <cfset PROPERTY=evaluate("get_invoice_no.COL_#i+2#")>
@@ -140,9 +140,19 @@
                         <cfinclude template="../query/add_import_product.cfm">
                         <cfset RECORDED_PRODUCT_ID=GET_PID.PRODUCT_ID>
                     </cfif>
+
+                    <cfquery name="ihhvp" datasource="#dsn1#">
+                        select PRODUCT_ID,PATH,IMAGE_SIZE,IS_INTERNET,PATH_SERVER_ID,IS_EXTERNAL_LINK,LANGUAGE_ID,VIDEO_LINK,PRD_IMG_NAME from CatalystQA_product.PRODUCT_IMAGES WHERE PATH='#COL_7#'
+                    </cfquery>
+                    <cfif ihhvp.recordCount>
+                    <cfelse>
+                        <cfquery name="ins" datasource="#dsn1#">
+                            INSERT INTO PRODUCT_IMAGES(PRODUCT_ID,PATH,IMAGE_SIZE,IS_INTERNET,PATH_SERVER_ID,IS_EXTERNAL_LINK,LANGUAGE_ID,VIDEO_LINK,PRD_IMG_NAME) VALUES (#RECORDED_PRODUCT_ID#,'#COL_7#',0,1,1,0,'tr',0,'#COL_1#')
+                        </cfquery>
+                    </cfif>
                     <CFSET VARIATION_ID_LIST="">
                     <CFSET LN=1>
-                    <cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
+                    <cfloop from="8" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
                         <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
                         <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
                         <cfset PROPERTY=evaluate("get_invoice_no.COL_#i+2#")>
