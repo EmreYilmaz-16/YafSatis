@@ -26,23 +26,29 @@ function getCats(el) {
 function getCatProperties(cat_id) {
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
   if (WESSEL_ID.length > 0) {
-    var rs = $.get(
+    var rs = $.post(
       ServiceUri +
         "/OfferService.cfc?method=getShipFilters&SHIP_ID=" +
         WESSEL_ID +
         "&PRODUCT_CATID=" +
         cat_id
-    );
-    console.log(rs);
-
-    if (0 > 0) {
-      var ET = confirm(
-        "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
-      );
-      if (ET) {
-        var jsn = rs.JSON_STRINGIM[0];
-        var ReturnObject = JSON.parse(jsn);
-        addEqRow(ReturnObject, jsn);
+    ).done(function (ReturnData) {
+      var TV = JSON.parse(ReturnData);
+      if (TV.STATUS == 1) {
+        var ET = confirm(
+          "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
+        );
+        if (ET) {
+          addEqRow(TV.JSON_STRINGIM, JSON.stringify(TV.JSON_STRINGIM));
+        } else {
+          AjaxPageLoad(
+            "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+              cat_id,
+            "PROP_AREA",
+            1,
+            "Yükleniyor"
+          );
+        }
       } else {
         AjaxPageLoad(
           "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
@@ -52,7 +58,7 @@ function getCatProperties(cat_id) {
           "Yükleniyor"
         );
       }
-    }
+    });
   } else {
     AjaxPageLoad(
       "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
