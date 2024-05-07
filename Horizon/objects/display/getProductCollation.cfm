@@ -11,8 +11,6 @@ LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU ON PU.PRODUCT_ID=P.PRODUCT_ID AN
 where PRODUCT_CATID=#listGetAt(attributes.prp_list,1)#   
 
 ) AS TT WHERE 1=1 AND MANUFACT_CODE ='#attributes.kw#'
-<cfloop list="#prplist#" item="it"> AND DTP LIKE '%#it#,%'
-</cfloop>
  
 </cfquery>
 
