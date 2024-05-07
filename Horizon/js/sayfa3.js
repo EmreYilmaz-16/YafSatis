@@ -26,14 +26,16 @@ function getCats(el) {
 function getCatProperties(cat_id) {
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
   if (WESSEL_ID.length > 0) {
-    var rs = wrk_safe_query(
-      "getShipFilter",
-      "dsn3",
-      0,
-      WESSEL_ID + "*" + cat_id
+    var rs = $.get(
+      ServiceUri +
+        "/OfferService.cfc?method=getShipFilters&SHIP_ID=" +
+        WESSEL_ID +
+        "&PRODUCT_CATID=" +
+        cat_id
     );
     console.log(rs);
-    if (rs.recordcount > 0) {
+
+    if (0 > 0) {
       var ET = confirm(
         "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
       );
