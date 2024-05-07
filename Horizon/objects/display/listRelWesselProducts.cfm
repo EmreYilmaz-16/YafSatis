@@ -26,10 +26,13 @@
                         </cfoutput>
                     </select>
                 </div>
-                <div class="form-group">
-                  <input type="text" onkeyup="filterPPtxt(this)">
-                </div>
+                
             </td>
+            <TD>
+              <div class="form-group">
+                <input type="text" onkeyup="filterPPtxt(this)">
+              </div>
+            </TD>
             <td>
                 <div id="PROP_AREA_00001" style="display:flex">
 
