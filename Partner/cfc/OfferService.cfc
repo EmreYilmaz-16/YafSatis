@@ -846,11 +846,11 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 </cfquery>
 <cfset RO.STATUS=true>
     <cfset RO.Message="Başarılı">
-    <cfreturn RO>
+    <cfreturn replace(serializeJSON(RO),"//","")>
 <cfcatch>
     <cfset RO.STATUS=false>
     <cfset RO.Message=cfcatch.message>
-    <cfreturn RO>
+    <cfreturn replace(serializeJSON(RO),"//","")>
 </cfcatch>
 </cftry>
 
