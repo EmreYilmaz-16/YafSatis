@@ -862,6 +862,28 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 
     
     -------->
+<cffunction name="getShipFilters" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+<cfargument name="SHIP_ID">
+<cfargument name="PRODUCT_CATID">
+
+<cfquery name="getSh" datasource="#dsn3#">
+    SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CAT_ID=#arguments.PRODUCT_CAT_ID#
+</cfquery>
+
+<cfset ReturnData=structNew()>
+<cfif getSh.recordcount>
+    <cfset ReturnData.STATUS=1>
+    <CFSET ReturnData.JSON_STRINGIM=deserializeJSON(getSh.JSON_STRINGIM)>
+<CFELSE>
+    <cfset ReturnData.STATUS=0>
+    <CFSET ReturnData.JSON_STRINGIM="">
+</cfif>
+<cfreturn replace(serializeJSON(ReturnData),"//","")>
+
+
+</cffunction>
+
+
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
