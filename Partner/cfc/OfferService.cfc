@@ -840,8 +840,28 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <CFSET FORMDATA=deserializeJSON(arguments.data)>
 <cfdump var="#FORMDATA#">
 
-</cffunction>
+<cftry>
+<cfquery name="INS" datasource="#DSN3#">
+    INSERT INTO CatalystQA_1.SHIP_EQUIPMENTS_PBS(SHIP_ID,PRODUCT_CATID,JSON_STRINGIM) VALUES (#FORMDATA.WESSEL_ID#,#FORMDATA.PRODUCT_CAT_ID#,'#serializeJSON(FORMDATA)#')
+</cfquery>
+<cfset RO.STATUS=true>
+    <cfset RO.Message="Başarılı">
+    <cfreturn RO>
+<cfcatch>
+    <cfset RO.STATUS=false>
+    <cfset RO.Message=cfcatch.message>
+    <cfreturn RO>
+</cfcatch>
+</cftry>
 
+</cffunction>
+<!----
+    CREATE TABLE CatalystQA_1.SHIP_EQUIPMENTS_PBS(
+    S_ID INT PRIMARY KEY IDENTITY(1,1),SHIP_ID INT,PRODUCT_CATID INT ,JSON_STRINGIM NVARCHAR(MAX)
+);
+
+    
+    -------->
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
