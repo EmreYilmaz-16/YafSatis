@@ -193,7 +193,7 @@
                             <cfif ihvpc.recordCount >
                             <cfelse>
                                 <cfquery name="ins" datasource="#dsn1#">
-                                    INSERT INTO CatalystQA_product.PRODUCT_CAT_PROPERTY (PRODUCT_CAT_ID,PROPERTY_ID,IS_OPTIONAL,IS_AMOUNT,LINE_VALUE) VALUES (#PRODUCT_CATID#,#PROPERTY_ID#,<cfif IS_IMPORTANT eq 1>0<cfelse>1</cfif>,#IS_IMPORTANT#,#LN#)
+                                    INSERT INTO CatalystQA_product.PRODUCT_CAT_PROPERTY (PRODUCT_CAT_ID,PROPERTY_ID,IS_OPTIONAL,IS_AMOUNT,LINE_VALUE) VALUES (#PRODUCT_CATID#,#PROPERTY_ID#,<cfif IS_IMPORTANT eq 1>0<cfelse>1</cfif>,#IS_IMPORTANT#,#i#)
                                 </cfquery>
                             </cfif>
                         </cfif>
