@@ -197,7 +197,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
     <cffunction name="SearchProduct" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
-        <cfquery name="getpcs" datasource="#dsn3#">
+        <cfquery name="getpcs" datasource="#dsn#_1">
             SELECT * FROM STOCKS WHERE MANUFACT_CODE LIKE ='#FData.keyword#' AND PRODUCT_CATID=83
         </cfquery>
         <CFIF getpcs.RECORD_COUNT>
