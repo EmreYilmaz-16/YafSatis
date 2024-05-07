@@ -34,9 +34,9 @@ function getCatProperties(cat_id) {
 }
 
 function AddEquipment() {
-  var OS=getFilterData();
-  var ReturnObject=OS.ReturnObject;
-  var jsn=OS.jsn;
+  var OS = getFilterData();
+  var ReturnObject = OS.ReturnObject;
+  var jsn = OS.jsn;
   addEqRow(ReturnObject, jsn);
 }
 var EqArr = [];
@@ -104,9 +104,9 @@ function getFilterData() {
     alert("Zorunlu Alanlar var !");
     return false;
   }
-  var ST=new Object();
-  ST.ReturnObject=ReturnObject;
-  ST.jsn=jsn;
+  var ST = new Object();
+  ST.ReturnObject = ReturnObject;
+  ST.jsn = jsn;
   return ST;
 }
 
@@ -1633,4 +1633,19 @@ function loadRelOffers() {
   for (let i = 0; i < r.recordcount; i++) {}
 }
 
-function SavePropToShip() {}
+function SavePropToShip() {
+  var WESSEL_ID = document.getElementById("WESSEL_ID").value;
+  var FD = getFilterData();
+  var SEND_DATA = FD.ReturnObject;
+  SEND_DATA.WESSEL_ID = WESSEL_ID;
+
+  $.ajax({
+    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddShipToFilter",
+    data: {
+      data: JSON.stringify(SEND_DATA),
+    },
+    success: function () {
+      alert("Hİ");
+    },
+  });
+}

@@ -182,6 +182,7 @@
                     </div>
                     <div class="col col-8 col-md-8 col-sm-8 col-xs-12 d-flex">
                         <i onclick=openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_wessel_related_products&WesselId=<cfoutput>#Offer.WESSEL_ID#</cfoutput>') class="fa fa-ship color-In padding-2 padding-right-5 padding-left-5 margin-right-5" style="border-radius:3px;"></i><span class="bold margin-right-5">:</span><label class="bold" onclick="openBoxDraggable('index.cfm?fuseaction=sales.emptypopup_detail_vessel&ShipId=<cfoutput>#Offer.WESSEL_ID#'</cfoutput>)"><cfoutput>#Offer.SHIP_NAME#</cfoutput></label>
+                        <input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#Offer.WESSEL_ID#</cfoutput>">
                     </div>
                 </div>
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">

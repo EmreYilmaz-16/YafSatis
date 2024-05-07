@@ -835,6 +835,13 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 </cfmail> 
 </cffunction>
 
+<cffunction name="AddShipToFilter"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+
+<CFSET FORMDATA=deserializeJSON(arguments.data)>
+<cfdump var="#FORMDATA#">
+
+</cffunction>
+
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->
 	<cfargument name="gelen" required="no" type="string">
