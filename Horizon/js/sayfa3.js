@@ -24,6 +24,20 @@ function getCats(el) {
   });
 }
 function getCatProperties(cat_id) {
+  var WESSEL_ID = document.getElementById("WESSEL_ID").value;
+  if (WESSEL_ID.length > 0) {
+    var rs = wrk_safe_query("getShipFilter", "dsn3",0, WESSEL_ID+"*"+cat_id);
+    console.log(rs);
+    if(rs.recordcount>0){
+      var ET=confirm("Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz");
+      if(ET){
+          var jsn=rs.JSON_STRINGIM[0];
+          var ReturnObject=JSON.parse(jsn);
+          addEqRow(ReturnObject, jsn);
+      }
+    }
+  }
+
   AjaxPageLoad(
     "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
       cat_id,
