@@ -33,7 +33,7 @@ function getCatProperties(cat_id) {
         "&PRODUCT_CATID=" +
         cat_id
     );
-    console.log(rs);
+    console.log(rs.responseText);
 
     if (0 > 0) {
       var ET = confirm(
