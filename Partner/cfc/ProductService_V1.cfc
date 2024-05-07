@@ -198,7 +198,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
         <cfquery name="getpcs" datasource="#dsn#_1">
-            SELECT * FROM STOCKS WHERE MANUFACT_CODE LIKE ='#FData.keyword#' AND PRODUCT_CATID=83
+            SELECT * FROM STOCKS WHERE MANUFACT_CODE ='#FData.keyword#' AND PRODUCT_CATID=83
         </cfquery>
         <CFIF getpcs.RECORD_COUNT>
             <CFSET P=structNew()>
