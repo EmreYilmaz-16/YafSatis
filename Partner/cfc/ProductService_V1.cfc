@@ -198,7 +198,10 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
         <cfquery name="getpcs" datasource="#dsn#_1">
-            SELECT * FROM STOCKS WHERE MANUFACT_CODE ='#FData.keyword#' AND PRODUCT_CATID=83
+            SELECT * FROM STOCKS as P
+            LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
+                    ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
+            WHERE MANUFACT_CODE ='#FData.keyword#' AND PRODUCT_CATID=83
         </cfquery>
         <CFIF getpcs.recordCount>
             <CFSET P=structNew()>
