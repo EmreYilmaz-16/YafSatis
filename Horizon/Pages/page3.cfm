@@ -305,16 +305,19 @@
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="padding-2 col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="col col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex flex-center">
+                        <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
                             <a href="javascript://" class="font-xs text-info"><i class="fa fa-download margin-right-5"></i>EXPORT</a>
                         </div>
 
-                        <div class="col col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex flex-center">
+                        <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
                             <a href="javascript://" class="font-xs text-info"><i class="fa fa-upload margin-right-5"></i>IMPORT</a>
                         </div>
 
-                        <div class="col col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex flex-center">
+                        <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
                             <a href="javascript://" class="font-xs text-info"><i class="fa fa-cloud-upload margin-right-5"></i>SAMPLE EXCEL</a>
+                        </div>
+                        <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
+                            <a href="javascript://" class="font-xs text-info"><i class="fa fa-save margin-right-5"></i>Gemiye Kaydet</a>
                         </div>
                     </div>
                     <a href="javascript://" onclick="AddEquipment()" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left btn-block padding-left-5 padding-right-5"><i class="fa fa-plus"></i>ADD EQUIPMENT</a>

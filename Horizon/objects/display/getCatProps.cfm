@@ -38,6 +38,7 @@
         </div>
     </div>
 </cfloop>
+
 </cfoutput>
 
 <script>
