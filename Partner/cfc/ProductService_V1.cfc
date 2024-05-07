@@ -200,7 +200,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfquery name="getpcs" datasource="#dsn#_1">
             SELECT * FROM STOCKS WHERE MANUFACT_CODE ='#FData.keyword#' AND PRODUCT_CATID=83
         </cfquery>
-        <CFIF getpcs.RECORD_COUNT>
+        <CFIF getpcs.recordCount>
             <CFSET P=structNew()>
             <cfset P.MANUFACT_CODE=getpcs.MANUFACT_CODE>
             <cfset P.PRODUCT_ID=getpcs.PRODUCT_ID>
