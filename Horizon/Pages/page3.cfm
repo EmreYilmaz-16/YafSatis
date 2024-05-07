@@ -317,7 +317,7 @@
                             <a href="javascript://" class="font-xs text-info"><i class="fa fa-cloud-upload margin-right-5"></i>SAMPLE EXCEL</a>
                         </div>
                         <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
-                            <a href="javascript://" id="ls1" class="font-xs text-info"><i class="fa fa-save margin-right-5"></i>GEMİYE KAYDET</a>
+                            <a href="javascript://" onclick="SavePropToShip()" id="ls1" class="font-xs text-info"><i class="fa fa-save margin-right-5"></i>GEMİYE KAYDET</a>
                         </div>
                     </div>
                     <a href="javascript://" onclick="AddEquipment()" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left btn-block padding-left-5 padding-right-5"><i class="fa fa-plus"></i>ADD EQUIPMENT</a>
