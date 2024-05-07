@@ -197,7 +197,28 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
     <cffunction name="SearchProduct" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
-        <cfquery name="getProd" datasource="#dsn#">
+        <cfquery name="getpcs" datasource="#dsn3#">
+            SELECT * FROM STOCKS WHERE MANUFACT_CODE LIKE ='#FData.keyword#' AND PRODUCT_CATID=83
+        </cfquery>
+        <CFIF getpcs.RECORD_COUNT>
+            <CFSET P=structNew()>
+            <cfset P.MANUFACT_CODE=getpcs.MANUFACT_CODE>
+            <cfset P.PRODUCT_ID=getpcs.PRODUCT_ID>
+            <cfset P.STOCK_ID=getpcs.STOCK_ID>
+            <cfset P.PRODUCT_NAME=getpcs.PRODUCT_NAME>
+            <cfset P.IS_VIRTUAL=0>
+            <cfset P.PRODUCT_CODE=getpcs.PRODUCT_CODE>
+            <CFSET P.TAX=getpcs.TAX>
+            <cfset P.PRODUCT_CODE_2=getpcs.PRODUCT_CODE_2>
+            <cfset P.MAIN_UNIT=getpcs.MAIN_UNIT>
+            <CFSET P.EXTRA_PROPT=0>
+            <cfset P.RECORD_COUNT=getpcs.recordcount>
+            <cfreturn replace(serializeJSON(P),"//","")>
+    
+        </cfif>
+      
+      
+      <cfquery name="getProd" datasource="#dsn#">
             SELECT *
             FROM (
                 SELECT PRODUCT_NAME, P.MANUFACT_CODE, PRODUCT_CODE, PRODUCT_CODE_2,P.PRODUCT_ID,S.STOCK_ID, PU.MAIN_UNIT,P.TAX, (
@@ -210,7 +231,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
                         ) AS DTP,
                         (
                             SELECT COUNT(*) FROM CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
-LEFT JOIN CatalystQA_product.PRODUCT_CAT_PROPERTY AS PP ON PDP.PROPERTY_ID=PP.PROPERTY_ID AND PP.PRODUCT_CAT_ID IN (#FData.SearchMainValue.PRODUCT_CAT_ID#,83)
+LEFT JOIN CatalystQA_product.PRODUCT_CAT_PROPERTY AS PP ON PDP.PROPERTY_ID=PP.PROPERTY_ID AND PP.PRODUCT_CAT_ID=#FData.SearchMainValue.PRODUCT_CAT_ID#
 WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
 
 
@@ -219,7 +240,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
                 LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
                     ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
-                WHERE PRODUCT_CATID IN(#FData.SearchMainValue.PRODUCT_CAT_ID#,83)
+                WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
                 ) AS TT
             WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
             <cfloop array="#FData.SearchMainValue.Filters#" item="it">
@@ -277,7 +298,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
                 LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
                     ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
-                WHERE PRODUCT_CATID IN( #FData.SearchMainValue.PRODUCT_CAT_ID#,83)
+                WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
                 ) AS TT
             WHERE 1 = 1 <cfif len(FData.keyword)>
                  AND (
@@ -304,8 +325,8 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
         <cfquery name="getOtherProperties" datasource="#dsn#">
             SELECT DISTINCT PDP.PROPERTY_ID,PROPERTY,(SELECT PROPERTY_DETAIL_ID,PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD WHERE PPD.PRPT_ID=PDP.PROPERTY_ID FOR JSON PATH) as TKFS FROM CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
 INNER JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPERTY_ID
- WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRODUCT_CATID IN(#FData.SearchMainValue.PRODUCT_CAT_ID#,83))
-AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID IN(#FData.SearchMainValue.PRODUCT_CAT_ID#,83))
+ WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM CatalystQA_product.PRODUCT WHERE PRODUCT_CATID=#FData.SearchMainValue.PRODUCT_CAT_ID#)
+AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#FData.SearchMainValue.PRODUCT_CAT_ID#)
         </cfquery> 
         <CFSET ReturnData=structNew()>
         <cfset PSA=arrayNew(1)>
