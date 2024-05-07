@@ -34,6 +34,14 @@ function getCatProperties(cat_id) {
 }
 
 function AddEquipment() {
+  var OS=getFilterData();
+  var ReturnObject=OS.ReturnObject;
+  var jsn=OS.jsn;
+  addEqRow(ReturnObject, jsn);
+}
+var EqArr = [];
+
+function getFilterData() {
   var elem = document.getElementById("PRODUCT_CAT");
   var ix = elem.options.selectedIndex;
   var PRODUCT_CAT = elem.options[ix].innerText;
@@ -96,9 +104,11 @@ function AddEquipment() {
     alert("Zorunlu Alanlar var !");
     return false;
   }
-  addEqRow(ReturnObject, jsn);
+  var ST=new Object();
+  ST.ReturnObject=ReturnObject;
+  ST.jsn=jsn;
+  return ST;
 }
-var EqArr = [];
 
 function addEqRow(Obj, jsn) {
   var exxx = EqArr.findIndex((p) => p == Obj.PropList);
@@ -1474,7 +1484,7 @@ function AddToCons() {
                 UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
                 PRODUCT_NAME: PRODUCT_NAMEX,
                 PRODUCT_CODE_2: PRODUCT_CODE_2X,
-                PRODUCT_UNIT:PRODUCT_UNITX
+                PRODUCT_UNIT: PRODUCT_UNITX,
               };
               OX.PIDS.push(TX);
             }
@@ -1517,7 +1527,7 @@ function AddToCons() {
                   UNIQUE_RELATION_ID: UNIQUE_RELATION_IDX,
                   PRODUCT_NAME: PRODUCT_NAMEX,
                   PRODUCT_CODE_2: PRODUCT_CODE_2X,
-                  PRODUCT_UNIT:PRODUCT_UNITX
+                  PRODUCT_UNIT: PRODUCT_UNITX,
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
@@ -1548,11 +1558,14 @@ function TedarikYaz() {
 
     tr.appendChild(td);
     var td = document.createElement("th");
-  
+
     td.innerText = AComp.NICKNAME;
-  var span=document.createElement("span");
-  span.innerText=AComp.PIDS.length;
-  span.setAttribute("style","    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;")  
+    var span = document.createElement("span");
+    span.innerText = AComp.PIDS.length;
+    span.setAttribute(
+      "style",
+      "    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
+    );
     td.setAttribute("style", "color:#fb6b5b");
     td.appendChild(span);
     tr.appendChild(td);
@@ -1587,37 +1600,37 @@ function TedarikYaz() {
   }
 }
 
-function AddPurchaseOffer(){
-  var OfferId=getParameterByName("offer_id");
-  var OS={
-    OFFER_ID:OfferId,
-    FormData:SelectedCompArr
-  }
+function AddPurchaseOffer() {
+  var OfferId = getParameterByName("offer_id");
+  var OS = {
+    OFFER_ID: OfferId,
+    FormData: SelectedCompArr,
+  };
   $.ajax({
-    url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddPurchaseOffer",
-    data:{
-      FormData:JSON.stringify(OS)
+    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddPurchaseOffer",
+    data: {
+      FormData: JSON.stringify(OS),
     },
-    success:function(retDat){
+    success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
         messageType: "success",
-      })
-    }
-  })
+      });
+    },
+  });
 }
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, '\\$&');
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
   if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-function loadRelOffers(){
-  var r=wrk_safe_query("GETREO_OFFERS")
-  for(let i=0;i<r.recordcount;i++){
-    
-  }
+function loadRelOffers() {
+  var r = wrk_safe_query("GETREO_OFFERS");
+  for (let i = 0; i < r.recordcount; i++) {}
 }
+
+function SavePropToShip() {}
