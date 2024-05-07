@@ -867,7 +867,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cfargument name="PRODUCT_CATID">
 
 <cfquery name="getSh" datasource="#dsn3#">
-    SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CAT_ID=#arguments.PRODUCT_CATID#
+    SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CATID=#arguments.PRODUCT_CATID#
 </cfquery>
 
 <cfset ReturnData=structNew()>
