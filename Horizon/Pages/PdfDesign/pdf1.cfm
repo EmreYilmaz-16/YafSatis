@@ -487,7 +487,22 @@ WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
                          
                             <td>#IIIX#</td>
                             <td>#MN_CODE#</td>
-                            <td>#PRODUCT_NAME#</td>
+                            <td>#PRODUCT_NAME#
+                                <cfquery name="getpp" datasource="#dsn#_1">
+   SELECT  PRODUCT_PROPERTY.PROPERTY ,PRODUCT_PROPERTY_DETAIL.PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_DT_PROPERTIES 
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY ON PRODUCT_PROPERTY.PROPERTY_ID=PRODUCT_DT_PROPERTIES.PROPERTY_ID
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL ON PRODUCT_PROPERTY_DETAIL.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
+LEFT JOIN CatalystQA_product.PRODUCT ON PRODUCT.PRODUCT_ID=PRODUCT_DT_PROPERTIES.PRODUCT_ID
+WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
+    SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=PRODUCT.PRODUCT_CATID
+) AND PRODUCT_DT_PROPERTIES.PRODUCT_ID=#PRODUCT_ID#
+
+<cfloop query="getpp">
+<b>#getpp.PROPERTY#</b>:#PROPERTY_DETAIL#
+</cfloop>
+                                </cfquery>
+
+                            </td>
                             <td>#QUANTITY#</td>
                             <td>#UNIT#</td>
                             <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
