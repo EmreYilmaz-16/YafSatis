@@ -1,4 +1,4 @@
-<cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#" enctype="multipart/form-data" >
+﻿<cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#" enctype="multipart/form-data" >
     <div class="form-group">
         <input type="file" name="file_11" id="file_11">
         <input type="hidden"  name="FileName" id="FileName"> 
@@ -93,7 +93,7 @@
                     </cfquery>
                     <cfif getProd.recordCount>
                         <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>
-                        <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var
+                        <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var <br>
                     <cfelse>
                         <cfset barcode=getBarcode()>
                         <cfset UrunAdi=COL_1>
