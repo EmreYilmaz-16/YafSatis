@@ -497,11 +497,11 @@ WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
     SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=PRODUCT.PRODUCT_CATID
 ) AND PRODUCT_DT_PROPERTIES.PRODUCT_ID=#PRODUCT_ID#
 
+                       </cfquery><br>
 <cfloop query="getpp">
-<b>#getpp.PROPERTY#</b>:#PROPERTY_DETAIL#
-</cfloop>
-                                </cfquery>
-
+    <b>#getpp.PROPERTY#</b>:#PROPERTY_DETAIL#
+    </cfloop>
+             
                             </td>
                             <td>#QUANTITY#</td>
                             <td>#UNIT#</td>
