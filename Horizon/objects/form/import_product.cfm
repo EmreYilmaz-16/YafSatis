@@ -93,6 +93,7 @@
                     </cfquery>
                     <cfif getProd.recordCount>
                         <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>
+                        <cfdump var="#getProd#">
                         <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var <br>
                     <cfelse>
                         <cfset barcode=getBarcode()>
