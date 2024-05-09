@@ -43,37 +43,58 @@
         </tr>
     </table>
 </cf_box>
-  <cfloop  array="#WesselProducts#" item="it" index="ix">
-    <cf_seperator title="#it.PRODUCT_CAT#" id="item_#ix#" style="display:none;">
-      <div class="ui-info-text" id="item_<cfoutput>#ix#</cfoutput>">
+  <cfloop  array="#WesselProducts#" item="it2" index="iy">
+    <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#iy#" style="display:none;">
+      <div class="ui-info-text" id="item_<cfoutput>#iy#</cfoutput>">
+        <cfset PRODUCT_ARR=it2.PRODUCT_ARR>
+        <cf_big_list>
+          <thead>
+            <tr>
+              <th>
+                Part No
+              </th>
+              <th>
+                Ürün
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <cfoutput>
+          <cfloop array="#PRODUCT_ARR#" item="it" index="ix">
+            <tr data-proplist="#it.PROP_LIST#">>
+              <td>
+                <a href="##" onclick="EkleCanimBenim(#ix#)">#it.MANUFACT_CODE#</a>
+                <input type="hidden" name="PROP_LIST" id="PROP_LIST#ix#" value="#it.PROP_LIST#">
+                <input type="hidden" name="PRODUCT_NAME" id="PRODUCT_NAME#ix#" value="#it.PRODUCT_NAME#">
+                <input type="hidden" name="MANUFACT_CODE" id="MANUFACT_CODE#ix#" value="#it.MANUFACT_CODE#">
+                <input type="hidden" name="PRODUCT_ID" id="PRODUCT_ID#ix#" value="#it.PRODUCT_ID#">
+                <input type="hidden" name="STOCK_ID" id="STOCK_ID#ix#" value="#it.STOCK_ID#">
+                <input type="hidden" name="MAIN_UNIT" id="MAIN_UNIT#ix#" value="#it.MAIN_UNIT#">
+                <input type="hidden" name="TAX" id="TAX#ix#" value="#it.TAX#">
+                <input type="hidden" name="JSON_STRINGIM" id="JSON_STRINGIM#ix#" value='#it.JSON_STRINGIM#'>
+            </td>
+            <td>
+              #it.PRODUCT_NAME#
+          </td>
+          <TD>
+            <cfset KMK=deserializeJSON(it.JSON_STRINGIM)>
+            
+            <cfloop array="#KMK.Filters#" item="it2" index="jx">
+                #it2.PRODUCT_CAT#-&gt;
+            </cfloop>
+        </TD>
+            </tr>
+          </cfloop>
+        </cfoutput>
+        </cf_big_list>
       </div>
   </cfloop>
   
       <!----  <cfloop array="#WesselProducts#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
-                <td>
-                    <a href="##" onclick="EkleCanimBenim(#ix#)">
-                    #it.MANUFACT_CODE#
-                </a>
-                    <input type="hidden" name="PROP_LIST" id="PROP_LIST#ix#" value="#it.PROP_LIST#">
-                    <input type="hidden" name="PRODUCT_NAME" id="PRODUCT_NAME#ix#" value="#it.PRODUCT_NAME#">
-                    <input type="hidden" name="MANUFACT_CODE" id="MANUFACT_CODE#ix#" value="#it.MANUFACT_CODE#">
-                    <input type="hidden" name="PRODUCT_ID" id="PRODUCT_ID#ix#" value="#it.PRODUCT_ID#">
-                    <input type="hidden" name="STOCK_ID" id="STOCK_ID#ix#" value="#it.STOCK_ID#">
-                    <input type="hidden" name="MAIN_UNIT" id="MAIN_UNIT#ix#" value="#it.MAIN_UNIT#">
-                    <input type="hidden" name="TAX" id="TAX#ix#" value="#it.TAX#">
-                    <input type="hidden" name="JSON_STRINGIM" id="JSON_STRINGIM#ix#" value='#it.JSON_STRINGIM#'>
-                </td>
-                <td>
-                    #it.PRODUCT_NAME#
-                </td>
-                <TD>
-                    <cfset KMK=deserializeJSON(it.JSON_STRINGIM)>
-                    
-                    <cfloop array="#KMK.Filters#" item="it2" index="jx">
-                        #it2.PRODUCT_CAT#-&gt;
-                    </cfloop>
-                </TD>
+               
+                
+                
             </tr>
         </cfloop>---->
  
