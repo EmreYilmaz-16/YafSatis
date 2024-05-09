@@ -152,19 +152,19 @@ var EMRECIMMMMM="";
    // Cra(el.value);
   }
 
-  function filterPPtxt(el) {
+  function filterPPtxt(el,iitxx) {
         var ix = el.value
         console.log(el.value);
         console.log(el.value.length);
         if (el.value.length == 0) {
-            $("#my1 tr").filter(function () {
+          $("#MYRT_"+iitxx+" tr").filter(function () {
             $(this).show();
             
     });
     return false;
 }
     console.log(el);
-    $("#my1 tr").filter(function () {
+    $("#MYRT_"+iitxx+" tr").filter(function () {
       $(this).toggle($(this).text().indexOf(ix) > -1);
     });
    // Cra(el.value);
