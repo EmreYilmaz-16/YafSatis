@@ -44,8 +44,8 @@
     </table>
 </cf_box>
   <cfloop  array="#WesselProducts#" item="it2" index="iy">
-    <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#iy#" style="display:none;">
-      <div class="ui-info-text" id="item_<cfoutput>#iy#</cfoutput>">
+    <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#iy#">
+      <div class="ui-info-text" id="item_<cfoutput>#iy#</cfoutput>"  style="display:none;">
         <cfset PRODUCT_ARR=it2.PRODUCT_ARR>
         <cf_big_list>
           <thead>
@@ -61,7 +61,7 @@
           </thead>
           <cfoutput>
           <cfloop array="#PRODUCT_ARR#" item="it" index="ix">
-            <tr data-proplist="#it.PROP_LIST#">>
+            <tr data-proplist="#it.PROP_LIST#">
               <td>
                 <a href="##" onclick="EkleCanimBenim(#ix#)">#it.MANUFACT_CODE#</a>
                 <input type="hidden" name="PROP_LIST" id="PROP_LIST#ix#" value="#it.PROP_LIST#">
