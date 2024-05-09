@@ -51,7 +51,7 @@
           <input type="text" onkeyup="filterPPtxt(this,<cfoutput>#iy#</cfoutput>)" placeholder="Search">
         </div>
         <cfset PRODUCT_ARR=it2.PRODUCT_ARR>
-        <cf_big_list>
+        <cf_big_list id="MYRT_#iy#">
           <thead>
             <tr>
               <th>
@@ -65,7 +65,7 @@
             </tr>
           </thead>
           <cfoutput>
-            <tbody id="MYRT_#iy#">
+            <tbody >
           <cfloop array="#PRODUCT_ARR#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
               <td>
