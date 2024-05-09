@@ -65,7 +65,7 @@
             </tr>
           </thead>
           <cfoutput>
-            <tbody id="MYRT_<cfoutput>#iy#</cfoutput>">
+            <tbody id="MYRT_#iy#">
           <cfloop array="#PRODUCT_ARR#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
               <td>
