@@ -9,9 +9,9 @@
 
 
 <cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
-  <cfdump var="#WesselProducts#">
-  <cf_box>
-    <table>
+  
+  <!---- <cf_box>
+   <table>
         <tr>
             <td>
                 <div class="form-group">
@@ -42,7 +42,7 @@
             </td>
         </tr>
     </table>
-</cf_box>
+</cf_box>---->
   <cfloop  array="#WesselProducts#" item="it2" index="iy">
     <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#iy#">
       <div class="ui-info-text" id="item_<cfoutput>#iy#</cfoutput>"  style="display:none;">
