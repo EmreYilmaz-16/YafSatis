@@ -43,22 +43,12 @@
         </tr>
     </table>
 </cf_box>
-<cf_ajax_list >
-    <thead>
-        <tr>
-            <th>
-                Part No
-            </th>
-            <th>
-                Ürün
-            </th>
-            <th>
-
-            </th>
-        </tr>
-    </thead>
-    <cfoutput>
-        <tbody id="my1">
+  <cfloop  array="#WesselProducts#" item="it" index="ix">
+    <cf_seperator title="#it.PRODUCT_CAT#" id="item_#ix#" style="display:none;">
+      <div class="ui-info-text" id="item_<cfoutput>#ix#</cfoutput>">
+      </div>
+  </cfloop>
+  
       <!----  <cfloop array="#WesselProducts#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
                 <td>
@@ -86,9 +76,8 @@
                 </TD>
             </tr>
         </cfloop>---->
-    </cfoutput>
-</tbody>
-</cf_ajax_list>
+ 
+
 
 </cf_box>
 <script>
