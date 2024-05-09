@@ -190,7 +190,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         </cfscript>
     </cfloop>
     <cfscript>
-        arrayAppend(PS.PRODUCT_ARR,PS);
+        arrayAppend(ReturnArr,PS);
     </cfscript>
         </cfloop>
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
