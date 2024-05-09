@@ -183,7 +183,7 @@ function filterPP2(el,iitxx) {
     });
     return false;
   }
-  $("#MYRT_"iitxx"+ tr").filter(function () {
+  $("#MYRT_"+iitxx+" tr").filter(function () {
     $(this).toggle($(this).text().indexOf(ix) > -1);
   });
   //  Cra(el.value);
