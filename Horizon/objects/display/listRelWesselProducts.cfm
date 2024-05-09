@@ -9,7 +9,8 @@
 
 
 <cf_box title="Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
-<cf_box>
+  <cfdump var="#WesselProducts#">
+  <cf_box>
     <table>
         <tr>
             <td>
@@ -58,7 +59,7 @@
     </thead>
     <cfoutput>
         <tbody id="my1">
-        <cfloop array="#WesselProducts#" item="it" index="ix">
+      <!----  <cfloop array="#WesselProducts#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
                 <td>
                     <a href="##" onclick="EkleCanimBenim(#ix#)">
@@ -84,7 +85,7 @@
                     </cfloop>
                 </TD>
             </tr>
-        </cfloop>
+        </cfloop>---->
     </cfoutput>
 </tbody>
 </cf_ajax_list>
