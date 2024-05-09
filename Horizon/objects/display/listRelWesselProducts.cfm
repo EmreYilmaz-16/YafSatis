@@ -57,6 +57,7 @@
                 Ürün
               </th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <cfoutput>
@@ -83,6 +84,14 @@
                 #it2.PRODUCT_CAT#-&gt;
             </cfloop>
         </TD>
+        <td>
+          <cfloop array="#it.PC_JSOIN#" item="it3" index="iz">
+              <button>
+                <b>#it3.PROPERTY#</b><br>
+                #it3.PPD[1].PROPERTY_DETAIL#
+              </button>
+          </cfloop>
+        </td>
             </tr>
           </cfloop>
         </cfoutput>
