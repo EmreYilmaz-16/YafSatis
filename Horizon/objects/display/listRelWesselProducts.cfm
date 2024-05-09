@@ -46,6 +46,10 @@
   <cfloop  array="#WesselProducts#" item="it2" index="iy">
     <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#iy#">
       <div class="ui-info-text" id="item_<cfoutput>#iy#</cfoutput>"  style="display:none;">
+        <div class="form-group">
+          
+          <input type="text" onkeyup="filterPPtxt(this,<cfoutput>#iy#</cfoutput>)" placeholder="Search">
+        </div>
         <cfset PRODUCT_ARR=it2.PRODUCT_ARR>
         <cf_big_list>
           <thead>
@@ -61,6 +65,7 @@
             </tr>
           </thead>
           <cfoutput>
+            <tbody id="MYRT_<cfoutput>#iy#</cfoutput>">
           <cfloop array="#PRODUCT_ARR#" item="it" index="ix">
             <tr data-proplist="#it.PROP_LIST#">
               <td>
@@ -94,6 +99,7 @@
         </td>
             </tr>
           </cfloop>
+        </tbody>
         </cfoutput>
         </cf_big_list>
       </div>
@@ -166,18 +172,18 @@ var EMRECIMMMMM="";
 
   
 
-function filterPP2(el) {
+function filterPP2(el,iitxx) {
   var ix = el.options[el.selectedIndex].innerText;
   console.log(el.value);
   console.log(el.value.length);
   if (el.value.length == 0) {
-    $("#my1 tr").filter(function () {
+    $("#MYRT_"+iitxx+"" tr").filter(function () {
       $(this).show();
       
     });
     return false;
   }
-  $("#my1 tr").filter(function () {
+  $("#MYRT_"iitxx"+ tr").filter(function () {
     $(this).toggle($(this).text().indexOf(ix) > -1);
   });
   //  Cra(el.value);
