@@ -177,7 +177,7 @@ function filterPP2(el,iitxx) {
   console.log(el.value);
   console.log(el.value.length);
   if (el.value.length == 0) {
-    $("#MYRT_"+iitxx+"" tr").filter(function () {
+    $("#MYRT_"+iitxx+" tr").filter(function () {
       $(this).show();
       
     });
