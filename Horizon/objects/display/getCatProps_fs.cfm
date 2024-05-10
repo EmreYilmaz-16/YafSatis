@@ -35,7 +35,7 @@
                     <option data-related_variation_id="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
                 </cfloop>
             </select>
-            <a class="input-group-addon" href="javascript://" target="_blank"><i class="fa fa-plus"></i></a>
+            <a class="input-group-addon" onclick="AddVariation('SEARCH_PROP_FS_#it.PROPERTY_ID#',#it.PROPERTY_ID#)" href="javascript://" target="_blank"><i class="fa fa-plus"></i></a>
         </div>
         </div>
     </div>
@@ -117,4 +117,9 @@
         }
         return true;
     }
+
+    function AddVariation(DataIID,PROPERTY_ID) {
+        openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add-sub-property&prpt_id=6');
+    }
+
 </script>
