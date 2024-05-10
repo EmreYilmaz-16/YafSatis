@@ -45,3 +45,29 @@
     <button type="button" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="SaveMachine(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" ><span class="icn-md icon-save">Kaydet</button>
 </div>
 </cf_box>
+
+
+<script>
+    function SaveMachine(params) {
+        var PCAT=document.getElementById("PCAT").value
+var MACHINE_NAME=document.getElementById("MACHINE_NAME").value
+var SERIAL_NO=document.getElementById("SERIAL_NO").value
+var DESCRIPTION=document.getElementById("DESCRIPTION").value
+var WESSEL_ID=document.getElementById("WESSEL_ID").value
+var SendData={
+  PCAT:PCAT,
+MACHINE_NAME:MACHINE_NAME,
+SERIAL_NO:SERIAL_NO,
+DESCRIPTION:DESCRIPTION,
+WESSEL_ID:WESSEL_ID
+
+};
+console.table(SendData)
+
+$.ajax({
+    url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=SaveMachine",
+    data:JSON.stringify(SendData);
+})
+
+    }
+</script>

@@ -345,5 +345,10 @@ VALUES
          </cfloop>
          <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
-   
+    <cffunction name="SaveMachine" access="remote" httpMethod="Post" returntype="any" returnFormat="json"> 
+        <cfargument name="Data">
+        <cfset FormData=deserializeJSON(arguments.Data)>
+        <cfdump var="#FormData#">
+    </cffunction>
+
 </cfcomponent>
