@@ -45,7 +45,7 @@
                     <option data-related_variation_id="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
                 </cfloop>
             </select>
-            <a class="input-group-addon" onclick="AddVariation('SEARCH_PROP_FS_#it.PROPERTY_ID#',#it.PROPERTY_ID#,#attributes.PRODUCT_CATID#,'RefReshPropFS')" href="javascript://" ><i class="fa fa-plus"></i></a>
+            <a class="input-group-addon" onclick="AddVariationFS('SEARCH_PROP_FS_#it.PROPERTY_ID#',#it.PROPERTY_ID#,#attributes.PRODUCT_CATID#,'RefReshPropFS')" href="javascript://" ><i class="fa fa-plus"></i></a>
         </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
         return true;
     }
 
-    function AddVariation(DataIID,PROPERTY_ID,PRODUCT_CATID,cf) {
+    function AddVariationFS(DataIID,PROPERTY_ID,PRODUCT_CATID,cf) {
         openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add-sub-property_special&PRODUCT_CATID='+PRODUCT_CATID+'&prpt_id='+PROPERTY_ID+'&IID='+DataIID+'&CallFunk='+cf);
     }
 
