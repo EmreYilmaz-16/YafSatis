@@ -24,6 +24,7 @@ function getCats(el) {
   });
 }
 function getCatProperties(cat_id) {
+ try{ $("#BUTOCUMMMMM").remove();}catch {};
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
   if (WESSEL_ID.length > 0) {
     var rs = $.post(
@@ -37,6 +38,7 @@ function getCatProperties(cat_id) {
       if (TV.STATUS == 1) {
         var btnn=document.createElement("button");
         btnn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID="+WESSEL_ID+"&cat_id="+cat_id+"')");
+        btnn.id="BUTOCUMMMMM";
         var i=document.createElement("span");
         i.setAttribute("class","icn-md fa fa-gears");
         btnn.appendChild(i);
