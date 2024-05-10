@@ -26,16 +26,16 @@
                     </thead>
                     <cfoutput>
                         
-                <cfloop array="#it2.MACHINEARR#">
+                <cfloop array="#it2.MACHINEARR#" item="it" index="y">
                     <tr>
                         <td>
-                            #MACHINE_NAME#     
+                            #it.MACHINE_NAME#     
                         </td>
                         <td>
-                            #SERIAL_NO#
+                            #it.SERIAL_NO#
                         </td>
                         <td>
-                            #DESCRIPTION#
+                            #it.DESCRIPTION#
                         </td>
                     </tr>
                 </cfloop>
