@@ -28,7 +28,7 @@
            
             <select data-IS_OPTIONAL=#it.IS_OPTIONAL# <cfif listlen(RElprp) gt 0>
                 onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#,'#it.PROPERTY#')"
-            </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
+            </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss_fs" name="SEARCH_PROP_FS" data-propText="#it.PROPERTY#" id="SEARCH_PROP_FS_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
                 
                 <option value="">Seç</option>
                 <cfloop array="#CatPropertieDetails#" item="it2">
@@ -43,7 +43,7 @@
 
 <script>
     $(document).ready(function(){
-        $('.propss').select2();
+        $('.propss_fs').select2();
     })
     function iliskiliDataOlustur(el,pcat,prpt,pfrs){
         console.log(el);
@@ -67,7 +67,7 @@
             success:function (returnData) {
                 console.log(returnData)
                 var Obj=JSON.parse(returnData)
-                var e=document.getElementById("SEARCH_PROP_"+relVar)
+                var e=document.getElementById("SEARCH_PROP_FS_"+relVar)
                 console.log(e.options)
                 var iii=e.options.length;
                 var ic=0;

@@ -410,6 +410,7 @@ VALUES
                 <cfset Amachine.DESCRIPTION=DESCRIPTION>
                 <cfset Amachine.SM_ID=SM_ID>
                 <cfset Amachine.PRODUCT_CATID=MACHINE_CAT>
+                <cfset Amachine.PRODUCT_CAT_M=PRODUCT_CAT>
 </cfloop>                
         
     <cfreturn replace(serializeJSON(Amachine),"//","")>
