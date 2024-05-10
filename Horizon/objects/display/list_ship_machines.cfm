@@ -22,6 +22,9 @@
                             <th>
                                 Description
                             </th>
+                            <th>
+                                <a onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_add_ship_machine&WESSEL_ID=<cfoutput>#attributes.WESSEL_ID#</cfoutput>')" href="javascript://"><span class="icn-md fa fa-plus"></span></a>
+                            </th>
                         </tr>
                     </thead>
                     <cfoutput>
@@ -36,6 +39,10 @@
                         </td>
                         <td>
                             #it.DESCRIPTION#
+                        </td>
+                        <td>
+                            <a href="javascript://"><span class="icn-md fa fa-edit"></span></a>
+                            <a href="javascript://"><span class="icn-md fa fa-list-alt"></span></a>
                         </td>
                     </tr>
                 </cfloop>
