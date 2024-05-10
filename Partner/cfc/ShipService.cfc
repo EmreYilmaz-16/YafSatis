@@ -354,7 +354,7 @@ VALUES
             INSERT INTO PBS_SHIP_MACHINES(MACHINE_NAME,MACHINE_CAT,SERIAL_NO,WESSEL_ID,DESCRIPTION) values ('#FormData.MACHINE_NAME#',#FormData.PCAT#,'#FormData.SERIAL_NO#',#FormData.WESSEL_ID#,'#FormData.DESCRIPTION#')
         </cfquery>
         <cfset ReturnData.STATUS=1>
-        <cfset ReturnData.MESSAGE=Başarılı>
+        <cfset ReturnData.MESSAGE="Başarılı">
         <cfreturn replace(serializeJSON(ReturnData),"//","")>
         <cfcatch>
             <cfset ReturnData.STATUS=0>
