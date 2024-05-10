@@ -5,12 +5,17 @@
 <cfelse>
 <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
 </cfif>
+
+<cfset ShipService=createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
+
 <cfset _ProductCatArray=ProductService.getCats()>
 <cfset ProductCatArray=deserializeJSON(_ProductCatArray)>
-
+<cfset _Ship=ShipService.GetShips(ShipId=attributes.WESSEL_ID)>
+<cfset Ship=deserializeJSON(_Ship)>
 
 <cf_box title="Makina Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
-
+    <cfdump var="#Ship#">
+<input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#attributes.WESSEL_ID#</cfoutput>">
 <div class="form-group">
     <label>Ekipman</label>
     <select name="PCAT" id="PCAT">
