@@ -7,7 +7,7 @@
 
 <cf_box title="#Ship[1].SHIP_NAME# - Makina Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
     
-    <cfloop array="#MachineArr#" item="it" index="x">
+    <cfloop array="#MachineArr#" item="it2" index="x">
         <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#x#">
             <div class="ui-info-text" id="item_<cfoutput>#x#</cfoutput>"  style="display:none;">
                 <cf_grid_list>
