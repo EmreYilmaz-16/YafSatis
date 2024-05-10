@@ -35,6 +35,12 @@ function getCatProperties(cat_id) {
     ).done(function (ReturnData) {
       var TV = JSON.parse(ReturnData);
       if (TV.STATUS == 1) {
+        var btnn=document.createElement("button");
+        btnn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID="+WESSEL_ID+"&cat_id="+cat_id+"')");
+        var i=document.createElement("span");
+        i.setAttribute("class","icn-md fa fa-gears");
+        btnn.appendChild(i);
+        document.getElementById("PRODUCT_CAT").parentElement.appendChild(btnn);
         var ET = confirm(
           "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
         );
