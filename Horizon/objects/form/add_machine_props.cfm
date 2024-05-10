@@ -12,7 +12,7 @@
     <cfdump var="#Amachine#">
 <div id="PRPPPP">
     <cfset attributes.PRODUCT_CATID=Amachine.PRODUCT_CATID>
-<cfinclude template="/AddOns/YafSatis/Horizon/objects/display/getCatProps.cfm">
+<cfinclude template="/AddOns/YafSatis/Horizon/objects/display/getCatProps_fs.cfm">
 </div>
 </div>
 </cf_box>
