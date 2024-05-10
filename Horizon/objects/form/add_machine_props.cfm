@@ -10,10 +10,10 @@
 
 <cf_box title="Add Machine Properties" scroll="1" collapsable="1" resize="1" popup_box="1">
     <cfdump var="#Amachine#">
-<div id="PRPPPP">
+<!----<div id="PRPPPP">
     <cfset attributes.PRODUCT_CATID=Amachine.PRODUCT_CATID>
 <cfinclude template="/AddOns/YafSatis/Horizon/objects/display/getCatProps.cfm">
-</div>
+</div>----->
 </cf_box>
 
 
