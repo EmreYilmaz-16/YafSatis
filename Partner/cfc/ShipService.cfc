@@ -355,10 +355,13 @@ VALUES
         </cfquery>
         <cfset ReturnData.STATUS=1>
         <cfset ReturnData.MESSAGE=Başarılı>
+        <cfreturn replace(serializeJSON(ReturnData),"//","")>
         <cfcatch>
             <cfset ReturnData.STATUS=0>
             <cfset ReturnData.MESSAGE=cfcatch.message>
+            <cfreturn replace(serializeJSON(ReturnData),"//","")>
         </cfcatch>
+
         </cftry>
         <cfreturn replace(serializeJSON(ReturnData),"//","")>
     </cffunction>
