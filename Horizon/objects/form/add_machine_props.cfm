@@ -16,6 +16,8 @@
 </div>
 <input type="hidden" name="PCAT_MP" id="PCAT_MP" value="<cfoutput>#Amachine.PRODUCT_CAT_M#</cfoutput>">
 <input type="hidden" name="PCATID_MP" id="PCATID_MP" value="<cfoutput>#attributes.PRODUCT_CATID#</cfoutput>">
+<input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#attributes.WESSEL_ID#</cfoutput>">
+<input type="hidden" name="SM_ID" id="SM_ID" value="<cfoutput>#attributes.SM_ID#</cfoutput>">
 <button type="button" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="SaveMachineProps(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" ><span class="icn-md icon-save">Kaydet</button>
 </div>
 
@@ -94,9 +96,22 @@
 }
 
 function SaveMachineProps(a,b) {
-    
-    var FKS=getFilterDataFS();
-    console.log(FKS)
+    var WESSEL_ID = document.getElementById("WESSEL_ID").value;
+    var SM_ID = document.getElementById("SM_ID").value;
+  var FD = getFilterDataFS();
+  var SEND_DATA = FD.ReturnObject;
+  SEND_DATA.WESSEL_ID = WESSEL_ID;
+  SEND_DATA.SM_ID = SM_ID;
+
+  $.ajax({
+    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddShipToFilter",
+    data: {
+      data: JSON.stringify(SEND_DATA),
+    },
+    success: function () {
+      alert("Hİ");
+    },
+  });
 }
 
 </script>

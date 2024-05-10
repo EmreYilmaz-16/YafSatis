@@ -1672,17 +1672,20 @@ function loadRelOffers() {
 
 function SavePropToShip() {
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
-  var FD = getFilterData();
-  var SEND_DATA = FD.ReturnObject;
-  SEND_DATA.WESSEL_ID = WESSEL_ID;
+  // var FD = getFilterData();
+  // var SEND_DATA = FD.ReturnObject;
+  // SEND_DATA.WESSEL_ID = WESSEL_ID;
 
-  $.ajax({
-    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddShipToFilter",
-    data: {
-      data: JSON.stringify(SEND_DATA),
-    },
-    success: function () {
-      alert("Hİ");
-    },
-  });
+  // $.ajax({
+  //   url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddShipToFilter",
+  //   data: {
+  //     data: JSON.stringify(SEND_DATA),
+  //   },
+  //   success: function () {
+  //     alert("Hİ");
+  //   },
+  // });
+
+
+  openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID='+WESSEL_ID)
 }

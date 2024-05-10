@@ -842,7 +842,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 
 <cftry>
 <cfquery name="INS" datasource="#DSN3#">
-    INSERT INTO CatalystQA_1.SHIP_EQUIPMENTS_PBS(SHIP_ID,PRODUCT_CATID,JSON_STRINGIM) VALUES (#FORMDATA.WESSEL_ID#,#FORMDATA.PRODUCT_CAT_ID#,'#serializeJSON(FORMDATA)#')
+    INSERT INTO CatalystQA_1.SHIP_EQUIPMENTS_PBS(SHIP_ID,PRODUCT_CATID,JSON_STRINGIM,SM_ID) VALUES (#FORMDATA.WESSEL_ID#,#FORMDATA.PRODUCT_CAT_ID#,'#serializeJSON(FORMDATA)#',#FORMDATA.SM_ID#)
 </cfquery>
 <cfset RO.STATUS=true>
     <cfset RO.Message="Başarılı">
@@ -866,8 +866,9 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cfargument name="SHIP_ID">
 <cfargument name="PRODUCT_CATID">
 
+
 <cfquery name="getSh" datasource="#dsn3#">
-    SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CATID=#arguments.PRODUCT_CATID#
+    SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CATID=#arguments.PRODUCT_CATID# 
 </cfquery>
 
 <cfset ReturnData=structNew()>
