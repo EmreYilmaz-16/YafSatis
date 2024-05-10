@@ -865,10 +865,13 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cffunction name="getShipFilters" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
 <cfargument name="SHIP_ID">
 <cfargument name="PRODUCT_CATID">
-
+<cfargument name="SM_ID" default="">
 
 <cfquery name="getSh" datasource="#dsn3#">
     SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CATID=#arguments.PRODUCT_CATID# 
+    <cfif len(arguments.SM_ID)>
+        SM_ID=#arguments.SM_ID#
+    </cfif>
 </cfquery>
 
 <cfset ReturnData=structNew()>
