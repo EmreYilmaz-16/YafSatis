@@ -394,4 +394,32 @@ VALUES
     <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
 
+    <cffunction name="GetAMachine" access="remote" httpMethod="Post" returntype="any" returnFormat="json"> 
+        <cfargument name="MACHINE_ID">
+        <cfquery name="getAll" datasource="#dsn#">
+            SELECT PBS_SHIP_MACHINES.*,PRODUCT_CAT.PRODUCT_CAT FROM PBS_SHIP_MACHINES
+            INNER JOIN #DSN#_product.PRODUCT_CAT  ON PRODUCT_CAT.PRODUCT_CATID=PBS_SHIP_MACHINES.MACHINE_CAT
+             WHERE SM_ID=#arguments.MACHINE_ID#
+        </cfquery>
+    <CFSET ReturnArr=arrayNew(1)>
+    <cfloop query="getAll" group="MACHINE_CAT">
+            <CFSET Item=structNew()>
+            <cfset Item.PRODUCT_CAT=PRODUCT_CAT>
+            <cfset Item.MachineArr=arrayNew(1)>
+            <cfloop>
+                <cfset Amachine=structNew()>
+                <cfset Amachine.MACHINE_NAME=MACHINE_NAME>
+                <cfset Amachine.SERIAL_NO=SERIAL_NO>
+                <cfset Amachine.DESCRIPTION=DESCRIPTION>
+                <cfset Amachine.SM_ID=SM_ID>
+                <cfscript>
+                    arrayAppend(Item.MachineArr,Amachine);
+                </cfscript>
+            </cfloop>
+            <cfscript>
+                arrayAppend(ReturnArr,Item);
+            </cfscript>
+    </cfloop>
+    <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    </cffunction>
 </cfcomponent>
