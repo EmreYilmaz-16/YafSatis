@@ -118,8 +118,8 @@
         return true;
     }
 
-    function AddVariation(DataIID,PROPERTY_ID) {
-        openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add-sub-property_special&prpt_id='+PROPERTY_ID);
+    function AddVariation(DataIID,PROPERTY_ID,cf) {
+        openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add-sub-property_special&prpt_id='+PROPERTY_ID+'&IID='+DataIID+'&CallFunk='+cf);
     }
 
 </script>
