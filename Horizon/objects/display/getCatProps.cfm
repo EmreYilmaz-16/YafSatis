@@ -117,7 +117,9 @@
         }
         return true;
     }
-
+    function AddVariation(DataIID,PROPERTY_ID,PRODUCT_CATID,cf) {
+        openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add-sub-property_special&PRODUCT_CATID='+PRODUCT_CATID+'&prpt_id='+PROPERTY_ID+'&IID='+DataIID+'&CallFunk='+cf);
+    }
     function RefReshProp(IID,PROPERTY_DETAIL_ID,PROPERTY_DETAIL,IS_SUB_PRPT,PROPERTY) {
         var e=document.getElementById(IID)
         var option=document.createElement("option");
