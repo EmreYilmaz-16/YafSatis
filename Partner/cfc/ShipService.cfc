@@ -363,7 +363,7 @@ VALUES
         </cfcatch>
 
         </cftry>
-        <cfreturn replace(serializeJSON(ReturnData),"//","")>
+        
     </cffunction>
 
 </cfcomponent>
