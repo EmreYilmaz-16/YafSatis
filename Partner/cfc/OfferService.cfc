@@ -870,7 +870,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cfquery name="getSh" datasource="#dsn3#">
     SELECT * FROM CatalystQA_1.SHIP_EQUIPMENTS_PBS WHERE SHIP_ID=#arguments.SHIP_ID# AND PRODUCT_CATID=#arguments.PRODUCT_CATID# 
     <cfif len(arguments.SM_ID)>
-        SM_ID=#arguments.SM_ID#
+       AND SM_ID=#arguments.SM_ID#
     </cfif>
 </cfquery>
 

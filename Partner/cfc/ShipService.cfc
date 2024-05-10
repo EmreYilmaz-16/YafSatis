@@ -372,7 +372,7 @@ VALUES
             SELECT PBS_SHIP_MACHINES.*,PRODUCT_CAT.PRODUCT_CAT FROM PBS_SHIP_MACHINES
             INNER JOIN #DSN#_product.PRODUCT_CAT  ON PRODUCT_CAT.PRODUCT_CATID=PBS_SHIP_MACHINES.MACHINE_CAT
              WHERE WESSEL_ID=#arguments.WESSEL_ID#  <cfif len(arguments.cat_id)>
-                PBS_SHIP_MACHINES.MACHINE_CAT=#arguments.cat_id#
+               AND PBS_SHIP_MACHINES.MACHINE_CAT=#arguments.cat_id#
              </cfif>
         </cfquery>
     <CFSET ReturnArr=arrayNew(1)>
