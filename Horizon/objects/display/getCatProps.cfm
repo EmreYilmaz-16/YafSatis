@@ -35,7 +35,7 @@
                     <option data-related_variation_id="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
                 </cfloop>
             </select>
-            <a class="input-group-addon" href="javascript://" target="_blank"><i class="fa fa-plus"></i></a>
+            <a class="input-group-addon" onclick="AddVariation('SEARCH_PROP_FS_#it.PROPERTY_ID#',#it.PROPERTY_ID#,#attributes.PRODUCT_CATID#,'RefReshProp')" href="javascript://" ><i class="fa fa-plus"></i></a>
         </div>
         </div>
     </div>
@@ -116,5 +116,19 @@
             
         }
         return true;
+    }
+
+    function RefReshProp(IID,PROPERTY_DETAIL_ID,PROPERTY_DETAIL,IS_SUB_PRPT,PROPERTY) {
+        var e=document.getElementById(IID)
+        var option=document.createElement("option");
+                    option.value=PROPERTY_DETAIL_ID
+                    option.innerText=PROPERTY_DETAIL
+                    option.setAttribute("data-related_variation_id",IS_SUB_PRPT)
+                    option.setAttribute("title",PROPERTY)
+                    e.appendChild(option);
+                    /*
+                    data-RELATED_VARIATION_ID="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" 
+                    */
+                   $(e).trigger('change')
     }
 </script>

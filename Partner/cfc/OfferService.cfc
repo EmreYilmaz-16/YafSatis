@@ -874,10 +874,12 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cfset ReturnData=structNew()>
 <cfif getSh.recordcount>
     <cfset ReturnData.STATUS=1>
+    <cfset ReturnData.RECORD_COUNT=getSh.recordCount>
     <CFSET ReturnData.JSON_STRINGIM=deserializeJSON(getSh.JSON_STRINGIM)>
 <CFELSE>
     <cfset ReturnData.STATUS=0>
     <CFSET ReturnData.JSON_STRINGIM="">
+    <cfset ReturnData.RECORD_COUNT=0>
 </cfif>
 <cfreturn replace(serializeJSON(ReturnData),"//","")>
 
