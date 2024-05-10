@@ -4,7 +4,7 @@
 <cfset MachineArr=deserializeJSON(_MachineArr)>
 <cfset _Ship=ShipService.GetShips(ShipId=attributes.WESSEL_ID)>
 <cfset Ship=deserializeJSON(_Ship)>
-<cfset _Amachine=ShipService.GetAMachine(arguments.SM_ID)>
+<cfset _Amachine=ShipService.GetAMachine(attributes.SM_ID)>
 <cfset Amachine=deserializeJSON(_Amachine)>
 
 
