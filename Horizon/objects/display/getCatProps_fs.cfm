@@ -123,6 +123,7 @@
     }
 
     function RefReshPropFS(IID,PROPERTY_DETAIL_ID,PROPERTY_DETAIL,IS_SUB_PRPT,PROPERTY) {
+        var e=document.getElementById(IID)
         var option=document.createElement("option");
                     option.value=PROPERTY_DETAIL_ID
                     option.innerText=PROPERTY_DETAIL
