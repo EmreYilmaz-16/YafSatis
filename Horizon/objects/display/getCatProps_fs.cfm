@@ -119,7 +119,7 @@
     }
 
     function AddVariation(DataIID,PROPERTY_ID) {
-        openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add_property_main_special&prpt_id='+PROPERTY_ID);
+        openBoxDraggable('index.cfm?fuseaction=product.list_property&event=add_special&prpt_id='+PROPERTY_ID);
     }
 
 </script>
