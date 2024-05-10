@@ -16,9 +16,10 @@
 </div>
 <input type="hidden" name="PCAT_MP" id="PCAT_MP" value="<cfoutput>#Amachine.PRODUCT_CAT_M#</cfoutput>">
 <input type="hidden" name="PCATID_MP" id="PCATID_MP" value="<cfoutput>#attributes.PRODUCT_CATID#</cfoutput>">
+<button type="button" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="SaveMachineProps(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" ><span class="icn-md icon-save">Kaydet</button>
 </div>
 
-<button type="button" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="SaveMachineProps(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" ><span class="icn-md icon-save">Kaydet</button>
+
 
 </cf_box>
 
