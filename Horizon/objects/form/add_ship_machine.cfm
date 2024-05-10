@@ -48,7 +48,7 @@
 
 
 <script>
-    function SaveMachine(params) {
+    function SaveMachine(uid,modal_id) {
         var PCAT=document.getElementById("PCAT").value
 var MACHINE_NAME=document.getElementById("MACHINE_NAME").value
 var SERIAL_NO=document.getElementById("SERIAL_NO").value
@@ -66,7 +66,7 @@ console.table(SendData)
 
 $.ajax({
     url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=SaveMachine",
-    data:JSON.stringify(SendData);
+    data:JSON.stringify(SendData)
 })
 
     }
