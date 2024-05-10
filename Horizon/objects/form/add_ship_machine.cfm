@@ -14,7 +14,7 @@
 <cfset Ship=deserializeJSON(_Ship)>
 
 <cf_box title="#Ship[1].SHIP_NAME# - Makina Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
-    <cfdump var="#Ship#">
+    
 <input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#attributes.WESSEL_ID#</cfoutput>">
 <div class="form-group">
     <label>Ekipman</label>
