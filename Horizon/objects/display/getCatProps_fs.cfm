@@ -1,4 +1,14 @@
-﻿
+﻿<style>
+ 
+.select2-container {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  z-index:9999999999;
+}
+</style>
 
 <cfif session.ep.USERID eq 9 OR session.ep.USERID eq 1>
     <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
