@@ -412,6 +412,6 @@ VALUES
                 <cfset Amachine.PRODUCT_CATID=MACHINE_CAT>
 </cfloop>                
         
-    <cfreturn replace(serializeJSON(ReturnArr),"//","")>
+    <cfreturn replace(serializeJSON(Amachine),"//","")>
     </cffunction>
 </cfcomponent>
