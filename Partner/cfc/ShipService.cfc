@@ -348,7 +348,19 @@ VALUES
     <cffunction name="SaveMachine" access="remote" httpMethod="Post" returntype="any" returnFormat="json"> 
         <cfargument name="Data">
         <cfset FormData=deserializeJSON(arguments.Data)>
-        <cfdump var="#FormData#">
+        <cfset ReturnData=structNew()>
+       <cftry>
+       <cfquery name="INS" datasource="#dsn#">
+            INSERT INTO PBS_SHIP_MACHINES(MACHINE_NAME,MACHINE_CAT,SERIAL_NO,WESSEL_ID,DESCRIPTION) values ('#FormData.MACHINE_NAME#',#FormData.PCAT#,'#FormData.SERIAL_NO#',#FormData.WESSEL_ID#,'#FormData.DESCRIPTION#')
+        </cfquery>
+        <cfset ReturnData.STATUS=1>
+        <cfset ReturnData.MESSAGE=Başarılı>
+        <cfcatch>
+            <cfset ReturnData.STATUS=0>
+            <cfset ReturnData.MESSAGE=cfcatch.message>
+        </cfcatch>
+        </cftry>
+        <cfreturn replace(serializeJSON(ReturnData),"//","")>
     </cffunction>
 
 </cfcomponent>
