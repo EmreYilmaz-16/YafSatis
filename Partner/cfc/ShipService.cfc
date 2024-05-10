@@ -369,7 +369,7 @@ VALUES
         <cfargument name="WESSEL_ID">
         <cfquery name="getAll" datasource="#dsn#">
             SELECT PBS_SHIP_MACHINES.*,PRODUCT_CAT.PRODUCT_CAT FROM PBS_SHIP_MACHINES
-            INNER JOIN #DSN#_product.PRODUCT_CAT AS ON PRODUCT_CAT.PRODUCT_CATID=PBS_SHIP_MACHINES.MACHINE_CAT
+            INNER JOIN #DSN#_product.PRODUCT_CAT  ON PRODUCT_CAT.PRODUCT_CATID=PBS_SHIP_MACHINES.MACHINE_CAT
              WHERE WESSEL_ID=arguments.WESSEL_ID
         </cfquery>
     <CFSET ReturnArr=arrayNew(1)>
