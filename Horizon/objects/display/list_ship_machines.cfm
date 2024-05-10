@@ -37,7 +37,7 @@
                             <cfif not len(attributes.cat_id)>
                             #it.MACHINE_NAME#     
                             <cfelse>
-                                <a href="javascript://" onclick="AddEQRZ(#it.SM_ID#,#attributes.cat_id#,'#attributes.modal_id#')">#it.MACHINE_NAME#</a>
+                                <a href="javascript://" onclick="AddEQRZ(#it.SM_ID#,#attributes.cat_id#,#attributes.WESSEL_ID#,'#attributes.modal_id#')">#it.MACHINE_NAME#</a>
                             </cfif>
                         </td>
                         <td>
@@ -64,7 +64,7 @@
 </cf_box>
 
 <script>
-    function AddEQRZ(SM_ID,cat_id,modal_id) {
+    function AddEQRZ(SM_ID,cat_id,WESSEL_ID,modal_id) {
         var rs = $.post(
       ServiceUri +
         "/OfferService.cfc?method=getShipFilters&SHIP_ID=" +
