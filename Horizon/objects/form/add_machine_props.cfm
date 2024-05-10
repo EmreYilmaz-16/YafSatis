@@ -1,7 +1,5 @@
 
 <cfset ShipService=createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
-<cfset _MachineArr=ShipService.listMachines(attributes.WESSEL_ID)>
-<cfset MachineArr=deserializeJSON(_MachineArr)>
 <cfset _Ship=ShipService.GetShips(ShipId=attributes.WESSEL_ID)>
 <cfset Ship=deserializeJSON(_Ship)>
 <cfset _Amachine=ShipService.GetAMachine(attributes.SM_ID)>
