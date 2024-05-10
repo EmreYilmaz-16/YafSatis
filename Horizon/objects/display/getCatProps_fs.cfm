@@ -25,7 +25,7 @@
     <div class="form-group">
         <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY# <cfif it.IS_AMOUNT EQ 1><span style="color:red;font-weight:bold">*</span></cfif></label>
-           
+           <div class="input-group">
             <select data-IS_OPTIONAL=#it.IS_OPTIONAL# <cfif listlen(RElprp) gt 0>
                 onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#,'#it.PROPERTY#')"
             </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss_fs" name="SEARCH_PROP_FS" data-propText="#it.PROPERTY#" id="SEARCH_PROP_FS_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
@@ -35,6 +35,8 @@
                     <option data-related_variation_id="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
                 </cfloop>
             </select>
+            <a class="input-group-addon" href="javascript://" target="_blank"><i class="fa fa-plus"></i></a>
+        </div>
         </div>
     </div>
 </cfloop>
