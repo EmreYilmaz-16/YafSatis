@@ -295,9 +295,11 @@
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">EQUIPMENT</label>
+                    <div class="input-group">
                     <select name="PRODUCT_CAT" id="PRODUCT_CAT" onchange="getCatProperties(this.value)">
                         
                     </select>
+                </div>
                 </div>
             </div>
             <div id="PROP_AREA">
