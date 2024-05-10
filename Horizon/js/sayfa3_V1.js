@@ -39,7 +39,8 @@ function getCatProperties(cat_id) {
         var ET = confirm(
           "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
         );
-        var btnn=document.createElement("button");
+        var btnn=document.createElement("a");
+        btnn.setAttribute("class","input-group-addon")
         btnn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID="+WESSEL_ID+"&cat_id="+cat_id+"')");
         btnn.id="BUTOCUMMMMM";
         var i=document.createElement("span");
