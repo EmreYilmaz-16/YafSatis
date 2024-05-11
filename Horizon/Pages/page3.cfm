@@ -1,8 +1,8 @@
-<!--<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />---->
 
+<link rel="stylesheet" href="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.css">
 <script src="/AddOns/YafSatis/Content/Js/notifications/notifications.js"></script>
+<script src="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.js"></script>
 
-<!--- Yönlendirme Başlangıç --->
 <cfquery name="getMoney" datasource="#dsn#">
     SELECT (
             SELECT RATE1
