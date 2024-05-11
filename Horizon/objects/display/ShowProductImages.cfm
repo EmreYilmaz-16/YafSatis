@@ -15,10 +15,7 @@
   <img src="/Documents/product/#PATH#" alt="">
 </a>
         </div>
-        <div class="ui-cards-text">
-            <h1>What is Lorem Ipsum?</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
+      
     </div>
 </div>
 
