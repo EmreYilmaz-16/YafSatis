@@ -392,11 +392,21 @@ function addRowCrs(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
+  var b3 = document.createElement("button");
+  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+  b3.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  var spn=document.createElement("span");
+  spn.setAttribute("class","icn-md icon-filter");
+  b3.appendChild(spn);
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
 
   b2.innerText = rc2;
   b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
+  b3.setAttribute("onclick","ShowProperties("+rc2+")")
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -404,6 +414,7 @@ function addRowCrs(
   div.appendChild(input3);
   div.appendChild(b1);
   div.appendChild(b2);
+  div.appendChild(b3);
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
