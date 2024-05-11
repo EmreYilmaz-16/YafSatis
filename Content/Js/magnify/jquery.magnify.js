@@ -389,7 +389,7 @@ var $W = $(window),
     // Disable modal position fixed when change images
     fixedModalPos: false,
     // Modal z-index
-    zIndex: 999999,
+    zIndex: 100000099,
     // Selector of drag handler
     dragHandle: false,
     // Callback events
