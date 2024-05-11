@@ -50,7 +50,7 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
             </cfloop>
         </td>
         <td>
-            <button class="ui-wrk-btn ui-wrk-btn-busy"  onclick="ShowImages(this)" data-rc="6"><span class="icn-md fa fa-camera"></span></button>
+            <button class="ui-wrk-btn ui-wrk-btn-busy"  onclick="ShowImages2(#PRODUCT_ID#)" data-rc="6"><span class="icn-md fa fa-camera"></span></button>
         </td>
     </tr>
 </cfoutput>

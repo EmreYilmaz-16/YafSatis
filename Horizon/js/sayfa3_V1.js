@@ -1751,3 +1751,11 @@ function ShowImages(el){
   
   
   }
+  function ShowImages2(pid){
+    
+    openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID='+pid)
+    
+    
+    }
+  
+  
