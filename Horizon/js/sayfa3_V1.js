@@ -399,7 +399,7 @@ function addRowCrs(
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
   var spn=document.createElement("span");
-  spn.setAttribute("class","icn-md icon-filter");
+  spn.setAttribute("class","icn-md fa fa-info");
   b3.appendChild(spn);
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
