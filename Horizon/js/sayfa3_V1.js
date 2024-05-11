@@ -393,7 +393,7 @@ function addRowCrs(
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
   var b3 = document.createElement("button");
-  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
   b3.setAttribute(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
