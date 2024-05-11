@@ -74,6 +74,9 @@
 #notifications-main  *{
     font-size:14pt !important;
 }
+.magnify-modal{
+    z-index:999999999
+}
 </style>
 <cfparam name="attributes.offer_id" default="3">
 <cf_box>
