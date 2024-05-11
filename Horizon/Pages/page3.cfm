@@ -481,7 +481,7 @@
     
 </cf_box>
 
-<cfif session.ep.USERID eq 9>
+<cfif session.ep.USERID eq 9 or session.ep.USERID eq 1>
     <script src="/AddOns/YafSatis/Horizon/js/sayfa3_V1.js"></script>
 <cfelse>
 <script src="/AddOns/YafSatis/Horizon/js/sayfa3.js"></script>
