@@ -49,6 +49,9 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
                 </button>
             </cfloop>
         </td>
+        <td>
+            <button class="ui-wrk-btn ui-wrk-btn-busy"  onclick="ShowImages(this)" data-rc="6"><span class="icn-md fa fa-camera"></span></button>
+        </td>
     </tr>
 </cfoutput>
 </cf_ajax_list>
