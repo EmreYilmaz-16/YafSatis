@@ -10,7 +10,7 @@
    data-caption="#DETAIL#" 
    data-group=""
    href="/Documents/product/#listgetat(PATH,1,"_")#_b.#listgetat(listgetat(PATH,2,"_"),2,".")#">
-  <img src="#PATH#" alt="">
+  <img src="/Documents/product/#PATH#" alt="">
 </a>
 </cfoutput>
 
