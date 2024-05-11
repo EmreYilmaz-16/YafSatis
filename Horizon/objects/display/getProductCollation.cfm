@@ -20,7 +20,8 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
         <th>Part No</th>
         <th>Ürün Kodu</th>
         <th>Ürün</th>
-     
+        <th></th>
+        <th></th>
     </tr>
 <cfoutput query="getProd">
     <cfquery name="getPrcPrp" datasource="#dsn1#">
