@@ -406,7 +406,8 @@ function addRowCrs(
 
   b2.innerText = rc2;
   b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
-  b3.setAttribute("onclick","ShowProperties("+rc2+")")
+  b3.setAttribute("onclick","ShowProperties(this)")
+  b3.setAttribute("data-rc",RowCount);
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -1712,4 +1713,19 @@ function SavePropToShip() {
 
 
   openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID='+WESSEL_ID)
+}
+
+function ShowProperties(el){
+var rc=el.getAttribute("data-rc");
+var pid=document.getElementById("PRODUCT_ID_"+rc).value;
+var pL=document.getElementById("PRODUCT_CODE_2_"+rc).getAttribute("proplist");
+openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=' +
+                rc +
+                '&PID=' +
+                pid +
+                '&prp_list=' +
+                pL 
+                )
+
+
 }
