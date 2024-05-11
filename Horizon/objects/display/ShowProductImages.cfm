@@ -1,3 +1,4 @@
+<cf_box title="Resimler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <cfparam name="attributes.PRODUCT_ID" default="84">
 <cfquery name="getProductImages" datasource="#dsn1#">
     select * from CatalystQA_product.PRODUCT_IMAGES where PRODUCT_ID=#attributes.PRODUCT_ID# AND IMAGE_SIZE=0
@@ -16,3 +17,4 @@
 <script>
     $('[data-magnify=gallery_<cfoutput>#attributes.PRODUCT_ID#</cfoutput>]').magnify();
 </script>
+</cf_box>
