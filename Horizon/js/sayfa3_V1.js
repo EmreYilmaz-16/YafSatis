@@ -413,7 +413,7 @@ function addRowCrs(
 
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
-//objects.emptypopup_show_product_images
+
   b2.innerText = rc2;
   b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
   b3.setAttribute("onclick","ShowProperties(this)")
@@ -1742,3 +1742,12 @@ openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&Lis
 
 
 }
+function ShowImages(el){
+  //objects.emptypopup_show_product_images
+  var rc=el.getAttribute("data-rc");
+  var pid=document.getElementById("PRODUCT_ID_"+rc).value;
+  var pL=document.getElementById("PRODUCT_CODE_2_"+rc).getAttribute("proplist");
+  openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID='+pid)
+  
+  
+  }
