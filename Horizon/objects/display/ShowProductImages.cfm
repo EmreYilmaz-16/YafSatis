@@ -5,16 +5,26 @@
 </cfquery>
 
 <cfoutput query="getProductImages">
-
-<a data-magnify="gallery_#attributes.PRODUCT_ID#" 
+    <div class="ui-cards">
+        <div class="ui-cards-img">
+            <a data-magnify="gallery_#attributes.PRODUCT_ID#" 
    data-caption="#DETAIL#" 
    data-group=""
    href="/Documents/product/#listgetat(PATH,1,"_")#_b.#listgetat(listgetat(PATH,2,"_"),2,".")#">
   <img src="/Documents/product/#PATH#" alt="">
 </a>
+        </div>
+        <div class="ui-cards-text">
+            <h1>What is Lorem Ipsum?</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+    </div>
+
+
 </cfoutput>
 
 <script>
     $('[data-magnify=gallery_<cfoutput>#attributes.PRODUCT_ID#</cfoutput>]').magnify();
 </script>
 </cf_box>
+
