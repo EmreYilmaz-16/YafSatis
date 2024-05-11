@@ -5,6 +5,7 @@
 </cfquery>
 
 <cfoutput query="getProductImages">
+    <div class="col col-3 col-md-3 col-sm-3 col-xs-12">
     <div class="ui-cards">
         <div class="ui-cards-img">
             <a data-magnify="gallery_#attributes.PRODUCT_ID#" 
@@ -19,7 +20,7 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         </div>
     </div>
-
+</div>
 
 </cfoutput>
 
