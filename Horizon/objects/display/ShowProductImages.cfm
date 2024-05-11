@@ -15,7 +15,10 @@
   <img src="/Documents/product/#PATH#" alt="">
 </a>
         </div>
-      
+        <div class="ui-cards-text">
+            <h1>Resim #currentrow#</h1>
+            
+        </div>
     </div>
 </div>
 
