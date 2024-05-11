@@ -401,13 +401,25 @@ function addRowCrs(
   var spn=document.createElement("span");
   spn.setAttribute("class","icn-md fa fa-info");
   b3.appendChild(spn);
+  var b4 = document.createElement("button");
+  b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-busy");
+  b4.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  var spn=document.createElement("span");
+  spn.setAttribute("class","icn-md fa fa-camera");
+  b4.appendChild(spn);
+
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
-
+//objects.emptypopup_show_product_images
   b2.innerText = rc2;
   b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
   b3.setAttribute("onclick","ShowProperties(this)")
   b3.setAttribute("data-rc",RowCount);
+  b4.setAttribute("onclick","ShowImages(this)")
+  b4.setAttribute("data-rc",RowCount);
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -416,6 +428,7 @@ function addRowCrs(
   div.appendChild(b1);
   div.appendChild(b2);
   div.appendChild(b3);
+  div.appendChild(b4);
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
