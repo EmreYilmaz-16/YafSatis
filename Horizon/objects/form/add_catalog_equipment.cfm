@@ -28,7 +28,7 @@
             <select name="PCAT" <cfif isDefined("ACatalog.PRODUCT_CATID") AND LEN(ACatalog.PRODUCT_CATID)>disabled</cfif>>
                 <cfoutput>
                 <cfloop array="#Cats#" item="it">
-                    <option <cfif (isDefined("ACatalog.PRODUCT_CATID") AND LEN(ACatalog.PRODUCT_CATID)) AND ACatalog.PRODUCT_CATID eq it.PRODUCT_CATID>selected</cfif>  value="#it.PRODUCT_CATID#">#it.PRODUCT_CAT#</option>
+                    <option <cfif (isDefined("ACatalog.PRODUCT_CATID") AND LEN(ACatalog.PRODUCT_CATID)) AND ACatalog.PRODUCT_CATID eq it.PRODUCT_CATID>selected=""</cfif>  value="#it.PRODUCT_CATID#">#it.PRODUCT_CAT#</option>
                 </cfloop>
                 </cfoutput>
             </select>
