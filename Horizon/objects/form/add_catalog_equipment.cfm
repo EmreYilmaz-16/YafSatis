@@ -36,7 +36,13 @@
             </select>
         </div>
     </div>
-    <div class="col col-6"></div>
+    <div class="col col-6">
+        <cfif structKeyExists(ACatalog.JSON_STRINGIM,"Filters")>
+            Evet
+        <cfelse>
+            Hayır
+        </cfif>
+    </div>
 </div>
 
 
