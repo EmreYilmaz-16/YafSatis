@@ -83,9 +83,9 @@ function KatalogKaydet() {
    $.post("/index.cfm?fuseaction=objects.emptypopup_save_catalog_pbs&ajax=1&ajax_box_page=1&isAjax=1&Data="+Fd).done(function (ReturnData) {
     var Ibb=JSON.parse(ReturnData);
     console.log(Ibb);
-    alert(Ibb.Message)
-    if(Ibb.Status==1){
-        openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_product_to_catalog&CatalogId="+Ibb.GeneratedKey);
+    alert(Ibb.MESSAGE)
+    if(Ibb.STATUS==1){
+        openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_product_to_catalog&CatalogId="+Ibb.GENERATEDKEY);
     }
    }) 
 }
