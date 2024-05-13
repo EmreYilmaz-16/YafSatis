@@ -81,7 +81,8 @@ function KatalogKaydet() {
     };
     var Fd=JSON.stringify(O);
    $.post("/index.cfm?fuseaction=objects.emptypopup_save_catalog_pbs&Data="+Fd).done(function (ReturnData) {
-    
+    var Ibb=JSON.parse(ReturnData);
+    console.log(Ibb);
    }) 
 }
 
