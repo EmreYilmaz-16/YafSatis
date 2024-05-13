@@ -371,7 +371,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
                 LEFT JOIN CatalystQA.PBS_SHIPS AS PS ON PS.SHIP_ID=PCP.SHIP_ID
                 LEFT JOIN  CatalystQA.PBS_SHIP_MACHINES AS PM ON PM.SM_ID=PCP.MACHINE_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=PM.MACHINE_CAT
-                WHERE 1=1 <CFIF LEN(arguments.CatalogId)>PCP.CATALOG_ID=#arguments.CatalogId#</CFIF>
+                WHERE 1=1 <CFIF LEN(arguments.CatalogId)>AND PCP.CATALOG_ID=#arguments.CatalogId#</CFIF>
             </cfquery>
             <cfset CatalogArr=arrayNew(1)>
             <cfloop query="getCatalog">
