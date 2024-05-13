@@ -26,7 +26,7 @@
 
 <cf_box title="Katalog Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
     <div class="form-group">
-        <input type="text" name="CATALOG_NAME">
+        <input type="text" name="CATALOG_NAME" id="CATALOG_NAME">
     </div>
     <div class="form-group">
         
@@ -51,7 +51,7 @@
         </select>
     </div>
 
-
+    <a href="javascript://" onclick="KatalogKaydet()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
 
 </cf_box>
 
@@ -68,6 +68,21 @@ var ServiceUri="/AddOns/YafSatis/Partner/cfc"
         
     );
   
+}
+function KatalogKaydet() {
+    var CatalogName=document.getElementById("CATALOG_NAME").value;
+    var ShipId=document.getElementById("ship_id").value;
+    var Machine=document.getElementById("Machines").value;
+
+    var O={
+        CatalogName:CatalogName,
+        ShipId:ShipId,
+        Machine:Machine,
+    };
+    var Fd=JSON.stringify(O);
+   $.post("/index.cfm?fuseaction=objects.emptypopup_save_catalog_pbs&Data="+Fd).done(function (ReturnData) {
+    
+   }) 
 }
 
 function getMachineList() {
