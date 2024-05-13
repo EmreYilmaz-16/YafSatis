@@ -1,5 +1,6 @@
 <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
-    <cfset Cats=ProductService.getCats()>
+    <cfset _Cats=ProductService.getCats()>
+    <cfset Cats=deserializeJSON(_Cats)>
 <cfdump var="#attributes#">
 <cf_box title="Kataloga Ürün Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
 <div class="row">
