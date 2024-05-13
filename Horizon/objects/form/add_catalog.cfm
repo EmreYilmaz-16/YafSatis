@@ -85,7 +85,7 @@ function KatalogKaydet() {
     console.log(Ibb);
     alert(Ibb.Message)
     if(Ibb.Status==1){
-        openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_catalog_equipment&CatalogId="+Ibb.GeneratedKey)
+        openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_product_to_catalog&CatalogId="+Ibb.GeneratedKey);
     }
    }) 
 }
