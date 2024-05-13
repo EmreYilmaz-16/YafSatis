@@ -5,7 +5,7 @@
 </cfquery>
 
 <cfoutput query="getProductImages">
-    <div class="col col-1 col-md-1 col-sm-1 col-xs-1">
+    <div class="col col-1 col-md-1 col-sm-2 col-xs-3">
     <div class="ui-cards">
         <div class="ui-cards-img">
             <a data-magnify="gallery_#attributes.PRODUCT_ID#" 
