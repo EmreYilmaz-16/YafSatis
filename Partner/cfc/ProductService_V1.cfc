@@ -364,4 +364,29 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
     <CFSET ReturnData.PRODUCTS=PRODUCTS>
         <cfreturn replace(serializeJSON(ReturnData),"//","")>
     </cffunction>
+    <cffunction name="getCatalogs" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="CatalogId" default="">
+            <cfquery name="getCatalog" datasource="#dsn#">
+                select PCP.*,PS.SHIP_NAME,PM.MACHINE_NAME,PC.PRODUCT_CAT,PC.PRODUCT_CATID from CatalystQA_product.PRODUCT_CATALOG_PBS AS PCP
+                LEFT JOIN CatalystQA.PBS_SHIPS AS PS ON PS.SHIP_ID=PCP.SHIP_ID
+                LEFT JOIN  CatalystQA.PBS_SHIP_MACHINES AS PM ON PM.SM_ID=PCP.MACHINE_ID
+                LEFT JOIN CatalystQA_product.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=PM.MACHINE_CAT
+                WHERE 1=1 <CFIF LEN(arguments.CatalogId)>PCP.CATALOG_ID=#arguments.CatalogId#</CFIF>
+            </cfquery>
+            <cfset CatalogArr=arrayNew(1)>
+            <cfloop query="getCatalog">
+                <cfscript>
+                    Catalog={
+                    CATALOG_ID=CATALOG_ID,
+                    CATALOG_NAME=CATALOG_NAME,
+                    SHIP_NAME=SHIP_NAME,
+                    MACHINE_NAME=MACHINE_NAME,
+                    PRODUCT_CAT=PRODUCT_CAT,
+                    PRODUCT_CATID=PRODUCT_CATID
+                };                
+                    arrayAppend(CatalogArr,Catalog);
+                </cfscript>
+            </cfloop>
+            <cfreturn replace(serializeJSON(CatalogArr),"//","")>
+    </cffunction>
 </cfcomponent>
