@@ -61,7 +61,7 @@
 <script>
 var ServiceUri="/AddOns/YafSatis/Partner/cfc"
     function openShipList() {
-  var CustomerId = document.getElementById("Addcompany_id").value;
+  
   
     openBoxDraggable(
       "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getWessels&ReturnMethod=getMachineList"
