@@ -1,3 +1,3 @@
 <cfdump var="#attributes#">
 <cfset FormData=deserializeJSON(attributes.Data)>
-<cfdump var="#attributes#">
+<cfdump var="#FormData#">
