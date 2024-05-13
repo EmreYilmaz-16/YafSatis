@@ -6,7 +6,8 @@
 
 <cfelseif attributes.ListType  eq "catProps">
     <cfinclude template="getCatProps.cfm">
-
+<cfelseif attributes.ListType  eq "catProps2">
+    <cfinclude template="getCatProps_fs.cfm">
 <cfelseif attributes.ListType  eq "getCollation">
     <cfinclude template="getProductCollation.cfm">
 
