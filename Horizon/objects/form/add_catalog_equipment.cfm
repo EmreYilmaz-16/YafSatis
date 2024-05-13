@@ -9,8 +9,7 @@
     </cfif>
 
 
-<cfdump var="#attributes#">
-<cfdump var="#ACatalog#">
+
 <cf_box title="Kataloga Ürün Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
 <div class="row">
     <div class="col col-6">
