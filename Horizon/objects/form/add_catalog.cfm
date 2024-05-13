@@ -81,13 +81,26 @@ function getMachineList() {
             url:ServiceUri+"/ShipService.cfc?method=listMachines&WESSEL_ID="+WESSEL_ID,
             success:function (returnData) {
                 var Makinalar=JSON.parse(returnData);
-                for (let index = 0; index < array.length; index++) {
-                    const element = array[index];
+                for (let index = 0; index < Makinalar.length; index++) {
+                    const element = Makinalar[index];
+                   var optgroup=document.createElement("optgroup");
+                   optgroup.setAttribute("label",element.PRODUCT_CAT)
+                   for (let j = 0; j < element.MACHINEARR.length; j++) {
+                    const element2 = array[j];
+                      
+                    var opt=document.createElement("option");
+                    opt.value=element.SM_ID
+                    opt.innerText=element.MACHINE_NAME
+                    optgroup.appendChild(opt)
+                    
+                   }
+                   document.getElementById("Machines").appendChild(optgroup);
+                    /*
                     var opt=document.createElement("option");
                     opt.value=element.SM_ID
                     opt.innerText=element.MACHINE_NAME
                     document.getElementById("Machines").appendChild(opt);
-                    
+                    */
                 }
             }
         })
