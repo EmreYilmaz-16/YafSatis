@@ -385,9 +385,14 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
                     MACHINE_NAME=MACHINE_NAME,
                     MACHINE_ID=MACHINE_ID,
                     PRODUCT_CAT=PRODUCT_CAT,
-                    PRODUCT_CATID=PRODUCT_CATID,
-                    JSON_STRINGIM=deserializeJSON(JSON_STRINGIM)
+                    PRODUCT_CATID=PRODUCT_CATID
+                    
                 };                
+                if(isJSON(JSON_STRINGIM)){
+                    Catalog.JSON_STRINGIM=deserializeJSON(JSON_STRINGIM)
+                }else{
+                    Catalog.JSON_STRINGIM={}
+                }
                     arrayAppend(CatalogArr,Catalog);
                 </cfscript>
             </cfloop>
