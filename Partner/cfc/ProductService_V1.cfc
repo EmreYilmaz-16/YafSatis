@@ -367,10 +367,11 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
     <cffunction name="getCatalogs" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="CatalogId" default="">
             <cfquery name="getCatalog" datasource="#dsn#">
-                select PCP.*,PS.SHIP_NAME,PM.MACHINE_NAME,PC.PRODUCT_CAT,PC.PRODUCT_CATID from CatalystQA_product.PRODUCT_CATALOG_PBS AS PCP
+                select PCP.*,PS.SHIP_NAME,PM.MACHINE_NAME,PC.PRODUCT_CAT,PC.PRODUCT_CATID,SEQ,JSON_STRINGIM from CatalystQA_product.PRODUCT_CATALOG_PBS AS PCP
                 LEFT JOIN CatalystQA.PBS_SHIPS AS PS ON PS.SHIP_ID=PCP.SHIP_ID
                 LEFT JOIN  CatalystQA.PBS_SHIP_MACHINES AS PM ON PM.SM_ID=PCP.MACHINE_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=PM.MACHINE_CAT
+                LEFT JOIN CatalystQA_1.SHIP_EQUIPMENTS_PBS AS SEQ ON SEQ.SM_ID=PM.SM_ID
                 WHERE 1=1 <CFIF LEN(arguments.CatalogId)>AND PCP.CATALOG_ID=#arguments.CatalogId#</CFIF>
             </cfquery>
             <cfset CatalogArr=arrayNew(1)>
@@ -380,9 +381,12 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
                     CATALOG_ID=CATALOG_ID,
                     CATALOG_NAME=CATALOG_NAME,
                     SHIP_NAME=SHIP_NAME,
+                    SHIP_ID=SHIP_ID,
                     MACHINE_NAME=MACHINE_NAME,
+                    MACHINE_ID=MACHINE_ID,
                     PRODUCT_CAT=PRODUCT_CAT,
-                    PRODUCT_CATID=PRODUCT_CATID
+                    PRODUCT_CATID=PRODUCT_CATID,
+                    JSON_STRINGIM=deserializeJSON(JSON_STRINGIM)
                 };                
                     arrayAppend(CatalogArr,Catalog);
                 </cfscript>

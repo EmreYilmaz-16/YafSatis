@@ -15,11 +15,13 @@
 <div class="row">
     <div class="col col-6">
         <div class="form-group">
+            <label>Ürün Adı</label>
             <input type="text" name="ProductName">
             <input type="hidden" name="ProductId">
             <input type="hidden" name="StockId">
         </div>
         <div class="form-group">
+            <label>Part No</label>
             <input type="text" name="ManufactCode" onkeyup="SearchProductCatalog()">
             
             
