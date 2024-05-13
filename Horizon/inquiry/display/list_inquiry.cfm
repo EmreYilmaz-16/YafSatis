@@ -62,6 +62,7 @@
             <hr>
             <button onclick="window.location.href='/index.cfm?fuseaction=sale.list_vessels'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>            
             <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_vessel")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #874444;border-radius: 10px;background: #ff828294;font-weight: bold;color: white;margin: 5px;">Add Vessel</button>
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_catalog")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ff8300;border-radius: 10px;background: #ff830075;font-weight: bold;color: white;margin: 5px;">Add Catalog</button>
            <!--- --->
            <hr>
            <button onclick="window.location.href='/index.cfm?fuseaction=purchase.emptypopup_list_offer_pbs'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ab00ff;border-radius: 10px;background: #ab00ff5c;color: white;font-weight: bold;margin: 5px;">List Purchase Offer</button>            
