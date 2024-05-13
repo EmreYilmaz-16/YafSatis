@@ -86,11 +86,11 @@ function getMachineList() {
                    var optgroup=document.createElement("optgroup");
                    optgroup.setAttribute("label",element.PRODUCT_CAT)
                    for (let j = 0; j < element.MACHINEARR.length; j++) {
-                    const element2 = array[j];
+                    const element2 = element.MACHINEARR[j];
                       
                     var opt=document.createElement("option");
-                    opt.value=element.SM_ID
-                    opt.innerText=element.MACHINE_NAME
+                    opt.value=element2.SM_ID
+                    opt.innerText=element2.MACHINE_NAME
                     optgroup.appendChild(opt)
                     
                    }
