@@ -80,9 +80,13 @@ function KatalogKaydet() {
         Machine:Machine,
     };
     var Fd=JSON.stringify(O);
-   $.post("/index.cfm?fuseaction=objects.emptypopup_save_catalog_pbs&Data="+Fd).done(function (ReturnData) {
+   $.post("/index.cfm?fuseaction=objects.emptypopup_save_catalog_pbs&ajax=1&ajax_box_page=1&isAjax=1&Data="+Fd).done(function (ReturnData) {
     var Ibb=JSON.parse(ReturnData);
     console.log(Ibb);
+    alert(Ibb.Message)
+    if(Ibb.Status==1){
+        openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_catalog_equipment&CatalogId="+Ibb.GeneratedKey)
+    }
    }) 
 }
 

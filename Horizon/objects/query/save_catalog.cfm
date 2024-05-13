@@ -1,3 +1,4 @@
+<cftry>
 <cfset FormData=deserializeJSON(attributes.Data)>
 <cfquery name="ins" datasource="#dsn1#" result="RESA">
 INSERT INTO    CatalystQA_product.PRODUCT_CATALOG_PBS(
@@ -7,5 +8,15 @@ VALUES (
 )
 </cfquery>
 <cfoutput>
-#Replace(SerializeJSON(RESA),'//','')#
+    <cfset ReturnData.Status=1>
+    <cfset ReturnData.Message="Başarılı">
+    <cfset ReturnData.GeneratedKey=RESA.GENERATEDKEY>
+    <cfoutput>#Replace(SerializeJSON(ReturnData),'//','')#</cfoutput>
 </cfoutput>
+<cfcatch>
+    <cfset ReturnData.Status=0>
+    <cfset ReturnData.Message=cfcatch.message>
+    <cfset ReturnData.GeneratedKey="">
+    <cfoutput>#Replace(SerializeJSON(ReturnData),'//','')#</cfoutput>
+</cfcatch>
+</cftry>
