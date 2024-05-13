@@ -367,7 +367,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
     <cffunction name="getCatalogs" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="CatalogId" default="">
             <cfquery name="getCatalog" datasource="#dsn#">
-                select PCP.*,PS.SHIP_NAME,PM.MACHINE_NAME,PC.PRODUCT_CAT,PC.PRODUCT_CATID,SEQ,JSON_STRINGIM from CatalystQA_product.PRODUCT_CATALOG_PBS AS PCP
+                select PCP.*,PS.SHIP_NAME,PM.MACHINE_NAME,PC.PRODUCT_CAT,PC.PRODUCT_CATID,SEQ.JSON_STRINGIM from CatalystQA_product.PRODUCT_CATALOG_PBS AS PCP
                 LEFT JOIN CatalystQA.PBS_SHIPS AS PS ON PS.SHIP_ID=PCP.SHIP_ID
                 LEFT JOIN  CatalystQA.PBS_SHIP_MACHINES AS PM ON PM.SM_ID=PCP.MACHINE_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=PM.MACHINE_CAT
