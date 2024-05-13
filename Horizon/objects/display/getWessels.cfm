@@ -1,3 +1,5 @@
+<cfparam name="attributes.CustomerId" default="">
+<cfparam name="attributes.ReturnMethod" default="">
 <cf_box title="Gemiler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <div class="form-group">
 <input type="text" onkeyup="GetShips(this,event)" placeholder="Keyword">
@@ -78,6 +80,9 @@ var CustomerId="<cfoutput>#attributes.CustomerId#</cfoutput>"
     function setShip(id,name) {
         $("#ship_name").val(name);
         $("#ship_id").val(id);
+        <cfif len(attributes.ReturnMethod)>
+            <cfoutput>#attributes.ReturnMethod#</cfoutput>()
+        </cfif>
         closeBoxDraggable("<cfoutput>#attributes.modal_id#</cfoutput>")
     }
 </script>
