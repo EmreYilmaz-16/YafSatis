@@ -48,10 +48,19 @@
             </cfloop>
         <cfelse>
             <div id="dv1">
-<script>
-    
-</script>
+
             </div>
+            <cfif isDefined("ACatalog.PRODUCT_CATID") AND LEN(ACatalog.PRODUCT_CATID)>
+                <script>
+                     AjaxPageLoad(
+            "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+            ACatalog.PRODUCT_CATID,
+            "dv1",
+            1,
+            "Yükleniyor"
+          );
+                </script>
+            </cfif>
         </cfif>
     </div>
 </div>
