@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label>Part No</label>
-            <input type="text" name="ManufactCode" onkeyup="SearchProductCatalog()">
+            <input type="text" name="ManufactCode" onchange="SearchProductCatalog(this)">
             
             
         </div>
@@ -288,5 +288,24 @@ MachineId:MachineId,
 
 }
 console.log(Objecim)
+}
+function SearchProductCatalog(el) {
+    var keyword = el.value;
+
+
+var SearchMainValue = getFilterDataPROPPS()
+
+var Search = {
+  SearchMainValue: SearchMainValue,
+  keyword: keyword,
+};
+$.ajax({
+    url: ServiceUri + "/ProductService_V1.cfc?method=SearchProduct",
+    data: {
+      FormData: JSON.stringify(Search),
+    },
+    success: function (returnData) {
+        console.log(returnData);
+    })
 }
 </script>
