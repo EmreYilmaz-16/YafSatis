@@ -1,4 +1,5 @@
-﻿<cf_box>
+﻿<cfparam name="attributes.tip" default="1">
+<cf_box>
     <cftry>
 
 <cfset prplist=listDeleteAt(attributes.prp_list,1)>
@@ -34,13 +35,25 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
            </cfquery>
     <tr>
         <TD>
+        <cfif attributes.tip eq 1>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+        <cfelse>
+            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+        </cfif>
         </TD>
         <TD>
+            <cfif attributes.tip eq 1>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#PRODUCT_CODE#</a>
+        <cfelse>
+            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            </cfif>
         </TD>
         <TD>
+            <cfif attributes.tip eq 1>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#',#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
+        <cfelse>
+            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            </cfif>
         </TD>
         <td>
             <cfloop query="getPrcPrp">

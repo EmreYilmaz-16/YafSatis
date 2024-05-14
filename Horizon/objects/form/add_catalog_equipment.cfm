@@ -321,7 +321,7 @@ $.ajax({
           var tt=getFilterDataPROPPS()
           btn.setAttribute(
             "onclick",
-            "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
+            "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&tip=2&rc=" +
               0 +
               "&kw=" +
               document.getElementsByName("ManufactCode")[0].value +
