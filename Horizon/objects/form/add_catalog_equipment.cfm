@@ -176,4 +176,15 @@ tr.appendChild(td);
 document.getElementById("tb1FS").appendChild(tr);
 
     }
+
+    function pencere_pos(no)
+        {
+            openBoxDraggable('index.cfm?fuseaction=product.popup_product_properties&property=upd_related_features.property' + no + '&property_id=upd_related_features.property_id' + no + '&is_select=1&is_product_property=1&value_deger='+no);
+        }
+        function select_var(crntrw)
+        {
+            
+                openBoxDraggable('index.cfm?fuseaction=product.popup_list_variations_property&property_id=' + eval('document.getElementById("property_id' + crntrw + '")').value + '&record_num_value=' + crntrw + ''); 
+            
+        }
 </script>
