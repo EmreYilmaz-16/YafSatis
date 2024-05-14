@@ -306,6 +306,6 @@ $.ajax({
     },
     success: function (returnData) {
         console.log(returnData);
-    })
+    }})
 }
 </script>
