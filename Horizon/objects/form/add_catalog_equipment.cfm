@@ -127,7 +127,7 @@ var PropRowCount=0;
             "Yükleniyor"
           );
     }
-    function AddPropRow() {
+    function AddPropRow(PROPERTY_ID,PROPERTY_NAME,VARIATION_ID,VARIATION_NAME) {
         
 PropRowCount++;
 var tr=document.createElement("tr");
@@ -309,7 +309,7 @@ $.ajax({
         console.log(returnData);
         var ReturnObject=JSON.parse(returnData);
         if(ReturnObject.RECORD_COUNT >=1){
-            if(ReturnObject.RECORD_COUNT>1){
+            if(ReturnObject.RECORD_COUNT>=1){
                 document.getElementsByName("ProductName")[0].setAttribute("style","font-weight:bold;color:orange")
                 document.getElementsByName("ManufactCode")[0].setAttribute("style","font-weight:bold;color:orange")
                 var btn = document.createElement("button");
@@ -353,6 +353,13 @@ function SetRow(PRODUCT_ID,STOCK_ID,MANUFACT_CODE,PRODUCT_NAME,modal_id) {
                 document.getElementsByName("ManufactCode")[0].value=MANUFACT_CODE
                 document.getElementsByName("ProductName")[0].setAttribute("style","font-weight:bold;color:green")
                 document.getElementsByName("ManufactCode")[0].setAttribute("style","font-weight:bold;color:green")
+                
+
+
+                
                 closeBoxDraggable(modal_id)
+
+
+
 }
 </script>
