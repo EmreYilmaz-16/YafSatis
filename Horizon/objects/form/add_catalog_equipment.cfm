@@ -105,6 +105,9 @@
         </cf_grid_list>
     </form>
     </div>
+    <div>
+        <a href="javascript://" onclick="AddPropRow()" class="ui-wrk-btn ui-wrk-btn-extra"><i class="fa fa-save"></i> Kaydet</a>
+    </div>
 </div>
 
 
