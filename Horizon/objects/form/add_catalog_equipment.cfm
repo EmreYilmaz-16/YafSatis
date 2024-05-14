@@ -181,7 +181,7 @@ document.getElementById("tb1FS").appendChild(tr);
 
     function pencere_pos(no)
         {
-            openBoxDraggable('index.cfm?fuseaction=product.popup_product_properties&property=upd_related_features.property' + no + '&property_id=upd_related_features.property_id' + no + '&is_select=1&is_product_property=1&value_deger='+no);
+            openBoxDraggable('index.cfm?fuseaction=product.popup_product_properties&property=upd_related_features.Property_' + no + '&property_id=upd_related_features.Property_ID_' + no + '&is_select=1&is_product_property=1&value_deger='+no);
         }
         function select_var(crntrw)
         {
