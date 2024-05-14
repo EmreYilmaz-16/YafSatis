@@ -87,6 +87,7 @@
                 </script>
             </cfif>
         </cfif>
+        <form name="upd_related_features" id="upd_related_features ">
         <cf_grid_list>
             <thead>
                 <tr>
@@ -102,6 +103,7 @@
                 
             </tbody>
         </cf_grid_list>
+    </form>
     </div>
 </div>
 
