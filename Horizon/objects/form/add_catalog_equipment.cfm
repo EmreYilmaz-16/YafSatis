@@ -227,17 +227,17 @@ document.getElementById("tb1FS").appendChild(tr);
   var DataHata = 0;
   for (let i = 0; i < Properties.length; i++) {
     var Pelem = Properties[i];
-    var isReq = Pelem.getAttribute("required");
+    var isReq = 0
 
-    var Pdata = $(Pelem).select2("data")[0];
-    var PROP_ID = Pdata.element.parentElement.getAttribute("data-property_id");
+    
+    var PROP_ID = Pelem.getAttribute("data-property_id");
     var is_optional =
-      Pdata.element.parentElement.getAttribute("data-is_optional");
+    Pelem.getAttribute("data-is_optional");
     //console.log($(Pelem).select2("data")[0]);
     console.log(is_optional);
-    var PRODUCT_CAT = Pdata.text;
-    var PRODUCT_CAT_ID = Pdata.id;
-    var PNAME = Pdata.title;
+    var PRODUCT_CAT = Pelem.options[0].innerText;
+    var PRODUCT_CAT_ID = Pelem.value;
+    var PNAME = Pelem.getAttribute("data-proptext");
     if (Pdata.id.length > 0) {
       var O = {
         PRODUCT_CAT: PRODUCT_CAT,
