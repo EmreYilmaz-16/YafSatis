@@ -186,7 +186,7 @@ document.getElementById("tb1FS").appendChild(tr);
         function select_var(crntrw)
         {
             
-                openBoxDraggable('index.cfm?fuseaction=product.popup_list_variations_property&property_id=' + eval('document.getElementById("property_id' + crntrw + '")').value + '&record_num_value=' + crntrw + ''); 
+                openBoxDraggable('index.cfm?fuseaction=product.popup_list_variations_property&property_id=' + eval('document.getElementById("Property_ID_' + crntrw + '")').value + '&record_num_value=' + crntrw + ''); 
             
         }
 </script>
