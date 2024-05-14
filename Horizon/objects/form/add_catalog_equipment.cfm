@@ -294,7 +294,9 @@ function SearchProductCatalog(el) {
     var keyword = el.value;
 
 
-var SearchMainValue = getFilterDataPROPPS()
+var SearchMainValue new Object()
+SearchMainValue.Filters = getFilterDataPROPPS();
+SearchMainValue.PRODUCT_CAT_ID=document.getElementsByName("PCAT")[0].value;
 
 var Search = {
   SearchMainValue: SearchMainValue,
