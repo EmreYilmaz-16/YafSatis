@@ -87,6 +87,21 @@
                 </script>
             </cfif>
         </cfif>
+        <cf_grid_list>
+            <thead>
+                <tr>
+                    <th>
+                        Özellik
+                    </th>
+                    <th>
+                        Varyasyon
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tb1FS"> 
+                
+            </tbody>
+        </cf_grid_list>
     </div>
 </div>
 
@@ -94,6 +109,7 @@
 </cf_box>
 
 <script>
+var PropRowCount=0;
     function getCatPropsFSF(el) {
         AjaxPageLoad(
             "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps2&PRODUCT_CATID=" +
@@ -102,5 +118,62 @@
             1,
             "Yükleniyor"
           );
+    }
+    function AddPropRow() {
+        
+PropRowCount++;
+var tr=document.createElement("tr");
+var td=document.createElement("td");
+var inp1=document.createElement("input");
+inp1.type="text";
+inp1.id="Property_"+PropRowCount;
+inp1.name="Property";
+var inp2=document.createElement("input");
+inp2.type="hidden";
+inp2.id="Property_ID_"+PropRowCount;
+inp2.name="Property_ID";
+var div=document.createElement("div");
+div.setAttribute("class","form-group");
+var div2=document.createElement("div");
+div2.setAttribute("class","input-group");
+var Span=document.createElement("span");
+Span.setAttribute("class","input-group-addon btnPointer icon-ellipsis");
+Span.href="javascript://";
+Span.setAttribute("onclick","pencere_pos("+PropRowCount+")");
+div2.appendChild(inp1);
+div2.appendChild(inp2);
+div2.appendChild(Span);
+div.appendChild(div2);
+//<span class="input-group-addon btnPointer icon-ellipsis" href="javascript://" onclick="select_var('1');" title="Varyasyon  "></span>
+td.appendChild(div);
+tr.appendChild(td);
+
+var td=document.createElement("td");
+var inp1=document.createElement("input");
+inp1.type="text";
+inp1.id="Variation_"+PropRowCount;
+inp1.name="Variation";
+var inp2=document.createElement("input");
+inp2.type="hidden";
+inp2.id="Variation_ID_"+PropRowCount;
+inp2.name="Variation_ID";
+var div=document.createElement("div");
+div.setAttribute("class","form-group");
+var div2=document.createElement("div");
+div2.setAttribute("class","input-group");
+var Span=document.createElement("span");
+Span.setAttribute("class","input-group-addon btnPointer icon-ellipsis");
+Span.href="javascript://";
+Span.setAttribute("onclick","select_var("+PropRowCount+")");
+div2.appendChild(inp1);
+div2.appendChild(inp2);
+div2.appendChild(Span);
+div.appendChild(div2);
+//<span class="input-group-addon btnPointer icon-ellipsis" href="javascript://" onclick="select_var('1');" title="Varyasyon  "></span>
+td.appendChild(div);
+tr.appendChild(td);
+
+document.getElementById("tb1FS").appendChild(tr);
+
     }
 </script>
