@@ -37,12 +37,12 @@
         <div class="form-group">
             <label>Gemi</label>
             <input type="text" name="ShipName" id="ShipName" value="<cfoutput>#ACatalog.SHIP_NAME#</cfoutput>">
-            <input type="text" name="ShipId" id="ShipId" value="<cfoutput>#ACatalog.SHIP_ID#</cfoutput>">
+            <input type="hidden" name="ShipId" id="ShipId" value="<cfoutput>#ACatalog.SHIP_ID#</cfoutput>">
         </div>
         <div class="form-group">
             <label>Makina</label>
             <input type="text" name="MachineName" id="MachineName"  value="<cfoutput>#ACatalog.MACHINE_NAME#</cfoutput>">
-            <input type="text" name="MachineId" id="MachineId"  value="<cfoutput>#ACatalog.MACHINE_ID#</cfoutput>">
+            <input type="hidden" name="MachineId" id="MachineId"  value="<cfoutput>#ACatalog.MACHINE_ID#</cfoutput>">
         </div>
     </div>
     <div class="col col-6">
