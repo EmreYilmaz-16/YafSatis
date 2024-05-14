@@ -38,21 +38,21 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
         <cfif attributes.tip eq 1>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
         <cfelse>
-            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#','#attributes.modal_id#')">#MANUFACT_CODE#</a>
         </cfif>
         </TD>
         <TD>
             <cfif attributes.tip eq 1>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#PRODUCT_CODE#</a>
         <cfelse>
-            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#','#attributes.modal_id#')">#MANUFACT_CODE#</a>
             </cfif>
         </TD>
         <TD>
             <cfif attributes.tip eq 1>
             <a href="##" onclick="UpdateRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#',#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')"> #PRODUCT_NAME#</a>
         <cfelse>
-            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,#TAX#,'#MANUFACT_CODE#','#PRODUCT_NAME#',#attributes.rc#,'#attributes.modal_id#')">#MANUFACT_CODE#</a>
+            <a href="##" onclick="SetRow(#PRODUCT_ID#,#STOCK_ID#,'#MANUFACT_CODE#','#PRODUCT_NAME#','#attributes.modal_id#')">#MANUFACT_CODE#</a>
             </cfif>
         </TD>
         <td>
