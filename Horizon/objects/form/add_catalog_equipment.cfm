@@ -116,6 +116,7 @@
 </cf_box>
 
 <script>
+var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 var PropRowCount=0;
     function getCatPropsFSF(el) {
         AjaxPageLoad(
