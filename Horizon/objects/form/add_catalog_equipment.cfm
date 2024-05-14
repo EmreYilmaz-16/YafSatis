@@ -53,11 +53,15 @@
     <div class="col col-6">
         <cfif structKeyExists(ACatalog.JSON_STRINGIM,"Filters")>
             <cfloop array="#ACatalog.JSON_STRINGIM.Filters#" item="it" index="ix">
-             <cfoutput>
-                <label>#it.PNAME#</label>
+            <cfif it.PNAME neq "EQUIPMENT">
+                <cfoutput>
+              <div class="form-group">
+                    <label>#it.PNAME#</label>
                 <select disabled data-IS_OPTIONAL=#it.IS_OPTIONAL#  class="propss_fs" name="SEARCH_PROP_FS" data-propText="#it.PNAME#" id="SEARCH_PROP_FS_#it.PROP_ID#" data-PROPERTY_ID="#it.PROP_ID#" onchange="getCatPropsFSF(this)">                    
                     <option value="#it.PRODUCT_CAT_ID#">#it.PRODUCT_CAT#</option>
             </select>
+        </div>
+        </cfif>
         </cfoutput>
             </cfloop>
         <cfelse>
