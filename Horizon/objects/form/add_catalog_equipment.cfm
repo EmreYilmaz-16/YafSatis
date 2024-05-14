@@ -97,6 +97,7 @@
                     <th>
                         Varyasyon
                     </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="tb1FS"> 
@@ -176,6 +177,11 @@ div2.appendChild(Span);
 div.appendChild(div2);
 //<span class="input-group-addon btnPointer icon-ellipsis" href="javascript://" onclick="select_var('1');" title="Varyasyon  "></span>
 td.appendChild(div);
+tr.appendChild(td);
+var td=document.createElement("td");
+td.innerHtml="<a onclick='sil("+PropRowCount+")';><i class='fa fa-minus'></i></a>";
+//<a onclick="sil('1');"><i class="fa fa-minus"></i></a>
+
 tr.appendChild(td);
 
 document.getElementById("tb1FS").appendChild(tr);
