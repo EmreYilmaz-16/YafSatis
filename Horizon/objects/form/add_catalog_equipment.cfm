@@ -307,6 +307,39 @@ $.ajax({
     },
     success: function (returnData) {
         console.log(returnData);
+        var ReturnObject=JSON.parse(returnData);
+        if(ReturnObject.RECORD_COUNT >=1){
+            if(ReturnObject.RECORD_COUNT>1){
+                document.getElementsByName("ProductName")[0].setAttribute("style","font-weight:bold;color:orange")
+                document.getElementsByName("ManufactCode")[0].setAttribute("style","font-weight:bold;color:orange")
+                var btn = document.createElement("button");
+          btn.setAttribute("class", "btn btn-warning");
+
+          btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
+          document.getElementsByName("ManufactCode")[0].parentElement.appendChild(btn);
+          document.getElementsByName("ManufactCode")[0].parentElement.setAttribute("style", "display:flex");
+          btn.setAttribute(
+            "onclick",
+            "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
+              rc +
+              "&kw=" +
+              el.value +
+              "&prp_list=" +
+              pL +
+              "')"
+          )
+
+                
+            }else{
+                document.getElementsByName("ProductId")[0].value=ReturnObject.PRODUCT_ID
+                document.getElementsByName("StockId")[0].value=ReturnObject.STOCK_ID
+                document.getElementsByName("ProductName")[0].value=ReturnObject.PRODUCT_NAME
+                document.getElementsByName("ProductName")[0].setAttribute("style","font-weight:bold;color:green")
+                document.getElementsByName("ManufactCode")[0].setAttribute("style","font-weight:bold;color:green")
+            }
+        }else{
+
+        }
     }})
 }
 </script>
