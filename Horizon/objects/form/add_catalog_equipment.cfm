@@ -220,7 +220,7 @@ document.getElementById("tb1FS").appendChild(tr);
     IS_OPTIONAL: 0,
   };
   SelectedValues.push(ox);
-  var Properties = document.getElementsByClassName("propss");
+  var Properties = document.getElementsByClassName("propss_fs");
   var PropList = "";
   PropList += PRODUCT_CAT_ID;
   //console.log(Properties)
@@ -321,9 +321,9 @@ $.ajax({
           btn.setAttribute(
             "onclick",
             "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
-              rc +
+              0 +
               "&kw=" +
-              el.value +
+              document.getElementsByName("ManufactCode")[0].value +
               "&prp_list=" +
               pL +
               "')"
