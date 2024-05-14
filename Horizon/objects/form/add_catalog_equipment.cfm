@@ -66,7 +66,10 @@
         </cfif>
         </cfoutput>
             </cfloop>
-            <a href="javascript://" onclick="AddPropRow()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-plus"></i></a>
+            <div class="form-group">
+            <label>&nbsp;</label>
+                <a href="javascript://" onclick="AddPropRow()" class="ui-wrk-btn ui-wrk-btn-extra"><i class="fa fa-plus"></i></a>
+        </div>
         </div>
         <cfelse>
             <div id="dv1">
