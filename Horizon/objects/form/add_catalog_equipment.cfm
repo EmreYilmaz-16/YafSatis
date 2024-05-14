@@ -343,4 +343,16 @@ $.ajax({
         }
     }})
 }
+function SetRow(PRODUCT_ID,STOCK_ID,MANUFACT_CODE,PRODUCT_NAME,modal_id) {
+    /*
+    
+    */
+    document.getElementsByName("ProductId")[0].value=PRODUCT_ID
+                document.getElementsByName("StockId")[0].value=STOCK_ID
+                document.getElementsByName("ProductName")[0].value=PRODUCT_NAME
+                document.getElementsByName("ManufactCode")[0].value=MANUFACT_CODE
+                document.getElementsByName("ProductName")[0].setAttribute("style","font-weight:bold;color:green")
+                document.getElementsByName("ManufactCode")[0].setAttribute("style","font-weight:bold;color:green")
+                closeBoxDraggable(modal_id)
+}
 </script>
