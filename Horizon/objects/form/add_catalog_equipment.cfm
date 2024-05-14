@@ -318,6 +318,7 @@ $.ajax({
           btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
           document.getElementsByName("ManufactCode")[0].parentElement.appendChild(btn);
           document.getElementsByName("ManufactCode")[0].parentElement.setAttribute("style", "display:flex");
+          var tt=getFilterDataPROPPS()
           btn.setAttribute(
             "onclick",
             "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
@@ -325,7 +326,7 @@ $.ajax({
               "&kw=" +
               document.getElementsByName("ManufactCode")[0].value +
               "&prp_list=" +
-              pL +
+              tt.ReturnObject.PropList +
               "')"
           )
 
