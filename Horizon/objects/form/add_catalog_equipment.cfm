@@ -52,6 +52,7 @@
     
     <div class="col col-6">
         <cfif structKeyExists(ACatalog.JSON_STRINGIM,"Filters")>
+            <div style="display:flex">
             <cfloop array="#ACatalog.JSON_STRINGIM.Filters#" item="it" index="ix">
           
                 <cfoutput>
@@ -65,6 +66,7 @@
         </cfif>
         </cfoutput>
             </cfloop>
+        </div>
         <cfelse>
             <div id="dv1">
 
