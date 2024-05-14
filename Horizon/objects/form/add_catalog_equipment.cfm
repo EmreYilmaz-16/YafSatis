@@ -238,7 +238,7 @@ document.getElementById("tb1FS").appendChild(tr);
     var PRODUCT_CAT = Pelem.options[0].innerText;
     var PRODUCT_CAT_ID = Pelem.value;
     var PNAME = Pelem.getAttribute("data-proptext");
-    if (Pdata.id.length > 0) {
+    if (PRODUCT_CAT_ID.length > 0) {
       var O = {
         PRODUCT_CAT: PRODUCT_CAT,
         PRODUCT_CAT_ID: PRODUCT_CAT_ID,
@@ -251,7 +251,7 @@ document.getElementById("tb1FS").appendChild(tr);
       SelectedValues.push(O);
       PropList += "," + PRODUCT_CAT_ID;
     }
-    if (isReq == "true" && Pdata.id.length == 0) {
+    if (isReq == "true" && PRODUCT_CAT_ID.length == 0) {
       DataHata++;
     }
   }
