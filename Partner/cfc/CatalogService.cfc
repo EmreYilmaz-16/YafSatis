@@ -21,7 +21,7 @@
     <cftry>
     <cfquery name="ins" datasource="#dsn#_product">
         INSERT INTO PRODUCT_CATALOG_ROWS (CATALOG_ID,PRODUCT_ID,STOCK_ID,JSON_STRINGIM)
-        VALUES (#FormData.CATALOG_ID#,#FormData.ProductId#,#FormData.StockId#,'#replace(serializeJSON(FormData.JSON_STRINGIM.ReturnObject.Filters),"//","")#')
+        VALUES (#FormData.CatalogId#,#FormData.ProductId#,#FormData.StockId#,'#replace(serializeJSON(FormData.JSON_STRINGIM.ReturnObject.Filters),"//","")#')
     </cfquery>
     <cfset ReturnData.STATUS=1>
     <cfset ReturnData.MESSAGE="Ürün Başarı İle Kataloğa Eklenmiştir">
@@ -49,7 +49,7 @@
         <cftry>
         <cfquery name="ins" datasource="#dsn#_product">
             INSERT INTO PRODUCT_CATALOG_ROWS (CATALOG_ID,PRODUCT_ID,STOCK_ID,JSON_STRINGIM)
-            VALUES (#FormData.CATALOG_ID#,#UrunKayitO.PRODUCT_ID#,#UrunKayitO.STOCK_ID#,'#replace(serializeJSON(FormData.JSON_STRINGIM.ReturnObject.Filters),"//","")#')
+            VALUES (#FormData.CatalogId#,#UrunKayitO.PRODUCT_ID#,#UrunKayitO.STOCK_ID#,'#replace(serializeJSON(FormData.JSON_STRINGIM.ReturnObject.Filters),"//","")#')
         </cfquery>
            <cfset ReturnData.STATUS=1>
            <cfset ReturnData.MESSAGE="Ürün Başarı İle Kataloğa Eklenmiştir">
