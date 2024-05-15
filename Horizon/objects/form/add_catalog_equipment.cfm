@@ -270,7 +270,7 @@ document.getElementById("tb1FS").appendChild(tr);
 }
 
 function KaydediverGulum(){
-	var JSON_STRINGIM=getFilterData()
+	var JSON_STRINGIM=getFilterDataPROPPS()
 	var  ManufactCode=document.getElementsByName("ManufactCode")[0].value
 var  ProductName=document.getElementsByName("ProductName")[0].value
 var  ProductId=document.getElementsByName("ProductId")[0].value
