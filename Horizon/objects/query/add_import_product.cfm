@@ -1,3 +1,4 @@
+<cfset  database_type="MSSQL">
 <cfset DATEFORMAT_STYLE ="dd/mm/yyyy">
 <cfset COMPID  ="">
 
