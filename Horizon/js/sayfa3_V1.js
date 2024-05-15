@@ -804,7 +804,9 @@ function getProduct(el, rc) {
           }
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
-
+        if(Obje.IMG_COUNT>0){
+          document.getElementById("ResimButonC_"+rc).setAttribute("class","ui-wrk-btn ui-wrk-btn-red");
+        }
         document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
         document.getElementById("IS_VIRTUAL_" + rc).value = Obje.IS_VIRTUAL;
         document.getElementById("STOCK_ID_" + rc).value = Obje.STOCK_ID;
