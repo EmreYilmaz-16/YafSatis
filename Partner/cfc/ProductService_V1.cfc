@@ -453,7 +453,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
             purchase_money = "TL"
         </cfscript>
         <cfset attributes.HIERARCHY =GETPCAT.HIERARCHY>
-        <cfinclude template="../query/add_import_product.cfm">
+        <cfinclude template="../../Horizon/objects/query/add_import_product.cfm">
         <cfset RECORDED_PRODUCT_ID=GET_PID.PRODUCT_ID>
         <cfset RECORDED_STOCK_ID=get_max_stck.max_stck>
         <cfset PropArr=deserializeJSON(arguments.PROPS)>
