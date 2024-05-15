@@ -279,7 +279,21 @@ var  StockId=document.getElementsByName("StockId")[0].value
 var  ShipId=document.getElementsByName("ShipId")[0].value
 var  MachineId=document.getElementsByName("MachineId")[0].value
 var  CatalogId=document.getElementsByName("CatalogId")[0].value
+var ExtraPropArr=new Array();
+for(let i=1;i<=PropRowCount;i++){
+	var PROPERTY=document.getElementById("Property_"+i).value
+var PROPERTY_ID=document.getElementById("Property_ID_"+i).value
+var VARIATION=document.getElementById("variation"+i).value
+var VARIATION_ID=document.getElementById("variation_id"+i).value
+var PVOB={
+PROPERTY:PROPERTY,
+PROPERTY_ID:PROPERTY_ID,
+VARIATION:VARIATION,
+VARIATION_ID:VARIATION_ID
+}
+ExtraPropArr.push(PVOB)
 
+}
 var Objecim={
 JSON_STRINGIM:JSON_STRINGIM,
 ManufactCode:ManufactCode,
@@ -288,7 +302,9 @@ ProductId:ProductId,
 StockId:StockId,
 ShipId:ShipId,
 MachineId:MachineId,
-CatalogId:CatalogId}
+CatalogId:CatalogId,
+ExtraPropArr:ExtraPropArr
+}
 
 $.ajax({
     url:ServiceUri+"/CatalogService.cfc?method=AddProductToCatalog",

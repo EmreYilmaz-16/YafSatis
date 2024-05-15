@@ -406,6 +406,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfargument name="PRODUCT_CATID">
         <cfargument name="MANUFACT_CODE">
         <cfargument name="PROPS">
+        <cfargument name="EXTRA_PROPS">
 <cftry>
         <cfquery name="GETPCAT" datasource="#DSN#_product">
             SELECT * FROM PRODUCT_CAT WHERE PRODUCT_CATID=#arguments.PRODUCT_CATID#
@@ -413,7 +414,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfset barcode=getBarcode()>
         <cfset UrunAdi=arguments.PRODUCT_NAME>
         <cfscript>
-            kategori_id=PRODUCT_CATID;   
+            kategori_id=arguments.PRODUCT_CATID;   
             urun_adi=UrunAdi; 
             detail=''; 
             detail_2='';
@@ -454,9 +455,49 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         </cfscript>
         <cfset attributes.HIERARCHY =GETPCAT.HIERARCHY>
         <cfinclude template="../../Horizon/objects/query/add_import_product.cfm">
+
+        
+
+
         <cfset RECORDED_PRODUCT_ID=GET_PID.PRODUCT_ID>
         <cfset RECORDED_STOCK_ID=get_max_stck.max_stck>
         <cfset PropArr=deserializeJSON(arguments.PROPS)>
+        <cfloop array="#PropArr#" item="it" index="ix">
+           <cfif it.PNAME neq "EQUIPMENT">
+            <cfquery name="GETPCDA" datasource="#DSN1#">
+                SELECT IS_OPTIONAL,IS_AMOUNT FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#arguments.PRODUCT_CATID# AND PROPERTY_ID=#it.PROP_ID#
+            </cfquery>
+           <cfquery name="ins" datasource="#dsn1#">
+                INSERT INTO PRODUCT_DT_PROPERTIES (PRODUCT_ID,PROPERTY_ID,VARIATION_ID,LINE_VALUE,IS_OPTIONAL,IS_EXIT)
+                VALUES (
+                    #RECORDED_PRODUCT_ID#,
+                    #it.PROP_ID#,
+                    #it.PRODUCT_CAT_ID#,
+                    #ix#,
+                    #GETPCDA.IS_OPTIONAL#,
+                    #GETPCDA.IS_AMOUNT#
+                ) 
+            </cfquery>
+            </cfif>
+        </cfloop>
+        <cfset ExtraPropArr=deserializeJSON(arguments.EXTRA_PROPS)>
+        <cfloop array="#ExtraPropArr#" item="it2" index="ixx">
+           
+           
+           <cfquery name="ins" datasource="#dsn1#">
+                INSERT INTO PRODUCT_DT_PROPERTIES (PRODUCT_ID,PROPERTY_ID,VARIATION_ID,LINE_VALUE,IS_OPTIONAL,IS_EXIT)
+                VALUES (
+                    #RECORDED_PRODUCT_ID#,
+                    #it2.PROPERTY_ID#,
+                    #it2.VARIATION_ID#,
+                    #ixx#,
+                    0,
+                    0
+                ) 
+            </cfquery>
+           
+        </cfloop>
+
         <cfset ReturnData.STATUS=1>
         <cfset ReturnData.MESSAGE="Ürün Oluşturuldu">
         <cfset ReturnData.ErrorMessage="">
