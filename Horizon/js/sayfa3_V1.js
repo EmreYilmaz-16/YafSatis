@@ -417,6 +417,7 @@ function addRowCrs(
   b3.appendChild(spn);
   var b4 = document.createElement("button");
   b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-busy");
+  b4.setAttribute("id","ResimButonC_"+RowCount)
   b4.setAttribute(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"

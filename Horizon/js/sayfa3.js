@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 function getCats(el) {
   $.ajax({
-    url: ServiceUri + "/ProductService.cfc?method=getCats",
+    url: ServiceUri + "/ProductService_V1.cfc?method=getCats",
     success: function (returnData) {
       var Obje = JSON.parse(returnData);
       // console.log(Obje);
@@ -24,7 +24,9 @@ function getCats(el) {
   });
 }
 function getCatProperties(cat_id) {
- try{ $("#BUTOCUMMMMM").remove();}catch {};
+  try {
+    $("#BUTOCUMMMMM").remove();
+  } catch {}
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
   if (WESSEL_ID.length > 0) {
     var rs = $.post(
@@ -36,19 +38,49 @@ function getCatProperties(cat_id) {
     ).done(function (ReturnData) {
       var TV = JSON.parse(ReturnData);
       if (TV.STATUS == 1) {
-        var btnn=document.createElement("a");
-        btnn.setAttribute("class","input-group-addon")
-        btnn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID="+WESSEL_ID+"&cat_id="+cat_id+"')");
-        btnn.id="BUTOCUMMMMM";
-        var i=document.createElement("span");
-        i.setAttribute("class","icn-md fa fa-gears");
-        btnn.appendChild(i);
-        document.getElementById("PRODUCT_CAT").parentElement.appendChild(btnn);
         var ET = confirm(
           "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
         );
+        var btnn = document.createElement("a");
+        btnn.setAttribute("class", "input-group-addon");
+        btnn.setAttribute(
+          "onclick",
+          "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=" +
+            WESSEL_ID +
+            "&cat_id=" +
+            cat_id +
+            "')"
+        );
+        btnn.id = "BUTOCUMMMMM";
+        var i = document.createElement("span");
+        i.setAttribute("class", "icn-md fa fa-gears");
+        btnn.appendChild(i);
+        document.getElementById("PRODUCT_CAT").parentElement.appendChild(btnn);
         if (ET) {
-          addEqRow(TV.JSON_STRINGIM, JSON.stringify(TV.JSON_STRINGIM));
+          if (TV.RECORD_COUNT == 1) {
+            addEqRow(TV.JSON_STRINGIM, JSON.stringify(TV.JSON_STRINGIM));
+            AjaxPageLoad(
+              "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+                cat_id,
+              "PROP_AREA",
+              1,
+              "Yükleniyor"
+            );
+          } else {
+            openBoxDraggable(
+              "index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=" +
+                WESSEL_ID +
+                "&cat_id=" +
+                cat_id
+            );
+            AjaxPageLoad(
+              "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+                cat_id,
+              "PROP_AREA",
+              1,
+              "Yükleniyor"
+            );
+          }
         } else {
           AjaxPageLoad(
             "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
@@ -388,11 +420,34 @@ function addRowCrs(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
+  var b3 = document.createElement("button");
+  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+  b3.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  var spn = document.createElement("span");
+  spn.setAttribute("class", "icn-md fa fa-info");
+  b3.appendChild(spn);
+  var b4 = document.createElement("button");
+  b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-busy");
+  b4.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  var spn = document.createElement("span");
+  spn.setAttribute("class", "icn-md fa fa-camera");
+  b4.appendChild(spn);
+
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
 
   b2.innerText = rc2;
   b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
+  b3.setAttribute("onclick", "ShowProperties(this)");
+  b3.setAttribute("data-rc", RowCount);
+  b4.setAttribute("onclick", "ShowImages(this)");
+  b4.setAttribute("data-rc", RowCount);
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -400,6 +455,8 @@ function addRowCrs(
   div.appendChild(input3);
   div.appendChild(b1);
   div.appendChild(b2);
+  div.appendChild(b3);
+  div.appendChild(b4);
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
@@ -701,7 +758,7 @@ function getProduct(el, rc) {
   };
 
   $.ajax({
-    url: ServiceUri + "/ProductService.cfc?method=SearchProduct",
+    url: ServiceUri + "/ProductService_V1.cfc?method=SearchProduct",
     data: {
       FormData: JSON.stringify(Search),
     },
@@ -1681,17 +1738,56 @@ function loadRelOffers() {
 
 function SavePropToShip() {
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
-  var FD = getFilterData();
-  var SEND_DATA = FD.ReturnObject;
-  SEND_DATA.WESSEL_ID = WESSEL_ID;
+  // var FD = getFilterData();
+  // var SEND_DATA = FD.ReturnObject;
+  // SEND_DATA.WESSEL_ID = WESSEL_ID;
 
-  $.ajax({
-    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddShipToFilter",
-    data: {
-      data: JSON.stringify(SEND_DATA),
-    },
-    success: function () {
-      alert("Hİ");
-    },
-  });
+  // $.ajax({
+  //   url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=AddShipToFilter",
+  //   data: {
+  //     data: JSON.stringify(SEND_DATA),
+  //   },
+  //   success: function () {
+  //     alert("Hİ");
+  //   },
+  // });
+
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=" +
+      WESSEL_ID
+  );
+}
+
+function ShowProperties(el) {
+  var rc = el.getAttribute("data-rc");
+  var pid = document.getElementById("PRODUCT_ID_" + rc).value;
+  var pL = document
+    .getElementById("PRODUCT_CODE_2_" + rc)
+    .getAttribute("proplist");
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=" +
+      rc +
+      "&PID=" +
+      pid +
+      "&prp_list=" +
+      pL
+  );
+}
+function ShowImages(el) {
+  //objects.emptypopup_show_product_images
+  var rc = el.getAttribute("data-rc");
+  var pid = document.getElementById("PRODUCT_ID_" + rc).value;
+  var pL = document
+    .getElementById("PRODUCT_CODE_2_" + rc)
+    .getAttribute("proplist");
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID=" +
+      pid
+  );
+}
+function ShowImages2(pid) {
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID=" +
+      pid
+  );
 }

@@ -1,5 +1,9 @@
 <cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
+    <cffunction name="getShipCatalogs" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+
+    </cffunction>
+    
     <cffunction name="AddProductToCatalog"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="Data">
         <cfset FormData=deserializeJSON(arguments.data)>

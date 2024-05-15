@@ -201,7 +201,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
         <cfquery name="getpcs" datasource="#dsn#_1">
-            SELECT * FROM STOCKS as P
+            SELECT *,(SELECT COUNT(*) FROM PRODUCT_IMAGES WHERE PRODUCT_ID=P.PRODUCT_ID) AS IMG_COUNT FROM STOCKS as P
             LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
                     ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
             WHERE MANUFACT_CODE ='#FData.keyword#' AND PRODUCT_CATID=83
@@ -218,6 +218,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
             <cfset P.PRODUCT_CODE_2=getpcs.PRODUCT_CODE_2>
             <cfset P.MAIN_UNIT=getpcs.MAIN_UNIT>
             <CFSET P.EXTRA_PROPT=0>
+            <CFSET P.IMG_COUNT=getpcs.IMG_COUNT>
             <cfset P.RECORD_COUNT=getpcs.recordcount>
             <cfreturn replace(serializeJSON(P),"//","")>
     
@@ -242,6 +243,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
 
 
                         ) AS EXTRA_PROPT
+                        ,(SELECT COUNT(*) FROM PRODUCT_IMAGES WHERE PRODUCT_ID=P.PRODUCT_ID) AS IMG_COUNT
                 FROM CatalystQA_product.PRODUCT AS P
                 LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
                 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU
@@ -276,6 +278,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
         <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
         <CFSET P.EXTRA_PROPT=getProd.EXTRA_PROPT>
         <cfset P.RECORD_COUNT=getProd.recordcount>
+        <CFSET P.IMG_COUNT=getProd.IMG_COUNT>
         <cfreturn replace(serializeJSON(P),"//","")>
     </cffunction>
     <cffunction name="SearchProductPopup" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
