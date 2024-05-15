@@ -42,7 +42,7 @@
 
 
 <cfelse>
-    <cfset ProductService=createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
+    <cfset ProductService=createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
     <cfset UrunKayit=ProductService.CreateProduct(PRODUCT_NAME='#FormData.ProductName#',PRODUCT_CATID=FormData.JSON_STRINGIM.ReturnObject.PRODUCT_CAT_ID,MANUFACT_CODE='#FormData.ManufactCode#',PROPS='#replace(serializeJSON(FormData.JSON_STRINGIM.ReturnObject.Filters),"//","")#')>
     <cfset UrunKayitO=deserializeJSON(UrunKayit)>
     <cfif UrunKayitO.STATUS eq 1>
@@ -72,14 +72,7 @@
         <cfreturn replace(serializeJSON(ReturnData),"//","")>
     </cfif>
     
-    
-    <!---------Ürün Açacağız
-        <cfargument name="PRODUCT_NAME">
-        <cfargument name="PRODUCT_CATID">
-        <cfargument name="MANUFACT_CODE">
-        <cfargument name="PROPS">
-        
-        ---------->
+  
 </cfif>
 
     </cffunction>
