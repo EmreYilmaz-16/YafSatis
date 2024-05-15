@@ -146,6 +146,7 @@
 <a onclick="openBoxDraggable('index.cfm?fuseaction=sale.emptypopup_change_vessel_customer&ShipId=<cfoutput>#attributes.ShipId#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><span class="icn-md icon-exchange"></span>Transfer Ship</a>
 <a onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_add_ship_machine&WESSEL_ID=<cfoutput>#attributes.ShipId#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><span class="icn-md icon-settings"></span>Add Machine</a>
 <a onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=<cfoutput>#attributes.ShipId#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><span class="icn-md fa fa-database"></span>List Machines</a>
+<a onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_catalogs&WESSEL_ID=<cfoutput>#attributes.ShipId#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><span class="icn-md fa fa-database"></span>List Catalogs</a>
 </cf_box>
 <!----
       item.SHIP_ID=SHIP_ID;

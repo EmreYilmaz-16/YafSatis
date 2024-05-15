@@ -50,8 +50,22 @@ function getCatProperties(cat_id) {
         if (ET) {
           if(TV.RECORD_COUNT==1){          
           addEqRow(TV.JSON_STRINGIM, JSON.stringify(TV.JSON_STRINGIM));
+          AjaxPageLoad(
+            "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+              cat_id,
+            "PROP_AREA",
+            1,
+            "Yükleniyor"
+          );
           }else{
             openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID='+WESSEL_ID+'&cat_id='+cat_id)
+            AjaxPageLoad(
+              "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+                cat_id,
+              "PROP_AREA",
+              1,
+              "Yükleniyor"
+            );
           }
         } else {
           AjaxPageLoad(
