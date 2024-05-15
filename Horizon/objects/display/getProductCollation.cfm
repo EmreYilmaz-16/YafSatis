@@ -5,7 +5,7 @@
 <cfset prplist=listDeleteAt(attributes.prp_list,1)>
 <cfquery name="getProd" datasource="#dsn#">
     SELECT * FROM (
-SELECT PRODUCT_NAME,P.PRODUCT_ID,S.STOCK_ID,P.MANUFACT_CODE,PRODUCT_CODE,PRODUCT_CODE_2,PU.MAIN_UNIT,P.TAX,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  
+SELECT PRODUCT_NAME,P.PRODUCT_ID,S.STOCK_ID,P.MANUFACT_CODE,PRODUCT_CODE,PRODUCT_CODE_2,PU.MAIN_UNIT,P.TAX,(SELECT COUNT(*) FROM CatalystQA_product.PRODUCT_IMAGES WHERE PRODUCT_ID=P.PRODUCT_ID) AS IMG_COUNT,(SELECT CONVERT(VARCHAR,VARIATION_ID)+',' FROM CatalystQA_product.PRODUCT_DT_PROPERTIES WHERE PRODUCT_ID=P.PRODUCT_ID FOR XML PATH('')) AS DTP  
 FROM CatalystQA_product.PRODUCT AS P
 LEFT JOIN CatalystQA_product.STOCKS AS S ON S.PRODUCT_ID=P.PRODUCT_ID
 LEFT JOIN CatalystQA_product.PRODUCT_UNIT AS PU ON PU.PRODUCT_ID=P.PRODUCT_ID AND PU.IS_MAIN=1
@@ -64,7 +64,11 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
             </cfloop>
         </td>
         <td>
-            <button class="ui-wrk-btn ui-wrk-btn-busy"  onclick="ShowImages2(#PRODUCT_ID#)" data-rc="6"><span class="icn-md fa fa-camera"></span></button>
+            <cfif IMG_COUNT gt 0>
+            <button class="ui-wrk-btn ui-wrk-btn-red"  onclick="ShowImages2(#PRODUCT_ID#)" data-rc="6"><span class="icn-md fa fa-camera"></span></button>
+            <cfelse>
+                <button class="ui-wrk-btn ui-wrk-btn-busy"  onclick="ShowImages2(#PRODUCT_ID#)" data-rc="6"><span class="icn-md fa fa-camera"></span></button>
+        </cfif>
         </td>
     </tr>
 </cfoutput>
