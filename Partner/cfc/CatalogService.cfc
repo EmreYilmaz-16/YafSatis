@@ -3,7 +3,7 @@
     <cffunction name="AddProductToCatalog"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="Data">
         <cfset FormData=deserializeJSON(arguments.data)>
-        <cfdump var="#FormData#">
+        
 <cfif len(FormData.ProductId)>
     <!------Ürünü Direk Kataloğa Koyacağız
         CREATE TABLE CatalystQA_product.PRODUCT_CATALOG_ROWS(
@@ -63,7 +63,7 @@
             <cfset ReturnData.ErrorMessage=cfcatch.message>
             <cfset ReturnData.PRODUCT_ID="">
             <cfset ReturnData.STOCK_ID="">
-            <cfdump var="#cfcatch#">
+            
             <cfreturn replace(serializeJSON(ReturnData),"//","")>
             
         </cfcatch>
