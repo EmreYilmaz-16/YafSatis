@@ -459,12 +459,14 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfset ReturnData.ErrorMessage="">
         <cfset ReturnData.PRODUCT_ID=RECORDED_PRODUCT_ID>
         <cfset ReturnData.STOCK_ID=RECORDED_STOCK_ID>
+        <cfreturn replace(serializeJSON(ReturnData),"//","")>
         <cfcatch>
     <cfset ReturnData.STATUS=0>
     <cfset ReturnData.MESSAGE="Ürün Oluşturulurken Bir Hata Oluştu">
     <cfset ReturnData.ErrorMessage=cfcatch.message>
     <cfset ReturnData.PRODUCT_ID="">
     <cfset ReturnData.STOCK_ID="">
+    <cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cfcatch>
     </cftry>
     </cffunction>
