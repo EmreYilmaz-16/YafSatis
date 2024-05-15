@@ -76,6 +76,10 @@
             <div id="dv1">
 
             </div>
+            <div class="form-group">
+                <label>&nbsp;</label>
+                    <a href="javascript://" onclick="AddPropRow()" class="ui-wrk-btn ui-wrk-btn-extra"><i class="fa fa-plus"></i></a>
+            </div>
             <cfif isDefined("ACatalog.PRODUCT_CATID") AND LEN(ACatalog.PRODUCT_CATID)>
                 <script>
                      AjaxPageLoad(
@@ -320,6 +324,7 @@ document.getElementsByName("ProductName")[0].value=""
 document.getElementsByName("ProductId")[0].value=""
 document.getElementsByName("StockId")[0].value=""
 $("#tb1FS").html("");
+PropRowCount=0
         }
     }
 })
