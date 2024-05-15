@@ -285,7 +285,15 @@ ProductId:ProductId,
 StockId:StockId,
 ShipId:ShipId,
 MachineId:MachineId,
-
+$.ajax({
+    url:ServiceUri+"/CatalogService.cfc?method=AddProductToCatalog",
+    data:{
+        data:JSON.stringify(Objecim)
+    },
+    success:function (ReturnData) {
+        
+    }
+})
 
 }
 console.log(Objecim)
