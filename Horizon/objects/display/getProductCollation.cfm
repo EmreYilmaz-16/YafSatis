@@ -14,7 +14,7 @@ where PRODUCT_CATID IN(#listGetAt(attributes.prp_list,1)#,83)
 ) AS TT WHERE 1=1 AND MANUFACT_CODE ='#attributes.kw#'
  
 </cfquery>
-<cfdump var="#getProd#">
+
 <cf_ajax_list>
 
     <tr>
