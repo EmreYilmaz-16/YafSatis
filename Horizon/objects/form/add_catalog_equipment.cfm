@@ -11,6 +11,7 @@
 
 
 <cf_box title="Kataloga Ürün Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
+    <input type="hidden" name="CatalogId" id="CatalogId" value="<cfoutput>#attributes.CatalogId#</cfoutput>">
 <div class="row">
     <div class="col col-6">
         <div class="form-group">
@@ -277,6 +278,8 @@ var  ProductId=document.getElementsByName("ProductId")[0].value
 var  StockId=document.getElementsByName("StockId")[0].value
 var  ShipId=document.getElementsByName("ShipId")[0].value
 var  MachineId=document.getElementsByName("MachineId")[0].value
+var  CatalogId=document.getElementsByName("CatalogId")[0].value
+
 var Objecim={
 JSON_STRINGIM:JSON_STRINGIM,
 ManufactCode:ManufactCode,
@@ -285,6 +288,8 @@ ProductId:ProductId,
 StockId:StockId,
 ShipId:ShipId,
 MachineId:MachineId,
+CatalogId:CatalogId}
+
 $.ajax({
     url:ServiceUri+"/CatalogService.cfc?method=AddProductToCatalog",
     data:{
@@ -295,7 +300,7 @@ $.ajax({
     }
 })
 
-}
+
 console.log(Objecim)
 }
 function SearchProductCatalog(el) {
