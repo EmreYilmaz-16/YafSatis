@@ -312,7 +312,15 @@ $.ajax({
         data:JSON.stringify(Objecim)
     },
     success:function (ReturnData) {
-        
+        var SF=JSON.parse(ReturnData)
+        alert(SF.MESSAGE)
+        if(SF.STATUS==1){
+document.getElementsByName("ManufactCode")[0].value=""
+document.getElementsByName("ProductName")[0].value=""
+document.getElementsByName("ProductId")[0].value=""
+document.getElementsByName("StockId")[0].value=""
+$("#tb1FS").html("");
+        }
     }
 })
 
