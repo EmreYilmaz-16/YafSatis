@@ -1,5 +1,8 @@
 <cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
+    <cfset DSN1 = "#DSN#_product">
+    <cfset DSN2 = "#DSN#_#year(now())#_1">
+    <cfset DSN3 = "#DSN#_1">
     <cffunction name="getCats" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfquery name="getAll" datasource="#dsn#">
             SELECT PRODUCT_CATID,PRODUCT_CAT FROM CatalystQA_product.PRODUCT_CAT ORDER BY PRODUCT_CAT
