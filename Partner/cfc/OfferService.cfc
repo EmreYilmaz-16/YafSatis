@@ -893,12 +893,38 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cfargument name="Data">
     <cfset FormData=deserializeJSON(arguments.Data)>
 
-<cfdump var="#FormData#">
 
 
+<cfif FormData.Tip eq 3>
+<cfquery name="getVPData" datasource="#dsn3#">
+    select * from CatalystQA_1.VIRTUAL_PRODUCTS_PBS
+WHERE OFFER_ROW_REL='#FORMDATA.OFFER_ROW_REL#'
+</cfquery>
+<CFSET JSON_STRINGIM=deserializeJSON(getVPData.JSON_STRINGIM)>
+
+<cfset ProductService=createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
+    <cfset UrunKayit=ProductService.CreateProduct(PRODUCT_NAME='#getVPData.ProductName#',PRODUCT_CATID=JSON_STRINGIM.PRODUCT_CAT_ID,MANUFACT_CODE='#getVPData.PART_NUMBER#',PROPS='#replace(serializeJSON(JSON_STRINGIM),"//","")#',EXTRA_PROPS="[]")>
+    <cfset UrunKayitO=deserializeJSON(UrunKayit)>
+    <cfif UrunKayitO.STATUS eq 1>
+        <cfquery name="UPDA" datasource="#DSN3#">
+            UPDATE PBS_OFFER_ROW SET PRODUCT_ID=#UrunKayitO.PRODUCT_ID#,STOCK_ID=#UrunKayitO.STOCK_ID#,IS_VIRTUAL=0 WHERE UNIQUE_RELATION_ID='#FORMDATA.OFFER_ROW_REL#'
+        </cfquery>
+<cfset ReturnData.STATUS=1>
+<cfset ReturnData.MESSAGE="Ürün Başarı İle Eklenmiştir">
+<cfset ReturnData.ErrorMessage="">
+<cfset ReturnData.PRODUCT_ID="#UrunKayitO.PRODUCT_ID#">
+<cfset ReturnData.STOCK_ID="#UrunKayitO.STOCK_ID#">
+<cfreturn replace(serializeJSON(ReturnData),"//","")>
+    <cfelse>
+        <cfset ReturnData=UrunKayitO>
+        <cfreturn replace(serializeJSON(ReturnData),"//","")> 
+    </cfif>
+
+</cfif>
 
 
 </cffunction>
+
 
 
 <cffunction name="wrk_eval" returntype="string" output="false">
