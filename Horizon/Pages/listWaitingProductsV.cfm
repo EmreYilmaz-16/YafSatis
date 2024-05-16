@@ -1,11 +1,15 @@
 <cfquery name="getProducts" datasource="#dsn3#">
-    SELECT VPS.*,POR.IS_VIRTUAL FROM CatalystQA_1.VIRTUAL_PRODUCTS_PBS AS VPS
+    SELECT VPS.*,POR.IS_VIRTUAL,PO.OFFER_NUMBER FROM CatalystQA_1.VIRTUAL_PRODUCTS_PBS AS VPS
 LEFT JOIN CatalystQA_1.PBS_OFFER_ROW AS POR ON POR.UNIQUE_RELATION_ID=VPS.OFFER_ROW_REL
+LEFT JOIN CatalystQA_1.PBS_OFFER AS PO ON PO.OFFER_ID=POR.OFFER_ID
 WHERE POR.IS_VIRTUAL =1
 
 </cfquery>
 <cf_box title="Bekleyen Sanal Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
-<cf_big_list>
+    <cfoutput query="getProducts" group="OFFER_ID">
+        <cf_seperator title="#OFFER_NUMBER#" id="item_#OFFER_ID#">
+        <div id="sep_#OFFER_ID#">
+        <cf_big_list>
     <thead>
     <tr>
         <th></th>
@@ -25,7 +29,7 @@ WHERE POR.IS_VIRTUAL =1
     </tr>
 </thead>
 <tbody>
-    <cfoutput query="getProducts">
+    <cfoutput>
         <tr>
             <td>
                 <a href="javascript://" onclick='openBoxDraggable("index.cfm?fuseaction=sales.emptypopup_detail_virtual_product&VP_ID=#VP_ID#")' ><span class="icn-md icon-search"></span></a>
@@ -54,5 +58,7 @@ WHERE POR.IS_VIRTUAL =1
     </cfoutput>
 </tbody>
 </cf_big_list>
+</div>
+</cfoutput>
 </cf_box>
 
