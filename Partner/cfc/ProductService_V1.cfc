@@ -508,6 +508,14 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfset ReturnData.STOCK_ID=RECORDED_STOCK_ID>
         <cfreturn replace(serializeJSON(ReturnData),"//","")>
         <cfcatch>
+         
+        <cfsavecontent  variable="control5">
+            <cfdump  var="#arguments#">                
+            <cfdump  var="#cfcatch#">
+            
+        </cfsavecontent>
+        
+        <cffile action="write" file = "c:\CreateProduct.html" output="#control5#"></cffile>   
     <cfset ReturnData.STATUS=0>
     <cfset ReturnData.MESSAGE="Ürün Oluşturulurken Bir Hata Oluştu">
     <cfset ReturnData.ErrorMessage=cfcatch.message>
