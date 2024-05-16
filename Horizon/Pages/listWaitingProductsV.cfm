@@ -30,7 +30,7 @@ WHERE POR.IS_VIRTUAL =1
 </thead>
 <tbody>
     <cfoutput>
-        <tr>
+        <tr id="ROWWWP_#VP_ID#">
             <td>
                 <a href="javascript://" onclick='openBoxDraggable("index.cfm?fuseaction=sales.emptypopup_detail_virtual_product&VP_ID=#VP_ID#")' ><span class="icn-md icon-search"></span></a>
             </td>
