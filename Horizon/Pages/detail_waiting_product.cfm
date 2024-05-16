@@ -111,7 +111,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
     </cfoutput>
     <tr>
         <td colspan="5" style="text-align:right">
-            <button onclick="UseThis(3,'<cfoutput>#getProducts.OFFER_ROW_REL#</cfoutput>',0,0)" type="button">Bu Varyasonlar İle Yeni Ürün Oluştur ve Kullan</button>
+            <button onclick="UseThis(3,'<cfoutput>#getProducts.OFFER_ROW_REL#</cfoutput>',0,0,'<CFOUTPUT>#attributes.modal_id#</CFOUTPUT>')" type="button">Bu Varyasonlar İle Yeni Ürün Oluştur ve Kullan</button>
         </td>
     </tr>
 </tbody>
@@ -123,10 +123,10 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 
 <script>   
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc"; 
-function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID) {
+function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID,modal_id) {
             $.ajax({
                 url:ServiceUri+"/OfferService.cfc?method=VirtualOperations",
-                data:{FormData:JSON.stringify({
+                data:{Data:JSON.stringify({
                     Tip:TIP,
                     OFFER_ROW_REL:OFFER_ROW_REL,
                     PRODUCT_ID:PRODUCT_ID,
@@ -134,7 +134,11 @@ function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID) {
 
                 })},
                 success:function (ReturnData) {
-                    
+                    var oooo=JSON.parse(ReturnData);
+                    alert(oooo.MESSAGE);
+                    if(oooo.STATUS==1){
+                        closeBoxDraggable(modal_id)
+                    }
                 }
             })
         }
