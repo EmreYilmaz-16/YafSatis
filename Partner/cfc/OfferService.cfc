@@ -903,7 +903,7 @@ WHERE OFFER_ROW_REL='#FORMDATA.OFFER_ROW_REL#'
 <CFSET JSON_STRINGIM=deserializeJSON(getVPData.JSON_STRINGIM)>
 
 <cfset ProductService=createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
-    <cfset UrunKayit=ProductService.CreateProduct(PRODUCT_NAME='#getVPData.ProductName#',PRODUCT_CATID=JSON_STRINGIM.PRODUCT_CAT_ID,MANUFACT_CODE='#getVPData.PART_NUMBER#',PROPS='#replace(serializeJSON(JSON_STRINGIM),"//","")#',EXTRA_PROPS="[]")>
+    <cfset UrunKayit=ProductService.CreateProduct(PRODUCT_NAME='#getVPData.PRODUCT_NAME#',PRODUCT_CATID=JSON_STRINGIM.PRODUCT_CAT_ID,MANUFACT_CODE='#getVPData.PART_NUMBER#',PROPS='#replace(serializeJSON(JSON_STRINGIM),"//","")#',EXTRA_PROPS="[]")>
     <cfset UrunKayitO=deserializeJSON(UrunKayit)>
     <cfif UrunKayitO.STATUS eq 1>
         <cfquery name="UPDA" datasource="#DSN3#">
