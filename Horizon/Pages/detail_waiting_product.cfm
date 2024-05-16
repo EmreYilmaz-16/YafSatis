@@ -137,7 +137,9 @@ function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID,modal_id) {
                     var oooo=JSON.parse(ReturnData);
                     alert(oooo.MESSAGE);
                     if(oooo.STATUS==1){
+                        document.getElementById("ROWWWP_<cfoutput>#attributes.VP_ID#</cfoutput>").remove()
                         closeBoxDraggable(modal_id)
+                        
                     }
                 }
             })
