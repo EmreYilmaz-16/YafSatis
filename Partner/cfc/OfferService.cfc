@@ -889,6 +889,14 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 
 </cffunction>
 
+<cffunction name="VirtualOperations" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+<cfdump var="#arguments#">
+
+
+
+
+</cffunction>
+
 
 <cffunction name="wrk_eval" returntype="string" output="false">
 	<!--- loop inen donen satirlarda evaluatten kaynaklanan tirnak isareti sorununu cozer --->

@@ -9,9 +9,12 @@ WHERE VP_ID=#attributes.VP_ID#
 <cfoutput>
     <div style="font-size: 20pt;font-weight: bold;color: orange;border-bottom: solid 1px black;text-align: center;">
         #getProducts.PART_NUMBER#
+        <input type="hidden" id="MANUFACT_CODE" value="#getProducts.PART_NUMBER#">
+        <input type="hidden" id="OFFER_ROW_REL" value="#getProducts.OFFER_ROW_REL#">
     </div>
     <div style="font-size: 20pt;color: green;font-weight: bold;margin-bottom: 5px;text-align: center;">
         #getProducts.PRODUCT_NAME#
+        <input type="hidden" id="PRODUCT_NAME" value="#getProducts.PRODUCT_NAME#">
     </div>
     <div style="text-align: center;display: flex;justify-content: center;margin-bottom:10px">
 
@@ -20,6 +23,7 @@ WHERE VP_ID=#attributes.VP_ID#
     <button>
         <b>#it.PNAME#</b>
         <br>
+        
         #it.PRODUCT_CAT#
     </button>
 </cfloop>
@@ -67,14 +71,17 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 <tbody>
     <cfoutput query="SameCode">
         <tr>
-            <td>
+            <td >
                 #MANUFACT_CODE#
+                
             </td>
             <td>
                 #PRODUCT_NAME#
+                
             </td> 
             <td>
                 #PRODUCT_CAT#
+                
             </td>          
             <td>
                 <cftry>
@@ -98,7 +105,7 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
             </td>
             <td>
                 <button onclick="UseThis(1,'#getProducts.OFFER_ROW_REL#',#PRODUCT_ID#,#STOCK_ID#)" type="button">Bunu Kullan</button>
-                <button onclick="UseThis(2,'#getProducts.OFFER_ROW_REL#',#PRODUCT_ID#,#STOCK_ID#)"type="button">Varyasyonları Aktar ve Kullan</button>
+                
             </td>
         </tr>
     </cfoutput>
@@ -114,11 +121,21 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 </cf_box>
 
 
-<script>    
-    function UseThis(tip,UnRelId,PID,SID,jsmv="") {
-          var jstring=document.getElementById("FRMPRP").value  
-          console.log(jstring)  
-          var JsonObject=JSON.parse(jstring)
-          console.log(JsonObject)
+<script>   
+var ServiceUri = "/AddOns/YafSatis/Partner/cfc"; 
+    function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID) {
+            $.ajax({
+                url:"/OfferService.cfc?method=VirtualOperations",
+                data:JSON.stringify({
+                    Tip:TIP,
+                    OFFER_ROW_REL:OFFER_ROW_REL,
+                    PRODUCT_ID:PRODUCT_ID,
+                    STOCK_ID:STOCK_ID,
+
+                }),
+                success:function (ReturnData) {
+                    
+                }
+            })
         }
 </script>
