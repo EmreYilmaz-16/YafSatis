@@ -1,6 +1,10 @@
 <cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
     <cffunction name="getShipCatalogs" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="SHIP_ID">
+        <cfquery name="getAll" datasource="#dsn#_product">
+            select * from CatalystQA_product.PRODUCT_CATALOG_PBS WHERE SHIP_ID=#arguments.SHIP_ID#
+        </cfquery>
 
     </cffunction>
     

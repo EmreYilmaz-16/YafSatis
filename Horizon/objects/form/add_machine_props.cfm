@@ -109,7 +109,7 @@ function SaveMachineProps(a,b) {
       data: JSON.stringify(SEND_DATA),
     },
     success: function () {
-      alert("Hİ");
+      alert("Kayıt Başarılı");
     },
   });
 }

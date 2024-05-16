@@ -66,7 +66,10 @@ console.table(SendData)
 
 $.ajax({
     url:"/AddOns/YafSatis/Partner/cfc/ShipService.cfc?method=SaveMachine",
-    data:{data:JSON.stringify(SendData)}
+    data:{data:JSON.stringify(SendData)},
+    success:function (params) {
+        alert("Kayıt Başarılı");
+    }
 })
 
     }
