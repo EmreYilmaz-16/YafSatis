@@ -123,16 +123,16 @@ WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#g
 
 <script>   
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc"; 
-    function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID) {
+function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID) {
             $.ajax({
-                url:"/OfferService.cfc?method=VirtualOperations",
-                data:Data=JSON.stringify({
+                url:ServiceUri+"/OfferService.cfc?method=VirtualOperations",
+                data:{FormData:JSON.stringify({
                     Tip:TIP,
                     OFFER_ROW_REL:OFFER_ROW_REL,
                     PRODUCT_ID:PRODUCT_ID,
                     STOCK_ID:STOCK_ID,
 
-                }),
+                })},
                 success:function (ReturnData) {
                     
                 }

@@ -890,7 +890,10 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 </cffunction>
 
 <cffunction name="VirtualOperations" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-<cfdump var="#arguments#">
+<cfargument name="Data">
+    <cfset FormData=deserializeJSON(arguments.Data)>
+
+<cfdump var="#FormData#">
 
 
 
