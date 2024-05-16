@@ -126,7 +126,7 @@ var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
     function UseThis(TIP,OFFER_ROW_REL,PRODUCT_ID,STOCK_ID) {
             $.ajax({
                 url:"/OfferService.cfc?method=VirtualOperations",
-                data:JSON.stringify({
+                data:Data=JSON.stringify({
                     Tip:TIP,
                     OFFER_ROW_REL:OFFER_ROW_REL,
                     PRODUCT_ID:PRODUCT_ID,
