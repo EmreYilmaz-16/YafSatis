@@ -56,7 +56,7 @@
     <div class="col col-2">
 <cf_box>
         <div style="display:flex;flex-direction: column;height:100vh">
-            <button onclick="window.location.href='/index.cfm?fuseaction=myhome.welcome'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">W3 Ana Sayfa</button>
+            <button onclick="window.location.href='/index.cfm?fuseaction=myhome.welcome'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #305505;border-radius: 10px;background: #3f6a0e52;font-weight: bold;color: white;margin: 5px;">W3 Ana Sayfa</button>
             <hr>
             <button onclick="window.location.href='/index.cfm?fuseaction=sale.hrz_pbs_sayfa1'" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
             <button onclick='openBoxDraggable("index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #cbbf22;border-radius: 10px;background: #fff02aa8;font-weight: bold;color: white;margin: 5px;">Add Inquiry </button>
