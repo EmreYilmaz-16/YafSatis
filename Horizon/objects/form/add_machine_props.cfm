@@ -1,4 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <cfset ShipService=createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
 <cfset OfferService=createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset _Ship=ShipService.GetShips(ShipId=attributes.WESSEL_ID)>
