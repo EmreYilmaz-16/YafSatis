@@ -853,6 +853,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cfcatch>
     <cfset RO.STATUS=false>
     <cfset RO.Message=cfcatch.message>
+    <cfdump var="#cfcatch#">
     <cfreturn replace(serializeJSON(RO),"//","")>
 </cfcatch>
 </cftry>
