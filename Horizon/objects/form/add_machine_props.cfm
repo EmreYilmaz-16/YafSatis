@@ -118,6 +118,7 @@ function SaveMachineProps(a,b) {
 }
 
 $(document).ready(function (params) {
+  $('.propss_fs').select2();
   console.log(JsonData)
   if(JsonData.STATUS ==1){
     var Pelems=document.getElementsByClassName("propss_fs")

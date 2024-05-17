@@ -55,7 +55,7 @@
 
 <script>
     $(document).ready(function(){
-        $('.propss_fs').select2();
+       
     })
     function iliskiliDataOlustur(el,pcat,prpt,pfrs){
         console.log(el);
