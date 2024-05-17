@@ -23,8 +23,9 @@
 <button type="button" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left" onclick="SaveMachineProps(<cfoutput>#session.ep.userid#,'#attributes.modal_id#'</cfoutput>)" ><span class="icn-md icon-save">Kaydet</button>
 </div>
 
-
-<cfdump var="#SMF#">
+<script>
+  var JsonData=JSON.parse(<cfoutput>#SMF#</cfoutput>)
+</script>
 </cf_box>
 
 
@@ -116,4 +117,7 @@ function SaveMachineProps(a,b) {
   });
 }
 
+$(document).ready(function (params) {
+  console.log(JsonData)
+})
 </script>
