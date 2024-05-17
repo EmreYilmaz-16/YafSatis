@@ -838,7 +838,7 @@ AND PO2.OFFER_NUMBER IS NOT NULL
 <cffunction name="AddShipToFilter"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
 
 <CFSET FORMDATA=deserializeJSON(arguments.data)>
-<cfdump var="#FORMDATA#">
+
 
 <cftry>
     <cfquery name="INS" datasource="#DSN3#">
