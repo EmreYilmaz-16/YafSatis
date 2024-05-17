@@ -350,9 +350,15 @@ VALUES
         <cfset FormData=deserializeJSON(arguments.Data)>
         <cfset ReturnData=structNew()>
        <cftry>
+        <cfif len(FormData.SM_ID)>
+            <cfquery name="upd" datasource="#dsn#">
+                UPDATE PBS_SHIP_MACHINES SET MACHINE_NAME='#FormData.MACHINE_NAME#',MACHINE_CAT=#FormData.PCAT#,SERIAL_NO='#FormData.SERIAL_NO#',DESCRIPTION='#FormData.DESCRIPTION#' WHERE SM_ID=#FORMDATA.SM_ID#
+            </cfquery>
+        <cfelse>
        <cfquery name="INS" datasource="#dsn#">
             INSERT INTO PBS_SHIP_MACHINES(MACHINE_NAME,MACHINE_CAT,SERIAL_NO,WESSEL_ID,DESCRIPTION) values ('#FormData.MACHINE_NAME#',#FormData.PCAT#,'#FormData.SERIAL_NO#',#FormData.WESSEL_ID#,'#FormData.DESCRIPTION#')
         </cfquery>
+        </cfif>
         <cfset ReturnData.STATUS=1>
         <cfset ReturnData.MESSAGE="Başarılı">
         <cfreturn replace(serializeJSON(ReturnData),"//","")>
