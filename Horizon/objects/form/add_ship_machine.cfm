@@ -17,9 +17,10 @@
 
 
 <cf_box title="#Ship[1].SHIP_NAME# - Makina Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
+    <cfdump var="#attributes#">
     <cfif isDefined(attributes.SM_ID)>
         <cfset _MACHINE=ShipService.GetAMachine(attributes.SM_ID)>
-        <cfdump var="#_MACHINE#">
+        <cfdump var="#deserializeJSON(_MACHINE)#">
     </cfif>
 <input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#attributes.WESSEL_ID#</cfoutput>">
 <div class="form-group">
