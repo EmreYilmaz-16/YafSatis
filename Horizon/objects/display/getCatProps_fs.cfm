@@ -37,7 +37,7 @@
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY# <cfif it.IS_AMOUNT EQ 1><span style="color:red;font-weight:bold">*</span></cfif></label>
            <div class="input-group">
             <select data-IS_OPTIONAL=#it.IS_OPTIONAL# <cfif listlen(RElprp) gt 0>
-                onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#,'#it.PROPERTY#')"
+                
             </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss_fs" name="SEARCH_PROP_FS" data-propText="#it.PROPERTY#" id="SEARCH_PROP_FS_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
                 
                 <option value="">Seç</option>
