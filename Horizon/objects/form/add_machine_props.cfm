@@ -7,7 +7,7 @@
 <cfset Amachine=deserializeJSON(_Amachine)>
 
 <CFSET SMF=OfferService.getShipFilters(attributes.WESSEL_ID,Amachine.PRODUCT_CATID,attributes.SM_ID)>
-<cfdump var="#SMF#">
+
 
 <cf_box title="Add Machine Properties" scroll="1" collapsable="1" resize="1" popup_box="1">
  <div style="height:70vh">
@@ -24,7 +24,7 @@
 </div>
 
 
-
+<cfdump var="#SMF#">
 </cf_box>
 
 
