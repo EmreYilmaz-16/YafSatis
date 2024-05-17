@@ -18,7 +18,7 @@
 
 <cf_box title="#Ship[1].SHIP_NAME# - Makina Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
     <cfdump var="#attributes#">
-    <cfif isDefined(attributes.SM_ID)>
+    <cfif isDefined("attributes.SM_ID")>
         <cfset _MACHINE=ShipService.GetAMachine(attributes.SM_ID)>
         <cfdump var="#deserializeJSON(_MACHINE)#">
     </cfif>
