@@ -1,4 +1,4 @@
-﻿
+﻿<cfparam name="attributes.MACHINE_ID" default="">
 
 <cfif session.ep.USERID eq 9 OR session.ep.USERID eq 1>
     <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
@@ -16,6 +16,7 @@
 <cf_box title="#Ship[1].SHIP_NAME# - Makina Ekle" scroll="1" collapsable="1" resize="1" popup_box="1">
     
 <input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#attributes.WESSEL_ID#</cfoutput>">
+<input type="hidden" name="MACHINE_ID" id="MACHINE_ID" value="<cfoutput>#attributes.MACHINE_ID#</cfoutput>">
 <div class="form-group">
     <label>Ekipman</label>
     <select name="PCAT" id="PCAT">
@@ -54,6 +55,7 @@ var MACHINE_NAME=document.getElementById("MACHINE_NAME").value
 var SERIAL_NO=document.getElementById("SERIAL_NO").value
 var DESCRIPTION=document.getElementById("DESCRIPTION").value
 var WESSEL_ID=document.getElementById("WESSEL_ID").value
+var MACHINE_ID=document.getElementById("MACHINE_ID").value
 var SendData={
   PCAT:PCAT,
 MACHINE_NAME:MACHINE_NAME,
