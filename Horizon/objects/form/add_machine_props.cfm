@@ -119,5 +119,34 @@ function SaveMachineProps(a,b) {
 
 $(document).ready(function (params) {
   console.log(JsonData)
+  if(JsonData.STATUS ==1){
+    var Pelems=document.getElementsByClassName("propss_fs")
+console.log($(Pelem).select2('data')[0].element.parentElement)
+/*$(Pelem).val('50173'); // Select the option with a value of '1'
+$(Pelem).trigger('change'); // Notify any JS components that the value changed
+*/
+for(let i=0;i<JsonData.JSON_STRINGIM.Filters.length;i++){
+	var F=JsonData.JSON_STRINGIM.Filters[i];
+//console.log(F)
+for(let j=0;j<Pelems.length;j++){
+	var Pelem=Pelems[j]
+	var MN=$(Pelem).select2('data')[0].element.parentElement.getAttribute("data-property_id")
+	MN=parseInt(MN)
+//console.log(Pelem)
+//console.log(MN)
+if(F.PROP_ID==MN){
+$(Pelem).val(F.PRODUCT_CAT_ID); // Select the option with a value of '1'
+//$(Pelem).trigger('change')
+}
+	}
+}
+  
+for(let j=0;j<Pelems.length;j++){
+	var Pelem=Pelems[j]
+
+$(Pelem).trigger('change')
+}
+	
+  }
 })
 </script>
