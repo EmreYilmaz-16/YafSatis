@@ -50,7 +50,7 @@
                         <td>
                             <a href="javascript://"><span class="icn-md fa fa-edit"></span></a>
                             <a  href="javascript://"><span class="icn-md fa fa-list-alt"></span></a>
-                            <b>|</b>
+                            <a href="javascript://"><b>|</b></a>
                             <a onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_add_machine_props&WESSEL_ID=<cfoutput>#attributes.WESSEL_ID#</cfoutput>&SM_ID=<cfoutput>#it.SM_ID#</cfoutput>')"  href="javascript://"><span class="icn-md fa fa-plus"></span></a>
                             <a onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_add_machine_props&WESSEL_ID=<cfoutput>#attributes.WESSEL_ID#</cfoutput>&SM_ID=<cfoutput>#it.SM_ID#</cfoutput>')"  href="javascript://"><span class="icn-md fa fa-exchange"></span></a>
                         </td>
