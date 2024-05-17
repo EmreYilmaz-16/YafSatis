@@ -24,7 +24,7 @@
 </div>
 
 <script>
-  var JsonData=JSON.parse("<cfoutput>#SMF#</cfoutput>")
+  var JsonData=JSON.parse('<cfoutput>#SMF#</cfoutput>')
 </script>
 </cf_box>
 
