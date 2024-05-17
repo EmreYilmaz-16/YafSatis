@@ -122,7 +122,7 @@ $(document).ready(function (params) {
   console.log(JsonData)
   if(JsonData.STATUS ==1){
     var Pelems=document.getElementsByClassName("propss_fs")
-console.log($(Pelem).select2('data')[0].element.parentElement)
+//console.log($(Pelem).select2('data')[0].element.parentElement)
 /*$(Pelem).val('50173'); // Select the option with a value of '1'
 $(Pelem).trigger('change'); // Notify any JS components that the value changed
 */
