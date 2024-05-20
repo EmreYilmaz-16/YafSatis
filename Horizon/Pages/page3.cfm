@@ -88,10 +88,9 @@
     <cfset Offer=deserializeJSON(OfferList)>
     <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12">
         <div class="pull-left margin-top-10">
-            <span class="margin-right-5"><a href="" class="font-md margin-right-5">YAF DIESEL</a> /</span>
-            <span class="margin-right-5"><a href="" class="font-md margin-right-5">PURCHASE ITEMS</a> /</span>
-            <span class="margin-right-5"><a href="" class="font-md margin-right-5">INQURIY RECORDS</a> /</span>
-            <span class="margin-right-5"><a href="" class="font-md margin-right-5">INQURIY DETAIL</a> /</span>
+            <span class="margin-right-5"><a href="/index.cfm?fuseaction=myhome.welcome" class="font-md margin-right-5">YAF DIESEL</a> /</span>
+            <span class="margin-right-5"><a href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa1" class="font-md margin-right-5">INQUIRY WELCOME</a> /</span>
+            <span class="margin-right-5"><a href="/index.cfm?fuseaction=sale.hrz_pbs_sayfa1" class="font-md margin-right-5">INQURIY RECORDS</a> /</span>            
             <span class="margin-right-5"><a href="" class="bold font-md margin-right-5 text-danger">CUSTOMER INQURIY</a></span>
         </div>
         <div class="pull-right">
