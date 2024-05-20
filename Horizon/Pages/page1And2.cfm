@@ -99,10 +99,9 @@
 <!--- Yönlendirme Başlangıç --->
 <section class="page-bar">
     <ul class="page-breadcrumb">
-        <li><a href="javascript://">YAF DIESEL</a></li>
-        <li><i class="fa fa-fast-forward"></i><a href="">PURCHASE ITEMS</a></li>
-        <li><i class="fa fa-circle"></i><a href="">INQUORY RECORDS</a></li>
-        <li><i class="fa fa-circle"></i><a href="" class="bold">CUSTOMER INQUIRY</a></li>
+        <li><a href="/index.cfm?fuseaction=myhome.welcome">YAF DIESEL</a></li>
+        <li><i class="fa fa-fast-forward"></i><a href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa1">INQUIRY WELCOME</a></li>        
+        <li><i class="fa fa-circle"></i><a href="" class="bold">INQUORY RECORDS</a></li>
     </ul>
 </section>
 
