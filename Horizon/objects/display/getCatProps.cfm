@@ -25,7 +25,7 @@
     <div class="form-group col col-1 col-md-1 col-sm-1 col-xs-12">
         <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
             <label class="margin-bottom-5 bold font-sm">#it.PROPERTY# <cfif it.IS_AMOUNT EQ 1><span style="color:red;font-weight:bold">*</span></cfif></label>
-           <div class="input-group">
+           <div style="display:table;width:100%">
             <select data-IS_OPTIONAL=#it.IS_OPTIONAL# <cfif listlen(RElprp) gt 0>
                 onchange="iliskiliDataOlustur(this,#attributes.PRODUCT_CATID#,#it.PROPERTY_ID#,'#it.PROPERTY#')"
             </cfif> <cfif it.IS_AMOUNT EQ 1>required="true"</cfif> class="propss" name="SEARCH_PROP" data-propText="#it.PROPERTY#" id="SEARCH_PROP_#it.PROPERTY_ID#" data-PROPERTY_ID="#it.PROPERTY_ID#" onchange="console.log(this)">
@@ -35,7 +35,7 @@
                     <option data-related_variation_id="#it2.IS_SUB_PRPT#" title="#it.PROPERTY#" value="#it2.PROPERTY_DETAIL_ID#">#it2.PROPERTY_DETAIL#</option>
                 </cfloop>
             </select>
-            <a class="input-group-addon" onclick="AddVariation('SEARCH_PROP_#it.PROPERTY_ID#',#it.PROPERTY_ID#,#attributes.PRODUCT_CATID#,'RefReshProp')" href="javascript://" ><i class="fa fa-plus"></i></a>
+            <a style="width:5% !important" class="input-group-addon" onclick="AddVariation('SEARCH_PROP_#it.PROPERTY_ID#',#it.PROPERTY_ID#,#attributes.PRODUCT_CATID#,'RefReshProp')" href="javascript://" ><i class="fa fa-plus"></i></a>
         </div>
         </div>
     </div>
