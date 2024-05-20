@@ -20,12 +20,20 @@
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="margin-bottom-5 bold font-sm">CUSTOMER NAME</label>
-                                <div class="input-group">
+                              <!----  <div class="input-group">
                                     <input type="hidden" name="Addconsumer_id" id="Addconsumer_id">
                                     <input type="hidden" name="Addcompany_id" id="Addcompany_id">
                                     <input type="text" name="Addcompany" id="Addcompany" onfocus="AutoComplete_Create('Addcompany','MEMBER_NAME,MEMBER_PARTNER_NAME','MEMBER_NAME,MEMBER_PARTNER_NAME','get_member_autocomplete','\'1,2\',0,0','COMPANY_ID,CONSUMER_ID','Addcompany_id,Addconsumer_id','','3','200');" autocomplete="off"><div id="company_div_2" name="company_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>
                                     <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_pars&field_name=order_form.Addcompany&field_comp_id=order_form.Addcompany_id&field_consumer=order_form.Addconsumer_id&select_list=7,8&keyword='+encodeURIComponent(document.order_form.Addcompany.value));"></span>
-                                </div>
+                                </div>----->
+                                <div class="input-group">
+									<input type="hidden" name="Addconsumer_id" id="Addconsumer_id" value="">
+									<input type="hidden" name="Addcompany_id" id="Addcompany_id" value="1">
+									<input type="hidden" name="Addmember_type" id="Addmember_type" value="partner">
+									<input name="Addcompany" type="text" id="Addcompany" placeholder="Cari Hesap" onfocus="AutoComplete_Create('Addcompany','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','get_member_autocomplete','\'1,2\'','CONSUMER_ID,COMPANY_ID,MEMBER_TYPE','Addconsumer_id,Addcompany_id,Addmember_type','','3','250');" value="" autocomplete="off" style=""><div id="member_name_div_2" name="member_name_div_2" class="completeListbox" autocomplete="on" style="width: 399px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>
+									
+									<span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_all_pars&field_consumer=order_form.Addconsumer_id&field_comp_id=order_form.Addcompany_id&field_member_name=order_form.Addcompany&field_type=order_form.Addmember_type&select_list=7,8&keyword='+encodeURIComponent(document.order_form.Addcompany.value));"></span>
+								</div>
                             </div>
                         </div>
     
