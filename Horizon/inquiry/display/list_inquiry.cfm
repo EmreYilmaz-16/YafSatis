@@ -51,7 +51,7 @@
   };
 </script>
 
-<cfif 1 eq 1>
+<cfif 1 eq 0>
     Merhaba;
     <cfinclude template="menu2.cfm">
     <cfabort>
