@@ -68,6 +68,8 @@
        --->
            <hr>
            <button onclick="window.open('/index.cfm?fuseaction=purchase.emptypopup_list_offer_pbs','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ab00ff;border-radius: 10px;background: #ab00ff5c;color: white;font-weight: bold;margin: 5px;">List Purchase Offer</button>            
+           <hr>
+           <button onclick='window.open("index.cfm?fuseaction=report.detail_product_report_PBS","_blank")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ff8300;border-radius: 10px;background: #ff830075;font-weight: bold;color: white;margin: 5px;">Detaylı Ürün Raporu</button>
         </div>
     </cf_box>
     </div>
