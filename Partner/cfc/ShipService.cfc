@@ -156,7 +156,7 @@
     <cffunction name="getShipTypes" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="SHIP_TYPE_ID" default="">
         <cfquery name="GetST" datasource="#dsn#">
-            SELECT SHIP_TYPE_ID,SHIP_TYPE FROM CatalystQA.PBS_SHIP_TYPES  <cfif len(arguments.SHIP_TYPE_ID)>SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#</cfif>
+            SELECT SHIP_TYPE_ID,SHIP_TYPE FROM CatalystQA.PBS_SHIP_TYPES  WHERE 1=1 <cfif len(arguments.SHIP_TYPE_ID)>AND SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#</cfif>
         </cfquery>
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="GetST">
