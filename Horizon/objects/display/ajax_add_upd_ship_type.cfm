@@ -19,9 +19,9 @@
 <div class="form-group">
     <div style="display:flex">
         <cfif len(attributes.SHIP_TYPE_ID)>
-        <a href="javascript://" onclick="RemoveShipType()" class="ui-wrk-btn ui-wrk-btn-red  ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Sil</a>
+        <a href="javascript://" onclick="RemoveShipType()" class="ui-wrk-btn ui-wrk-btn-red  ui-wrk-btn-addon-left"><i class="fa fa-times-rectangle-o"></i>Sil</a>
         </cfif>
-        <a href="javascript://" onclick="SaveShipType()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Kaydet</a>
+        <a href="javascript://" onclick="SaveShipType()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-save"></i>Kaydet</a>
     </div>
 </div>
 
