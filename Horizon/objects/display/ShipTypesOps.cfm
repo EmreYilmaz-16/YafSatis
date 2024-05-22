@@ -52,6 +52,10 @@
         var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
         var SHIP_TYPE_ID=document.getElementById("SHIP_TYPE_ID").value
        var SHIP_TYPE=document.getElementById("SHIP_TYPE").value
+       var ef=confirm("Silmek İstediğinize Eminmisiniz ?")
+       if(!ef){
+        return false;
+       }
        $.ajax({
     url: ServiceUri + "/ShipService.cfc?method=RemoveShipType&SHIP_TYPE="+SHIP_TYPE+"&SHIP_TYPE_ID="+SHIP_TYPE_ID,
     success: function (returnData) {
