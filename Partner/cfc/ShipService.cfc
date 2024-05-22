@@ -161,7 +161,7 @@
         <cfset ReturnArr=arrayNew(1)>
         <cfloop query="GetST">
             <cfset Item=structNew()>
-            <cfset Item.SHIP_TYPE_ID=SHIP_TYPE_ID>
+            <cfset Item.SHIP_TYPE_ID=GetST.SHIP_TYPE_ID>
             <cfset Item.SHIP_TYPE=SHIP_TYPE>
             <cfscript>
                 arrayAppend(returnArr,Item);
