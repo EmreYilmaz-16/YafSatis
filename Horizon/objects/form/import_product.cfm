@@ -92,9 +92,8 @@
                         </cfloop>
                     </cfquery>
                     <cfif getProd.recordCount>
-                        <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>
-                        <cfdump var="#getProd#">
-                        <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var <br>
+                        <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>                        
+                        <div class="alert alert-success"> <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var</div>
                     <cfelse>
                         <cfset barcode=getBarcode()>
                         <cfset UrunAdi=COL_1>
@@ -233,6 +232,7 @@
 INSERT INTO CatalystQA_product.PRODUCT_PROPERTY_OUR_COMPANY(PROPERTY_ID,OUR_COMPANY_ID)
 SELECT PROPERTY_ID,1 AS OUR_COMPANY_ID  FROM  CatalystQA_product.PRODUCT_PROPERTY
                         </cfquery>
+<div class="alert alert-success">Aktarım Tamamlanmıştır</div>
 </cfif>
 
 <cffunction name="getBarcode">
