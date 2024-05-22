@@ -17,7 +17,7 @@
     </td>
     <td>
       <div class="form-group">
-        <label class="bold"><strong>CUSTOMER NAME</strong></label> 
+        <label class="bold"><strong>CUSTOMER / CARE OF   NAME</strong></label> 
         <div class="input-group">
             <input type="hidden" name="consumer_id" id="consumer_id" value="">
             <input type="hidden" name="company_id" id="company_id" value="">
