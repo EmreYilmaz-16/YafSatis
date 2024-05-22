@@ -63,7 +63,7 @@
     <td>
       <div class="form-group">
         <label>&nbsp;</label>
-        <button type="button" onclick="getlist()">Liste Getir</button>
+        <button type="button" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" onclick="getlist()"><i class="fa fa-search"></i>Liste Getir</button>
       </div>
     </td>
   </tr>
