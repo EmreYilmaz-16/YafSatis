@@ -93,7 +93,7 @@
                     </cfquery>
                     <cfif getProd.recordCount>
                         <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>                        
-                        <div class="alert alert-success"> <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var</div>
+                        <div class="alert alert-danger"> <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var</div>
                     <cfelse>
                         <cfset barcode=getBarcode()>
                         <cfset UrunAdi=COL_1>
