@@ -3,11 +3,13 @@
 
 <cfif len(attributes.SHIP_TYPE_ID)>
 <cfset ShipTypes=ShipService.getShipTypes(attributes.SHIP_TYPE_ID)>
+<cfset ShipType=deserializeJSON(ShipTypes)[1]>
 <cfelse>
     <cfset ShipTypes.SHIP_TYPE="">
     <cfset ShipTypes.SHIP_TYPE_ID="">
+    <cfset ShipType=ShipTypes>
 </cfif>
-<cfset ShipType=deserializeJSON(ShipTypes)[1]>
+
 
 <div class="form-group">
     <label>Gemi Tipi</label>
