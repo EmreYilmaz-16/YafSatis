@@ -2,7 +2,7 @@
 <cf_box title="Gemi Tipleri">
 <div style="display:flex">
     <div style="width:33%">    
-       <div id="ShipTypeList"></div>
+       <div id="ShipTypeList" style="overflow-y: scroll;max-height: 30vh;"></div>
        
     </div>
     <div style="width:66%">
