@@ -89,7 +89,12 @@
                 AND S.SHIP_ID =#arguments.ShipId#
             </cfif>
             <cfif len(arguments.Keyword)>
-                AND S.SHIP_NAME LIKE '%#arguments.Keyword#%'
+                AND
+                (
+                 S.SHIP_NAME LIKE '%#arguments.Keyword#%'
+                 OR 
+                 S.IMO_NUMBER LIKE '%#arguments.Keyword#%'
+                )
             </cfif>
             <cfif len(arguments.CustomerId)>
                 AND ( SC.COMPANY_ID =#arguments.CustomerId# 
