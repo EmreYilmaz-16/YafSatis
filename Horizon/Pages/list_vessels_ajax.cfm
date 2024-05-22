@@ -2,7 +2,7 @@
 <cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
 <cfset ShipTypes_=ShipService.getShipTypes()>
 
-<cfdump var="#attributes#">
+
 <cfset FormDatam=deserializeJSON(attributes.FormData)>
 
 <!--------------
