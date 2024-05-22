@@ -6,14 +6,14 @@
 
 <ul class="ui-list">
     <li>
-        <a href="javascript:void(0)" >
+        <a href="javascript:void(0)"  onclick=' AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=addupdshiptype&SHIP_TYPE_ID=","divshtyu",1,"Yükleniyor");'>
             <div class="ui-list-left">
                 <span class="ui-list-icon ctl-salvation"></span>
                 Yeni Gemi Tipi Ekle
             </div>
             <div class="ui-list-right">
                 
-                <i class="fa fa-pluss" onclick=' AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=addupdshiptype&SHIP_TYPE_ID=","divshtyu",1,"Yükleniyor");'></i>
+                <i class="fa fa-plus" ></i>
             </div>
         </a>
     </li>
