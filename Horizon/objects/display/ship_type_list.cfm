@@ -5,6 +5,18 @@
 <cfset ShipTypes=deserializeJSON(_ShipTypes)>
 
 <ul class="ui-list">
+    <li>
+        <a href="javascript:void(0)" >
+            <div class="ui-list-left">
+                <span class="ui-list-icon ctl-salvation"></span>
+                Yeni Gemi Tipi Ekle
+            </div>
+            <div class="ui-list-right">
+                
+                <i class="fa fa-pluss" onclick=' AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=addupdshiptype&SHIP_TYPE_ID=","divshtyu",1,"Yükleniyor");'></i>
+            </div>
+        </a>
+    </li>
     <cfoutput>
     <cfloop array="#ShipTypes#" Item="it">
         <li>
