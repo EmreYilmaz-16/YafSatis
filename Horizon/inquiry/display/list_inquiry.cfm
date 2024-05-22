@@ -58,7 +58,7 @@
 </cfif>
 
 <div class="row">         
-   
+    
     <div class="col col-2">
 <cf_box>
         <div style="display:flex;flex-direction: column;height:100vh">
@@ -70,6 +70,7 @@
             <hr>
             <button onclick="window.open('/index.cfm?fuseaction=sale.list_vessels','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>            
             <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_vessel")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #874444;border-radius: 10px;background: #ff828294;font-weight: bold;color: white;margin: 5px;">Add Vessel</button>
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_list_ship_types_pbs")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #f00;border-radius: 10px;background: #ff000094;font-weight: bold;color: white;margin: 5px;">Ship Types</button>
                <!---  <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_catalog_pbs")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ff8300;border-radius: 10px;background: #ff830075;font-weight: bold;color: white;margin: 5px;">Add Catalog</button>
        --->
            <hr>
