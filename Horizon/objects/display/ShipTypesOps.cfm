@@ -1,7 +1,21 @@
 
 <cf_box title="Gemi Tipleri">
 <div style="display:flex">
-    <div style="width:33%">    
+    <div style="width:33%">   
+        <ul class="ui-list">
+            <li>
+                <a href="javascript:void(0)"  onclick=' AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=addupdshiptype&SHIP_TYPE_ID=","divshtyu",1,"Yükleniyor");'>
+                    <div class="ui-list-left">
+                        <span class="ui-list-icon ctl-salvation"></span>
+                        Yeni Gemi Tipi Ekle
+                    </div>
+                    <div class="ui-list-right">
+                        
+                        <i class="fa fa-plus" ></i>
+                    </div>
+                </a>
+            </li>
+        </ul> 
        <div id="ShipTypeList" style="overflow-y: scroll;max-height: 30vh;"></div>
        
     </div>
