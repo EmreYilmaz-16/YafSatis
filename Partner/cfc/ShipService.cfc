@@ -192,7 +192,7 @@
         
         
     </cffunction>
-    <cffunction name="DelShipType" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cffunction name="RemoveShipType" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="SHIP_TYPE_ID" default="">
         <cfquery name="D" datasource="#dsn#">
               DELETE FROM  PBS_SHIP_TYPES  WHERE SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#

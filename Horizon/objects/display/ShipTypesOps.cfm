@@ -49,7 +49,18 @@
   });
     }
     function RemoveShipType(params) {
-        
+        var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
+        var SHIP_TYPE_ID=document.getElementById("SHIP_TYPE_ID").value
+       var SHIP_TYPE=document.getElementById("SHIP_TYPE").value
+       $.ajax({
+    url: ServiceUri + "/ShipService.cfc?method=RemoveShipType&SHIP_TYPE="+SHIP_TYPE+"&SHIP_TYPE_ID="+SHIP_TYPE_ID,
+    success: function (returnData) {
+      
+     console.log(returnData);
+     LoadList();
+     AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=addupdshiptype&SHIP_TYPE_ID=","divshtyu",1,"Yükleniyor");
+    },
+  });
     }
     
 </script>
