@@ -59,9 +59,15 @@
         </select>
       </div>
     </td>
+    <td>
+      <div class="form-group">
+        <label>&nbsp;</label>
+        <button onclick="getlist()">Liste Getir</button>
+      </div>
+    </td>
   </tr>
 </table>
-    <button onclick="getlist()">Liste Getir</button>
+    
 </div>
 
 <div id="ListeAlani">
