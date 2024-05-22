@@ -1,7 +1,19 @@
+
+<cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
+
+<cfset _ShipTypes=ShipService.getShipTypes()>
+<cfset ShipTypes=deserializeJSON(_ShipTypes)>
+
 <cf_box title="Gemiler" scroll="1" collapsable="1" resize="1" popup_box="1">
 <div>
-<table>
+<table style="width:100%">
   <tr>
+    <td>
+      <div class="form-group">
+        <label class="bold"><strong>CUSTOMER NAME</strong></label> 
+        <input type="text" name="ShipKV" id="ShipKv">
+      </div>
+    </td>
     <td>
       <div class="form-group">
         <label class="bold"><strong>CUSTOMER NAME</strong></label> 
@@ -33,6 +45,19 @@
         </div>
         
     </div>
+    </td>
+    <td>
+      <div class="form-group">
+        <label class="bold"><strong>SHIP TYPE</strong></label> 
+        <select name="ShipShipType" id="ShipShipType">
+          <option value="">Seç</option>
+          <cfoutput>
+            <cfloop array="#ShipTypes#" item="it">
+              <option value="#it.SHIP_TYPE_ID#">#it.SHIP_TYPE#</option>
+            </cfloop>
+          </cfoutput>
+        </select>
+      </div>
     </td>
   </tr>
 </table>
