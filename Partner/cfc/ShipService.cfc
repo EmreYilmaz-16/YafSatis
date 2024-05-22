@@ -192,7 +192,15 @@
         
         
     </cffunction>
-
+    <cffunction name="DelShipType" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="SHIP_TYPE_ID" default="">
+        <cfquery name="D" datasource="#dsn#">
+              DELETE FROM  PBS_SHIP_TYPES  WHERE SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#
+        </cfquery>
+         <CFSET II.STATUS=1>
+         <CFSET II.MESSAGE="SİLİNDİ">    
+         <cfreturn replace(serializeJSON(II),"//","")>
+    </cffunction>
     <cffunction name="AddShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FData">
         <cfset FormData=deserializeJSON(arguments.FData)>
