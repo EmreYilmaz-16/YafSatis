@@ -31,7 +31,7 @@
         
     </div>
     </td>
-    <td>
+    <td style="display:none">
       <div class="form-group">
         <label class="bold"><strong>CARE OF CUSTOMER NAME</strong></label> 
         <div class="input-group">
