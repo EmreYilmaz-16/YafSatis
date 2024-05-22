@@ -4,7 +4,7 @@
 <cfset ShipList_=ShipService.GetShips()>
 <cfset ShipTypes=deserializeJSON(ShipTypes_)>
 <cfset ShipList=deserializeJSON(ShipList_)>
-
+<cfdump var="#attributes#">
 <cf_grid_list>
     <thead>
         <tr>
