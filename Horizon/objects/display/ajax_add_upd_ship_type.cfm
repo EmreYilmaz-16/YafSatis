@@ -13,7 +13,7 @@
 
 <div class="form-group">
     <label>Gemi Tipi</label>
-    <input type="text" name="SHIP_TYPE" id="SHIP_TYPE" value="<cfoutput>#ShipType.SHIP_TYPE#</cfoutput>" >
+    <input type="text" style="font-size:20pt" name="SHIP_TYPE" id="SHIP_TYPE" value="<cfoutput>#ShipType.SHIP_TYPE#</cfoutput>" >
     <input type="hidden" name="SHIP_TYPE_ID" id="SHIP_TYPE_ID" value="<cfoutput>#ShipType.SHIP_TYPE_ID#</cfoutput>" >
 </div>
 <div class="form-group">
