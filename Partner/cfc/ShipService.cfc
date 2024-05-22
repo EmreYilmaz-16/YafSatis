@@ -170,6 +170,29 @@
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
 
+    <cffunction name="SaveShipType" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="SHIP_TYPE">
+        <cfargument name="SHIP_TYPE_ID" default="">
+        <CFIF LEN(arguments.SHIP_TYPE_ID)>
+            <cfquery name="INS" datasource="#dsn#">
+                UPDATE PBS_SHIP_TYPES SET SHIP_TYPE='#arguments.SHIP_TYPE#' WHERE SHIP_TYPE_ID=#arguments.SHIP_TYPE_ID#
+            </cfquery>
+            <CFSET II.STATUS=1>
+            <CFSET II.MESSAGE="GÜNCELLENDİ">
+            <cfreturn replace(serializeJSON(II),"//","")>
+        <CFELSE>
+        
+        <cfquery name="INS" datasource="#dsn#">
+            INSERT INTO PBS_SHIP_TYPES (SHIP_TYPE) VALUES ('#arguments.SHIP_TYPE#')
+        </cfquery>
+    <CFSET II.STATUS=1>
+    <CFSET II.MESSAGE="KAYIT EDİLDİ">    
+    <cfreturn replace(serializeJSON(II),"//","")>
+    </CFIF>
+        
+        
+    </cffunction>
+
     <cffunction name="AddShip" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FData">
         <cfset FormData=deserializeJSON(arguments.FData)>
