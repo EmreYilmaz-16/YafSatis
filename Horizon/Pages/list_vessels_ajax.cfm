@@ -14,9 +14,10 @@
         <cfargument name="RowCount" default="20">
         <cfargument name="Page" default="1">
         CareOfId
+        iif(isdefined("attributes.draggable"),1,0)#
     ----------->
 
-<cfset ShipList_=ShipService.GetShips(Keyword=FormDatam.KEYWORD,ShipType=FormDatam.SHIP_TYPE,CustomerId=FormDatam.CUSTOMER.company_id,CareOfId=FormDatam.CARE_OF.company_id)>
+<cfset ShipList_=ShipService.GetShips(Keyword=FormDatam.KEYWORD,ShipType=FormDatam.SHIP_TYPE,CustomerId=iif(len(FormDatam.CUSTOMER.member_name),FormDatam.CUSTOMER.company_id,""),CareOfId=iif(len(FormDatam.CARE_OF.member_name),FormDatam.CARE_OF.company_id,""))>
 <cfset ShipTypes=deserializeJSON(ShipTypes_)>
 <cfset ShipList=deserializeJSON(ShipList_)>
 
