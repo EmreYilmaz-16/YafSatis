@@ -3,7 +3,7 @@
 
 <cfset _ShipTypes=ShipService.getShipTypes()>
 <cfset ShipTypes=deserializeJSON(_ShipTypes)>
-<cfdump var="#ShipTypes#">
+
 <ul class="ui-list">
     <cfoutput>
     <cfloop array="#ShipTypes#" Item="it">
