@@ -61,7 +61,7 @@
     
     <div class="col col-3 col-md-4 col-sm-5 col-xs-12">
         <cf_box>
-        <div style="display:flex;flex-direction: column;height:100vh">
+        <div style="display:flex;flex-direction: column;">
             <button onclick="window.open('/index.cfm?fuseaction=myhome.welcome','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #305505;border-radius: 10px;background: #3f6a0e52;font-weight: bold;color: white;margin: 5px;">W3 Ana Sayfa</button>
             <hr>
             <button onclick="window.open('/index.cfm?fuseaction=sale.hrz_pbs_sayfa1','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
@@ -82,7 +82,7 @@
     </div>
     <div class="col col-9 col-md-8 col-sm-7 col-xs-12">      
     <cf_box>
-        <div style="display:flex;height:100vh">
+        <div style="display:flex;">
         <div style="width:30%">
             <canvas id="myChart"></canvas>
         </div>
