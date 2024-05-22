@@ -23,9 +23,9 @@
     BACKUP DATABASE #dsn#
     TO DISK = 'C:\\W3Data\\Manuel Backup\\#dsn#_#dateFormat(now(),"ddmmyyyy")#_#timeFormat(now(),"hhmm")#.bak';
 </cfquery>
-
+<div class="alert alert-danger"> 
 <cfloop query="get_invoice_no">
-        <cfif currentrow neq 1>            
+    <cfif currentrow neq 1>            
                 <CFSET VARIATION_ID_LIST="">
                 <cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
                     <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
@@ -93,7 +93,7 @@
                     </cfquery>
                     <cfif getProd.recordCount>
                         <cfset RECORDED_PRODUCT_ID=getProd.PRODUCT_ID>                        
-                        <div class="alert alert-danger"> <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var</div>
+                       <div> <cfoutput>#COL_4#</cfoutput> Kodlu Ürün Var</div>
                     <cfelse>
                         <cfset barcode=getBarcode()>
                         <cfset UrunAdi=COL_1>
@@ -222,7 +222,9 @@
                     </cfloop>                
                 </cfif>            
         </cfif>
+
     </cfloop>
+</div>
               <cfquery name="isghj" datasource="#dsn1#">
                             TRUNCATE TABLE CatalystQA_product.PRODUCT_PROPERTY_OUR_COMPANY
                             
