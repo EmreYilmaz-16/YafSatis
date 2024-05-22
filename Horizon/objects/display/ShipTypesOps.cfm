@@ -30,6 +30,7 @@
 <script>
     $(document).ready(function (params) {
         LoadList();
+        AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=addupdshiptype&SHIP_TYPE_ID=","divshtyu",1,"Yükleniyor");
     })
     function LoadList() {
         AjaxPageLoad("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=list_ship_types","ShipTypeList",1,"Yükleniyor");
