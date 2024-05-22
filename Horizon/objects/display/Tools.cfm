@@ -17,3 +17,9 @@
 <cfelseif attributes.ListType  eq "ShowProductProperties">
     <cfinclude template="ShowProductProperties.cfm">
 </cfif>
+<cfelseif attributes.ListType  eq "addupdshiptype">
+    <cfinclude template="ajax_add_upd_ship_type.cfm">
+</cfif>
+<cfelseif attributes.ListType  eq "list_ship_types">
+    <cfinclude template="ship_type_list.cfm">
+</cfif>
