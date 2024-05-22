@@ -17,7 +17,7 @@
     <input type="hidden" name="SHIP_TYPE_ID" id="SHIP_TYPE_ID" value="<cfoutput>#ShipType.SHIP_TYPE_ID#</cfoutput>" >
 </div>
 <div class="form-group">
-    <div style="display:flex">
+    <div style="display:flex;justify-content: flex-end">
         <cfif len(attributes.SHIP_TYPE_ID)>
         <a href="javascript://" onclick="RemoveShipType()" class="ui-wrk-btn ui-wrk-btn-red  ui-wrk-btn-addon-left"><i class="fa fa-times-rectangle-o"></i>Sil</a>
         </cfif>
