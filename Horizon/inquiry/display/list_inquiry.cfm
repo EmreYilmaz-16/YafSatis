@@ -59,7 +59,7 @@
 
 <div class="row">         
     
-    <div class="col col-3 col-sm-5">
+    <div class="col col-3 col-md-4 col-sm-5">
         <cf_box>
         <div style="display:flex;flex-direction: column;height:100vh">
             <button onclick="window.open('/index.cfm?fuseaction=myhome.welcome','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #305505;border-radius: 10px;background: #3f6a0e52;font-weight: bold;color: white;margin: 5px;">W3 Ana Sayfa</button>
@@ -80,7 +80,7 @@
         </div>
     </cf_box>
     </div>
-    <div class="col col-9 col-sm-7">      
+    <div class="col col-9 col-md-8 col-sm-7">      
     <cf_box>
         <div style="display:flex;height:100vh">
         <div style="width:30%">
