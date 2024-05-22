@@ -1,10 +1,25 @@
 
 <cfset ShipService = createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>
 <cfset ShipTypes_=ShipService.getShipTypes()>
-<cfset ShipList_=ShipService.GetShips()>
+
+<cfdump var="#attributes#">
+<cfset FormDatam=deserializeJSON(attributes.FormData)>
+
+<!--------------
+<cfargument name="CustomerId" default="">
+        <cfargument name="Keyword" default=""> ok
+        <cfargument name="ShipId" default=""> ok
+        <cfargument name="ShipStatus" default="">
+        <cfargument name="ShipType" default=""> ok
+        <cfargument name="RowCount" default="20">
+        <cfargument name="Page" default="1">
+        CareOfId
+    ----------->
+
+<cfset ShipList_=ShipService.GetShips(Keyword=FormDatam.KEYWORD,ShipType=FormDatam.SHIP_TYPE,CustomerId=FormDatam.CUSTOMER.company_id,CareOfId=FormDatam.CARE_OF.company_id)>
 <cfset ShipTypes=deserializeJSON(ShipTypes_)>
 <cfset ShipList=deserializeJSON(ShipList_)>
-<cfdump var="#attributes#">
+
 <cf_grid_list>
     <thead>
         <tr>

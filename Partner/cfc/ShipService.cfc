@@ -1,13 +1,14 @@
 ﻿<cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
     <cffunction name="GetShips" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-        <cfargument name="CustomerId" default="">
+        <cfargument name="CustomerId" default="">        
         <cfargument name="Keyword" default="">
         <cfargument name="ShipId" default="">
         <cfargument name="ShipStatus" default="">
         <cfargument name="ShipType" default="">
         <cfargument name="RowCount" default="20">
         <cfargument name="Page" default="1">
+        <cfargument name="CareOfId" default="">
         <cfquery name="getShip" datasource="#dsn#"> 
             SELECT S.SHIP_NAME
                 ,S.BUILD_YEAR
@@ -94,6 +95,11 @@
                 AND ( SC.COMPANY_ID =#arguments.CustomerId# 
                 OR C2.COMPANY_ID =#arguments.CustomerId# 
                 )
+            </cfif>
+            <cfif len(arguments.CareOfId)>
+                AND  
+                 C2.COMPANY_ID =#arguments.CareOfId# 
+                
             </cfif>
             <cfif len(arguments.ShipType)>
                 AND S.SHIP_TYPE_ID =#arguments.ShipType#

@@ -77,7 +77,8 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     function getlist(params) {
-      var KEYWORD=document.getElementById("ShipKV").value
+   
+      var KEYWORD=document.getElementById("ShipKv").value
       var SHIP_TYPE=document.getElementById("ShipShipType").value
       var consumer_id=document.getElementById("consumer_id").value
       var company_id=document.getElementById("company_id").value
@@ -114,6 +115,7 @@
     1,
     "Yükleniyor"
   );
+
     }
 </script>
 </cf_box>
