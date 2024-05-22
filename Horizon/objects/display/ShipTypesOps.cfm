@@ -19,6 +19,7 @@
        <div id="ShipTypeList" style="overflow-y: scroll;max-height: 30vh;"></div>
        
     </div>
+    <div style="width:1%"></div>
     <div style="width:66%">
         <div id="divshtyu">
 
