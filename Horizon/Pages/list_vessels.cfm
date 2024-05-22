@@ -63,7 +63,7 @@
     <td>
       <div class="form-group">
         <label>&nbsp;</label>
-        <button onclick="getlist()">Liste Getir</button>
+        <button type="button" onclick="getlist()">Liste Getir</button>
       </div>
     </td>
   </tr>
