@@ -1,5 +1,5 @@
 
-<cf_box title="Gemi Tipleri">
+<cf_box title="Gemi Tipleri" scroll="1" collapsable="1" resize="1" popup_box="1">
 <div style="display:flex">
     <div style="width:33%">   
         <ul class="ui-list">
