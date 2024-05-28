@@ -1777,7 +1777,7 @@ function ShowImages(el){
   
     function SatinAlmaKontrol(offer_id) {
       var SelectedCompArri = [];
-      var SelectedCompArr = [];
+      SelectedCompArr = [];
       $.get(
         "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=getPurchaseOfferListForSaleOffer&OFFER_ID=" +
           offer_id

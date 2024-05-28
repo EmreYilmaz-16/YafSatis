@@ -118,7 +118,7 @@
     AlayiniHesapla();    
     </cfoutput>
     </cfoutput>
-    //SatinAlmaKontrol(<cfoutput>#attributes.offer_id#</cfoutput>)
+    SatinAlmaKontrol(<cfoutput>#attributes.offer_id#</cfoutput>)
 }) 
 </script>
 <cf_box>
