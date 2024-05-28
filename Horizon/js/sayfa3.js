@@ -1704,6 +1704,12 @@ function TedarikYaz() {
       var _td = document.createElement("td");
       _td.innerText = Aproduct.QUANTITY;
       _tr.appendChild(_td);
+      var _td = document.createElement("td");
+      _td.innerText = commaSplit(Aproduct.PRICE_OTHER);
+      _tr.appendChild(_td);
+      var _td = document.createElement("td");
+      _td.innerText = Aproduct.OTHER_MONEY;
+      _tr.appendChild(_td);
       table2.appendChild(_tr);
     }
     td.appendChild(table2);
