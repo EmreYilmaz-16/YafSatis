@@ -614,7 +614,10 @@ WHERE 1 = 1
     
     <cfset Item=_FormData[ix]>
     <cfdump var="#Item#">
-    <cfif 1 eq 0>
+    <cfif not isDefined("item.IS_PURCHASE_SAVED")>
+        <cfset item.IS_PURCHASE_SAVED=0>
+    </cfif>
+    <cfif Item.IS_PURCHASE_SAVED eq 0>
     
     <cfquery name="getCompanyInfo" datasource="#dsn#">
         SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
