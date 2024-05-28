@@ -201,6 +201,54 @@ CROSS APPLY(
 
     <cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cffunction>
+<cffunction name="getPurchaseOfferListForSaleOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfquery name="OFFER_HEADER" datasource="#dsn3#">
+        SELECT PO.OFFER_NUMBER,C.NICKNAME,PO.OFFER_ID
+FROM CatalystQA_1.PBS_OFFER AS PO
+LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN (REPLACE(PO.OFFER_TO, ',', ''))
+where FOR_OFFER_ID=#arguments.OFFER_ID#
+    </cfquery>
+    <CFSET RETURN_ARR=arrayNew(1)>
+    <cfloop query="OFFER_HEADER">
+        <cfquery name="OFFER_ROWS" datasource="#DSN3#">
+            SELECT S.PRODUCT_NAME,S.MANUFACT_CODE,S.PRODUCT_CODE,CONVERT(decimal(18,2),POR.QUANTITY) QUANTITY,CONVERT(DECIMAL(18,4),POR.PRICE) PRICE FROM CatalystQA_1.PBS_OFFER_ROW AS POR 
+            LEFT JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
+            WHERE POR.OFFER_ID=#OFFER_ID#
+        </cfquery>
+        <CFSET URUN_SAY=0>
+        <CFSET FIYATLI_SAY=0>
+        <cfscript>
+            Ateklif=structNew();
+            Ateklif.OFFER_NUMBER=OFFER_NUMBER;
+            Ateklif.NICKNAME=NICKNAME;
+            Ateklif.OFFER_ID=OFFER_ID;
+            Ateklif.OFFER_ROWS.ROW_COUNT=OFFER_ROWS.recordcount;
+            Ateklif.OFFER_ROWS.ROWS=arrayNew(1)>
+        </cfscript>
+        <cfloop query="OFFER_ROWS">
+            <cfscript>
+                PAROW=structNew();
+                PAROW.PRODUCT_NAME=PRODUCT_NAME;
+                PAROW.MANUFACT_CODE=MANUFACT_CODE;
+                PAROW.PRODUCT_CODE=PRODUCT_CODE;
+                PAROW.QUANTITY=QUANTITY;
+                PAROW.PRICE=PRICE;
+            arrayAppend(Ateklif.OFFER_ROWS.ROW,PAROW)
+            IF(PRICE NEQ 0){
+                FIYATLI_SAY=FIYATLI_SAY+1;
+            }
+
+
+            </cfscript>
+        
+        </cfloop>
+        <cfscript>
+            Ateklif.OFFER_ROWS.FIYAT_VERILEN=FIYATLI_SAY;
+            arrayAppend(RETURN_ARR,Ateklif)
+        </cfscript>
+    </cfloop>
+    <cfreturn replace(serializeJSON(RETURN_ARR),"//","")>
+</cffunction>
   <cffunction name="getOfferList" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="SALES_EMP_ID" default="">
     <cfargument name="OFFER_CURRENCY" default="">
