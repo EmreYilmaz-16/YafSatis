@@ -613,7 +613,8 @@ WHERE 1 = 1
 <cfloop from="1" to="#arrayLen(_FormData)#" index="ix">
     
     <cfset Item=_FormData[ix]>
-    <cfif Item.IS_PURCHASE_SAVED eq 0>
+    <cfdump var="#Item#">
+    <cfif 1 eq 0>
     
     <cfquery name="getCompanyInfo" datasource="#dsn#">
         SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
