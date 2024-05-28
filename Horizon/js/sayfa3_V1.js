@@ -1817,6 +1817,7 @@ function ShowImages(el){
               SID: ARow.STOCK_ID,
               QUANTITY: ARow.QUANTITY,
               UNIQUE_RELATION_ID: ARow.UNIQUE_RELATION_ID,
+              PRODUCT_NAME: ARow.PRODUCT_NAME,
               PRODUCT_CODE_2: ARow.MANUFACT_CODE,
               PRODUCT_UNIT: ARow.MAIN_UNIT,
             };
