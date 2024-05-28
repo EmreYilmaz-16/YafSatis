@@ -209,7 +209,7 @@ FROM CatalystQA_1.PBS_OFFER AS PO
 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN (REPLACE(PO.OFFER_TO, ',', ''))
 where FOR_OFFER_ID=#arguments.OFFER_ID#
     </cfquery>
-  <!----   <CFSET RETURN_ARR=arrayNew(1)>
+    <CFSET RETURN_ARR=arrayNew(1)>
     <cfloop query="OFFER_HEADER">
         <cfquery name="OFFER_ROWS" datasource="#DSN3#">
             SELECT S.PRODUCT_NAME,S.MANUFACT_CODE,S.PRODUCT_CODE,CONVERT(decimal(18,2),POR.QUANTITY) QUANTITY,CONVERT(DECIMAL(18,4),POR.PRICE) PRICE FROM CatalystQA_1.PBS_OFFER_ROW AS POR 
@@ -224,7 +224,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             Ateklif.NICKNAME=NICKNAME;
             Ateklif.OFFER_ID=OFFER_ID;
             Ateklif.OFFER_ROWS.ROW_COUNT=OFFER_ROWS.recordcount;
-            Ateklif.OFFER_ROWS.ROWS=arrayNew(1)>
+            Ateklif.OFFER_ROWS.ROWS=arrayNew(1);
         </cfscript>
         <cfloop query="OFFER_ROWS">
             <cfscript>
@@ -248,7 +248,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             arrayAppend(RETURN_ARR,Ateklif)
         </cfscript>
     </cfloop>
-    <cfreturn replace(serializeJSON(RETURN_ARR),"//","")>------->
+    <cfreturn replace(serializeJSON(RETURN_ARR),"//","")> <!----------->
     <cfreturn replace(serializeJSON(arguments),"//","")>
 </cffunction>
   <cffunction name="getOfferList" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
