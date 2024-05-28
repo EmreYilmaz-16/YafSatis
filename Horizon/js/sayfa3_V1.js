@@ -1580,6 +1580,7 @@ function AddToCons() {
                 PRODUCT_CODE_2: PRODUCT_CODE_2X,
                 PRODUCT_UNIT: PRODUCT_UNITX,
                 PRICE:0,
+                PRICE_OTHER:0,
                 OTHER_MONEY:"",
               };
               OX.PIDS.push(TX);
@@ -1625,6 +1626,7 @@ function AddToCons() {
                   PRODUCT_CODE_2: PRODUCT_CODE_2X,
                   PRODUCT_UNIT: PRODUCT_UNITX,
                   PRICE:0,
+                  PRICE_OTHER:0,
                 OTHER_MONEY:"",
                   
                 };
@@ -1825,6 +1827,9 @@ function ShowImages(el){
               PRODUCT_NAME: ARow.PRODUCT_NAME,
               PRODUCT_CODE_2: ARow.MANUFACT_CODE,
               PRODUCT_UNIT: ARow.MAIN_UNIT,
+              PRICE:ARow.PRICE,
+              PRICE_OTHER:ARow.PRICE_OTHER,
+              OTHER_MONEY:ARow.OTHER_MONEY
             };
             O.PIDS.push(P);
           }
