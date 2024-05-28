@@ -1579,6 +1579,8 @@ function AddToCons() {
                 PRODUCT_NAME: PRODUCT_NAMEX,
                 PRODUCT_CODE_2: PRODUCT_CODE_2X,
                 PRODUCT_UNIT: PRODUCT_UNITX,
+                PRICE:0,
+                OTHER_MONEY:"",
               };
               OX.PIDS.push(TX);
             }
@@ -1622,6 +1624,9 @@ function AddToCons() {
                   PRODUCT_NAME: PRODUCT_NAMEX,
                   PRODUCT_CODE_2: PRODUCT_CODE_2X,
                   PRODUCT_UNIT: PRODUCT_UNITX,
+                  PRICE:0,
+                OTHER_MONEY:"",
+                  
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
