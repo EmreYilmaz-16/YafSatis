@@ -234,7 +234,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
                 PAROW.PRODUCT_CODE=PRODUCT_CODE;
                 PAROW.QUANTITY=QUANTITY;
                 PAROW.PRICE=PRICE;
-            arrayAppend(Ateklif.OFFER_ROWS.ROW,PAROW)
+            arrayAppend(Ateklif.OFFER_ROWS.ROWS,PAROW)
             IF(PRICE NEQ 0){
                 FIYATLI_SAY=FIYATLI_SAY+1;
             }
