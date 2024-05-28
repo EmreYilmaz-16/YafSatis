@@ -216,7 +216,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             FROM CatalystQA_1.PBS_OFFER_ROW AS POR 
             LEFT JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
             LEFT JOIN CatalystQA_1.PRODUCT_UNIT as PU ON PU.PRODUCT_ID=S.PRODUCT_ID AND PU.IS_MAIN=1
-            WHERE POR.OFFER_ID=#OFFER_ID#
+            WHERE POR.OFFER_ID=#OFFER_HEADER.OFFER_ID#
         </cfquery>
         <CFSET URUN_SAY=0>
         <CFSET FIYATLI_SAY=0>
@@ -227,7 +227,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             Ateklif.MEMBER_CODE=MEMBER_CODE;
             
             Ateklif.NICKNAME=NICKNAME;
-            Ateklif.OFFER_ID=OFFER_ID;
+            Ateklif.OFFER_ID=OFFER_HEADER.OFFER_ID;
             Ateklif.OFFER_ROWS.ROW_COUNT=OFFER_ROWS.recordcount;
             Ateklif.OFFER_ROWS.ROWS=arrayNew(1);
         </cfscript>
