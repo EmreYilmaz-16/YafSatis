@@ -1556,6 +1556,7 @@ function AddToCons() {
           COMPANY_ID: CompCb.value,
           NICKNAME: nnnn,
           MEMBER_CODE: nnmc,
+          IS_PURCHASE_SAVED:0,
           PIDS: [],
         };
         for (let j = 0; j <= pid_l.length; j++) {

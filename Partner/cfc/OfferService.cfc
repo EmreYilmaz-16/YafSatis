@@ -234,8 +234,8 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             <cfscript>
                 PAROW=structNew();
                 PAROW.PRODUCT_NAME=PRODUCT_NAME;
-                PAROW.PRODUCT_NAME=PRODUCT_NAME;
-                PAROW.PRODUCT_NAME=PRODUCT_NAME;
+                PAROW.PRODUCT_ID=PRODUCT_ID;
+                PAROW.STOCK_ID=STOCK_ID;
                 PAROW.MANUFACT_CODE=MANUFACT_CODE;
                 PAROW.PRODUCT_CODE=PRODUCT_CODE;
                 PAROW.QUANTITY=QUANTITY;
