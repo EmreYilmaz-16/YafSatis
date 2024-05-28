@@ -1689,19 +1689,19 @@ function TedarikYaz() {
     table2.setAttribute("class", "table table-sm table-stripped");
     var traaa=document.createElement("tr");
     var thsdasd=document.createElement("th");
-    thsdasd.innerText("Part Number")
+    thsdasd.innerText="Part Number"
     traaa.appendChild(thsdasd)
     var thsdasd=document.createElement("th");
-    thsdasd.innerText("Product Name")
+    thsdasd.innerText="Product Name"
     traaa.appendChild(thsdasd)
     var thsdasd=document.createElement("th");
-    thsdasd.innerText("Amount")
+    thsdasd.innerText="Amount"
     traaa.appendChild(thsdasd)
     var thsdasd=document.createElement("th");
-    thsdasd.innerText("Offered Prıce")
+    thsdasd.innerText="Offered Prıce"
     traaa.appendChild(thsdasd)
     var thsdasd=document.createElement("th");
-    thsdasd.innerText("Money")
+    thsdasd.innerText="Money"
     traaa.appendChild(thsdasd)
     table2.appendChild(traaa);
     for (let j = 0; j < AComp.PIDS.length; j++) {
