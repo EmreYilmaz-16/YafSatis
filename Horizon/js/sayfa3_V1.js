@@ -1659,6 +1659,14 @@ function TedarikYaz() {
       "    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
     );
     td.setAttribute("style", "color:#fb6b5b");
+    td.appendChild(span);;
+    var span = document.createElement("span");
+    span.innerText = AComp.P_PRICE_COUNT;
+    span.setAttribute(
+      "style",
+      "    float: right;margin-right: 10px;  background: #20a30a;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
+    );
+    td.setAttribute("style", "color:#fb6b5b");
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
