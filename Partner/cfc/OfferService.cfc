@@ -202,7 +202,7 @@ CROSS APPLY(
     <cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cffunction>
 <cffunction name="getPurchaseOfferListForSaleOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-    <cfargument name="OFFER_ID">
+   <!---- <cfargument name="OFFER_ID">
     <cfquery name="OFFER_HEADER" datasource="#dsn3#">
         SELECT PO.OFFER_NUMBER,C.NICKNAME,PO.OFFER_ID
 FROM CatalystQA_1.PBS_OFFER AS PO
@@ -248,7 +248,8 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             arrayAppend(RETURN_ARR,Ateklif)
         </cfscript>
     </cfloop>
-    <cfreturn replace(serializeJSON(RETURN_ARR),"//","")>
+    <cfreturn replace(serializeJSON(RETURN_ARR),"//","")>------->
+    <cfreturn replace(serializeJSON(arguments),"//","")>
 </cffunction>
   <cffunction name="getOfferList" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="SALES_EMP_ID" default="">
