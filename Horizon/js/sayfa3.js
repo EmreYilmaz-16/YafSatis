@@ -1674,7 +1674,7 @@ function TedarikYaz() {
     td.setAttribute("style", "color:#fb6b5b");
     td.appendChild(span);
     var span = document.createElement("span");
-    span.innerText = AComp.PIDS.length;
+    span.innerText = AComp.P_PRICE_COUNT;
     span.setAttribute(
       "style",
       "    float: right;margin-right: 10px;  background: #20a30a;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
