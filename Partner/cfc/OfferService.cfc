@@ -611,8 +611,9 @@ WHERE 1 = 1
 <cfset attributes.OFFER_DATE  =dateFormat(now(),"dd/mm/yyyy")>
 
 <cfloop from="1" to="#arrayLen(_FormData)#" index="ix">
-    <cfset Item=_FormData[ix]>
     
+    <cfset Item=_FormData[ix]>
+    <cfif Item.IS_PURCHASE_SAVED eq 0>
     
     <cfquery name="getCompanyInfo" datasource="#dsn#">
         SELECT * FROM COMPANY WHERE COMPANY_ID=#Item.COMPANY_ID#
@@ -627,6 +628,7 @@ WHERE 1 = 1
     <CFSET attributes.ROWS_ =arrayLen(Item.PIDS)>
     <cfloop from="1" to="#attributes.ROWS_#" index="iy">
         <cfset Pr=ITEM.PIDS[iy]>
+      
         <cfset "attributes.spect_id#iy#"="">
         <cfset "attributes.price#iy#"=0>
         <cfset "attributes.product_id#iy#"=PR.PID>
@@ -655,7 +657,7 @@ WHERE 1 = 1
     <cfdump var="#cfcatch#">
 </cfcatch>
 </cftry>
-
+</cfif>
 </cfloop>
 <cfdump var="#attributes#">
     
