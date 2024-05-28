@@ -204,7 +204,7 @@ CROSS APPLY(
 <cffunction name="getPurchaseOfferListForSaleOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
    <cfargument name="OFFER_ID">
     <cfquery name="OFFER_HEADER" datasource="#dsn3#">
-        SELECT PO.OFFER_NUMBER,C.NICKNAME,PO.OFFER_ID
+        SELECT PO.OFFER_NUMBER,C.NICKNAME,PO.OFFER_ID,C.COMPANY_ID,C.MEMBER_CODE
 FROM CatalystQA_1.PBS_OFFER AS PO
 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN (REPLACE(PO.OFFER_TO, ',', ''))
 where FOR_OFFER_ID=#arguments.OFFER_ID#
@@ -212,7 +212,8 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
     <CFSET RETURN_ARR=arrayNew(1)>
     <cfloop query="OFFER_HEADER">
         <cfquery name="OFFER_ROWS" datasource="#DSN3#">
-            SELECT S.PRODUCT_NAME,S.MANUFACT_CODE,S.PRODUCT_CODE,CONVERT(decimal(18,2),POR.QUANTITY) QUANTITY,CONVERT(DECIMAL(18,4),POR.PRICE) PRICE FROM CatalystQA_1.PBS_OFFER_ROW AS POR 
+            SELECT S.PRODUCT_NAME,S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_CODE,UNIQUE_RELATION_ID,CONVERT(decimal(18,2),POR.QUANTITY) QUANTITY,CONVERT(DECIMAL(18,4),POR.PRICE) PRICE 
+            FROM CatalystQA_1.PBS_OFFER_ROW AS POR 
             LEFT JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
             WHERE POR.OFFER_ID=#OFFER_ID#
         </cfquery>
@@ -221,6 +222,9 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
         <cfscript>
             Ateklif=structNew();
             Ateklif.OFFER_NUMBER=OFFER_NUMBER;
+            Ateklif.COMPANY_ID=COMPANY_ID;
+            Ateklif.MEMBER_CODE=MEMBER_CODE;
+            
             Ateklif.NICKNAME=NICKNAME;
             Ateklif.OFFER_ID=OFFER_ID;
             Ateklif.OFFER_ROWS.ROW_COUNT=OFFER_ROWS.recordcount;
@@ -230,9 +234,12 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             <cfscript>
                 PAROW=structNew();
                 PAROW.PRODUCT_NAME=PRODUCT_NAME;
+                PAROW.PRODUCT_NAME=PRODUCT_NAME;
+                PAROW.PRODUCT_NAME=PRODUCT_NAME;
                 PAROW.MANUFACT_CODE=MANUFACT_CODE;
                 PAROW.PRODUCT_CODE=PRODUCT_CODE;
                 PAROW.QUANTITY=QUANTITY;
+                PAROW.UNIQUE_RELATION_ID=UNIQUE_RELATION_ID;
                 PAROW.PRICE=PRICE;
             arrayAppend(Ateklif.OFFER_ROWS.ROWS,PAROW)
             IF(PRICE NEQ 0){
