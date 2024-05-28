@@ -1668,7 +1668,8 @@ function TedarikYaz() {
       "style",
       "    float: right;margin-right: 10px;  background: #20a30a;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
     );
-    td.setAttribute("style", "color:#fb6b5b");
+    if(AComp.PIDS.length==parseInt(AComp.P_PRICE_COUNT)){
+    td.setAttribute("style", "color:#20a30a");}
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
