@@ -1803,3 +1803,47 @@ function ShowImages2(pid) {
       pid
   );
 }
+function SatinAlmaKontrol(offer_id) {
+  var SelectedCompArri = [];
+  var SelectedCompArr = [];
+  $.get(
+    "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=getPurchaseOfferListForSaleOffer&OFFER_ID=" +
+      offer_id
+  ).done(function (retDat) {
+    var Teklifler = JSON.parse(retDat);
+    console.log(Teklifler);
+
+    for (let i = 0; i < Teklifler.length; i++) {
+      var ATeklif = Teklifler[i];
+      /*
+        <table class="table table-sm table-stripped" style="border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;"><tr onclick="$('#tr_9').toggle()"><th style="color:#fb6b5b;width:10%">C9</th><th style="color:#fb6b5b">ADASTAR SHIPPING LTD<span style="    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;">3</span></th></tr><tr style="display:none" id="tr_9"><td colspan="2"><table class="table table-sm table-stripped"><tr><td>344A</td><td>FUEL VALVE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr></table></td></tr></table>
+        */
+
+      var O = {
+        COMPANY_ID: ATeklif.COMPANY_ID,
+        NICKNAME: ATeklif.NICKNAME,
+        MEMBER_CODE: ATeklif.MEMBER_CODE,
+        IS_PURCHASE_SAVED: 1,
+        P_PRICE_COUNT: ATeklif.OFFER_ROWS.FIYAT_VERILEN,
+        PIDS: [],
+      };
+      for (let j = 0; j < ATeklif.OFFER_ROWS.ROWS.length; j++) {
+        var ARow = ATeklif.OFFER_ROWS.ROWS[j];
+        var P = {
+          PID: ARow.PRODUCT_ID,
+          SID: ARow.STOCK_ID,
+          QUANTITY: ARow.QUANTITY,
+          UNIQUE_RELATION_ID: ARow.UNIQUE_RELATION_ID,
+          PRODUCT_CODE_2: ARow.MANUFACT_CODE,
+          PRODUCT_UNIT: ARow.MAIN_UNIT,
+        };
+        O.PIDS.push(P);
+      }
+      SelectedCompArri.push(O);
+      SelectedCompArr.push(O);
+    }
+    console.log(SelectedCompArr);
+    console.log(SelectedCompArri);
+    TedarikYaz();
+  });
+}
