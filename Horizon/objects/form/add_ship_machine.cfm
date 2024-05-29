@@ -22,6 +22,7 @@
     <cfset MACHINE=structNew()>
     <cfset MACHINE.PRODUCT_CATID="">
     <cfset MACHINE.SM_ID="">
+    <cfset MACHINE.MACHINE_NAME ="">
 </cfif>
 
 
