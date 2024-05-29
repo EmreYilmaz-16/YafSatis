@@ -24,7 +24,9 @@ function getCats(el) {
   });
 }
 function getCatProperties(cat_id) {
-  try{ $("#BUTOCUMMMMM").remove();}catch {};
+  try {
+    $("#BUTOCUMMMMM").remove();
+  } catch {}
   var WESSEL_ID = document.getElementById("WESSEL_ID").value;
   if (WESSEL_ID.length > 0) {
     var rs = $.post(
@@ -39,26 +41,38 @@ function getCatProperties(cat_id) {
         var ET = confirm(
           "Bu Gemi'de Bu Ekipmana Bağlı Filtreler Kayıt Edilmiştir Yüklemek İstermisiniz"
         );
-        var btnn=document.createElement("a");
-        btnn.setAttribute("class","input-group-addon")
-        btnn.setAttribute("onclick","openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID="+WESSEL_ID+"&cat_id="+cat_id+"')");
-        btnn.id="BUTOCUMMMMM";
-        var i=document.createElement("span");
-        i.setAttribute("class","icn-md fa fa-gears");
+        var btnn = document.createElement("a");
+        btnn.setAttribute("class", "input-group-addon");
+        btnn.setAttribute(
+          "onclick",
+          "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=" +
+            WESSEL_ID +
+            "&cat_id=" +
+            cat_id +
+            "')"
+        );
+        btnn.id = "BUTOCUMMMMM";
+        var i = document.createElement("span");
+        i.setAttribute("class", "icn-md fa fa-gears");
         btnn.appendChild(i);
         document.getElementById("PRODUCT_CAT").parentElement.appendChild(btnn);
         if (ET) {
-          if(TV.RECORD_COUNT==1){          
-          addEqRow(TV.JSON_STRINGIM, JSON.stringify(TV.JSON_STRINGIM));
-          AjaxPageLoad(
-            "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
-              cat_id,
-            "PROP_AREA",
-            1,
-            "Yükleniyor"
-          );
-          }else{
-            openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID='+WESSEL_ID+'&cat_id='+cat_id)
+          if (TV.RECORD_COUNT == 1) {
+            addEqRow(TV.JSON_STRINGIM, JSON.stringify(TV.JSON_STRINGIM));
+            AjaxPageLoad(
+              "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
+                cat_id,
+              "PROP_AREA",
+              1,
+              "Yükleniyor"
+            );
+          } else {
+            openBoxDraggable(
+              "index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=" +
+                WESSEL_ID +
+                "&cat_id=" +
+                cat_id
+            );
             AjaxPageLoad(
               "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=catProps&PRODUCT_CATID=" +
                 cat_id,
@@ -412,18 +426,18 @@ function addRowCrs(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
-  var spn=document.createElement("span");
-  spn.setAttribute("class","icn-md fa fa-info");
+  var spn = document.createElement("span");
+  spn.setAttribute("class", "icn-md fa fa-info");
   b3.appendChild(spn);
   var b4 = document.createElement("button");
   b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-busy");
-  b4.setAttribute("id","ResimButonC_"+RowCount)
+  b4.setAttribute("id", "ResimButonC_" + RowCount);
   b4.setAttribute(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
-  var spn=document.createElement("span");
-  spn.setAttribute("class","icn-md fa fa-camera");
+  var spn = document.createElement("span");
+  spn.setAttribute("class", "icn-md fa fa-camera");
   b4.appendChild(spn);
 
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
@@ -431,10 +445,10 @@ function addRowCrs(
 
   b2.innerText = rc2;
   b2.setAttribute("onclick", "MoveRow(" + rc2 + ")");
-  b3.setAttribute("onclick","ShowProperties(this)")
-  b3.setAttribute("data-rc",RowCount);
-  b4.setAttribute("onclick","ShowImages(this)")
-  b4.setAttribute("data-rc",RowCount);
+  b3.setAttribute("onclick", "ShowProperties(this)");
+  b3.setAttribute("data-rc", RowCount);
+  b4.setAttribute("onclick", "ShowImages(this)");
+  b4.setAttribute("data-rc", RowCount);
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -535,13 +549,15 @@ function addRowCrs(
   td.appendChild(div);
   tr.appendChild(td);
 
-  if(UNIQUE_RELATION_ID.length>0){
-    var RF=wrk_safe_query("getPurhasePrice","dsn3",1,UNIQUE_RELATION_ID)
+  if (UNIQUE_RELATION_ID.length > 0) {
+    var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
     console.log(RF);
-    PURCHASE_PRICE=RF.PRICE_OTHER[0];
-    PURCHASE_MONEY=RF.OTHER_MONEY[0];
-  }else{
-    RF.recordcount=0;
+    PURCHASE_PRICE = RF.PRICE_OTHER[0];
+    PURCHASE_MONEY = RF.OTHER_MONEY[0];
+  } else {
+    var RF = {
+      recordcount: 0,
+    };
   }
 
   var td = document.createElement("td");
@@ -555,11 +571,11 @@ function addRowCrs(
   input.setAttribute("readonly", "yes");
   input.name = "PURCHASE_PRICE";
   input.id = "PURCHASE_PRICE_" + RowCount;
-  if(PURCHASE_PRICE != 0){
+  if (PURCHASE_PRICE != 0) {
     input.setAttribute("style", "color:green");
   }
   input.value = commaSplit(PURCHASE_PRICE);
-  
+
   div2.appendChild(input);
   var input = document.createElement("select");
   if (PURCHASE_MONEY.length == 0) {
@@ -819,8 +835,10 @@ function getProduct(el, rc) {
           }
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
-        if(Obje.IMG_COUNT>0){
-          document.getElementById("ResimButonC_"+rc).setAttribute("class","ui-wrk-btn ui-wrk-btn-red");
+        if (Obje.IMG_COUNT > 0) {
+          document
+            .getElementById("ResimButonC_" + rc)
+            .setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
         }
         document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
         document.getElementById("IS_VIRTUAL_" + rc).value = Obje.IS_VIRTUAL;
@@ -1594,9 +1612,9 @@ function AddToCons() {
                 PRODUCT_NAME: PRODUCT_NAMEX,
                 PRODUCT_CODE_2: PRODUCT_CODE_2X,
                 PRODUCT_UNIT: PRODUCT_UNITX,
-                PRICE:0,
-                PRICE_OTHER:0,
-                OTHER_MONEY:"",
+                PRICE: 0,
+                PRICE_OTHER: 0,
+                OTHER_MONEY: "",
               };
               OX.PIDS.push(TX);
             }
@@ -1640,10 +1658,9 @@ function AddToCons() {
                   PRODUCT_NAME: PRODUCT_NAMEX,
                   PRODUCT_CODE_2: PRODUCT_CODE_2X,
                   PRODUCT_UNIT: PRODUCT_UNITX,
-                  PRICE:0,
-                  PRICE_OTHER:0,
-                OTHER_MONEY:"",
-                  
+                  PRICE: 0,
+                  PRICE_OTHER: 0,
+                  OTHER_MONEY: "",
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
@@ -1683,15 +1700,16 @@ function TedarikYaz() {
       "    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
     );
     td.setAttribute("style", "color:#fb6b5b");
-    td.appendChild(span);;
+    td.appendChild(span);
     var span = document.createElement("span");
     span.innerText = AComp.P_PRICE_COUNT;
     span.setAttribute(
       "style",
       "    float: right;margin-right: 10px;  background: #20a30a;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
     );
-    if(AComp.PIDS.length==parseInt(AComp.P_PRICE_COUNT)){
-    td.setAttribute("style", "color:#20a30a");}
+    if (AComp.PIDS.length == parseInt(AComp.P_PRICE_COUNT)) {
+      td.setAttribute("style", "color:#20a30a");
+    }
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
@@ -1702,22 +1720,22 @@ function TedarikYaz() {
     td.setAttribute("colspan", "2");
     var table2 = document.createElement("table");
     table2.setAttribute("class", "table table-sm table-stripped");
-    var traaa=document.createElement("tr");
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText="Part Number"
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText="Product Name"
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText="Amount"
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText="Offered Prıce"
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText="Money"
-    traaa.appendChild(thsdasd)
+    var traaa = document.createElement("tr");
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Part Number";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Product Name";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Amount";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Offered Prıce";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Money";
+    traaa.appendChild(thsdasd);
     table2.appendChild(traaa);
     for (let j = 0; j < AComp.PIDS.length; j++) {
       var Aproduct = AComp.PIDS[j];
@@ -1797,85 +1815,91 @@ function SavePropToShip() {
   //   },
   // });
 
-
-  openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID='+WESSEL_ID)
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_list_ship_machine&WESSEL_ID=" +
+      WESSEL_ID
+  );
 }
 
-function ShowProperties(el){
-var rc=el.getAttribute("data-rc");
-var pid=document.getElementById("PRODUCT_ID_"+rc).value;
-var pL=document.getElementById("PRODUCT_CODE_2_"+rc).getAttribute("proplist");
-openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=' +
-                rc +
-                '&PID=' +
-                pid +
-                '&prp_list=' +
-                pL 
-                )
-
-
+function ShowProperties(el) {
+  var rc = el.getAttribute("data-rc");
+  var pid = document.getElementById("PRODUCT_ID_" + rc).value;
+  var pL = document
+    .getElementById("PRODUCT_CODE_2_" + rc)
+    .getAttribute("proplist");
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=ShowProductProperties&rc=" +
+      rc +
+      "&PID=" +
+      pid +
+      "&prp_list=" +
+      pL
+  );
 }
-function ShowImages(el){
+function ShowImages(el) {
   //objects.emptypopup_show_product_images
-  var rc=el.getAttribute("data-rc");
-  var pid=document.getElementById("PRODUCT_ID_"+rc).value;
-  var pL=document.getElementById("PRODUCT_CODE_2_"+rc).getAttribute("proplist");
-  openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID='+pid)
-  
-  
-  }
-  function ShowImages2(pid){
-    
-    openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID='+pid)
-    
-    
-    }
-  
-    function SatinAlmaKontrol(offer_id) {
-      var SelectedCompArri = [];
-      SelectedCompArr = [];
-      $.get(
-        "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=getPurchaseOfferListForSaleOffer&OFFER_ID=" +
-          offer_id
-      ).done(function (retDat) {
-        var Teklifler = JSON.parse(retDat);
-        console.log(Teklifler);
-    
-        for (let i = 0; i < Teklifler.length; i++) {
-          var ATeklif = Teklifler[i];
-          /*
+  var rc = el.getAttribute("data-rc");
+  var pid = document.getElementById("PRODUCT_ID_" + rc).value;
+  var pL = document
+    .getElementById("PRODUCT_CODE_2_" + rc)
+    .getAttribute("proplist");
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID=" +
+      pid
+  );
+}
+function ShowImages2(pid) {
+  openBoxDraggable(
+    "index.cfm?fuseaction=objects.emptypopup_show_product_images&PRODUCT_ID=" +
+      pid
+  );
+}
+
+function SatinAlmaKontrol(offer_id) {
+  var SelectedCompArri = [];
+  SelectedCompArr = [];
+  $.get(
+    "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=getPurchaseOfferListForSaleOffer&OFFER_ID=" +
+      offer_id
+  ).done(function (retDat) {
+    var Teklifler = JSON.parse(retDat);
+    console.log(Teklifler);
+
+    for (let i = 0; i < Teklifler.length; i++) {
+      var ATeklif = Teklifler[i];
+      /*
             <table class="table table-sm table-stripped" style="border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;"><tr onclick="$('#tr_9').toggle()"><th style="color:#fb6b5b;width:10%">C9</th><th style="color:#fb6b5b">ADASTAR SHIPPING LTD<span style="    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;">3</span></th></tr><tr style="display:none" id="tr_9"><td colspan="2"><table class="table table-sm table-stripped"><tr><td>344A</td><td>FUEL VALVE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr></table></td></tr></table>
             */
-    
-          var O = {
-            COMPANY_ID: ATeklif.COMPANY_ID,
-            NICKNAME: ATeklif.NICKNAME,
-            MEMBER_CODE: ATeklif.MEMBER_CODE,
-            IS_PURCHASE_SAVED: 1,
-            P_PRICE_COUNT: ATeklif.OFFER_ROWS.FIYAT_VERILEN,
-            PIDS: [],
-          };
-          for (let j = 0; j < ATeklif.OFFER_ROWS.ROWS.length; j++) {
-            var ARow = ATeklif.OFFER_ROWS.ROWS[j];
-            var P = {
-              PID: ARow.PRODUCT_ID,
-              SID: ARow.STOCK_ID,
-              QUANTITY: ARow.QUANTITY,
-              UNIQUE_RELATION_ID: ARow.UNIQUE_RELATION_ID,
-              PRODUCT_NAME: ARow.PRODUCT_NAME,
-              PRODUCT_CODE_2: ARow.MANUFACT_CODE,
-              PRODUCT_UNIT: ARow.MAIN_UNIT,
-              PRICE:ARow.PRICE,
-              PRICE_OTHER:ARow.PRICE_OTHER,
-              OTHER_MONEY:ARow.OTHER_MONEY
-            };
-            O.PIDS.push(P);
-          }
-          SelectedCompArri.push(O);
-          SelectedCompArr.push(O);
-        }
-        console.log(SelectedCompArr);
-        console.log(SelectedCompArri);
-        TedarikYaz();
-      });
+
+      var O = {
+        COMPANY_ID: ATeklif.COMPANY_ID,
+        NICKNAME: ATeklif.NICKNAME,
+        MEMBER_CODE: ATeklif.MEMBER_CODE,
+        IS_PURCHASE_SAVED: 1,
+        P_PRICE_COUNT: ATeklif.OFFER_ROWS.FIYAT_VERILEN,
+        PIDS: [],
+      };
+      for (let j = 0; j < ATeklif.OFFER_ROWS.ROWS.length; j++) {
+        var ARow = ATeklif.OFFER_ROWS.ROWS[j];
+        var P = {
+          PID: ARow.PRODUCT_ID,
+          SID: ARow.STOCK_ID,
+          QUANTITY: ARow.QUANTITY,
+          UNIQUE_RELATION_ID: ARow.UNIQUE_RELATION_ID,
+          PRODUCT_NAME: ARow.PRODUCT_NAME,
+          PRODUCT_CODE_2: ARow.MANUFACT_CODE,
+          PRODUCT_UNIT: ARow.MAIN_UNIT,
+          PRICE: ARow.PRICE,
+          PRICE_OTHER: ARow.PRICE_OTHER,
+          OTHER_MONEY: ARow.OTHER_MONEY,
+        };
+        O.PIDS.push(P);
+      }
+      SelectedCompArri.push(O);
+      SelectedCompArr.push(O);
     }
+    console.log(SelectedCompArr);
+    console.log(SelectedCompArri);
+    TedarikYaz();
+  });
+}
