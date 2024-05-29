@@ -538,6 +538,8 @@ function addRowCrs(
   if(UNIQUE_RELATION_ID.length>0){
     var RF=wrk_safe_query("getPurhasePrice","dsn3",1,UNIQUE_RELATION_ID)
     console.log(RF);
+    PURCHASE_PRICE=RF.PRICE_OTHER[0];
+    PURCHASE_MONEY=RF.OTHER_MONEY[0];
   }else{
     RF.recordcount=0;
   }
