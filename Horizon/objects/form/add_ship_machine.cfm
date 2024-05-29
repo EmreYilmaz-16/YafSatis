@@ -24,6 +24,7 @@
     <cfset MACHINE.SM_ID="">
     <cfset MACHINE.MACHINE_NAME ="">
     <cfset MACHINE.SERIAL_NO ="">
+    <cfset MACHINE.DESCRIPTION  ="">
 </cfif>
 
 
