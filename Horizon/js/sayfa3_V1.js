@@ -555,6 +555,9 @@ function addRowCrs(
   input.setAttribute("readonly", "yes");
   input.name = "PURCHASE_PRICE";
   input.id = "PURCHASE_PRICE_" + RowCount;
+  if(PURCHASE_PRICE != 0){
+    input.setAttribute("style", "color:green");
+  }
   input.value = commaSplit(PURCHASE_PRICE);
   
   div2.appendChild(input);
