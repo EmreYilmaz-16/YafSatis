@@ -548,7 +548,7 @@ function addRowCrs(
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
-
+/*
   if (UNIQUE_RELATION_ID.length > 0) {
     var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
     console.log(RF);
@@ -558,7 +558,7 @@ function addRowCrs(
     var RF = {
       recordcount: 0,
     };
-  }
+  }*/
 
   var td = document.createElement("td");
   var div = document.createElement("div");
