@@ -90,6 +90,17 @@
             <returns >JSON Array</returns>
         </method>
         <method>
+            <name>SAVE_OFFER_ROWS</name>
+            <params>
+                <name type="application/json" required="true" description="Form Data">Data</name>
+                
+            </params>
+            <description>
+                Teklif Satırlarını Kayıt Eder
+            </description>
+            <returns >JSON Object</returns>
+        </method>
+        <method>
             <name>getOfferDashBoard</name>
             <params>
                 
@@ -118,16 +129,27 @@
                 <name type="integer" required="false" description="Süreç">OFFER_STAGE</name>
                 <name type="String" required="false" description="Teklif No">OFFER_NUMBER</name>
                 <name type="String" required="false" description="Referans No">REF_NO</name>
-                <name type="String" required="false" description="Müşteri ID">COMPANY_ID</name>
-                <name type="String" required="false" description="Başlangıç Tarihi">START_DATE</name>
-                <name type="String" required="false" description="Bitiş Tarihi">FINISH_DATE</name>
-                <name type="String" required="false" default="1" description="Sayfalama Başlangıç">START_ROW</name>
-                <name type="String" required="false" default="20" description="Max Satır">MAX_ROW</name>
+                <name type="integer" required="false" description="Müşteri ID">COMPANY_ID</name>
+                <name type="DateTime" required="false" description="Başlangıç Tarihi">START_DATE</name>
+                <name type="DateTime" required="false" description="Bitiş Tarihi">FINISH_DATE</name>
+                <name type="integer" required="false" default="1" description="Sayfalama Başlangıç">START_ROW</name>
+                <name type="integer" required="false" default="20" description="Max Satır">MAX_ROW</name>
             </params>
             <description>
                 Satış Teklifi Listesi
             </description>
             <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getOfferWithOfferId</name>
+            <params>
+                <name type="integer" required="false" description="Teklif Id">OFFER_ID</name>
+                
+            </params>
+            <description>
+                Id İle Verilen Teklifi Döndürür
+            </description>
+            <returns >JSON Object</returns>
         </method>
     </methods>
 
