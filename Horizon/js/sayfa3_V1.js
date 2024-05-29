@@ -552,9 +552,11 @@ function addRowCrs(
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
+  input.setAttribute("readonly", "yes");
   input.name = "PURCHASE_PRICE";
   input.id = "PURCHASE_PRICE_" + RowCount;
   input.value = commaSplit(PURCHASE_PRICE);
+  
   div2.appendChild(input);
   var input = document.createElement("select");
   if (PURCHASE_MONEY.length == 0) {
@@ -564,6 +566,7 @@ function addRowCrs(
   input.name = "PURCHASE_MONEY";
   input.id = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
+  input.setAttribute("disabled", "disabled");
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
