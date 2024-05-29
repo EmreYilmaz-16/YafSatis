@@ -7,7 +7,7 @@
         <method>
             <name>getOfferCurrencies</name>
             <params>
-                
+
             </params>
             <description>
                 Teklif Tiplerini Listelemek İçin Kullanılır
@@ -17,7 +17,7 @@
         <method>
             <name>getOfferPriorities</name>
             <params>
-                
+
             </params>
             <description>
                 Teklif Önceliklerini Listelemek İçin Kullanılır
@@ -27,7 +27,7 @@
         <method>
             <name>getOfferMoney</name>
             <params>
-                
+
             </params>
             <description>
                 Para Birimlerini Getirir
@@ -37,7 +37,7 @@
         <method>
             <name>getDeliveryPlaces</name>
             <params>
-                
+
             </params>
             <description>
                 Teslim Yerlerini Getirir
@@ -47,7 +47,7 @@
         <method>
             <name>getShipMethods</name>
             <params>
-                
+
             </params>
             <description>
                 Sevk Yöntemini Getirir
@@ -57,10 +57,75 @@
         <method>
             <name>getOfferConditions</name>
             <params>
-                
+
             </params>
             <description>
                 Teklifteki Ürün Condition Alanını Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>TarihIslem</name>
+            <params>
+                <name type="integer" required="true" description="Yıl">Yil</name>
+                <name type="integer" required="true" description="Ay">ay</name>
+                <name type="integer" required="true" description="Gün">gun</name>
+                <name type="bit" required="false" default="0" description="Yapılacak İşlem">islem</name>
+                <name type="String" required="false" default="d" description="DatePart">DatePart</name>
+                <name type="String" required="false" default="d" description="Tarihe eklenecek tarih bölümü birimi sayısı (pozitif, gelecekteki tarihleri almak için; negatif, geçmişteki tarihleri almak için). Sayı bir tam sayı olmalıdır.">dValue</name>
+            </params>
+            <description>
+                Tarihe zaman birimlerini ekler.
+            </description>
+            <returns >String</returns>
+        </method>
+        <method>
+            <name>SaveOfferHeader</name>
+            <params>
+                <name type="application/json" required="true" description="Form Data">FData</name>
+            </params>
+            <description>
+                Teklifteki Fiş Bilgisini Kayıt Eder
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getOfferDashBoard</name>
+            <params>
+                
+            </params>
+            <description>
+                Teklif Listesi İçin Dashboard Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getPurchaseOfferListForSaleOffer</name>
+            <params>
+                <name type="integer" required="true" description="Satış Teklifi ID">OFFER_ID</name>
+                
+            </params>
+            <description>
+                Satış Teklifine Bağlı Satınalma Tekliflerini Getirir
+            </description>
+            <returns >JSON Array</returns>
+        </method>
+        <method>
+            <name>getOfferList</name>
+            <params>
+                <name type="integer" required="false" description="Satış Çalışanı ID">SALES_EMP_ID</name>
+                <name type="integer" required="false" description="Teklif Özel Tanım">OFFER_CURRENCY</name>
+                <name type="integer" required="false" description="Süreç">OFFER_STAGE</name>
+                <name type="String" required="false" description="Teklif No">OFFER_NUMBER</name>
+                <name type="String" required="false" description="Referans No">REF_NO</name>
+                <name type="String" required="false" description="Müşteri ID">COMPANY_ID</name>
+                <name type="String" required="false" description="Başlangıç Tarihi">START_DATE</name>
+                <name type="String" required="false" description="Bitiş Tarihi">FINISH_DATE</name>
+                <name type="String" required="false" default="1" description="Sayfalama Başlangıç">START_ROW</name>
+                <name type="String" required="false" default="20" description="Max Satır">MAX_ROW</name>
+            </params>
+            <description>
+                Satış Teklifi Listesi
             </description>
             <returns >JSON Array</returns>
         </method>
