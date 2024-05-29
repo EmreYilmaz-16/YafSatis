@@ -23,6 +23,7 @@
     <cfset MACHINE.PRODUCT_CATID="">
     <cfset MACHINE.SM_ID="">
     <cfset MACHINE.MACHINE_NAME ="">
+    <cfset MACHINE.SERIAL_NO ="">
 </cfif>
 
 
