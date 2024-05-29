@@ -1,4 +1,4 @@
-var RowCount = 1;
+﻿var RowCount = 1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
