@@ -1,4 +1,4 @@
-
+﻿
 <link rel="stylesheet" href="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.css">
 <script src="/AddOns/YafSatis/Content/Js/notifications/notifications.js"></script>
 <script src="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.js"></script>
