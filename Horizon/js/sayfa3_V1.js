@@ -535,6 +535,13 @@ function addRowCrs(
   td.appendChild(div);
   tr.appendChild(td);
 
+  if(UNIQUE_RELATION_ID.length>0){
+    var RF=wrk_safe_query("getPurhasePrice","dsn3",UNIQUE_RELATION_ID)
+    console.log(RF);
+  }else{
+    RF.recordcount=0;
+  }
+
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
@@ -1762,8 +1769,8 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 function loadRelOffers() {
-  var r = wrk_safe_query("GETREO_OFFERS");
-  for (let i = 0; i < r.recordcount; i++) {}
+  /*var r = wrk_safe_query("GETREO_OFFERS");
+  for (let i = 0; i < r.recordcount; i++) {}*/
 }
 
 function SavePropToShip() {
