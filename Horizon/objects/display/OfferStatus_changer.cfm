@@ -95,7 +95,7 @@
        
    
     
-    <button class="OsButton OsButton-dark"  style="width:100%">
+    <button class="OsButton OsButton-dark" onclick="windowopen('/index.cfm?fuseaction=sales.list_order&event=add&PBS_OFFER_ID=<cfoutput>#attributes.OFFER_ID#</cfoutput>')"  style="width:100%">
         ORDER PROCESS
     </button>
     <button class="OsButton OsButton-red" style="width:100%">
