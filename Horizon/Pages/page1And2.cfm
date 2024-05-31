@@ -174,6 +174,7 @@
                     </a>
                 </div>
             </cfoutput>
+            <!-----
 
                 <div class="col col-2 d-flex">
                     <a href="javascript://" data-stage="263"  id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
@@ -216,7 +217,7 @@
                         </div>
                     </a>
                 </div>
-
+            --->
                 <div class="col col-2 d-flex">
                     <a href="javascript://" data-stage="266"  id="SOC_2_266" onclick="LoadOffers('STG',266,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
