@@ -534,6 +534,7 @@ WHERE 1 = 1
     <cfdump var="#attributes#">
     <cftry>
     <cfinclude template="../Query/Add_Offer_Rows.cfm">
+
     <cfcatch>
         <cfdump var="#cfcatch#">
     </cfcatch>
@@ -541,6 +542,7 @@ WHERE 1 = 1
     <cfreturn replace(serializeJSON(FormData),"//","")>
 
 </cffunction>
+
 <cffunction name="SetOfferStage" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="OfferId">
     <cfargument name="Stage">

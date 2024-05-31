@@ -147,23 +147,34 @@
                     
                 </a>
             </div>
-
+<cfquery name="DFS" datasource="#DSN#">
+    SELECT * FROM CatalystQA.PROCESS_TYPE_ROWS WHERE PROCESS_ID=193-- AND DETAIL='1'
+</cfquery>
+<cfquery name="DFS1" dbtype="query">
+    SELECT * FROM DFS WHERE  DETAIL='1'
+</cfquery>
+<cfquery name="DFS2" dbtype="query">
+    SELECT * FROM DFS WHERE  DETAIL='1'
+</cfquery>
+        
         
             <div class="col col-12 margin-top-5">
+              <cfoutput query="DFS1">
                 <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="261" id="SOC_1_261" onclick="LoadOffers('STG',261,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
+                    <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
-                            CUSTOMER
+                            #STAGE#
                         </div>
                         
                         <div class="pull-right padding-4" >
                             <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_1_261" >4300</span>Records
+                                <span class="margin-right-5 font-xs" id="OC_#DETAIL#_#PROCESS_ROW_ID#" >4300</span>Records
                             </div>
                         </div>
                     </a>
                 </div>
-             
+            </cfoutput>
+
                 <div class="col col-2 d-flex">
                     <a href="javascript://" data-stage="263"  id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
