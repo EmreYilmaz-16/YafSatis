@@ -158,7 +158,7 @@
 </cfquery>
         
         
-            <div class="col col-12 margin-top-5">
+            <div class="col col-6 margin-top-5">
               <cfoutput query="DFS1">
                 <div class="col col-2 d-flex">
                     <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
@@ -174,95 +174,28 @@
                     </a>
                 </div>
             </cfoutput>
-            <cfoutput query="DFS2">
-                <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
-                        <div class="pull-left font-md padding-5">
-                            #STAGE#
-                        </div>
-                        
-                        <div class="pull-right padding-4" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_#DETAIL#_#PROCESS_ROW_ID#" >4300</span>Records
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </cfoutput>
-            <!-----
-
-                <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="263"  id="SOC_1_263" onclick="LoadOffers('STG',263,1);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
-                        <div class="pull-left font-md padding-5">
-                            CONFIRMED
-                        </div>
-                        
-                        <div class="pull-right padding-3" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_1_263">4300</span>Records
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="262"  id="SOC_1_262" onclick="LoadOffers('STG',262,1);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
-                        <div class="pull-left font-md padding-">
-                            SUPPLIER
-                        </div>
-                        
-                        <div class="pull-right padding-4" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_1_262">4300</span>Records
-                            </div>
-                        </div>
-                    </a>
-                </div>
-    
-                <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="264"  id="SOC_2_264" onclick="LoadOffers('STG',264,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
-                        <div class="pull-left font-md padding-5">
-                            C. OFFER
-                        </div>
-                        
-                        <div class="pull-right padding-4" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5 font-xs" id="OC_2_264">4300</span>Records
-                            </div>
-                        </div>
-                    </a>
-                </div>
-         
-                <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="266"  id="SOC_2_266" onclick="LoadOffers('STG',266,2);"   class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
-                        <div class="pull-left font-md padding-5">
-                            CUSTOMER
-                        </div>
-                        
-                        <div class="pull-right padding-4" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5" id="OC_2_266">4300</span>Records
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col col-2 d-flex">
-                    <a href="javascript://" data-stage="267"  id="SOC_2_267" onclick="LoadOffers('STG',267,2);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
-                        <div class="pull-left font-md padding-5">
-                            SUPPLIER
-                        </div>
-                        
-                        <div class="pull-right padding-4" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
-                                <span class="margin-right-5" id="OC_2_267">4300</span>Records
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                   --->
+           
+           
             </div>
-                
+            <div class="col col-6 margin-top-5">
+               
+              <cfoutput query="DFS2">
+                  <div class="col col-2 d-flex">
+                      <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="ui-btn ui-btn-outline-success border border-warning text-dark ui-btn-block filterb" style="height:100%;">
+                          <div class="pull-left font-md padding-5">
+                              #STAGE#
+                          </div>
+                          
+                          <div class="pull-right padding-4" >
+                              <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
+                                  <span class="margin-right-5 font-xs" id="OC_#DETAIL#_#PROCESS_ROW_ID#" >4300</span>Records
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </cfoutput>
+             
+              </div>
             
         </div>
     </cf_box_elements>
