@@ -362,7 +362,7 @@
         var OfferData=<cfoutput>#OfferList#</cfoutput>
     </script>
     <cfset Offer=deserializeJSON(OfferList)>
-<!-----------
+
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
@@ -423,13 +423,16 @@
         </div>
         <CFSET P_OTHER_T=0>
         <CFSET DC_=0>
+        
         <cfquery name="GETrOWS" datasource="#dsn#_1">
             SELECT POR.*,0 AS PURCHASE_PRICE,'TL' AS PURCHASE_MONEY,'' AS FIRST_REMARK,
             CASE WHEN POR.IS_VIRTUAL <>1 THEN     S.MANUFACT_CODE ELSE VPP.PART_NUMBER END AS MN_CODE FROM PBS_OFFER_ROW AS POR LEFT JOIN STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID 
             LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
             WHERE OFFER_ID=#attributes.OFFER_ID#
         </cfquery>
-          
+        
+        <!-- TABLE -->
+        <cfoutput query="GETrOWS" group="PROP_LIST">
         <div class="table-div">
             <div class="table-top">
                 <div class="table-top-div">
@@ -479,8 +482,7 @@ WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
 <cfloop query="getpp">
     <b>#getpp.PROPERTY#</b>:#PROPERTY_DETAIL#
     </cfloop>
-    <CFSET P_OTHER_T=P_OTHER_T+PRICE_OTHER>
-    <CFSET DC_=DC_+DISCOUNT_COST>
+             
                             </td>
                             <td>#QUANTITY#</td>
                             <td>#UNIT#</td>
