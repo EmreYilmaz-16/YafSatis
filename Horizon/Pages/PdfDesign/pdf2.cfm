@@ -484,6 +484,8 @@ WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
     </cfloop>
              
                             </td>
+                            <CFSET P_OTHER_T=P_OTHER_T+PRICE_OTHER>
+    <CFSET DC_=DC_+DISCOUNT_COST>
                             <td>#QUANTITY#</td>
                             <td>#UNIT#</td>
                             <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
@@ -541,4 +543,4 @@ WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
             </div>
         </div>
     </div>
-</div>-------------------->
+</div>
