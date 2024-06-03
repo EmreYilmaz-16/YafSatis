@@ -256,26 +256,40 @@
         }
     }
 </style>
-
+<cfquery name="ourcompanyinfo" datasource="#dsn#">
+    SELECT COMPANY_NAME,NICK_NAME,WEB,EMAIL,ADDRESS,SC.CITY_NAME,SCO.COUNTRY_NAME,SCT.COUNTY_NAME,OUR_COMPANY.COMP_ID,MERSIS_NO,TAX_OFFICE,TAX_NO,T_NO FROM CatalystQA.OUR_COMPANY
+    LEFT JOIN CatalystQA.SETUP_COUNTRY SCO ON SCO.COUNTRY_ID=OUR_COMPANY.COUNTRY_ID
+    LEFT JOIN CatalystQA.SETUP_COUNTY SCT ON SCT.COUNTY_ID=OUR_COMPANY.COUNTY_ID
+    LEFT JOIN CatalystQA.SETUP_CITY SC ON SC.CITY_ID=OUR_COMPANY.CITY_ID
+    WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
+    </cfquery>
+    
+    <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+    <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <script>
+        var OfferData=<cfoutput>#OfferList#</cfoutput>
+    </script>
+    <cfset Offer=deserializeJSON(OfferList)>
+    
 
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
         <div class="header-div">
-            <img src="/AddOns/muraterennar/test_projects/assets/logodeneme.png" class="banner-img" alt="banner ">
+            <img src="/AddOns/YafSatis/Content/img/logodeneme.png" class="banner-img" alt="banner ">
             <div class="header-titles">
-                <h1>YAF DİZEL GEMİ YEDEKLERİ DIŞ TİC. LTD. ŞTİ.</h1>
+                <h1><cfoutput>#ourcompanyinfo.COMPANY_NAME#</cfoutput></h1>
                 <p>
-                    EVLİYA ÇELEBİ MAH. RAUF ORBAY CAD. YAF GROUP İŞ MER. NO:39/2 TUZLA İSTANBUL
+                    <cfoutput>#ourcompanyinfo.ADDRESS#  #ourcompanyinfo.COUNTY_NAME# #ourcompanyinfo.CITY_NAME# </cfoutput>
                 </p>
                 <p>
-                    MERSİS NO: 0927051171900013
+                    MERSİS NO: <cfoutput>#ourcompanyinfo.MERSIS_NO#</cfoutput>
                 </p>
                 <p>
-                    TUZLA V.D. 927 051 1719
+                    <cfoutput>#ourcompanyinfo.TAX_OFFICE#</cfoutput> V.D. <cfoutput>#ourcompanyinfo.TAX_NO#</cfoutput>
                 </p>
                 <p>
-                    TİC. SİC. NO: 870677
+                    TİC. SİC. NO: <cfoutput>#ourcompanyinfo.T_NO#</cfoutput>
                 </p>
             </div>
         </div>
@@ -288,11 +302,11 @@
                 <div class="top-right-div">
                     <div class="div-elements">
                         <div class="input-title">DATE</div>
-                        <div class="input-value"><span>:</span> 25.3.2024</div>
+                        <div class="input-value"><span>:</span> <cfoutput>#Offer.OFFER_DATE#</cfoutput></div>
                     </div>
                     <div class="div-elements">
                         <div class="input-title">OUR REF NO</div>
-                        <div class="input-value"><span>:</span> YA -56574</div>
+                        <div class="input-value"><span>:</span><cfoutput>#Offer.OFFER_NUMBER#</cfoutput></div>
                     </div>
 
                     <div class="div-elements">
@@ -304,9 +318,9 @@
         </div>
 
         <div class="body-info">
-            <h2>SOLNA DENİZCİLİK</h2>
-            <p>SELIMIYE MAH. SELİMİYE İSKELE CAD. NO:20/1</p>
-            <p>USKUDAR - İSTANBUL - TURKEY</p>
+            <h2><cfoutput>#Offer.FULLNAME#</cfoutput></h2>
+            <p><cfoutput>#Offer.COMPANY_ADDRESS#</cfoutput></p>
+            
         </div>
 
 
@@ -315,22 +329,27 @@
             <h2 class="body-title">DELIVERY RECEIPT</h2>
         </div>
 
+        <cfquery name="GETrOWS" datasource="#dsn#_1">
+            SELECT POR.*,0 AS PURCHASE_PRICE,'TL' AS PURCHASE_MONEY,'' AS FIRST_REMARK,
+            CASE WHEN POR.IS_VIRTUAL <>1 THEN     S.MANUFACT_CODE ELSE VPP.PART_NUMBER END AS MN_CODE FROM PBS_OFFER_ROW AS POR LEFT JOIN STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID 
+            LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
+            WHERE OFFER_ID=#attributes.OFFER_ID#
+        </cfquery>
+        
+        <!-- TABLE -->
+        <cfoutput query="GETrOWS" group="PROP_LIST">
         <div class="table-div">
             <div class="table-top">
                 <div class="table-top-div">
+                   <CFSET JD=deserializeJSON(JSON_STRINGIM)>
+                  
+                   <cfloop array="#JD.Filters#" item="it">
                     <div class="table-top-elements">
-                        <p style="font-weight: 700;">AIR COMPRESSOR</span>
+                        <p style="font-size: 10px;">#it.PNAME#</p>
+                        <p style="font-weight: 700; font-size: 10px;">#it.PRODUCT_CAT#</p>
                     </div>
-
-                    <div class="table-top-elements">
-                        <p>BRAND</p>
-                        <p style="font-weight: 700;">SPERRE</p>
-                    </div>
-
-                    <div class="table-top-elements">
-                        <p>TYPE</p>
-                        <p style="font-weight: 700;">HL2/105</p>
-                    </div>
+                </cfloop>
+                
                 </div>
             </div>
 
@@ -349,29 +368,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table-tr">
-                            <td>1</td>
-                            <td>3036MK2</td>
-                            <td>OVERHAUL KIT, LP VALVE</td>
-                            <td>3</td>
-                            <td>SET</td>
-                            <td>83.05 EU</td>
-                            <td>249.16 EU</td>
-                            <td>OFFERED AS LP VLV REPAIR KIT</td>
+                        <CFSET IIIX=1>
+                         <cfoutput> <tr class="table-tr">
+                         
+                            <td>#IIIX#</td>
+                            <td>#MN_CODE#</td>
+                            <td>#PRODUCT_NAME#
+                                <cfquery name="getpp" datasource="#dsn#_1">
+   SELECT  PRODUCT_PROPERTY.PROPERTY ,PRODUCT_PROPERTY_DETAIL.PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_DT_PROPERTIES 
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY ON PRODUCT_PROPERTY.PROPERTY_ID=PRODUCT_DT_PROPERTIES.PROPERTY_ID
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL ON PRODUCT_PROPERTY_DETAIL.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
+LEFT JOIN CatalystQA_product.PRODUCT ON PRODUCT.PRODUCT_ID=PRODUCT_DT_PROPERTIES.PRODUCT_ID
+WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
+    SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=PRODUCT.PRODUCT_CATID
+) AND PRODUCT_DT_PROPERTIES.PRODUCT_ID=#PRODUCT_ID#
+
+                       </cfquery><br>
+<cfloop query="getpp">
+    <b>#getpp.PROPERTY#</b>:#PROPERTY_DETAIL#
+    </cfloop>
+             
+                            </td>
+                            <td>#QUANTITY#</td>
+                            <td>#UNIT#</td>
+                            <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
+                            <td>#OTHER_MONEY_VALUE# EU</td>
+                           <td>#PRODUCT_NAME2#</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>3037MK2</td>
-                            <td>OVERHAUL KIT, HP VALVE</td>
-                            <td>5</td>
-                            <td>SET</td>
-                            <td>51.54 EU</td>
-                            <td>257.72 EU</td>
-                            <td></td>
-                        </tr>
+                        <CFSET IIIX=IIIX+1>
+                    </cfoutput><!------->
+                     
                     </tbody>
                 </table>
             </div>
+        </div>
+    </cfoutput>
 
             <div class="imza">
                 <div class="imza-title">TARİH</div>
