@@ -348,7 +348,13 @@
     }
 </style>
 
-
+<cfquery name="ourcompanyinfo" datasource="#dsn#">
+    SELECT COMPANY_NAME,NICK_NAME,WEB,EMAIL,ADDRESS,SC.CITY_NAME,SCO.COUNTRY_NAME,SCT.COUNTY_NAME,OUR_COMPANY.COMP_ID FROM CatalystQA.OUR_COMPANY
+    LEFT JOIN CatalystQA.SETUP_COUNTRY SCO ON SCO.COUNTRY_ID=OUR_COMPANY.COUNTRY_ID
+    LEFT JOIN CatalystQA.SETUP_COUNTY SCT ON SCT.COUNTY_ID=OUR_COMPANY.COUNTY_ID
+    LEFT JOIN CatalystQA.SETUP_CITY SC ON SC.CITY_ID=OUR_COMPANY.CITY_ID
+    WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
+    </cfquery>
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
