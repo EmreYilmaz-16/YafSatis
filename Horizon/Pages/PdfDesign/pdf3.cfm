@@ -348,19 +348,31 @@
     }
 </style>
 
-
+<cfquery name="ourcompanyinfo" datasource="#dsn#">
+    SELECT COMPANY_NAME,NICK_NAME,WEB,EMAIL,ADDRESS,SC.CITY_NAME,SCO.COUNTRY_NAME,SCT.COUNTY_NAME,OUR_COMPANY.COMP_ID FROM CatalystQA.OUR_COMPANY
+    LEFT JOIN CatalystQA.SETUP_COUNTRY SCO ON SCO.COUNTRY_ID=OUR_COMPANY.COUNTRY_ID
+    LEFT JOIN CatalystQA.SETUP_COUNTY SCT ON SCT.COUNTY_ID=OUR_COMPANY.COUNTY_ID
+    LEFT JOIN CatalystQA.SETUP_CITY SC ON SC.CITY_ID=OUR_COMPANY.CITY_ID
+    WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
+    </cfquery>
+    
+    <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+    <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <script>
+        var OfferData=<cfoutput>#OfferList#</cfoutput>
+    </script>
+    <cfset Offer=deserializeJSON(OfferList)>
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
         <div class="header-div">
-            <img src="/AddOns/muraterennar/test_projects/assets/logodeneme.png" alt="banner" class="banner-img">
-            <img src="/AddOns/muraterennar/test_projects/assets/iso9001_logo.png" alt="banner" class="h-auto iso-img">
+            <img src="/AddOns/YafSatis/Content/img/logodeneme.png" alt="banner" class="banner-img">
+            <img src="/AddOns/YafSatis/Content/img/iso9001_logo.png" alt="banner" class="h-auto iso-img">
 
 
             <div class="header-titles">
-                <h1 class="header-top-title">YAF DIESELSHIP SPARE PARTSTRADING LTD. CO
-                    <span class="header-sub-title">EVLIYA CELEBI MAH. RAUF ORBAY CAD.YAF GROUP IS MER. NO:39/2TUZLA
-                        ISTANBUL</span>
+                <h1 class="header-top-title"><cfoutput>#ourcompanyinfo.COMPANY_NAME#</cfoutput>
+                    <span class="header-sub-title"><cfoutput>#ourcompanyinfo.ADDRESS#  #ourcompanyinfo.COUNTY_NAME# #ourcompanyinfo.CITY_NAME# </cfoutput></span>
                 </h1>
                 <h2 class="header-big-text">
                     ORDER CONFIRMATION
@@ -373,20 +385,20 @@
             <div class="left-div">
                 <div class="div-elements">
                     <div class="input-title">TO</div>
-                    <div class="input-value"><span>:</span> ANGLOTECH S.R.L.(SEPUR)</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.FULLNAME#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DATE</div>
-                    <div class="input-value"><span>:</span> 25.3.2024</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.OFFER_DATE#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">OUR REF NO</div>
-                    <div class="input-value"><span>:</span> YA -56574</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.OFFER_NUMBER#</cfoutput></div>
                 </div>
                 
                 <div class="div-elements">
                     <div class="input-title">FROM</div>
-                    <div class="input-value"><span>:</span> YANA BAKIR</div>
+                    <div class="input-value"><span>:</span><cfoutput>#Offer.EMPLOYEE_NAME#</cfoutput> <cfoutput>#Offer.EMPLOYEE_SURNAME#</cfoutput></div>
                 </div>
 
             </div>
@@ -394,15 +406,15 @@
             <div class="right-div">
                 <div class="div-elements">
                     <div class="input-title">DELIVERY PLACE</div>
-                    <div class="input-value"><span>:</span> UNKNOWN</div>
+                    <div class="input-value"><span>:</span>  <cfoutput>#Offer.DELIVERY_PLACE#</cfoutput> (<cfoutput>#Offer.DELIVERY_ADDRESS#</cfoutput>)</div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY COST</div>
-                    <div class="input-value"><span>:</span> </div>
+                    <div class="input-value"><span>:</span><span style="color:red">? Hangi Veri Gelecek</span>< </div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">PAYMENT TERM</div>
-                    <div class="input-value"><span>:</span> </div>
+                    <div class="input-value"><span>:</span><span style="color:red">? Hangi Veri Gelecek</span>< </div>
                 </div>
             </div>
         </div>
