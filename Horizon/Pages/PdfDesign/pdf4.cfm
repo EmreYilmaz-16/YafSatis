@@ -355,6 +355,12 @@
     LEFT JOIN CatalystQA.SETUP_CITY SC ON SC.CITY_ID=OUR_COMPANY.CITY_ID
     WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
     </cfquery>
+    <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+    <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <script>
+        var OfferData=<cfoutput>#OfferList#</cfoutput>
+    </script>
+    <cfset Offer=deserializeJSON(OfferList)>
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
