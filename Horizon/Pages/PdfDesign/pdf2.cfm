@@ -347,20 +347,32 @@
         }
     }
 </style>
-
+<cfquery name="ourcompanyinfo" datasource="#dsn#">
+    SELECT COMPANY_NAME,NICK_NAME,WEB,EMAIL,ADDRESS,SC.CITY_NAME,SCO.COUNTRY_NAME,SCT.COUNTY_NAME,OUR_COMPANY.COMP_ID FROM CatalystQA.OUR_COMPANY
+    LEFT JOIN CatalystQA.SETUP_COUNTRY SCO ON SCO.COUNTRY_ID=OUR_COMPANY.COUNTRY_ID
+    LEFT JOIN CatalystQA.SETUP_COUNTY SCT ON SCT.COUNTY_ID=OUR_COMPANY.COUNTY_ID
+    LEFT JOIN CatalystQA.SETUP_CITY SC ON SC.CITY_ID=OUR_COMPANY.CITY_ID
+    WHERE OUR_COMPANY.COMP_ID=#session.ep.company_id#
+    </cfquery>
+    
+    <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+    <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+    <script>
+        var OfferData=<cfoutput>#OfferList#</cfoutput>
+    </script>
+    <cfset Offer=deserializeJSON(OfferList)>
 
 <div class="page-div">
     <div class="div-container">
         <!-- HEADER -->
         <div class="header-div">
-            <img src="/AddOns/muraterennar/test_projects/assets/logodeneme.png" alt="banner" class="banner-img">
-            <img src="/AddOns/muraterennar/test_projects/assets/iso9001_logo.png" alt="banner" class="h-auto iso-img">
+            <img src="/AddOns/YafSatis/Content/img/logodeneme.png" alt="banner" class="banner-img">
+            <img src="/AddOns/YafSatis/Content/img/iso9001_logo.png" alt="banner" class="h-auto iso-img">
 
 
             <div class="header-titles">
-                <h1 class="header-top-title">YAF DIESELSHIP SPARE PARTSTRADING LTD. CO
-                    <span class="header-sub-title">EVLIYA CELEBI MAH. RAUF ORBAY CAD.YAF GROUP IS MER. NO:39/2TUZLA
-                        ISTANBUL</span>
+                <h1 class="header-top-title"><cfoutput>#ourcompanyinfo.COMPANY_NAME#</cfoutput>
+                    <span class="header-sub-title"><cfoutput>#ourcompanyinfo.ADDRESS#  #ourcompanyinfo.COUNTY_NAME# #ourcompanyinfo.CITY_NAME# </cfoutput></span>
                 </h1>
                 <h2 class="header-big-text">
                     ENQUIRY
@@ -373,15 +385,15 @@
             <div class="left-div">
                 <div class="div-elements">
                     <div class="input-title">DATE</div>
-                    <div class="input-value"><span>:</span> 25.3.2024</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.OFFER_DATE#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">OUR REF NO</div>
-                    <div class="input-value"><span>:</span> YA -56574</div>
+                    <div class="input-value"><span>:</span></span><cfoutput>#Offer.REF_NO#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">FROM</div>
-                    <div class="input-value"><span>:</span> YANA BAKIR</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.EMPLOYEE_NAME#</cfoutput> <cfoutput>#Offer.EMPLOYEE_SURNAME#</cfoutput></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">CURRENCY</div>
@@ -392,40 +404,43 @@
             <div class="right-div">
                 <div class="div-elements">
                     <div class="input-title">DELIVERY PLACE</div>
-                    <div class="input-value"><span>:</span> UNKNOWN (EXW/EUROPE)</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.DELIVERY_PLACE#</cfoutput> (<cfoutput>#Offer.DELIVERY_ADDRESS#</cfoutput>)</div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY COST</div>
-                    <div class="input-value"><span>:</span> </div>
+                    <div class="input-value"><span>:</span> <span style="color:red">? Hangi Veri Gelecek</span></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">PAYMENT TERM</div>
-                    <div class="input-value"><span>:</span> </div>
+                    <div class="input-value"><span>:</span> <span style="color:red">? Hangi Veri Gelecek</span></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">VALIDITY</div>
-                    <div class="input-value"><span>:</span> 30 DAYS</div>
+                    <div class="input-value"><span>:</span> <cfoutput>#Offer.VALID_DAYS#</cfoutput> DAYS</div>
                 </div>
             </div>
         </div>
-
-        <!-- TABLE -->
+        <CFSET P_OTHER_T=0>
+        <CFSET DC_=0>
+        <cfquery name="GETrOWS" datasource="#dsn#_1">
+            SELECT POR.*,0 AS PURCHASE_PRICE,'TL' AS PURCHASE_MONEY,'' AS FIRST_REMARK,
+            CASE WHEN POR.IS_VIRTUAL <>1 THEN     S.MANUFACT_CODE ELSE VPP.PART_NUMBER END AS MN_CODE FROM PBS_OFFER_ROW AS POR LEFT JOIN STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID 
+            LEFT JOIN VIRTUAL_PRODUCTS_PBS AS VPP ON VPP.VP_ID=POR.PRODUCT_ID
+            WHERE OFFER_ID=#attributes.OFFER_ID#
+        </cfquery>
+          
         <div class="table-div">
             <div class="table-top">
                 <div class="table-top-div">
+                   <CFSET JD=deserializeJSON(JSON_STRINGIM)>
+                  
+                   <cfloop array="#JD.Filters#" item="it">
                     <div class="table-top-elements">
-                        <p style="font-weight: 700; font-size: 10px;">AIR COMPRESSOR</span>
+                        <p style="font-size: 10px;">#it.PNAME#</p>
+                        <p style="font-weight: 700; font-size: 10px;">#it.PRODUCT_CAT#</p>
                     </div>
-
-                    <div class="table-top-elements">
-                        <p style="font-size: 10px;">BRAND</p>
-                        <p style="font-weight: 700; font-size: 10px;">SPERRE</p>
-                    </div>
-
-                    <div class="table-top-elements">
-                        <p class="font-size: 10px;">TYPE</p>
-                        <p style="font-weight: 700; font-size: 10px;">HL2/105</p>
-                    </div>
+                </cfloop>
+                
                 </div>
             </div>
 
@@ -444,30 +459,42 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table-tr">
-                            <td>1</td>
-                            <td>3036MK2</td>
-                            <td>OVERHAUL KIT, LP VALVE</td>
-                            <td>3</td>
-                            <td>SET</td>
-                            <td>83.05 EU</td>
-                            <td>249.16 EU</td>
-                            <td>OFFERED AS LP VLV REPAIR KIT</td>
+                        <CFSET IIIX=1>
+                         <cfoutput> <tr class="table-tr">
+                         
+                            <td>#IIIX#</td>
+                            <td>#MN_CODE#</td>
+                            <td>#PRODUCT_NAME#
+                                <cfquery name="getpp" datasource="#dsn#_1">
+   SELECT  PRODUCT_PROPERTY.PROPERTY ,PRODUCT_PROPERTY_DETAIL.PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_DT_PROPERTIES 
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY ON PRODUCT_PROPERTY.PROPERTY_ID=PRODUCT_DT_PROPERTIES.PROPERTY_ID
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL ON PRODUCT_PROPERTY_DETAIL.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
+LEFT JOIN CatalystQA_product.PRODUCT ON PRODUCT.PRODUCT_ID=PRODUCT_DT_PROPERTIES.PRODUCT_ID
+WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
+    SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=PRODUCT.PRODUCT_CATID
+) AND PRODUCT_DT_PROPERTIES.PRODUCT_ID=#PRODUCT_ID#
+
+                       </cfquery><br>
+<cfloop query="getpp">
+    <b>#getpp.PROPERTY#</b>:#PROPERTY_DETAIL#
+    </cfloop>
+    <CFSET P_OTHER_T=P_OTHER_T+PRICE_OTHER>
+    <CFSET DC_=DC_+DISCOUNT_COST>
+                            </td>
+                            <td>#QUANTITY#</td>
+                            <td>#UNIT#</td>
+                            <td>#PRICE_OTHER-DISCOUNT_COST# #OTHER_MONEY#</td>
+                            <td>#OTHER_MONEY_VALUE# EU</td>
+                           <td>#PRODUCT_NAME2#</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>3037MK2</td>
-                            <td>OVERHAUL KIT, HP VALVE</td>
-                            <td>5</td>
-                            <td>SET</td>
-                            <td>51.54 EU</td>
-                            <td>257.72 EU</td>
-                            <td></td>
-                        </tr>
+                        <CFSET IIIX=IIIX+1>
+                    </cfoutput><!------->
+                     
                     </tbody>
                 </table>
             </div>
         </div>
+    </cfoutput>
         <div class="page-text-div">
             <p class="page-text">
                 ACCORDING TO SOLAS CHAPTER II-1 PART A-1 REGULATION 3-5,YOU CONFIRM THAT AN OFFERED
@@ -475,7 +502,10 @@
             </p>
         </div>
 
-        <!-- Total Price -->
+        <!--- Total Price 
+         <CFSET P_OTHER_T=P_OTHER_T+PRICE_OTHER>
+    <CFSET DC_=DC_+DISCOUNT_COST>
+        --->
         <div class="total-div">
             <div class="total-div-left">
                 <h3 class="total-title">THANK YOU FOR YOUR QUOTATION !</h3>
@@ -494,15 +524,15 @@
                 <div class="total-price-div">
                     <div class="total-pirce-top">
                         <p class="total-price-top-left">ENQUIRY SUBTOTAL :</p>
-                        <p class="total-price-top-right">506.87 EU</p>
+                        <p class="total-price-top-right"><CFOUTPUT>#TLFORMAT(P_OTHER_T)# #Offer.OTHER_MONEY#</CFOUTPUT></p>
                     </div>
                     <div class="total-pirce-top">
                         <p class="total-price-top-left">TOTAL DISCOUNT :</p>
-                        <p class="total-price-top-right">506.87 EU</p>
+                        <p class="total-price-top-right"><CFOUTPUT>#TLFORMAT(DC_)# #Offer.OTHER_MONEY#</CFOUTPUT></p>
                     </div>
                     <div class="total-price-bottom">
                         <p class="total-price-bottom-left">TOTAL AMOUNT:</p>
-                        <p class="total-price-bottom-right">506.87 EU</p>
+                        <p class="total-price-bottom-right"><CFOUTPUT>#TLFORMAT(P_OTHER_T-DC_)# #Offer.OTHER_MONEY#</CFOUTPUT></p>
                     </div>
                 </div>
             </div>
