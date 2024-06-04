@@ -895,16 +895,29 @@ ORDER BY PO2.OFFER_ID
 <cfargument name="formData">
 <CFSET FORMDATAM=deserializeJSON(arguments.formData)>
 <cfset attributes.OFFER_ID=FORMDATAM.OfferId>
+<cfset FNMN=CreateUUID()>
 
-
-<cfhtmltopdf pageType="A4"  destination="C:/W3/PROD/devcatalyst/MailPdf/PDF_0000#dateFormat(now(),"dd_mm_yyyy")#.pdf">
+<cfhtmltopdf pageType="A4"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf">
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
 </cfhtmltopdf>
 
+<cfset MailService=createObject("component","AddOns.YafSatis.Partner.cfc.mailService")>
 
-
-
-
+<cfscript>
+    MailService.SendMail(MailBody=formData.FHtml,FromMail="test@yafdiesel.com.tr",ToMailList="#formData.MailTOList#",ToCCMailList="#formData.CClist#",ToBCCMailList="#formData.BCClist#",fffile="#FNMN#"ffftype="application/pdf",fffcontent="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf",subject="Deneme Mailidir")
+</cfscript>
+<!--------
+        <cffunction name="SendMail" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+        <cfargument name="MailBody" required="true">
+        <cfargument name="FromMail" required="true">
+        <cfargument name="ToMailList" required="true">
+        <cfargument name="ToCCMailList">
+        <cfargument name="ToBCCMailList">        
+        <cfargument name="fffile" default="">
+        <cfargument name="ffftype">
+        <cfargument name="fffcontent">
+        <cfargument name="subject" required="true">
+    -------------->
 
 </cffunction>
 

@@ -5,12 +5,22 @@
         <cfargument name="ToMailList" required="true">
         <cfargument name="ToCCMailList">
         <cfargument name="ToBCCMailList">        
+        <cfargument name="fffile" default="">
+        <cfargument name="ffftype">
+        <cfargument name="fffcontent">
         <cfargument name="subject" required="true">
 
 
 
         <cfmail to = "#arguments.ToMailList#" from = "#arguments.FromMail#" subject = "#arguments.subject#">             
             #arguments.MailBody# 
+            <cfif len(arguments.fffile)>
+            <cfmailparam
+                            file="#arguments.fffile#"
+                            type="#arguments.ffftype#"
+                            content="#arguments.fffcontent#"
+                            />
+                        </cfif>
         </cfmail> 
     </cffunction>
     <cffunction name="GetMailAddreses">
