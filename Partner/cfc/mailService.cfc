@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="SendMail">
+    <cffunction name="SendMail" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="formData" required="true">
        <cfdump var="#arguments#">
        
