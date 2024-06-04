@@ -891,18 +891,21 @@ ORDER BY PO2.OFFER_ID
 </cffunction>
 
 <cffunction name="sendPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-<cfargument name="Offer_ID">
-<cfargument name="mail_type">
-<cfargument name="FromMail" required="true">
-<cfargument name="ToMailList" required="true">
-<cfargument name="subject" required="true">
-<cfset attributes.Offer_Id=arguments.Offer_ID>
 
-<cfmail to = "#arguments.ToMailList#" from = "#arguments.FromMail#" subject = "#arguments.subject#">             
-    <cfif arguments.mail_type eq 1>
-        <cfinclude template="/AddOns/YafSatis/Horizon/Pages/pdf_empty.cfm">
-    </cfif>
-</cfmail> 
+<cfargument name="formData">
+<CFSET FORMDATAM=deserializeJSON(arguments.formData)>
+<cfset attributes.OFFER_ID=FORMDATAM.OfferId>
+
+
+<cfhtmltopdf pageType="A4"  destination="C:/W3/PROD/devcatalyst/MailPdf/PDF_0000#dateFormat(now(),"dd_mm_yyyy")#.pdf">
+    <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
+</cfhtmltopdf>
+
+
+
+
+
+
 </cffunction>
 
 <cffunction name="AddShipToFilter"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">

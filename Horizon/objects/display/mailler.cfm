@@ -64,7 +64,7 @@
             OfferId:OfferId,
         }
         $.ajax({
-            url:"/AddOns/YafSatis/Partner/cfc/MailService.cfc?method=SendMail",
+            url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=sendPurchaseOffer",
             data:{
                 formData:JSON.stringify(FD)
             }
