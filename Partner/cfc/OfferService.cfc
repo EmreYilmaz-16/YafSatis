@@ -897,14 +897,14 @@ ORDER BY PO2.OFFER_ID
 <cfset attributes.OFFER_ID=FORMDATAM.OfferId>
 <cfset FNMN=CreateUUID()>
 
-<cfhtmltopdf pageType="A4"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf">
+<cfhtmltopdf pageType="A4"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_BURASU">
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
 </cfhtmltopdf>
 
 <cfset MailService=createObject("component","AddOns.YafSatis.Partner.cfc.mailService")>
 
 <cfscript>
-    MailService.SendMail(MailBody=FORMDATAM.FHtml,FromMail="info@partnerbilgisayar.com",ToMailList="#FORMDATAM.MailTOList#",ToCCMailList="#FORMDATAM.CClist#",ToBCCMailList="#FORMDATAM.BCClist#",fffile="#FNMN#.pdf",ffftype="application/pdf",fffcontent="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf",subject="Deneme Mailidir")
+    MailService.SendMail(MailBody=FORMDATAM.FHtml,FromMail="info@partnerbilgisayar.com",ToMailList="#FORMDATAM.MailTOList#",ToCCMailList="#FORMDATAM.CClist#",ToBCCMailList="#FORMDATAM.BCClist#",fffile="#FNMN#.pdf",ffftype="application/pdf",fffcontent="#PDF_BURASU#",subject="Deneme Mailidir")
 </cfscript>
 <!--------
         <cffunction name="SendMail" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
