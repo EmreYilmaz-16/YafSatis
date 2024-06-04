@@ -56,9 +56,10 @@
                         #it2.DELIVER_DATE#
                     </td>
                     <td>
+                        <div>
                         <a onclick="window.location.href='index.cfm?fuseaction=purchase.emptypopup_add_offer_price_pbs&offer_id=#it2.OFFER_ID#'"><span class="fa fa-plus"></span></a>
                         <a <!--------onclick="window.location.href='index.cfm?fuseaction=purchase.emptypopup_add_offer_price_pbs&offer_id=#it2.OFFER_ID#'"--------> onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_mailler_pbs&OFFER_ID=<cfoutput>#it2.OFFER_ID#</cfoutput>')" ><i class="fa fa-envelope"></i></a>
-                    </td>
+                    </div></td>
                 </tr>
             </cfloop>
         </cf_grid_list>
