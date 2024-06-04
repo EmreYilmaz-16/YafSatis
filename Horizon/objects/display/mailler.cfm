@@ -17,9 +17,19 @@
 
 <cf_box title="Mail Gönder" scroll="1" collapsable="1" resize="1" popup_box="1">
     <div style="clear:both"></div>
-    <div style="width:100%">
-        <a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
-    </div>
+    <div style="width:100%;display:flex">
+
+    
+        <div class="form-group" style="width: 25%;">
+       <label>Mail TO</label> 
+    <input type="text" value="">  
+    </div><div class="form-group" style="width: 25%;">
+      <label>CC</label>
+     <input type="text" value="">
+    </div><div class="form-group" style="width: 25%;">
+    <label>BCC</label>   
+    <input type="text" value=""> 
+    </div><a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
     <div style="clear:both"></div>
 <div style="display:flex">
     <div style="width:49%">
