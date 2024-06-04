@@ -8,7 +8,7 @@
     </div>
     <div class="col col-6">
         <div>
-
+<cfset attributes.preview=1>
             <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
         </div>
     </div>

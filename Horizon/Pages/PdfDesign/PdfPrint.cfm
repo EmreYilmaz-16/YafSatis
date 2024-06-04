@@ -1,4 +1,5 @@
-<cfparam name="SendMail" default="0">
+<cfparam name="SendMail" default="0"> 
+<cfparam name="attributes.preview" default="0"> 
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
 <script>
