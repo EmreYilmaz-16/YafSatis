@@ -904,7 +904,7 @@ ORDER BY PO2.OFFER_ID
 <cfset MailService=createObject("component","AddOns.YafSatis.Partner.cfc.mailService")>
 
 <cfscript>
-    MailService.SendMail(MailBody=formData.FHtml,FromMail="test@yafdiesel.com.tr",ToMailList="#formData.MailTOList#",ToCCMailList="#formData.CClist#",ToBCCMailList="#formData.BCClist#",fffile="#FNMN#"ffftype="application/pdf",fffcontent="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf",subject="Deneme Mailidir")
+    MailService.SendMail(MailBody=formData.FHtml,FromMail="test@yafdiesel.com.tr",ToMailList="#formData.MailTOList#",ToCCMailList="#formData.CClist#",ToBCCMailList="#formData.BCClist#",fffile="#FNMN#",ffftype="application/pdf",fffcontent="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf",subject="Deneme Mailidir")
 </cfscript>
 <!--------
         <cffunction name="SendMail" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
