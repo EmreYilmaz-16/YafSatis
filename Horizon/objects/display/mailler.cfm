@@ -19,11 +19,12 @@
     <div>
         <a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
     </div>
-<div class="row">
-    <div class="col col-6">
+    <br>
+<div style="display:flex">
+    <div style="width:50%">
         <textarea name="plus_content" id="plus_content"></textarea>
     </div>
-    <div class="col col-6">
+    <div style="width:50%">
         <div>
 <cfset attributes.preview=1>
             <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
