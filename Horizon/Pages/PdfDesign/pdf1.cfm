@@ -558,9 +558,9 @@ WHERE PRODUCT_DT_PROPERTIES.PROPERTY_ID NOT IN(
             </p>
         </div>
     </div>
-</div>
+</div><cfif attributes.preview eq 0>
 <script type="text/javascript" src="/JS/assets/lib/jquery/jquery-min.js"></script>
-<cfif attributes.preview eq 0>
+
 <script>
     $(document).ready(function (params) {
         window.print()
