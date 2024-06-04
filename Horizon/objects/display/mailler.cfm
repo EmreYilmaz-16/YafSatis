@@ -102,4 +102,6 @@
     
     
 </script>
+<script src="/JS/assets/lib/kothing/kothing-editor.min.js?v=02022021"></script>	
+<script src="/JS/assets/lib/kothing/src/lang/en.js"></script>
 <!------------------>
