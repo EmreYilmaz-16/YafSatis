@@ -16,7 +16,7 @@
 			<script src="/JS/codemirror/addon/css-lint.js"></script>
 
 <cf_box title="Mail Gönder" scroll="1" collapsable="1" resize="1" popup_box="1">
-    <div>
+    <div style="width:100%>
         <a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
     </div>
     <br>
