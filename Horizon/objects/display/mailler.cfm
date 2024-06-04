@@ -16,22 +16,23 @@
 			<script src="/JS/codemirror/addon/css-lint.js"></script>
 
 <cf_box title="Mail Gönder" scroll="1" collapsable="1" resize="1" popup_box="1">
+    <input type="hidden" name="OfferId" value="<cfoutput>#attributes.offer_id#</cfoutput>"
     <div style="clear:both"></div>
     <div style="width:100%;display:flex">
 
     
         <div class="form-group" style="width: 25%;">
        <label>Mail TO</label> 
-    <input type="text" value="">  
+    <input type="text" value="" id="mail_to">  
     </div><div class="form-group" style="width: 25%;">
       <label>CC</label>
-     <input type="text" value="">
-    </div><div class="form-group" style="width: 25%;">
+     <input type="text" value="" id="mail_cc">
+    </div><div class="form-group" style="width: 25%;" >
     <label>BCC</label>   
-    <input type="text" value=""> 
+    <input type="text" value="" id="mail_bcc"> 
     </div><a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
     <div style="clear:both"></div>
-<div style="display:flex">
+<div style="display:flex;margin-top: 10px;">
     <div style="width:49%">
         <textarea name="plus_content" id="plus_content"></textarea>
     </div>
@@ -45,6 +46,26 @@
 </div>
 
 </cf_box>
+
+<script>
+    function MailGonderCanim() {
+        var FHtml=$("#plus_content").val();
+        var MailTOList=$("#mail_to").val()
+        var CClist=$("#mail_cc").val()
+        var BCClist=$("#mail_bcc").val()
+        var OfferId=$("#OfferId").val()
+
+
+        var FD={
+            FHtml:FHtml,
+            MailTOList:MailTOList,
+            CClist:CClist,
+            BCClist:BCClist,
+            OfferId:OfferId,
+        }
+        
+    }
+</script>
 
 
 
