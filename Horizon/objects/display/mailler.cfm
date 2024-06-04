@@ -1,3 +1,20 @@
+	
+			<link href="/JS/assets/lib/kothing/css/kothing-editor.min.css?v=18112020" rel="stylesheet">
+
+			<link rel="stylesheet" href="/JS/codemirror/lib/codemirror.css">
+			<link rel="stylesheet" href="/JS/codemirror/theme/mdn-like.css">
+			<script src="/JS/codemirror/lib/codemirror.js"></script>		
+			<script src="/JS/codemirror/mode/xml/xml.js"></script>
+			<script src="/JS/codemirror/mode/javascript/javascript.js"></script>
+			<script src="/JS/codemirror/mode/css/css.js"></script>
+			<script src="/JS/codemirror/mode/vbscript/vbscript.js"></script>
+			<script src="/JS/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+			<script src="/JS/codemirror/addon/show-hint.js"></script>
+			<script src="/JS/codemirror/addon/selection/selection-pointer.js"></script>
+			<script src="/JS/codemirror/addon/css-hint.js"></script>
+			<script src="/JS/codemirror/addon/lint.js"></script>
+			<script src="/JS/codemirror/addon/css-lint.js"></script>
+            
 <cf_box title="Mail Gönder" scroll="1" collapsable="1" resize="1" popup_box="1">
     <div>
         <a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
