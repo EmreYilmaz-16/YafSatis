@@ -22,10 +22,11 @@
     </div>
     <div style="clear:both"></div>
 <div style="display:flex">
-    <div style="width:50%">
+    <div style="width:49%">
         <textarea name="plus_content" id="plus_content"></textarea>
     </div>
-    <div style="width:50%">
+    <div style="width:2%"></div>
+    <div style="width:49%;max-height: 30vh;overflow-y: scroll;" >
         <div>
 <cfset attributes.preview=1>
             <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
