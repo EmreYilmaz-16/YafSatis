@@ -21,7 +21,7 @@
     </div>
 <div class="row">
     <div class="col col-6">
-        <textarea name="plus_content"></textarea>
+        <textarea name="plus_content" id="plus_content"></textarea>
     </div>
     <div class="col col-6">
         <div>
