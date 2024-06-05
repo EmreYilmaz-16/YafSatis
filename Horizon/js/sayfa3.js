@@ -474,6 +474,7 @@ function addRowCrs(
   div.appendChild(b2);
   div.appendChild(b3);
   div.appendChild(b4);
+  div.appendChild(b5);
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
