@@ -460,6 +460,9 @@ function addRowCrs(
   b3.setAttribute("data-rc", RowCount);
   b4.setAttribute("onclick", "ShowImages(this)");
   b4.setAttribute("data-rc", RowCount);
+  b5.setAttribute("onclick", "open_product_popup("+RowCount+")");
+  b5.setAttribute("data-rc", RowCount);
+
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -469,6 +472,7 @@ function addRowCrs(
   div.appendChild(b2);
   div.appendChild(b3);
   div.appendChild(b4);
+  div.appendChild(b5);
   rc2++;
   td.appendChild(div);
   tr.appendChild(td);
@@ -1915,4 +1919,17 @@ function SatinAlmaKontrol(offer_id) {
     console.log(SelectedCompArri);
     TedarikYaz();
   });
+}
+function open_product_popup(rc)
+{
+  url_str = 'index.cfm?fuseaction=objects.popup_detail_product';
+  var pid = document.getElementById("PRODUCT_ID_" + rc).value;
+  var sid = document.getElementById("STOCK_ID_" + rc).value;
+  var stock_id = pid;
+  var product_id = sid;
+
+  
+  
+  if(product_id != "")
+    openBoxDraggable(url_str + '&pid='+ product_id + '&sid='+stock_id);
 }
