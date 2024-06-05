@@ -455,8 +455,7 @@ WHERE POR1.OFFER_ID=#attributes.OFFER_ID#
 </cfquery>
 
         </cfquery>
-        <cfdump var="#GETrOWS#">
-        <cfabort>
+       
         <!-- TABLE -->
         <cfoutput query="GETrOWS" group="PROP_LIST">
         <div class="table-div">
