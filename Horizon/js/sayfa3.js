@@ -450,7 +450,7 @@ function addRowCrs(
   
   var spn = document.createElement("span");
   spn.setAttribute("class", "icn-md fa fa-dashboard");
-  b4.appendChild(spn);
+  b5.appendChild(spn);
 
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
