@@ -440,6 +440,17 @@ function addRowCrs(
   spn.setAttribute("class", "icn-md fa fa-camera");
   b4.appendChild(spn);
 
+  var b5 = document.createElement("button");
+  b5.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+  b5.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  
+  var spn = document.createElement("span");
+  spn.setAttribute("class", "icn-md fa fa-dashboard");
+  b5.appendChild(spn);
+
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
 

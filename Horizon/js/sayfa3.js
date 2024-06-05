@@ -1887,7 +1887,7 @@ function SatinAlmaKontrol(offer_id) {
   });
 }
 
-function open_product_popup(el)
+function open_product_popup(rc)
 {
   url_str = 'index.cfm?fuseaction=objects.popup_detail_product';
   var pid = document.getElementById("PRODUCT_ID_" + rc).value;
