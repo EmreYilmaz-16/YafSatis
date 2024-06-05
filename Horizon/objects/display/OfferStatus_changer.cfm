@@ -71,7 +71,7 @@
    <cfparam name="attributes.OFFER_CURRENCY_ID" default="1">
    <cfquery name="getStages" datasource="#dsn#">
       select PROCESS_ROW_ID,STAGE,DETAIL,CASE WHEN DETAIL ='1' THEN 'FOR CUTOMER' ELSE 'FOR YAF STOCK' END AS 'INQUIRY REASON' 
-      from CatalystQA.PROCESS_TYPE_ROWS where PROCESS_ID=193 AND DETAIL NOT IN ('0','3') AND DETAIL='#attributes.OFFER_CURRENCY_ID#'
+      from CatalystQA.PROCESS_TYPE_ROWS where PROCESS_ID=193 AND DETAIL NOT IN ('0','3') AND DETAIL='#attributes.OFFER_CURRENCY_ID#' ORDER BY LINE_NUMBER
    </cfquery>
 <input type="hidden" name="OFFER_ID_00" id="OFFER_ID_00" value="#attributes.OFFER_ID#">
 <input type="hidden" name="OLD_PROCESS_CAT_00" id="OLD_PROCESS_CAT_00" value="#attributes.OLD_PROCESS_CAT#">
