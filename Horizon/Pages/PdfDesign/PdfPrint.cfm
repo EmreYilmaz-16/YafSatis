@@ -26,7 +26,7 @@
 </script>
 <cfset Offer=deserializeJSON(OfferList)>
 
-<cfdump var="#Offer#">
+
 
 
 <cfif Offer.OFFER_STAGE eq 269>
