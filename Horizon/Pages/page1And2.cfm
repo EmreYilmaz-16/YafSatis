@@ -151,10 +151,10 @@
     SELECT * FROM CatalystQA.PROCESS_TYPE_ROWS WHERE PROCESS_ID=193-- AND DETAIL='1'
 </cfquery>
 <cfquery name="DFS1" dbtype="query">
-    SELECT * FROM DFS WHERE  DETAIL='1'
+    SELECT * FROM DFS WHERE  DETAIL='1' ORDER BY LINE_NUMBER
 </cfquery>
 <cfquery name="DFS2" dbtype="query">
-    SELECT * FROM DFS WHERE  DETAIL='2'
+    SELECT * FROM DFS WHERE  DETAIL='2' ORDER BY LINE_NUMBER
 </cfquery>
         
         
