@@ -14,7 +14,7 @@
 			<script src="/JS/codemirror/addon/css-hint.js"></script>
 			<script src="/JS/codemirror/addon/lint.js"></script>
 			<script src="/JS/codemirror/addon/css-lint.js"></script>
-
+<cfparam name="attributes.is_sale" default="0">
 <cf_box title="Mail Gönder" scroll="1" collapsable="1" resize="1" popup_box="1">
     <input type="hidden" name="OfferId" id="OfferId" value="<cfoutput>#attributes.offer_id#</cfoutput>">
     <div style="clear:both"></div>
@@ -30,7 +30,7 @@
     </div><div class="form-group" style="width: 25%;" >
     <label>BCC</label>   
     <input type="text" value="" id="mail_bcc"> 
-    </div><a href="javascript://" onclick="MailGonderCanim()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
+    </div><a href="javascript://" onclick="MailGonderCanim(<cfoutput>#attributes.is_sale#</cfoutput>)" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
     <div style="clear:both"></div>
 <div style="display:flex;margin-top: 10px;">
     <div style="width:49%">
@@ -48,7 +48,7 @@
 </cf_box>
 
 <script>
-    function MailGonderCanim() {
+    function MailGonderCanim(is_Sale) {
         var FHtml=$("#plus_content").val();
         var MailTOList=$("#mail_to").val()
         var CClist=$("#mail_cc").val()
@@ -62,6 +62,7 @@
             CClist:CClist,
             BCClist:BCClist,
             OfferId:OfferId,
+            is_Sale:is_Sale,
         }
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=sendPurchaseOffer",
