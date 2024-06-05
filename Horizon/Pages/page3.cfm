@@ -344,7 +344,7 @@
 <cf_box>
     <div id="BasketFooter">
         <div class="row">
-            <div class="col col-4" <cfif listFind(session.ep.USER_LEVEL,"12")><cfelse>style="display:none</cfif>>
+            <div class="col col-4" <cfif listFind(session.ep.USER_LEVEL,"12")><cfelse>style="display:none"</cfif>>
                 <div class="form-group">
                     <div class="input-group" style="display:flex">
                         <input type="text" id="text_cpm_search" name="text_cpm_search" onkeyup="get_consumer(this,event)">
@@ -355,7 +355,7 @@
 
                 </div>
             </div>
-            <div class="col col-4" <cfif listFind(session.ep.USER_LEVEL,"12")><cfelse>style="display:none</cfif>>
+            <div class="col col-4" <cfif listFind(session.ep.USER_LEVEL,"12")><cfelse>style="display:none"</cfif>>
                 <div id="tedarik" style="max-height: 25vh;height: 72vh;overflow-x: hidden;overflow-y: scroll;">
 
                 </div>
