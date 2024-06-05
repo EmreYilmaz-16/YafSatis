@@ -177,7 +177,7 @@
                         </div>
                         
                         <div class="pull-right padding-4" >
-                            <div class="color-H  padding-left-5 bold padding-right-5" style="border-radius:5px;">
+                            <div class="color-CR  padding-left-5 bold padding-right-5" style="border-radius:5px;">
                                 <span class="margin-right-5 font-xs" id="OC_#DETAIL#_#PROCESS_ROW_ID#" >4300</span>
                             </div>
                         </div>
