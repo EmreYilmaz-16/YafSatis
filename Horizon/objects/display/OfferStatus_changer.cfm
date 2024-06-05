@@ -9,36 +9,36 @@
 }
  .OsButton-orange{
     background: #ffbe0b;
-    color: white;
+    color:black;
  }
  .OsButton-orange:hover{
     background: #d6a00a;
-    color: white;
+    color:black;
  }
  .OsButton-blue{
     background: #3a86ff;
-    color: white;
+    color:black;
  }
  .OsButton-blue:hover{
     background: #3373da;
-    color: white;
+    color:black;
  }
  .OsButton-lblue{
     background: #00b4d8;
-    color: white;
+    color:black;
  }
  .OsButton-lblue:hover{
     background: #039ebd;
-    color: white;
+    color:black;
  }
 
  .OsButton-green{
     background: #6a994e;
-    color: white;
+    color:black;
  }
  .OsButton-green:hover{
     background: #4d7039;
-    color: white;
+    color:black;
  }
  .OsButton-dark{
     background: #063173;
@@ -58,11 +58,11 @@
  }
  .OsButton-red{
     background: #ef233c;
-    color: white;
+    color:black;
  }
  .OsButton-red:hover{
     background: #bd1b2e;
-    color: white;
+    color:black;
  }
  
 </style>
