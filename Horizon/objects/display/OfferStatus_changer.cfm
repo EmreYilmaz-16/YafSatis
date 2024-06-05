@@ -79,7 +79,7 @@
 </cfoutput>
 <cf_box>
    
-<div style="display:flex;flex-wrap: wrap;">
+<div style="display:flex;flex-wrap: wrap;width:350px">
     
       <cfoutput query="getStages" >
          <button class="OsButton OsButton-orange" onclick="SetSurec(#PROCESS_ROW_ID#,#attributes.OFFER_ID#,'#attributes.modal_id#')"  style="width:100%;position: relative;">
