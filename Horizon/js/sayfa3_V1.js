@@ -460,7 +460,7 @@ function addRowCrs(
   b3.setAttribute("data-rc", RowCount);
   b4.setAttribute("onclick", "ShowImages(this)");
   b4.setAttribute("data-rc", RowCount);
-  b5.setAttribute("onclick", "open_product_popup("+RowCount+")");
+  b5.setAttribute("onclick", "open_product_popup(this)");
   b5.setAttribute("data-rc", RowCount);
 
   var div = document.createElement("div");
@@ -1920,9 +1920,10 @@ function SatinAlmaKontrol(offer_id) {
     TedarikYaz();
   });
 }
-function open_product_popup(rc)
+function open_product_popup(el)
 {
   url_str = 'index.cfm?fuseaction=objects.popup_detail_product';
+  var rc = el.getAttribute("data-rc");
   var pid = document.getElementById("PRODUCT_ID_" + rc).value;
   var sid = document.getElementById("STOCK_ID_" + rc).value;
   var stock_id = pid;
