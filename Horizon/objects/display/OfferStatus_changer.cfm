@@ -82,7 +82,7 @@
 <div style="display:flex;flex-wrap: wrap;width:350px">
     
       <cfoutput query="getStages" >
-         <button class="OsButton OsButton-orange" onclick="SetSurec(#PROCESS_ROW_ID#,#attributes.OFFER_ID#,'#attributes.modal_id#')"  style="width:100%;position: relative;">
+         <button class="OsButton OsButton-orange" onclick="SetSurec(#PROCESS_ROW_ID#,#attributes.OFFER_ID#,'#attributes.modal_id#')"  style="width:250px;position: relative;">
             #STAGE#
             <cfif attributes.OLD_PROCESS_CAT eq PROCESS_ROW_ID>
             <span  class="fa fa-check-square" style="position: absolute;left: 10px;top: 45%;font-size:30pt"></span>
@@ -95,13 +95,13 @@
        
    
     
-    <button class="OsButton OsButton-dark" onclick="windowopen('/index.cfm?fuseaction=sales.list_order&event=add&PBS_OFFER_ID=<cfoutput>#attributes.OFFER_ID#</cfoutput>','wide')"  style="width:100%">
+    <button class="OsButton OsButton-dark" onclick="windowopen('/index.cfm?fuseaction=sales.list_order&event=add&PBS_OFFER_ID=<cfoutput>#attributes.OFFER_ID#</cfoutput>','wide')"  style="width:250px">
         ORDER PROCESS
     </button>
-    <button class="OsButton OsButton-red" style="width:100%">
+    <button class="OsButton OsButton-red" style="width:250px">
         CANCEL WITHOUT ORDER
     </button>
-    <button class="OsButton OsButton-light" onclick="closeBoxDraggable('<cfoutput>#attributes.modal_id#</cfoutput>')" style="width:100%">
+    <button class="OsButton OsButton-light" onclick="closeBoxDraggable('<cfoutput>#attributes.modal_id#</cfoutput>')" style="width:250px">
         CANCEL WITHOUT CHANGE
     </button>
 </div>
