@@ -33,6 +33,22 @@
     background-color: #f6bf26 ;
     color: black !important;
 }
+.OsButton{
+        width: 100%;
+    height: 70px;    
+    font-weight: bold;
+    font-size: 10pt !important;
+    border: none;        
+    margin: 5px;
+}
+ .OsButton-orange{
+    background: #ffbe0b;
+    color:black;
+ }
+ .OsButton-orange:hover{
+    background: #d6a00a;
+    color:black;
+ }
 .form-group input[type=text], .form-group input[type=tel],.form-group input[type=date], .form-group input[type=search], input[type=search], .form-group input[type=number], .form-group input[type=password], .form-group input[type=file], .form-group select {
     width: 100% !important;
     min-height: 23px;
@@ -175,7 +191,7 @@
             <div class="col col-6 margin-top-5">
               <cfoutput query="DFS1">
                 <div class="col col-3 col-md-6 col-sm-12 d-flex">
-                    <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="filterb" style="height:100%;">
+                    <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="OsButton OsButton-orange filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             #STAGE#
                         </div>
@@ -195,7 +211,7 @@
                 
               <cfoutput query="DFS2">
                   <div class="col col-3 col-md-6 col-sm-12 d-flex">
-                      <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="filterb" style="height:100%;">
+                      <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="OsButton OsButton-orange filterb" style="height:100%;">
                           <div class="pull-left font-md padding-5">
                               #STAGE#
                           </div>
