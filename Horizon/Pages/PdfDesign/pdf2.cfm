@@ -411,7 +411,7 @@
                 </div>
                 <div class="div-elements">
                     <div class="input-title">VALIDITY</div>
-                    <div class="input-value"><span>:</span> <cfoutput>#Offer.VALID_DAYS#</cfoutput> DAYS</div>
+                    <div class="input-value"><span>:</span> <span style="color:red">? Hangi Veri Gelecek</span> <cfoutput>#Offer.VALID_DAYS#</cfoutput> DAYS</div>
                 </div>
             </div>
         </div>
