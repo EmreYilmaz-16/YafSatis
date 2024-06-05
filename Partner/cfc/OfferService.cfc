@@ -674,14 +674,14 @@ WHERE 1 = 1
 <cffunction name="getPurchaseOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
 <cfargument name="offer_id">
 <cfquery name="getOffer" datasource="#dsn3#">
-    SELECT C.NICKNAME,C.FULLNAME,DELIVERDATE,OFFER_ID,DELIVER_FEE,TAX_STATUS,GENERAL_DISCOUNT_RATE,OTHER_MONEY FROM CatalystQA_1.PBS_OFFER AS PO 
+    SELECT C.NICKNAME,C.FULLNAME,DELIVERDATE,OFFER_ID,DELIVER_FEE,TAX_STATUS,GENERAL_DISCOUNT_RATE,OTHER_MONEY,OFFER_STAGE FROM CatalystQA_1.PBS_OFFER AS PO 
 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN(REPLACE(PO.OFFER_TO,',',''))
 WHERE PO.OFFER_ID=#arguments.OFFER_ID#
 </cfquery>
 <cfquery name="getOfferROW" datasource="#dsn3#">
 SELECT POR1.PRODUCT_NAME
 	,POR1.QUANTITY
-    ,PO.OFFER_STAGE
+    
 	,POR2.PROP_LIST
 	,POR2.JSON_STRINGIM
 	,ISNULL(POR1.PRICE,0)  AS PRICE
