@@ -441,6 +441,17 @@ function addRowCrs(
   spn.setAttribute("class", "icn-md fa fa-camera");
   b4.appendChild(spn);
 
+  var b5 = document.createElement("button");
+  b5.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+  b5.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  
+  var spn = document.createElement("span");
+  spn.setAttribute("class", "icn-md fa fa-dashboard");
+  b4.appendChild(spn);
+
   var rc2 = document.getElementById("SeperatorRC_" + proplist).value;
   rc2 = parseInt(rc2);
 
@@ -450,6 +461,10 @@ function addRowCrs(
   b3.setAttribute("data-rc", RowCount);
   b4.setAttribute("onclick", "ShowImages(this)");
   b4.setAttribute("data-rc", RowCount);
+  
+  b5.setAttribute("onclick", "open_product_popup(this)");
+  b5.setAttribute("data-rc", RowCount);
+
   var div = document.createElement("div");
   div.setAttribute("style", "display:flex");
   div.appendChild(input);
@@ -1869,4 +1884,18 @@ function SatinAlmaKontrol(offer_id) {
     console.log(SelectedCompArri);
     TedarikYaz();
   });
+}
+
+function open_product_popup(el)
+{
+  url_str = 'index.cfm?fuseaction=objects.popup_detail_product';
+  var pid = document.getElementById("PRODUCT_ID_" + rc).value;
+  var sid = document.getElementById("STOCK_ID_" + rc).value;
+  var stock_id = pid;
+  var product_id = sid;
+
+  
+  
+  if(product_id != "")
+    openBoxDraggable(url_str + '&pid='+ product_id + '&sid='+stock_id);
 }
