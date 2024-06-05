@@ -17,7 +17,7 @@
 }
 .ui-btn-outline-success:hover, .ui-btn-outline-success:active {
     background-color: #44b6ae;
-    color: #fff !important;
+    color: black !important;
 }
 .ui-btn-outline-warning {
     padding: 0 15px !important;
@@ -27,7 +27,7 @@
 }
 .ui-btn-outline-warning:hover, .ui-btn-outline-warning:active {
     background-color: #d58512 ;
-    color: #fff !important;
+    color: black !important;
 }
 .form-group input[type=text], .form-group input[type=tel],.form-group input[type=date], .form-group input[type=search], input[type=search], .form-group input[type=number], .form-group input[type=password], .form-group input[type=file], .form-group select {
     width: 100% !important;
