@@ -5,7 +5,6 @@ $(document).ready(function () {
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
   getCats(e);
-
   get_consumer("", "");
 });
 function getCats(el) {
@@ -24,7 +23,6 @@ function getCats(el) {
     },
   });
 }
-
 function getCatProperties(cat_id) {
   try {
     $("#BUTOCUMMMMM").remove();
@@ -433,6 +431,7 @@ function addRowCrs(
   b3.appendChild(spn);
   var b4 = document.createElement("button");
   b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-busy");
+  b4.setAttribute("id", "ResimButonC_" + RowCount);
   b4.setAttribute(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
@@ -461,7 +460,6 @@ function addRowCrs(
   b3.setAttribute("data-rc", RowCount);
   b4.setAttribute("onclick", "ShowImages(this)");
   b4.setAttribute("data-rc", RowCount);
-  
   b5.setAttribute("onclick", "open_product_popup(this)");
   b5.setAttribute("data-rc", RowCount);
 
@@ -566,6 +564,19 @@ function addRowCrs(
   td.appendChild(div);
   tr.appendChild(td);
 
+  if (UNIQUE_RELATION_ID.length > 0) {
+    var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
+    console.log(RF);
+    if (RF.recordcount) {
+      PURCHASE_PRICE = RF.PRICE_OTHER[0];
+      PURCHASE_MONEY = RF.OTHER_MONEY[0];
+    }
+  } else {
+    var RF = {
+      recordcount: 0,
+    };
+  }
+
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
@@ -574,9 +585,14 @@ function addRowCrs(
   div2.setAttribute("style", "display:flex");
   var input = document.createElement("input");
   input.setAttribute("type", "text");
+  input.setAttribute("readonly", "yes");
   input.name = "PURCHASE_PRICE";
   input.id = "PURCHASE_PRICE_" + RowCount;
+  if (PURCHASE_PRICE != 0) {
+    input.setAttribute("style", "color:green");
+  }
   input.value = commaSplit(PURCHASE_PRICE);
+
   div2.appendChild(input);
   var input = document.createElement("select");
   if (PURCHASE_MONEY.length == 0) {
@@ -586,6 +602,7 @@ function addRowCrs(
   input.name = "PURCHASE_MONEY";
   input.id = "PURCHASE_MONEY_" + RowCount;
   input.setAttribute("class", "input-group-text");
+  input.setAttribute("disabled", "disabled");
   div2.appendChild(input);
   div.appendChild(div2);
   td.appendChild(div);
@@ -835,7 +852,11 @@ function getProduct(el, rc) {
           }
         }
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
-
+        if (Obje.IMG_COUNT > 0) {
+          document
+            .getElementById("ResimButonC_" + rc)
+            .setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
+        }
         document.getElementById("PRODUCT_ID_" + rc).value = Obje.PRODUCT_ID;
         document.getElementById("IS_VIRTUAL_" + rc).value = Obje.IS_VIRTUAL;
         document.getElementById("STOCK_ID_" + rc).value = Obje.STOCK_ID;
@@ -1608,6 +1629,9 @@ function AddToCons() {
                 PRODUCT_NAME: PRODUCT_NAMEX,
                 PRODUCT_CODE_2: PRODUCT_CODE_2X,
                 PRODUCT_UNIT: PRODUCT_UNITX,
+                PRICE: 0,
+                PRICE_OTHER: 0,
+                OTHER_MONEY: "",
               };
               OX.PIDS.push(TX);
             }
@@ -1651,6 +1675,9 @@ function AddToCons() {
                   PRODUCT_NAME: PRODUCT_NAMEX,
                   PRODUCT_CODE_2: PRODUCT_CODE_2X,
                   PRODUCT_UNIT: PRODUCT_UNITX,
+                  PRICE: 0,
+                  PRICE_OTHER: 0,
+                  OTHER_MONEY: "",
                 };
                 SelectedCompArr[Ax].PIDS.push(TX);
               }
@@ -1697,7 +1724,9 @@ function TedarikYaz() {
       "style",
       "    float: right;margin-right: 10px;  background: #20a30a;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;"
     );
-    td.setAttribute("style", "color:#fb6b5b");
+    if (AComp.PIDS.length == parseInt(AComp.P_PRICE_COUNT)) {
+      td.setAttribute("style", "color:#20a30a");
+    }
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
@@ -1708,22 +1737,22 @@ function TedarikYaz() {
     td.setAttribute("colspan", "2");
     var table2 = document.createElement("table");
     table2.setAttribute("class", "table table-sm table-stripped");
-    var traaa=document.createElement("tr");
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText("Part Number")
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText("Product Name")
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText("Amount")
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText("Offered Prıce")
-    traaa.appendChild(thsdasd)
-    var thsdasd=document.createElement("th");
-    thsdasd.innerText("Money")
-    traaa.appendChild(thsdasd)
+    var traaa = document.createElement("tr");
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Part Number";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Product Name";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Amount";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Offered Prıce";
+    traaa.appendChild(thsdasd);
+    var thsdasd = document.createElement("th");
+    thsdasd.innerText = "Money";
+    traaa.appendChild(thsdasd);
     table2.appendChild(traaa);
     for (let j = 0; j < AComp.PIDS.length; j++) {
       var Aproduct = AComp.PIDS[j];
@@ -1783,8 +1812,8 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 function loadRelOffers() {
-  var r = wrk_safe_query("GETREO_OFFERS");
-  for (let i = 0; i < r.recordcount; i++) {}
+  /*var r = wrk_safe_query("GETREO_OFFERS");
+  for (let i = 0; i < r.recordcount; i++) {}*/
 }
 
 function SavePropToShip() {
@@ -1842,9 +1871,10 @@ function ShowImages2(pid) {
       pid
   );
 }
+
 function SatinAlmaKontrol(offer_id) {
   var SelectedCompArri = [];
-  var SelectedCompArr = [];
+  SelectedCompArr = [];
   $.get(
     "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=getPurchaseOfferListForSaleOffer&OFFER_ID=" +
       offer_id
@@ -1855,8 +1885,8 @@ function SatinAlmaKontrol(offer_id) {
     for (let i = 0; i < Teklifler.length; i++) {
       var ATeklif = Teklifler[i];
       /*
-        <table class="table table-sm table-stripped" style="border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;"><tr onclick="$('#tr_9').toggle()"><th style="color:#fb6b5b;width:10%">C9</th><th style="color:#fb6b5b">ADASTAR SHIPPING LTD<span style="    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;">3</span></th></tr><tr style="display:none" id="tr_9"><td colspan="2"><table class="table table-sm table-stripped"><tr><td>344A</td><td>FUEL VALVE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr></table></td></tr></table>
-        */
+            <table class="table table-sm table-stripped" style="border: solid 0.5px #d9d9d9;box-shadow: 1px 2px 20px 0px #cfc7c7;margin-top:5px !important;"><tr onclick="$('#tr_9').toggle()"><th style="color:#fb6b5b;width:10%">C9</th><th style="color:#fb6b5b">ADASTAR SHIPPING LTD<span style="    float: right;margin-right: 10px;  background: #fb6b5b;  color: white;  padding: 1px 8px 1px 8px;  border-radius: 50%;">3</span></th></tr><tr style="display:none" id="tr_9"><td colspan="2"><table class="table table-sm table-stripped"><tr><td>344A</td><td>FUEL VALVE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr><tr><td>344A-A</td><td>SPINDLE GUIDE COMPLETE</td><td>1.00</td></tr></table></td></tr></table>
+            */
 
       var O = {
         COMPANY_ID: ATeklif.COMPANY_ID,
@@ -1873,8 +1903,12 @@ function SatinAlmaKontrol(offer_id) {
           SID: ARow.STOCK_ID,
           QUANTITY: ARow.QUANTITY,
           UNIQUE_RELATION_ID: ARow.UNIQUE_RELATION_ID,
+          PRODUCT_NAME: ARow.PRODUCT_NAME,
           PRODUCT_CODE_2: ARow.MANUFACT_CODE,
           PRODUCT_UNIT: ARow.MAIN_UNIT,
+          PRICE: ARow.PRICE,
+          PRICE_OTHER: ARow.PRICE_OTHER,
+          OTHER_MONEY: ARow.OTHER_MONEY,
         };
         O.PIDS.push(P);
       }
@@ -1886,10 +1920,10 @@ function SatinAlmaKontrol(offer_id) {
     TedarikYaz();
   });
 }
-
-function open_product_popup(rc)
+function open_product_popup(el)
 {
   url_str = 'index.cfm?fuseaction=objects.popup_detail_product';
+  var rc = el.getAttribute("data-rc");
   var pid = document.getElementById("PRODUCT_ID_" + rc).value;
   var sid = document.getElementById("STOCK_ID_" + rc).value;
   var stock_id = pid;
