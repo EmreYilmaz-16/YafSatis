@@ -175,7 +175,7 @@
             <div class="col col-6 margin-top-5">
               <cfoutput query="DFS1">
                 <div class="col col-3 col-md-6 col-sm-12 d-flex">
-                    <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="ui-btn ui-btn-outline-warning border border-warning text-dark ui-btn-block filterb" style="height:100%;">
+                    <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="filterb" style="height:100%;">
                         <div class="pull-left font-md padding-5">
                             #STAGE#
                         </div>
@@ -195,7 +195,7 @@
                 
               <cfoutput query="DFS2">
                   <div class="col col-3 col-md-6 col-sm-12 d-flex">
-                      <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="ui-btn ui-btn-outline-warning border border-warning text-dark ui-btn-block filterb" style="height:100%;">
+                      <a href="javascript://" data-stage="#PROCESS_ROW_ID#" id="SOC_#DETAIL#_#PROCESS_ROW_ID#" onclick="LoadOffers('STG',#PROCESS_ROW_ID#,#DETAIL#);"  class="filterb" style="height:100%;">
                           <div class="pull-left font-md padding-5">
                               #STAGE#
                           </div>

@@ -86,23 +86,23 @@ function LoadOffers(tip, vl, vl2) {
   
 
     if (Filters.ForCustomer == 1) {
-      $("#Cust1").removeClass("ui-btn-update");
+      // $("#Cust1").removeClass("ui-btn-update");
 
-      $("#Cust1").removeClass("ui-btn-outline-update");
-      $("#Cust1").addClass("ui-btn-update");
-      $("#Cust2").removeClass("ui-btn-update");
-      $("#Cust2").addClass("ui-btn-outline-update");
+      // $("#Cust1").removeClass("ui-btn-outline-update");
+      // $("#Cust1").addClass("ui-btn-update");
+      // $("#Cust2").removeClass("ui-btn-update");
+      // $("#Cust2").addClass("ui-btn-outline-update");
     } else if (Filters.ForCustomer == 2) {
-      $("#Cust2").removeClass("ui-btn-update");
-      $("#Cust2").removeClass("ui-btn-outline-update");
-      $("#Cust2").addClass("ui-btn-update");
-      $("#Cust1").removeClass("ui-btn-update");
-      $("#Cust1").addClass("ui-btn-outline-update");
+      // $("#Cust2").removeClass("ui-btn-update");
+      // $("#Cust2").removeClass("ui-btn-outline-update");
+      // $("#Cust2").addClass("ui-btn-update");
+      // $("#Cust1").removeClass("ui-btn-update");
+      // $("#Cust1").addClass("ui-btn-outline-update");
     } else {
-      $("#Cust2").removeClass("ui-btn-update");
-      $("#Cust1").removeClass("ui-btn-update");
-      $("#Cust1").addClass("ui-btn-outline-update");
-      $("#Cust2").addClass("ui-btn-outline-update");
+      // $("#Cust2").removeClass("ui-btn-update");
+      // $("#Cust1").removeClass("ui-btn-update");
+      // $("#Cust1").addClass("ui-btn-outline-update");
+      // $("#Cust2").addClass("ui-btn-outline-update");
     }
   }
   var CompanyId = document.getElementById("company_id").value;
@@ -136,12 +136,12 @@ function LoadOffers(tip, vl, vl2) {
   */
 }
 function setActive(id) {
-  $("#" + id).removeClass("ui-btn-outline-warning");
-  $("#" + id).addClass("ui-wrk-btn-warning");
+//  $("#" + id).removeClass("ui-btn-outline-warning");
+  //$("#" + id).addClass("ui-wrk-btn-warning");
 }
 function setDeActive(id) {
-  $("#" + id).removeClass("ui-wrk-btn-warning");
-  $("#" + id).addClass("ui-btn-outline-warning");
+//  $("#" + id).removeClass("ui-wrk-btn-warning");
+ // $("#" + id).addClass("ui-btn-outline-warning");
 }
 function TeklifGetir() {
  var Filters=FiltreleriAl();
