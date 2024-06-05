@@ -29,8 +29,8 @@
 <cfdump var="#Offer#">
 
 
-<cfif Offer.OFFER_STAGE eq 266>
-    <cfinclude template="pdf1.cfm">    
+<cfif Offer.OFFER_STAGE eq 269>
+    <cfinclude template="PDF2.cfm">    
 <cfelseif Offer.OFFER_STAGE eq 262>
     <cfinclude template="pdf3.cfm">
 </cfif>
