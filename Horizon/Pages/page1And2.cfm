@@ -16,8 +16,8 @@
     border-radius: 3px;
 }
 .ui-wrk-btn-warning{
-    background-color:#f6bf26;
-    color:black;
+    background-color:#f6bf26 !important;
+    color:black !important;
 }
 .ui-btn-outline-success:hover, .ui-btn-outline-success:active {
     background-color: #44b6ae;
