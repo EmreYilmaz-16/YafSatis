@@ -77,7 +77,7 @@
 <input type="hidden" name="OLD_PROCESS_CAT_00" id="OLD_PROCESS_CAT_00" value="#attributes.OLD_PROCESS_CAT#">
 <input type="hidden" name="OFFER_CURRENCY_ID_00" id="OFFER_CURRENCY_ID_00" value="#attributes.OFFER_CURRENCY_ID#">
 </cfoutput>
-<span style="border-radius: 10px;background-color:white;padding: 5px 10px 15px 10px;max-width:50%" id="scrollList">
+<span style="border-radius: 10px;background-color:white;padding: 5px 10px 15px 10px;max-width:33%" id="scrollList">
    
 <div style="display:flex;flex-wrap: wrap;">
     
