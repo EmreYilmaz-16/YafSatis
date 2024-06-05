@@ -35,11 +35,12 @@
 }
 .OsButton{
         width: 100%;
-    height: 70px;    
+        height: 70px !important;
     font-weight: bold;
     font-size: 10pt !important;
     border: none;        
     margin: 5px;
+    border-radius: 10px;
 }
  .OsButton-orange{
     background: #ffbe0b;
@@ -197,7 +198,7 @@
                         </div>
                         
                         <div class="pull-right padding-4" >
-                            <div class="color-CR  padding-left-5 bold padding-right-5" style="border-radius:5px;">
+                            <div class="color-HR  padding-left-5 bold padding-right-5" style="border-radius:5px;">
                                 <span class="margin-right-5 font-xs" id="OC_#DETAIL#_#PROCESS_ROW_ID#" >4300</span>
                             </div>
                         </div>
@@ -217,7 +218,7 @@
                           </div>
                           
                           <div class="pull-right padding-4" >
-                              <div class="color-CR padding-left-5 bold padding-right-5" style="border-radius:5px;">
+                              <div class="color-HR padding-left-5 bold padding-right-5" style="border-radius:5px;">
                                   <span class="margin-right-5 font-xs" id="OC_#DETAIL#_#PROCESS_ROW_ID#" >4300</span>
                               </div>
                           </div>
