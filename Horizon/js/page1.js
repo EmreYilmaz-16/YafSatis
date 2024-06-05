@@ -136,12 +136,12 @@ function LoadOffers(tip, vl, vl2) {
   */
 }
 function setActive(id) {
-  $("#" + id).removeClass("ui-btn-outline-success");
-  $("#" + id).addClass("ui-btn-success");
+  $("#" + id).removeClass("ui-btn-outline-warning");
+  $("#" + id).addClass("ui-btn-warning");
 }
 function setDeActive(id) {
-  $("#" + id).removeClass("ui-btn-success");
-  $("#" + id).addClass("ui-btn-outline-success");
+  $("#" + id).removeClass("ui-btn-warning");
+  $("#" + id).addClass("ui-btn-outline-warning");
 }
 function TeklifGetir() {
  var Filters=FiltreleriAl();
