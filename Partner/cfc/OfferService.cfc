@@ -934,7 +934,9 @@ ORDER BY PO2.OFFER_ID
     -------------->
 
 </cffunction>
-
+<cffunction name="FiyatOnayKayit" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfdump var="#arguments#">
+</cffunction>
 <cffunction name="AddShipToFilter"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
 
 <CFSET FORMDATA=deserializeJSON(arguments.data)>
