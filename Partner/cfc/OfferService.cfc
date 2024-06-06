@@ -936,6 +936,16 @@ ORDER BY PO2.OFFER_ID
 </cffunction>
 <cffunction name="FiyatOnayKayit" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfdump var="#arguments#">
+    <CFSET FORMDATA=deserializeJSON(arguments.data)>
+    <cfquery name="DF" datasource="#dsn3#">
+        DELETE FROM FIYAT_ONERME_PBS WHERE FOR_OFFER_ID=#FORMDATA.for_offer_id#
+    </cfquery>
+    <CFLOOP array="#FORMDATA.pfArr#" item="it">
+        <cfquery name="INS" datasource="#dsn#_1">
+            INSERT INTO FIYAT_ONERME_PBS (WRK_ROW_ID,OFFER_ID,FOR_OFFER_ID) VALUES ('#it.wrkrowid#',#it.offer_id#,#FORMDATA.for_offer_id#)
+        </cfquery>
+    </CFLOOP>
+    CREATE TABLE CatalystQA_1.FIYAT_ONERME_PBS(ID INT PRIMARY KEY IDENTITY (1,1),WRK_ROW_ID NVARCHAR(MAX),OFFER_ID INT)
 </cffunction>
 <cffunction name="AddShipToFilter"  access="remote" httpMethod="Post" returntype="any" returnFormat="json">
 
