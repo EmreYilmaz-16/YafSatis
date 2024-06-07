@@ -58,7 +58,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <cfoutput query="getMQ" group="COMPANY_ID">
         <thead>
     <tr>
-        <th colspan="13">#FULLNAME#</th>
+        <th colspan="14">#FULLNAME#</th>
     </tr>
     <tr>
     <th>
@@ -142,6 +142,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_total MoneyText" name="SalePriceTotal_#COMPANY_ID#" value="">
     </div>
     </td>
+    <td>#OTHER_MONEY#</td>
 </tr>
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
@@ -154,6 +155,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <input type="text" class="last_total MoneyText" style="background: #f7f1ea !important;border: solid 1px #c3b7a6 !important;text-align: right;" name="last_total" value="">
     </div>
 </th>
+<th><cfoutput>#getOfferMoney.MONEY_TYPE#</cfoutput></th>
 </tfoot>
 </cf_ajax_list>
 <div>
