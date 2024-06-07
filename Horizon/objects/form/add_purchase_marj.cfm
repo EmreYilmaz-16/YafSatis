@@ -18,7 +18,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <cfset ROW_COUNT=1>
     <cfoutput query="getMQ" group="COMPANY_ID">
     <tr>
-        <td colspan="8">#FULLNAME#</td>
+        <td colspan="11">#FULLNAME#</td>
     </tr>
     <tr>
     <th>
@@ -69,6 +69,16 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <cfset ROW_COUNT=ROW_COUNT+1>
     </tr>
 </cfoutput>
+<tr>
+    <td colspan="10">
+        Toplam
+    </td>
+    <td>
+        <div class="form-group">
+        <input type="text" name="SalePriceTotal_#COMPANY_ID#" value="">
+    </div>
+    </td>
+</tr>
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
 </cf_grid_list>
