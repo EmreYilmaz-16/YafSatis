@@ -19,7 +19,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <cfoutput query="getMQ" group="COMPANY_ID">
         <thead>
     <tr>
-        <td colspan="11">#FULLNAME#</td>
+        <th colspan="11">#FULLNAME#</th>
     </tr>
     <tr>
     <th>
@@ -89,14 +89,73 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
 <tfoot>
-    <td colspan="10">
+    <th colspan="10">
         Son Toplam
-    </td>
-    <td>
+    </th>
+    <th>
         <div class="form-group">
         <input type="text" class="last_total" name="last_total" value="">
     </div>
-    </td>
+</th>
 </tfoot>
 </cf_grid_list>
 </cf_box>
+<script>
+    function  SatirHesaplaCanim (el) {
+    console.log(el)
+    
+    el.value=commaSplit(el.value)
+    var RowId=el.getAttribute("data-row")
+    var DiscountedPrice_=document.getElementsByName("DiscountedPrice_"+RowId)[0].value
+    var DiscountedPrice=parseFloat(filterNum(commaSplit(DiscountedPrice_)))
+    console.log(DiscountedPrice)
+    var Marj=parseFloat(filterNum(commaSplit(el.value)))
+    console.log(Marj)
+    var SalePrice=DiscountedPrice+((DiscountedPrice*Marj)/100)
+    console.log(SalePrice)
+    document.getElementsByName("SalePrice_"+RowId)[0].value=commaSplit(SalePrice)
+    SubTotalHesapla();
+    SonToplamHesapla();
+    return SalePrice
+}
+function  SetAllSubMarj(el) {
+    console.log(el)
+    el.value=commaSplit(el.value)
+    var CompanyId=el.getAttribute("data-company_id")
+    $("input[name='Marj_"+CompanyId+"']").val(el.value)
+    var Ecount=document.getElementsByName("Marj_"+CompanyId).length
+    for(let i=0;i<Ecount;i++){
+        var ee=document.getElementsByName("Marj_"+CompanyId)[i];
+    SatirHesaplaCanim(ee)
+}
+    
+}
+function SubTotalHesapla(params) {
+    var ee=document.getElementsByClassName("sub_total")
+    for(let i=0;i<ee.length;i++){
+        var CompanyId=ee[i].getAttribute("data-company_id")
+        var Ecount=document.getElementsByName("Marj_"+CompanyId).length;
+        var SubTotal=0;
+        for(let j=0;j<Ecount;j++){
+           var el=document.getElementsByName("Marj_"+CompanyId)[j]
+            var RowId=el.getAttribute("data-row")
+           
+            var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
+            var SalePrice=parseFloat(filterNum(commaSplit(SalePrice_)))
+            SubTotal+=SalePrice;
+        }
+       document.getElementsByName("SalePriceTotal_"+CompanyId)[0].value=commaSplit(SubTotal)
+    }
+}
+function SonToplamHesapla(){
+    var ee=document.getElementsByClassName("sub_total")
+    var SonToplam=0;
+    for(let i=0;i<ee.length;i++){
+        var pp_=ee[i].value
+        var pp=parseFloat(filterNum(commaSplit(pp_)))
+        SonToplam=SonToplam+pp
+    }
+    console.log(SonToplam)
+    document.getElementsByName("last_total")[0].value=commaSplit(SonToplam)
+}
+</script>
