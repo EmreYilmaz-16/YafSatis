@@ -43,7 +43,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 <cfloop query="getMoney">
     <cfset "KURLAR.#MONEY#.RATE2" =RATE2>
 </cfloop>
-<cfdump var="#KURLAR#">
+
 <style>
     .MoneyText{
         background: #f7f1ea !important;
