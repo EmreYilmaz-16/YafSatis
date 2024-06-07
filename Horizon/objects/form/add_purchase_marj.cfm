@@ -58,7 +58,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <cfoutput query="getMQ" group="COMPANY_ID">
         <thead>
     <tr>
-        <th colspan="11">#FULLNAME#</th>
+        <th colspan="13">#FULLNAME#</th>
     </tr>
     <tr>
     <th>
@@ -134,7 +134,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfoutput>
 </tbody>
 <tr>
-    <td colspan="10">
+    <td colspan="12">
         Toplam
     </td>
     <td>
@@ -146,7 +146,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
 <tfoot>
-    <th colspan="10">
+    <th colspan="12">
         Son Toplam
     </th>
     <th>
