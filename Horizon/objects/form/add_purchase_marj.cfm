@@ -74,7 +74,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td><input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(MARJ_ORAN)#" class="MoneyText" onchange="SatirHesaplaCanim(this)"></td>
         <td>
             <div class="form-group">
-            <input type="text" name="SalePrice_#ROW_COUNT#" class="MoneyText" value="">
+            <input type="text" name="SalePrice_#ROW_COUNT#" class="MoneyText" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="">
             <input type="hidden" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
         </div>
         </td>
