@@ -13,6 +13,37 @@ LEFT JOIN CatalystQA_1.STOCKS ON STOCKS.STOCK_ID=PBS_OFFER_ROW.STOCK_ID
 WHERE FIYAT_ONERME_PBS.FOR_OFFER_ID=#attributes.OFFER_ID#
 ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfquery>
+<cfquery name="getOfferMoney" datasource="#dsn3#">
+    select MONEY_TYPE from CatalystQA_1.PBS_OFFER_MONEY where ACTION_ID=#attributes.OFFER_ID# and IS_SELECTED=1
+</cfquery>
+<cfquery name="getMoney" datasource="#dsn#">
+    SELECT (
+            SELECT RATE1
+            FROM #DSN#.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM #DSN#.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE1
+        ,(
+            SELECT RATE2
+            FROM #DSN#.MONEY_HISTORY
+            WHERE MONEY_HISTORY_ID = (
+                    SELECT MAX(MONEY_HISTORY_ID)
+                    FROM #DSN#.MONEY_HISTORY
+                    WHERE MONEY = SM.MONEY
+                    )
+            ) AS RATE2
+        ,SM.MONEY
+    FROM #DSN#.SETUP_MONEY AS SM
+    WHERE SM.PERIOD_ID = #session.ep.period_id#
+</cfquery>
+
+<cfloop query="getMoney">
+    <cfset "KURLAR.MONEY.RATE2" =RATE2>
+</cfloop>
+<cfdump var="#KURLAR#">
 <style>
     .MoneyText{
         background: #f7f1ea !important;
@@ -20,6 +51,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     text-align: right;
     }
 </style>
+
 
 <cf_ajax_list>
     <cfset ROW_COUNT=0>
