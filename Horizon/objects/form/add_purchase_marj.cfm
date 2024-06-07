@@ -151,6 +151,7 @@ function SubTotalHesapla(params) {
             var RowId=el.getAttribute("data-row")
            
             var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
+            if(SalePrice_.length==0){SalePrice_="0";}
             var SalePrice=parseFloat(filterNum(commaSplit(SalePrice_)))
             SubTotal+=SalePrice;
         }
