@@ -22,4 +22,6 @@
 
 <cfelseif attributes.ListType  eq "list_ship_types">
     <cfinclude template="ship_type_list.cfm">
+<cfelseif attributes.ListType  eq "add_purchase_price_marj">
+    <cfinclude template="../form/add_purchase_marj.cfm">
 </cfif>
