@@ -84,5 +84,15 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </tr>
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
+<tfoot>
+    <td colspan="10">
+        Son Toplam
+    </td>
+    <td>
+        <div class="form-group">
+        <input type="text" class="last_total" name="last_total" value="">
+    </div>
+    </td>
+</tfoot>
 </cf_grid_list>
 </cf_box>
