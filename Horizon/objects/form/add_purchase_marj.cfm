@@ -58,14 +58,14 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#DISCOUNT_COST#</td>
         <td>#OTHER_MONEY#</td>
         <td><div class="form-group">
-            <input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#PRICE_OTHER-DISCOUNT_COST#" readonly="">
+            <input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#tlformat(PRICE_OTHER-DISCOUNT_COST)#" readonly="">
             
         </div></td>
         <td>#OTHER_MONEY#</td>
-        <td><input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" value="#MARJ_ORAN#" onchange="SatirHesaplaCanim(this)"></td>
+        <td><input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" value="#tlformat(MARJ_ORAN)#" onchange="SatirHesaplaCanim(this)"></td>
         <td>
             <div class="form-group">
-            <input type="text" name="SalePrice_#ROW_COUNT#" value="#MARJ_ORAN#">
+            <input type="text" name="SalePrice_#ROW_COUNT#" value="">
             <input type="hidden" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
         </div>
         </td>
