@@ -41,7 +41,9 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <th>Discounted Price</th>
     <th></th>
     <th>Marj
+        <div class="form-group">
         <input type="text" name="MarjS" data-company_id="#COMPANY_ID#" onchange="SetAllSubMarj(this)">
+    </div>
     </th>
     <th>Sales Price</th>
     </tr>
@@ -59,8 +61,10 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#OTHER_MONEY#</td>
         <td><input type="text" name="Marj_#COMPANY_ID#" value="#MARJ_ORAN#"></td>
         <td>
+            <div class="form-group">
             <input type="text" name="SalePrice_#ROW_COUNT#" value="#MARJ_ORAN#">
-            <input type="text" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
+            <input type="hidden" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
+        </div>
         </td>
         <cfset ROW_COUNT=ROW_COUNT+1>
     </tr>
