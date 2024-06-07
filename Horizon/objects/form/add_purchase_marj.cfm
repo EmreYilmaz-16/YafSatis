@@ -49,7 +49,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <th></th>
     <th>Marj
         <div class="form-group">
-        <input type="text" name="MarjS" data-company_id="#COMPANY_ID#" onchange="SetAllSubMarj(this)">
+        <input type="text" name="MarjS" style="background:##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" data-company_id="#COMPANY_ID#" onchange="SetAllSubMarj(this)">
     </div>
     </th>
     <th>Sales Price</th>
@@ -100,7 +100,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </th>
     <th>
         <div class="form-group">
-        <input type="text" class="last_total MoneyText" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" name="last_total" value="">
+        <input type="text" class="last_total MoneyText" style="background: #f7f1ea !important;border: solid 1px #c3b7a6 !important;text-align: right;" name="last_total" value="">
     </div>
 </th>
 </tfoot>
