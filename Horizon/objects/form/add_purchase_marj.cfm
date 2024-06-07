@@ -12,7 +12,13 @@ LEFT JOIN CatalystQA_1.STOCKS ON STOCKS.STOCK_ID=PBS_OFFER_ROW.STOCK_ID
 WHERE FIYAT_ONERME_PBS.FOR_OFFER_ID=#attributes.OFFER_ID#
 ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfquery>
-
+<style>
+    .MoneyText{
+        background: #f7f1ea !important;
+    border: solid 1px #c3b7a6 !important;
+    text-align: right;
+    }
+</style>
 
 <cf_ajax_list>
     <cfset ROW_COUNT=0>
@@ -61,14 +67,14 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#tlformat(DISCOUNT_COST)#</td>
         <td>#OTHER_MONEY#</td>
         <td><div class="form-group">
-            <input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#tlformat(PRICE_OTHER-DISCOUNT_COST)#" readonly="">
+            <input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#tlformat(PRICE_OTHER-DISCOUNT_COST)#" class="MoneyText" readonly="">
             
         </div></td>
         <td>#OTHER_MONEY#</td>
-        <td><input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" value="#tlformat(MARJ_ORAN)#" onchange="SatirHesaplaCanim(this)"></td>
+        <td><input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" value="#tlformat(MARJ_ORAN)#" class="MoneyText" onchange="SatirHesaplaCanim(this)"></td>
         <td>
             <div class="form-group">
-            <input type="text" name="SalePrice_#ROW_COUNT#" value="">
+            <input type="text" name="SalePrice_#ROW_COUNT#" class="MoneyText" value="">
             <input type="hidden" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
         </div>
         </td>
@@ -82,7 +88,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </td>
     <td>
         <div class="form-group">
-        <input type="text" data-company_id="#COMPANY_ID#" class="sub_total" name="SalePriceTotal_#COMPANY_ID#" value="">
+        <input type="text"  data-company_id="#COMPANY_ID#" class="sub_total MoneyText" name="SalePriceTotal_#COMPANY_ID#" value="">
     </div>
     </td>
 </tr>
@@ -94,7 +100,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </th>
     <th>
         <div class="form-group">
-        <input type="text" class="last_total" name="last_total" value="">
+        <input type="text" class="last_total MoneyText" name="last_total" value="">
     </div>
 </th>
 </tfoot>
