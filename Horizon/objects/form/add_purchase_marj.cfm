@@ -111,8 +111,8 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cf_ajax_list>
 </cf_box>
 <script>
-    function  SatirHesaplaCanim (el) {
-    console.log(el)
+    function  SatirHesaplaCanim (el,gelen) {
+    console.log(gelen)
     
     el.value=commaSplit(el.value)
     var RowId=el.getAttribute("data-row")
@@ -136,7 +136,7 @@ function  SetAllSubMarj(el) {
     var Ecount=document.getElementsByName("Marj_"+CompanyId).length
     for(let i=0;i<Ecount;i++){
         var ee=document.getElementsByName("Marj_"+CompanyId)[i];
-    SatirHesaplaCanim(ee)
+    SatirHesaplaCanim(ee,"SetAllSubMarj")
 }
     
 }
