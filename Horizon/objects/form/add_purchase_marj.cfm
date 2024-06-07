@@ -52,10 +52,10 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <tr>
         <td>#MANUFACT_CODE#</td>
         <td>#PRODUCT_NAME#</td>
-        <td>#QUANTITY#</td>
-        <td>#PRICE_OTHER#</td>
+        <td>#tlformat(QUANTITY)#</td>
+        <td>#tlformat(PRICE_OTHER)#</td>
         <td>#OTHER_MONEY#</td>
-        <td>#DISCOUNT_COST#</td>
+        <td>#tlformat(DISCOUNT_COST)#</td>
         <td>#OTHER_MONEY#</td>
         <td><div class="form-group">
             <input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#tlformat(PRICE_OTHER-DISCOUNT_COST)#" readonly="">
