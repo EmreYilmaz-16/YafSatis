@@ -78,7 +78,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </td>
     <td>
         <div class="form-group">
-        <input type="text" name="SalePriceTotal_#COMPANY_ID#" value="">
+        <input type="text" data-company_id="#COMPANY_ID#" class="sub_total" name="SalePriceTotal_#COMPANY_ID#" value="">
     </div>
     </td>
 </tr>
