@@ -17,6 +17,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 <cf_grid_list>
     <cfset ROW_COUNT=0>
     <cfoutput query="getMQ" group="COMPANY_ID">
+        <thead>
     <tr>
         <td colspan="11">#FULLNAME#</td>
     </tr>
@@ -47,6 +48,8 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </th>
     <th>Sales Price</th>
     </tr>
+</thead>
+<tbody>
     <cfoutput>
         <cfset ROW_COUNT=ROW_COUNT+1>
         <tr>
@@ -72,6 +75,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         
     </tr>
 </cfoutput>
+</tbody>
 <tr>
     <td colspan="10">
         Toplam
