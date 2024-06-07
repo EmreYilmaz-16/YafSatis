@@ -109,6 +109,10 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </th>
 </tfoot>
 </cf_ajax_list>
+<div>
+    <button class="ui-wrk-btn ui-wrk-btn-success ">Kaydet</button>
+    <button class="ui-wrk-btn ui-wrk-btn-warning ">Kaydet ve Satış Teklifini Güncelle</button>
+</div>
 </cf_box>
 <script>
     function  SatirHesaplaCanim (el,gelen) {
