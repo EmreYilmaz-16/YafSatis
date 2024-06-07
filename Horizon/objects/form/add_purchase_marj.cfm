@@ -14,7 +14,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfquery>
 
 
-<cf_grid_list>
+<cf_ajax_list>
     <cfset ROW_COUNT=0>
     <cfoutput query="getMQ" group="COMPANY_ID">
         <thead>
@@ -98,7 +98,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </div>
 </th>
 </tfoot>
-</cf_grid_list>
+</cf_ajax_list>
 </cf_box>
 <script>
     function  SatirHesaplaCanim (el) {
