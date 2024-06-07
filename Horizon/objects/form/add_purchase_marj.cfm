@@ -15,7 +15,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 
 
 <cf_grid_list>
-    <cfset ROW_COUNT=1>
+    <cfset ROW_COUNT=0>
     <cfoutput query="getMQ" group="COMPANY_ID">
     <tr>
         <td colspan="11">#FULLNAME#</td>
@@ -48,7 +48,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <th>Sales Price</th>
     </tr>
     <cfoutput>
-   
+        <cfset ROW_COUNT=ROW_COUNT+1>
         <tr>
         <td>#MANUFACT_CODE#</td>
         <td>#PRODUCT_NAME#</td>
@@ -69,7 +69,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
             <input type="hidden" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
         </div>
         </td>
-        <cfset ROW_COUNT=ROW_COUNT+1>
+        
     </tr>
 </cfoutput>
 <tr>
