@@ -1,3 +1,4 @@
+<cf_box title="Satış Fiyat Marjları" scroll="1" collapsable="1" resize="1" popup_box="1">
 <cfparam name="attributes.OFFER_ID" default="11">
 <cfquery name="getMQ" datasource="#dsn3#">
   SELECT FIYAT_ONERME_PBS.*,PBS_OFFER_ROW.PRICE_OTHER,PBS_OFFER_ROW.OTHER_MONEY,PBS_OFFER_ROW.QUANTITY,PBS_OFFER_ROW.DISCOUNT_COST
@@ -18,7 +19,29 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <tr>
         <td colspan="8">#FULLNAME#</td>
     </tr>
-   <cfoutput>
+    <tr>
+    <th>
+        Part Number
+    </th>
+    <th>
+        Product Name
+    </th>
+    <th>
+        Offered Quantity
+    </th>
+    <th>
+        Price
+    </th>
+    <th></th>
+    <th>
+        Discount Cost
+    </th>
+    <th></th>
+    <th>Discounted Price</th>
+    <th></th>
+    <th>Marh</th>
+    </tr>
+    <cfoutput>
    
         <tr>
         <td>#MANUFACT_CODE#</td>
@@ -30,7 +53,9 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#OTHER_MONEY#</td>
         <td>#PRICE_OTHER-DISCOUNT_COST#</td>
         <td>#OTHER_MONEY#</td>
+        <td>#MARJ_ORAN#</td>
     </tr>
 </cfoutput>
 </cfoutput>
 </cf_grid_list>
+</cf_box>
