@@ -57,8 +57,10 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#OTHER_MONEY#</td>
         <td>#DISCOUNT_COST#</td>
         <td>#OTHER_MONEY#</td>
-        <td><input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#PRICE_OTHER-DISCOUNT_COST#" readonly>
-            </td>
+        <td><div class="form-group">
+            <input type="text" name="DiscountedPrice_#ROW_COUNT#" value="#PRICE_OTHER-DISCOUNT_COST#" readonly="">
+            
+        </div></td>
         <td>#OTHER_MONEY#</td>
         <td><input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" value="#MARJ_ORAN#" onchange="SatirHesaplaCanim(this)"></td>
         <td>
