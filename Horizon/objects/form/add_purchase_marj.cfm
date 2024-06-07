@@ -142,7 +142,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_total MoneyText" name="SalePriceTotal_#COMPANY_ID#" value="">
     </div>
     </td>
-    <td>#OTHER_MONEY#</td>
+    <td>#getOfferMoney.MONEY_TYPE#</td>
 </tr>
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
