@@ -80,12 +80,15 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <th></th>
     <th>Discounted Price</th>
     <th></th>
+    <th>Net Price</th>
+    <th></th>
     <th>Marj
         <div class="form-group">
         <input type="text" name="MarjS" style="background:##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" data-company_id="#COMPANY_ID#" onchange="SetAllSubMarj(this)">
     </div>
     </th>
     <th>Sales Price</th>
+    <th></th>
     </tr>
 </thead>
 <tbody>
@@ -100,10 +103,19 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#tlformat(DISCOUNT_COST)#</td>
         <td>#OTHER_MONEY#</td>
         <td><div class="form-group">
-            <input type="text" name="DiscountedPrice_#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(PRICE_OTHER-DISCOUNT_COST)#" class="MoneyText" readonly="">
+            <input type="text" name="DiscountedsPrice_#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(PRICE_OTHER-DISCOUNT_COST)#" class="MoneyText" readonly="">
             
         </div></td>
         <td>#OTHER_MONEY#</td>
+        <td>
+            <div class="form-group">
+                <cfset H1=PRICE_OTHER-DISCOUNT_COST>
+                <cfset H1=H1* evaluate("KURLAR.#OTHER_MONEY#.RATE2")>
+                <CFSET H1=H1/evaluate("KURLAR.#getOfferMoney.MONEY_TYPE#.RATE2") >
+                <input type="text" name="DiscountedPrice_#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(H1)#" class="MoneyText" readonly="">
+            </div>
+        </td>
+        <td>#getOfferMoney.MONEY_TYPE#</td>
         <td><div class="form-group">
             <input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(MARJ_ORAN)#" class="MoneyText" onchange="SatirHesaplaCanim(this)">
         </div>
@@ -113,6 +125,9 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
             <input type="text" name="SalePrice_#ROW_COUNT#" class="MoneyText" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="">
             <input type="hidden" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
         </div>
+        </td>
+        <td>
+            #getOfferMoney.MONEY_TYPE#
         </td>
         
     </tr>
