@@ -82,7 +82,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <th></th>
     <th>Net Price</th>
     <th></th>
-    <th>Marj
+    <th>Marj <span>%</span>
         <div class="form-group">
         <input type="text" name="MarjS" style="background:##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" data-company_id="#COMPANY_ID#" onchange="SetAllSubMarj(this)">
     </div>
