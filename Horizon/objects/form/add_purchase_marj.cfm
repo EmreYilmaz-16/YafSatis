@@ -41,7 +41,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfquery>
 
 <cfloop query="getMoney">
-    <cfset "KURLAR.MONEY.RATE2" =RATE2>
+    <cfset "KURLAR.#MONEY#.RATE2" =RATE2>
 </cfloop>
 <cfdump var="#KURLAR#">
 <style>
