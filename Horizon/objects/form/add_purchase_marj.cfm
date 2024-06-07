@@ -15,6 +15,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 
 
 <cf_grid_list>
+    <cfset ROW_COUNT=1>
     <cfoutput query="getMQ" group="COMPANY_ID">
     <tr>
         <td colspan="8">#FULLNAME#</td>
@@ -39,7 +40,10 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <th></th>
     <th>Discounted Price</th>
     <th></th>
-    <th>Marh</th>
+    <th>Marj
+        <input type="text" name="MarjS" data-company_id="#COMPANY_ID#" onchange="SetAllSubMarj(this)">
+    </th>
+    <th>Sales Price</th>
     </tr>
     <cfoutput>
    
@@ -53,9 +57,15 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#OTHER_MONEY#</td>
         <td>#PRICE_OTHER-DISCOUNT_COST#</td>
         <td>#OTHER_MONEY#</td>
-        <td>#MARJ_ORAN#</td>
+        <td><input type="text" name="Marj_#COMPANY_ID#" value="#MARJ_ORAN#"></td>
+        <td>
+            <input type="text" name="SalePrice_#ROW_COUNT#" value="#MARJ_ORAN#">
+            <input type="text" name="WrkRowId_#ROW_COUNT#" value="#WRK_ROW_ID#">
+        </td>
+        <cfset ROW_COUNT=ROW_COUNT+1>
     </tr>
 </cfoutput>
 </cfoutput>
+<input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
 </cf_grid_list>
 </cf_box>
