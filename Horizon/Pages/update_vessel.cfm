@@ -258,7 +258,7 @@
         
     }
     function AddShip(EmpId,modal){
-        
+        console.log("addship")
         var FormData=getFormData() 
         FormData.UPDATE_EMP=EmpId;
         if(FormData != false){
