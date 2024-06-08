@@ -125,7 +125,7 @@
                             <input type="hidden" name="member_id" id="member_id" readonly value="<cfoutput>#GEMI.CUSTOMER_PARTNER_ID#</cfoutput>">
                             <input type="hidden" name="member_type" id="member_type" readonly value="1">
                             <input type="text" name="member_name" id="member_name" readonly value="<cfoutput>#GEMI.CUSTOMER_NAME# #GEMI.CUSTOMER_SURNAME#</cfoutput>">
-                            <span class="input-group-addon icon-ellipsis btnPointer" onclick="windowopen('index.cfm?fuseaction=objects.popup_list_all_pars&is_period_kontrol=0&field_partner=ShipForm.member_id&field_consumer=ShipForm.member_id&field_name=ShipForm.member_name&field_comp_id=ShipForm.company_id&field_comp_name=ShipForm.company_name&field_type=ShipForm.member_type&field_city=ShipForm.service_city_id&field_address=ShipForm.company_address&select_list=8,7&call_function=fill_saleszone()','list','popup_list_all_pars');" title="Başvuru Yapan Seç "></span>
+                            <!----<span class="input-group-addon icon-ellipsis btnPointer" onclick="windowopen('index.cfm?fuseaction=objects.popup_list_all_pars&is_period_kontrol=0&field_partner=ShipForm.member_id&field_consumer=ShipForm.member_id&field_name=ShipForm.member_name&field_comp_id=ShipForm.company_id&field_comp_name=ShipForm.company_name&field_type=ShipForm.member_type&field_city=ShipForm.service_city_id&field_address=ShipForm.company_address&select_list=8,7&call_function=fill_saleszone()','list','popup_list_all_pars');" title="Başvuru Yapan Seç "></span>---->
                         </div>        
                 </div>
                 <div class="form-group" id="item-company_address">
