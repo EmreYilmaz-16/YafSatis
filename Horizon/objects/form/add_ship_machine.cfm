@@ -30,7 +30,7 @@
 
 
 <cf_box title="#Ship[1].SHIP_NAME# - Makina #ttlll#" scroll="1" collapsable="1" resize="1" popup_box="1">
-    <cfdump var="#attributes#">
+    
    
 <input type="hidden" name="WESSEL_ID" id="WESSEL_ID" value="<cfoutput>#attributes.WESSEL_ID#</cfoutput>">
 <input type="hidden" name="SM_ID" id="SM_ID" value="<cfoutput>#MACHINE.SM_ID#</cfoutput>">
