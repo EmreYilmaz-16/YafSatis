@@ -142,7 +142,7 @@ function addEqRow(Obj, jsn) {
   tr.appendChild(thCrate("Quantity", true));
   tr.appendChild(thCrate("Unit", true));
   tr.appendChild(thCrate("Purchase Price", false));
-  tr.appendChild(thCrate("Sales Price", true));
+  tr.appendChild(thCrate("Purchase Price", true));
   tr.appendChild(thCrate("Sales Discount", false));
   tr.appendChild(thCrate("Unit Price", true));
   tr.appendChild(thCrate("Total Price", false));
