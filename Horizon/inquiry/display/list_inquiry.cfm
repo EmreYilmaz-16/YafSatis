@@ -74,7 +74,8 @@
     <cfinclude template="menu2.cfm">
     <cfabort>
 </cfif>
-
+<cf_box>
+<div style="height:100vh">
 <div class="row">         
     
     <div class="col col-3 col-md-4 col-sm-5 col-xs-12">
@@ -219,3 +220,5 @@ new Chart(ctx, config);
 
 
 <script src="/AddOns/YafSatis/Horizon/js/page_wl.js"></script>
+</div>
+</cf_box>
