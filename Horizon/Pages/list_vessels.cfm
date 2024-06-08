@@ -19,11 +19,11 @@
       <div class="form-group">
         <label class="bold"><strong>CUSTOMER / CARE OF   NAME</strong></label> 
         <div class="input-group">
-            <input type="hidden" name="consumer_id" id="consumer_id" value="">
-            <input type="hidden" name="company_id" id="company_id" value="">
-            <input type="hidden" name="member_type" id="member_type" value="">
-            <input name="member_name" type="text" id="member_name" placeholder="Current Account" onfocus="AutoComplete_Create('member_name','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','get_member_autocomplete','\'1,2\'','CONSUMER_ID,COMPANY_ID,MEMBER_TYPE','consumer_id,company_id,member_type','','3','250');" value="" autocomplete="off"><div id="member_name_div_2" name="member_name_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>                
-            <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_all_pars&field_consumer=ship_Search_form.consumer_id&field_comp_id=ship_Search_form.company_id&field_member_name=ship_Search_form.member_name&field_type=ship_Search_form.member_type&select_list=7,8&keyword='+encodeURIComponent(document.ship_Search_form.member_name.value));"></span>
+            <input type="hidden" name="SearchForm_consumer_id" id="SearchForm_consumer_id" value="">
+            <input type="hidden" name="SearchForm_company_id" id="SearchForm_company_id" value="">
+            <input type="hidden" name="SearchForm_member_type" id="SearchForm_member_type" value="">
+            <input name="SearchForm_member_name" type="text" id="SearchForm_member_name" placeholder="Current Account" onfocus="AutoComplete_Create('SearchForm_member_name','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','get_member_autocomplete','\'1,2\'','CONSUMER_ID,COMPANY_ID,MEMBER_TYPE','SearchForm_consumer_id,SearchForm_company_id,SearchForm_member_type','','3','250');" value="" autocomplete="off"><div id="member_name_div_2" name="member_name_div_2" class="completeListbox" autocomplete="on" style="width: 441px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>                
+            <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_all_pars&field_consumer=ship_Search_form.SearchForm_consumer_id&field_comp_id=ship_Search_form.SearchForm_company_id&field_member_name=ship_Search_form.SearchForm_member_name&field_type=ship_Search_form.SearchForm_member_type&select_list=7,8&keyword='+encodeURIComponent(document.ship_Search_form.SearchForm_member_name.value));"></span>
             
             
 
