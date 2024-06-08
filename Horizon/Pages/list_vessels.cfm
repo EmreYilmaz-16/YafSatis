@@ -80,10 +80,10 @@
    
       var KEYWORD=document.getElementById("ShipKv").value
       var SHIP_TYPE=document.getElementById("ShipShipType").value
-      var consumer_id=document.getElementById("consumer_id").value
-      var company_id=document.getElementById("company_id").value
-      var member_type=document.getElementById("member_type").value
-      var member_name=document.getElementById("member_name").value
+      var consumer_id=document.getElementById("SearchForm_consumer_id").value
+      var company_id=document.getElementById("SearchForm_company_id").value
+      var member_type=document.getElementById("SearchForm_member_type").value
+      var member_name=document.getElementById("SearchForm_member_name").value
       var CUSTOMER={
         consumer_id:consumer_id,
         company_id:company_id,
