@@ -1,4 +1,22 @@
-﻿<cfquery name="getMoney" datasource="#dsn#">
+﻿<style>
+        .OsButton{
+        width: 100%;
+    height: 50px;    
+    font-weight: bold;
+    font-size: 10pt !important;
+    border: none;        
+    margin: 5px;
+}
+ .OsButton-orange{
+    background: #ffbe0b;
+    color:black;
+ }
+ .OsButton-orange:hover{
+    background: #d6a00a;
+    color:black;
+ }
+</style>
+<cfquery name="getMoney" datasource="#dsn#">
   SELECT (
           SELECT RATE1
           FROM #DSN#.MONEY_HISTORY
@@ -62,21 +80,21 @@
     <div class="col col-3 col-md-4 col-sm-5 col-xs-12">
         <cf_box>
         <div style="display:flex;flex-direction: column;">
-            <button onclick="window.open('/index.cfm?fuseaction=myhome.welcome','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #305505;border-radius: 10px;background: #3f6a0e52;font-weight: bold;color: white;margin: 5px;">W3 Ana Sayfa</button>
+            <button onclick="window.open('/index.cfm?fuseaction=myhome.welcome','_blank')" class="OsButton OsButton-orange" >W3 Ana Sayfa</button>
             <hr>
-            <button onclick="window.open('/index.cfm?fuseaction=sale.hrz_pbs_sayfa1','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #096cc5;border-radius: 10px;background: #82c4ffa1;font-weight: bold;color: white;margin: 5px;">List Inquiry</button>
-            <button onclick='openBoxDraggable("index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #cbbf22;border-radius: 10px;background: #fff02aa8;font-weight: bold;color: white;margin: 5px;">Add Inquiry </button>
-            <button onclick='openBoxDraggable("index.cfm?fuseaction=sales.emptypopup_list_virtual_products")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #11511f;border-radius: 10px;background: #21b141a8;font-weight: bold;color: white;margin: 5px;">List Waiting Virtual Products </button>
+            <button onclick="window.open('/index.cfm?fuseaction=sale.hrz_pbs_sayfa1','_blank')" class="OsButton OsButton-orange">List Inquiry</button>
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa2")' class="OsButton OsButton-orange">Add Inquiry </button>
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=sales.emptypopup_list_virtual_products")' class="OsButton OsButton-orange">List Waiting Virtual Products </button>
             <hr>
-            <button onclick="openBoxDraggable('index.cfm?fuseaction=sale.list_vessels','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ffa500;border-radius: 10px;background: #ffa5005c;color: white;font-weight: bold;margin: 5px;">List Vessels</button>            
-            <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_vessel")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #874444;border-radius: 10px;background: #ff828294;font-weight: bold;color: white;margin: 5px;">Add Vessel</button>
-            <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_list_ship_types_pbs")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #f00;border-radius: 10px;background: #ff000094;font-weight: bold;color: white;margin: 5px;">Ship Types</button>
+            <button onclick="openBoxDraggable('index.cfm?fuseaction=sale.list_vessels','_blank')" class="OsButton OsButton-orange" >List Vessels</button>            
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_vessel")' class="OsButton OsButton-orange">Add Vessel</button>
+            <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_list_ship_types_pbs")' class="OsButton OsButton-orange" >Ship Types</button>
                <!---  <button onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_add_catalog_pbs")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ff8300;border-radius: 10px;background: #ff830075;font-weight: bold;color: white;margin: 5px;">Add Catalog</button>
        --->
            <hr>
-           <button onclick="window.open('/index.cfm?fuseaction=purchase.emptypopup_list_offer_pbs','_blank')" style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ab00ff;border-radius: 10px;background: #ab00ff5c;color: white;font-weight: bold;margin: 5px;">List Purchase Offer</button>            
+           <button onclick="window.open('/index.cfm?fuseaction=purchase.emptypopup_list_offer_pbs','_blank')" class="OsButton OsButton-orange">List Purchase Offer</button>            
            <hr>
-           <button onclick='window.open("index.cfm?fuseaction=report.detail_product_report_PBS","_blank")' style="font-size: 14pt;padding: 20px;width: 100%;border: solid 1px #ff8300;border-radius: 10px;background: #ff830075;font-weight: bold;color: white;margin: 5px;">Detaylı Ürün Raporu</button>
+           <button onclick='window.open("index.cfm?fuseaction=report.detail_product_report_PBS","_blank")' class="OsButton OsButton-orange">Detaylı Ürün Raporu</button>
         </div>
     </cf_box>
     </div>
