@@ -9,6 +9,7 @@
 <input type="hidden" name="ACTIVECOMPANY" id="ACTIVECOMPANY" value="<cfoutput>#session.ep.company_id#</cfoutput>">
 <input type="hidden" name="SALES_EMP_ID" id="SALES_EMP_ID" value="<cfoutput>#session.ep.userid#</cfoutput>">
 <input type="hidden" name="SALES_EMP" id="SALES_EMP" value="<cfoutput>#session.ep.NAME# #session.ep.SURNAME#</cfoutput>">
+<input type="hidden" name="OFFER_ID" id="OFFER_ID" value="<cfoutput>#attributes.OFFER_ID#</cfoutput>">
         <!--- 1.GRID --->
         <div class="margintop-5 col col-12 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">

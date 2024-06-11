@@ -152,6 +152,29 @@
 </cftry>
 <cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cffunction>
+<cffunction name="UpdateOfferHeader" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
+    <cfargument name="FData">
+
+    <cfset FormData=deserializeJSON(arguments.FData)>
+   
+    <cfset ReturnData=structNew()>
+  <cftry>
+      <cfinclude template="../Query/SaveOffer.cfm">
+    <cfset ReturnData.STATUS=1>
+    <cfset ReturnData.OFFER_ID=RETURNED_OFFER_ID>
+    <CFSET ReturnData.Message="Kayıt Başarılı">
+    <cfset ReturnData.ErrorDetail="">
+   <!---- -----><cfcatch>
+        <cfset ReturnData.STATUS=0>
+         <CFSET ReturnData.Message="Hata Oluştu">
+         <cfset ReturnData.OFFER_ID=0>
+        <cfset ReturnData.ErrorDetail="#cfcatch.message#">
+        </cfcatch>
+        
+</cftry>
+<cfreturn replace(serializeJSON(ReturnData),"//","")>
+</cffunction>
+
 <cffunction name="getOfferDashBoard" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
   <cfquery name="QUERY_0" datasource="#DSN#">
    WITH CTE1 AS 

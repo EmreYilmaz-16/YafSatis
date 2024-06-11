@@ -184,6 +184,7 @@ function SaveOfferHeader() {
   var DELIVERY_ADDRESS = $("#DELIVERY_ADDRESS").val();
   var DELIVERY_DATE = $("#delivery_date").val();
   var DELIVERY_TYIME = $("#DVTime").val();
+  var OFFER_ID=$("#OFFER_ID").val()
   var MONEY = $("#MONEY").val();
   if (MONEY.length == 0) $("#Money");
   var OFFER_CONDITION = $("#OFFER_CONDITION").val();
@@ -209,6 +210,7 @@ function SaveOfferHeader() {
     REF_NO: REF_NO,
     OFFER_DATE: OFFER_DATE,
     SHIP_METHOD_ID: SHIP_METHOD_ID,
+    OFFER_ID:OFFER_ID,
     SHIP_METHOD: SHIP_METHOD,
     PRIORITY: PRIORITY,
     VALID_DAYS: VALID_DAYS,
@@ -235,7 +237,7 @@ function SaveOfferHeader() {
   };
 
   $.ajax({
-    url: ServiceUri + "/OfferService.cfc?method=SaveOfferHeader",
+    url: ServiceUri + "/OfferService.cfc?method=UpdateOfferHeader",
     data: {
       Fdata: JSON.stringify(O),
     },
