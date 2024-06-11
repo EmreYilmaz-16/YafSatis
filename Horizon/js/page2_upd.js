@@ -27,6 +27,7 @@ function openShipList() {
 }
 
 function getOfferCurrencies(el) {
+  var DP_ID=el.getAttribute("data-value");
   $.ajax({
     url: ServiceUri + "/OfferService.cfc?method=getOfferCurrencies",
     success: function (returnData) {
@@ -37,6 +38,9 @@ function getOfferCurrencies(el) {
         var option = document.createElement("option");
         option.value = Obje[i].OFFER_CURRENCY_ID;
         option.innerText = Obje[i].OFFER_CURRENCY;
+        if(DP_ID.length>0 && parseInt(DP_ID)==Obje[i].OFFER_CURRENCY_ID){
+          option.setAttribute("selected","selected");
+        }
         el.appendChild(option);
       }
     },
@@ -64,6 +68,7 @@ function getDeliveryPlaces(el) {
   });
 }
 function getOfferConditions(el) {
+  var DP_ID=el.getAttribute("data-value");
   $.ajax({
     url: ServiceUri + "/OfferService.cfc?method=getOfferConditions",
     success: function (returnData) {
@@ -74,6 +79,9 @@ function getOfferConditions(el) {
         var option = document.createElement("option");
         option.value = Obje[i].ID;
         option.innerText = Obje[i].CONDITION;
+        if(DP_ID.length>0 && parseInt(DP_ID)==Obje[i].ID){
+          option.setAttribute("selected","selected");
+        }
         el.appendChild(option);
         /*DELIVERY_PLACE_ID,DELIVERY_PLACE ID=ID,
                     CONDITION=CONDITION*/
@@ -83,6 +91,7 @@ function getOfferConditions(el) {
 }
 
 function getShipMethods(el) {
+  var DP_ID=el.getAttribute("data-value");
   $.ajax({
     url: ServiceUri + "/OfferService.cfc?method=getShipMethods",
     success: function (returnData) {
@@ -93,6 +102,9 @@ function getShipMethods(el) {
         var option = document.createElement("option");
         option.value = Obje[i].SHIP_METHOD_ID;
         option.innerText = Obje[i].SHIP_METHOD;
+        if(DP_ID.length>0 && parseInt(DP_ID)==Obje[i].SHIP_METHOD_ID){
+          option.setAttribute("selected","selected");
+        }
         el.appendChild(option);
         /*DELIVERY_PLACE_ID,DELIVERY_PLACE*/
       }
