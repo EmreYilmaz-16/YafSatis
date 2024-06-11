@@ -444,6 +444,7 @@ WHERE 1 = 1
                 NICKNAME=NICKNAME,
                 FULLNAME=FULLNAME,
                 OFFER_HEAD=OFFER_HEAD,
+                COMPANY_ID=COMPANY_ID,
                 OFFER_ID=OFFER_ID,
                 REF_NO=OREF,
                 OFFER_NUMBER=ONUM,
