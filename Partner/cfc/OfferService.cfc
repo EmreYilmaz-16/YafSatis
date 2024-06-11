@@ -143,7 +143,7 @@
     <CFSET ReturnData.Message="Kayıt Başarılı">
     <cfset ReturnData.ErrorDetail="">
    <!---- -----><cfcatch>
-    <cfdump var="#cfcatch#">
+    
         <cfset ReturnData.STATUS=0>
          <CFSET ReturnData.Message="Hata Oluştu">
          <cfset ReturnData.OFFER_ID=0>
@@ -166,6 +166,7 @@
     <CFSET ReturnData.Message="Kayıt Başarılı">
     <cfset ReturnData.ErrorDetail="">
    <!---- -----><cfcatch>
+    <cfdump var="#cfcatch#">
         <cfset ReturnData.STATUS=0>
          <CFSET ReturnData.Message="Hata Oluştu">
          <cfset ReturnData.OFFER_ID=0>
