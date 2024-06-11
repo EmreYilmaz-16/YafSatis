@@ -175,7 +175,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">CURRENCY</label>
-                    <select <cfif attributes.OFC_COUNT eq 0>disabled</cfif> name="MONEY" id="MONEY" onchange="setMoney(this)" data-value="<cfoutput>#OFFER_DATA.OTHER_MONEY#</cfoutput>">
+                    <select <cfif attributes.OFC_COUNT neq 0>disabled</cfif> name="MONEY" id="MONEY" onchange="setMoney(this)" data-value="<cfoutput>#OFFER_DATA.OTHER_MONEY#</cfoutput>">
                         <option value="">Seçiniz</option>
                     </select>
                     <input type="hidden" name="rate1" id="rate1">
