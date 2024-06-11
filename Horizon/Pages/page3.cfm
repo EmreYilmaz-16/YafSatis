@@ -205,7 +205,7 @@
                         <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-red ui-wrk-btn-addon-left "><i class="fa fa-close"></i><span class="font-xs">DROP EMBEZZLEMENT</span></a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
-                        <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
+                        <a href="javascript://" onclick="openBoxDraggable('index.cfm=fuseaction=sales.emptypopup_update_inquiry_header&OFFER_ID=<cfoutput>#Offer.OFFER_ID#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
                         <a href="javascript://" onclick="window.open('/Addons/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm?offer_id=<cfoutput>#attributes.offer_id#</cfoutput>','_blank')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-print"></i>Yazdır</a>
