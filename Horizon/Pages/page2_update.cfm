@@ -1,11 +1,9 @@
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
-<script>
-    var OfferData=<cfoutput>#OfferList#</cfoutput>
-</script>
 
+<cfset OFFER_DATA=deserializeJSON(OfferList)>
 <cf_box title="NEW INQUIRY RECORD" scroll="1" collapsable="1" resize="1" popup_box="1">
-    <cfdump var="#OfferList#">
+    <cfdump var="#OFFER_DATA#">
     <div class="ui-form-list">
 <form name="order_form">
 <input type="hidden" name="ACTIVECOMPANY" id="ACTIVECOMPANY" value="<cfoutput>#session.ep.company_id#</cfoutput>">
