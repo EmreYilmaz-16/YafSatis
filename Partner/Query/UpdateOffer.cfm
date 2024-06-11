@@ -93,7 +93,7 @@ select count(*) AS RC from PBS_OFFER
     ,REF_NO='#FormData.REF_NO#'
     ,UPDATE_DATE=GETDATE()
     ,UPDATE_MEMBER=#FormData.SALES_EMP_ID#
-    ,WESSEL_ID=<cfif len(FormData.WESSEL_ID)>#FormData.WESSEL_ID#<cfelse>NULL</cfif>
+    ,WESSEL_ID=<cfif len(FormData.SHIP_ID)>#FormData.SHIP_ID#<cfelse>NULL</cfif>
     ,TRANSIT_WAREHOUSE=<cfif len(FormData.TRANSIT_WAREHOUSE)>'#FormData.TRANSIT_WAREHOUSE#'<cfelse>NULL</cfif>
     ,OFFER_CONDITION=<cfif len(FormData.OFFER_CONDITION)>#FormData.OFFER_CONDITION#<cfelse>NULL</cfif>
     ,DELIVERY_PLACE=<cfif len(FormData.DELIVERY_PLACE)>#FormData.DELIVERY_PLACE#<cfelse>NULL</cfif>
