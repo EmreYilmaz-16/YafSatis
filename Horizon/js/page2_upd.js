@@ -128,7 +128,7 @@ function getMoney(el) {
         var option = document.createElement("option");
         option.value = Obje[i].MONEY;
         option.innerText = Obje[i].MONEY;
-        if(DP_ID.length>0 && parseInt(DP_ID)==Obje[i].MONEY){
+        if(DP_ID.length>0 && DP_ID==Obje[i].MONEY){
           option.setAttribute("selected","selected");
         }
         el
