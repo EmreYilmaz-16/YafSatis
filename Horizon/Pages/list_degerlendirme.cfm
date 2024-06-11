@@ -28,7 +28,7 @@
         <a href="##" onclick="windowopen('index.cfm?fuseaction=purchase.list_offer&event=spc&offer_id=#it.OFFER_ID#','wide')">#it.OFFER_NUMBER#</a>
     </th>
     <th style="color:red;font-weight:bold">
-        #it.COMPANY_FULLNAME#
+        <cfif listFind(session.ep.USER_LEVEL,"12")>  #it.COMPANY_FULLNAME# <cfelse>#it.OZEL_KOD#</cfif>
     </th>
     <th style="color:red;font-weight:bold">
         #it.OFFER_DATE#
