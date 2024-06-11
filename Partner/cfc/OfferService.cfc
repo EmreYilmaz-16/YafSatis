@@ -162,7 +162,7 @@
   <cftry>
       <cfinclude template="../Query/UpdateOffer.cfm">
     <cfset ReturnData.STATUS=1>
-    <cfset ReturnData.OFFER_ID=RETURNED_OFFER_ID>
+    <cfset ReturnData.OFFER_ID=FormData.OFFER_ID>
     <CFSET ReturnData.Message="Kayıt Başarılı">
     <cfset ReturnData.ErrorDetail="">
    <!---- -----><cfcatch>
