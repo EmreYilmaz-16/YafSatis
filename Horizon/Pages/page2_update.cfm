@@ -108,9 +108,9 @@
                     <div class="input-group">
                         <input type="text" name="validDay" id="validDay" value="<cfoutput>#OFFER_DATA.VALID_DAYS#</cfoutput>" onchange="setValidyDate(this.value)">                                    
                         <span class="input-group-addon">DAYS</span>
-                        <input type="hidden" name="validtyDate" id="validtyDate" value="<cfoutput>#dateAdd("d",OFFER_DATA.VALID_DAYS,OFFER_DATA.OFFER_DATE)#</cfoutput>">
+                        <input type="hidden" name="validtyDate" id="validtyDate" value="<cfoutput>#dateformat(dateAdd("d",OFFER_DATA.VALID_DAYS,OFFER_DATA.OFFER_DATE_NO_FORMAT),"yyyy-mm-dd")#</cfoutput>">
                     </div>
-                    <code id="vdV"><cfoutput>#dateAdd("d",OFFER_DATA.VALID_DAYS,OFFER_DATA.OFFER_DATE)#</cfoutput></code>
+                    <code id="vdV"><cfoutput>#dateformat(dateAdd("d",OFFER_DATA.VALID_DAYS,OFFER_DATA.OFFER_DATE_NO_FORMAT),"yyyy-mm-dd")"#</cfoutput></code>
                     <script>
                         function setValidyDate(dv){
                             var OfferDate=document.getElementById("start_date")

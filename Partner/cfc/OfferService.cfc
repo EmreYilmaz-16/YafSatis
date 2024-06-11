@@ -454,6 +454,7 @@ WHERE 1 = 1
                 COMPANY_ADDRESS=COMPANY_ADDRESS,
                 IMO_NUMBER=IMO_NUMBER,
                 OFFER_DATE=dateFormat(OFFER_DATE,"dd/mm/yyyy"),
+                OFFER_DATE_NO_FORMAT=OFFER_DATE,
                 DELIVERY_ADDRESS=DELIVERY_ADDRESS,
                 DELIVERY_PLACE=DELIVERY_PLACE,
                 DELIVERDATE=dateFormat(DELIVERDATE,"dd/mm/yyyy"),
