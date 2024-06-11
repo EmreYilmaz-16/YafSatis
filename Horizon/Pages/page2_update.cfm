@@ -14,7 +14,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">INQUIRY REASON</label>
-                    <select  id="OFFER_CURRENCY" name="OFFER_CURRENCY" data-value="<cfoutput>#OFFER_DATA.OCUUR#</cfoutput>">
+                    <select  id="OFFER_CURRENCY" name="OFFER_CURRENCY" data-value="<cfoutput>#OFFER_DATA.OFFER_CURRENCY_ID#</cfoutput>">
                         
                     </select>
                 </div>
