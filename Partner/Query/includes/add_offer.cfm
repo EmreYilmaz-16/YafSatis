@@ -124,7 +124,8 @@
 				OFFER_CONDITION,
 				DELIVERY_PLACE,
 				DELIVERY_ADDRESS,
-				VALID_DAYS
+				VALID_DAYS,
+				DELIVERY_TYIME
 			)
 			VALUES 
 			(
@@ -200,7 +201,8 @@
 						<cfif isDefined("attributes.OFFER_CONDITION") and len(attributes.OFFER_CONDITION)>#attributes.OFFER_CONDITION#<cfelse>NULL</cfif>,
 							<cfif isDefined("attributes.DELIVERY_PLACE") and len(attributes.DELIVERY_PLACE)>#attributes.DELIVERY_PLACE#<cfelse>NULL</cfif>,
 					<cfif isDefined("attributes.DELIVERY_ADDRESS") and len(attributes.DELIVERY_ADDRESS)>'#attributes.DELIVERY_ADDRESS#'<cfelse>NULL</cfif>,
-						<cfif isDefined("attributes.VALID_DAYS") and len(attributes.VALID_DAYS)>#attributes.VALID_DAYS#<cfelse>NULL</cfif>
+						<cfif isDefined("attributes.VALID_DAYS") and len(attributes.VALID_DAYS)>#attributes.VALID_DAYS#<cfelse>NULL</cfif>,
+							<cfif isDefined("attributes.DELIVERY_TYIME") and len(attributes.DELIVERY_TYIME)>#attributes.DELIVERY_TYIME#<cfelse>NULL</cfif>
 					
 			)
 		</cfquery>

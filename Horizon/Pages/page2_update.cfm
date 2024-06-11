@@ -132,7 +132,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">DELIVERY PLACE</label>
-                    <select name="DELIVERY_PLACE" id="DELIVERY_PLACE" onchange="if(this.value =='2' || this.value=='3') $('#dpAddress').show();else $('#dpAddress').hide();">
+                    <select name="DELIVERY_PLACE" id="DELIVERY_PLACE" data-value="<cfoutput>#OFFER_DATA.DELIVERY_PLACE_ID#</cfoutput>" onchange="if(this.value =='2' || this.value=='3') $('#dpAddress').show();else $('#dpAddress').hide();">
 
                     </select>
                 </div>
@@ -141,7 +141,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12" id="dpAddress" style="display:none">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">DELIVERY ADDRESS</label>
-                    <input type="text" name="DELIVERY_ADDRESS" id="DELIVERY_ADDRESS">
+                    <input type="text" name="DELIVERY_ADDRESS" id="DELIVERY_ADDRESS" value="<cfoutput>#OFFER_DATA.DELIVERY_ADDRESS#</cfoutput>">
                 </div>
             </div>
         </div>
@@ -154,7 +154,7 @@
                     <div class="input-group">
                         
                             <cfsavecontent variable="message"><cf_get_lang dictionary_id='57477.hatalı veri'>:<cf_get_lang dictionary_id='57742.Tarih'>!</cfsavecontent>
-                            <input type="text" name="delivery_date"  id="delivery_date">
+                            <input type="text" name="delivery_date"  id="delivery_date" value="<cfoutput>#OFFER_DATA.DELIVERDATE#</cfoutput>">
                             <span class="input-group-addon"><cf_wrk_date_image date_field="delivery_date"></span>
                         
                     </div>
@@ -165,7 +165,7 @@
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">DELIVERY TIME</label>
                     <div class="input-group">
-                        <input type="text" name="DVTime" id="DVTime">
+                        <input type="text" name="DVTime" id="DVTime" value="<cfoutput>#OFFER_DATA.DELIVERY_TYIME#</cfoutput>">
                         <span class="input-group-addon">W/DAYS</span>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">CURRENCY</label>
-                    <select name="MONEY" id="MONEY" onchange="setMoney(this)">
+                    <select name="MONEY" id="MONEY" onchange="setMoney(this)" data-value="<cfoutput>#OFFER_DATA.OTHER_MONEY#</cfoutput>">
                         <option value="">Seçiniz</option>
                     </select>
                     <input type="hidden" name="rate1" id="rate1">
@@ -186,7 +186,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">CONDITION</label>
-                    <select name="OFFER_CONDITION" id="OFFER_CONDITION">
+                    <select name="OFFER_CONDITION" id="OFFER_CONDITION" data-value="<cfoutput>#OFFER_DATA.POC_ID#</cfoutput>">
                         
                     </select>
                 </div>
@@ -198,7 +198,7 @@
             <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">INQUIRY NOTE</label>
-                    <input type="text" name="OfferDetail" id="OfferDetail">
+                    <input type="text" name="OfferDetail" id="OfferDetail" value="<cfoutput>#OFFER_DATA.OFFER_DETAIL#</cfoutput>">
                 </div>
             </div>
         </div>
