@@ -47,7 +47,7 @@
                         #it2.OFFER_NUMBER#
                     </td>
                     <td>
-                        #it2.COMPANY_FULLNAME#
+                        <cfif listFind(session.ep.USER_LEVEL,"12")>      #it2.COMPANY_FULLNAME# <CFELSE>#it2.OZEL_KOD#</cfif>
                     </td>
                     <td>
                         #it2.OFFER_DATE#
