@@ -44,9 +44,11 @@
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">VESSEL NAME</label>
                     <div class="input-group">
-                        <input type="text" name="ship_name" id="ship_name">
-                        <input type="hidden" name="ship_id" id="ship_id">
+                        <input type="text" name="ship_name" id="ship_name" value="<cfoutput>#OFFER_DATA.SHIP_NAME#</cfoutput>">
+                        <input type="hidden" name="ship_id" id="ship_id" value="<cfoutput>#OFFER_DATA.WESSEL_ID#</cfoutput>">
+                        <cfif attributes.OFC_COUNT eq  0>
                         <span onclick="openShipList()" class="input-group-addon icon-ellipsis color-CR"></span>
+                        </cfif>
                     </div>
                 </div>
             </div>
@@ -54,7 +56,7 @@
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">TRANSIT WAREHOUESE (EXW)</label>
-                    <input type="text" name="TW" id="TW">
+                    <input type="text" name="TW" id="TW" value="<cfoutput>#OFFER_DATA.TRANSIT_WAREHOUSE#</cfoutput>">
                     
                 </div>
             </div>
@@ -62,7 +64,7 @@
             <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">CUSTOMER REF</label>
-                    <input type="text" name="AddRefNo" id="AddRefNo">
+                    <input type="text" name="AddRefNo" id="AddRefNo" value="<cfoutput>#OFFER_DATA.REF_NO#</cfoutput>">
                 </div>
             </div>
         </div>
@@ -75,7 +77,7 @@
                     <div class="input-group">
                         
                             
-                            <input type="text" name="start_date"  value="<cfoutput>#dateFormat(now(),'dd/mm/yyyy')#</cfoutput>">
+                            <input type="text" name="start_date"  value="<cfoutput>#OFFER_DATA.OFFER_DATE#</cfoutput>">
                             <span class="input-group-addon"><cf_wrk_date_image date_field="start_date"></span>
                         
                     </div>
@@ -85,7 +87,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">TRANSPORTATION</label>
-                    <select name="SHIP_METHOD_ID" id="SHIP_METHOD_ID">
+                    <select name="SHIP_METHOD_ID" id="SHIP_METHOD_ID" data-value="<cfoutput>#OFFER_DATA.SHIP_METHOD_ID#</cfoutput>">
                        
                     </select>
                 </div>
@@ -94,7 +96,7 @@
             <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">INQUIRY STATUS</label>
-                    <select name="PRIORITY" id="PRIORITY">
+                    <select name="PRIORITY" id="PRIORITY" data-value="<cfoutput>#OFFER_DATA.PRIORITY_ID#</cfoutput>">
                         
                     </select>
                 </div>
@@ -104,11 +106,11 @@
                 <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                     <label class="margin-bottom-5 bold font-sm">VALIDITY</label>
                     <div class="input-group">
-                        <input type="text" name="validDay" id="validDay" onchange="setValidyDate(this.value)">                                    
+                        <input type="text" name="validDay" id="validDay" value="<cfoutput>#OFFER_DATA.VALID_DAYS#</cfoutput>" onchange="setValidyDate(this.value)">                                    
                         <span class="input-group-addon">DAYS</span>
-                        <input type="hidden" name="validtyDate" id="validtyDate">
+                        <input type="hidden" name="validtyDate" id="validtyDate" value="<cfoutput>#dateAdd("d",OFFER_DATA.VALID_DAY,OFFER_DATA.OFFER_DATE)#</cfoutput>">
                     </div>
-                    <code id="vdV"></code>
+                    <code id="vdV"><cfoutput>#dateAdd("d",OFFER_DATA.VALID_DAY,OFFER_DATA.OFFER_DATE)#</cfoutput></code>
                     <script>
                         function setValidyDate(dv){
                             var OfferDate=document.getElementById("start_date")
