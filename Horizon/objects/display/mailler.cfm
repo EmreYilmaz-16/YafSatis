@@ -36,11 +36,20 @@
         <cfset Offer=deserializeJSON(OfferList)>
         <CFSET MAIL_ADRESIM=Offer.COMPANY_EMAIL>
         </cfif>
-
+        <cfset INPUT_TYPE="text">
+        <cfif attributes.is_sale eq 1>
+            <cfif listFind(session.ep.USER_LEVEL,"12")>
+                <cfset INPUT_TYPE="text">
+            <cfelse>
+                <cfset INPUT_TYPE="password">
+            </cfif>
+        <cfelse>
+            <cfset INPUT_TYPE="text">
+        </cfif>
     
         <div class="form-group" style="width: 25%;">
        <label>Mail TO</label> 
-    <input type="text" value="<cfoutput>#MAIL_ADRESIM#</cfoutput>" id="mail_to">  
+    <input type="<cfoutput>#INPUT_TYPE#</cfoutput>" value="<cfoutput>#MAIL_ADRESIM#</cfoutput>" id="mail_to">  
     </div><div class="form-group" style="width: 25%;">
       <label>CC</label>
      <input type="text" value="" id="mail_cc">
