@@ -61,7 +61,7 @@
         console.log(SelEleman);
         var relVar=SelEleman.element.getAttribute('data-related_variation_id')
         var iid=SelEleman.id
-       var Uri="/AddOns/YafSatis/Partner/cfc/<cfif session.ep.USERID eq 9 OR session.ep.USERID eq 1>ProductService_V1<cfelse>ProductService</cfif>.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_PROP_ID="+relVar+"&RELATED_VAR_ID="+iid;
+       var Uri="/AddOns/YafSatis/Partner/cfc/<cfif session.ep.USERID eq 9 OR session.ep.USERID eq 1>ProductService_V1<cfelse>ProductService_V1</cfif>.cfc?method=getPropertyDetailsWithCatId&PROPERTY_ID="+prpt+"&PRODUCT_CATID="+pcat+"&RELATED_PROP_ID="+relVar+"&RELATED_VAR_ID="+iid;
        console.log(Uri);
        
         $.ajax({
