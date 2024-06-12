@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 function getCats(el) {
   $.ajax({
-    url: ServiceUri + "/ProductService_V1.cfc?method=getCats",
+    url: ServiceUri + "/ProductService.cfc?method=getCats",
     success: function (returnData) {
       var Obje = JSON.parse(returnData);
       // console.log(Obje);
@@ -793,7 +793,7 @@ function getProduct(el, rc) {
   };
 
   $.ajax({
-    url: ServiceUri + "/ProductService_V1.cfc?method=SearchProduct",
+    url: ServiceUri + "/ProductService.cfc?method=SearchProduct",
     data: {
       FormData: JSON.stringify(Search),
     },

@@ -1,9 +1,9 @@
 ﻿
 
 <cfif session.ep.USERID eq 9 OR session.ep.USERID eq 1>
-    <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
+    <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
 <cfelse>
-<cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
+<cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
 </cfif>
 
 <cfset ShipService=createObject("component","AddOns.YafSatis.Partner.cfc.ShipService")>

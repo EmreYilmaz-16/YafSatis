@@ -1,4 +1,4 @@
-<cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService_V1")>
+<cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
     <cfset _Cats=ProductService.getCats()>
     <cfset Cats=deserializeJSON(_Cats)>
     <cfset _Catalogs=ProductService.getCatalogs(attributes.CatalogId)>
@@ -343,7 +343,7 @@ var Search = {
   keyword: keyword,
 };
 $.ajax({
-    url: ServiceUri + "/ProductService_V1.cfc?method=SearchProduct",
+    url: ServiceUri + "/ProductService.cfc?method=SearchProduct",
     data: {
       FormData: JSON.stringify(Search),
     },
