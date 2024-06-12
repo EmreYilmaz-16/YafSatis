@@ -592,11 +592,34 @@ WHERE 1 = 1
 </cffunction>
 
 <cffunction name="SetOfferStage" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
-    <cfargument name="OfferId">
+    <cfargument name="OfferId">    
     <cfargument name="Stage">
+    <cfargument name="EmpId">
+
+    <cfquery name="getOldStage" datasource="#dsn3#">
+        SELECT * FROM PBS_OFFER WHERE OfferId=#arguments.OfferId#>
+    </cfquery>
+    <cfset attributes.old_process_line=getOldStage.OFFER_STAGE>
+    <cfset attributes.process_stage=arguments.Stage>
+        <cf_workcube_process 
+        is_upd='1' 
+        data_source='#dsn3#' 
+        old_process_line='#attributes.old_process_line#'
+        process_stage='#attributes.process_stage#' 
+        record_member='#arguments.EmpId#'
+        record_date='#now()#'
+        action_table='PBS_OFFER'
+        action_column='OFFER_ID' 
+        action_id='#arguments.OfferId#'
+        action_page='#request.self#?fuseaction=sales.list_offer&event=upd&offer_id=#arguments.offer_id#'
+        warning_description='Teklif : #getOldStage.OFFER_NUMBER#'>
+
     <cfquery name="up" datasource="#DSN3#">
         UPDATE PBS_OFFER SET OFFER_STAGE=#arguments.Stage# WHERE OFFER_ID=#arguments.OfferId#
     </cfquery>
+
+
+
 </cffunction> 
 <cffunction name="UseThis" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
     <cfargument name="FData">

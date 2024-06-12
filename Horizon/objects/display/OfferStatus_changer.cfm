@@ -160,7 +160,7 @@ ORDER BY LINE_NUMBER
 <script>
     function SetSurec(STAGE,OFFER_ID,MODAL_ID) {
         $.ajax({
-         url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SetOfferStage&Stage="+STAGE+"&OfferId="+OFFER_ID,
+         url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SetOfferStage&Stage="+STAGE+"&OfferId="+OFFER_ID+"&EmpId=<cfoutput>#session.ep.userid#</cfoutput>",
          success:function (params) {
             closeBoxDraggable(MODAL_ID)
          }
