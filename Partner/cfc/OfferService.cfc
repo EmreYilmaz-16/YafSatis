@@ -611,7 +611,7 @@ WHERE 1 = 1
         action_table='PBS_OFFER'
         action_column='OFFER_ID' 
         action_id='#arguments.OfferId#'
-        action_page='index.cfm?fuseaction=sales.list_offer&event=upd&offer_id=#arguments.offer_id#'
+        action_page='index.cfm?fuseaction=sales.list_offer&event=upd&offer_id=#arguments.OfferId#'
         warning_description='Teklif : #getOldStage.OFFER_NUMBER#'>
 
     <cfquery name="up" datasource="#DSN3#">
