@@ -601,6 +601,9 @@ WHERE 1 = 1
     </cfquery>
     <cfset attributes.old_process_line=getOldStage.OFFER_STAGE>
     <cfset attributes.process_stage=arguments.Stage>
+    
+    <cfset attribute.fuseaction="sale.emptypopup_hrz_pbs_sayfa3">
+    <cfset "caller.attributes.fuseaction"="sale.emptypopup_hrz_pbs_sayfa3">
         <cf_workcube_process 
         is_upd='1' 
         data_source='#dsn3#' 
