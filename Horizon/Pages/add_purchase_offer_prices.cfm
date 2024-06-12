@@ -55,9 +55,13 @@
     }
 
 </script>
+<cfif listFind(session.ep.USER_LEVEL,"12")>
+    <cfset MUST=OfferData.NICKNAME>
+<cfelse>
+    <cfset MUST=OfferData.OZEL_KOD>
+</cfif>
 
-
-<cf_box title="DEAR #iif(listFind(session.ep.USER_LEVEL,"12"),OfferData.NICKNAME,OfferData.OZEL_KOD)# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
+<cf_box title="DEAR #MUST# , YOU CAN CREATE AND SEND YOUR OFFER TO US">
     <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
     <script>
         var OfferData=<cfoutput>#OfferList#</cfoutput>
