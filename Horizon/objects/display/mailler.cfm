@@ -19,11 +19,27 @@
     <input type="hidden" name="OfferId" id="OfferId" value="<cfoutput>#attributes.offer_id#</cfoutput>">
     <div style="clear:both"></div>
     <div style="width:100%;display:flex">
+<CFSET MAIL_ADRESIM="">
+        <cfif attributes.is_sale eq 0>
+            <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+            <script>
+                var OfferData=<cfoutput>#OfferList#</cfoutput>
+            </script>
+            <cfset Offer=deserializeJSON(OfferList)>
+            <CFSET MAIL_ADRESIM=Offer.COMPANY_EMAIL>
+        <cfelse>
+            <cfset OfferList=OfferService.getPurchaseOffer(attributes.OFFER_ID)>
+        <script>
+            var OfferData=<cfoutput>#OfferList#</cfoutput>
+        </script>
+        <cfset Offer=deserializeJSON(OfferList)>
+        <CFSET MAIL_ADRESIM=Offer.COMPANY_EMAIL>
+        </cfif>
 
     
         <div class="form-group" style="width: 25%;">
        <label>Mail TO</label> 
-    <input type="text" value="" id="mail_to">  
+    <input type="text" value="<cfoutput>#MAIL_ADRESIM#</cfoutput>" id="mail_to">  
     </div><div class="form-group" style="width: 25%;">
       <label>CC</label>
      <input type="text" value="" id="mail_cc">
