@@ -7,8 +7,8 @@ WHERE POR.IS_VIRTUAL =1
 </cfquery>
 <cf_box title="Bekleyen Sanal Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
     <cfoutput query="getProducts" group="OFFER_ID">
-        <cf_seperator title="#OFFER_NUMBER#" id="item_#OFFER_ID#">
-        <div id="sep_#OFFER_ID#">
+        <cf_seperator title="#OFFER_NUMBER#" id="sep_#OFFER_ID#">
+        <div id="sep_#OFFER_ID#" style="display:none">
         <cf_big_list>
     <thead>
     <tr>
