@@ -20,6 +20,7 @@
     <div style="clear:both"></div>
     <div style="width:100%;display:flex">
 <CFSET MAIL_ADRESIM="">
+<cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
         <cfif attributes.is_sale eq 0>
             <cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
             <script>
