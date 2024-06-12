@@ -597,7 +597,7 @@ WHERE 1 = 1
     <cfargument name="EmpId">
 
     <cfquery name="getOldStage" datasource="#dsn3#">
-        SELECT * FROM PBS_OFFER WHERE OfferId=#arguments.OfferId#
+        SELECT * FROM PBS_OFFER WHERE OFFER_ID=#arguments.OfferId#
     </cfquery>
     <cfset attributes.old_process_line=getOldStage.OFFER_STAGE>
     <cfset attributes.process_stage=arguments.Stage>
