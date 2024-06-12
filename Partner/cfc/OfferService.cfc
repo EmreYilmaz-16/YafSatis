@@ -602,8 +602,9 @@ WHERE 1 = 1
     <cfset attributes.old_process_line=getOldStage.OFFER_STAGE>
     <cfset attributes.process_stage=arguments.Stage>
     
-    <cfset attribute.fuseaction="sale.emptypopup_hrz_pbs_sayfa3">
+    <cfset attributes.fuseaction="sale.emptypopup_hrz_pbs_sayfa3">
     <cfset "caller.attributes.fuseaction"="sale.emptypopup_hrz_pbs_sayfa3">
+    <cfset DSN_ALIAS =dsn>
         <cf_workcube_process 
         is_upd='1' 
         data_source='#dsn3#' 
@@ -614,7 +615,7 @@ WHERE 1 = 1
         action_table='PBS_OFFER'
         action_column='OFFER_ID' 
         action_id='#arguments.OfferId#'
-        action_page='index.cfm?fuseaction=sales.list_offer&event=upd&offer_id=#arguments.OfferId#'
+        action_page='index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=#arguments.OfferId#'
         warning_description='Teklif : #getOldStage.OFFER_NUMBER#'>
 
     <cfquery name="up" datasource="#DSN3#">
