@@ -3,7 +3,7 @@
 
 <cfset _OfferData=OfferService.listPurchaseOffers()>
 <cfset OfferData=deserializeJSON(_OfferData)>
-<cfdump var="#OfferData#">
+
 <cf_box>
     <cfoutput>
 <cfloop array="#OfferData#"  item="it">

@@ -229,7 +229,7 @@ CROSS APPLY(
 <cffunction name="getPurchaseOfferListForSaleOffer" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
    <cfargument name="OFFER_ID">
     <cfquery name="OFFER_HEADER" datasource="#dsn3#">
-        SELECT PO.OFFER_NUMBER,C.NICKNAME,PO.OFFER_ID,C.COMPANY_ID,C.MEMBER_CODE
+        SELECT PO.OFFER_NUMBER,C.NICKNAME,C.OZEL_KOD,PO.OFFER_ID,C.COMPANY_ID,C.MEMBER_CODE
 FROM CatalystQA_1.PBS_OFFER AS PO
 LEFT JOIN CatalystQA.COMPANY AS C ON C.COMPANY_ID IN (REPLACE(PO.OFFER_TO, ',', ''))
 where FOR_OFFER_ID=#arguments.OFFER_ID#
@@ -250,6 +250,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
             Ateklif.OFFER_NUMBER=OFFER_NUMBER;
             Ateklif.COMPANY_ID=COMPANY_ID;
             Ateklif.MEMBER_CODE=MEMBER_CODE;
+            Ateklif.OZEL_KOD=OZEL_KOD;
             
             Ateklif.NICKNAME=NICKNAME;
             Ateklif.OFFER_ID=OFFER_HEADER.OFFER_ID;
