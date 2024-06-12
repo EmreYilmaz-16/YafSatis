@@ -22,7 +22,13 @@ function getDashBoard() {
         document.getElementById(
           "OC_" + elem.CURRENCY_ID + "_" + elem.PROCESS_ROW_ID
         ).innerText = elem.STAGE_COUNT;
+        if(elem.STAGE_COUNT ==0){
+          $(document.getElementById(
+           "OC_" + elem.CURRENCY_ID + "_" + elem.PROCESS_ROW_ID
+         ).parentElement.parentElement.parentElement.parentElement).remove()}
+       
       }
+
     },
   });
 }
