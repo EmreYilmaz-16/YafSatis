@@ -42,12 +42,15 @@
 <cfset attributes.preview=1>
 <cfdump var="#attributes#">
 <cfif attributes.is_sale eq 1>
+    1
     <cfif listFind(session.ep.USER_LEVEL,"12")>
+        2
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
     <cfelse>
-        
+        2-2
     </cfif>
 <cfelse>
+    1-2
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
         </cfif>
         </div>
