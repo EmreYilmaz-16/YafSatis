@@ -40,7 +40,7 @@
     <div style="width:49%;max-height: 30vh;overflow-y: scroll;" >
         <div>
 <cfset attributes.preview=1>
-<cfdump var="#attributes#">
+
 <cfif attributes.is_sale eq 1>
     
     <cfif listFind(session.ep.USER_LEVEL,"12")>
