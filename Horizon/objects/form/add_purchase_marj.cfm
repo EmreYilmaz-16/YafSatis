@@ -238,5 +238,6 @@ function SatisFiyatKaydet(offer_id) {
 function SatisFiyatKaydetGuncelle(params) {
     var FD=$("#FORM_0001").serialize()
     $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=2&offer_id="+offer_id+"&"+FD)
+    
 }
 </script>
