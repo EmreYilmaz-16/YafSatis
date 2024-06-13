@@ -1,3 +1,8 @@
+<style>
+    body{
+        background:white !important;
+    }
+</style>
 <cfparam name="attributes.is_sub" default="0">
 <cfif attributes.is_sub eq 0>
 <div style="display:flex">
