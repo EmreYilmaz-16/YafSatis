@@ -26,4 +26,6 @@
     <cfinclude template="mail_test.cfm">
 <cfelseif attributes.ListType  eq "add_purchase_price_marj">
     <cfinclude template="../form/add_purchase_marj.cfm">
+<cfelseif attributes.ListType  eq "save_purchase_price_marj">
+    <cfinclude template="../query/save_purchase_price_marj.cfm">
 </cfif>
