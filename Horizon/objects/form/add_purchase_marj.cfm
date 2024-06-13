@@ -235,7 +235,7 @@ function SatisFiyatKaydet(offer_id) {
     var FD=$("#FORM_0001").serialize()
     $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=1&offer_id="+offer_id+"&"+FD)
 }
-function SatisFiyatKaydetGuncelle(params) {
+function SatisFiyatKaydetGuncelle(offer_id) {
     var FD=$("#FORM_0001").serialize()
     $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=2&offer_id="+offer_id+"&"+FD).done(function (params) {
        // window.location.reload();
