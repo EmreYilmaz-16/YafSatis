@@ -993,12 +993,12 @@ ORDER BY PO2.OFFER_ID
 <cfset attributes.OFFER_ID=FORMDATAM.OfferId>
 <cfset FNMN=CreateUUID()>
 
-
+<cfhtmltopdf pageType="A4"  destination="C:/MailPdf/#FNMN#.pdf" name="PDF_BURASU">
     <cfset attributes.is_sale=FORMDATAM.is_Sale>
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
-  <!----  <cfhtmltopdf pageType="A4"  destination="C:/MailPdf/#FNMN#.pdf" name="PDF_BURASU"> 
+    
 </cfhtmltopdf>
-
+<!----
 <cfset MailService=createObject("component","AddOns.YafSatis.Partner.cfc.mailService")>
 
 <cfscript>
