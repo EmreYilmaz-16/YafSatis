@@ -118,7 +118,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#getOfferMoney.MONEY_TYPE#</td>
         <td><div class="form-group">
             <input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(MARJ_ORAN)#" class="MoneyText" onchange="SatirHesaplaCanim(this)">
-            <input type="hidden" name="MARJUK_#ROW_COUNT#">
+            <input type="hidden" name="MARJUK_#ROW_COUNT#" id="MARJUK_#ROW_COUNT#">
         </div>
         </td>
         <td>
