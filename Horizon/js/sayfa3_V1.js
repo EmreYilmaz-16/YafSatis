@@ -1562,7 +1562,7 @@ function SaveOffer() {
     type: 'POST',
     success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
-        messageType: "success",
+        messageType: "danger",
       });
     },
   });
@@ -1797,7 +1797,7 @@ function AddPurchaseOffer() {
     },
     success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
-        messageType: "success",
+        messageType: "danger",
       });
     },
   });
