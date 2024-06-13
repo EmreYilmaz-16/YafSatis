@@ -16,5 +16,6 @@
     var OfferData=<cfoutput>#OfferList#</cfoutput>
 </script>
 <cfset Offer=deserializeJSON(OfferList)>
+<cfset attributes.preview=1>
     <cfinclude template="PdfDesign/#attributes.ppp#.cfm">
 </cfif>
