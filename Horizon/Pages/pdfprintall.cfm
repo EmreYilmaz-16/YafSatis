@@ -8,5 +8,13 @@
 <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf5'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 5</button> 
 </div>
 <cfelse>
+    <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
+
+
+<cfset OfferList=OfferService.getOfferWithOfferId(attributes.OFFER_ID)>
+<script>
+    var OfferData=<cfoutput>#OfferList#</cfoutput>
+</script>
+<cfset Offer=deserializeJSON(OfferList)>
     <cfinclude template="PdfDesign/#attributes.ppp#.cfm">
 </cfif>
