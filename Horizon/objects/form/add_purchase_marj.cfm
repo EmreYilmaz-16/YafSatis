@@ -118,6 +118,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#getOfferMoney.MONEY_TYPE#</td>
         <td><div class="form-group">
             <input type="text" name="Marj_#COMPANY_ID#" data-row="#ROW_COUNT#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" value="#tlformat(MARJ_ORAN)#" class="MoneyText" onchange="SatirHesaplaCanim(this)">
+            <input type="hidden" name="MARJUK_#ROW_COUNT#">
         </div>
         </td>
         <td>
@@ -178,6 +179,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     console.log(DiscountedPrice)
     var Marj=parseFloat(filterNum(commaSplit(el.value)))
     console.log(Marj)
+    $("#MARJUK_"+RowId).val(Marj)
     var SalePrice=DiscountedPrice+((DiscountedPrice*Marj)/100)
     console.log(SalePrice)
     document.getElementsByName("SalePrice_"+RowId)[0].value=commaSplit(SalePrice)
@@ -232,6 +234,7 @@ function SatisFiyatKaydet(offer_id) {
     $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=1&offer_id="+offer_id+"&"+FD)
 }
 function SatisFiyatKaydetGuncelle(params) {
-    
+    var FD=$("#FORM_0001").serialize()
+    $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=2&offer_id="+offer_id+"&"+FD)
 }
 </script>
