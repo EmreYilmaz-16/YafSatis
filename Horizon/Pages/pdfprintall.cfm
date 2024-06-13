@@ -1,5 +1,12 @@
-<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf1'" class="ui-wrk-btn ui-wrk-btn-success">PDF- 1</button> <br>
-<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf2'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 2</button> <br>
-<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf3'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 3</button> <br>
-<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf4'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 4</button> <br>
-<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf5'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 5</button> <br>
+<cfparam name="attributes.is_sub" default="0">
+<cfif attributes.is_sub eq 0>
+<div style="display:flex">
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf1'" class="ui-wrk-btn ui-wrk-btn-success">PDF- 1</button> 
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf2'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 2</button> 
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf3'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 3</button> 
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf4'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 4</button> 
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf5'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 5</button> 
+</div>
+<cfelse>
+    <cfinclude template="PdfDesign/#attributes.ppp#.cfm">
+</cfif>
