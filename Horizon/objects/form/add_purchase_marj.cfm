@@ -169,6 +169,8 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </div>
 </cf_box>
 <script>
+SubTotalHesapla()
+SonToplamHesapla()
     function  SatirHesaplaCanim (el,gelen) {
     console.log(gelen)
     
