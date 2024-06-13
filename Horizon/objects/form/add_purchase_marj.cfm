@@ -238,7 +238,39 @@ function SatisFiyatKaydet(offer_id) {
 function SatisFiyatKaydetGuncelle(offer_id) {
     var FD=$("#FORM_0001").serialize()
     $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=2&offer_id="+offer_id+"&"+FD).done(function (params) {
-       // window.location.reload();
+        var rc=document.getElementsByName("ROW_COUNT")[0].value
+rc=parseInt(rc);
+console.log(rc)
+
+for(let t=0;t<rc;t++){
+var sp=document.getElementsByName("SalePrice_"+(t+1))[0].value;
+var wrk_id=document.getElementsByName("WrkRowId_"+(t+1))[0].value;
+console.log(sp)
+console.log(wrk_id)
+
+		var SepetSeperatorler = document.getElementById("BasketArea").children;
+  for (let i = 0; i < SepetSeperatorler.length; i++) {
+		var Seperator = SepetSeperatorler[i];
+    var PropList = Seperator.getAttribute("data-proplist");
+		console.log(Seperator)
+ 		var Sepet = document.getElementById("SubSepetBody_" + PropList);
+		for (let j = 0; j < Sepet.children.length; j++) {
+      	var SepetItem = Sepet.children[j];
+				var dddd=DegeriGetir(SepetItem,"UNIQUE_RELATION_ID",0)
+console.log(dddd)
+
+		if(wrk_id==dddd){
+		console.warn(wrk_id)
+DegeriGetir(SepetItem,"SALE_PRICE",1,1)
+DegerYaz(SepetItem,"SALE_PRICE",0,sp);
+AlayiniHesapla()
+}
+		}
+}
+
+
+}
+alert("Satır Verileri Değiştirilmiştir; Teklifi Güncelleyiniz");
     })
 
 }
