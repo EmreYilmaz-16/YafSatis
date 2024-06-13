@@ -28,7 +28,7 @@ localurl="true">
 <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
 </cfdocument>+----->
 
-<cfhtmltopdf pagetype="A4" overwrite="true"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_ALAN_YER">
+<cfhtmltopdf  overwrite="true"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_ALAN_YER">
     
    <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm"><!----- ---->
    Merhaba Dnya Ben Emre Buralar Çok Yeşil
