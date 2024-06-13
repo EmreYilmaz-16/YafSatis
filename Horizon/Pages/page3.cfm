@@ -212,7 +212,7 @@
                         <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=sales.emptypopup_update_inquiry&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OFC_COUNT=#GETrOWS.recordCount#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
-                        <a href="javascript://" onclick="window.open('/Addons/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm?offer_id=<cfoutput>#attributes.offer_id#</cfoutput>','_blank')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-print"></i>Yazdır</a>
+                        <a href="javascript://" <!----onclick="window.open('/Addons/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm?offer_id=<cfoutput>#attributes.offer_id#</cfoutput>','_blank')"----> onclick="windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&offer_id=<cfoutput>#Offer.OFFER_ID#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-print"></i>Yazdır</a>
                     </div>
                     
                 </div>

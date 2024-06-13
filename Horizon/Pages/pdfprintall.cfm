@@ -1,0 +1,5 @@
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf1'" class="ui-wrk-btn ui-wrk-btn-success">PDF- 1</button> <br>
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf2'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 2</button> <br>
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf3'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 3</button> <br>
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf4'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 4</button> <br>
+<button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&pdf5'"class="ui-wrk-btn ui-wrk-btn-success">PDF- 5</button> <br>
