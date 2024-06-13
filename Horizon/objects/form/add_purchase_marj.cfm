@@ -52,7 +52,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     }
 </style>
 
-
+<form id="FORM_0001">
 <cf_ajax_list>
     <cfset ROW_COUNT=0>
     <cfoutput query="getMQ" group="COMPANY_ID">
@@ -161,9 +161,10 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 <th><cfoutput>#getOfferMoney.MONEY_TYPE#</cfoutput></th>
 </tfoot>
 </cf_ajax_list>
+</form>
 <div>
-    <button class="ui-wrk-btn ui-wrk-btn-success ">Kaydet</button>
-    <button class="ui-wrk-btn ui-wrk-btn-warning ">Kaydet ve Satış Teklifini Güncelle</button>
+    <button class="ui-wrk-btn ui-wrk-btn-success " onclick="SatisFiyatKaydet()">Kaydet</button>
+    <button class="ui-wrk-btn ui-wrk-btn-warning "onclick="SatisFiyatKaydetGuncelle()">Kaydet ve Satış Teklifini Güncelle</button>
 </div>
 </cf_box>
 <script>
@@ -224,5 +225,12 @@ function SonToplamHesapla(){
     }
     console.log(SonToplam)
     document.getElementsByName("last_total")[0].value=commaSplit(SonToplam)
+}
+
+function SatisFiyatKaydet(params) {
+    
+}
+function SatisFiyatKaydetGuncelle(params) {
+    
 }
 </script>
