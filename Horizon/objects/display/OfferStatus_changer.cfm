@@ -163,6 +163,7 @@ ORDER BY LINE_NUMBER
          url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SetOfferStage&Stage="+STAGE+"&OfferId="+OFFER_ID+"&EmpId=<cfoutput>#session.ep.userid#</cfoutput>",
          success:function (params) {
             closeBoxDraggable(MODAL_ID)
+            window.location.reload();
          }
         })
     }
