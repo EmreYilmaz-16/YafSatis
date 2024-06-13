@@ -164,8 +164,8 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cf_ajax_list>
 </form>
 <div>
-    <button class="ui-wrk-btn ui-wrk-btn-success " onclick="SatisFiyatKaydet()">Kaydet</button>
-    <button class="ui-wrk-btn ui-wrk-btn-warning "onclick="SatisFiyatKaydetGuncelle()">Kaydet ve Satış Teklifini Güncelle</button>
+    <button class="ui-wrk-btn ui-wrk-btn-success " onclick="SatisFiyatKaydet(<cfoutput>#attributes.OFFER_ID#</cfoutput>)">Kaydet</button>
+    <button class="ui-wrk-btn ui-wrk-btn-warning "onclick="SatisFiyatKaydetGuncelle(<cfoutput>#attributes.OFFER_ID#</cfoutput>)">Kaydet ve Satış Teklifini Güncelle</button>
 </div>
 </cf_box>
 <script>
