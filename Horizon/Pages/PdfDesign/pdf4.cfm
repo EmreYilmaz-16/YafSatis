@@ -414,19 +414,19 @@
             <div class="right-div">
                 <div class="div-elements">
                     <div class="input-title">IMO NO</div>
-                    <div class="input-value"><span>:</span><cfoutput>#Offer.IMO_NUMBER#</cfoutput></div>
+                    <div class="input-value"><span>:</span><cfif isDefined("Offer.IMO_NUMBER")><cfoutput>#Offer.IMO_NUMBER#</cfoutput></cfif></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">VESSEL NAME</div>
-                    <div class="input-value"><span>:</span><cfoutput>#Offer.SHIP_NAME#</cfoutput></div>
+                    <div class="input-value"><span>:</span><cfif isDefined("Offer.SHIP_NAME")><cfoutput>#Offer.SHIP_NAME#</cfoutput></cfif></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">FROM</div>
-                    <div class="input-value"><span>:</span> <cfoutput>#Offer.EMPLOYEE_NAME#</cfoutput> <cfoutput>#Offer.EMPLOYEE_SURNAME#</cfoutput></div>
+                    <div class="input-value"><span>:</span><cfif isDefined("Offer.EMPLOYEE_NAME")> <cfoutput>#Offer.EMPLOYEE_NAME#</cfoutput> <cfoutput>#Offer.EMPLOYEE_SURNAME#</cfoutput></cfif></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">TO</div>
-                    <div class="input-value" style="font-weight: 700;"><span>:</span> <cfoutput>#Offer.FULLNAME#</cfoutput></div>
+                    <div class="input-value" style="font-weight: 700;"><span>:</span><cfif isDefined("Offer.FULLNAME")> <cfoutput>#Offer.FULLNAME#</cfoutput></cfif></div>
                 </div>
 
                 <div class="div-elements">
