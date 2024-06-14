@@ -39,7 +39,7 @@ $("<style>")
     left: 0; */
     display: flex;
     flex-direction: column;
-    z-index: 999;
+    z-index: 99999999999999;
     user-select: none;
 }
 
