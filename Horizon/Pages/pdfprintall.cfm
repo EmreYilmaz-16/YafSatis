@@ -1,4 +1,4 @@
-<cfparam name="attributes.is_sale" default="0">
+<cfparam name="attributes.is_sale" default="1">
 <style>
     body{
         background:white !important;
