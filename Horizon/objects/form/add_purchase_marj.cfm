@@ -266,7 +266,6 @@ console.log(dddd)
 DegeriGetir(SepetItem,"SALE_PRICE",1,1)
 DegerYaz(SepetItem,"SALE_PRICE",0,sp);
 DegerYaz(SepetItem,"PURCHASE_PRICE",0,dp);
-DegerYaz(SepetItem,"PURCHASE_MONEY",0,dp);
 DegerYaz(SepetItem,"PURCHASE_MONEY",0,pmm);
 AlayiniHesapla()
 }
