@@ -196,7 +196,7 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfset P.PROP_LIST=getProd.PROP_LIST>
         <cfset P.JSON_STRINGIM=getProd.JSON_STRINGIM>
         <cfscript>
-            arrayAppend(PRODUCT_ARR,P);
+            arrayAppend(PA.PRODUCT_ARR,P);
         </cfscript>
     </cfloop>
     <cfscript>
