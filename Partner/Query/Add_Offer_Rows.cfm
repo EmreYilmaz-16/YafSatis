@@ -230,6 +230,7 @@
                                 ,#evaluate('attributes.IS_VIRTUAL#i#')#
             <cfif isDefined('attributes.converted_sid#i#') and len(evaluate("attributes.converted_sid#i#"))>,#evaluate("attributes.converted_sid#i#")#</cfif>
             <cfif isDefined('attributes.PURCHASE_PRICE#i#') and len(evaluate("attributes.PURCHASE_PRICE#i#"))>,#evaluate("attributes.PURCHASE_PRICE#i#")#</cfif>
+            <cfif isDefined('attributes.PURCHASE_MONEY#i#')> ,'#evaluate('attributes.PURCHASE_MONEY#i#')#'<CFELSE>,NULL</cfif>
             <cfif isdefined('attributes.row_exp_center_id#i#') and len(evaluate("attributes.row_exp_center_id#i#")) and isdefined('attributes.row_exp_center_name#i#') and len(evaluate("attributes.row_exp_center_name#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_exp_center_id#i#')#"></cfif>
         <cfif isdefined('attributes.row_exp_item_id#i#') and len(evaluate("attributes.row_exp_item_id#i#")) and isdefined('attributes.row_exp_item_name#i#') and len(evaluate("attributes.row_exp_item_name#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_exp_item_id#i#')#"></cfif>
         <cfif isdefined('attributes.row_activity_id#i#') and len(evaluate("attributes.row_activity_id#i#"))>,<cfqueryparam cfsqltype="cf_sql_integer" value="#evaluate('attributes.row_activity_id#i#')#"></cfif>
