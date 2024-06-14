@@ -179,7 +179,7 @@
             </div> 
 
             <!--- 4. Clumn --->
-            <div class="col col-3 col-sm-3 col-md-3 col-lg-3 col-xs-12">
+            <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xs-12">
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="col col-4 col-md-4 col-sm-4 col-xs-12">
                         <label>VESSEL NAME</label>
@@ -200,7 +200,7 @@
             </div> 
 
             <!--- 5. Clumn --->
-            <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xs-12">
+            <div class="col col-3 col-sm-3 col-md-3 col-lg-3 col-xs-12">
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="margin-right-5 paddingNone margin-0">
                         <a href="javascript://" onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=add_purchase_price_marj&OFFER_ID=<cfoutput>#Offer.OFFER_ID#</cfoutput>");' class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left "><i class="fa fa-money"></i><span class="font-xs">Fiyat Giriş</span></a>
