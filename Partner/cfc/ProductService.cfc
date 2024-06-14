@@ -170,14 +170,19 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="WesselId">
         <cfquery name="getProd" datasource="#dsn#">
-            select S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,POR.PROP_LIST,POR.JSON_STRINGIM,PU.MAIN_UNIT,S.PRODUCT_CODE,S.TAX,S.PRODUCT_CODE_2 from CatalystQA_1.PBS_OFFER_ROW AS POR 
+            select S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,POR.PROP_LIST,POR.JSON_STRINGIM,PU.MAIN_UNIT,S.PRODUCT_CODE,S.TAX,S.PRODUCT_CODE_2 from CatalystQA_1.PBS_OFFER_ROW AS POR 
         INNER JOIN CatalystQA_1.PBS_OFFER AS PO ON POR.OFFER_ID=PO.OFFER_ID
         INNER JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
+        LEFT JOIN CatalystQA_product.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
         INNER JOIN CatalystQA_product.PRODUCT_UNIT AS PU ON PU.PRODUCT_ID=S.PRODUCT_ID AND PU.IS_MAIN=1
         WHERE PO.WESSEL_ID=#arguments.WesselId#
         </cfquery>
         <cfset ReturnArr=arrayNew(1)>
-        <cfloop query="getProd">
+        <cfloop query="getProd" group="PRODUCT_CATID">
+            <CFSET PA=structNew()>
+            <CFSET PA.PRODUCT_CAT=PRODUCT_CAT>
+            <CFSET PA.PRODUCT_ARR=arrayNew(1)>
+            <cfloop>
         <cfset P=structNew()>
             <cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
         <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
@@ -191,8 +196,12 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfset P.PROP_LIST=getProd.PROP_LIST>
         <cfset P.JSON_STRINGIM=getProd.JSON_STRINGIM>
         <cfscript>
-            arrayAppend(ReturnArr,P);
+            arrayAppend(PRODUCT_ARR,P);
         </cfscript>
+    </cfloop>
+    <cfscript>
+        arrayAppend(ReturnArr,PA);
+    </cfscript>
         </cfloop>
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
