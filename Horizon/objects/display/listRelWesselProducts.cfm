@@ -43,6 +43,7 @@
         </tr>
     </table>
 </cf_box>---->
+<cfdump var="#WesselProducts#">
   <cfloop  array="#WesselProducts#" item="it2" index="iy">
     <cf_seperator title="#it2.PRODUCT_CAT#" id="item_#iy#">
       <div class="ui-info-text" id="item_<cfoutput>#iy#</cfoutput>"  style="display:none;">
