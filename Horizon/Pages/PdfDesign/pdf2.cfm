@@ -457,7 +457,7 @@ LEFT JOIN CatalystQA_1.VIRTUAL_PRODUCTS_PBS AS VP
 WHERE POR1.OFFER_ID=#attributes.OFFER_ID#
 </cfquery>
 
-        <cfdump var="#GETrOWS#">
+        
     
         <!-- TABLE -->
         <cfoutput query="GETrOWS" group="PROP_LIST">
