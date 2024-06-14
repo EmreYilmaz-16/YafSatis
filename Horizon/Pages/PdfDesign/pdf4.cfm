@@ -403,7 +403,7 @@
                 </div>
                 <div class="div-elements">
                     <div class="input-title">CONDITION</div>
-                    <div class="input-value"><span>:</span> <cfoutput>#Offer.CONDITION#</cfoutput></div>
+                    <div class="input-value"><span>:</span><cfif isDefined("Offer.CONDITION")> <cfoutput>#Offer.CONDITION#</cfoutput></cfif></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">PAYMENT TERM</div>
