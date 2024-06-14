@@ -565,7 +565,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   if (UNIQUE_RELATION_ID.length > 0) {
-    var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
+   /* var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
     console.log(RF);
     if (RF.recordcount) {
       PURCHASE_PRICE = RF.PRICE_OTHER[0];
@@ -574,7 +574,7 @@ function addRowCrs(
   } else {
     var RF = {
       recordcount: 0,
-    };
+    };*/
   }
 
   var td = document.createElement("td");
@@ -1562,7 +1562,7 @@ function SaveOffer() {
     type: 'POST',
     success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
-        messageType: "danger",
+        messageType: "error",
       });
     },
   });
@@ -1598,6 +1598,7 @@ function AddToCons() {
           MEMBER_CODE: nnmc,
           IS_PURCHASE_SAVED: 0,
           P_PRICE_COUNT: 0,
+          OFFER_ID:0,
           PIDS: [],
         };
         for (let j = 0; j <= pid_l.length; j++) {
@@ -1711,6 +1712,9 @@ function TedarikYaz() {
     var td = document.createElement("th");
 
     td.innerText = AComp.NICKNAME;
+    if(AComp.OFFER_ID != 0 ){
+      td.innerText+="TV Var";
+    }
     var span = document.createElement("span");
     span.innerText = AComp.PIDS.length;
     span.setAttribute(
@@ -1797,7 +1801,7 @@ function AddPurchaseOffer() {
     },
     success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
-        messageType: "danger",
+        messageType: "error",
       });
     },
   });
@@ -1895,6 +1899,7 @@ function SatinAlmaKontrol(offer_id) {
         MEMBER_CODE: ATeklif.MEMBER_CODE,
         IS_PURCHASE_SAVED: 1,
         P_PRICE_COUNT: ATeklif.OFFER_ROWS.FIYAT_VERILEN,
+        OFFER_ID:ATeklif.OFFER_ID,
         PIDS: [],
       };
       for (let j = 0; j < ATeklif.OFFER_ROWS.ROWS.length; j++) {
