@@ -14,7 +14,7 @@ REF_NO:Fdata.RefNo,
 START_DATE:Fdata.StartDate,
 FINISH_DATE:Fdata.FinishDate,
 COMPANY_ID:Fdata.COMPANY_ID,
-START_ROW:attributes.START_ROW,MAX_ROW:20)>
+START_ROW:attributes.START_ROW,MAX_ROW:100)>
 <cfset OfferData=deserializeJSON(OfferList)><!------>
 <cfset OfferList=OfferData.OFFERS>
 
