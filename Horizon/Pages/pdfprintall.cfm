@@ -12,8 +12,8 @@
         <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf3'"class="ui-wrk-btn ui-wrk-btn-success">Satış Order Confirmation</button> 
         <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sub=1&ppp=pdf6'"class="ui-wrk-btn ui-wrk-btn-success">Proforma Fatura Gönderim</button> 
     <cfelse>
-        <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sale=1&is_sub=1&ppp=pdf1'" class="ui-wrk-btn ui-wrk-btn-success">İkmalci Fiyat Talebi</button> 
-        <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sale=1&is_sub=1&ppp=pdf4'"class="ui-wrk-btn ui-wrk-btn-success">Satınalma Order Confirmation</button> 
+        <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sale=0&is_sub=1&ppp=pdf1'" class="ui-wrk-btn ui-wrk-btn-success">İkmalci Fiyat Talebi</button> 
+        <button onclick="window.location.href='/index.cfm?fuseaction=<cfoutput>#attributes.fuseaction#&offer_id=#attributes.offer_id#</cfoutput>&is_sale=0&is_sub=1&ppp=pdf4'"class="ui-wrk-btn ui-wrk-btn-success">Satınalma Order Confirmation</button> 
     </cfif>
 
 
