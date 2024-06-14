@@ -271,7 +271,7 @@
         </div>
 <!---//DIKKAT HTML inputları Kullanırken İd ve name attributeleri genelde yok bunlarıda isimlendirirken aslında kullanacağın servisteki değişkenler ile uyumlu olarak yazarsan javascript tarafında form.serialize yapıp kolaylıkla servise gönderebilirsin ----->
         <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
-            <label class="bold">PURCHASE STAFF</label>
+            <label class="bold">STAFF</label>
             <div class="input-group">
 										
                 <input type="hidden" name="deliver_get_id" id="deliver_get_id" value="">
