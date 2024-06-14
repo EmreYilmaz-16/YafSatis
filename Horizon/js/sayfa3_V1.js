@@ -1713,7 +1713,13 @@ function TedarikYaz() {
 
     td.innerText = AComp.NICKNAME;
     if(AComp.OFFER_ID != 0 ){
-      td.innerText+="TV Var";
+      var span = document.createElement("span");
+      span.setAttribute("class","fa fa-envelope")
+      span.setAttribute(
+        "style",
+        "    float: right;margin-right: 10px; padding: 1px 8px 1px 8px;  border-radius: 50%;"
+      );
+      span.setAttribute("onclick","windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&is_sale=0&offer_id='"+AComp.OFFER_ID +")")
     }
     var span = document.createElement("span");
     span.innerText = AComp.PIDS.length;
