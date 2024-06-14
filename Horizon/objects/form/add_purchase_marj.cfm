@@ -244,6 +244,8 @@ console.log(rc)
 
 for(let t=0;t<rc;t++){
 var sp=document.getElementsByName("SalePrice_"+(t+1))[0].value;
+var dp=document.getElementsByName("DiscountedPrice_"+(t+1))[0].value;
+var pmm=document.getElementsByName("PPMNAY_"+(t+1))[0].value;
 var wrk_id=document.getElementsByName("WrkRowId_"+(t+1))[0].value;
 console.log(sp)
 console.log(wrk_id)
@@ -263,6 +265,9 @@ console.log(dddd)
 		console.warn(wrk_id)
 DegeriGetir(SepetItem,"SALE_PRICE",1,1)
 DegerYaz(SepetItem,"SALE_PRICE",0,sp);
+DegerYaz(SepetItem,"PURCHASE_PRICE",0,dp);
+DegerYaz(SepetItem,"PURCHASE_MONEY",0,dp);
+DegerYaz(SepetItem,"PURCHASE_MONEY",0,pmm);
 AlayiniHesapla()
 }
 		}
