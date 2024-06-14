@@ -298,7 +298,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
    <cfargument name="START_DATE" default="">
     <cfargument name="FINISH_DATE" default="">
     <cfargument name="START_ROW" default="1">
-    <cfargument name="MAX_ROW" default="20">
+    <cfargument name="MAX_ROW" default="100">
     
  <cfquery name="getOffers" datasource="#dsn#">
         	WITH CTE1 AS(
