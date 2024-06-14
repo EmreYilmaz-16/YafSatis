@@ -431,7 +431,7 @@
 
                 <div class="div-elements">
                     <p class="input-value">
-                        <cfoutput>#Offer.COMPANY_ADDRESS#</cfoutput>
+                        <cfoutput><cfif isDefined("Offer.COMPANY_ADDRESS")>#Offer.COMPANY_ADDRESS#</cfif></cfoutput>
                     </p>
                 </div>
             </div>
