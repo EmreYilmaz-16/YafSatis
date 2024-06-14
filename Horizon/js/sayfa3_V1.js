@@ -565,7 +565,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   if (UNIQUE_RELATION_ID.length > 0) {
-    var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
+   /* var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
     console.log(RF);
     if (RF.recordcount) {
       PURCHASE_PRICE = RF.PRICE_OTHER[0];
@@ -574,7 +574,7 @@ function addRowCrs(
   } else {
     var RF = {
       recordcount: 0,
-    };
+    };*/
   }
 
   var td = document.createElement("td");

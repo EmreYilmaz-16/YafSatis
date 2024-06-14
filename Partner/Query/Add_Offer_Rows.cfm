@@ -110,6 +110,7 @@
             <cfif isdefined('attributes.row_volume#i#') and len(evaluate("attributes.row_volume#i#"))>,VOLUME</cfif>
             <cfif isDefined('attributes.converted_sid#i#') and len(evaluate("attributes.converted_sid#i#"))>,CONVERTED_STOCK_ID</cfif>
             <cfif isDefined('attributes.PURCHASE_PRICE#i#') and len(evaluate("attributes.PURCHASE_PRICE#i#"))>,PURCHASE_PRICE</cfif>
+            <cfif isDefined('attributes.PURCHASE_MONEY#i#') and len(evaluate("attributes.PURCHASE_MONEY#i#"))>,PURCHASE_MONEY</cfif>
         )
         VALUES
         (
