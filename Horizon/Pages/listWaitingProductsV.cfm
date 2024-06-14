@@ -5,7 +5,7 @@ LEFT JOIN CatalystQA_1.PBS_OFFER AS PO ON PO.OFFER_ID=POR.OFFER_ID
 WHERE POR.IS_VIRTUAL =1
 
 </cfquery>
-<cf_box title="Bekleyen Sanal Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
+<cf_box title="Bekleyen Tanımsız Ürünler" scroll="1" collapsable="1" resize="1" popup_box="1">
     <cfoutput query="getProducts" group="OFFER_ID">
         <cf_seperator title="#OFFER_NUMBER#" id="sep_#OFFER_ID#">
         <div id="sep_#OFFER_ID#" style="display:none">
