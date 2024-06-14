@@ -1707,11 +1707,12 @@ function TedarikYaz() {
     var td = document.createElement("th");
     td.innerText = AComp.MEMBER_CODE;
     td.setAttribute("style", "color:#fb6b5b;width:10%");
-
+    td.setAttribute("onclick", "$('#tr_" + AComp.COMPANY_ID + "').toggle()");
     tr.appendChild(td);
     var td = document.createElement("th");
 
     td.innerText = AComp.NICKNAME;
+    
     if(AComp.OFFER_ID != 0 ){
       var span = document.createElement("span");
       span.setAttribute("class","fa fa-envelope")
@@ -1742,7 +1743,7 @@ function TedarikYaz() {
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
-    tr.setAttribute("onclick", "$('#tr_" + AComp.COMPANY_ID + "').toggle()");
+    
     Table.appendChild(tr);
     var tr = document.createElement("tr");
     var td = document.createElement("td");
