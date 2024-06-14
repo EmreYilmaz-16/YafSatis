@@ -91,12 +91,12 @@
             </cfloop>
         </TD>
         <td>
-          <cfloop array="#it.PC_JSOIN#" item="it3" index="iz">
+         <!--- <cfloop array="#it.PC_JSOIN#" item="it3" index="iz">
               <button>
                 <b>#it3.PROPERTY#</b><br>
                 #it3.PPD[1].PROPERTY_DETAIL#
               </button>
-          </cfloop>
+          </cfloop>---->
         </td>
             </tr>
           </cfloop>
