@@ -6,7 +6,7 @@
 <cfset OfferService = createObject("component","AddOns.YafSatis.Partner.cfc.OfferService")>
 <cfset Fdata=deserializeJSON(attributes.FormData)>
 <cfset OfferList=arrayNew(1)>
-<cfset OfferList=OfferService.getOfferList(SALES_EMP_ID:Fdata.SalesPartnerId,
+<cfset OfferList=OfferService.getOfferList(SALES_EMP_ID:iif(len(Fdata.SalesPartnerId),Fdata.SalesPartnerId,""),
 OFFER_CURRENCY:Fdata.ForCustomer,
 OFFER_STAGE:Fdata.Stage,
 OFFER_NUMBER:Fdata.PaperNo,
