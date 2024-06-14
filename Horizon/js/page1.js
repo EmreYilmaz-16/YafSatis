@@ -115,6 +115,7 @@ function LoadOffers(tip, vl, vl2) {
   var StartDate = document.getElementById("StartDate").value;
   var FinishDate = document.getElementById("FinishDate").value;
   var SalesPartnerId = document.getElementById("deliver_get_id").value;
+  var SalesPartnername = document.getElementById("deliver_get").value;
   var PaperNo = document.getElementById("PaperNo").value;
   var RefNo = document.getElementById("customer_ref_no").value;
   Filters.CompanyId = CompanyId;
@@ -123,6 +124,7 @@ function LoadOffers(tip, vl, vl2) {
   Filters.SalesPartnerId = SalesPartnerId;
   Filters.PaperNo = PaperNo;
   Filters.RefNo = RefNo;
+  Filters.SalesPartnername=SalesPartnername;
   var FormStr = JSON.stringify(Filters);
   AjaxPageLoad(
     "index.cfm?fuseaction=sales.emptypopup_ajax_list_pbs_offers&FormData=" +
