@@ -233,7 +233,9 @@ function SonToplamHesapla(){
 
 function SatisFiyatKaydet(offer_id) {
     var FD=$("#FORM_0001").serialize()
-    $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=1&offer_id="+offer_id+"&"+FD)
+    $.post("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=save_purchase_price_marj&tip=1&offer_id="+offer_id+"&"+FD).done(function (params) {
+        alert("Kayıt Edilmiştir");
+    })
 }
 function SatisFiyatKaydetGuncelle(offer_id) {
     var FD=$("#FORM_0001").serialize()
