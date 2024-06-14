@@ -391,7 +391,7 @@
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY TIME</div>
-                    <div class="input-value"><span>:</span><cfoutput>#Offer.DELIVERDATE#</cfoutput>(<cfoutput>#dateDiff("w",Offer.DELIVERDATE,Offer.OFFER_DATE)#</cfoutput>W/DAYS)</div>
+                    <div class="input-value"><span>:</span><cfif len(Offer.DELIVERDATE)><cfoutput>#Offer.DELIVERDATE#</cfoutput>(<cfoutput>#dateDiff("w",Offer.DELIVERDATE,Offer.OFFER_DATE)#</cfoutput>W/DAYS)</cfif></div>
                 </div>
                 <div class="div-elements">
                     <div class="input-title">DELIVERY PLACE</div>
