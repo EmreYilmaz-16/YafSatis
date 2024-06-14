@@ -38,6 +38,7 @@ START_ROW:attributes.START_ROW,MAX_ROW:100)>
             <th class="drag-enable">CUSTOMER INFO<span class="table-handle"><i class="fa fa-sort"></i></span></th>
             <th class="drag-enable">DELIVERY ADDRESS<span class="table-handle"><i class="fa fa-sort"></i></span></th>
             <th class="drag-enable">TRANSPORTATION<span class="table-handle"><i class="fa fa-sort"></i></span></th>
+            <th class="drag-enable">STAFF<span class="table-handle"><i class="fa fa-sort"></i></span></th>
             <th width="120"></th>
         </tr>
     </thead>
@@ -60,7 +61,9 @@ START_ROW:attributes.START_ROW,MAX_ROW:100)>
                 #it.DELIVERY_ADDRESS# &gt;
                 #it.DELIVERY_PLACE# 
             </td>
+            
             <td>#it.SHIP_METHOD#</td>
+            <td>#it.EMPLOYEE_NAME# #it.EMPLOYEE_SURNAME#</td>
         </tr>
         </cfloop>
     </cfoutput>
