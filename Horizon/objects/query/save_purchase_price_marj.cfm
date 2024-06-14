@@ -5,6 +5,8 @@
     <cfset SALE_PRICE=evaluate("attributes.SalePrice_#i#")>
     <cfset DISCOUNTED_PRICE=evaluate("attributes.DiscountedsPrice_#i#")>
     <cfset MARJA=evaluate("attributes.MARJUK_#i#")>
+    <cfset P_PURHCASE_MONEY=evaluate("attributes.PPMNAY_#i#")>
+    
     <cfquery name="ins" datasource="#dsn3#">
         INSERT INTO FIYAT_ONERME_HISTORY_PBS (
             FIYAT_ONERME_ID,
@@ -37,7 +39,7 @@
    
     <cfif attributes.tip eq 2>
         <cfquery name="up2" datasource="#dsn3#">
-            UPDATE PBS_OFFER_ROW SET PURCHASE_PRICE=#filterNum(DISCOUNTED_PRICE)# WHERE OFFER_ID =#attributes.offer_id# AND WRK_ROW_ID='#WRK_ROW_ID#'
+            UPDATE PBS_OFFER_ROW SET PURCHASE_PRICE=#filterNum(DISCOUNTED_PRICE)#,PURCHASE_MONEY='#P_PURHCASE_MONEY#' WHERE OFFER_ID =#attributes.offer_id# AND WRK_ROW_ID='#WRK_ROW_ID#'
         </cfquery>
     </cfif>
 

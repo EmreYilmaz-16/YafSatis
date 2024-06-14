@@ -98,7 +98,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>#MANUFACT_CODE#</td>
         <td>#PRODUCT_NAME#</td>
         <td>#tlformat(QUANTITY)#</td>
-        <td>#tlformat(PRICE_OTHER)#</td>
+        <td>#tlformat(PRICE_OTHER)# <input type="hidden" name="PPMNAY_#ROW_COUNT#" value="#OTHER_MONEY#"></td>
         <td>#OTHER_MONEY#</td>
         <td>#tlformat(DISCOUNT_COST)#</td>
         <td>#OTHER_MONEY#</td>
