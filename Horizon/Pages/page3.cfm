@@ -94,6 +94,7 @@
             <span class="margin-right-5"><a href="" class="bold font-md margin-right-5 text-danger">CUSTOMER INQURIY</a></span>
         </div>
         <div class="pull-right">
+            <a href="javascript://"  class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="color:black !important;font-weight:bold !important"><cfoutput>Teklifi Kopyala</cfoutput></a>
             <a href="javascript://"  class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left" style="color:black !important;font-weight:bold !important"><cfoutput>#Offer.OFFER_STAGE_IM#</cfoutput></a>
             <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_mailler_pbs&OFFER_ID=<cfoutput>#Offer.OFFER_ID#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-envelope"></i>QUOTATION MAIL</a>
             <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=OfferStatus&OFFER_CURRENCY_ID=<cfoutput>#Offer.OFFER_CURRENCY_ID#</cfoutput>&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OLD_PROCESS_CAT=#Offer.OFFER_STAGE#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
