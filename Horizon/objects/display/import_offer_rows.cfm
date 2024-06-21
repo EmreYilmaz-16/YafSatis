@@ -71,10 +71,10 @@
 <cfscript>
     arrayAppend(JSON_ARRA,OX);
 </cfscript>
-
+<cfset OTC.Filters=JSON_ARRA>
 </cfif>
 
-<cfset OTC.Filters=JSON_ARRA>
+
 <cfset OTC.PropList=PROP_LIST>
 
 <cfif get_invoice_no.COL_1[ix] eq 2>
