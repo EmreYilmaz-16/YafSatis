@@ -1,4 +1,4 @@
-<cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#" enctype="multipart/form-data" >
+<cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#&list_type=import_offer_rows" enctype="multipart/form-data" >
     <div class="form-group">
         <input type="file" name="file_11" id="file_11">
         <input type="hidden"  name="FileName" id="FileName"> 
