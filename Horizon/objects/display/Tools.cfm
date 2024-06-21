@@ -28,7 +28,6 @@
     <cfinclude template="../form/add_purchase_marj.cfm">
 <cfelseif attributes.ListType  eq "save_purchase_price_marj">
     <cfinclude template="../query/save_purchase_price_marj.cfm">
-
 <cfelseif attributes.ListType  eq "import_offer_rows">
-    <cfinclude template="import_offer_rows.cfm"
+    <cfinclude template="import_offer_rows.cfm">
 </cfif>
