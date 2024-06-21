@@ -82,7 +82,7 @@
 <cfset OTC.PropList=PROP_LIST>
 <cfset OTC.Filters=JSON_ARRA>
 
-<cfset jstring=replace(serializeJSON(OFFER_DATA),"//","")>
+<cfset jstring=replace(serializeJSON(OTC),"//","")>
 <script>
     var excalibur=<cfoutput>#jstring#</cfoutput>;
     window.opener.addEqRow(excalibur, JSON.stringify(excalibur)) 
