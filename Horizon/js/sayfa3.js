@@ -1707,11 +1707,12 @@ function TedarikYaz() {
     var td = document.createElement("th");
     td.innerText = AComp.MEMBER_CODE;
     td.setAttribute("style", "color:#fb6b5b;width:10%");
-
+    td.setAttribute("onclick", "$('#tr_" + AComp.COMPANY_ID + "').toggle()");
     tr.appendChild(td);
     var td = document.createElement("th");
 
     td.innerText = AComp.NICKNAME;
+    
     if(AComp.OFFER_ID != 0 ){
       var span = document.createElement("span");
       span.setAttribute("class","fa fa-envelope")
@@ -1719,7 +1720,8 @@ function TedarikYaz() {
         "style",
         "    float: right;margin-right: 10px; padding: 1px 8px 1px 8px;  border-radius: 50%;"
       );
-      span.setAttribute("onclick","windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&is_sale=0&offer_id='"+AComp.OFFER_ID +")")
+      span.setAttribute("onclick","windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&is_sale=0&offer_id="+AComp.OFFER_ID +"')")
+      td.appendChild(span);
     }
     var span = document.createElement("span");
     span.innerText = AComp.PIDS.length;
@@ -1741,7 +1743,7 @@ function TedarikYaz() {
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
-    tr.setAttribute("onclick", "$('#tr_" + AComp.COMPANY_ID + "').toggle()");
+    
     Table.appendChild(tr);
     var tr = document.createElement("tr");
     var td = document.createElement("td");
@@ -1945,4 +1947,23 @@ function open_product_popup(el)
   
   if(product_id != "")
     openBoxDraggable(url_str + '&pid='+ product_id + '&sid='+stock_id);
+}
+function CoppyOfferCanim(OFFER_ID,OFFER_NUMBER){
+  var rs = $.post(
+    ServiceUri +
+      "/OfferService.cfc?method=CopyOffer&OFFER_ID=" +
+      OFFER_ID +
+      "&OFFER_NUMBER=" +
+      OFFER_NUMBER
+  ).done(function (ReturnData) {
+    var RF=JSON.parse(ReturnData);
+    if(RF.STATUS==1){
+      var eee=confirm("Kopyalama Başarılı Yeni Oluşan Teklife Gidilsinmi");
+      if(eee){
+        window.location.href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id="+RF.OFFER_ID
+      }
+    }else{
+      alert("Bir Hata Oluştu");
+    }
+  }) 
 }
