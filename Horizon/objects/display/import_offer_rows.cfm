@@ -83,9 +83,16 @@
 <cfset OTC.Filters=JSON_ARRA>
 
 <cfset jstring=replace(serializeJSON(OTC),"//","")>
+<cfquery name="ihvp" datasource="#dsn3#">
+    SELECT * FROM STOCKS WHERE MANUFACT_CODE='#get_invoice_no.COL_2[ix]#'
+</cfquery>
 <script>
     var excalibur=<cfoutput>#jstring#</cfoutput>;
     window.opener.addEqRow_01(excalibur, JSON.stringify(excalibur)) 
+<cfoutput>
+    addRowCrs('#PROP_LIST#', "#ihvp.PRODUCT_ID#",  "#ihvp.STOCK_ID#",  "#get_invoice_no.COL_3[ix]#", #ihvp.TAX#,  "#get_invoice_no.COL_2[ix]#",  #get_invoice_no.COL_4[ix]#,  "#get_invoice_no.COL_5[ix]#",  #0#,  "#0#",  #0#,  #0#, #0#,  #0#,  "",0,0,<cfif ihvp.recordCount>0<cfelse>1</cfif>,'') 
+</cfoutput>
+    
 </script>
 </cfif>
 
