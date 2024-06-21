@@ -25,11 +25,28 @@
     <cfset HIERARCHY=get_invoice_no.COL_3[ix]>
     
     <CFSET PROP_LIST="">
+    <CFSET JSON_ARRA=arrayNew(1)>
 
     <cfquery name="GETCAT" datasource="#DSN1#">
-        SELECT PRODUCT_CATID FROM PRODUCT_CAT WHERE HIERARCHY='#HIERARCHY#'
+        SELECT PRODUCT_CATID,PRODUCT_CAT FROM PRODUCT_CAT WHERE HIERARCHY='#HIERARCHY#'
     </cfquery>
+    <CFSET OX=structNew()>
     <CFSET PROP_LIST=listAppend(PROP_LIST,GETCAT.PRODUCT_CATID)>
+    <CFSET OX.PRODUCT_CAT=GETCAT.PRODUCT_CAT>
+    <CFSET OX.PRODUCT_CATID=GETCAT.PRODUCT_CATID>
+    <CFSET OX.PNAME="EQUIPMENT">
+    <CFSET OX.PROP_ID=0>
+    <CFSET OX.IS_OPTIONAL=0>
+    <!----
+         PRODUCT_CAT: PRODUCT_CAT,
+    PRODUCT_CAT_ID: PRODUCT_CAT_ID,
+    PNAME: "EQUIPMENT",
+    PROP_ID: 0,
+    IS_OPTIONAL: 0,---->
+
+    <cfscript>
+        arrayAppend(JSON_ARRA,OX);
+    </cfscript>
 </cfif>
 
 <cfif get_invoice_no.COL_1[ix] eq 1>
@@ -42,11 +59,20 @@
     </cfquery>
 
 <CFSET PROP_LIST=listAppend(PROP_LIST,GET_PROPERTY_DETAIL.PROPERTY_DETAIL_ID)>
-
+<cfset OX=structNew()>
+<CFSET OX.PRODUCT_CAT=GET_PROPERTY_DETAIL.PROPERTY_DETAIL>
+<CFSET OX.PRODUCT_CATID=GET_PROPERTY_DETAIL.PROPERTY_DETAIL_ID>
+<CFSET OX.PNAME="#GET_PROPERTY.PROPERTY#">
+<CFSET OX.PROP_ID=GET_PROPERTY.PROPERTY_ID>
+<CFSET OX.IS_OPTIONAL=0>
+<cfscript>
+    arrayAppend(JSON_ARRA,OX);
+</cfscript>
 
 </cfif>
 <cfif get_invoice_no.COL_1[ix] eq 2>
 <cfdump var="#PROP_LIST#">
+<cfdump var="#JSON_ARRA#">
 </cfif>
 
 </cfloop>
