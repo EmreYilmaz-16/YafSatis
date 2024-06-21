@@ -27,9 +27,9 @@
     <CFSET PROP_LIST="">
 
     <cfquery name="GETCAT" datasource="#DSN1#">
-        SELECT PRODUCT_CAT_ID FROM PRODUCT_CAT WHERE HIERARCHY='#HIERARCHY#'
+        SELECT PRODUCT_CATID FROM PRODUCT_CAT WHERE HIERARCHY='#HIERARCHY#'
     </cfquery>
-    <CFSET PROP_LIST=listAppend(PROP_LIST,GETCAT.PRODUCT_CAT_ID)>
+    <CFSET PROP_LIST=listAppend(PROP_LIST,GETCAT.PRODUCT_CATID)>
 </cfif>
 
 <cfif get_invoice_no.COL_1[ix] eq 1>
