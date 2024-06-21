@@ -1136,7 +1136,8 @@ WHERE OFFER_ROW_REL='#FORMDATA.OFFER_ROW_REL#'
 <cffunction name="CopyOffer"  access="remote" httpMethod="Post" returntype="any" returnFormat="json"> 
     <cfargument name="OFFER_ID">
     <cfargument name="OFFER_NUMBER">
-    <cfquery name="GETOCOUNT" datasource="#dsn3#">
+  <cftry>
+  <cfquery name="GETOCOUNT" datasource="#dsn3#">
         SELECT COUNT(*) AS OFFER_COUNT FROM PBS_OFFER WHERE OFFER_NUMBER LIKE '%#arguments.OFFER_NUMBER#%'
     </cfquery>
     <CFSET NEW_NUMBER="#arguments.OFFER_NUMBER#.#GETOCOUNT.OFFER_COUNT+1#">
@@ -1591,6 +1592,19 @@ WHERE OFFER_ROW_REL='#FORMDATA.OFFER_ROW_REL#'
       ,RATE1
       ,IS_SELECTED FROM PBS_OFFER_MONEY WHERE ACTION_ID=#arguments.OFFER_ID#
 </cfquery>
+<cfset ReturnData=structNew()>
+<cfset ReturnData.OFFER_ID=GETM.MX_OFR_ID>
+    <cfset ReturnData.STATUS=1>
+    <cfset ReturnData.Message="Kopyalama Başarılı">
+    <cfreturn replace(serializeJSON(ReturnData),"//","")> 
+<cfcatch>
+    <cfset ReturnData=structNew()>
+    <cfset ReturnData.OFFER_ID="">
+    <cfset ReturnData.STATUS=0>
+    <cfset ReturnData.Message=cfcatch.message>
+    <cfreturn replace(serializeJSON(ReturnData),"//","")> 
+</cfcatch>
+</cftry>
 </cffunction>
 
 

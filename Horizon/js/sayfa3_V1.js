@@ -1948,3 +1948,22 @@ function open_product_popup(el)
   if(product_id != "")
     openBoxDraggable(url_str + '&pid='+ product_id + '&sid='+stock_id);
 }
+function CoppyOfferCanim(OFFER_ID,OFFER_NUMBER){
+  var rs = $.post(
+    ServiceUri +
+      "/OfferService.cfc?method=CopyOffer&OFFER_ID=" +
+      OFFER_ID +
+      "&OFFER_NUMBER=" +
+      OFFER_NUMBER
+  ).done(function (ReturnData) {
+    var RF=JSON.parse(ReturnData);
+    if(RF.STATUS==1){
+      var eee=confirm("Kopyalama Başarılı Yeni Oluşan Teklife Gidilsinmi");
+      if(eee){
+        window.location.href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id="+RF.OFFER_ID
+      }
+    }else{
+      alert("Bir Hata Oluştu");
+    }
+  }) 
+}
