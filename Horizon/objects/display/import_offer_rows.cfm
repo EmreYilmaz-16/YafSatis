@@ -47,7 +47,7 @@
 </cfif>
 <cfif get_invoice_no.COL_1[ix] eq 2>
 <cfdump var="#PROP_LIST#">
-
+</cfif>
 
 </cfloop>
 
