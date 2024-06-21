@@ -85,7 +85,7 @@
 <cfset jstring=replace(serializeJSON(OTC),"//","")>
 <script>
     var excalibur=<cfoutput>#jstring#</cfoutput>;
-    window.opener.addEqRow(excalibur, JSON.stringify(excalibur)) 
+    window.opener.addEqRow_01(excalibur, JSON.stringify(excalibur)) 
 </script>
 </cfif>
 
