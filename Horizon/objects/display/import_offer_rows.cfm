@@ -22,6 +22,7 @@
 <cfloop from="1" to="#get_invoice_no.recordCount#" index="ix">
 
 <cfif get_invoice_no.COL_1[ix] eq 0>
+    <CFSET OTC=structNew()>
     <cfset HIERARCHY=get_invoice_no.COL_3[ix]>
     
     <CFSET PROP_LIST="">
@@ -47,6 +48,8 @@
     <cfscript>
         arrayAppend(JSON_ARRA,OX);
     </cfscript>
+    <cfset OTC.PRODUCT_CAT=GETCAT.PRODUCT_CAT>
+<cfset OTC.PRODUCT_CAT_ID=GETCAT.PRODUCT_CATID>
 </cfif>
 
 <cfif get_invoice_no.COL_1[ix] eq 1>
@@ -70,9 +73,13 @@
 </cfscript>
 
 </cfif>
+
+<cfset OTC.Filters=JSON_ARRA>
+<cfset OTC.PropList=PROP_LIST>
+
 <cfif get_invoice_no.COL_1[ix] eq 2>
 <cfdump var="#PROP_LIST#">
-<cfdump var="#JSON_ARRA#">
+<cfdump var="#OTC#">
 </cfif>
 
 </cfloop>
