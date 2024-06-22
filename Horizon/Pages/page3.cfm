@@ -321,7 +321,7 @@
                         </div>
 
                         <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
-                            <a href="javascript://" class="font-xs text-info"><i class="fa fa-upload margin-right-5"></i>IMPORT</a>
+                            <a href="javascript://" onclick='windowopen("/index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=import_offer_rows","wide")' class="font-xs text-info"><i class="fa fa-upload margin-right-5"></i>IMPORT</a>
                         </div>
 
                         <div class="col col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex flex-center">
