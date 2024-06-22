@@ -90,7 +90,7 @@
     var excalibur=<cfoutput>#jstring#</cfoutput>;
     window.opener.addEqRow_01(excalibur, JSON.stringify(excalibur)) 
 <cfoutput>
-    window.opener.addRowCrs('#PROP_LIST#', "<cfif len(ihvp.PRODUCT_ID)>#ihvp.PRODUCT_ID#<cfelse>0</cfif>",  "<cfif len(ihvp.PRODUCT_ID)>#ihvp.STOCK_ID#<cfelse>0</cfif>",  "#get_invoice_no.COL_3[ix]#", "#ihvp.TAX#",  "#get_invoice_no.COL_2[ix]#",  #get_invoice_no.COL_4[ix]#,  "#get_invoice_no.COL_5[ix]#",  #0#,  "#0#",  #0#,  #0#, #0#,  #0#,  "",0,0,<cfif ihvp.recordCount>0<cfelse>1</cfif>,'') 
+    window.opener.addRowCrs('#PROP_LIST#', "<cfif len(ihvp.PRODUCT_ID)>#ihvp.PRODUCT_ID#<cfelse>0</cfif>",  "<cfif len(ihvp.PRODUCT_ID)>#ihvp.STOCK_ID#<cfelse>0</cfif>",  "#get_invoice_no.COL_3[ix]#", "#ihvp.TAX#",  "#get_invoice_no.COL_2[ix]#",  #get_invoice_no.COL_4[ix]#,  "#get_invoice_no.COL_5[ix]#",  #0#,  "#0#",  #0#,  #0#, #0#,  #0#,  "",0,0,<cfif ihvp.recordCount>0<cfelse>1</cfif>,'',<cfif ihvp.recordCount gt 1>1<cfelse>0</cfif>) 
 </cfoutput>
    window.opener.AlayiniHesapla(); 
 </script>
