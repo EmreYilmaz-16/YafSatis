@@ -189,6 +189,7 @@ function getFilterData() {
 }
 
 function addEqRow(Obj, jsn) {
+ try{
   var exxx = EqArr.findIndex((p) => p == Obj.PropList);
   if (exxx != -1) {
     return false;
@@ -362,8 +363,12 @@ function addEqRow(Obj, jsn) {
   div.appendChild(btn);
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
+}catch{
+  addEqRow_01(Obj,jsn);
+}
 }
 function addEqRow_01(Obj, jsn) {
+  
   var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
   if (exxx != -1) {
     return false;
