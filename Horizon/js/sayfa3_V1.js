@@ -563,7 +563,9 @@ function addRowCrs(
   DELIVERED_ITEMS = 0,
   WEIGHT = 0,
   IS_VIRTUAL = 0,
-  UNIQUE_RELATION_ID = ""
+  UNIQUE_RELATION_ID = "",
+  IS_MORE_ONE=0
+
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -674,6 +676,28 @@ function addRowCrs(
     );
   } else {
     input.setAttribute("style", "text-align:left");
+  }
+  if(IS_MORE_ONE ==1){
+    input.setAttribute(
+      "style",
+      "color:orange;font-weight:bold;text-align:left;"
+    );
+    var btn = document.createElement("button");
+    btn.setAttribute("class", "btn btn-warning");
+
+    btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
+    input.parentElement.appendChild(btn);
+    input.parentElement.setAttribute("style", "display:flex");
+    btn.setAttribute(
+      "onclick",
+      "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
+      RowCount +
+        "&kw=" +
+        input.value +
+        "&prp_list=" +
+        proplist +
+        "')"
+    );
   }
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
 
