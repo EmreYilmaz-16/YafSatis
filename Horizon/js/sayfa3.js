@@ -689,8 +689,8 @@ function addRowCrs(
     btn.setAttribute("class", "btn btn-warning");
 
     btn.innerHTML = "<i class='icn-md fa fa-search'></i>";
-    input.parentElement.appendChild(btn);
-    input.parentElement.setAttribute("style", "display:flex");
+    div.appendChild(btn);
+    div.setAttribute("style", "display:flex");
     btn.setAttribute(
       "onclick",
       "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
