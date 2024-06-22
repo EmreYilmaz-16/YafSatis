@@ -677,6 +677,9 @@ function addRowCrs(
   } else {
     input.setAttribute("style", "text-align:left");
   }
+  input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
+
+  div.appendChild(input);
   if(IS_MORE_ONE ==1){
     input.setAttribute(
       "style",
@@ -699,9 +702,7 @@ function addRowCrs(
         "')"
     );
   }
-  input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
-
-  div.appendChild(input);
+  
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "PRODUCT_ID";
