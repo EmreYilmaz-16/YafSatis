@@ -493,11 +493,11 @@ function addRowCrs(
   td.appendChild(div);
   tr.appendChild(td);
 
-  var td=document.createElement("td");
-  var div=document.createElement("div");
-  div.setAttribute("class","form-group");
-  var input=document.createElement("input");
-  input.setAttribute("type","date");
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("input");
+  input.setAttribute("type", "date");
   input.name = "ROW_DELIVER_DATE";
   input.id = "ROW_DELIVER_DATE_" + RowCount;
   div.appendChild(input);
@@ -937,5 +937,10 @@ function HesaplaDeliveryDate(item, el) {
       "-" +
       CurrentDate.split("/")[0];
     document.getElementsByName("DELIVER_DATE")[0].value = PrDate;
+  }
+  var eeee = document.getElementsByName("ROW_DELIVER_DATE");
+  var attt = document.getElementsByName("DELIVER_DATE")[0].value;
+  for (let i = 0; i < eeee.length; i++) {
+    eeee[i].value=attt;
   }
 }
