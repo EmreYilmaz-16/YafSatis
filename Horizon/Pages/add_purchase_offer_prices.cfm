@@ -253,7 +253,7 @@
 </cf_box>
 <!---------->
 <cfoutput>
-<cfdump var="#OfferData#">
+
 <script>
     $(document).ready(function(){
         <cfloop from="1" to="#arraylen(OfferData.PROP_ARR)#" index="i">
