@@ -498,6 +498,7 @@ function addRowCrs(
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
+  input.value=DELIVER_DATE;
   input.setAttribute("type", "date");
   input.name = "ROW_DELIVER_DATE";
   input.id = "ROW_DELIVER_DATE_" + RowCount;
