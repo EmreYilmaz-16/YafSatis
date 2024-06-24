@@ -127,11 +127,11 @@
     </div>
     <div class="form-group">
         <label>Delivery Times</label>
-        <input type="text" name="DELIVERY_TIMES">
+        <input type="text" name="DELIVERY_TIMES" onchange="HesaplaDeliveryDate('DELIVERY_TIMES',this)">
     </div> 
     <div class="form-group">
         <label>Deliver Date</label>
-        <input type="date" name="DELIVER_DATE">
+        <input type="date" name="DELIVER_DATE" onchange="HesaplaDeliveryDate('DELIVER_DATE',this)">
     </div> 
     <div class="form-group">
         <button class="ui-wrk-btn ui-wrk-btn-success" onclick="SaveOffer()">

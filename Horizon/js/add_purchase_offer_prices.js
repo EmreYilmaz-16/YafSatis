@@ -881,3 +881,49 @@ function paraBirimleriniEsitle() {
     tpm[i].value = document.getElementById("MONEY").value;
   }
 }
+
+function HesaplaDeliveryDate(item, el) {
+  console.log(item);
+  if (item == "DELIVER_DATE") {
+    var da1 = date_format(el.value);
+    var da = new Date();
+    var da2 = date_format(da.toISOString());
+
+    var df = datediff(da2, da1, 0);
+    console.log(df);
+    document.getElementsByName("DELIVERY_TIMES")[0].value = df;
+  } else {
+    var d = new Date();
+    var d2 = date_format(d.toISOString());
+    console.log(d2);
+    var dd = date_add("d", parseInt(el.value), d2);
+    console.log(dd);
+    console.log(el.value);
+    var CurrentDate = "";
+    var dda = dd.split("/");
+    if (dda[0].length == 1) {
+      CurrentDate += "0" + dda[0] + "/";
+    } else {
+      CurrentDate += dda[0] + "/";
+    }
+    if (dda[1].length == 1) {
+      CurrentDate += "0" + dda[1] + "/";
+    } else {
+      CurrentDate += dda[1] + "/";
+    }
+    if (dda[2].length == 1) {
+      CurrentDate += "0" + dda[2] + "/";
+    } else {
+      CurrentDate += dda[2];
+    }
+    console.log(CurrentDate);
+    // document.getElementsByName("DELIVERY_TIMES")[0].value = df;
+    var PrDate =
+      CurrentDate.split("/")[2] +
+      "-" +
+      CurrentDate.split("/")[1] +
+      "-" +
+      CurrentDate.split("/")[0];
+    document.getElementById("DELIVER_DATE").value = PrDate;
+  }
+}

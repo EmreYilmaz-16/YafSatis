@@ -937,7 +937,7 @@ function addRowCrs(
   input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS";
   input.id = "DELIVERED_ITEMS_" + RowCount;
-  var Smou=wrk_safe_query("GETDEPOBAKIYE","DSN2",1,STOCK_ID);
+  var Smou = wrk_safe_query("GETDEPOBAKIYE", "DSN2", 1, STOCK_ID);
   input.value = commaSplit(Smou.BAKIYE[0]);
   div2.appendChild(input);
   /*var input = document.createElement("select");
@@ -1077,9 +1077,11 @@ function getProduct(el, rc) {
         document.getElementById("SALE_DISCOUNT_" + rc).value = commaSplit(0);
         document.getElementById("UNIT_PRICE_" + rc).value = commaSplit(0);
         document.getElementById("TOTAL_PRICE_" + rc).value = commaSplit(0);
-        var Smou=wrk_safe_query("GETDEPOBAKIYE","DSN2",1,Obje.STOCK_ID);
-        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(Smou.BAKIYE[0]);
-        
+        var Smou = wrk_safe_query("GETDEPOBAKIYE", "DSN2", 1, Obje.STOCK_ID);
+        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(
+          Smou.BAKIYE[0]
+        );
+
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
@@ -2165,30 +2167,4 @@ function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
   });
 }
 
-function instaResAl() {
-  let SrcArr = [];
-  for (let i = 0; i < document.getElementsByClassName("_aagv").length; i++) {
-    //window.open(document.getElementsByClassName("_aagv")[i].children[0].src,"_blank")
-    var ex = SrcArr.findIndex(
-      (p) => p.SR == document.getElementsByClassName("_aagv")[i].children[0].src
-    );
-    if (ex == -1) {
-      SrcArr.push({
-        IMG: i,
-        SR: document.getElementsByClassName("_aagv")[i].children[0].src,
-      });
-    }
-  }
 
-  var cstr = "";
-  for (let i = 0; i < SrcArr.length; i++) {
-    // console.log(SrcArr[i].SR)
-    cstr += SrcArr[i].SR + "\n";
-  }
-  const link = document.createElement("a");
-  const file = new Blob([cstr], { type: "text/plain" });
-  link.href = URL.createObjectURL(file);
-  link.download = "sample.txt";
-  link.click();
-  URL.revokeObjectURL(link.href);
-}
