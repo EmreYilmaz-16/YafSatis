@@ -148,6 +148,7 @@ function addEqRow(Obj, jsn) {
   tr.appendChild(thCrate("Total Price", false));
   tr.appendChild(thCrate("First Remark", true));
   tr.appendChild(thCrate("Delivered Items", false));
+  tr.appendChild(thCrate("Deliver Date", true));
   tr.appendChild(thCrate("Weight", true));
 
   thead.appendChild(tr);
@@ -489,6 +490,17 @@ function addRowCrs(
   input.setAttribute("class", "input-group-text");
   div2.appendChild(input);
   div.appendChild(div2);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td=document.createElement(td);
+  var div=document.createElement("div");
+  div.setAttribute("class","form-group");
+  var input=document.createElement("input");
+  input.setAttribute("type","date");
+  input.name = "ROW_DELIVER_DATE";
+  input.id = "ROW_DELIVER_DATE_" + RowCount;
+  div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
 
