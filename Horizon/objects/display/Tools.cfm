@@ -30,4 +30,6 @@
     <cfinclude template="../query/save_purchase_price_marj.cfm">
 <cfelseif attributes.ListType  eq "import_offer_rows">
     <cfinclude template="import_offer_rows.cfm">
+<cfelseif attributes.ListType  eq "removePurchaseOffer">
+    <cfinclude template="removePurchaseOffer.cfm">
 </cfif>
