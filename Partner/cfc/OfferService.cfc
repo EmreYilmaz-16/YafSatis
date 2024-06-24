@@ -831,7 +831,7 @@ WHERE POR1.OFFER_ID=#arguments.OFFER_ID#
         <cfset RowItem.PRODUCT_ID=PRODUCT_ID>
         <cfset RowItem.STOCK_ID=STOCK_ID>
         <cfset RowItem.OTHER_MONEY=OTHER_MONEY>
-        <cfset RowItem.DELIVER_DATE=dateFormat(DELIVER_DATE,"dd-mm-yyyy")>
+        <cfset RowItem.DELIVER_DATE=dateFormat(DELIVER_DATE,"yyyy-mm-dd")>
         <cfset RowItem.UNIQUE_RELATION_ID=WRK_ROW_ID>
         <cfset RowItem.PART_NUMBER=PART_NUMBER>
         <cfscript>
