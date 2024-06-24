@@ -203,7 +203,7 @@ function addRowCrs(
   WEIGHT = 0,
   IS_VIRTUAL = 0,
   UNIQUE_RELATION_ID = "",
-  DELIVER_DATE=""
+  ROW_DELIVER_DATE=""
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -498,10 +498,11 @@ function addRowCrs(
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
   var input = document.createElement("input");
-  input.value=DELIVER_DATE;
+  
   input.setAttribute("type", "date");
   input.name = "ROW_DELIVER_DATE";
   input.id = "ROW_DELIVER_DATE_" + RowCount;
+  input.value=ROW_DELIVER_DATE;
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
