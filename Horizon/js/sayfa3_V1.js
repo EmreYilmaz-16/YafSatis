@@ -1908,14 +1908,14 @@ function TedarikYaz() {
 
     if (AComp.OFFER_ID != 0) {
       var span = document.createElement("span");
-      span.setAttribute("class", "fa fa-envelope");
+      span.setAttribute("class", "fa fa-minus");
       span.setAttribute(
         "style",
-        "    float: right;margin-right: 10px; padding: 1px 8px 1px 8px;  border-radius: 50%;"
+        "    float: right;margin-right: 10px; padding: 1px 8px 1px 8px;color:white;background:red"
       );
       span.setAttribute(
         "onclick",
-        "windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&is_sale=0&offer_id=" +
+        "windowopen('/index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=removePurchaseOffer&offer_id=" +
           AComp.OFFER_ID +
           "')"
       );
