@@ -493,7 +493,7 @@ function addRowCrs(
   td.appendChild(div);
   tr.appendChild(td);
 
-  var td=document.createElement(td);
+  var td=document.createElement("td");
   var div=document.createElement("div");
   div.setAttribute("class","form-group");
   var input=document.createElement("input");
