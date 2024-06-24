@@ -924,6 +924,6 @@ function HesaplaDeliveryDate(item, el) {
       CurrentDate.split("/")[1] +
       "-" +
       CurrentDate.split("/")[0];
-    document.getElementById("DELIVER_DATE").value = PrDate;
+    document.getElementsByName("DELIVER_DATE")[0].value = PrDate;
   }
 }
