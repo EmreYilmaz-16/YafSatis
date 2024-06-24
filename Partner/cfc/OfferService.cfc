@@ -948,6 +948,7 @@ ORDER BY PO2.OFFER_ID
         <CFSET 'attributes.IS_VIRTUAL#i#'=it.IS_VIRTUAL>
         <cfset 'attributes.row_unique_relation_id#i#'=it.UNIQUE_RELATION_ID>
         <cfset 'attributes.wrk_row_id#i#'=it.UNIQUE_RELATION_ID>
+        <cfset 'attributes.ROW_DELIVER_DATE#i#'=it.ROW_DELIVER_DATE>
       
         <cfquery name="updrows" datasource="#dsn3#">
            UPDATE PBS_OFFER_ROW SET PRICE=#evaluate('attributes.price#i#')#, 
@@ -956,8 +957,8 @@ ORDER BY PO2.OFFER_ID
            OTHER_MONEY='#evaluate('attributes.other_money_#i#')#',
            OTHER_MONEY_VALUE=#evaluate('attributes.other_money_value_#i#')#,
            DISCOUNT_COST=#evaluate('attributes.iskonto_tutar#i#')#,
-           EXTRA_PRICE_TOTAL=0
-           
+           EXTRA_PRICE_TOTAL=0,
+           DELIVER_DATE='#evaluate('attributes.ROW_DELIVER_DATE#i#')#,'
            WHERE OFFER_ID=#attributes.OFFER_ID# AND UNIQUE_RELATION_ID='#it.UNIQUE_RELATION_ID#'
         </cfquery>
     </cfloop>
