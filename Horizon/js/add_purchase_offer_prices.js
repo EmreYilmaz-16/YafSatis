@@ -202,7 +202,8 @@ function addRowCrs(
   DELIVERED_ITEMS = 0,
   WEIGHT = 0,
   IS_VIRTUAL = 0,
-  UNIQUE_RELATION_ID = ""
+  UNIQUE_RELATION_ID = "",
+  DELIVER_DATE=""
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");

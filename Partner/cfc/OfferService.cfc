@@ -764,7 +764,7 @@ WHERE PO.OFFER_ID=#arguments.OFFER_ID#
 <cfquery name="getOfferROW" datasource="#dsn3#">
 SELECT POR1.PRODUCT_NAME
 	,POR1.QUANTITY
-    
+    ,POR1.DELIVER_DATE,
 	,POR2.PROP_LIST
 	,POR2.JSON_STRINGIM
 	,ISNULL(POR1.PRICE,0)  AS PRICE
@@ -831,6 +831,7 @@ WHERE POR1.OFFER_ID=#arguments.OFFER_ID#
         <cfset RowItem.PRODUCT_ID=PRODUCT_ID>
         <cfset RowItem.STOCK_ID=STOCK_ID>
         <cfset RowItem.OTHER_MONEY=OTHER_MONEY>
+        <cfset RowItem.DELIVER_DATE=DELIVER_DATE>
         <cfset RowItem.UNIQUE_RELATION_ID=WRK_ROW_ID>
         <cfset RowItem.PART_NUMBER=PART_NUMBER>
         <cfscript>
