@@ -189,186 +189,185 @@ function getFilterData() {
 }
 
 function addEqRow(Obj, jsn) {
- try{
-  var exxx = EqArr.findIndex((p) => p == Obj.PropList);
-  if (exxx != -1) {
-    return false;
-  }
-  //console.log(Obj);
-  var div = document.createElement("div");
+  try {
+    var exxx = EqArr.findIndex((p) => p == Obj.PropList);
+    if (exxx != -1) {
+      return false;
+    }
+    //console.log(Obj);
+    var div = document.createElement("div");
 
-  div.setAttribute("class", "alert alert-success eq_header");
-  div.setAttribute("style", "position:relative");
-  div.setAttribute("data-PropList", Obj.PropList);
-  var table = document.createElement("table");
-  table.setAttribute("class", "EqTableMain");
-  var tr = document.createElement("tr");
-  var td = document.createElement("td");
-  var b0 = document.createElement("button");
-  b0.setAttribute("class", "ui-wrk-btn");
-  var spn = '<span class="icn-md icon-down"></span>';
-  b0.innerHTML = spn;
-  b0.setAttribute("onclick", "$('#SLO_'" + Obj.PropList + ").toggle()");
-  var b1 = document.createElement("button");
-  b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
-  var spn = '<span class="icn-md fa fa-check-square-o"></span>';
-  b1.innerHTML = spn;
-  var b2 = document.createElement("button");
-  b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
-  var spn = '<span class="icn-md fa fa-plus"></span>';
-  b2.innerHTML = spn;
-  b2.setAttribute("onclick", "addRowCrs('" + Obj.PropList + "')");
-
-  var b3 = document.createElement("button");
-  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
-  var spn = '<span class="icn-md fa fa-edit"></span>';
-  b3.innerHTML = spn;
-
-  var b4 = document.createElement("button");
-  b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
-  var spn = '<span class="icn-md icon-remove"></span>';
-  b4.setAttribute("onclick", "SeciliSil('" + Obj.PropList + "')");
-  b4.innerHTML = spn;
-
-  var b5 = document.createElement("button");
-  b5.setAttribute("class", "ui-wrk-btn ");
-  b5.setAttribute("style", "background:#292424 !important;color:white");
-  b5.setAttribute("onclick", "SeperatorSil('" + Obj.PropList + "')");
-  b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
-
-  var b6 = document.createElement("button");
-  b6.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
-
-  b6.innerHTML = '<span class="icn-md icon-filter"></span>';
-  b6.setAttribute("onclick", "lookProducts('" + Obj.PropList + "')");
-  var diva = document.createElement("div");
-  diva.setAttribute("style", "display:flex");
-  b1.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
-  b2.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
-  b3.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
-  b4.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
-  b5.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
-  b6.setAttribute(
-    "style",
-    "font-size: 7px !important;padding: 3px 7px !important;"
-  );
-  diva.appendChild(b1);
-  diva.appendChild(b2);
-  diva.appendChild(b3);
-  diva.appendChild(b4);
-  diva.appendChild(b5);
-  diva.appendChild(b6);
-  td.appendChild(diva);
-  var input = document.createElement("input");
-  input.id = "SeperatorRC_" + Obj.PropList;
-  input.name = "SeperatorRC_" + Obj.PropList;
-  input.type = "hidden";
-  input.value = 1;
-  td.appendChild(input);
-  tr.appendChild(td);
-  var svk_st = 8;
-
-  for (let index = 0; index < Obj.Filters.length; index++) {
-    const element = Obj.Filters[index];
+    div.setAttribute("class", "alert alert-success eq_header");
+    div.setAttribute("style", "position:relative");
+    div.setAttribute("data-PropList", Obj.PropList);
+    var table = document.createElement("table");
+    table.setAttribute("class", "EqTableMain");
+    var tr = document.createElement("tr");
     var td = document.createElement("td");
-    td.setAttribute("style", "border-right:solid 1px;width:" + svk_st + "%");
-    var spnT =
-      "<span style='font-weight:bold'>" +
-      element.PNAME +
-      "</span></br><span>" +
-      element.PRODUCT_CAT +
-      "</span>";
-    td.innerHTML = spnT;
-    tr.appendChild(td);
-  }
-  var sv_kalan_ = 0;
-  var sv_kalan = 0;
-  if (Obj.Filters.length < 12) {
-    sv_kalan_ = 12 - Obj.Filters.length;
-    sv_kalan = sv_kalan_ * 8;
-    var td = document.createElement("td");
-    td.setAttribute("style", "width:" + sv_kalan + "%");
-    tr.appendChild(td);
-  }
+    var b0 = document.createElement("button");
+    b0.setAttribute("class", "ui-wrk-btn");
+    var spn = '<span class="icn-md icon-down"></span>';
+    b0.innerHTML = spn;
+    b0.setAttribute("onclick", "$('#SLO_'" + Obj.PropList + ").toggle()");
+    var b1 = document.createElement("button");
+    b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+    var spn = '<span class="icn-md fa fa-check-square-o"></span>';
+    b1.innerHTML = spn;
+    var b2 = document.createElement("button");
+    b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+    var spn = '<span class="icn-md fa fa-plus"></span>';
+    b2.innerHTML = spn;
+    b2.setAttribute("onclick", "addRowCrs('" + Obj.PropList + "')");
 
-  table.appendChild(tr);
-  var input = document.createElement("input");
-  input.setAttribute("type", "hidden");
-  input.value = jsn;
-  input.name = "AddedEquipment";
-  input.id = "AddedEquipment_" + Obj.PropList;
-  div.appendChild(input);
-  div.appendChild(table);
-  var div2 = document.createElement("div");
-  div2.setAttribute("style", "background:white");
-  div2.setAttribute("id", "SLO_" + Obj.PropList);
-  var Table = document.createElement("table");
-  Table.setAttribute("class", "SubSepet table");
-  var thead = document.createElement("thead");
-  var tr = document.createElement("tr");
-  tr.appendChild(thCrate("#"));
-  tr.appendChild(thCrate("Part No"));
-  tr.appendChild(thCrate("Part Name"));
-  tr.appendChild(thCrate("Quantity"));
-  tr.appendChild(thCrate("Unit"));
-  tr.appendChild(thCrate("Purchase Price"));
-  tr.appendChild(thCrate("Sales Price"));
-  tr.appendChild(thCrate("Sales Discount"));
-  tr.appendChild(thCrate("Unit Price"));
-  tr.appendChild(thCrate("Total Price"));
-  tr.appendChild(thCrate("First Remark"));
-  tr.appendChild(thCrate("Delivered Items"));
-  tr.appendChild(thCrate("Weight"));
+    var b3 = document.createElement("button");
+    b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+    var spn = '<span class="icn-md fa fa-edit"></span>';
+    b3.innerHTML = spn;
 
-  thead.appendChild(tr);
-  Table.appendChild(thead);
-  Table.id = "SubSepet_" + Obj.PropList;
-  var tbody = document.createElement("tbody");
-  tbody.id = "SubSepetBody_" + Obj.PropList;
-  Table.appendChild(tbody);
-  div2.appendChild(Table);
-  div.appendChild(div2);
-  var btn =
-    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
-    Obj.PropList +
-    '">0</span> Rows Listed<br><span id="TOTALE_' +
-    Obj.PropList +
-    '">0 ' +
-    OfferData.OTHER_MONEY +
-    "</span></button>";
-  var btn =
-    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
-    Obj.PropList +
-    '">0</span> Rows Listed<br><span id="TOTALE_' +
-    Obj.PropList +
-    '">0 ' +
-    OfferData.OTHER_MONEY +
-    "</span></button>";
-  btn = $(btn)[0];
-  div.appendChild(btn);
-  document.getElementById("BasketArea").appendChild(div);
-  EqArr.push(Obj.PropList);
-}catch{
-  addEqRow_01(Obj,jsn);
-}
+    var b4 = document.createElement("button");
+    b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
+    var spn = '<span class="icn-md icon-remove"></span>';
+    b4.setAttribute("onclick", "SeciliSil('" + Obj.PropList + "')");
+    b4.innerHTML = spn;
+
+    var b5 = document.createElement("button");
+    b5.setAttribute("class", "ui-wrk-btn ");
+    b5.setAttribute("style", "background:#292424 !important;color:white");
+    b5.setAttribute("onclick", "SeperatorSil('" + Obj.PropList + "')");
+    b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
+
+    var b6 = document.createElement("button");
+    b6.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+
+    b6.innerHTML = '<span class="icn-md icon-filter"></span>';
+    b6.setAttribute("onclick", "lookProducts('" + Obj.PropList + "')");
+    var diva = document.createElement("div");
+    diva.setAttribute("style", "display:flex");
+    b1.setAttribute(
+      "style",
+      "font-size: 7px !important;padding: 3px 7px !important;"
+    );
+    b2.setAttribute(
+      "style",
+      "font-size: 7px !important;padding: 3px 7px !important;"
+    );
+    b3.setAttribute(
+      "style",
+      "font-size: 7px !important;padding: 3px 7px !important;"
+    );
+    b4.setAttribute(
+      "style",
+      "font-size: 7px !important;padding: 3px 7px !important;"
+    );
+    b5.setAttribute(
+      "style",
+      "font-size: 7px !important;padding: 3px 7px !important;"
+    );
+    b6.setAttribute(
+      "style",
+      "font-size: 7px !important;padding: 3px 7px !important;"
+    );
+    diva.appendChild(b1);
+    diva.appendChild(b2);
+    diva.appendChild(b3);
+    diva.appendChild(b4);
+    diva.appendChild(b5);
+    diva.appendChild(b6);
+    td.appendChild(diva);
+    var input = document.createElement("input");
+    input.id = "SeperatorRC_" + Obj.PropList;
+    input.name = "SeperatorRC_" + Obj.PropList;
+    input.type = "hidden";
+    input.value = 1;
+    td.appendChild(input);
+    tr.appendChild(td);
+    var svk_st = 8;
+
+    for (let index = 0; index < Obj.Filters.length; index++) {
+      const element = Obj.Filters[index];
+      var td = document.createElement("td");
+      td.setAttribute("style", "border-right:solid 1px;width:" + svk_st + "%");
+      var spnT =
+        "<span style='font-weight:bold'>" +
+        element.PNAME +
+        "</span></br><span>" +
+        element.PRODUCT_CAT +
+        "</span>";
+      td.innerHTML = spnT;
+      tr.appendChild(td);
+    }
+    var sv_kalan_ = 0;
+    var sv_kalan = 0;
+    if (Obj.Filters.length < 12) {
+      sv_kalan_ = 12 - Obj.Filters.length;
+      sv_kalan = sv_kalan_ * 8;
+      var td = document.createElement("td");
+      td.setAttribute("style", "width:" + sv_kalan + "%");
+      tr.appendChild(td);
+    }
+
+    table.appendChild(tr);
+    var input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.value = jsn;
+    input.name = "AddedEquipment";
+    input.id = "AddedEquipment_" + Obj.PropList;
+    div.appendChild(input);
+    div.appendChild(table);
+    var div2 = document.createElement("div");
+    div2.setAttribute("style", "background:white");
+    div2.setAttribute("id", "SLO_" + Obj.PropList);
+    var Table = document.createElement("table");
+    Table.setAttribute("class", "SubSepet table");
+    var thead = document.createElement("thead");
+    var tr = document.createElement("tr");
+    tr.appendChild(thCrate("#"));
+    tr.appendChild(thCrate("Part No"));
+    tr.appendChild(thCrate("Part Name"));
+    tr.appendChild(thCrate("Quantity"));
+    tr.appendChild(thCrate("Unit"));
+    tr.appendChild(thCrate("Purchase Price"));
+    tr.appendChild(thCrate("Sales Price"));
+    tr.appendChild(thCrate("Sales Discount"));
+    tr.appendChild(thCrate("Unit Price"));
+    tr.appendChild(thCrate("Total Price"));
+    tr.appendChild(thCrate("First Remark"));
+    tr.appendChild(thCrate("Total Stock"));
+    tr.appendChild(thCrate("Weight"));
+
+    thead.appendChild(tr);
+    Table.appendChild(thead);
+    Table.id = "SubSepet_" + Obj.PropList;
+    var tbody = document.createElement("tbody");
+    tbody.id = "SubSepetBody_" + Obj.PropList;
+    Table.appendChild(tbody);
+    div2.appendChild(Table);
+    div.appendChild(div2);
+    var btn =
+      '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
+      Obj.PropList +
+      '">0</span> Rows Listed<br><span id="TOTALE_' +
+      Obj.PropList +
+      '">0 ' +
+      OfferData.OTHER_MONEY +
+      "</span></button>";
+    var btn =
+      '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;"><span id="RC_' +
+      Obj.PropList +
+      '">0</span> Rows Listed<br><span id="TOTALE_' +
+      Obj.PropList +
+      '">0 ' +
+      OfferData.OTHER_MONEY +
+      "</span></button>";
+    btn = $(btn)[0];
+    div.appendChild(btn);
+    document.getElementById("BasketArea").appendChild(div);
+    EqArr.push(Obj.PropList);
+  } catch {
+    addEqRow_01(Obj, jsn);
+  }
 }
 function addEqRow_01(Obj, jsn) {
-  
   var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
   if (exxx != -1) {
     return false;
@@ -564,8 +563,7 @@ function addRowCrs(
   WEIGHT = 0,
   IS_VIRTUAL = 0,
   UNIQUE_RELATION_ID = "",
-  IS_MORE_ONE=0
-
+  IS_MORE_ONE = 0
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -628,7 +626,7 @@ function addRowCrs(
     "style",
     "font-size: 7px !important;padding: 3px 7px !important;"
   );
-  
+
   var spn = document.createElement("span");
   spn.setAttribute("class", "icn-md fa fa-dashboard");
   b5.appendChild(spn);
@@ -680,7 +678,7 @@ function addRowCrs(
   input.setAttribute("onchange", "getProduct(this," + RowCount + ")");
 
   div.appendChild(input);
-  if(IS_MORE_ONE ==1){
+  if (IS_MORE_ONE == 1) {
     input.setAttribute(
       "style",
       "color:orange;font-weight:bold;text-align:left;"
@@ -694,7 +692,7 @@ function addRowCrs(
     btn.setAttribute(
       "onclick",
       "openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=getCollation&rc=" +
-      RowCount +
+        RowCount +
         "&kw=" +
         input.value +
         "&prp_list=" +
@@ -702,7 +700,7 @@ function addRowCrs(
         "')"
     );
   }
-  
+
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "PRODUCT_ID";
@@ -770,7 +768,7 @@ function addRowCrs(
   tr.appendChild(td);
 
   if (UNIQUE_RELATION_ID.length > 0) {
-   /* var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
+    /* var RF = wrk_safe_query("getPurhasePrice", "dsn3", 1, UNIQUE_RELATION_ID);
     console.log(RF);
     if (RF.recordcount) {
       PURCHASE_PRICE = RF.PRICE_OTHER[0];
@@ -939,14 +937,15 @@ function addRowCrs(
   input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS";
   input.id = "DELIVERED_ITEMS_" + RowCount;
-  input.value = commaSplit(DELIVERED_ITEMS);
+  var Smou=wrk_safe_query("GETDEPOBAKIYE","DSN2",1,STOCK_ID);
+  input.value = commaSplit(Smou.BAKIYE[0]);
   div2.appendChild(input);
-  var input = document.createElement("select");
+  /*var input = document.createElement("select");
   input.innerHTML = "";
   input.name = "DELIVERED_ITEMS_UNIT";
   input.id = "DELIVERED_ITEMS_UNIT_" + RowCount;
   input.setAttribute("class", "input-group-text");
-  div2.appendChild(input);
+  div2.appendChild(input);*/
   div.appendChild(div2);
   td.appendChild(div);
   tr.appendChild(td);
@@ -1078,20 +1077,9 @@ function getProduct(el, rc) {
         document.getElementById("SALE_DISCOUNT_" + rc).value = commaSplit(0);
         document.getElementById("UNIT_PRICE_" + rc).value = commaSplit(0);
         document.getElementById("TOTAL_PRICE_" + rc).value = commaSplit(0);
-        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(0);
-        document.getElementById("DELIVERED_ITEMS_UNIT_" + rc).innerHTML =
-          '<option value="' +
-          Obje.MAIN_UNIT +
-          '">' +
-          Obje.MAIN_UNIT +
-          "</option>";
-        AlayiniHesapla();
-        document.getElementById("WEIGHT_" + rc).value = commaSplit(0);
-      } else {
-        el.setAttribute(
-          "style",
-          "color:red;font-weight:bold;text-align:left;background:black"
-        );
+        var Smou=wrk_safe_query("GETDEPOBAKIYE","DSN2",1,Obje.STOCK_ID);
+        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(Smou.BAKIYE[0]);
+        
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
@@ -1764,7 +1752,7 @@ function SaveOffer() {
     data: {
       data: JSON.stringify(BasketData),
     },
-    type: 'POST',
+    type: "POST",
     success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
         messageType: "error",
@@ -1803,7 +1791,7 @@ function AddToCons() {
           MEMBER_CODE: nnmc,
           IS_PURCHASE_SAVED: 0,
           P_PRICE_COUNT: 0,
-          OFFER_ID:0,
+          OFFER_ID: 0,
           PIDS: [],
         };
         for (let j = 0; j <= pid_l.length; j++) {
@@ -1917,15 +1905,20 @@ function TedarikYaz() {
     var td = document.createElement("th");
 
     td.innerText = AComp.NICKNAME;
-    
-    if(AComp.OFFER_ID != 0 ){
+
+    if (AComp.OFFER_ID != 0) {
       var span = document.createElement("span");
-      span.setAttribute("class","fa fa-envelope")
+      span.setAttribute("class", "fa fa-minus");
       span.setAttribute(
         "style",
-        "    float: right;margin-right: 10px; padding: 1px 8px 1px 8px;  border-radius: 50%;"
+        "    float: right;margin-right: 10px; padding: 1px 8px 1px 8px;color:white;background:red"
       );
-      span.setAttribute("onclick","windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&is_sale=0&offer_id="+AComp.OFFER_ID +"')")
+      span.setAttribute(
+        "onclick",
+        "windowopen('/index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=removePurchaseOffer&offer_id=" +
+          AComp.OFFER_ID +
+          "')"
+      );
       td.appendChild(span);
     }
     var span = document.createElement("span");
@@ -1948,7 +1941,7 @@ function TedarikYaz() {
     td.appendChild(span);
     tr.appendChild(td);
     //   tr.setAttribute("style","background: #e1e1e170;")
-    
+
     Table.appendChild(tr);
     var tr = document.createElement("tr");
     var td = document.createElement("td");
@@ -2112,7 +2105,7 @@ function SatinAlmaKontrol(offer_id) {
         MEMBER_CODE: ATeklif.MEMBER_CODE,
         IS_PURCHASE_SAVED: 1,
         P_PRICE_COUNT: ATeklif.OFFER_ROWS.FIYAT_VERILEN,
-        OFFER_ID:ATeklif.OFFER_ID,
+        OFFER_ID: ATeklif.OFFER_ID,
         PIDS: [],
       };
       for (let j = 0; j < ATeklif.OFFER_ROWS.ROWS.length; j++) {
@@ -2139,21 +2132,18 @@ function SatinAlmaKontrol(offer_id) {
     TedarikYaz();
   });
 }
-function open_product_popup(el)
-{
-  url_str = 'index.cfm?fuseaction=objects.popup_detail_product';
+function open_product_popup(el) {
+  url_str = "index.cfm?fuseaction=objects.popup_detail_product";
   var rc = el.getAttribute("data-rc");
   var pid = document.getElementById("PRODUCT_ID_" + rc).value;
   var sid = document.getElementById("STOCK_ID_" + rc).value;
   var stock_id = pid;
   var product_id = sid;
 
-  
-  
-  if(product_id != "")
-    openBoxDraggable(url_str + '&pid='+ product_id + '&sid='+stock_id);
+  if (product_id != "")
+    openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id);
 }
-function CoppyOfferCanim(OFFER_ID,OFFER_NUMBER){
+function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
   var rs = $.post(
     ServiceUri +
       "/OfferService.cfc?method=CopyOffer&OFFER_ID=" +
@@ -2161,14 +2151,44 @@ function CoppyOfferCanim(OFFER_ID,OFFER_NUMBER){
       "&OFFER_NUMBER=" +
       OFFER_NUMBER
   ).done(function (ReturnData) {
-    var RF=JSON.parse(ReturnData);
-    if(RF.STATUS==1){
-      var eee=confirm("Kopyalama Başarılı Yeni Oluşan Teklife Gidilsinmi");
-      if(eee){
-        window.location.href="/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id="+RF.OFFER_ID
+    var RF = JSON.parse(ReturnData);
+    if (RF.STATUS == 1) {
+      var eee = confirm("Kopyalama Başarılı Yeni Oluşan Teklife Gidilsinmi");
+      if (eee) {
+        window.location.href =
+          "/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=" +
+          RF.OFFER_ID;
       }
-    }else{
+    } else {
       alert("Bir Hata Oluştu");
     }
-  }) 
+  });
+}
+
+function instaResAl() {
+  let SrcArr = [];
+  for (let i = 0; i < document.getElementsByClassName("_aagv").length; i++) {
+    //window.open(document.getElementsByClassName("_aagv")[i].children[0].src,"_blank")
+    var ex = SrcArr.findIndex(
+      (p) => p.SR == document.getElementsByClassName("_aagv")[i].children[0].src
+    );
+    if (ex == -1) {
+      SrcArr.push({
+        IMG: i,
+        SR: document.getElementsByClassName("_aagv")[i].children[0].src,
+      });
+    }
+  }
+
+  var cstr = "";
+  for (let i = 0; i < SrcArr.length; i++) {
+    // console.log(SrcArr[i].SR)
+    cstr += SrcArr[i].SR + "\n";
+  }
+  const link = document.createElement("a");
+  const file = new Blob([cstr], { type: "text/plain" });
+  link.href = URL.createObjectURL(file);
+  link.download = "sample.txt";
+  link.click();
+  URL.revokeObjectURL(link.href);
 }

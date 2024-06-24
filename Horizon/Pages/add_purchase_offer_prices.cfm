@@ -106,6 +106,10 @@
         <input type="text" name="DELIVERY_TIMES">
     </div> 
     <div class="form-group">
+        <label>Deliver Date</label>
+        <input type="date" name="DELIVER_DATE">
+    </div> 
+    <div class="form-group">
         <button class="ui-wrk-btn ui-wrk-btn-success" onclick="SaveOffer()">
           Kaydet
         </button>
