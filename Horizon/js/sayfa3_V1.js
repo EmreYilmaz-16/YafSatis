@@ -332,7 +332,7 @@ function addEqRow(Obj, jsn) {
     tr.appendChild(thCrate("Unit Price"));
     tr.appendChild(thCrate("Total Price"));
     tr.appendChild(thCrate("First Remark"));
-    tr.appendChild(thCrate("Delivered Items"));
+    tr.appendChild(thCrate("Stock Amount"));
     tr.appendChild(thCrate("Weight"));
 
     thead.appendChild(tr);
