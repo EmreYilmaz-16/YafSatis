@@ -598,7 +598,7 @@ function AlayiniHesapla() {
       var IS_VIRTUAL = DegeriGetir(SepetItem, "IS_VIRTUAL", 1);
       var PRODUCT_NAME = DegeriGetir(SepetItem, "PRODUCT_NAME", 0);
       var PRODUCT_CODE_2 = DegeriGetir(SepetItem, "PRODUCT_CODE_2", 0);
-
+      var ROW_DELIVER_DATE=DegeriGetir(SepetItem,"ROW_DELIVER_DATE",0);
       var TAX_RATE = 0;
       if (OfferSettings.IS_TAX_ZERO == 0)
         TAX_RATE = DegeriGetir(SepetItem, "TAX", 2, 0);
@@ -664,6 +664,7 @@ function AlayiniHesapla() {
         SALE_MONEY: SALE_MONEY,
         IS_VIRTUAL: IS_VIRTUAL,
         UNIQUE_RELATION_ID: UNIQUE_RELATION_ID,
+        ROW_DELIVER_DATE:ROW_DELIVER_DATE,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
         JSON_STRINGIM: JSON_STRINGIM,
