@@ -99,6 +99,10 @@
 
 </cfloop>
 
+<script>
+    alert("Tamamlandı")
+    this.close();
+</script>
 
 
 </cfif>
@@ -110,3 +114,8 @@
     $("#FileName").val(fileName)
     });
     </script>
+
+
+
+
+
