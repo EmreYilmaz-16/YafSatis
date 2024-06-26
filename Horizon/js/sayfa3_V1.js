@@ -510,7 +510,7 @@ function addEqRow_01(Obj, jsn) {
   tr.appendChild(thCrate("Unit Price"));
   tr.appendChild(thCrate("Total Price"));
   tr.appendChild(thCrate("First Remark"));
-  tr.appendChild(thCrate("Delivered Items"));
+  tr.appendChild(thCrate("Total Stock"));
   tr.appendChild(thCrate("Weight"));
 
   thead.appendChild(tr);
