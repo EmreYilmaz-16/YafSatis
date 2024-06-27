@@ -56,17 +56,37 @@
     <cfquery name="GET_PROPERTY" datasource="#DSN1#">
         SELECT * FROM PRODUCT_PROPERTY WHERE PROPERTY='#get_invoice_no.COL_2[ix]#'
     </cfquery>
+    <cfset PRTPT_ID=0>
+<cfif GET_PROPERTY.recordCount>
+    <cfset PRTPT_ID=GET_PROPERTY.PROPERTY_ID>
+<cfelse>
+    <cfquery name="ins" datasource="#dsn1#" result="PROPERTY_INSERT_RESULT">
+        INSERT INTO PRODUCT_PROPERTY (PROPERTY,IS_ACTIVE,P_C) values('#get_invoice_no.COL_2[ix]#',1,'C')
+    </cfquery>
+    <CFSET PRTPT_ID=PROPERTY_INSERT_RESULT.IDENTITYCOL>
+
+</cfif>
+    
 
     <cfquery name="GET_PROPERTY_DETAIL" datasource="#DSN1#">
-        select * from CatalystQA_product.PRODUCT_PROPERTY_DETAIL WHERE PRPT_ID=#GET_PROPERTY.PROPERTY_ID# AND PROPERTY_DETAIL='#get_invoice_no.COL_3[ix]#'
+        select * from CatalystQA_product.PRODUCT_PROPERTY_DETAIL WHERE PRPT_ID=#PRTPT_ID# AND PROPERTY_DETAIL='#get_invoice_no.COL_3[ix]#'
     </cfquery>
+    <cfset PRVTID=0>
+<cfif GET_PROPERTY_DETAIL.recordCount>
+    <cfset PRVTID=GET_PROPERTY_DETAIL.PROPERTY_DETAIL_ID>
+<cfelse>
+    <cfquery name="ins" datasource="#dsn1#" result="PROPERTY_DETAIL_INSERT_RESULT">
+        INSERT INTO PRODUCT_PROPERTY_DETAIL (PRPT_ID,PROPERTY_DETAIL,IS_ACTIVE) VALUES (#PRTPT_ID#,'#get_invoice_no.COL_3[ix]#',1)
+    </cfquery>
+    <CFSET PRVTID=PROPERTY_DETAIL_INSERT_RESULT.IDENTITYCOL>
+</cfif>
 
-<CFSET PROP_LIST=listAppend(PROP_LIST,GET_PROPERTY_DETAIL.PROPERTY_DETAIL_ID)>
+<CFSET PROP_LIST=listAppend(PROP_LIST,PRVTID)>
 <cfset OX=structNew()>
-<CFSET OX.PRODUCT_CAT=GET_PROPERTY_DETAIL.PROPERTY_DETAIL>
-<CFSET OX.PRODUCT_CATID=GET_PROPERTY_DETAIL.PROPERTY_DETAIL_ID>
-<CFSET OX.PNAME="#GET_PROPERTY.PROPERTY#">
-<CFSET OX.PROP_ID=GET_PROPERTY.PROPERTY_ID>
+<CFSET OX.PRODUCT_CAT=get_invoice_no.COL_3[ix]>
+<CFSET OX.PRODUCT_CATID=PRVTID>
+<CFSET OX.PNAME="#get_invoice_no.COL_2[ix]#">
+<CFSET OX.PROP_ID=PRTPT_ID>
 <CFSET OX.IS_OPTIONAL=0>
 <cfscript>
     arrayAppend(JSON_ARRA,OX);
