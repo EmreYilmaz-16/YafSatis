@@ -111,8 +111,10 @@
 </cfquery>
 
 <script>
-   $(document).ready(function(){<cfoutput query="GETrOWS" group="PROP_LIST">
+   $(document).ready(function(){
     paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
+    <cfoutput query="GETrOWS" group="PROP_LIST">
+    
         var excalibur=#JSON_STRINGIM#
         addEqRow(excalibur, JSON.stringify(excalibur),#SEPEREATOR_SIRA#) 
         <cfoutput>
