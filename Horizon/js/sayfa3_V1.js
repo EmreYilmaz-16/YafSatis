@@ -1,10 +1,12 @@
 var RowCount = 1;
 var SeperatorSira = 1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
+var paraBirimleri =""
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
+  paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
   getCats(e);
   get_consumer("", "");
 });
@@ -1417,7 +1419,7 @@ function SeciliSil(PropList = "7,50014,50015") {
 }
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
-    var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
+    //var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
     var array = paraBirimleri.MONEY;
     var ReturnStr = "";
     for (let index = 0; index < array.length; index++) {
