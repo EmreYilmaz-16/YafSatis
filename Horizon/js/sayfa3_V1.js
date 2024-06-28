@@ -379,7 +379,7 @@ function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
     addEqRow_01(Obj, jsn);
   }
 }
-function addEqRow_01(Obj, jsn,SEPERATOR_SIRA) {
+function addEqRow_01(Obj, jsn,SEPERATOR_SIRA="") {
   var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
   if (exxx != -1) {
     return false;
