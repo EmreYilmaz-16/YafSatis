@@ -1453,6 +1453,7 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
+    var SEPERATOR_SIRASI =Seperator.getAttribute("data-seperatorsira")
     var JSON_STRINGIM_ = document.getElementById(
       "AddedEquipment_" + PropList
     ).value;
@@ -1464,6 +1465,7 @@ function AlayiniHesapla() {
     document.getElementById("RC_" + PropList).innerText = Jcount;
     var SEPET_SIRA = 0;
     var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+    
     //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
@@ -1537,6 +1539,7 @@ function AlayiniHesapla() {
         UNIQUE_RELATION_ID: UNIQUE_RELATION_ID,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
+        SEPERATOR_SIRASI:SEPERATOR_SIRASI,
         JSON_STRINGIM: JSON_STRINGIM,
         SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
         UNIT_PRICE: UNIT_PRICE,
