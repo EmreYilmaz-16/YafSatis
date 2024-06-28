@@ -92,7 +92,8 @@
             ROW_NUMBER_PBS,
             PROP_LIST,
             JSON_STRINGIM,
-            IS_VIRTUAL
+            IS_VIRTUAL,
+            SEPEREATOR_SIRA
             
             <cfif isdefined('attributes.row_exp_center_id#i#') and len(evaluate("attributes.row_exp_center_id#i#")) and isdefined('attributes.row_exp_center_name#i#') and len(evaluate("attributes.row_exp_center_name#i#"))>,EXPENSE_CENTER_ID</cfif>
             <cfif isdefined('attributes.row_exp_item_id#i#') and len(evaluate("attributes.row_exp_item_id#i#")) and isdefined('attributes.row_exp_item_name#i#') and len(evaluate("attributes.row_exp_item_name#i#"))>,EXPENSE_ITEM_ID</cfif>
@@ -228,6 +229,7 @@
                         <cfif isDefined('attributes.PROP_LIST#i#')> ,'#evaluate('attributes.PROP_LIST#i#')#'<CFELSE>,NULL</cfif>
                             <cfif isDefined('attributes.JSON_STRINGIM#i#')> ,'#evaluate('attributes.JSON_STRINGIM#i#')#'<CFELSE>,NULL</cfif>
                                 ,#evaluate('attributes.IS_VIRTUAL#i#')#
+                                ,#evaluate('attributes.SEPEREATOR_SIRA#i#')#
             <cfif isDefined('attributes.converted_sid#i#') and len(evaluate("attributes.converted_sid#i#"))>,#evaluate("attributes.converted_sid#i#")#</cfif>
             <cfif isDefined('attributes.PURCHASE_PRICE#i#') and len(evaluate("attributes.PURCHASE_PRICE#i#"))>,#evaluate("attributes.PURCHASE_PRICE#i#")#</cfif>
             <cfif isDefined('attributes.PURCHASE_MONEY#i#')> ,'#evaluate('attributes.PURCHASE_MONEY#i#')#'<CFELSE>,NULL</cfif>

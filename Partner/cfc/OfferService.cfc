@@ -563,6 +563,7 @@ WHERE 1 = 1
         <cfset 'attributes.wrk_row_id#i#'=it.UNIQUE_RELATION_ID>
         <cfset 'attributes.PURCHASE_PRICE#i#'=it.PURCHASE_PRICE>
         <cfset 'attributes.PURCHASE_MONEY#i#'=it.PURCHASE_MONEY>
+        <cfset 'attributes.SEPEREATOR_SIRA#i#'=it.SEPERATOR_SIRASI>
         <cfif it.IS_VIRTUAL eq 1>
            <cfquery name="ihbgs" datasource="#dsn3#">
                 SELECT * FROM VIRTUAL_PRODUCTS_PBS WHERE OFFER_ROW_REL='#it.UNIQUE_RELATION_ID#'
