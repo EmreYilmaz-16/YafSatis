@@ -1,4 +1,5 @@
 var RowCount = 1;
+var SeperatorSira=1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
@@ -114,8 +115,10 @@ function getCatProperties(cat_id) {
 function AddEquipment() {
   var OS = getFilterData();
   var ReturnObject = OS.ReturnObject;
+  ReturnObject.SEPERATOR_SIRA=SeperatorSira;
   var jsn = OS.jsn;
   addEqRow(ReturnObject, jsn);
+  SeperatorSira++;
 }
 var EqArr = [];
 
@@ -200,6 +203,8 @@ function addEqRow(Obj, jsn) {
     div.setAttribute("class", "alert alert-success eq_header");
     div.setAttribute("style", "position:relative");
     div.setAttribute("data-PropList", Obj.PropList);
+    div.setAttribute("data-SeperatorSira", Obj.SEPERATOR_SIRA);
+    
     var table = document.createElement("table");
     table.setAttribute("class", "EqTableMain");
     var tr = document.createElement("tr");
@@ -378,6 +383,7 @@ function addEqRow_01(Obj, jsn) {
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PROPLIST);
+  div.setAttribute("data-SeperatorSira", Obj.SEPERATOR_SIRA);
   var table = document.createElement("table");
   table.setAttribute("class", "EqTableMain");
   var tr = document.createElement("tr");
