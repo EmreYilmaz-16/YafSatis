@@ -117,8 +117,9 @@ function AddEquipment() {
   var ReturnObject = OS.ReturnObject;
   ReturnObject.SEPERATOR_SIRA = SeperatorSira;
   var jsn = OS.jsn;
-  addEqRow(ReturnObject, jsn);
-  SeperatorSira++;
+  
+  addEqRow(ReturnObject, jsn,SeperatorSira);
+  
 }
 var EqArr = [];
 
@@ -191,7 +192,7 @@ function getFilterData() {
   return ST;
 }
 
-function addEqRow(Obj, jsn) {
+function addEqRow(Obj, jsn,SEPERATOR_SIRA="") {
   try {
     var exxx = EqArr.findIndex((p) => p == Obj.PropList);
     if (exxx != -1) {
@@ -203,8 +204,8 @@ function addEqRow(Obj, jsn) {
     div.setAttribute("class", "alert alert-success eq_header");
     div.setAttribute("style", "position:relative");
     div.setAttribute("data-PropList", Obj.PropList);
-    div.setAttribute("data-SeperatorSira", Obj.SEPERATOR_SIRA);
-
+    div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
+    SeperatorSira++;
     var table = document.createElement("table");
     table.setAttribute("class", "EqTableMain");
     var tr = document.createElement("tr");
@@ -569,7 +570,8 @@ function addRowCrs(
   WEIGHT = 0,
   IS_VIRTUAL = 0,
   UNIQUE_RELATION_ID = "",
-  IS_MORE_ONE = 0
+  IS_MORE_ONE = 0,
+  
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");

@@ -113,7 +113,7 @@
 <script>
    $(document).ready(function(){<cfoutput query="GETrOWS" group="PROP_LIST">
         var excalibur=#JSON_STRINGIM#
-        addEqRow(excalibur, JSON.stringify(excalibur)) 
+        addEqRow(excalibur, JSON.stringify(excalibur),#SEPEREATOR_SIRA#) 
         <cfoutput>
           //  addRowCrs('#PROP_LIST#')
           addRowCrs('#PROP_LIST#', "#PRODUCT_ID#",  "#STOCK_ID#",  "#PRODUCT_NAME#", #TAX#,  "#MN_CODE#",  #QUANTITY#,  "#UNIT#",  #PPRC#,  "#PPRM#",  #PRICE_OTHER#,  #DISCOUNT_COST#, #OTHER_MONEY_VALUE#,  #OTHER_MONEY_VALUE*QUANTITY#,  "#FIRST_REMARK#",0,0,#IS_VIRTUAL#,'#UNIQUE_RELATION_ID#') 
