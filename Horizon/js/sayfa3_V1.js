@@ -1,5 +1,5 @@
 var RowCount = 1;
-var SeperatorSira=1;
+var SeperatorSira = 1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
@@ -115,7 +115,7 @@ function getCatProperties(cat_id) {
 function AddEquipment() {
   var OS = getFilterData();
   var ReturnObject = OS.ReturnObject;
-  ReturnObject.SEPERATOR_SIRA=SeperatorSira;
+  ReturnObject.SEPERATOR_SIRA = SeperatorSira;
   var jsn = OS.jsn;
   addEqRow(ReturnObject, jsn);
   SeperatorSira++;
@@ -204,7 +204,7 @@ function addEqRow(Obj, jsn) {
     div.setAttribute("style", "position:relative");
     div.setAttribute("data-PropList", Obj.PropList);
     div.setAttribute("data-SeperatorSira", Obj.SEPERATOR_SIRA);
-    
+
     var table = document.createElement("table");
     table.setAttribute("class", "EqTableMain");
     var tr = document.createElement("tr");
@@ -943,8 +943,11 @@ function addRowCrs(
   input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS";
   input.id = "DELIVERED_ITEMS_" + RowCount;
+
   var Smou = wrk_safe_query("GETDEPOBAKIYE", "DSN2", 1, STOCK_ID);
-  input.value = commaSplit(Smou.BAKIYE[0]);
+  if (Smou.recordcount > 0) {
+    input.value = commaSplit(Smou.BAKIYE[0]);
+  }
   div2.appendChild(input);
   /*var input = document.createElement("select");
   input.innerHTML = "";
@@ -1084,9 +1087,11 @@ function getProduct(el, rc) {
         document.getElementById("UNIT_PRICE_" + rc).value = commaSplit(0);
         document.getElementById("TOTAL_PRICE_" + rc).value = commaSplit(0);
         var Smou = wrk_safe_query("GETDEPOBAKIYE", "DSN2", 1, Obje.STOCK_ID);
-        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(
-          Smou.BAKIYE[0]
-        );
+        if (Smou.recordcount > 0) {
+          document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(
+            Smou.BAKIYE[0]
+          );
+        }
 
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
@@ -1453,7 +1458,7 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
-    var SEPERATOR_SIRASI =Seperator.getAttribute("data-seperatorsira")
+    var SEPERATOR_SIRASI = Seperator.getAttribute("data-seperatorsira");
     var JSON_STRINGIM_ = document.getElementById(
       "AddedEquipment_" + PropList
     ).value;
@@ -1465,7 +1470,7 @@ function AlayiniHesapla() {
     document.getElementById("RC_" + PropList).innerText = Jcount;
     var SEPET_SIRA = 0;
     var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
-    
+
     //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
@@ -1539,7 +1544,7 @@ function AlayiniHesapla() {
         UNIQUE_RELATION_ID: UNIQUE_RELATION_ID,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
-        SEPERATOR_SIRASI:SEPERATOR_SIRASI,
+        SEPERATOR_SIRASI: SEPERATOR_SIRASI,
         JSON_STRINGIM: JSON_STRINGIM,
         SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
         UNIT_PRICE: UNIT_PRICE,
@@ -2175,5 +2180,3 @@ function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
     }
   });
 }
-
-
