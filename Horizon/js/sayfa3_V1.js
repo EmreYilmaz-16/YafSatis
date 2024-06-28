@@ -206,8 +206,7 @@ function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
     if (SEPERATOR_SIRA.length > 0) {
       div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
       SeperatorSira++;
-    
-    }else{
+    } else {
       div.setAttribute("data-SeperatorSira", SeperatorSira);
       SeperatorSira++;
     }
@@ -379,7 +378,7 @@ function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
     addEqRow_01(Obj, jsn);
   }
 }
-function addEqRow_01(Obj, jsn,SEPERATOR_SIRA="") {
+function addEqRow_01(Obj, jsn, SEPERATOR_SIRA = "") {
   var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
   if (exxx != -1) {
     return false;
@@ -390,12 +389,11 @@ function addEqRow_01(Obj, jsn,SEPERATOR_SIRA="") {
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PROPLIST);
-  
+
   if (SEPERATOR_SIRA.length > 0) {
     div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
     SeperatorSira++;
-  
-  }else{
+  } else {
     div.setAttribute("data-SeperatorSira", SeperatorSira);
     SeperatorSira++;
   }
@@ -1386,9 +1384,13 @@ function SeciliSil(PropList = "7,50014,50015") {
     var Cbx = $(SR).find("input[type='checkbox']")[0];
     // console.log(Cbx)
     if ($(Cbx).is(":checked")) {
-      SR.remove();
+      //SR.remove();
+      $(SR).addClass("Silinecek");
+      console.log(SR);
     }
   }
+  $(".Silinecek").remove();
+
   var RCS = 0;
   var Sepet = document.getElementById("SubSepetBody_" + PropList).children;
   for (let i = 0; i < Sepet.length; i++) {
