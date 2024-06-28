@@ -125,7 +125,7 @@
 
 <script>
     alert("Tamamlandı")
-    this.close();
+   // this.close();
 </script>
 
 
