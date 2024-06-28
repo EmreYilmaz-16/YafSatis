@@ -117,9 +117,8 @@ function AddEquipment() {
   var ReturnObject = OS.ReturnObject;
   ReturnObject.SEPERATOR_SIRA = SeperatorSira;
   var jsn = OS.jsn;
-  
-  addEqRow(ReturnObject, jsn,SeperatorSira);
-  
+
+  addEqRow(ReturnObject, jsn, SeperatorSira);
 }
 var EqArr = [];
 
@@ -192,7 +191,7 @@ function getFilterData() {
   return ST;
 }
 
-function addEqRow(Obj, jsn,SEPERATOR_SIRA="") {
+function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
   try {
     var exxx = EqArr.findIndex((p) => p == Obj.PropList);
     if (exxx != -1) {
@@ -204,8 +203,15 @@ function addEqRow(Obj, jsn,SEPERATOR_SIRA="") {
     div.setAttribute("class", "alert alert-success eq_header");
     div.setAttribute("style", "position:relative");
     div.setAttribute("data-PropList", Obj.PropList);
-    div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
-    SeperatorSira++;
+    if (SEPERATOR_SIRA.length > 0) {
+      div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
+      SeperatorSira++;
+    
+    }else{
+      div.setAttribute("data-SeperatorSira", SeperatorSira);
+      SeperatorSira++;
+    }
+
     var table = document.createElement("table");
     table.setAttribute("class", "EqTableMain");
     var tr = document.createElement("tr");
@@ -373,7 +379,7 @@ function addEqRow(Obj, jsn,SEPERATOR_SIRA="") {
     addEqRow_01(Obj, jsn);
   }
 }
-function addEqRow_01(Obj, jsn) {
+function addEqRow_01(Obj, jsn,SEPERATOR_SIRA) {
   var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
   if (exxx != -1) {
     return false;
@@ -384,7 +390,15 @@ function addEqRow_01(Obj, jsn) {
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PROPLIST);
-  div.setAttribute("data-SeperatorSira", Obj.SEPERATOR_SIRA);
+  
+  if (SEPERATOR_SIRA.length > 0) {
+    div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
+    SeperatorSira++;
+  
+  }else{
+    div.setAttribute("data-SeperatorSira", SeperatorSira);
+    SeperatorSira++;
+  }
   var table = document.createElement("table");
   table.setAttribute("class", "EqTableMain");
   var tr = document.createElement("tr");
@@ -570,8 +584,7 @@ function addRowCrs(
   WEIGHT = 0,
   IS_VIRTUAL = 0,
   UNIQUE_RELATION_ID = "",
-  IS_MORE_ONE = 0,
-  
+  IS_MORE_ONE = 0
 ) {
   $("#SLO_" + proplist).show();
   var tr = document.createElement("tr");
@@ -1016,7 +1029,6 @@ function getProduct(el, rc) {
       var Obje = JSON.parse(returnData);
       console.log(Obje);
       if (Obje.RECORD_COUNT >= 1) {
-        
         if (Obje.RECORD_COUNT > 1) {
           el.setAttribute(
             "style",
@@ -1096,9 +1108,7 @@ function getProduct(el, rc) {
             Smou.BAKIYE[0]
           );
         }
-
-        
-      }else{
+      } else {
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
