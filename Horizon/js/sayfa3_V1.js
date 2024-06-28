@@ -1012,8 +1012,9 @@ function getProduct(el, rc) {
     },
     success: function (returnData) {
       var Obje = JSON.parse(returnData);
-
+      console.log(Obje);
       if (Obje.RECORD_COUNT >= 1) {
+        
         if (Obje.RECORD_COUNT > 1) {
           el.setAttribute(
             "style",
@@ -1064,6 +1065,7 @@ function getProduct(el, rc) {
             );
           }
         }
+
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
         if (Obje.IMG_COUNT > 0) {
           document
@@ -1093,6 +1095,8 @@ function getProduct(el, rc) {
           );
         }
 
+        
+      }else{
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
@@ -1103,6 +1107,10 @@ function getProduct(el, rc) {
           Opt.innerText = SF.UNIT[i];
           document.getElementById("PRODUCT_UNIT_" + rc).appendChild(Opt);
         }
+        el.setAttribute(
+          "style",
+          "color:red;background:black;font-weight:bold;text-align:left;"
+        );
       }
     },
   });
