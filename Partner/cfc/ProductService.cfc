@@ -477,7 +477,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfloop array="#PropArr#" item="it" index="ix">
            <cfif it.PNAME neq "EQUIPMENT">
             <cfquery name="GETPCDA" datasource="#DSN1#">
-                SELECT IS_OPTIONAL,IS_AMOUNT FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#arguments.PRODUCT_CATID# AND PROPERTY_ID=#it.PROP_ID#
+                SELECT ISNULL(IS_OPTIONAL,0) IS_OPTIONAL,ISNULL(IS_AMOUNT,0) IS_AMOUNT FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#arguments.PRODUCT_CATID# AND PROPERTY_ID=#it.PROP_ID#
             </cfquery>
            <cfquery name="ins" datasource="#dsn1#">
                 INSERT INTO PRODUCT_DT_PROPERTIES (PRODUCT_ID,PROPERTY_ID,VARIATION_ID,LINE_VALUE,IS_OPTIONAL,IS_EXIT)
