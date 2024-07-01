@@ -5,7 +5,7 @@ LEFT JOIN CatalystQA_1.PBS_OFFER_ROW AS POR ON POR.UNIQUE_RELATION_ID=VPS.OFFER_
 WHERE VP_ID=#attributes.VP_ID#
 
 </cfquery>
-<cfdump var="#getProducts#">
+
 <cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
 <cfoutput>
     <div style="font-size: 20pt;font-weight: bold;color: orange;border-bottom: solid 1px black;text-align: center;">
@@ -46,7 +46,17 @@ LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPER
 FROM CatalystQA_1.STOCKS AS S 
 LEFT JOIN CatalystQA_1.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
 
-WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
+WHERE 1=1 
+<cfloop array="#DFS.Filters#" item="it">
+    <cfif it.PNAME.trim() neq "EQUIPMENT"> 
+        <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
+        AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'
+    </cfif>
+    
+</cfif>
+    </cfloop>
+
+AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
 </cfquery>
 <cfdump var="#SameCode#">
 <cf_box title="Benzer Ürünler">
