@@ -1,4 +1,4 @@
-<cfcomponent>
+﻿<cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
     <cfset dsn3="#dsn#_1">
     <cffunction name="getOfferCurrencies" access="remote" httpMethod="Post" returntype="any" returnFormat="json">

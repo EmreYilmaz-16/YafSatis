@@ -1,4 +1,4 @@
-<cfcomponent>
+﻿<cfcomponent>
     <cfset dsn = application.systemParam.systemParam().dsn>
     <cfset DSN1 = "#DSN#_product">
     <cfset DSN2 = "#DSN#_#year(now())#_1">
