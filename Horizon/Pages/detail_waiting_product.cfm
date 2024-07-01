@@ -47,6 +47,7 @@ LEFT JOIN CatalystQA_1.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
 
 WHERE MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
 </cfquery>
+<cfdump var="#SameCode#">
 <cf_box title="Benzer Ürünler">
 <cf_big_list>
     <thead>
