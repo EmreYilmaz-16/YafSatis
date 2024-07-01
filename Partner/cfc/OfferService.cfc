@@ -1132,6 +1132,12 @@ WHERE OFFER_ROW_REL='#FORMDATA.OFFER_ROW_REL#'
     </cfif>
 
 </cfif>
+<cfif  FormData.Tip eq 1>
+    <cfquery name="UPDA" datasource="#DSN3#">
+        UPDATE PBS_OFFER_ROW SET PRODUCT_ID=#FORMDATA.PRODUCT_ID#,STOCK_ID=#FORMDATA.STOCK_ID#,IS_VIRTUAL=0 WHERE UNIQUE_RELATION_ID='#FORMDATA.OFFER_ROW_REL#'
+    </cfquery>
+
+</cfif> 
 
 
 </cffunction>
