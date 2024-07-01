@@ -50,7 +50,7 @@ LEFT JOIN CatalystQA_1.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
 WHERE 1=1 
 AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
 ) AS PRP
-WHERE 
+WHERE 1=1
 <cfloop array="#DFS.Filters#" item="it">
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
         <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
