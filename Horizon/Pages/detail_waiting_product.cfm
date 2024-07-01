@@ -54,7 +54,7 @@ WHERE
 <cfloop array="#DFS.Filters#" item="it">
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
         <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
-        AND JSN_V LIKE '%#it.PRODUCT_CAT_ID#,%'
+        AND JSN_V LIKE '%#it.PRODUCT_CATID#,%'
     </cfif>
     
 </cfif>
