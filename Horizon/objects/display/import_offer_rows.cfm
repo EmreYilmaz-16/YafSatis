@@ -86,12 +86,15 @@
 </cfif>
 
 <CFSET PROP_LIST=listAppend(PROP_LIST,PRVTID)>
+<cfquery name="getpc" datasource="#dsn1#">
+    SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#PRVTID# AND PROPERTY_ID=#PRTPT_ID#
+</cfquery>
 <cfset OX=structNew()>
 <CFSET OX.PRODUCT_CAT=get_invoice_no.COL_3[ix]>
 <CFSET OX.PRODUCT_CATID=PRVTID>
 <CFSET OX.PNAME="#get_invoice_no.COL_2[ix]#">
 <CFSET OX.PROP_ID=PRTPT_ID>
-<CFSET OX.IS_OPTIONAL=0>
+<CFSET OX.IS_OPTIONAL=getpc.IS_OPTIONAL>
 <cfscript>
     arrayAppend(JSON_ARRA,OX);
 </cfscript>
