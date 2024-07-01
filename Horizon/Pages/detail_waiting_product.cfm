@@ -34,6 +34,7 @@ WHERE VP_ID=#attributes.VP_ID#
 </cfoutput>
 
 <cfquery name="SameCode" datasource="#dsn3#">
+SELECT * FROM (
     SELECT  S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,
 (
     SELECT PPD.PROPERTY_DETAIL,PPD.PROPERTY_DETAIL_ID,PP.PROPERTY_ID,PP.PROPERTY,PRODUCT_ID FROM CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
@@ -47,16 +48,19 @@ FROM CatalystQA_1.STOCKS AS S
 LEFT JOIN CatalystQA_1.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
 
 WHERE 1=1 
+AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
+) AS PRP
+WHERE 
 <cfloop array="#DFS.Filters#" item="it">
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
         <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
-        AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'
+        AND JSN_V LIKE '%#it.PRODUCT_CAT_ID#,%'
     </cfif>
     
 </cfif>
     </cfloop>
 
-AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
+
 </cfquery>
 <cfdump var="#SameCode#">
 <cf_box title="Benzer Ürünler">
