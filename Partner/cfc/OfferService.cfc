@@ -1136,7 +1136,12 @@ WHERE OFFER_ROW_REL='#FORMDATA.OFFER_ROW_REL#'
     <cfquery name="UPDA" datasource="#DSN3#">
         UPDATE PBS_OFFER_ROW SET PRODUCT_ID=#FORMDATA.PRODUCT_ID#,STOCK_ID=#FORMDATA.STOCK_ID#,IS_VIRTUAL=0 WHERE UNIQUE_RELATION_ID='#FORMDATA.OFFER_ROW_REL#'
     </cfquery>
-
+<cfset ReturnData.STATUS=1>
+<cfset ReturnData.MESSAGE="Ürün Başarı İle Güncellenmiştir">
+<cfset ReturnData.ErrorMessage="">
+<cfset ReturnData.PRODUCT_ID="#FORMDATA.PRODUCT_ID#">
+<cfset ReturnData.STOCK_ID="#FORMDATA.STOCK_ID#">
+<cfreturn replace(serializeJSON(ReturnData),"//","")>
 </cfif> 
 
 
