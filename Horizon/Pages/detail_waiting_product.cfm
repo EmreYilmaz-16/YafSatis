@@ -5,6 +5,7 @@ LEFT JOIN CatalystQA_1.PBS_OFFER_ROW AS POR ON POR.UNIQUE_RELATION_ID=VPS.OFFER_
 WHERE VP_ID=#attributes.VP_ID#
 
 </cfquery>
+<cfdump var="#getProducts#">
 <cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
 <cfoutput>
     <div style="font-size: 20pt;font-weight: bold;color: orange;border-bottom: solid 1px black;text-align: center;">
