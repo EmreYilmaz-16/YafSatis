@@ -7,6 +7,7 @@ WHERE VP_ID=#attributes.VP_ID#
 </cfquery>
 
 <cfset DFS=deserializeJSON(getProducts.JSON_STRINGIM)>
+<cfdump var="#DFS#">
 <cfoutput>
     <div style="font-size: 20pt;font-weight: bold;color: orange;border-bottom: solid 1px black;text-align: center;">
         #getProducts.PART_NUMBER#
