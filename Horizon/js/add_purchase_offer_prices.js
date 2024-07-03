@@ -5,6 +5,7 @@ var OfferSettings = {
 var EqArr = [];
 var RowCount = 1;
 function addEqRow(Obj, jsn) {
+  try{
   var exxx = EqArr.findIndex((p) => p == Obj.PropList);
   if (exxx != -1) {
     return false;
@@ -181,6 +182,191 @@ function addEqRow(Obj, jsn) {
 
   document.getElementById("BasketArea").appendChild(div);
   EqArr.push(Obj.PropList);
+}catch {
+  addEqRow_01(Obj,jsn)
+}
+}
+function addEqRow_01(Obj, jsn) {
+  try{
+  var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
+  if (exxx != -1) {
+    return false;
+  }
+  //console.log(Obj);
+  var div = document.createElement("div");
+
+  div.setAttribute("class", "alert alert-success eq_header");
+  div.setAttribute("style", "position:relative");
+  div.setAttribute("data-PropList", Obj.PROPLIST);
+  var table = document.createElement("table");
+  table.setAttribute("class", "EqTableMain");
+  var tr = document.createElement("tr");
+  var td = document.createElement("td");
+  var b0 = document.createElement("button");
+  b0.setAttribute("class", "ui-wrk-btn");
+  var spn = '<span class="icn-md icon-down"></span>';
+  b0.innerHTML = spn;
+  b0.setAttribute("onclick", "$('#SLO_'" + Obj.PROPLIST + ").toggle()");
+  var b1 = document.createElement("button");
+  b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+  var spn = '<span class="icn-md fa fa-check-square-o"></span>';
+  b1.innerHTML = spn;
+  var b2 = document.createElement("button");
+  b2.setAttribute("class", "ui-wrk-btn ui-wrk-btn-success");
+  var spn = '<span class="icn-md fa fa-plus"></span>';
+  b2.innerHTML = spn;
+  b2.setAttribute("onclick", "addRowCrs('" + Obj.PROPLIST + "')");
+
+  var b3 = document.createElement("button");
+  b3.setAttribute("class", "ui-wrk-btn ui-wrk-btn-warning");
+  var spn = '<span class="icn-md fa fa-edit"></span>';
+  b3.innerHTML = spn;
+
+  var b4 = document.createElement("button");
+  b4.setAttribute("class", "ui-wrk-btn ui-wrk-btn-red");
+  var spn = '<span class="icn-md icon-remove"></span>';
+  b4.setAttribute("onclick", "SeciliSil('" + Obj.PROPLIST + "')");
+  b4.innerHTML = spn;
+
+  var b5 = document.createElement("button");
+  b5.setAttribute("class", "ui-wrk-btn ");
+  b5.setAttribute("style", "background:#292424 !important;color:white");
+  b5.setAttribute("onclick", "SeperatorSil('" + Obj.PROPLIST + "')");
+  b5.innerHTML = '<span class="icn-md fa fa-trash"></span>';
+
+  var b6 = document.createElement("button");
+  b6.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+
+  b6.innerHTML = '<span class="icn-md icon-filter"></span>';
+  b6.setAttribute("onclick", "lookProducts('" + Obj.PROPLIST + "')");
+  var diva = document.createElement("div");
+  diva.setAttribute("style", "display:flex");
+  b1.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b2.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b3.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b4.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b5.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  b6.setAttribute(
+    "style",
+    "font-size: 7px !important;padding: 3px 7px !important;"
+  );
+  diva.appendChild(b1);
+  diva.appendChild(b2);
+  diva.appendChild(b3);
+  diva.appendChild(b4);
+  diva.appendChild(b5);
+  diva.appendChild(b6);
+  //td.appendChild(diva);
+  var input = document.createElement("input");
+  input.id = "SeperatorRC_" + Obj.PROPLIST;
+  input.name = "SeperatorRC_" + Obj.PROPLIST;
+  input.type = "hidden";
+  input.value = 1;
+  td.appendChild(input);
+  tr.appendChild(td);
+  var svk_st = 10;
+
+  for (let index = 0; index < Obj.FILTERS.length; index++) {
+    const element = Obj.FILTERS[index];
+    var td = document.createElement("td");
+    td.setAttribute("style", "border-right:solid 1px;width:" + svk_st + "%");
+    var spnT =
+      "<span style='font-weight:bold'>" +
+      element.PNAME +
+      "</span></br><span>" +
+      element.PRODUCT_CAT +
+      "</span>";
+    td.innerHTML = spnT;
+    tr.appendChild(td);
+  }
+  var sv_kalan_ = 0;
+  var sv_kalan = 0;
+  if (Obj.FILTERS.length < 12) {
+    sv_kalan_ = 100 - Obj.FILTERS.length * svk_st;
+    sv_kalan = sv_kalan_;
+    var td = document.createElement("td");
+    td.setAttribute("style", "width:" + sv_kalan + "%");
+    tr.appendChild(td);
+  }
+
+  table.appendChild(tr);
+  var input = document.createElement("input");
+  input.setAttribute("type", "hidden");
+  input.value = jsn;
+  input.name = "AddedEquipment";
+  input.id = "AddedEquipment_" + Obj.PROPLIST;
+  div.appendChild(input);
+  div.appendChild(table);
+  var div2 = document.createElement("div");
+  div2.setAttribute("style", "background:white");
+  div2.setAttribute("id", "SLO_" + Obj.PROPLIST);
+  var Table = document.createElement("table");
+  Table.setAttribute("class", "SubSepet table");
+  var thead = document.createElement("thead");
+  var tr = document.createElement("tr");
+  tr.appendChild(thCrate("#", true));
+  tr.appendChild(thCrate("Part No", true));
+  tr.appendChild(thCrate("Part Name", true));
+  tr.appendChild(thCrate("Quantity", true));
+  tr.appendChild(thCrate("Unit", true));
+  tr.appendChild(thCrate("Purchase Price", false));
+  tr.appendChild(thCrate("Purchase Price", true));
+  tr.appendChild(thCrate("Sales Discount", false));
+  tr.appendChild(thCrate("Unit Price", true));
+  tr.appendChild(thCrate("Total Price", false));
+  tr.appendChild(thCrate("First Remark", true));
+  tr.appendChild(thCrate("Delivered Items", false));
+  tr.appendChild(thCrate("Deliver Date", true));
+  tr.appendChild(thCrate("Weight", true));
+
+  thead.appendChild(tr);
+  Table.appendChild(thead);
+  Table.id = "SubSepet_" + Obj.PROPLIST;
+  var tbody = document.createElement("tbody");
+  tbody.id = "SubSepetBody_" + Obj.PROPLIST;
+  Table.appendChild(tbody);
+  div2.appendChild(Table);
+  div.appendChild(div2);
+  var btn =
+    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;display:none"><span id="RC_' +
+    Obj.PROPLIST +
+    '">0</span> Rows Listed<br><span id="TOTALE_' +
+    Obj.PROPLIST +
+    '">0 ' +
+    OfferData.OTHER_MONEY +
+    "</span></button>";
+  var btn =
+    '<button class="ui-wrk-btn ui-wrk-btn-extra" style="position: absolute;right: 0;top: 0;display:none"><span id="RC_' +
+    Obj.PROPLIST +
+    '">0</span> Rows Listed<br><span id="TOTALE_' +
+    Obj.PROPLIST +
+    '">0 ' +
+    OfferData.OTHER_MONEY +
+    "</span></button>";
+  btn = $(btn)[0];
+
+  div.appendChild(btn);
+
+  document.getElementById("BasketArea").appendChild(div);
+  EqArr.push(Obj.PROPLIST);
+}catch {
+  
+}
 }
 //addRowCrs('32,50004,50005', "10",  "10",  "Anti-polishing ring", 0,  "100 003",  1,  "Adet",  0,  "TL",  200,  0, 200,  200,  "",0,0)
 function addRowCrs(
