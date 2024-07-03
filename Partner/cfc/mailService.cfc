@@ -12,7 +12,7 @@
 
 
 
-        <cfmail to = "#arguments.ToMailList#" from = "#arguments.FromMail#" subject = "#arguments.subject#">             
+        <cfmail to = "#arguments.ToMailList#" cc="#ToCCMailList#" from = "#arguments.FromMail#" subject = "#arguments.subject#">             
             #arguments.MailBody# 
             <cfif len(arguments.fffile)>
             <cfmailparam
