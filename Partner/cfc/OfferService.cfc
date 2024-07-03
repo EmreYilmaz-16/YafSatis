@@ -1003,7 +1003,7 @@ ORDER BY PO2.OFFER_ID
 <cfset attributes.OFFER_ID=FORMDATAM.OfferId>
 <cfset FNMN=CreateUUID()>
 
-<cfhtmltopdf pageType="A4"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_BURASU">
+<cfhtmltopdf marginLeft="0.5" marginRight="0.5" marginTop="0.5" marginBottom="0.5"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_BURASU">
     <!----<cfset attributes.is_sale=FORMDATAM.is_Sale>
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
     ------->

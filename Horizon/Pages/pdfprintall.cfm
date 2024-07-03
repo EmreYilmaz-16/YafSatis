@@ -31,12 +31,8 @@
 </script>
 <cfset Offer=deserializeJSON(OfferList)>
 <cfset attributes.preview=1>
-EMRE
     <cfinclude template="PdfDesign/#attributes.ppp#.cfm">
-
-
 <cfelse>
-    EMRE2
     <cfset OfferList=OfferService.getPurchaseOffer(attributes.OFFER_ID)>
     <script>
         var OfferData=<cfoutput>#OfferList#</cfoutput>
