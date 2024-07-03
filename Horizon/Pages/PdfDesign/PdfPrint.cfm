@@ -12,7 +12,7 @@
 </script>
 <cfset Offer=deserializeJSON(OfferList)>
 
-<cfdump var="#Offer#">
+
 
 <cfif Offer.OFFER_STAGE eq 266>
     <cfinclude template="pdf1.cfm">    
