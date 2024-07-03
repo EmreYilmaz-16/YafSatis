@@ -484,7 +484,7 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
                 VALUES (
                     #RECORDED_PRODUCT_ID#,
                     #it.PROP_ID#,
-                    #it.PRODUCT_CATID#,
+                    <cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry>,
                     #ix#,
                     <cfif len(GETPCDA.IS_OPTIONAL)>#GETPCDA.IS_OPTIONAL#<cfelse>0</cfif>,
                     <cfif len(GETPCDA.IS_AMOUNT)>#GETPCDA.IS_AMOUNT#<cfelse>0</cfif>
