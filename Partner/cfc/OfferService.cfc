@@ -1004,10 +1004,9 @@ ORDER BY PO2.OFFER_ID
 <cfset FNMN=CreateUUID()>
 
 <cfhtmltopdf marginLeft="0.5" marginRight="0.5" marginTop="0.5" marginBottom="0.5"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_BURASU">
-    <!----<cfset attributes.is_sale=FORMDATAM.is_Sale>
+    <cfset attributes.is_sale=FORMDATAM.is_Sale>
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
-    ------->
-    Merhaba Dünya Buralar YemYeşil
+   
 </cfhtmltopdf>
 
 <cfset MailService=createObject("component","AddOns.YafSatis.Partner.cfc.mailService")>
