@@ -1063,6 +1063,7 @@ function SaveOffer() {
     data: {
       data: JSON.stringify(BasketData),
     },
+    type: "POST",
     success: function (retDat) {
       $.notification(["Kayıt Edildi"], {
         messageType: "success",
