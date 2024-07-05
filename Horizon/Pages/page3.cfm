@@ -97,7 +97,7 @@
             <a href="javascript://" onclick="CoppyOfferCanim(<cfoutput>#Offer.OFFER_ID#,'#Offer.OFFER_NUMBER#'</cfoutput>)"  class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left" style="color:black !important;font-weight:bold !important"><cfoutput>Teklifi Kopyala</cfoutput></a>
             <a href="javascript://"  class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left" style="color:black !important;font-weight:bold !important"><cfoutput>#Offer.OFFER_STAGE_IM#</cfoutput></a>
             <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_mailler_pbs&OFFER_ID=<cfoutput>#Offer.OFFER_ID#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-envelope"></i>QUOTATION MAIL</a>
-            <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=OfferStatus&OFFER_CURRENCY_ID=<cfoutput>#Offer.OFFER_CURRENCY_ID#</cfoutput>&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OLD_PROCESS_CAT=#Offer.OFFER_STAGE#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
+            <a id="BUTON_1" href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=OfferStatus&OFFER_CURRENCY_ID=<cfoutput>#Offer.OFFER_CURRENCY_ID#</cfoutput>&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OLD_PROCESS_CAT=#Offer.OFFER_STAGE#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>CHANGE STATUS</a>
         </div>
     </div>
 </cf_box>
@@ -213,7 +213,7 @@
                         <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-red ui-wrk-btn-addon-left "><i class="fa fa-close"></i><span class="font-xs">DROP EMBEZZLEMENT</span></a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
-                        <a href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=sales.emptypopup_update_inquiry&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OFC_COUNT=#GETrOWS.recordCount#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
+                        <a id="BUTON_2" href="javascript://" onclick="openBoxDraggable('index.cfm?fuseaction=sales.emptypopup_update_inquiry&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OFC_COUNT=#GETrOWS.recordCount#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
                         <a href="javascript://" <!----onclick="window.open('/Addons/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm?offer_id=<cfoutput>#attributes.offer_id#</cfoutput>','_blank')"----> onclick="windowopen('/index.cfm?fuseaction=objects.emptypopup_print_pdf_multi&offer_id=<cfoutput>#Offer.OFFER_ID#</cfoutput>')" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left"><i class="fa fa-print"></i>Yazdır</a>
@@ -291,7 +291,7 @@
             </div>
             <div class="col col-3 col-sm-3 col-md-3 col-lg-3 col-xs-12">
                 <div class="margin-right-5 paddingNone margin-0">
-                    <a href="javascript://" onclick="SaveOffer()" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left "><i class="fa fa-check-circle"></i><span class="font-xs">Kaydet</span></a>
+                    <a id="BUTON_5" href="javascript://" onclick="SaveOffer()" class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left "><i class="fa fa-check-circle"></i><span class="font-xs">Kaydet</span></a>
                 </div>
             </div>
         </div>
@@ -368,10 +368,10 @@
 
                 </div>
                 <div style="display:flex;justify-content: flex-end;">
-                    <button class="ui-wrk-btn ui-wrk-btn-success" onclick="AddPurchaseOffer()">
+                    <button id="BUTON_3" class="ui-wrk-btn ui-wrk-btn-success" onclick="AddPurchaseOffer()">
                         Tedarik Taleplerini Oluştur
                     </button>
-                    <button class="ui-wrk-btn ui-wrk-btn-warning" >
+                    <button id="BUTON_4" class="ui-wrk-btn ui-wrk-btn-warning" >
                         Tedarik Taleplerini Oluştur ve Mail Gönder
                     </button>
                 </div>
