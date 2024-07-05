@@ -229,8 +229,19 @@ function SaveOfferHeader() {
     },
   });
 }
-function sayHi() {
+function sayHi(p1) {
   alert("Hİ");
+var paym=wrk_safe_query("GET_COMPANY_PAYMETHODS","DSN","1",p1);
+if(paym.recordcount>0){
+  if(paym.PAYMETHOD[0].length !=0){
+    $("#paymethod_id").val(paym.PAYMETHOD_ID[0])
+    $("#paymethod").val(paym.PAYMETHOD[0])
+  }
+  if(paym.CARD_NO[0].length !=0){
+    $("#card_paymethod_id").val(paym.PAYMENT_TYPE_ID[0])
+    $("#paymethod").val(paym.CARD_NO[0])
+  }
+}
 }
 
 /**
