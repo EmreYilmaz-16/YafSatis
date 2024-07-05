@@ -11,8 +11,7 @@ select count(*) AS RC from PBS_OFFER
 </cfif>
 
 
-<cfset FormData.PAYMETHOD_ID=1>     <!---//SOR ÖDEME YÖNTEMİ SEÇTİRELİM Mİ SEÇTİRECEKSEK BURADAKİ 1İ KALDIRIP FORMDAN GELEN VERİ OLACAK----->
-<cfset FormData.PAYMETHOD="Nakit">  <!---//SOR ÖDEME YÖNTEMİ SEÇTİRELİM Mİ SEÇTİRECEKSEK BURADAKİ Metni KALDIRIP FORMDAN GELEN VERİ OLACAK----->
+  <!---//SOR ÖDEME YÖNTEMİ SEÇTİRELİM Mİ SEÇTİRECEKSEK BURADAKİ Metni KALDIRIP FORMDAN GELEN VERİ OLACAK----->
 <cfset FormData.PROCESS_STAGE=260>  <!---//SOR SÜREÇ YÖNETİMİ NASIL OLACAK ŞUAN DEFAULT OLARAK KAYIT AŞAMASINDA OLACAK SAYFAYA SÜREÇ KOYALIM MI ---->
 <CFSET FormData.CITY_ID=23>         <!--- //SOR WORKCUBE'ÜN STANDARTINDAKİ ADRESİN ŞEHRİ DEFAULT İSTANBUL GÖNDEREİYORUM NE YAPACAĞIZ ----->
 <CFSET FormData.COUNTY_ID=1420>     <!--- //SOR WORKCUBE'ÜN STANDARTINDAKİ ADRESİN İLÇESİ DEFAULT TUZLA GÖNDEREİYORUM NE YAPACAĞIZ ----->
@@ -37,6 +36,9 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.member_name=FormData.COMPANY_NAME>
 <cfset attributes.OFFER_DESCRIPTION=FormData.OFFER_DETAIL>
 <cfset attributes.company_id=FormData.COMPANY_ID>
+
+
+
 <cfset attributes.partner_id=1> <!---//YAPILACAK TEKLİF EKRANINA GİZLİ ALAN OLARAK MÜŞTERİ YETKİLİ KONACAK---->
 
 
@@ -48,7 +50,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.ship_method_id=FormData.SHIP_METHOD_ID>
 <cfset attributes.ship_method=FormData.SHIP_METHOD>
 <cfset attributes.pay_method=FormData.PAYMETHOD>
-<cfset attributes.card_paymethod_id="">
+<cfset attributes.card_paymethod_id=FormData.CARD_PAYMETHOD_ID>
 <cfset attributes.ship_address="Sevk Adresi">
 <cfset attributes.ship_address_id=-1>
 <cfset attributes.city_id=FormData.CITY_ID>
