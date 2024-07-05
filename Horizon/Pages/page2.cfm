@@ -32,7 +32,7 @@
 									<input type="hidden" name="Addmember_type" id="Addmember_type" value="partner">
 									<input name="Addcompany" type="text" id="Addcompany" placeholder="Cari Hesap" onfocus="AutoComplete_Create('Addcompany','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','MEMBER_NAME,MEMBER_PARTNER_NAME,MEMBER_CODE','get_member_autocomplete','\'1,2\'','CONSUMER_ID,COMPANY_ID,MEMBER_TYPE','Addconsumer_id,Addcompany_id,Addmember_type','','3','250');" value="" autocomplete="off" style=""><div id="member_name_div_2" name="member_name_div_2" class="completeListbox" autocomplete="on" style="width: 399px; max-height: 150px; overflow: auto; position: absolute; left: 20px; top: 209px; z-index: 159; display: none;"></div>
 									
-									<span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_all_pars&field_consumer=order_form.Addconsumer_id&field_comp_id=order_form.Addcompany_id&field_member_name=order_form.Addcompany&field_type=order_form.Addmember_type&select_list=7,8&call_function=alert('hi')&keyword='+encodeURIComponent(document.order_form.Addcompany.value));"></span>
+									<span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_list_all_pars&field_consumer=order_form.Addconsumer_id&field_comp_id=order_form.Addcompany_id&field_member_name=order_form.Addcompany&field_type=order_form.Addmember_type&select_list=7,8&call_function=sayHi()&keyword='+encodeURIComponent(document.order_form.Addcompany.value));"></span>
 								</div>
                             </div>
                         </div>

@@ -104,7 +104,7 @@ function getMoney(el) {
       console.log(Obje);
       $(el).html("");
       var option = document.createElement("option");
-      option.value ="";
+      option.value = "";
       option.innerText = "Seçiniz";
       el.appendChild(option);
       for (let i = 0; i < Obje.length; i++) {
@@ -229,10 +229,11 @@ function SaveOfferHeader() {
     },
   });
 }
+function sayHi(){
+  alert("Hİ")
+}
 
 /**
  * <input type="hidden" name="rate1" id="rate1">
                                 <input type="hidden" name="rate2" id="rate2">
  */
-
-
