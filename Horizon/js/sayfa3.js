@@ -224,6 +224,7 @@ function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
     b0.setAttribute("onclick", "$('#SLO_'" + Obj.PropList + ").toggle()");
     var b1 = document.createElement("button");
     b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+    b1.setAttribute("onclick","SepearatorSec(this)")
     var spn = '<span class="icn-md fa fa-check-square-o"></span>';
     b1.innerHTML = spn;
     var b2 = document.createElement("button");
@@ -410,6 +411,7 @@ function addEqRow_01(Obj, jsn, SEPERATOR_SIRA = "") {
   b0.setAttribute("onclick", "$('#SLO_'" + Obj.PROPLIST + ").toggle()");
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
+  b1.setAttribute("onclick","SepearatorSec(this)")
   var spn = '<span class="icn-md fa fa-check-square-o"></span>';
   b1.innerHTML = spn;
   var b2 = document.createElement("button");
@@ -2204,7 +2206,7 @@ function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
     }
   });
 }
-function open_product_popup_fg(pid,sid) {
+function open_product_popup_fg(pid, sid) {
   url_str = "index.cfm?fuseaction=objects.popup_detail_product";
   var stock_id = pid;
   var product_id = sid;
@@ -2229,13 +2231,34 @@ function SessionKontrolPbs() {
     $("#BUTON_5").hide();
     var PSTR = "Bu Sayfada Çalışan Var !";
     if (QRES.recordcount == 1) {
-      PSTR += "\n" + QRES.NAME[0] +" "+QRES.SURNAME[0];
+      PSTR += "\n" + QRES.NAME[0] + " " + QRES.SURNAME[0];
     }
     alert(PSTR);
   }
 }
 
-function urlencode (str) {
-	str = (str+'').toString();
-	return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
+function urlencode(str) {
+  str = (str + "").toString();
+  return encodeURIComponent(str)
+    .replace(/!/g, "%21")
+    .replace(/'/g, "%27")
+    .replace(/\(/g, "%28")
+    .replace(/\)/g, "%29")
+    .replace(/\*/g, "%2A")
+    .replace(/%20/g, "+");
+}
+
+function SepearatorSec(el) {
+  var PropList =
+    el.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute(
+      "data-proplist"
+    );
+  console.log(PropList);
+  var Sepet = document.getElementById("SubSepetBody_" + PropList);
+
+  for (let i = 0; i < Sepet.children.length; i++) {
+    var SepetItem = Sepet.children[i];
+    console.log(SepetItem);
+    $(SepetItem).find("input[name='CBX']").click();
+  }
 }
