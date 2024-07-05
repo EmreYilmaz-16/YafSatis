@@ -113,6 +113,7 @@
 <script>
    $(document).ready(function(){
     paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
+    SessionKontrolPbs();
     <cfoutput query="GETrOWS" group="PROP_LIST">
     
         var excalibur=#JSON_STRINGIM#

@@ -9,6 +9,7 @@ $(document).ready(function () {
   paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
   getCats(e);
   get_consumer("", "");
+  SessionKontrolPbs();
 });
 function getCats(el) {
   $.ajax({
