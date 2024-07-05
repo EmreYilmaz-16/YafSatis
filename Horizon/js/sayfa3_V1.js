@@ -2221,7 +2221,7 @@ function SessionKontrolPbs() {
     $("#BUTON_5").hide();
     var PSTR = "Bu Sayfada Çalışan Var !";
     if (QRES.recordcount == 1) {
-      PSTR += "/n" + QRES.NAME[0];
+      PSTR += "\n" + QRES.NAME[0] +" "+QRES.SURNAME[0];
     }
     alert(PSTR);
   }
