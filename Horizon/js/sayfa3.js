@@ -1,9 +1,12 @@
 ﻿var RowCount = 1;
+var SeperatorSira = 1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
+var paraBirimleri = "";
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
   // var e1 = document.getElementById("MONEY");
   // var e2 = document.getElementById("PRIORITY");
+  paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
   getCats(e);
   get_consumer("", "");
 });
@@ -114,8 +117,10 @@ function getCatProperties(cat_id) {
 function AddEquipment() {
   var OS = getFilterData();
   var ReturnObject = OS.ReturnObject;
+  ReturnObject.SEPERATOR_SIRA = SeperatorSira;
   var jsn = OS.jsn;
-  addEqRow(ReturnObject, jsn);
+
+  addEqRow(ReturnObject, jsn, SeperatorSira);
 }
 var EqArr = [];
 
@@ -188,7 +193,7 @@ function getFilterData() {
   return ST;
 }
 
-function addEqRow(Obj, jsn) {
+function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
   try {
     var exxx = EqArr.findIndex((p) => p == Obj.PropList);
     if (exxx != -1) {
@@ -200,6 +205,14 @@ function addEqRow(Obj, jsn) {
     div.setAttribute("class", "alert alert-success eq_header");
     div.setAttribute("style", "position:relative");
     div.setAttribute("data-PropList", Obj.PropList);
+    if (SEPERATOR_SIRA.length > 0) {
+      div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
+      SeperatorSira++;
+    } else {
+      div.setAttribute("data-SeperatorSira", SeperatorSira);
+      SeperatorSira++;
+    }
+
     var table = document.createElement("table");
     table.setAttribute("class", "EqTableMain");
     var tr = document.createElement("tr");
@@ -367,7 +380,7 @@ function addEqRow(Obj, jsn) {
     addEqRow_01(Obj, jsn);
   }
 }
-function addEqRow_01(Obj, jsn) {
+function addEqRow_01(Obj, jsn, SEPERATOR_SIRA = "") {
   var exxx = EqArr.findIndex((p) => p == Obj.PROPLIST);
   if (exxx != -1) {
     return false;
@@ -378,6 +391,14 @@ function addEqRow_01(Obj, jsn) {
   div.setAttribute("class", "alert alert-success eq_header");
   div.setAttribute("style", "position:relative");
   div.setAttribute("data-PropList", Obj.PROPLIST);
+
+  if (SEPERATOR_SIRA.length > 0) {
+    div.setAttribute("data-SeperatorSira", SEPERATOR_SIRA);
+    SeperatorSira++;
+  } else {
+    div.setAttribute("data-SeperatorSira", SeperatorSira);
+    SeperatorSira++;
+  }
   var table = document.createElement("table");
   table.setAttribute("class", "EqTableMain");
   var tr = document.createElement("tr");
@@ -510,7 +531,7 @@ function addEqRow_01(Obj, jsn) {
   tr.appendChild(thCrate("Unit Price"));
   tr.appendChild(thCrate("Total Price"));
   tr.appendChild(thCrate("First Remark"));
-  tr.appendChild(thCrate("Delivered Items"));
+  tr.appendChild(thCrate("Total Stock"));
   tr.appendChild(thCrate("Weight"));
 
   thead.appendChild(tr);
@@ -937,8 +958,11 @@ function addRowCrs(
   input.setAttribute("type", "text");
   input.name = "DELIVERED_ITEMS";
   input.id = "DELIVERED_ITEMS_" + RowCount;
-  var Smou=wrk_safe_query("GETDEPOBAKIYE","DSN2",1,STOCK_ID);
-  input.value = commaSplit(Smou.BAKIYE[0]);
+
+  var Smou = wrk_safe_query("GETDEPOBAKIYE", "DSN2", 1, STOCK_ID);
+  if (Smou.recordcount > 0) {
+    input.value = commaSplit(Smou.BAKIYE[0]);
+  }
   div2.appendChild(input);
   /*var input = document.createElement("select");
   input.innerHTML = "";
@@ -1003,7 +1027,7 @@ function getProduct(el, rc) {
     },
     success: function (returnData) {
       var Obje = JSON.parse(returnData);
-
+      console.log(Obje);
       if (Obje.RECORD_COUNT >= 1) {
         if (Obje.RECORD_COUNT > 1) {
           el.setAttribute(
@@ -1055,6 +1079,7 @@ function getProduct(el, rc) {
             );
           }
         }
+
         document.getElementById("PRODUCT_NAME_" + rc).value = Obje.PRODUCT_NAME;
         if (Obje.IMG_COUNT > 0) {
           document
@@ -1077,9 +1102,13 @@ function getProduct(el, rc) {
         document.getElementById("SALE_DISCOUNT_" + rc).value = commaSplit(0);
         document.getElementById("UNIT_PRICE_" + rc).value = commaSplit(0);
         document.getElementById("TOTAL_PRICE_" + rc).value = commaSplit(0);
-        var Smou=wrk_safe_query("GETDEPOBAKIYE","DSN2",1,Obje.STOCK_ID);
-        document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(Smou.BAKIYE[0]);
-        
+        var Smou = wrk_safe_query("GETDEPOBAKIYE", "DSN2", 1, Obje.STOCK_ID);
+        if (Smou.recordcount > 0) {
+          document.getElementById("DELIVERED_ITEMS_" + rc).value = commaSplit(
+            Smou.BAKIYE[0]
+          );
+        }
+      } else {
         document.getElementById("IS_VIRTUAL_" + rc).value = 1;
         document.getElementById("PRODUCT_ID_" + rc).value = 0;
         document.getElementById("STOCK_ID_" + rc).value = 0;
@@ -1090,6 +1119,10 @@ function getProduct(el, rc) {
           Opt.innerText = SF.UNIT[i];
           document.getElementById("PRODUCT_UNIT_" + rc).appendChild(Opt);
         }
+        el.setAttribute(
+          "style",
+          "color:red;background:black;font-weight:bold;text-align:left;"
+        );
       }
     },
   });
@@ -1353,9 +1386,13 @@ function SeciliSil(PropList = "7,50014,50015") {
     var Cbx = $(SR).find("input[type='checkbox']")[0];
     // console.log(Cbx)
     if ($(Cbx).is(":checked")) {
-      SR.remove();
+      //SR.remove();
+      $(SR).addClass("Silinecek");
+      console.log(SR);
     }
   }
+  $(".Silinecek").remove();
+
   var RCS = 0;
   var Sepet = document.getElementById("SubSepetBody_" + PropList).children;
   for (let i = 0; i < Sepet.length; i++) {
@@ -1382,7 +1419,7 @@ function SeciliSil(PropList = "7,50014,50015") {
 }
 function CreateOptionList(tip, selval = "EUR") {
   if (tip == 1) {
-    var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
+    //var paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
     var array = paraBirimleri.MONEY;
     var ReturnStr = "";
     for (let index = 0; index < array.length; index++) {
@@ -1445,6 +1482,7 @@ function AlayiniHesapla() {
   for (let i = 0; i < SepetSeperatorler.length; i++) {
     var Seperator = SepetSeperatorler[i];
     var PropList = Seperator.getAttribute("data-proplist");
+    var SEPERATOR_SIRASI = Seperator.getAttribute("data-seperatorsira");
     var JSON_STRINGIM_ = document.getElementById(
       "AddedEquipment_" + PropList
     ).value;
@@ -1456,6 +1494,7 @@ function AlayiniHesapla() {
     document.getElementById("RC_" + PropList).innerText = Jcount;
     var SEPET_SIRA = 0;
     var AKTIF_KUR = KurGetir(OfferData.OTHER_MONEY);
+
     //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
@@ -1529,6 +1568,7 @@ function AlayiniHesapla() {
         UNIQUE_RELATION_ID: UNIQUE_RELATION_ID,
         SALE_DISCOUNT: SALE_DISCOUNT,
         PROP_LIST: PropList,
+        SEPERATOR_SIRASI: SEPERATOR_SIRASI,
         JSON_STRINGIM: JSON_STRINGIM,
         SALE_DISCOUNT_MONEY: SALE_DISCOUNT_MONEY,
         UNIT_PRICE: UNIT_PRICE,
@@ -2165,30 +2205,24 @@ function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
   });
 }
 
-function instaResAl() {
-  let SrcArr = [];
-  for (let i = 0; i < document.getElementsByClassName("_aagv").length; i++) {
-    //window.open(document.getElementsByClassName("_aagv")[i].children[0].src,"_blank")
-    var ex = SrcArr.findIndex(
-      (p) => p.SR == document.getElementsByClassName("_aagv")[i].children[0].src
-    );
-    if (ex == -1) {
-      SrcArr.push({
-        IMG: i,
-        SR: document.getElementsByClassName("_aagv")[i].children[0].src,
-      });
+function SessionKontrolPbs() {
+  var str = window.location.search;
+  str = str.substring(1, str.length);
+  console.log(str);
+  str = urlencode(str);
+  console.log(str);
+  var uid = generalParamsSatis.userData.user_id;
+  var QRES = wrk_safe_query("SESSION_KONTROL_PBS", "dsn", 1, str + "*" + uid);
+  if (QRES.recordcount > 0) {
+    $("#BUTON_1").hide();
+    $("#BUTON_2").hide();
+    $("#BUTON_3").hide();
+    $("#BUTON_4").hide();
+    $("#BUTON_5").hide();
+    var PSTR = "Bu Sayfada Çalışan Var !";
+    if (QRES.recordcount == 1) {
+      PSTR += "/n" + QRES.NAME[0];
     }
+    alert(PSTR);
   }
-
-  var cstr = "";
-  for (let i = 0; i < SrcArr.length; i++) {
-    // console.log(SrcArr[i].SR)
-    cstr += SrcArr[i].SR + "\n";
-  }
-  const link = document.createElement("a");
-  const file = new Blob([cstr], { type: "text/plain" });
-  link.href = URL.createObjectURL(file);
-  link.download = "sample.txt";
-  link.click();
-  URL.revokeObjectURL(link.href);
 }

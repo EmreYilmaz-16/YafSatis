@@ -1,7 +1,7 @@
 var RowCount = 1;
 var SeperatorSira = 1;
 var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
-var paraBirimleri =""
+var paraBirimleri = "";
 $(document).ready(function () {
   var e = document.getElementById("PRODUCT_CAT");
   // var e1 = document.getElementById("MONEY");
@@ -2203,4 +2203,26 @@ function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
       alert("Bir Hata Oluştu");
     }
   });
+}
+
+function SessionKontrolPbs() {
+  var str = window.location.search;
+  str = str.substring(1, str.length);
+  console.log(str);
+  str = urlencode(str);
+  console.log(str);
+  var uid = generalParamsSatis.userData.user_id;
+  var QRES = wrk_safe_query("SESSION_KONTROL_PBS", "dsn", 1, str + "*" + uid);
+  if (QRES.recordcount > 0) {
+    $("#BUTON_1").hide();
+    $("#BUTON_2").hide();
+    $("#BUTON_3").hide();
+    $("#BUTON_4").hide();
+    $("#BUTON_5").hide();
+    var PSTR = "Bu Sayfada Çalışan Var !";
+    if (QRES.recordcount == 1) {
+      PSTR += "/n" + QRES.NAME[0];
+    }
+    alert(PSTR);
+  }
 }
