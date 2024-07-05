@@ -2204,6 +2204,14 @@ function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
     }
   });
 }
+function open_product_popup_fg(pid,sid) {
+  url_str = "index.cfm?fuseaction=objects.popup_detail_product";
+  var stock_id = pid;
+  var product_id = sid;
+
+  if (product_id != "")
+    openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id);
+}
 
 function SessionKontrolPbs() {
   var str = window.location.search;
