@@ -229,8 +229,8 @@ function SaveOfferHeader() {
     },
   });
 }
-function sayHi(){
-  alert("Hİ")
+function sayHi() {
+  alert("Hİ");
 }
 
 /**
