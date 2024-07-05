@@ -141,18 +141,15 @@
                         </div>
                         <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12" id="dpAddress" >
                             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
+                                <label class="margin-bottom-5 bold font-sm">PAY METHOD</label>
                                 <div class="input-group">
-						
-						
-                                    <input type="hidden" name="card_paymethod_id" id="card_paymethod_id" value="">
-                                    <input type="hidden" name="commission_rate" id="commission_rate" value="">
-                                    
-                                    <input type="hidden" name="paymethod_vehicle" id="paymethod_vehicle" value="">
-                                    <input type="hidden" name="paymethod_id" id="paymethod_id" value="">
-                                    
-                                    <input type="text" name="paymethod" id="paymethod" value="" placeholder="Ödeme Yöntemi" onfocus="AutoComplete_Create('paymethod','PAYMETHOD','PAYMETHOD','get_paymethod','\'1,2\'','PAYMENT_TYPE_ID,COMMISSION_MULTIPLIER,PAYMETHOD_ID,PAYMENT_VEHICLE','card_paymethod_id,commission_rate,paymethod_id,paymethod_vehicle','','3','200');" autocomplete="off"><div id="paymethod_div_2" name="paymethod_div_2" class="completeListbox" autocomplete="on" style="width: 400px; max-height: 150px; overflow: auto; position: absolute; left: 1471.16px; top: 165px; z-index: 159; display: none;"></div>
-                                    <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_paymethods&amp;function_name=change_paper_duedate&amp;function_parameter=order_date&amp;field_id=form_basket.paymethod_id&amp;field_name=form_basket.paymethod&amp;field_dueday=form_basket.basket_due_value&amp;field_card_payment_id=form_basket.card_paymethod_id&amp;field_card_payment_name=form_basket.paymethod&amp;field_commission_rate=form_basket.commission_rate&amp;field_paymethod_vehicle=form_basket.paymethod_vehicle');"></span>
-                                </div>
+									
+									<input type="hidden" name="card_paymethod_id" id="card_paymethod_id" value="">
+									<input type="hidden" name="paymethod_id" id="paymethod_id" value="">
+									<input type="text" name="paymethod" placeholder="Ödeme Yöntemi " id="paymethod" value="">
+									<span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_paymethods&field_id=order_form.paymethod_id&field_name=order_form.paymethod&field_card_payment_id=order_form.card_paymethod_id&field_card_payment_name=order_form.paymethod');"></span>
+									
+								</div>
                             </div>
                         </div>
                     </div>
