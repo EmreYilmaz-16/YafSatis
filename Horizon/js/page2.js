@@ -230,7 +230,7 @@ function SaveOfferHeader() {
   });
 }
 function sayHi(p1) {
-  alert("Hİ");
+  //alert("Hİ");
 var paym=wrk_safe_query("GET_COMPANY_PAYMETHODS","DSN","1",p1);
 if(paym.recordcount>0){
   if(paym.PAYMETHOD[0].length !=0){
