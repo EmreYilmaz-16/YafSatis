@@ -93,7 +93,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.rows_="">
 
 <cfquery name="UPD" datasource="#DSN3#">
-    UPDATE PBS_OFFER SET OFFER_CURRENCY=#attributes.OFFER_CURRENCY#,COMPANY_ID=#attributes.company_id#,OFFER_DETAIL='#attributes.OFFER_DESCRIPTION#',FINISHDATE='#FormData.VALID_DATE#',DELIVERDATE='#FormData.DELIVERY_DATE#',OTHER_MONEY='#FormData.OFFER_MONEY#'
+    UPDATE PBS_OFFER SET OFFER_CURRENCY=#attributes.OFFER_CURRENCY#,COMPANY_ID=#attributes.company_id#,OFFER_DETAIL='#attributes.OFFER_DESCRIPTION#',FINISHDATE='#FormData.VALID_DATE#',DELIVERDATE='#dateformat(FormData.DELIVERY_DATE,"yyyy-mm-dd")#',OTHER_MONEY='#FormData.OFFER_MONEY#'
     ,SHIP_METHOD=#FormData.SHIP_METHOD_ID#
     ,REF_NO='#FormData.REF_NO#'
     ,UPDATE_DATE=GETDATE()
