@@ -45,13 +45,15 @@ select count(*) AS RC from PBS_OFFER
 
 <cfset attributes.process_stage=FormData.PROCESS_STAGE>
 <cfset attributes.price=0>
-<cfset attributes.paymethod_id=FormData.PAYMETHOD_ID>
+
 
 <cfset attributes.ship_method_id=FormData.SHIP_METHOD_ID>
 <cfset attributes.ship_method=FormData.SHIP_METHOD>
+<cfset attributes.paymethod_id=FormData.PAYMETHOD_ID>
 <cfset attributes.PAYMETHOD=FormData.PAYMETHOD>
 <cfset attributes.pay_method=FormData.PAYMETHOD>
 <cfset attributes.card_paymethod_id=FormData.CARD_PAYMETHOD_ID>
+
 <cfset attributes.ship_address="Sevk Adresi">
 <cfset attributes.ship_address_id=-1>
 <cfset attributes.city_id=FormData.CITY_ID>
