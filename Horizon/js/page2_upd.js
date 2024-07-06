@@ -251,9 +251,10 @@ function SaveOfferHeader() {
       console.log("Kaydettim");
       var Obj = JSON.parse(retdat);
       if (Obj.STATUS == 1) {
-        window.location.href =
+        window.opener.location.href =
           "/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=" +
           Obj.OFFER_ID;
+          this.close();
       }
     },
   });
