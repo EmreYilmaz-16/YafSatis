@@ -2229,6 +2229,7 @@ function SessionKontrolPbs() {
     $("#BUTON_3").hide();
     $("#BUTON_4").hide();
     $("#BUTON_5").hide();
+    $("#BUTON_6").hide();
     var PSTR = "Bu Sayfada Çalışan Var !";
     if (QRES.recordcount == 1) {
       PSTR += "\n" + QRES.NAME[0] + " " + QRES.SURNAME[0];
