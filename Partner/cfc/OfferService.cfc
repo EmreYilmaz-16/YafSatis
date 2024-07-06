@@ -159,7 +159,7 @@
     <cfset FormData=deserializeJSON(arguments.FData)>
    
     <cfset ReturnData=structNew()>
-  <cfdump var="#FormData#">
+  
     <cftry>
     
       <cfinclude template="../Query/UpdateOffer.cfm">
