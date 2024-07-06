@@ -79,6 +79,11 @@ select count(*) AS RC from PBS_OFFER
 <CFSET attributes.DELIVERY_ADDRESS=FormData.DELIVERY_ADDRESS>
 <CFSET attributes.DELIVERY_TYIME=FormData.DELIVERY_TYIME>
 <CFSET attributes.VALID_DAYS=FormData.VALID_DAYS>
+<cfset attributes.paymethod_id=FormData.PAYMETHOD_ID>
+<cfset attributes.PAYMETHOD=FormData.PAYMETHOD>
+<cfset attributes.pay_method=FormData.PAYMETHOD>
+<cfset attributes.card_paymethod_id=FormData.CARD_PAYMETHOD_ID>
+
 <cfif not isDefined("FormData.SALES_EMP")>
     <cfquery name="EMP" datasource="#dsn#">
         SELECT EMPLOYEE_NAME,EMPLOYEE_SURNAME FROM EMPLOYEES WHERE EMPLOYEE_ID=#FormData.SALES_EMP_ID#
@@ -99,5 +104,7 @@ select count(*) AS RC from PBS_OFFER
     ,DELIVERY_PLACE=<cfif len(FormData.DELIVERY_PLACE)>#FormData.DELIVERY_PLACE#<cfelse>NULL</cfif>
         ,DELIVERY_ADDRESS=<cfif len(FormData.DELIVERY_ADDRESS)>'#FormData.DELIVERY_ADDRESS#'<cfelse>NULL</cfif>
             ,VALID_DAYS=<cfif len(FormData.VALID_DAYS)>#FormData.VALID_DAYS#<cfelse>NULL</cfif>
+            ,PAYMETHOD=<cfif len(attributes.paymethod_id)>#FormData.PAYMETHOD_ID#<cfelse>NULL</cfif>
+            ,CARD_PAYMETHOD_ID=<cfif len(attributes.card_paymethod_id)>#FormData.CARD_PAYMETHOD_ID#<cfelse>NULL</cfif>
      WHERE OFFER_ID=#FormData.OFFER_ID#
 </cfquery>

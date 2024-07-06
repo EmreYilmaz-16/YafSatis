@@ -199,6 +199,9 @@ function SaveOfferHeader() {
   var ACTIVECOMPANY = $("#ACTIVECOMPANY").val();
   var SALES_EMP_ID = $("#SALES_EMP_ID").val();
   var SALES_EMP = $("#SALES_EMP").val();
+  var PAYMETHOD = $("#paymethod").val();
+  var PAYMETHOD_ID = $("#paymethod_id").val();
+  var PAYMENT_TYPE_ID = $("#card_paymethod_id").val();
 
   var O = {
     OFFER_CURRENCY: OFFER_CURRENCY,
@@ -234,6 +237,9 @@ function SaveOfferHeader() {
     ACTIVECOMPANY: ACTIVECOMPANY,
     SALES_EMP_ID: SALES_EMP_ID,
     SALES_EMP: SALES_EMP,
+    PAYMETHOD:PAYMETHOD,
+    PAYMETHOD_ID:PAYMETHOD_ID,
+    CARD_PAYMETHOD_ID:PAYMENT_TYPE_ID
   };
 
   $.ajax({
