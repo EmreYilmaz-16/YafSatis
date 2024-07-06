@@ -254,7 +254,7 @@ function SaveOfferHeader() {
         window.opener.location.href =
           "/index.cfm?fuseaction=sale.emptypopup_hrz_pbs_sayfa3&offer_id=" +
           Obj.OFFER_ID;
-          this.close();
+          window.close();
       }
     },
   });
