@@ -146,7 +146,7 @@
 									
 									<input type="hidden" name="card_paymethod_id" id="card_paymethod_id" value="">
 									<input type="hidden" name="paymethod_id" id="paymethod_id" value="">
-									<input type="text" name="paymethod" placeholder="Ödeme Yöntemi " id="paymethod" value="">
+									<input type="text" name="paymethod" placeholder="Pay Method" id="paymethod" value="">
 									<span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_paymethods&field_id=order_form.paymethod_id&field_name=order_form.paymethod&field_card_payment_id=order_form.card_paymethod_id&field_card_payment_name=order_form.paymethod');"></span>
 									
 								</div>
