@@ -146,6 +146,19 @@
                     <input type="text" name="DELIVERY_ADDRESS" id="DELIVERY_ADDRESS" value="<cfoutput>#OFFER_DATA.DELIVERY_ADDRESS#</cfoutput>">
                 </div>
             </div>
+            <div class="form-group col col-3 col-md-3 col-sm-3 col-xs-12" id="dpAddress" >
+                <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
+                    <label class="margin-bottom-5 bold font-sm">PAY METHOD</label>
+                    <div class="input-group">
+                        
+                        <input type="hidden" name="card_paymethod_id" id="card_paymethod_id" value="<cfoutput>#OFFER_DATA.CARD_PAYMENT_TYPE_ID#</cfoutput>">
+                        <input type="hidden" name="paymethod_id" id="paymethod_id" value="<cfoutput>#OFFER_DATA.PAYMETHOD_ID#</cfoutput>">
+                        <input type="text" name="paymethod" placeholder="Ödeme Yöntemi " id="paymethod" value="<cfoutput>#OFFER_DATA.PAYMETHOD#</cfoutput>">
+                        <span class="input-group-addon btnPointer icon-ellipsis" onclick="openBoxDraggable('index.cfm?fuseaction=objects.popup_paymethods&field_id=order_form.paymethod_id&field_name=order_form.paymethod&field_card_payment_id=order_form.card_paymethod_id&field_card_payment_name=order_form.paymethod');"></span>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!--- 4.GRID --->  
