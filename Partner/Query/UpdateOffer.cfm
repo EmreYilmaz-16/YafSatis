@@ -83,6 +83,7 @@ select count(*) AS RC from PBS_OFFER
 <cfset attributes.PAYMETHOD=FormData.PAYMETHOD>
 <cfset attributes.pay_method=FormData.PAYMETHOD>
 <cfset attributes.card_paymethod_id=FormData.CARD_PAYMETHOD_ID>
+<cfif len(FormData.DELIVERY_DATE)><cf_date tarih="FormData.DELIVERY_DATE"></cfif>
 
 <cfif not isDefined("FormData.SALES_EMP")>
     <cfquery name="EMP" datasource="#dsn#">
