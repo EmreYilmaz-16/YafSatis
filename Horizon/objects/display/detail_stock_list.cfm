@@ -385,6 +385,7 @@
 						<th width="100"><cf_get_lang dictionary_id='57880.Belge No'></th>
 						<th width="25"><cf_get_lang dictionary_id='57982.Tür'></th>
                         <th width="75" class="text-right"><cf_get_lang dictionary_id='58084.Fiyat'></th>
+						<th width="75" class="text-right">D.<cf_get_lang dictionary_id='58084.Fiyat'></th>
                         <th width="60" class="text-right"><cf_get_lang dictionary_id='57554.Giriş'></th>
                         <th width="60" class="text-right"><cf_get_lang dictionary_id='57431.Çıkış'></th>
                         <th width="60" class="text-right"><cf_get_lang dictionary_id='57589.Bakiye'></th>
@@ -443,6 +444,7 @@
 								<td>#FIS_NUMBER#</td>
                                 <td align="center">#TIP#</td>
                                 <td align="right">#TlFormat(NET_PRICE,2)#</td>
+								<td align="right">#TlFormat(P_OTHER,2)# #O_MONEY#</td>
                                 <td align="right"><cfif TIP eq 'GIRIS'>#TlFormat(AMOUNT,x_round_number)#<cfelse>#TlFormat(0,x_round_number)#</cfif></td>
                                 <td align="right"><cfif TIP eq 'CIKIS'>#TlFormat(AMOUNT,x_round_number)#<cfelse>#TlFormat(0,x_round_number)#</cfif></td>
                                 <td align="right" <cfif toplam_stok lt 0>style="color:red"</cfif>><strong>#TlFormat(toplam_stok,x_round_number)#</strong></td>
