@@ -21,7 +21,7 @@
 <cfelse>    
 	<cfset attributes.finishdate="">
 </cfif>
-<cfinclude template="../../../../V16/stock/query/get_stores.cfm">
+<cfinclude template="/V16/stock/query/get_stores.cfm">
 <cfquery name="GET_ALL_LOCATION" datasource="#DSN#">
 	SELECT 
 		D.DEPARTMENT_HEAD,
