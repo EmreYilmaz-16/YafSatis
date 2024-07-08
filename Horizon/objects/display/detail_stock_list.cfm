@@ -461,7 +461,7 @@
 						</tbody>
                        	<tfoot>
                         	<tr>
-                            	<td colspan="12">
+                            	<td colspan="13">
                                 	<table style="width:100%; height:100%; border-color:gainsboro" cellpadding="0" cellspacing="0" border="1">
 										<cfoutput>
                                             <tr>
