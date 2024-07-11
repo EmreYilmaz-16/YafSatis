@@ -30,8 +30,8 @@
                 <cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
                     <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
                     <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
-                    <cfset PROPERTY=evaluate("get_invoice_no.COL_#i+2#")>
-                    <cfset VARIATION=evaluate("get_invoice_no.COL_#i+3#")>                        
+                    <cfset PROPERTY=Trim(evaluate("get_invoice_no.COL_#i+2#"))>
+                    <cfset VARIATION=Trim(evaluate("get_invoice_no.COL_#i+3#"))>                        
                     <cfquery name="isHvProperty" datasource="#dsn1#">  
                         SELECT * FROM PRODUCT_PROPERTY WHERE PROPERTY='#PROPERTY#' AND P_C='#CP#'
                     </cfquery>
@@ -156,8 +156,8 @@
                     <cfloop from="7" to="#listLen(ressa.COLUMNLIST)#" index="i" step="4">
                         <cfset IS_IMPORTANT=evaluate("get_invoice_no.COL_#i#")>
                         <cfset CP=evaluate("get_invoice_no.COL_#i+1#")>
-                        <cfset PROPERTY=evaluate("get_invoice_no.COL_#i+2#")>
-                        <cfset VARIATION=evaluate("get_invoice_no.COL_#i+3#")>
+                        <cfset PROPERTY=Trim(evaluate("get_invoice_no.COL_#i+2#"))>
+                        <cfset VARIATION=Trim(evaluate("get_invoice_no.COL_#i+3#"))>
                         <cfquery name="isHvProperty" datasource="#dsn1#">  
                             SELECT * FROM PRODUCT_PROPERTY WHERE PROPERTY='#PROPERTY#' AND P_C='#CP#'
                         </cfquery>
