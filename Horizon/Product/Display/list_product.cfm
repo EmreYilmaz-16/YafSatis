@@ -81,13 +81,29 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                         </cfloop>
                     </td>
                 </cfloop>
-
+                <td>
+                    <cfquery name="getpp" datasource="#dsn1#">
+                        
+                        SELECT DISTINCT PP.PROPERTY,PPD.PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_DT_PROPERTIES PDP
+                        LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
+                        LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPERTY_ID
+                        WHERE PDP.PROPERTY_ID  NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#it.PRODUCT_CATID#)
+                    
+AND PRODUCT_ID=#it.PRODUCT_ID#
+                    </cfquery>
+                    <cfloop query="getpp">
+                        <div style="border:solid 0.5px black">
+                            <cfoutput>
+                                <b>#PROPERTY#</b>
+                                 #PROPERTY_DETAIL#
+                            </cfoutput>
+                        </div>
+                    </cfloop>
+                </td>
             </tr>
             
         </cfloop>
-        <td>
-            
-        </td>
+       
     </tbody>
 
 </cf_big_list>
