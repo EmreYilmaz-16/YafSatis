@@ -77,11 +77,11 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         Sutun=Sutun+1;
         spreadsheetSetCellValue(theSheet,"Product Name",SatirSayaci,Sutun);
         Sutun=Sutun+1;
-        for (i = 1; i <getpc.recordCount ; i++) {
+        for (i = 1; i <=getpc.recordCount ; i++) {
             spreadsheetSetCellValue(theSheet,"#getpc.PROPERTY[i]#",SatirSayaci,Sutun);
             Sutun=Sutun+1;
         }
-        for (i = 1; i <arrayLen(ProductList.OTHER_PROPERTIES) ; i++) {
+        for (i = 1; i <=arrayLen(ProductList.OTHER_PROPERTIES) ; i++) {
             spreadsheetSetCellValue(theSheet,"#ProductList.OTHER_PROPERTIES[i].PROPERTY#",SatirSayaci,Sutun);
             Sutun=Sutun+1;
         }
