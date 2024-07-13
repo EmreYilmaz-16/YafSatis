@@ -293,7 +293,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
     <cffunction name="SearchProductPopup" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
-        <cfdump var="#arguments#">
+        <cfdump var="#FData#">
         <cfreturn 1>
         <cfquery name="getProd" datasource="#dsn#">
             SELECT *
