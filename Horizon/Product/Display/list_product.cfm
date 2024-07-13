@@ -26,5 +26,4 @@
 
 </cf_box>
 
-
-<script src="/AddOns/YafSatis/js/list_product.js"></script>
+<script src="/AddOns/YafSatis/Horizon/js/list_product.js"></script>
