@@ -107,5 +107,5 @@ function getFilterData() {
   function AraBeni(){
     var FILTERS=getFilterData();
    document.getElementById("FormData").value=JSON.stringify(FILTERS);
-
+document.fomr1.submit();
   }

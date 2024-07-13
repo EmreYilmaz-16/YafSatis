@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col col-1">
-        <a id="BUTON_1" href="javascript://" onclick="document.form1.submit()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
+        <a id="BUTON_1" href="javascript://" onclick="AraBeni()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
     </div>
 </div>
 <input type="hidden" name="FormData" id="FormData">
