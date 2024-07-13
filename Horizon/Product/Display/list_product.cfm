@@ -62,7 +62,7 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         </tr>
     </thead>
     <tbody>
-        <cfloop array="#ProductList#" item="it">
+        <cfloop array="#ProductList.PRODUCTS#" item="it">
             <tr>
                 <td><cfoutput>#it.MANUFACT_CODE#</cfoutput></td>
                 <td><cfoutput>#it.PRODUCT_CODE#</cfoutput></td>
@@ -70,8 +70,8 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                 <cfset PPLIST=deserializeJSON(it.DTP)>
                 <cfloop query="getpc">
                     <td>
-                        <cfset IIIS=arrayFilter(Aitem_Identification.XmlChildren,function(item){
-                            return item.XmlName=="itemIdentifier"
+                        <cfset IIIS=arrayFilter(PPLIST,function(item){
+                            return item.PROPERTY_ID==getpc.PROPERTY_ID
                         })>
                     </td>
                 </cfloop>
