@@ -106,6 +106,17 @@ function getFilterData() {
 
   function AraBeni(){
     var FILTERS=getFilterData();
-   document.getElementById("FormData").value=JSON.stringify(FILTERS);
+    var elem = document.getElementById("PRODUCT_CAT");
+    var ix = elem.options.selectedIndex;
+    var PRODUCT_CAT = elem.options[ix].innerText;
+    var PRODUCT_CAT_ID = elem.options[ix].value;
+
+    var OSX={
+        SEARCHMAINVALUE:{
+            PRODUCT_CAT_ID :PRODUCT_CAT_ID
+        },
+        FILTERS:FILTERS
+    }
+   document.getElementById("FormData").value=JSON.stringify(OSX);
    document.form1.submit()
   }
