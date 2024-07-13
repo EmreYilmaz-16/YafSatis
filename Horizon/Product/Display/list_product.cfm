@@ -49,7 +49,7 @@
             <th>
                 Product Name
             </th>
-        <cfif isDefined(attributes.is_submit)>
+        <cfif isDefined("attributes.is_submit")>
             <cfquery name="getpc" datasource="#dsn1#">
                 SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP 
 LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PCP.PROPERTY_ID
@@ -67,6 +67,7 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         </tr>
     </thead>
     <tbody>
+        <cfif isDefined("attributes.is_submit")>
         <cfloop array="#ProductList.PRODUCTS#" item="it">
             <tr>
                 <td><cfoutput>#it.MANUFACT_CODE#</cfoutput></td>
@@ -105,7 +106,7 @@ AND PRODUCT_ID=#it.PRODUCT_ID#
             </tr>
             
         </cfloop>
-       
+    </cfif>
     </tbody>
 
 </cf_big_list>
