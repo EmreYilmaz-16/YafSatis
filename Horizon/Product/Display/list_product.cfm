@@ -21,6 +21,7 @@
         </div>
     </div>
     <div class="col col-1">
+        <input type="checkbox" name="is_excel" value="1">
         <a id="BUTON_1" href="javascript://" onclick="AraBeni()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
     </div>
 </div>
@@ -65,6 +66,28 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         <cfoutput>#it3.PROPERTY#</cfoutput>
     </th>
 </cfloop>
+<cfif isDefined("attributes.is_excell")>
+    <cfscript>
+        theSheet = SpreadsheetNew("Products");
+        SatirSayaci=1;
+        Sutun=1;
+        spreadsheetSetCellValue(theSheet,"#Part No#",SatirSayaci,Sutun);
+        Sutun=Sutun+1;
+        spreadsheetSetCellValue(theSheet,"#Product Code#",SatirSayaci,Sutun);
+        Sutun=Sutun+1;
+        spreadsheetSetCellValue(theSheet,"#Product Name#",SatirSayaci,Sutun);
+        Sutun=Sutun+1;
+        for (i = 1; i <getpc.recordCount ; i++) {
+            spreadsheetSetCellValue(theSheet,"#getpc.PROPERTY[i]#",SatirSayaci,Sutun);
+            Sutun=Sutun+1;
+        }
+        for (i = 1; i <arrayLen(ProductList.OTHER_PROPERTIES) ; i++) {
+            spreadsheetSetCellValue(theSheet,"#ProductList.OTHER_PROPERTIES[i].PROPERTY#",SatirSayaci,Sutun);
+            Sutun=Sutun+1;
+        }
+        SatirSayaci=SatirSayaci+1;
+    </cfscript>
+</cfif>
 </cfif>
 
 
