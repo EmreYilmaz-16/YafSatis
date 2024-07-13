@@ -100,15 +100,36 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                 <td><cfoutput>#it.MANUFACT_CODE#</cfoutput></td>
                 <td><cfoutput>#it.PRODUCT_CODE#</cfoutput></td>
                 <td><cfoutput>#it.PRODUCT_NAME#</cfoutput></td>
+                <cfif isDefined("attributes.is_excel")>
+                    <cfscript>
+                        Sutun=1;
+                        spreadsheetSetCellValue(theSheet,"#it.MANUFACT_CODE#",SatirSayaci,Sutun);
+                        Sutun=Sutun+1;
+                        spreadsheetSetCellValue(theSheet,"#it.PRODUCT_CODE#",SatirSayaci,Sutun);
+                        Sutun=Sutun+1;
+                        spreadsheetSetCellValue(theSheet,"#it.PRODUCT_NAME#",SatirSayaci,Sutun);
+                        Sutun=Sutun+1;
+                    </cfscript>
+
+                </cfif>
                 <cfset PPLIST=deserializeJSON(it.DTP)>
                 <cfloop query="getpc">
                     <td>
                         <cfset IIIS=arrayFilter(PPLIST,function(item){
                             return item.PROPERTY_ID==getpc.PROPERTY_ID
                         })>
+                        <cfset STR_PRP="">
                         <cfloop array="#IIIS#" item="it2">
                         <cfoutput>#it2.PROPERTY_DETAIL#</cfoutput>
+                            <CFSET STR_PRP="#STR_PRP#+#it2.PROPERTY_DETAIL#"> 
                         </cfloop>
+                        <cfif isDefined("attributes.is_excel")>
+                            <cfscript> 
+                                spreadsheetSetCellValue(theSheet,"#STR_PRP#",SatirSayaci,Sutun);
+                                Sutun=Sutun+1;
+                            </cfscript>
+
+                        </cfif>
                     </td>
                 </cfloop>
                 <cfloop array="#ProductList.OTHER_PROPERTIES#" item="it3">
