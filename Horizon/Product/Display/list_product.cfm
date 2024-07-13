@@ -121,7 +121,7 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                         <cfset STR_PRP="">
                         <cfloop array="#IIIS#" item="it2">
                         <cfoutput>#it2.PROPERTY_DETAIL#</cfoutput>
-                            <CFSET STR_PRP="#STR_PRP#+#it2.PROPERTY_DETAIL#"> 
+                            <CFSET STR_PRP="#STR_PRP# #it2.PROPERTY_DETAIL#"> 
                         </cfloop>
                         <cfif isDefined("attributes.is_excel")>
                             <cfscript> 
@@ -144,7 +144,14 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
     AND PRODUCT_ID=#it.PRODUCT_ID# AND PP.PROPERTY_ID=#it3.PROPERTY_ID#
                         </cfquery>
                         <cfoutput>#getpp.PROPERTY_DETAIL#</cfoutput>
+                        
                     </td>
+                    <cfif isDefined("attributes.is_excel")>
+                        <cfscript> 
+                            spreadsheetSetCellValue(theSheet,"#getpp.PROPERTY_DETAIL#",SatirSayaci,Sutun);
+                            Sutun=Sutun+1;
+                        </cfscript>
+                    </cfif>
                 </cfloop>
                 <td>
                    
