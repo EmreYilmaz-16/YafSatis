@@ -25,8 +25,12 @@
     </div>
 </div>
 <input type="hidden" name="FormData" id="FormData">
+<input type="hidden" name="is_submit" id="is_submit">
 </cfform>
 </cf_box_search>
+<cfif isDefined("attributes.is_submit")>
+    <cfdump var="#attributes#">
+</cfif>
 
 
 </cf_box>
