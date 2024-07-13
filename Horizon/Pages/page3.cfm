@@ -418,7 +418,7 @@
                     <input type="text" onchange="AlayiniHesapla()" name="genel_indirim_" id="genel_indirim_" >
                 </div>
             </td>
-            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>>
+            <td style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>">
                 <div class="form-group">
                     <input type="text" onchange="AlayiniHesapla()" name="genel_indirim__" id="genel_indirim__" readonly>
                 </div>
@@ -433,7 +433,7 @@
                     <input type="text" name="total_discount_wanted" id="total_discount_wanted" readonly>
                 </div>
             </td>
-            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>>
+            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>">
                 <div class="form-group">
                     <input type="text" name="total_discount_wanted_" id="total_discount_wanted_" readonly>
                 </div>
@@ -448,7 +448,7 @@
                     <input type="text" name="brut_total_wanted" id="brut_total_wanted" readonly >
                 </div>
             </td>
-            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>> 
+            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>"> 
                 <div class="form-group">
                     <input type="text" name="brut_total_wanted_" id="brut_total_wanted_" readonly >
                 </div>
@@ -463,7 +463,7 @@
                     <input type="text" name="total_tax_wanted" id="total_tax_wanted" readonly>
                 </div>
             </td>
-            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>>
+            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>">
                 <div class="form-group">
                     <input type="text" name="total_tax_wanted_" id="total_tax_wanted_" readonly>
                 </div>
@@ -478,7 +478,7 @@
                     <input type="text" name="net_total_wanted" id="net_total_wanted" readonly>
                 </div>
             </td>
-            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>>
+            <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>">
                 <div class="form-group">
                     <input type="text" name="net_total_wanted_" id="net_total_wanted_" readonly>
                 </div>
