@@ -1,5 +1,6 @@
 <cf_box title="Ürünler">
 <cf_box_search>
+    <cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#&event=list_special" name="form1" id="form1">
 <div class="row">
     <div class="col col-2">
         <div class="form-group col col-12">
@@ -20,10 +21,11 @@
         </div>
     </div>
     <div class="col col-1">
-        <a id="BUTON_1" href="javascript://" onclick="" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
+        <a id="BUTON_1" href="javascript://" onclick="document.form1.submit()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
     </div>
 </div>
-
+<input type="hidden" name="FormData" id="FormData">
+</cfform>
 </cf_box_search>
 
 
