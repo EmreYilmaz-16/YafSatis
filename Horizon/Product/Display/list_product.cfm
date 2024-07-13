@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col col-1">
-        <input type="checkbox" name="is_excel" value="1">
+        <label><input type="checkbox" name="is_excel" value="1">Excell Getir</label>
         <a id="BUTON_1" href="javascript://" onclick="AraBeni()" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
     </div>
 </div>
