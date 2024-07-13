@@ -30,6 +30,11 @@
 </cf_box_search>
 <cfif isDefined("attributes.is_submit")>
     <cfdump var="#attributes#">
+
+    <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
+    <cfset ProductList=ProductService.SearchProductPopup(FormData=attributes.FormData)>
+    <cfdump var="#ProductList#">
+
 </cfif>
 
 
