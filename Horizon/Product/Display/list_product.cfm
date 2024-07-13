@@ -132,7 +132,7 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
             </tr>
             
         </cfloop>
-        <cfif attributes.isexcell eq 1>
+        <cfif attributes.is_excel eq 1>
             <cfset file_name = "MinumumMaximumStok_#dateformat(now(),'ddmmyyyy')#.xls">
                <cfset drc_name_ = "#dateformat(now(),'yyyymmdd')#">
                <cfif not directoryexists("#upload_folder#reserve_files#dir_seperator##drc_name_#")>
