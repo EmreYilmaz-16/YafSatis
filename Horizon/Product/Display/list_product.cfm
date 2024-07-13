@@ -29,13 +29,13 @@
 </cfform>
 </cf_box_search>
 <cfif isDefined("attributes.is_submit")>
-    <cfdump var="#attributes#">
+    
 
     <cfset ProductService = createObject("component","AddOns.YafSatis.Partner.cfc.ProductService")>
     <cfset ProductList_=ProductService.SearchProductPopup(FormData=attributes.FormData)>
     
     <cfset ProductList=deserializeJSON(ProductList_)>
-    <cfdump var="#ProductList#">
+    
 </cfif>
 <cf_big_list>
     <thead>
