@@ -294,7 +294,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
         <cfdump var="#FData#">
-        <cfreturn 1>
+        
         <cfquery name="getProd" datasource="#dsn#">
             SELECT *
             FROM (
