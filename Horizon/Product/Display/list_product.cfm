@@ -163,13 +163,13 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
             </cfif>
         </cfloop>
         <cfif isDefined("attributes.is_excel") and attributes.is_excel eq 1>
-            <cfset file_name = "MinumumMaximumStok_#dateformat(now(),'ddmmyyyy')#.xls">
+            <cfset file_name = "Ürünler#dateformat(now(),'ddmmyyyy')#.xls">
                <cfset drc_name_ = "#dateformat(now(),'yyyymmdd')#">
                <cfif not directoryexists("#upload_folder#reserve_files#dir_seperator##drc_name_#")>
                <cfdirectory action="create" directory="#upload_folder#reserve_files#dir_seperator##drc_name_#">
                </cfif>
            <cfspreadsheet action="write" filename="#upload_folder#reserve_files#dir_seperator##drc_name_#/#file_name#" name="theSheet"
-               sheetname="MinumumMaximumStok" overwrite=true>
+               sheetname="Ürünler" overwrite=true>
            
               <script type="text/javascript">
                <cfoutput>
