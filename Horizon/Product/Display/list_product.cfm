@@ -1,6 +1,6 @@
 <cf_box title="Ürünler">
 <cf_box_search>
-    <cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#&event=list_special" name="form1" id="form1">
+    <cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#&event=list_special" name="form1" id="form1" style="width:100%">
 <div class="row">
     <div class="col col-2">
         <div class="form-group col col-12">
