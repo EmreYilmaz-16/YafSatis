@@ -2,7 +2,7 @@
 <cf_box_search>
 <div class="row">
     <div class="col col-2">
-        <div class="form-group col col-2 col-md-2 col-sm-2 col-xs-12">
+        <div class="form-group col col-12">
             <div class="col col-12 col-md-12 col-sm-12 col-xs-12">
                 <label class="margin-bottom-5 bold font-sm">EQUIPMENT</label>
                 <div class="input-group">
@@ -14,10 +14,13 @@
         </div>
         
     </div>
-    <div class="col col-10">
+    <div class="col col-9">
         <div id="PROP_AREA">
 
         </div>
+    </div>
+    <div class="col col-1">
+        <a id="BUTON_1" href="javascript://" onclick="" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Ara</a>
     </div>
 </div>
 
