@@ -151,7 +151,9 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                     
                     
             </tr>
-            
+            <cfif isDefined("attributes.is_excel")>
+                <cfset SatirSayaci=SatirSayaci+1>
+            </cfif>
         </cfloop>
         <cfif attributes.is_excel eq 1>
             <cfset file_name = "MinumumMaximumStok_#dateformat(now(),'ddmmyyyy')#.xls">
