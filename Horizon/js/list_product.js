@@ -113,7 +113,8 @@ function getFilterData() {
 
     var OSX={
         SEARCHMAINVALUE:{
-            PRODUCT_CAT_ID :PRODUCT_CAT_ID
+            PRODUCT_CAT_ID :PRODUCT_CAT_ID,
+            FILTERS :FILTERS.ReturnObject.Filters
         },
         FILTERS:FILTERS
     }
