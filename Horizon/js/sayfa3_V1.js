@@ -693,7 +693,7 @@ function addRowCrs(
   if (IS_VIRTUAL == 1) {
     input.setAttribute(
       "style",
-      "color:red;font-weight:bold;text-align:left;background:black;"
+      "color:black;font-weight:bold;text-align:left;background:yellow;"
     );
   } else {
     input.setAttribute("style", "text-align:left");
@@ -1056,7 +1056,7 @@ function getProduct(el, rc) {
           if (Obje.EXTRA_PROPT > 0) {
             el.setAttribute(
               "style",
-              "color:green;font-weight:bold;text-align:left;background:black"
+              "color:black;font-weight:bold;text-align:left;background:blue"
             );
             var btn = document.createElement("button");
             btn.setAttribute("class", "btn btn-success");
@@ -1123,7 +1123,7 @@ function getProduct(el, rc) {
         }
         el.setAttribute(
           "style",
-          "color:red;background:black;font-weight:bold;text-align:left;"
+          "color:black;background:yellow;font-weight:bold;text-align:left;"
         );
       }
     },
