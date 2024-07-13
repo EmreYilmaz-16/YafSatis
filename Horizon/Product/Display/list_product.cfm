@@ -66,7 +66,7 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         <cfoutput>#it3.PROPERTY#</cfoutput>
     </th>
 </cfloop>
-<cfif isDefined("attributes.is_excell")>
+<cfif isDefined("attributes.is_excel")>
     <cfscript>
         theSheet = SpreadsheetNew("Products");
         SatirSayaci=1;
