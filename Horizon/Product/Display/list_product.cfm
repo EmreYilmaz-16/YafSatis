@@ -59,6 +59,9 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         <cfoutput>#PROPERTY#</cfoutput>
     </th>
 </cfloop>
+<th>
+    Other Properties
+</th>
         </tr>
     </thead>
     <tbody>
@@ -80,7 +83,11 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                 </cfloop>
 
             </tr>
+            
         </cfloop>
+        <td>
+            
+        </td>
     </tbody>
 
 </cf_big_list>
