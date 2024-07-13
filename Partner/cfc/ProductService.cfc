@@ -263,7 +263,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
             <cfloop array="#FData.SearchMainValue.Filters#" item="it">
             <cfif it.PNAME.trim() neq "EQUIPMENT"> 
                 <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
-                AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'
+                AND DTP LIKE '%<cfif isdefined("it.PRODUCT_CAT_ID")>#it.PRODUCT_CAT_ID#<cfelse>#it.PRODUCT_CATID#</cfif>,%'
             </cfif>
             
         </cfif>
