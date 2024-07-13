@@ -60,10 +60,14 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         <cfoutput>#PROPERTY#</cfoutput>
     </th>
 </cfloop>
+<cfloop array="#ProductList.OTHER_PROPERTIES#" item="it3">
+    <th>
+        <cfoutput>#it3.PROPERTY#</cfoutput>
+    </th>
+</cfloop>
 </cfif>
-<th>
-    Other Properties
-</th>
+
+
         </tr>
     </thead>
     <tbody>
@@ -84,25 +88,24 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                         </cfloop>
                     </td>
                 </cfloop>
-                <td>
-                    <cfquery name="getpp" datasource="#dsn1#">
+                <cfloop array="#ProductList.OTHER_PROPERTIES#" item="it3">
+                    <td>
+                        <cfquery name="getpp" datasource="#dsn1#">
                         
-                        SELECT DISTINCT PP.PROPERTY,PPD.PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_DT_PROPERTIES PDP
-                        LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
-                        LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPERTY_ID
-                        WHERE PDP.PROPERTY_ID  NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#it.PRODUCT_CATID#)
+                            SELECT DISTINCT PP.PROPERTY,PPD.PROPERTY_DETAIL FROM CatalystQA_product.PRODUCT_DT_PROPERTIES PDP
+                            LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
+                            LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PDP.PROPERTY_ID
+                            WHERE PDP.PROPERTY_ID  NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#it.PRODUCT_CATID#)
+                        
+    AND PRODUCT_ID=#it.PRODUCT_ID# AND PP.PROPERTY_ID=#it3.PROPERTY_ID#
+                        </cfquery>
+                        <cfoutput>#getpp.PROPERTY_DETAIL#</cfoutput>
+                    </td>
+                </cfloop>
+                <td>
+                   
                     
-AND PRODUCT_ID=#it.PRODUCT_ID#
-                    </cfquery>
-                    <cfloop query="getpp">
-                        <div style="border:solid 0.5px black">
-                            <cfoutput>
-                                <b>#PROPERTY#</b>
-                                 #PROPERTY_DETAIL#
-                            </cfoutput>
-                        </div>
-                    </cfloop>
-                </td>
+                    
             </tr>
             
         </cfloop>
