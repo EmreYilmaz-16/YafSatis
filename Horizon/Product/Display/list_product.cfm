@@ -132,6 +132,22 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
             </tr>
             
         </cfloop>
+        <cfif attributes.isexcell eq 1>
+            <cfset file_name = "MinumumMaximumStok_#dateformat(now(),'ddmmyyyy')#.xls">
+               <cfset drc_name_ = "#dateformat(now(),'yyyymmdd')#">
+               <cfif not directoryexists("#upload_folder#reserve_files#dir_seperator##drc_name_#")>
+               <cfdirectory action="create" directory="#upload_folder#reserve_files#dir_seperator##drc_name_#">
+               </cfif>
+           <cfspreadsheet action="write" filename="#upload_folder#reserve_files#dir_seperator##drc_name_#/#file_name#" name="theSheet"
+               sheetname="MinumumMaximumStok" overwrite=true>
+           
+              <script type="text/javascript">
+               <cfoutput>
+               get_wrk_message_div("Excel","Excel","documents/reserve_files/#drc_name_#/#file_name#");
+               </cfoutput>
+               </script>
+           
+           </cfif>
     </cfif>
     </tbody>
 
