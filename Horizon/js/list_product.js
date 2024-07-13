@@ -1,3 +1,4 @@
+var ServiceUri = "/AddOns/YafSatis/Partner/cfc";
 $(document).ready(function () {
     var e = document.getElementById("PRODUCT_CAT");
     // var e1 = document.getElementById("MONEY");
