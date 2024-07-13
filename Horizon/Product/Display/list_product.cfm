@@ -71,11 +71,11 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
         theSheet = SpreadsheetNew("Products");
         SatirSayaci=1;
         Sutun=1;
-        spreadsheetSetCellValue(theSheet,"#Part No#",SatirSayaci,Sutun);
+        spreadsheetSetCellValue(theSheet,"Part No",SatirSayaci,Sutun);
         Sutun=Sutun+1;
-        spreadsheetSetCellValue(theSheet,"#Product Code#",SatirSayaci,Sutun);
+        spreadsheetSetCellValue(theSheet,"Product Code",SatirSayaci,Sutun);
         Sutun=Sutun+1;
-        spreadsheetSetCellValue(theSheet,"#Product Name#",SatirSayaci,Sutun);
+        spreadsheetSetCellValue(theSheet,"Product Name",SatirSayaci,Sutun);
         Sutun=Sutun+1;
         for (i = 1; i <getpc.recordCount ; i++) {
             spreadsheetSetCellValue(theSheet,"#getpc.PROPERTY[i]#",SatirSayaci,Sutun);
