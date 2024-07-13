@@ -1056,7 +1056,7 @@ function getProduct(el, rc) {
           if (Obje.EXTRA_PROPT > 0) {
             el.setAttribute(
               "style",
-              "color:black;font-weight:bold;text-align:left;background:blue"
+              "color:black;font-weight:bold;text-align:left;background:#7ef1ff"
             );
             var btn = document.createElement("button");
             btn.setAttribute("class", "btn btn-success");
