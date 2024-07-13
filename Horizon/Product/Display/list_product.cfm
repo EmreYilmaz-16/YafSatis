@@ -73,6 +73,9 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
                         <cfset IIIS=arrayFilter(PPLIST,function(item){
                             return item.PROPERTY_ID==getpc.PROPERTY_ID
                         })>
+                        <cfloop array="#IIS#" item="it2">
+                        <cfoutput>#it2.PROPERTY_DETAIL#</cfoutput>
+                        </cfloop>
                     </td>
                 </cfloop>
 
