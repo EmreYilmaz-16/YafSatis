@@ -37,7 +37,50 @@
     <cfset ProductList=deserializeJSON(ProductList_)>
     <cfdump var="#ProductList#">
 </cfif>
+<cf_big_list>
+    <thead>
+        <tr>
+            <th>
+                Part No
+            </th>
+            <th>
+                Product Code
+            </th>
+            <th>
+                Product Name
+            </th>
+            <cfquery name="getpc" datasource="#dsn1#">
+                SELECT PP.PROPERTY_ID,PP.PROPERTY FROM CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP 
+LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PCP.PROPERTY_ID
+where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
+            </cfquery>
+<cfloop query="getpc">
+    <th>
+        <cfoutput>#PROPERTY#</cfoutput>
+    </th>
+</cfloop>
+        </tr>
+    </thead>
+    <tbody>
+        <cfloop array="#ProductList#" item="it">
+            <tr>
+                <td><cfoutput>#it.MANUFACT_CODE#</cfoutput></td>
+                <td><cfoutput>#it.PRODUCT_CODE#</cfoutput></td>
+                <td><cfoutput>#it.PRODUCT_NAME#</cfoutput></td>
+                <cfset PPLIST=deserializeJSON(it.DTP)>
+                <cfloop query="getpc">
+                    <td>
+                        <cfset IIIS=arrayFilter(Aitem_Identification.XmlChildren,function(item){
+                            return item.XmlName=="itemIdentifier"
+                        })>
+                    </td>
+                </cfloop>
 
+            </tr>
+        </cfloop>
+    </tbody>
+
+</cf_big_list>
 
 </cf_box>
 
