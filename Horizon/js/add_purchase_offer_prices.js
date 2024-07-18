@@ -925,7 +925,11 @@ function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
     } else if (tip == 1) {
       DVX = parseInt(DonusDegeri);
     } else if (tip == 2) {
-      DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+      if(commaSplit(DonusDegeri).indexOf("NaN")>=0){
+        DVX = parseFloat(filterNum(DonusDegeri));
+      }else{
+        DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+      }
     }
     if (up_row == 1) {
       if (tip == 2 || tip == 1) {
