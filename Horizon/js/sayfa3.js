@@ -1500,6 +1500,7 @@ function AlayiniHesapla() {
     //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
+      console.log(SepetItem)
       SEPET_SIRA++;
       // console.log(SepetItem)
       var PRODUCT_ID = DegeriGetir(SepetItem, "PRODUCT_ID", 1);
@@ -1637,9 +1638,15 @@ function GenerateUniqueId() {
 }
 function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
   // console.log(arguments)
+  
   var DonusDegeri = $(Satir)
     .find("input[name='" + Name + "']")
     .val();
+    if(Name=="SALE_PRICE"){
+      console.log(Satir)
+      console.log(DonusDegeri)
+      console.log( $(Satir).find("input[name='" + Name + "']"))
+    }
   var DVX = 0;
   if (DonusDegeri) {
     if (tip == 0) {
@@ -1647,7 +1654,15 @@ function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
     } else if (tip == 1) {
       DVX = parseInt(DonusDegeri);
     } else if (tip == 2) {
-      DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+      if(commaSplit(DonusDegeri).indexOf("NaN")>=0){
+        DVX = parseFloat(filterNum(DonusDegeri));
+      }else{
+        DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
+      }
+      
+      if(Name=="SALE_PRICE"){
+        console.log(DVX);
+      }
     }
     if (up_row == 1) {
       if (tip == 2 || tip == 1) {
