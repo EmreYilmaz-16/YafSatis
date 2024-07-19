@@ -230,15 +230,29 @@ function SubTotalHesapla(params) {
     for(let i=0;i<ee.length;i++){
         var CompanyId=ee[i].getAttribute("data-company_id")
         var Ecount=document.getElementsByName("Marj_"+CompanyId).length;
+        console.log(Ecount)
         var SubTotal=0;
-        for(let j=0;j<Ecount;j++){
-           var el=document.getElementsByName("Marj_"+CompanyId)[j]
+       for(let j=0;j<Ecount;j++){
+            var el=document.getElementsByName("Marj_"+CompanyId)[j]
+           console.log(el)
             var RowId=el.getAttribute("data-row")
-           
+            console.log(RowId)
             var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
-            if(SalePrice_.length==0){SalePrice_="0";}
-            var SalePrice=parseFloat(filterNum(commaSplit(SalePrice_)))
-            SubTotal+=SalePrice;
+           console.log(SalePrice_)
+            var sp=commaSplit(SalePrice_);
+            console.log("SP="+sp)
+           console.log(sp.indexOf("NaN"))
+           var SalePriceU=0; 
+           if(sp.indexOf("NaN")>= 0){
+                SalePriceU=filterNum(SalePrice_)
+            }else{
+               SalePriceU=filterNum(commaSplit(SalePrice_))
+            }
+           console.log("SalePriceU"+SalePriceU)
+           
+            if(SalePriceU.length==0){SalePriceU="0";}
+            var SalePrice=parseFloat(SalePriceU)
+            SubTotal+=SalePrice;/**/
         }
        document.getElementsByName("SalePriceTotal_"+CompanyId)[0].value=commaSplit(SubTotal)
     }
