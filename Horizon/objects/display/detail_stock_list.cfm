@@ -312,6 +312,7 @@
 <cfparam name="attributes.page" default=1>
 <cfparam name="attributes.maxrows" default='#session.ep.maxrows#'>
 <cfparam name="attributes.totalrecords" default='#get_total.recordcount#'>
+<cfparam name="attributs.pbs_row_id" default="">
 <cfset attributes.startrow=((attributes.page-1)*attributes.maxrows)+1>
 <cfsavecontent variable="title">
 	<cfoutput>
@@ -322,6 +323,7 @@
 </cfsavecontent>
 <cf_box title="#title#" uidrop="1" scroll="1" collapsable="1" resize="1" popup_box="#iif(isdefined("attributes.draggable"),1,0)#">
 	<cfform name="search" action="#request.self#?fuseaction=#adres#" method="post">
+		<input type="hidden" name="pbs_row_id" value="<cfoutput>#attributes.pbs_row_id#</cfoutput>">
 		  <cf_box_search>
             <div class="form-group" id="item-date1">
             	<div class="input-group">             
@@ -444,7 +446,13 @@
 								<td>#FIS_NUMBER#</td>
                                 <td align="center">#TIP#</td>
                                 <td align="right">#TlFormat(NET_PRICE,2)#</td>
-								<td align="right">#TlFormat(P_OTHER,2)# #O_MONEY#</td>
+								<td align="right">
+									<cfif isDefined("attributes.pbs_row_id") and len(attributes.pbs_row_id)>
+										<a onclick="setPrice(#attributes.pbs_row_id#,#P_OTHER#,'#O_MONEY#')">#TlFormat(P_OTHER,2)# #O_MONEY#</a>
+									<cfelse>
+										#TlFormat(P_OTHER,2)# #O_MONEY#
+									</cfif>
+									</td>
                                 <td align="right"><cfif TIP eq 'GIRIS'>#TlFormat(AMOUNT,x_round_number)#<cfelse>#TlFormat(0,x_round_number)#</cfif></td>
                                 <td align="right"><cfif TIP eq 'CIKIS'>#TlFormat(AMOUNT,x_round_number)#<cfelse>#TlFormat(0,x_round_number)#</cfif></td>
                                 <td align="right" <cfif toplam_stok lt 0>style="color:red"</cfif>><strong>#TlFormat(toplam_stok,x_round_number)#</strong></td>

@@ -2198,7 +2198,7 @@ function open_product_popup(el) {
   var product_id = sid;
 
   if (product_id != "")
-    openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id);
+    openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id+"&pbs_row_id="+rc);
 }
 function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
   var rs = $.post(
@@ -2228,6 +2228,9 @@ function open_product_popup_fg(pid, sid) {
 
   if (product_id != "")
     openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id);
+}
+function setPrice(ROW_ID,PRICE,MONEY){
+
 }
 
 function SessionKontrolPbs() {
