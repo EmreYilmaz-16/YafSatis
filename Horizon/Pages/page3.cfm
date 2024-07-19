@@ -402,7 +402,7 @@
                 <div class="form-group">
                     <div class="input-group">
                     <input type="text" name="total_default" id="total_default" readonly>
-                    <span class="input-group-text"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
                     </div>
                 </div>
             </td>
@@ -421,7 +421,7 @@
                     <div class="input-group">
                     
                     <input type="text" onchange="AlayiniHesapla()" name="genel_indirim_" id="genel_indirim_" >
-                    <span class="input-group-text"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
                 </div>
                 </div>
             </td>
@@ -439,7 +439,7 @@
                 <div class="form-group">
                     <div class="input-group">
                     <input type="text" name="total_discount_wanted" id="total_discount_wanted" readonly>
-                    <span class="input-group-text"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
                 </div>
                 </div>
             </td>
@@ -457,7 +457,7 @@
                 <div class="form-group">
                     <div class="input-group">
                     <input type="text" name="brut_total_wanted" id="brut_total_wanted" readonly >
-                    <span class="input-group-text"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
                 </div>
                 </div>
             </td>
@@ -475,7 +475,7 @@
                 <div class="form-group">
                     <div class="input-group">
                     <input type="text" name="total_tax_wanted" id="total_tax_wanted" readonly>
-                    <span class="input-group-text"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
                 </div>
                 </div>
             </td>
@@ -494,11 +494,13 @@
                     <div class="input-group">
                     <input type="text" name="net_total_wanted" id="net_total_wanted" readonly>
                 </div>
-                </div>
             </td>
             <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>">
                 <div class="form-group">
+                    <div class="input-group">
                     <input type="text" name="net_total_wanted_" id="net_total_wanted_" readonly>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                </div>
                 </div>
             </td>
         </tr>
