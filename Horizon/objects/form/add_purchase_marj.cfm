@@ -262,7 +262,17 @@ function SonToplamHesapla(){
     var SonToplam=0;
     for(let i=0;i<ee.length;i++){
         var pp_=ee[i].value
-        var pp=parseFloat(filterNum(commaSplit(pp_)))
+        console.log("pp_="+pp_)
+        var tf=commaSplit(pp_)
+        console.log("TF="+tf)
+        var ST=0;
+        if(tf.indexOf("NaN")>=0){
+            ST=filterNum(pp_)
+        }else{
+            ST=filterNum(commaSplit(pp_))
+        }
+        console.log(ST)
+        var pp=parseFloat(ST)
         SonToplam=SonToplam+pp
     }
     console.log(SonToplam)
