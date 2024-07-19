@@ -132,7 +132,7 @@
 <cf_box>
     <cf_box_elements>
         <!--- 1. Grid --->
-        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 margin-bottom-5 border-bottom border-grey">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 margin-bottom-5 border-bottom border-grey" <cfif listFind(session.ep.USER_LEVEL,"12")><cfelse>style="display:none"</cfif>>
             <!--- 1. Clumn --->
             <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xs-12">
                 <div class="form-group col col-12 col-md-12 col-sm-12 col-xs-12">
