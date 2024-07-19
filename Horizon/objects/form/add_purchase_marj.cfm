@@ -172,24 +172,47 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 <script>
 SubTotalHesapla()
 SonToplamHesapla()
-    function  SatirHesaplaCanim (el,gelen) {
-    console.log(gelen)
-    
-    el.value=commaSplit(el.value)
-    var RowId=el.getAttribute("data-row")
-    var DiscountedPrice_=document.getElementsByName("DiscountedPrice_"+RowId)[0].value
-    var DiscountedPrice=parseFloat(filterNum(commaSplit(DiscountedPrice_)))
-    console.log(DiscountedPrice)
-    var Marj=parseFloat(filterNum(commaSplit(el.value)))
-    console.log(Marj)
-    $("#MARJUK_"+RowId).val(Marj)
-    var SalePrice=DiscountedPrice+((DiscountedPrice*Marj)/100)
-    console.log(SalePrice)
-    document.getElementsByName("SalePrice_"+RowId)[0].value=commaSplit(SalePrice)
-    SubTotalHesapla();
-    SonToplamHesapla();
-    return SalePrice
+function SatirHesaplaCanim(el, gelen) {
+  // debugger;
+  console.log(gelen);
+
+  el.value = commaSplit(el.value);
+  var RowId = el.getAttribute("data-row");
+  var DiscountedPrice_ = document.getElementsByName(
+    "DiscountedPrice_" + RowId
+  )[0].value;
+  console.log("1. Bölge DiscountedPrice_=" + DiscountedPrice_);
+  var DiscountedPrice__ = commaSplit(DiscountedPrice_);
+  console.log("2. Bölge DiscountedPrice_=" + DiscountedPrice__);
+  if (DiscountedPrice__.indexOf("NaN") >= 0) {
+    var DiscountedPrice = parseFloat(filterNum(DiscountedPrice_));
+    console.log("3. Bölge DiscountedPrice_=" + DiscountedPrice);
+  } else {
+    var DiscountedPrice = parseFloat(DiscountedPrice__);
+    console.log("4. Bölge DiscountedPrice_=" + DiscountedPrice);
+  }
+  console.log(DiscountedPrice);
+
+  var Marj = parseFloat(filterNum(commaSplit(el.value)));
+  console.log(Marj);
+  $("#MARJUK_" + RowId).val(Marj);
+  var SalePrice = DiscountedPrice + (DiscountedPrice * Marj) / 100;
+  console.log(SalePrice);
+  console.table({
+    DiscountedPrice: DiscountedPrice,
+    Marj: Marj,
+    SalePrice: SalePrice,
+    gelen: gelen,
+    ev: el.value,
+  });
+
+  document.getElementsByName("SalePrice_" + RowId)[0].value =
+    commaSplit(SalePrice);
+  SubTotalHesapla();
+  SonToplamHesapla();
+  return SalePrice;
 }
+
 function  SetAllSubMarj(el) {
     console.log(el)
     el.value=commaSplit(el.value)
