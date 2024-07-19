@@ -498,13 +498,15 @@
                 <div class="form-group">
                     <div class="input-group">
                     <input type="text" name="net_total_wanted" id="net_total_wanted" readonly>
+                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>    
+                </div>
                 </div>
             </td>
             <td  style="display:<cfif SatisSettings.IS_SHOW_TL eq 1><cfelse>none</cfif>">
                 <div class="form-group">
                     <div class="input-group">
                     <input type="text" name="net_total_wanted_" id="net_total_wanted_" readonly>
-                    <span class="input-group-addon"><cfoutput>#Offer.OTHER_MONEY#</cfoutput></span>
+                    
                 </div>
                 </div>
             </td>
