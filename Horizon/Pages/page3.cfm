@@ -79,6 +79,11 @@
 .magnify-modal{
     z-index:999999999
 }
+.ui-form .input-group-addon {
+    background-color: navy;
+    border: 0 !important;
+    padding: 0 5px !important;
+}
 </style>
 <cfparam name="attributes.offer_id" default="3">
 <cf_box>
