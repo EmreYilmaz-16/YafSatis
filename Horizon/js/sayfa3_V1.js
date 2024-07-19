@@ -223,7 +223,7 @@ function addEqRow(Obj, jsn, SEPERATOR_SIRA = "") {
     b0.innerHTML = spn;
     b0.setAttribute("onclick", "$('#SLO_'" + Obj.PropList + ").toggle()");
     var b1 = document.createElement("button");
-    b1.setAttribute("onclick","SepearatorSec(this)")
+    b1.setAttribute("onclick", "SepearatorSec(this)");
     b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
     var spn = '<span class="icn-md fa fa-check-square-o"></span>';
     b1.innerHTML = spn;
@@ -411,7 +411,7 @@ function addEqRow_01(Obj, jsn, SEPERATOR_SIRA = "") {
   b0.setAttribute("onclick", "$('#SLO_'" + Obj.PROPLIST + ").toggle()");
   var b1 = document.createElement("button");
   b1.setAttribute("class", "ui-wrk-btn ui-wrk-btn-extra");
-  b1.setAttribute("onclick","SepearatorSec(this)")
+  b1.setAttribute("onclick", "SepearatorSec(this)");
   var spn = '<span class="icn-md fa fa-check-square-o"></span>';
   b1.innerHTML = spn;
   var b2 = document.createElement("button");
@@ -1500,7 +1500,7 @@ function AlayiniHesapla() {
     //console.table(AKTIF_KUR);
     for (let j = 0; j < Sepet.children.length; j++) {
       var SepetItem = Sepet.children[j];
-      console.log(SepetItem)
+      console.log(SepetItem);
       SEPET_SIRA++;
       // console.log(SepetItem)
       var PRODUCT_ID = DegeriGetir(SepetItem, "PRODUCT_ID", 1);
@@ -1638,15 +1638,15 @@ function GenerateUniqueId() {
 }
 function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
   // console.log(arguments)
-  
+
   var DonusDegeri = $(Satir)
     .find("input[name='" + Name + "']")
     .val();
-    if(Name=="SALE_PRICE"){
-      console.log(Satir)
-      console.log(DonusDegeri)
-      console.log( $(Satir).find("input[name='" + Name + "']"))
-    }
+  if (Name == "SALE_PRICE") {
+    console.log(Satir);
+    console.log(DonusDegeri);
+    console.log($(Satir).find("input[name='" + Name + "']"));
+  }
   var DVX = 0;
   if (DonusDegeri) {
     if (tip == 0) {
@@ -1654,13 +1654,13 @@ function DegeriGetir(Satir, Name, tip = 0, up_row = 0) {
     } else if (tip == 1) {
       DVX = parseInt(DonusDegeri);
     } else if (tip == 2) {
-      if(commaSplit(DonusDegeri).indexOf("NaN")>=0){
+      if (commaSplit(DonusDegeri).indexOf("NaN") >= 0) {
         DVX = parseFloat(filterNum(DonusDegeri));
-      }else{
+      } else {
         DVX = parseFloat(filterNum(commaSplit(DonusDegeri)));
       }
-      
-      if(Name=="SALE_PRICE"){
+
+      if (Name == "SALE_PRICE") {
         console.log(DVX);
       }
     }
@@ -2198,7 +2198,9 @@ function open_product_popup(el) {
   var product_id = sid;
 
   if (product_id != "")
-    openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id+"&pbs_row_id="+rc);
+    openBoxDraggable(
+      url_str + "&pid=" + product_id + "&sid=" + stock_id + "&pbs_row_id=" + rc
+    );
 }
 function CoppyOfferCanim(OFFER_ID, OFFER_NUMBER) {
   var rs = $.post(
@@ -2229,10 +2231,24 @@ function open_product_popup_fg(pid, sid) {
   if (product_id != "")
     openBoxDraggable(url_str + "&pid=" + product_id + "&sid=" + stock_id);
 }
-function setPrice(ROW_ID,PRICE,MONEY){
+function setPrice(ROW_ID, PRICE, MONEY) {
+  if (MONEY == OfferData.OTHER_MONEY) {
+    document.getElementById("SALE_PRICE_" + ROW_ID).value = commaSplit(PRICE);
+  } else {
+    var mnix = MONEY_ARR.findIndex((p) => p.MONEY == MONEY);
+    var mnGelen = MONEY_ARR[mnix];
+    var mnix = MONEY_ARR.findIndex((p) => p.MONEY == OfferData.OTHER_MONEY);
+    var mnGiden = MONEY_ARR[mnix];
+    console.log(mnGelen);
 
+    console.log(mnGiden);
+    var Hesap = PRICE * mnGelen.RATE2;
+    Hesap = Hesap / mnGiden.RATE2;
+    console.log(Hesap);
+    document.getElementById("SALE_PRICE_" + ROW_ID).value = commaSplit(Hesap);
+  }
+  AlayiniHesapla();
 }
-
 function SessionKontrolPbs() {
   var str = window.location.search;
   str = str.substring(1, str.length);
