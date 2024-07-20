@@ -194,8 +194,9 @@ function SatirHesaplaCanim(el, gelen) {
     var DiscountedPrice = parseFloat(filterNum(DiscountedPrice_));
     console.log("3. Bölge DiscountedPrice_=" + DiscountedPrice);
   } else {
-    var DiscountedPrice = parseFloat(DiscountedPrice__);
-    console.log("4. Bölge DiscountedPrice_=" + DiscountedPrice);
+    console.log("4A. Bölge DiscountedPrice_=" + DiscountedPrice__);  
+    var DiscountedPrice = parseFloat(filterNum(DiscountedPrice__));
+    console.log("4B. Bölge DiscountedPrice_=" + DiscountedPrice);
   }
   console.log(DiscountedPrice);
 
