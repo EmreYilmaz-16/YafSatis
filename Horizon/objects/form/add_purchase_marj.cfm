@@ -98,7 +98,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <tr>
         <td><a href="javascript://" onclick="open_product_popup_fg(#PRODUCT_ID#,#STOCK_ID#)">#MANUFACT_CODE#</a></td>
         <td>#PRODUCT_NAME#</td>
-        <td id="MIKTAR_#ROW_COUNT#">#tlformat(QUANTITY)#</td>
+        <td id="MIKTAR_#ROW_COUNT#" name="MIKTAR_#ROW_COUNT#">#tlformat(QUANTITY)#</td>
         <td>#tlformat(PRICE_OTHER)# <input type="hidden" name="PPMNAY_#ROW_COUNT#" value="#OTHER_MONEY#"></td>
         <td>#OTHER_MONEY#</td>
         <td>#tlformat(DISCOUNT_COST)#</td>
@@ -136,9 +136,15 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfoutput>
 </tbody>
 <tr>
-    <td colspan="12">
+    <td colspan="8">
         Toplam
     </td>
+    <td>
+        <div class="form-group">
+        <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_totala MoneyText" name="DiscountPriceTotal_#COMPANY_ID#" value="">
+    </div>
+    </td>
+    <td colspan="3"></td>
     <td>
         <div class="form-group">
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_total MoneyText" name="SalePriceTotal_#COMPANY_ID#" value="">
@@ -232,6 +238,7 @@ function SubTotalHesapla(params) {
         var Ecount=document.getElementsByName("Marj_"+CompanyId).length;
         console.log(Ecount)
         var SubTotal=0;
+        var SubTotal2=0;
        for(let j=0;j<Ecount;j++){
             var el=document.getElementsByName("Marj_"+CompanyId)[j]
             
@@ -239,6 +246,7 @@ function SubTotalHesapla(params) {
             var RowId=el.getAttribute("data-row")
             console.log(RowId)
             var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
+            var DiscountedPrice_=document.getElementsByName("DiscountedPrice_"+RowId)[0].value
             var Miktar_=document.getElementsByName("MIKTAR_"+RowId)[0].value
            console.log(SalePrice_)
             var sp=commaSplit(SalePrice_);
@@ -255,9 +263,12 @@ function SubTotalHesapla(params) {
             if(SalePriceU.length==0){SalePriceU="0";}
             var SalePrice=parseFloat(SalePriceU)
             var Miktar=parseFloat(filterNum(Miktar))
-            SubTotal+=(SalePrice*Miktar);/**/
+            var DiscountedPrice=parseFloat(filterNum(DiscountedPrice_));
+            SubTotal+=(SalePrice*Miktar);
+            SubTotal2+=(DiscountedPrice*Miktar);/**/
         }
        document.getElementsByName("SalePriceTotal_"+CompanyId)[0].value=commaSplit(SubTotal)
+       document.getElementsByName("DiscountPriceTotal_"+CompanyId)[0].value=commaSplit(SubTotal2)
     }
 }
 function SonToplamHesapla(){
