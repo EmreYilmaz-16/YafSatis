@@ -136,7 +136,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfoutput>
 </tbody>
 <tr>
-    <td colspan="8">
+    <td colspan="10">
         Toplam
     </td>
     <td>
@@ -144,7 +144,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_totala MoneyText" name="DiscountPriceTotal_#COMPANY_ID#" value="">
     </div>
     </td>
-    <td colspan="3"></td>
+    <td colspan=""></td>
     <td>
         <div class="form-group">
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_total MoneyText" name="SalePriceTotal_#COMPANY_ID#" value="">
@@ -240,19 +240,20 @@ function SubTotalHesapla(params) {
         var SubTotal=0;
         var SubTotal2=0;
        for(let j=0;j<Ecount;j++){
-            var el=document.getElementsByName("Marj_"+CompanyId)[j]
+           var el=document.getElementsByName("Marj_"+CompanyId)[j]
             
            console.log(el)
             var RowId=el.getAttribute("data-row")
             console.log(RowId)
-            var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
+        var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
             var DiscountedPrice_=document.getElementsByName("DiscountedPrice_"+RowId)[0].value
-            var Miktar_=document.getElementsByName("MIKTAR_"+RowId)[0].value
+            var Miktar_=document.getElementsByName("MIKTAR_"+RowId)[0].innerText
+                console.log("Miktar_="+Miktar_)
            console.log(SalePrice_)
-            var sp=commaSplit(SalePrice_);
+               var sp=commaSplit(SalePrice_);
             console.log("SP="+sp)
            console.log(sp.indexOf("NaN"))
-           var SalePriceU=0; 
+             var SalePriceU=0; 
            if(sp.indexOf("NaN")>= 0){
                 SalePriceU=filterNum(SalePrice_)
             }else{
@@ -262,9 +263,11 @@ function SubTotalHesapla(params) {
            
             if(SalePriceU.length==0){SalePriceU="0";}
             var SalePrice=parseFloat(SalePriceU)
-            var Miktar=parseFloat(filterNum(Miktar))
+           console.log("SalePrice="+SalePrice)
+           var Miktar=parseFloat(filterNum(Miktar_))
+           console.log("Miktar="+Miktar)
             var DiscountedPrice=parseFloat(filterNum(DiscountedPrice_));
-            SubTotal+=(SalePrice*Miktar);
+           SubTotal+=(SalePrice*Miktar);
             SubTotal2+=(DiscountedPrice*Miktar);/**/
         }
        document.getElementsByName("SalePriceTotal_"+CompanyId)[0].value=commaSplit(SubTotal)
