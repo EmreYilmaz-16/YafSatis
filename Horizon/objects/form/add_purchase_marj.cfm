@@ -136,7 +136,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
 </cfoutput>
 </tbody>
 <tr>
-    <td colspan="10">
+    <td colspan="9">
         Toplam
     </td>
     <td>
@@ -144,7 +144,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_totala MoneyText" name="DiscountPriceTotal_#COMPANY_ID#" value="">
     </div>
     </td>
-    <td colspan=""></td>
+    <td colspan="2"></td>
     <td>
         <div class="form-group">
         <input type="text"  data-company_id="#COMPANY_ID#" style="background: ##f7f1ea !important;border: solid 1px ##c3b7a6 !important;text-align: right;" class="sub_total MoneyText" name="SalePriceTotal_#COMPANY_ID#" value="">
