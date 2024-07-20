@@ -98,7 +98,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <tr>
         <td><a href="javascript://" onclick="open_product_popup_fg(#PRODUCT_ID#,#STOCK_ID#)">#MANUFACT_CODE#</a></td>
         <td>#PRODUCT_NAME#</td>
-        <td>#tlformat(QUANTITY)#</td>
+        <td id="MIKTAR_#ROW_COUNT#">#tlformat(QUANTITY)#</td>
         <td>#tlformat(PRICE_OTHER)# <input type="hidden" name="PPMNAY_#ROW_COUNT#" value="#OTHER_MONEY#"></td>
         <td>#OTHER_MONEY#</td>
         <td>#tlformat(DISCOUNT_COST)#</td>
@@ -234,10 +234,12 @@ function SubTotalHesapla(params) {
         var SubTotal=0;
        for(let j=0;j<Ecount;j++){
             var el=document.getElementsByName("Marj_"+CompanyId)[j]
+            
            console.log(el)
             var RowId=el.getAttribute("data-row")
             console.log(RowId)
             var SalePrice_=document.getElementsByName("SalePrice_"+RowId)[0].value
+            var Miktar_=document.getElementsByName("MIKTAR_"+RowId)[0].value
            console.log(SalePrice_)
             var sp=commaSplit(SalePrice_);
             console.log("SP="+sp)
@@ -252,7 +254,8 @@ function SubTotalHesapla(params) {
            
             if(SalePriceU.length==0){SalePriceU="0";}
             var SalePrice=parseFloat(SalePriceU)
-            SubTotal+=SalePrice;/**/
+            var Miktar=parseFloat(filterNum(Miktar))
+            SubTotal+=(SalePrice*Miktar);/**/
         }
        document.getElementsByName("SalePriceTotal_"+CompanyId)[0].value=commaSplit(SubTotal)
     }
