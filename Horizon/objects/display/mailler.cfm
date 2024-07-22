@@ -66,7 +66,7 @@
                 SELECT * FROM PROCESS_TYPE_PRINTS WHERE PROCESS_ROW_ID=#Offer.OFFER_STAGE#
             </cfquery>
             <select name="PFN" id="PFN" onchange="LoadPf(this)">
-                <cfoutput query="#getPF#">
+                <cfoutput query="getPF">
                     <option value="#ID#">#PFNAME#</option>
                 </cfoutput>
             </select>
