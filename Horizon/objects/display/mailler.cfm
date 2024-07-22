@@ -48,15 +48,27 @@
         </cfif>
     
         <div class="form-group" style="width: 25%;">
-       <label>Mail TO</label> 
-    <input type="<cfoutput>#INPUT_TYPE#</cfoutput>" value="<cfoutput>#MAIL_ADRESIM#</cfoutput>" id="mail_to">  
-    </div><div class="form-group" style="width: 25%;">
-      <label>CC</label>
-     <input type="text" value="" id="mail_cc">
-    </div><div class="form-group" style="width: 25%;" >
-    <label>BCC</label>   
-    <input type="text" value="" id="mail_bcc"> 
-    </div><a href="javascript://" onclick="MailGonderCanim(<cfoutput>#attributes.is_sale#</cfoutput>)" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
+            <label>Mail TO</label> 
+            <input type="<cfoutput>#INPUT_TYPE#</cfoutput>" value="<cfoutput>#MAIL_ADRESIM#</cfoutput>" id="mail_to">  
+        </div>
+        <div class="form-group" style="width: 25%;">
+            <label>CC</label>
+            <input type="text" value="" id="mail_cc">
+        </div>
+        <div class="form-group" style="width: 25%;" >
+            <label>BCC</label>   
+            <input type="text" value="" id="mail_bcc"> 
+        </div>
+        <div class="form-group" style="width: 25%;" >
+            <label>Şablon</label>   
+            <cfquery name="getPF" datasource="#dsn3#">
+                SELECT * FROM PROCESS_TYPE_PRINTS WHERE PROCESS_ROW_ID=#Offer.OFFER_STAGE#
+            </cfquery>
+            <select name="PFN" id="PFN">
+                
+            </select>
+        </div>
+        <a href="javascript://" onclick="MailGonderCanim(<cfoutput>#attributes.is_sale#</cfoutput>)" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
     <div style="clear:both"></div>
 <div style="display:flex;margin-top: 10px;">
     <div style="width:49%">
@@ -65,20 +77,16 @@
     <div style="width:2%"></div>
     <div style="width:49%;max-height: 30vh;overflow-y: scroll;" >
         <div>
-<cfset attributes.preview=1>
-
-<cfif attributes.is_sale eq 1>
-    
-    <cfif listFind(session.ep.USER_LEVEL,"12")>
-        
-    <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
+<!-----
+            <cfset attributes.preview=1>
+<cfif attributes.is_sale eq 1>    
+    <cfif listFind(session.ep.USER_LEVEL,"12")>        
+        <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
     <cfelse>
-      
     </cfif>
-<cfelse>
-    
+<cfelse>    
     <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
-        </cfif>
+</cfif>----->
         </div>
     </div>
 </div>
