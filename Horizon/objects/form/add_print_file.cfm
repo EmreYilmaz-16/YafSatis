@@ -25,12 +25,13 @@ WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
 <input type="hidden" name="is_submit">
 </cfform>
 <cfoutput>
-    #expandPath("./AddOns/YafSatis/Horizon/PrintFiles")#
+    #expandPath("./AddOns/YafSatis/PrintFiles")#
 </cfoutput>
 <cfif isDefined("attributes.is_submit")>
+
     <cffile action = "upload"
     fileField = "file_11"
-    destination = "#expandPath("./AddOns/YafSatis/Horizon/PrintFiles")#" 
+    destination = "#expandPath("./AddOns/YafSatis/PrintFiles")#" 
     nameConflict = "Overwrite" result="resul"> 
 <!----
     <cfif isDefined("Form.FileContents") > 
@@ -42,7 +43,9 @@ WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
 <cfset emre= CreateUUID()>
 <cffile action="rename" source="#resul.SERVERDIRECTORY#/#resul.CLIENTFILE#" destination="#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#" result="nbbb">
 
-
+<cfquery name="ins" datasource="#dsn3#">
+    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH) VALUES(#attributes.PTA#,'#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#')
+</cfquery>
 
 
 
