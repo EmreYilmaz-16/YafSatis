@@ -43,9 +43,11 @@ WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
 <cfset emre= CreateUUID()>
 <cffile action="rename" source="#resul.SERVERDIRECTORY#/#resul.CLIENTFILE#" destination="#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#" result="nbbb">
 
+<cfloop list="#attributes.PTA#" index="ii">
 <cfquery name="ins" datasource="#dsn3#">
-    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH) VALUES(#attributes.PTA#,'#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#')
+    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH) VALUES(#listgetat(attributes.PTA,ii)#,'#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#')
 </cfquery>
+</cfloop>
 
 
 
