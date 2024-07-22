@@ -34,4 +34,6 @@
     <cfinclude template="removePurchaseOffer.cfm">
 <cfelseif attributes.ListType  eq "add_print_file">
     <cfinclude template="../form/add_print_file.cfm">
+<cfelseif attributes.ListType  eq "printInner">
+    <cfinclude template="printInner.cfm">
 </cfif>
