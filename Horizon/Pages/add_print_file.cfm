@@ -1,3 +1,4 @@
+<cfset attributes.fuseaction="">
 <cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#" enctype="multipart/form-data" >
     <div class="form-group">
         <input type="file" name="file_11" id="file_11">
@@ -26,7 +27,7 @@
 <cffile action="rename" source="#resul.SERVERDIRECTORY#/#resul.CLIENTFILE#" destination="#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#" result="nbbb">
 
 
-
+Horizon\Pages\add_print_file.cfm
 
 
 
