@@ -5,7 +5,12 @@
 LEFT JOIN CatalystQA.PROCESS_TYPE ON PROCESS_TYPE.PROCESS_ID=PROCESS_TYPE_ROWS.PROCESS_ID
 WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
 </cfquery>
-    <div class="form-group">
+<div class="form-group">
+    <label>Dosya Adı</label>
+    <input type="text" name="PFNAME">
+</div>
+<div class="form-group">
+    <label>Süreç</label>
         <select name="PTA" multiple>
             <cfoutput query="getpt" group="PROCESS_ID">
             <optgroup label="#ISLEM_TIPI#">
@@ -16,7 +21,9 @@ WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
         </cfoutput>
         </select>
 </div>
+
     <div class="form-group">
+        <label>Print Dosyası</label>
         <input type="file" name="file_11" id="file_11">
         <input type="hidden"  name="FileName" id="FileName"> 
     </div>
@@ -45,7 +52,7 @@ WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
 
 <cfloop list="#attributes.PTA#" item="ii">
 <cfquery name="ins" datasource="#dsn3#">
-    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH) VALUES(#ii#,'#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#')
+    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH,PFNAME) VALUES(#ii#,'#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#','#attributes.PFNAME#')
 </cfquery>
 </cfloop>
 
