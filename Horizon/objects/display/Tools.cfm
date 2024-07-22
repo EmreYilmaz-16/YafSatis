@@ -32,4 +32,6 @@
     <cfinclude template="import_offer_rows.cfm">
 <cfelseif attributes.ListType  eq "removePurchaseOffer">
     <cfinclude template="removePurchaseOffer.cfm">
+<cfelseif attributes.ListType  eq "printDosyasıEkle">
+    <cfinclude template="../form/add_print_file.cfm">
 </cfif>
