@@ -5,7 +5,7 @@
 </cfquery>
 
 <cfif getpf.recordCount>
-    <cfinclude template="#getpf.PRINT_FILE_PATH#">
+    <cfinclude template="/AddOns/YafSatis/PrintFiles/#getpf.PRINT_FILE_PATH#">
 <cfelse>
     <div class="alert alert-danger">
         Şablon Bulunamadı

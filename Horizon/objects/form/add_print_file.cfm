@@ -52,7 +52,7 @@ WHERE PROCESS_TYPE.PROCESS_ID IN (193,194) ORDER BY PROCESS_ID,LINE_NUMBER
 
 <cfloop list="#attributes.PTA#" item="ii">
 <cfquery name="ins" datasource="#dsn3#">
-    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH,PFNAME) VALUES(#ii#,'#resul.SERVERDIRECTORY#/#emre#.#resul.CLIENTFILEEXT#','#attributes.PFNAME#')
+    INSERT INTO PROCESS_TYPE_PRINTS (PROCESS_ROW_ID,PRINT_FILE_PATH,PFNAME) VALUES(#ii#,'#emre#.#resul.CLIENTFILEEXT#','#attributes.PFNAME#')
 </cfquery>
 </cfloop>
 
