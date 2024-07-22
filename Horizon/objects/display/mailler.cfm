@@ -65,7 +65,9 @@
                 SELECT * FROM PROCESS_TYPE_PRINTS WHERE PROCESS_ROW_ID=#Offer.OFFER_STAGE#
             </cfquery>
             <select name="PFN" id="PFN">
-                
+                <cfoutput query="#getPF#">
+                    <option value="#ID#">#PFNAME#</option>
+                </cfoutput>
             </select>
         </div>
         <a href="javascript://" onclick="MailGonderCanim(<cfoutput>#attributes.is_sale#</cfoutput>)" class="ui-wrk-btn ui-wrk-btn-extra ui-wrk-btn-addon-left"><i class="fa fa-repeat"></i>Mail Gönder</a></div>
