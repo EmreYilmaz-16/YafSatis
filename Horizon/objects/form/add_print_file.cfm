@@ -1,5 +1,5 @@
-<cfset attributes.fuseaction="">
-<cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#" enctype="multipart/form-data" >
+
+<cfform method="post" action="#request.self#?fuseaction=#attributes.fuseaction#&ListType=add_print_file" enctype="multipart/form-data" >
 <cfquery name="getpt" datasource="#dsn3#">
     select PROCESS_TYPE.PROCESS_ID,PROCESS_TYPE.PROCESS_NAME,PROCESS_TYPE_ROWS.PROCESS_ROW_ID,PROCESS_TYPE_ROWS.STAGE,CASE WHEN PROCESS_TYPE.PROCESS_ID=193 THEN 'SATIŞ SÜREÇLERİ' ELSE 'ALIŞ SÜREÇLERİ' END AS ISLEM_TIPI from CatalystQA.PROCESS_TYPE_ROWS 
 LEFT JOIN CatalystQA.PROCESS_TYPE ON PROCESS_TYPE.PROCESS_ID=PROCESS_TYPE_ROWS.PROCESS_ID
