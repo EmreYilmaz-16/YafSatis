@@ -46,7 +46,8 @@
         <cfelse>
             <cfset INPUT_TYPE="text">
         </cfif>
-    
+   
+
         <div class="form-group" style="width: 25%;">
             <label>Mail TO</label> 
             <input type="<cfoutput>#INPUT_TYPE#</cfoutput>" value="<cfoutput>#MAIL_ADRESIM#</cfoutput>" id="mail_to">  
@@ -64,7 +65,7 @@
             <cfquery name="getPF" datasource="#dsn3#">
                 SELECT * FROM PROCESS_TYPE_PRINTS WHERE PROCESS_ROW_ID=#Offer.OFFER_STAGE#
             </cfquery>
-            <select name="PFN" id="PFN">
+            <select name="PFN" id="PFN" onchange="LoadPf(this)">
                 <cfoutput query="#getPF#">
                     <option value="#ID#">#PFNAME#</option>
                 </cfoutput>
@@ -78,7 +79,7 @@
     </div>
     <div style="width:2%"></div>
     <div style="width:49%;max-height: 30vh;overflow-y: scroll;" >
-        <div>
+        <div id="pfdisplay">
 <!-----
             <cfset attributes.preview=1>
 <cfif attributes.is_sale eq 1>    
@@ -102,7 +103,7 @@
         var CClist=$("#mail_cc").val()
         var BCClist=$("#mail_bcc").val()
         var OfferId=$("#OfferId").val()
-
+        var PF_ID=$("#PFN").val()
 
         var FD={
             FHtml:FHtml,
@@ -119,6 +120,17 @@
             }
         })
         
+    }
+    function LoadPf(el){
+        var cat_id=el.value;
+        var OfferId=$("#OfferId").val()
+        AjaxPageLoad(
+        "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=printInner&iid="+OfferId+"&pfid=" +
+          cat_id,
+        "pfdisplay",
+        1,
+        "Yükleniyor"
+      );
     }
 </script>
 
