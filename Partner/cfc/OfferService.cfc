@@ -1021,6 +1021,7 @@ ORDER BY PO2.OFFER_ID
     </cfquery>
     
     <cfif getpf.recordCount>
+        <cfset attributes.IID=FORMDATAM.IID>
         <cfinclude template="/AddOns/YafSatis/PrintFiles/#getpf.PRINT_FILE_PATH#">
     <cfelse>
         <div class="alert alert-danger">
