@@ -113,6 +113,7 @@
             BCClist:BCClist,
             OfferId:OfferId,
             is_Sale:is_Sale,
+            PF_ID:PF_ID
         }
         $.ajax({
             url:"/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=sendPurchaseOffer",

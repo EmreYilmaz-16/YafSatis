@@ -1016,8 +1016,17 @@ ORDER BY PO2.OFFER_ID
 <cfset FNMN=CreateUUID()>
 
 <cfhtmltopdf marginLeft="0.5" marginRight="0.5" marginTop="0.5" marginBottom="0.5"  destination="C:/W3/PROD/devcatalyst/MailPdf/#FNMN#.pdf" name="PDF_BURASU">
-    <cfset attributes.is_sale=FORMDATAM.is_Sale>
-    <cfinclude template="/AddOns/YafSatis/Horizon/Pages/PdfDesign/PdfPrint.cfm">
+    <cfquery name="getpf" datasource="#dsn3#">
+        select * from CatalystQA_1.PROCESS_TYPE_PRINTS WHERE ID=#FORMDATAM.PF_ID#
+    </cfquery>
+    
+    <cfif getpf.recordCount>
+        <cfinclude template="/AddOns/YafSatis/PrintFiles/#getpf.PRINT_FILE_PATH#">
+    <cfelse>
+        <div class="alert alert-danger">
+            Şablon Bulunamadı
+        </div>
+    </cfif>
    
 </cfhtmltopdf>
 
