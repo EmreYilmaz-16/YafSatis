@@ -31,6 +31,8 @@
 <cfset _OfferData=OfferService.getPurchaseOffer(attributes.offer_id)>
 <cfset OfferData=deserializeJSON(_OfferData)>
 <cfset MoneyArr=deserializeJSON(OfferService.getOfferMoney())>
+<cfset OfferConditions_=OfferService.getOfferConditions()>
+<cfset OfferConditions=deserializeJSON(OfferConditions_)>
 <cfquery name="getMoney" datasource="#dsn#">
     SELECT (
             SELECT RATE1
@@ -94,6 +96,15 @@
 
 <div style="display:flex">
     <div class="form-group">
+        <label>PARTS CONDITION</label>
+        <select name="OFFER_CONDITION">
+            <option value="">Seç</option>
+            <cfloop array="#OfferConditions#" item="it">
+                <cfoutput><option value="#ID#">#CONDITION#</cfoutput>
+            </cfloop>
+        </select>
+    </div>
+    <div class="form-group">
         <label>DELIVER FEE</label>
         <select name="DELIVER_FEE">
             <option value="">Seç</option>
@@ -104,7 +115,7 @@
         <label>Tax Status</label>
         <select name="TAX_STATUS">
             <option value="">Seç</option>
-            <option value="1" <cfif OfferData.TAX_STATUS eq 1>selected</cfif>>With Tax</option>
+            <option value="1" <cfif OfferData., eq 1>selected</cfif>>With Tax</option>
             <option value="2" <cfif OfferData.TAX_STATUS eq 2>selected</cfif>>Without Tax</option>
         </select>
     </div>
