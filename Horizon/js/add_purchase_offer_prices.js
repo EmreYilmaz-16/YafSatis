@@ -325,7 +325,6 @@ function addEqRow_01(Obj, jsn) {
     tr.appendChild(thCrate("Part Name", true));
     tr.appendChild(thCrate("Quantity", true));
     tr.appendChild(thCrate("Unit", true));
-    tr.appendChild(thCrate("Tax", true));
     tr.appendChild(thCrate("Purchase Price", false));
     tr.appendChild(thCrate("Purchase Price", true));
     tr.appendChild(thCrate("Sales Discount", false));
@@ -459,7 +458,7 @@ function addRowCrs(
   input.id = "STOCK_ID_" + RowCount;
   input.value = STOCK_ID;
   div.appendChild(input);
-/*
+
   var input = document.createElement("input");
   input.type = "hidden";
   input.name = "TAX";
@@ -469,7 +468,7 @@ function addRowCrs(
 
   td.appendChild(div);
   tr.appendChild(td);
-*/
+
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
@@ -512,21 +511,6 @@ function addRowCrs(
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
-
-  var td = document.createElement("td");
-  var div = document.createElement("div");
-  div.setAttribute("class", "form-group");
-  var input = document.createElement("input");
-  input.setAttribute("type", "text");
-  input.name = "TAX";
-
-  input.id = "TAX_" + RowCount;
-  input.value = commaSplit(TAX);
-  input.setAttribute("onchange", "AlayiniHesapla()");
-  div.appendChild(input);
-  td.appendChild(div);
-  tr.appendChild(td);
-
 
   var td = document.createElement("td");
   td.setAttribute("style", "display:none");
