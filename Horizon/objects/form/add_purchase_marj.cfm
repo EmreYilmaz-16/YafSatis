@@ -68,19 +68,19 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <cfoutput query="getMQ" group="COMPANY_ID">
         <thead>
     <tr>
-        <th style="background:##f0f8ff" colspan="14"><cfif listFind(session.ep.USER_LEVEL,"12")>#FULLNAME#<cfelse>#OZEL_KOD#</cfif></th>
+        <th style="background:##f0f8ff" colspan="15"><cfif listFind(session.ep.USER_LEVEL,"12")>#FULLNAME#<cfelse>#OZEL_KOD#</cfif></th>
     </tr>
     <tr>
-        <TH colspan="14">
-            <span style="font-weight:normal"><b style="color:##2186de">Parts Condition:</b> #OFFER_CONDITION#</span> 
-            <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif DELIVER_FEE eq 1>Need Charge</cfif></span> 
-            <span style="font-weight:normal"><b style="color:##2186de">Delivery Cost:</b> #DELIVERY_COST#</span>
-            <span style="font-weight:normal"><b style="color:##2186de">Packing Fee:</b> #PACKAGE_FEE#</span>
-            <span style="font-weight:normal"><b style="color:##2186de">Payment Terms:</b> #PAYMENT_TERMS#</span>
-            <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif TAX_STATUS eq 1>With Tax</cfif><cfif TAX_STATUS eq 2>Without Tax</cfif></span> 
-            <span style="font-weight:normal"><b style="color:##2186de">General Discount:</b> #GENERAL_DISCOUNT_RATE#</span>
-            <span style="font-weight:normal"><b style="color:##2186de">Currency:</b> #OTHER_MONEY#</span>
-            <span style="font-weight:normal"><b style="color:##2186de">Validity:</b> #VALID_DAYS#</span>
+        <TH colspan="15">
+            <span style="font-weight:normal"><b style="color:##2186de">Parts Condition:</b> #OFFER_CONDITION#</span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif DELIVER_FEE eq 1>Need Charge</cfif></span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Delivery Cost:</b> #DELIVERY_COST#</span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Packing Fee:</b> #PACKAGE_FEE#</span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Payment Terms:</b> #PAYMENT_TERMS#</span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif TAX_STATUS eq 1>With Tax</cfif><cfif TAX_STATUS eq 2>Without Tax</cfif></span>  -
+            <span style="font-weight:normal"><b style="color:##2186de">General Discount:</b> #GENERAL_DISCOUNT_RATE#</span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Currency:</b> #OTHER_MONEY#</span> -
+            <span style="font-weight:normal"><b style="color:##2186de">Validity:</b> #VALID_DAYS#</span> 
         </TH>
     </tr>
     <tr>
@@ -112,6 +112,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </th>
     <th>Sales Price</th>
     <th></th>
+    <th>Deliver Date</th>
     </tr>
 </thead>
 <tbody>
@@ -153,7 +154,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
         <td>
             #getOfferMoney.MONEY_TYPE#
         </td>
-        
+        <td>#dateformat(DELIVER_DATE,"dd/mm/yyyy")#</td>
     </tr>
 </cfoutput>
 </tbody>
@@ -175,7 +176,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     <td>#getOfferMoney.MONEY_TYPE#</td>
 </tr>
 <tr>
-    <td colspan="14">&nbsp;</td>
+    <td colspan="15">&nbsp;</td>
 </tr>
 </cfoutput>
 <input type="hidden" name="ROW_COUNT" value="<cfoutput>#ROW_COUNT#</cfoutput>">
