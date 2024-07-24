@@ -460,12 +460,12 @@ function addRowCrs(
   input.value = STOCK_ID;
   div.appendChild(input);
 
-  var input = document.createElement("input");
-  input.type = "hidden";
-  input.name = "TAX";
-  input.value = TAX;
-  input.id = "TAX_" + RowCount;
-  div.appendChild(input);
+  // var input = document.createElement("input");
+  // input.type = "hidden";
+  // input.name = "TAX";
+  // input.value = TAX;
+  // input.id = "TAX_" + RowCount;
+  // div.appendChild(input);
 
   td.appendChild(div);
   tr.appendChild(td);
@@ -509,6 +509,20 @@ function addRowCrs(
 
   input.id = "PRODUCT_UNIT_" + RowCount;
   input.appendChild(opt);
+  div.appendChild(input);
+  td.appendChild(div);
+  tr.appendChild(td);
+
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.name = "TAX";
+
+  input.id = "TAX_" + RowCount;
+  input.value = commaSplit(TAX);
+  input.setAttribute("onchange", "AlayiniHesapla()");
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
