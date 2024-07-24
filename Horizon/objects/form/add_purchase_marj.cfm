@@ -72,8 +72,15 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </tr>
     <tr>
         <TH colspan="14">
-            <span><b>Parts Condition:</b> #OFFER_CONDITION#</span> <span><b>Deliver Fee:</b> <cfif DELIVER_FEE eq 1>Need Charge</cfif></span> <span><b>Delivery Cost:</b> #DELIVERY_COST#</span>
-
+            <span style="font-weight:normal"><b style="color:##2186de">Parts Condition:</b> #OFFER_CONDITION#</span> 
+            <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif DELIVER_FEE eq 1>Need Charge</cfif></span> 
+            <span style="font-weight:normal"><b style="color:##2186de">Delivery Cost:</b> #DELIVERY_COST#</span>
+            <span style="font-weight:normal"><b style="color:##2186de">Packing Fee:</b> #PACKAGE_FEE#</span>
+            <span style="font-weight:normal"><b style="color:##2186de">Payment Terms:</b> #PAYMENT_TERMS#</span>
+            <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif TAX_STATUS eq 1>With Tax</cfif><cfif TAX_STATUS eq 2>Without Tax</cfif></span> 
+            <span style="font-weight:normal"><b style="color:##2186de">General Discount:</b> #GENERAL_DISCOUNT_RATE#</span>
+            <span style="font-weight:normal"><b style="color:##2186de">Currency:</b> #OTHER_MONEY#</span>
+            <span style="font-weight:normal"><b style="color:##2186de">Validity:</b> #VALIDITY#</span>
         </TH>
     </tr>
     <tr>
