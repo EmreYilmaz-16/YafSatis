@@ -105,7 +105,10 @@
         <select name="OFFER_CONDITION">
             <option value="">Seç</option>
             <cfloop array="#OfferConditions#" item="it">
-                <cfoutput><option <cfif OfferData.OFFER_CONDITION eq ID>selected</cfif> value="#ID#">#CONDITION#</cfoutput>
+                <cfoutput>
+                    <option <cfif OfferData.OFFER_CONDITION eq ID>selected</cfif>  value="#ID#">#CONDITION#</option>
+                </cfoutput>
+                    <!---<option <cfif OfferData.OFFER_CONDITION eq ID>selected</cfif> value="#ID#">#CONDITION#</cfoutput>--->
             </cfloop>
         </select>
     </div>
