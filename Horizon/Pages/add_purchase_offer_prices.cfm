@@ -118,15 +118,15 @@
     </div>
     <div class="form-group">
         <label>Delivery Cost</label>
-        <input type="text" name="DELIVERY_COST" onchange="">
+        <input type="text" name="DELIVERY_COST" onchange="" value="<cfoutput>#OfferData.DELIVERY_COST#</cfoutput>">
     </div> 
     <div class="form-group">
         <label>Packing Fee</label>
-        <input type="text" name="PACKAGE_FEE" onchange="">
+        <input type="text" name="PACKAGE_FEE" onchange="" value="<cfoutput>#OfferData.PACKAGE_FEE#</cfoutput>">
     </div> 
     <div class="form-group">
         <label>Payment Terms</label>
-        <input type="text" name="PAYMENT_TERMS" onchange="">
+        <input type="text" name="PAYMENT_TERMS" onchange="" value="<cfoutput>#OfferData.PAYMENT_TERMS#</cfoutput>">
     </div> 
     <div class="form-group">
         <label>Tax Status</label>
@@ -163,7 +163,7 @@
     </div> 
     <div class="form-group">
         <label>Validity</label>
-        <input type="text" name="VALID_DAYS" onchange="">
+        <input type="text" name="VALID_DAYS" onchange="" value="<cfoutput>#OfferData.VALID_DAYS#</cfoutput>">
     </div>
     <div class="form-group">
         <button class="ui-wrk-btn ui-wrk-btn-success" onclick="SaveOffer()">
