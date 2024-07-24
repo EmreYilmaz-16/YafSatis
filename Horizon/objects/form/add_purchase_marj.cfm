@@ -1,4 +1,4 @@
-<cf_box title="Satış Fiyat Marjları" scroll="1" collapsable="1" resize="1" popup_box="1">
+﻿<cf_box title="Satış Fiyat Marjları" scroll="1" collapsable="1" resize="1" popup_box="1">
 <cfparam name="attributes.OFFER_ID" default="11">
 <cfquery name="getMQ" datasource="#dsn3#">
   SELECT FIYAT_ONERME_PBS.ID,FIYAT_ONERME_PBS.WRK_ROW_ID,FIYAT_ONERME_PBS.OFFER_ID,FIYAT_ONERME_PBS.SON_FIYAT,FIYAT_ONERME_PBS.FOR_OFFER_ID,FIYAT_ONERME_PBS.SECEN_EMP,FIYAT_ONERME_PBS.SECEN_DATE,FIYAT_ONERME_PBS.MARJ_EMP,FIYAT_ONERME_PBS.MARJ_DATE,ISNULL(FIYAT_ONERME_PBS.MARJ_ORAN,0) MARJ_ORAN
