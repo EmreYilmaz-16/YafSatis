@@ -135,7 +135,7 @@
         <label>Tax Status</label>
         <select name="TAX_STATUS">
             <option value="">Seç</option>
-            <option value="1" <cfif OfferData., eq 1>selected</cfif>>With Tax</option>
+            <option value="1" <cfif OfferData.TAX_STATUS eq 1>selected</cfif>>With Tax</option>
             <option value="2" <cfif OfferData.TAX_STATUS eq 2>selected</cfif>>Without Tax</option>
         </select>
     </div>
