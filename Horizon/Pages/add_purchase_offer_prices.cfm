@@ -141,7 +141,7 @@
     </div>
     <div class="form-group">
         <label>Tax</label>
-        <input type="text" name="TAX" onchange="" value="">
+        <input type="text" name="TAX_MAIN" onchange='$(document.getElementsByName("TAX")).val(commaSplit(this.value));this.value=commaSplit(this.value);AlayiniHesapla()' value="">
     </div> 
     <div class="form-group">
         <label>General Discount %</label>
