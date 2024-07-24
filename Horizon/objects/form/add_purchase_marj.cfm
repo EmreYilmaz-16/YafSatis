@@ -80,7 +80,7 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
             <span style="font-weight:normal"><b style="color:##2186de">Deliver Fee:</b> <cfif TAX_STATUS eq 1>With Tax</cfif><cfif TAX_STATUS eq 2>Without Tax</cfif></span> 
             <span style="font-weight:normal"><b style="color:##2186de">General Discount:</b> #GENERAL_DISCOUNT_RATE#</span>
             <span style="font-weight:normal"><b style="color:##2186de">Currency:</b> #OTHER_MONEY#</span>
-            <span style="font-weight:normal"><b style="color:##2186de">Validity:</b> #VALIDITY#</span>
+            <span style="font-weight:normal"><b style="color:##2186de">Validity:</b> #VALID_DAYS#</span>
         </TH>
     </tr>
     <tr>
