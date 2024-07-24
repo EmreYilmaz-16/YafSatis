@@ -729,6 +729,21 @@ function addRowCrs(
   div.appendChild(div2);
   td.appendChild(div);
   tr.appendChild(td);
+  
+  
+  var td = document.createElement("td");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
+  var input = document.createElement("input");
+
+  input.setAttribute("type", "text");
+  input.name = "ROW_NET_TOTAL";
+  input.id = "ROW_NET_TOTAL_" + RowCount;
+  input.value = 0;
+  div.appendChild(input);
+  td.appendChild(div);
+  tr.appendChild(td);
+
   document.getElementById("SubSepetBody_" + proplist).appendChild(tr);
   RowCount++;
 }
