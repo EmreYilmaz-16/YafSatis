@@ -1077,7 +1077,7 @@ function SaveOffer() {
 
     BasketData.VALID_DAYS =
     document.getElementsByName("VALID_DAYS")[0].value;
-    
+
   $.ajax({
     url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_PURCHASE_OFFER_PRICES",
     data: {
