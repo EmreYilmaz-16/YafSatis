@@ -142,6 +142,7 @@ function addEqRow(Obj, jsn) {
     tr.appendChild(thCrate("Part Name", true));
     tr.appendChild(thCrate("Quantity", true));
     tr.appendChild(thCrate("Unit", true));
+    tr.appendChild(thCrate("Tax", true));
     tr.appendChild(thCrate("Purchase Price", false));
     tr.appendChild(thCrate("Purchase Price", true));
     tr.appendChild(thCrate("Sales Discount", false));
