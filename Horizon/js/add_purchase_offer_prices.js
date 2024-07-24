@@ -730,7 +730,7 @@ function addRowCrs(
   td.appendChild(div);
   tr.appendChild(td);
   
-  
+  /*
   var td = document.createElement("td");
   var div = document.createElement("div");
   div.setAttribute("class", "form-group");
@@ -743,6 +743,32 @@ function addRowCrs(
   div.appendChild(input);
   td.appendChild(div);
   tr.appendChild(td);
+*/
+var td = document.createElement("td");
+var div = document.createElement("div");
+div.setAttribute("class", "form-group");
+var div2 = document.createElement("div");
+div2.setAttribute("class", "input-group");
+div2.setAttribute("style", "display:flex");
+var input = document.createElement("input");
+input.setAttribute("type", "text");
+input.name = "ROW_NET_TOTAL";
+input.id = "ROW_NET_TOTAL_" + RowCount;
+input.value = commaSplit(0);
+input.setAttribute("readonly", "yes");
+div2.appendChild(input);
+var input = document.createElement("select");
+input.innerHTML = CreateOptionList(1, OfferData.OTHER_MONEY);
+input.name = "ROW_NET_TOTAL_MONEY";
+input.id = "ROW_NET_TOTAL_MONEY_" + RowCount;
+input.setAttribute("class", "input-group-text");
+input.setAttribute("disabled", "yes");
+div2.appendChild(input);
+div.appendChild(div2);
+td.appendChild(div);
+tr.appendChild(td);
+
+
 
   document.getElementById("SubSepetBody_" + proplist).appendChild(tr);
   RowCount++;
@@ -858,6 +884,10 @@ function AlayiniHesapla() {
       var PRICE = SALE_PRICE * AKTIF_KUR.RATE2;
 
       DegerYaz(SepetItem, "TOTAL_PRICE", 2, TOTAL_PRICE);
+      
+      var vt=TOTAL_PRICE+(TOTAL_PRICE*TAX_RATE)/100;
+      DegerYaz(SepetItem, "ROW_NET_TOTAL", 2, vt);
+
       var TL_TOTAL_PRICE = UNIT_PRICE * AMOUNT * AKTIF_KUR.RATE2;
 
       var TAX = (TL_TOTAL_PRICE * TAX_RATE) / 100;
