@@ -92,25 +92,42 @@
     <script>
         var OfferData=<cfoutput>#OfferList#</cfoutput>
     </script>      
-    
+  <!----  <CFSET OFFER_DATA.OFFER_CONDITION=getOffer.OFFER_CONDITION>
+    <CFSET OFFER_DATA.VALID_DAYS=getOffer.VALID_DAYS>
+    <CFSET OFFER_DATA.DELIVERY_COST=getOffer.DELIVERY_COST>
+    <CFSET OFFER_DATA.PACKAGE_FEE=getOffer.PACKAGE_FEE>
+    <CFSET OFFER_DATA.PAYMENT_TERMS=getOffer.PAYMENT_TERMS>
+----->
 
 <div style="display:flex">
     <div class="form-group">
-        <label>PARTS CONDITION</label>
+        <label>Parts Condition</label>
         <select name="OFFER_CONDITION">
             <option value="">Seç</option>
             <cfloop array="#OfferConditions#" item="it">
-                <cfoutput><option value="#ID#">#CONDITION#</cfoutput>
+                <cfoutput><option <cfif OfferData.OFFER_CONDITION eq ID>selected</cfif> value="#ID#">#CONDITION#</cfoutput>
             </cfloop>
         </select>
     </div>
     <div class="form-group">
-        <label>DELIVER FEE</label>
+        <label>Deliver Fee</label>
         <select name="DELIVER_FEE">
             <option value="">Seç</option>
             <option value="1" <cfif OfferData.DELIVER_FEE eq 1>selected</cfif>>Need Charge</option>
         </select>
     </div>
+    <div class="form-group">
+        <label>Delivery Cost</label>
+        <input type="text" name="DELIVERY_COST" onchange="">
+    </div> 
+    <div class="form-group">
+        <label>Packing Fee</label>
+        <input type="text" name="PACKAGE_FEE" onchange="">
+    </div> 
+    <div class="form-group">
+        <label>Payment Terms</label>
+        <input type="text" name="PAYMENT_TERMS" onchange="">
+    </div> 
     <div class="form-group">
         <label>Tax Status</label>
         <select name="TAX_STATUS">
@@ -144,6 +161,10 @@
         <label>Deliver Date</label>
         <input type="date" name="DELIVER_DATE" onchange="HesaplaDeliveryDate('DELIVER_DATE',this)">
     </div> 
+    <div class="form-group">
+        <label>Validity</label>
+        <input type="text" name="VALID_DAYS" onchange="">
+    </div>
     <div class="form-group">
         <button class="ui-wrk-btn ui-wrk-btn-success" onclick="SaveOffer()">
           Kaydet
