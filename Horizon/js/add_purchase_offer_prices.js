@@ -152,7 +152,7 @@ function addEqRow(Obj, jsn) {
     tr.appendChild(thCrate("Delivered Items", false));
     tr.appendChild(thCrate("Deliver Date", true));
     tr.appendChild(thCrate("Weight", true));
-
+    tr.appendChild(thCrate("Row Net Total ", true));
     thead.appendChild(tr);
     Table.appendChild(thead);
     Table.id = "SubSepet_" + Obj.PropList;
@@ -330,12 +330,13 @@ function addEqRow_01(Obj, jsn) {
     tr.appendChild(thCrate("Purchase Price", true));
     tr.appendChild(thCrate("Sales Discount", false));
     tr.appendChild(thCrate("Unit Price", true));
+    
     tr.appendChild(thCrate("Total Price", false));
     tr.appendChild(thCrate("First Remark", true));
     tr.appendChild(thCrate("Delivered Items", false));
     tr.appendChild(thCrate("Deliver Date", true));
     tr.appendChild(thCrate("Weight", true));
-
+    tr.appendChild(thCrate("Row Net Total ", true));
     thead.appendChild(tr);
     Table.appendChild(thead);
     Table.id = "SubSepet_" + Obj.PROPLIST;
