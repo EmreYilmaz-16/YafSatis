@@ -72,7 +72,8 @@ ORDER BY COMPANY.FULLNAME,STOCKS.PRODUCT_NAME
     </tr>
     <tr>
         <TH colspan="14">
-            ##
+            <span><b>Parts Condition:</b> #OFFER_CONDITION#</span> <span><b>Deliver Fee:</b> <cfif DELIVER_FEE eq 1>Need Charge</cfif></span> <span><b>Delivery Cost:</b> #DELIVERY_COST#</span>
+
         </TH>
     </tr>
     <tr>
