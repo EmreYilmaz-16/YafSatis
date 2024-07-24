@@ -1062,6 +1062,22 @@ function SaveOffer() {
     document.getElementsByName("GENERAL_DISCOUNT")[0].value;
   BasketData.DELIVERY_TIMES =
     document.getElementsByName("DELIVERY_TIMES")[0].value;
+
+    BasketData.OFFER_CONDITION =
+    document.getElementsByName("OFFER_CONDITION")[0].value;
+
+    BasketData.DELIVERY_COST =
+    document.getElementsByName("DELIVERY_COST")[0].value;
+
+    BasketData.PACKAGE_FEE =
+    document.getElementsByName("PACKAGE_FEE")[0].value;
+    
+    BasketData.PAYMENT_TERMS =
+    document.getElementsByName("PAYMENT_TERMS")[0].value;
+
+    BasketData.VALID_DAYS =
+    document.getElementsByName("VALID_DAYS")[0].value;
+    
   $.ajax({
     url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=SAVE_PURCHASE_OFFER_PRICES",
     data: {

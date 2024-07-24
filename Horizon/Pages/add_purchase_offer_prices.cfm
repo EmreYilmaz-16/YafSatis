@@ -140,6 +140,10 @@
         </select>
     </div>
     <div class="form-group">
+        <label>Tax</label>
+        <input type="text" name="TAX" onchange="" value="">
+    </div> 
+    <div class="form-group">
         <label>General Discount %</label>
         <input type="text" id="GENERAL_DISCOUNT" name="GENERAL_DISCOUNT" onchange="indirimYuzdeHesap()" value="<cfoutput>#OfferData.GENERAL_DISCOUNT_RATE#</cfoutput>">
     </div>    
