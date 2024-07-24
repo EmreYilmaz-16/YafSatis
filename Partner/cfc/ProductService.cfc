@@ -170,19 +170,14 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
     <cffunction name="getWesselProducts" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="WesselId">
         <cfquery name="getProd" datasource="#dsn#">
-            select S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,POR.PROP_LIST,POR.JSON_STRINGIM,PU.MAIN_UNIT,S.PRODUCT_CODE,S.TAX,S.PRODUCT_CODE_2 from CatalystQA_1.PBS_OFFER_ROW AS POR 
+            select S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,POR.PROP_LIST,POR.JSON_STRINGIM,PU.MAIN_UNIT,S.PRODUCT_CODE,S.TAX,S.PRODUCT_CODE_2 from CatalystQA_1.PBS_OFFER_ROW AS POR 
         INNER JOIN CatalystQA_1.PBS_OFFER AS PO ON POR.OFFER_ID=PO.OFFER_ID
         INNER JOIN CatalystQA_1.STOCKS AS S ON S.STOCK_ID=POR.STOCK_ID
-        LEFT JOIN CatalystQA_product.PRODUCT_CAT AS PC ON PC.PRODUCT_CATID=S.PRODUCT_CATID
         INNER JOIN CatalystQA_product.PRODUCT_UNIT AS PU ON PU.PRODUCT_ID=S.PRODUCT_ID AND PU.IS_MAIN=1
         WHERE PO.WESSEL_ID=#arguments.WesselId#
         </cfquery>
         <cfset ReturnArr=arrayNew(1)>
-        <cfloop query="getProd" group="PRODUCT_CATID">
-            <CFSET PA=structNew()>
-            <CFSET PA.PRODUCT_CAT=PRODUCT_CAT>
-            <CFSET PA.PRODUCT_ARR=arrayNew(1)>
-            <cfloop>
+        <cfloop query="getProd">
         <cfset P=structNew()>
             <cfset P.MANUFACT_CODE=getProd.MANUFACT_CODE>
         <cfset P.PRODUCT_ID=getProd.PRODUCT_ID>
@@ -196,12 +191,8 @@ WHERE PP1.PRPT_ID=#arguments.PROPERTY_ID#
         <cfset P.PROP_LIST=getProd.PROP_LIST>
         <cfset P.JSON_STRINGIM=getProd.JSON_STRINGIM>
         <cfscript>
-            arrayAppend(PA.PRODUCT_ARR,P);
+            arrayAppend(ReturnArr,P);
         </cfscript>
-    </cfloop>
-    <cfscript>
-        arrayAppend(ReturnArr,PA);
-    </cfscript>
         </cfloop>
         <cfreturn replace(serializeJSON(ReturnArr),"//","")>
     </cffunction>
@@ -259,11 +250,11 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
                     ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
                 WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
                 ) AS TT
-            WHERE 1 = 1  AND MANUFACT_CODE = '#FData.keyword#' 
+            WHERE 1 = 1 AND MANUFACT_CODE = '#FData.keyword#' 
             <cfloop array="#FData.SearchMainValue.Filters#" item="it">
             <cfif it.PNAME.trim() neq "EQUIPMENT"> 
                 <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
-                AND DTP LIKE '%<cfif isdefined("it.PRODUCT_CAT_ID")>#it.PRODUCT_CAT_ID#<cfelse>#it.PRODUCT_CATID#</cfif>,%'
+                AND DTP LIKE '%#it.PRODUCT_CAT_ID#,%'
             </cfif>
             
         </cfif>
@@ -293,12 +284,10 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
     <cffunction name="SearchProductPopup" access="remote" httpMethod="Post" returntype="any" returnFormat="json">
         <cfargument name="FormData">
         <cfset FData=deserializeJSON(arguments.FormData)>
-        
-        
         <cfquery name="getProd" datasource="#dsn#">
             SELECT *
             FROM (
-                SELECT PRODUCT_NAME, P.MANUFACT_CODE, PRODUCT_CODE, PRODUCT_CODE_2,P.PRODUCT_ID,S.STOCK_ID,P.PRODUCT_CATID, PU.MAIN_UNIT,P.TAX, (
+                SELECT PRODUCT_NAME, P.MANUFACT_CODE, PRODUCT_CODE, PRODUCT_CODE_2,P.PRODUCT_ID,S.STOCK_ID, PU.MAIN_UNIT,P.TAX, (
                         SELECT CONVERT(VARCHAR,PP.PROPERTY )+'-' + CONVERT(VARCHAR, PROPERTY_DETAIL_ID) + ','
                         FROM CatalystQA_product.PRODUCT_DT_PROPERTIES
                         INNER JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL AS PPD ON PPD.PROPERTY_DETAIL_ID=PRODUCT_DT_PROPERTIES.VARIATION_ID
@@ -306,7 +295,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
                         WHERE PRODUCT_ID = P.PRODUCT_ID
                         FOR XML PATH('')
                         ) AS DTP,(
-                            select DISTINCT PROPERTY,PP.PROPERTY_ID,PROPERTY_DETAIL,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
+                            select PROPERTY,PROPERTY_DETAIL,ISNULL(PCP.IS_AMOUNT,PDP.IS_EXIT) AS IS_AMOUNT from CatalystQA_product.PRODUCT_DT_PROPERTIES AS PDP
  LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY_DETAIL PPD ON PPD.PROPERTY_DETAIL_ID=PDP.VARIATION_ID
  LEFT JOIN CatalystQA_product.PRODUCT_PROPERTY AS PP ON PP.PROPERTY_ID=PPD.PRPT_ID
  LEFT JOIN CatalystQA_product.PRODUCT_CAT_PROPERTY AS PCP ON PCP.PRODUCT_CAT_ID=P.PRODUCT_CATID AND PCP.PROPERTY_ID=PP.PROPERTY_ID
@@ -320,7 +309,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
                     ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
                 WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
                 ) AS TT
-            WHERE 1 = 1 <cfif isDefined("FData.keyword") and len(FData.keyword)>
+            WHERE 1 = 1 <cfif len(FData.keyword)>
                  AND (
                     MANUFACT_CODE LIKE '%#FData.keyword#%' OR
                     PRODUCT_NAME LIKE '%#FData.keyword#%' 
@@ -370,7 +359,6 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfset P.PRODUCT_NAME=getProd.PRODUCT_NAME>
         <cfset P.PRODUCT_CODE=getProd.PRODUCT_CODE>
         <CFSET P.TAX=getProd.TAX>
-        <CFSET P.PRODUCT_CATID=PRODUCT_CATID>
         <cfset P.DTP=DTP2>
         <cfset P.PRODUCT_CODE_2=getProd.PRODUCT_CODE_2>
         <cfset P.MAIN_UNIT=getProd.MAIN_UNIT>
@@ -480,17 +468,17 @@ AND PDP.PROPERTY_ID NOT IN (SELECT PROPERTY_ID FROM CatalystQA_product.PRODUCT_C
         <cfloop array="#PropArr#" item="it" index="ix">
            <cfif it.PNAME neq "EQUIPMENT">
             <cfquery name="GETPCDA" datasource="#DSN1#">
-                SELECT ISNULL(IS_OPTIONAL,0) IS_OPTIONAL,ISNULL(IS_AMOUNT,0) IS_AMOUNT FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#arguments.PRODUCT_CATID# AND PROPERTY_ID=#it.PROP_ID#
+                SELECT IS_OPTIONAL,IS_AMOUNT FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#arguments.PRODUCT_CATID# AND PROPERTY_ID=#it.PROP_ID#
             </cfquery>
            <cfquery name="ins" datasource="#dsn1#">
                 INSERT INTO PRODUCT_DT_PROPERTIES (PRODUCT_ID,PROPERTY_ID,VARIATION_ID,LINE_VALUE,IS_OPTIONAL,IS_EXIT)
                 VALUES (
                     #RECORDED_PRODUCT_ID#,
                     #it.PROP_ID#,
-                    <cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry>,
+                    #it.PRODUCT_CAT_ID#,
                     #ix#,
-                    <cfif len(GETPCDA.IS_OPTIONAL)>#GETPCDA.IS_OPTIONAL#<cfelse>0</cfif>,
-                    <cfif len(GETPCDA.IS_AMOUNT)>#GETPCDA.IS_AMOUNT#<cfelse>0</cfif>
+                    #GETPCDA.IS_OPTIONAL#,
+                    #GETPCDA.IS_AMOUNT#
                 ) 
             </cfquery>
             </cfif>
