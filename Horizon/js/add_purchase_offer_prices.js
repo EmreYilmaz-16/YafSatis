@@ -844,8 +844,7 @@ function AlayiniHesapla() {
       var PRODUCT_NAME = DegeriGetir(SepetItem, "PRODUCT_NAME", 0);
       var PRODUCT_CODE_2 = DegeriGetir(SepetItem, "PRODUCT_CODE_2", 0);
       var ROW_DELIVER_DATE = DegeriGetir(SepetItem, "ROW_DELIVER_DATE", 0);
-      var TAX_RATE = 0;
-      if (OfferSettings.IS_TAX_ZERO == 0)
+      
         TAX_RATE = DegeriGetir(SepetItem, "TAX", 2, 0);
       var STOCK_ID = DegeriGetir(SepetItem, "STOCK_ID", 1);
       var AMOUNT = DegeriGetir(SepetItem, "QUANTITY", 2, 1);
