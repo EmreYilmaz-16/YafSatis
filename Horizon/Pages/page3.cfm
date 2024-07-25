@@ -218,7 +218,7 @@
                         <a id="BUTON_6" href="javascript://" onclick='openBoxDraggable("index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=add_purchase_price_marj&OFFER_ID=<cfoutput>#Offer.OFFER_ID#</cfoutput>");' class="ui-wrk-btn ui-wrk-btn-success ui-wrk-btn-addon-left "><i class="fa fa-money"></i><span class="font-xs">Fiyat Giriş</span></a>
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
-                        <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-red ui-wrk-btn-addon-left "><i class="fa fa-close"></i><span class="font-xs">DROP EMBEZZLEMENT</span></a>
+                       <!--- <a href="javascript://" class="ui-wrk-btn ui-wrk-btn-red ui-wrk-btn-addon-left "><i class="fa fa-close"></i><span class="font-xs">DROP EMBEZZLEMENT</span></a>---->
                     </div>
                     <div class="margin-right-5 paddingNone margin-0">
                         <a id="BUTON_2" href="javascript://" onclick="windowopen('index.cfm?fuseaction=sales.emptypopup_update_inquiry&OFFER_ID=<cfoutput>#Offer.OFFER_ID#&OFC_COUNT=#GETrOWS.recordCount#</cfoutput>','wide')" class="ui-wrk-btn ui-wrk-btn-warning ui-wrk-btn-addon-left"><i class="fa fa-edit"></i>EDIT</a>
