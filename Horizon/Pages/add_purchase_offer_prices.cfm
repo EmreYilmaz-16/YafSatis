@@ -301,7 +301,7 @@
             addEqRow(excalibur, JSON.stringify(excalibur)) 
             <cfloop from="1" to="#arraylen(Item.OFFER_ROWS)#" index="j">
                 <cfset ROWA=Item.OFFER_ROWS[j]>
-                addRowCrs('#Item.PROP_LIST#', "#ROWA.PRODUCT_ID#",  "#ROWA.STOCK_ID#",  "#ROWA.PRODUCT_NAME#",'<CFIF LEN(ROWA.TAX) GT 0>#ROWA.TAX#<CFELSE>0</CFIF>' ,  "#ROWA.PART_NUMBER#",  #ROWA.QUANTITY#,  "#ROWA.UNIT#",  #ROWA.PRICE#,  "#ROWA.OTHER_MONEY#",  #ROWA.PRICE_OTHER#,  #ROWA.DISCOUNT_COST#, #0#,  #0*ROWA.QUANTITY#,  "",0,0,#ROWA.IS_VIRTUAL#,'#ROWA.UNIQUE_RELATION_ID#','#ROWA.DELIVER_DATE#') 
+                addRowCrs('#Item.PROP_LIST#', "#ROWA.PRODUCT_ID#",  "#ROWA.STOCK_ID#",  "#ROWA.PRODUCT_NAME#","<CFIF LEN(ROWA.TAX) GT 0>#ROWA.TAX#<CFELSE>0</CFIF>" ,  "#ROWA.PART_NUMBER#",  #ROWA.QUANTITY#,  "#ROWA.UNIT#",  #ROWA.PRICE#,  "#ROWA.OTHER_MONEY#",  #ROWA.PRICE_OTHER#,  #ROWA.DISCOUNT_COST#, #0#,  #0*ROWA.QUANTITY#,  "",0,0,#ROWA.IS_VIRTUAL#,'#ROWA.UNIQUE_RELATION_ID#','#ROWA.DELIVER_DATE#') 
             </cfloop>
         </cfloop>
         
