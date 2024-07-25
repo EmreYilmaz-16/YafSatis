@@ -982,7 +982,7 @@ WHERE OFFER_ID = #attributes.OFFER_ID#
         <cfset "attributes.unit_id#i#"=GETU.PRODUCT_UNIT_ID>
         <cfset UNITA=GETU.MAIN_UNIT>
     </cfif>
-        <cfset "attributes.tax#i#"=it.TAX>
+        <cfset "attributes.tax#i#"=it.TAX_RATE>
         <cfset "attributes.product_name#i#"=it.PRODUCT_NAME>
         <cfset "attributes.other_money_#i#"=it.SALE_MONEY>
         <cfset "attributes.other_money_value_#i#"=it.OTHER_MONEY_VALUE>
@@ -999,7 +999,7 @@ WHERE OFFER_ID = #attributes.OFFER_ID#
         <cfquery name="updrows" datasource="#dsn3#">
            UPDATE PBS_OFFER_ROW SET PRICE=#evaluate('attributes.price#i#')#, 
            PRICE_OTHER=#evaluate('attributes.price_other#i#')#,
-           TAX=#evaluate('attributes.tax#i#')#,
+           TAX=#evaluate('attributes.TAX#i#')#,
            OTHER_MONEY='#evaluate('attributes.other_money_#i#')#',
            OTHER_MONEY_VALUE=#evaluate('attributes.other_money_value_#i#')#,
            DISCOUNT_COST=#evaluate('attributes.iskonto_tutar#i#')#,
