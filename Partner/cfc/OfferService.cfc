@@ -272,7 +272,7 @@ where FOR_OFFER_ID=#arguments.OFFER_ID#
                 PAROW.OTHER_MONEY=OTHER_MONEY;
                 PAROW.UNIQUE_RELATION_ID=UNIQUE_RELATION_ID;
                 PAROW.MAIN_UNIT=MAIN_UNIT;
-                PARAW.TAX=TAX;
+                PAROW.TAX=TAX;
                 PAROW.PRICE=PRICE;
             arrayAppend(Ateklif.OFFER_ROWS.ROWS,PAROW)
             IF(PRICE NEQ 0){
