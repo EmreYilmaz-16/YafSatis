@@ -7,7 +7,7 @@
                 Fiyat
             </th>
             <td>
-                <cfoutput>#Data.f1# #data.m_1#</cfoutput>
+                <cfoutput><input type="text" readonly value="#Data.f1#"> <span class="input-group-addon">#data.m_1#</span></cfoutput>
             </td>
 
         </tr>
@@ -18,7 +18,7 @@
             <td>
                 <div class="form-group">
                     <div class="input-group">
-                        <cfoutput><input type="text" value="#Data.f2#"> <span class="input-group-text">#data.m_2#</span></cfoutput>
+                        <cfoutput><input type="text" value="#Data.f2#"> <span class="input-group-addon">#data.m_2#</span></cfoutput>
                     </div>
                 </div>
             </td>
@@ -44,7 +44,7 @@
             <td>
                 <div class="form-group">
                     <div class="input-group">
-                        <cfoutput><input type="text" value="#Data.f3#"><span class="input-group-text">#data.m_2#</span></cfoutput>
+                        <cfoutput><input type="text" value="#Data.f3#"><span class="input-group-addon">#data.m_2#</span></cfoutput>
                     </div>
                 </div>
             </td>
