@@ -9,6 +9,12 @@ $(document).ready(function () {
   paraBirimleri = wrk_safe_query("getMoneyList", "dsn");
   getCats(e);
   get_consumer("", "");
+  if (STSETTT.IS_PC == 1) {
+    openBoxDraggable(
+      "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=add_purchase_price_marj&OFFER_ID=" +
+        OfferData.OFFER_ID
+    );
+  }
 });
 function getCats(el) {
   $.ajax({
