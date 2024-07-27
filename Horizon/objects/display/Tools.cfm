@@ -36,4 +36,6 @@
     <cfinclude template="../form/add_print_file.cfm">
 <cfelseif attributes.ListType  eq "printInner">
     <cfinclude template="printInner.cfm">
+<cfelseif attributes.ListType  eq "PPrUpd">
+    <cfinclude template="PPrUpd.cfm">
 </cfif>
