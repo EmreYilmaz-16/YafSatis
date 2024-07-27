@@ -1090,7 +1090,7 @@ WHERE OFFER_ID = #attributes.OFFER_ID#
     </cfquery>
     <CFLOOP array="#FORMDATA.pfArr#" item="it">
         <cfquery name="INS" datasource="#dsn#_1">
-            INSERT INTO FIYAT_ONERME_PBS (WRK_ROW_ID,OFFER_ID,FOR_OFFER_ID) VALUES ('#it.wrkrowid#',#it.offer_id#,#FORMDATA.for_offer_id#)
+            INSERT INTO FIYAT_ONERME_PBS (WRK_ROW_ID,OFFER_ID,FOR_OFFER_ID,MARJ_DATE,MARJ_ORAN,SON_FIYAT) VALUES ('#it.wrkrowid#',#it.offer_id#,#FORMDATA.for_offer_id#,GETDATE(),#it.Marj#,#it.SalePrice#)
         </cfquery>
     </CFLOOP>
     CREATE TABLE CatalystQA_1.FIYAT_ONERME_PBS(ID INT PRIMARY KEY IDENTITY (1,1),WRK_ROW_ID NVARCHAR(MAX),OFFER_ID INT)
