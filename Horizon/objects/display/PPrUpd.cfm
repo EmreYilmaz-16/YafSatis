@@ -35,7 +35,7 @@
             <td>
                 <div class="form-group">
                     <div class="input-group">
-                        <cfoutput><input type="text" id="fmm1" onchange="InnerMarjHesapla()" value="#Data.fm#"> <span class="input-group-addon">%</span></cfoutput>
+                        <cfoutput><input type="text" id="fmm1" onchange="InnerMarjHesapla(this)" value="#Data.fm#"> <span class="input-group-addon">%</span></cfoutput>
                     </div>
                 </div>
             </td>
