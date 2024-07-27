@@ -1,6 +1,12 @@
 ﻿<cfset SatisSettings=structNew()>
 <cfset SatisSettings.IS_SHOW_TL=0>
-
+<cfset SatisSettings.is_pc=0>
+<cfif isDefined("attributes.is_pc")>
+    <cfset SatisSettings.is_pc=1>
+</cfif>
+<script>
+    var STSETTT=<cfoutput>#deserializeJSON(SatisSettings)#</cfoutput>
+</script>
 <link rel="stylesheet" href="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.css">
 <script src="/AddOns/YafSatis/Content/Js/notifications/notifications.js"></script>
 <script src="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.js"></script>
