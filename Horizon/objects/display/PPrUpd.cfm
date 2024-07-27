@@ -31,7 +31,7 @@
             <td>
                 <div class="form-group">
                     <div class="input-group">
-                        <cfoutput><input type="text" value="#Data.fm#"> </cfoutput>
+                        <cfoutput><input type="text" value="#Data.fm#"> <span class="input-group-addon">%</span></cfoutput>
                     </div>
                 </div>
             </td>
