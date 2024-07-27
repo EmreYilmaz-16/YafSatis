@@ -1,3 +1,4 @@
+<div style="padding:10px">
 <cf_box>
     <cfset Data=deserializeJSON(attributes.FormData)>
     <cf_grid_list>
@@ -55,3 +56,5 @@
 </cf_box>
 <cfdump var="#attributes#">
 
+
+</div>
