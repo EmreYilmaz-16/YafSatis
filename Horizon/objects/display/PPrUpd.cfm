@@ -88,6 +88,7 @@ for(let i=0;i<ef.length;i++){
     $(e).find("span[name='FM']").text(commaSplit(mr, 2));
     } 
 }
+TumunuHesapla()
 closeBoxDraggable(mdl)    
     }
 </script>
