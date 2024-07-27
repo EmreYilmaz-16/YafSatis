@@ -7,7 +7,11 @@
                 Fiyat
             </th>
             <td>
-                <cfoutput><input type="text" readonly value="#Data.f1#"> <span class="input-group-addon">#data.m_1#</span></cfoutput>
+                <div class="form-group">
+                    <div class="input-group">
+                        <cfoutput><input type="text" readonly value="#Data.f1#"> <span class="input-group-addon">#data.m_1#</span></cfoutput>
+                    </div>
+                </div>
             </td>
 
         </tr>
