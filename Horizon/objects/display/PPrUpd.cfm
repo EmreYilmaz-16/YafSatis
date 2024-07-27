@@ -77,7 +77,7 @@ $(document).ready(function(){
     function savethsss(oid,wrkrw,mdl) {
         
         var mr=$("#fmm1").val();
-        var wrkrw="PBS120240703073756232Z";
+        
     var ef=document.getElementByOfferId(oid)
 for(let i=0;i<ef.length;i++){
     var e=ef[i];
