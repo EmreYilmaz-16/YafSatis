@@ -10,7 +10,7 @@ $(document).ready(function () {
   getCats(e);
   get_consumer("", "");
   if (STSETTT.IS_PC == 1) {
-    OfferData.OFFER_ID;
+    
     openBoxDraggable(
       "index.cfm?fuseaction=objects.emptypopup_hrz_pbs_smartTools&ListType=add_purchase_price_marj&OFFER_ID=" +
         OfferData.OFFER_ID
