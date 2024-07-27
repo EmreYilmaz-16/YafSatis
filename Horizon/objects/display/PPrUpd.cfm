@@ -57,7 +57,7 @@
     </cf_grid_list>
     <hr>
     <button onclick="closeBoxDraggable('<cfoutput>#attributes.modal_id#</cfoutput>')">Kapat</button>
-    <button onclick="closeBoxDraggable(<cfoutput>#data.offer_id#,'#data.wrkrowid#','#attributes.modal_id#'</cfoutput>)">Kaydet</button>
+    <button onclick="savethsss(<cfoutput>#data.offer_id#,'#data.wrkrowid#','#attributes.modal_id#'</cfoutput>)">Kaydet</button>
 </cf_box>
 <script>
 $(document).ready(function(){
