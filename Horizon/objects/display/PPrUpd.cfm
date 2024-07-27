@@ -15,7 +15,11 @@
                 Fiyat <cfoutput>#data.m_2#</cfoutput>
             </th>
             <td>
-                <cfoutput><input type="text" value="#Data.f2#"> #data.m_2#</cfoutput>
+                <div class="form-group">
+                    <div class="input-group">
+                        <cfoutput><input type="text" value="#Data.f2#"> <span class="input-group-text">#data.m_2#</span></cfoutput>
+                    </div>
+                </div>
             </td>
             
         </tr>
@@ -24,7 +28,11 @@
                 Marj
             </th>
             <td>
-                <cfoutput><input type="text" value="#Data.fm#"> </cfoutput>
+                <div class="form-group">
+                    <div class="input-group">
+                        <cfoutput><input type="text" value="#Data.fm#"> </cfoutput>
+                    </div>
+                </div>
             </td>
             
         </tr>
@@ -33,11 +41,17 @@
                 Toplam <cfoutput>#data.m_2#</cfoutput>
             </th>
             <td>
-                <cfoutput><input type="text" value="#Data.f3#"> #data.m_2#</cfoutput>
+                <div class="form-group">
+                    <div class="input-group">
+                        <cfoutput><input type="text" value="#Data.f3#"><span class="input-group-text">#data.m_2#</span></cfoutput>
+                    </div>
+                </div>
             </td>
             
         </tr>
     </cf_grid_list>
+    <hr>
+    <button onclick="closeBoxDraggable('<cfoutput>#attributes.modal_id#</cfoutput>')">Kapat</button>
 </cf_box>
 <cfdump var="#attributes#">
 
