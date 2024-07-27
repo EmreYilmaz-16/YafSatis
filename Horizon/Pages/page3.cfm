@@ -5,7 +5,7 @@
     <cfset SatisSettings.is_pc=1>
 </cfif>
 <script>
-    var STSETTT=<cfoutput>#deserializeJSON(SatisSettings)#</cfoutput>
+    var STSETTT=<cfoutput>#serializeJSON(SatisSettings)#</cfoutput>
 </script>
 <link rel="stylesheet" href="/AddOns/YafSatis/Content/Js/magnify/jquery.magnify.css">
 <script src="/AddOns/YafSatis/Content/Js/notifications/notifications.js"></script>
