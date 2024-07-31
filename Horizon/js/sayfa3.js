@@ -2302,3 +2302,6 @@ function SepearatorSec(el) {
     $(SepetItem).find("input[name='CBX']").click();
   }
 }
+
+
+
