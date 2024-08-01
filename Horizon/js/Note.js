@@ -35,7 +35,7 @@ function SetMarj(el, tip) {
         Fiy = filterNum(Fiy);
         Fiy = parseFloat(Fiy);
         console.log(Fiy);
-        var marji = 10;
+        // var marji = 10;
         var FiyN = Fiy + (Fiy * marji) / 100;
         var Mik = $("#MIK_" + (i + 1)).text();
         console.log("Miktar=" + Mik);
@@ -50,4 +50,36 @@ function SetMarj(el, tip) {
     $("#toplam_fiyat_DOVA_PBS_" + TeklifArr[j]).text(commaSplit(STATotal, 2));
   }
   console.log("Son Toplam =" + StTotal);
+}
+
+function FiyatOnayKayit(for_offer_id) {
+  var exxx = document.getElementsByClassName("rdddd");
+  var pfArr = [];
+  for (let index = 0; index < exxx.length; index++) {
+    var ex = exxx[index];
+
+    if ($(ex).is(":checked")) {
+      console.log(ex.value);
+      var ox = {
+        offer_id: list_getat(ex.value, 1, "-"),
+        wrkrowid: list_getat(ex.value, 2, "-"),
+      };
+      pfArr.push(ox);
+    }
+  }
+  var ox = {
+    for_offer_id: for_offer_id,
+    pfArr: pfArr,
+  };
+  $.ajax({
+    url: "/AddOns/YafSatis/Partner/cfc/OfferService.cfc?method=FiyatOnayKayit",
+    data: {
+      data: JSON.stringify(ox),
+    },
+    success: function (retDat) {
+      $.notification(["Kayıt Edildi"], {
+        messageType: "error",
+      });
+    },
+  });
 }

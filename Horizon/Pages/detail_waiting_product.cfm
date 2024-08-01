@@ -33,7 +33,8 @@ WHERE VP_ID=#attributes.VP_ID#
 <input type="hidden" name="FRMPRP" id="FRMPRP" value='#getProducts.JSON_STRINGIM#'>
 <input type="hidden" name="UNIQUE_RELATION_ID" id="UNIQUE_RELATION_ID" value='#getProducts.OFFER_ROW_REL#'>
 </cfoutput>
-
+<cfdump var="#DFS.Filters#">
+<cfabort>
 <cfquery name="SameCode" datasource="#dsn3#">
 SELECT * FROM (
     SELECT  S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,
@@ -63,11 +64,16 @@ WHERE 1=1
 <cfloop array="#DFS.Filters#" item="it">
     <cfset pcatid=0>
     <cfif it.PNAME.trim() eq "EQUIPMENT">
-        <cfset pcatid=it.PRODUCT_CATID>
+        <cftry>
+            <cfset pcatid=it.PRODUCT_CATID>
+                <cfcatch>
+                    <cfset pcatid=it.PRODUCT_CAT_ID>
+                    </cfcatch></cftry>
+            
     </cfif>
     <cfif it.PNAME.trim() neq "EQUIPMENT">
         <cfquery name="DFFF" datasource="#DSN1#">
-            SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#32# AND PROPERTY_ID=#it.PROP_ID#
+            SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry> AND PROPERTY_ID=#it.PROP_ID#
         </cfquery>
         <cfset it.IS_OPTIONAL=DFFF.IS_OPTIONAL>    
     </cfif>
