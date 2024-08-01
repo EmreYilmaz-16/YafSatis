@@ -79,9 +79,9 @@ WHERE 1=1
         <cfquery name="DFFF" datasource="#DSN1#">
             SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#pcatid# AND PROPERTY_ID=#it.PROP_ID#
         </cfquery>
-        /*
+       <!---- /*
         <cfdump var="#DFFF#">
-        */
+        */----->
         <cfset is_opt=DFFF.IS_OPTIONAL>
         
         <cfset it.IS_OPTIONAL=DFFF.IS_OPTIONAL>    
@@ -97,8 +97,7 @@ WHERE 1=1
 
 
 </cfquery>
-<cfdump var="#SameCode#">
-<cfdump var="#DFS.Filters#">
+
 
 <cf_box title="Benzer Ürünler">
 <cf_big_list>
