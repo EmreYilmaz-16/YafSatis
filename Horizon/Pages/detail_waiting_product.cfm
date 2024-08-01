@@ -76,7 +76,9 @@ WHERE 1=1
         <cfquery name="DFFF" datasource="#DSN1#">
             SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry> AND PROPERTY_ID=#it.PROP_ID#
         </cfquery>
-        
+        /*
+        <cfdump var="#DFFF#">
+        */
         <cfset is_opt=DFFF.IS_OPTIONAL>
         
         <cfset it.IS_OPTIONAL=DFFF.IS_OPTIONAL>    
