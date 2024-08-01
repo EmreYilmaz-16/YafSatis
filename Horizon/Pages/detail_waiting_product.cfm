@@ -62,7 +62,7 @@ AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#get
 WHERE 1=1
 <cfloop array="#DFS.Filters#" item="it">
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
-        <cfif isDefined("it.IS_OPTIONAL") and it.IS_OPTIONAL eq 0>
+        <cfif isDefined("it.IS_OPTIONAL")  and (LEN(it.IS_OPTIONAL) AND  it.IS_OPTIONAL eq 0)>
        AND DTP LIKE  '%<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry>,%'
     </cfif>
     
