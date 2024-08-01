@@ -96,6 +96,7 @@
            <button onclick="window.open('/index.cfm?fuseaction=purchase.emptypopup_list_offer_pbs','_blank')" class="OsButton OsButton-orange">List Purchase Offer</button>            
            <hr>
            <button onclick='window.open("index.cfm?fuseaction=report.detail_product_report_PBS","_blank")' class="OsButton OsButton-orange">Detaylı Ürün Raporu</button>
+           <button onclick='window.open("index.cfm?fuseaction=product.list_product&event=list_special","_blank")' class="OsButton OsButton-orange">Ürünler</button>
         </div>
     </cf_box>
     </div>
