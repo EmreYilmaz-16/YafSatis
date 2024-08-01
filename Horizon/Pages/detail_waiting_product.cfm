@@ -71,6 +71,7 @@ WHERE 1=1
 
 
 </cfquery>
+<cfdump var="#DFS.Filters#">
 <cfdump var="#SameCode#">
 
 <cf_box title="Benzer Ürünler">
