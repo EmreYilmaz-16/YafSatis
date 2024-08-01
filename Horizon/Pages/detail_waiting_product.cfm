@@ -61,8 +61,9 @@ WHERE 1=1
 AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#getProducts.PRODUCT_NAME#%'
 ) AS PRP
 WHERE 1=1
+<cfset pcatid=0>
 <cfloop array="#DFS.Filters#" item="it">
-    <cfset pcatid=0>
+    
     <cfif it.PNAME.trim() eq "EQUIPMENT">
        <cfif isDefined("it.PRODUCT_CATID")>
         <cfset pcatid=it.PRODUCT_CATID>
