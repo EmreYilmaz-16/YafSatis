@@ -309,7 +309,7 @@ WHERE PDP.PRODUCT_ID=P.PRODUCT_ID AND PP.PROPERTY_ID IS NULL
                     ON PU.PRODUCT_ID = P.PRODUCT_ID AND PU.IS_MAIN = 1
                 WHERE PRODUCT_CATID = #FData.SearchMainValue.PRODUCT_CAT_ID#
                 ) AS TT
-            WHERE 1 = 1 <cfif len(FData.keyword)>
+            WHERE 1 = 1 <cfif isDefined("FData.keyword") and len(FData.keyword)>
                  AND (
                     MANUFACT_CODE LIKE '%#FData.keyword#%' OR
                     PRODUCT_NAME LIKE '%#FData.keyword#%' 
