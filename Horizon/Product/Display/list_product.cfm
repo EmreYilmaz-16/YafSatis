@@ -95,7 +95,7 @@ where PRODUCT_CAT_ID=#attributes.PRODUCT_CAT#
     </thead>
     <tbody>
         <cfif isDefined("attributes.is_submit")>
-            <cfdump var="#ProductList.PRODUCTS#">
+            
             
         <cfloop array="#ProductList.PRODUCTS#" item="it">
             <tr>
