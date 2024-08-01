@@ -71,15 +71,17 @@ WHERE 1=1
                     </cfcatch></cftry>
             
     </cfif>
+    <cfset is_opt=0>
     <cfif it.PNAME.trim() neq "EQUIPMENT">
         <cfquery name="DFFF" datasource="#DSN1#">
             SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry> AND PROPERTY_ID=#it.PROP_ID#
         </cfquery>
+        <cfset is_opt=DFFF.IS_OPTIONAL>
         <cfset it.IS_OPTIONAL=DFFF.IS_OPTIONAL>    
     </cfif>
 
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
-        <cfif isDefined("it.IS_OPTIONAL")  and (LEN(it.IS_OPTIONAL) AND  it.IS_OPTIONAL eq 0)>
+        <cfif is_opt eq 0>
        AND DTP LIKE  '%<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry>,%'
     </cfif>
     
