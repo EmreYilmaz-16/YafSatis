@@ -71,6 +71,7 @@ WHERE 1=1
 
 
 </cfquery>
+<cfdump var="#SameCode#">
 
 <cf_box title="Benzer Ürünler">
 <cf_big_list>
