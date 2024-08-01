@@ -61,11 +61,19 @@ AND MANUFACT_CODE LIKE '%#getProducts.PART_NUMBER#%' OR PRODUCT_NAME LIKE '%#get
 ) AS PRP
 WHERE 1=1
 <cfloop array="#DFS.Filters#" item="it">
-<cfif isDefined("it.IS_OPTIONAL")  and not len(it.IS_OPTIONAL)>
-    <cfset it.IS_OPTIONAL=0>
-</cfif>
+    <cfset pcatid=0>
+    <cfif it.PNAME.trim() eq "EQUIPMENT">
+        <cfset pcatid=it.PRODUCT_CATID>
+    </cfif>
+    <cfif it.PNAME.trim() neq "EQUIPMENT">
+        <cfquery name="DFFF" datasource="#DSN1#">
+            SELECT * FROM CatalystQA_product.PRODUCT_CAT_PROPERTY WHERE PRODUCT_CAT_ID=#32# AND PROPERTY_ID=#it.PROP_ID#
+        </cfquery>
+        <cfset it.IS_OPTIONAL=DFFF.IS_OPTIONAL>    
+    </cfif>
+
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
-        <cfif isDefined("it.IS_OPTIONAL")  and (LEN(it.IS_OPTIONAL) AND  it.IS_OPTIONAL eq 0)>
+        <cfif isDefined("it.IS_OPTIONAL")  and (LEN(it.IS_OPTIONAL) AND  it.IS_OPTIONAL neq 0)>
        AND DTP LIKE  '%<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry>,%'
     </cfif>
     
