@@ -34,7 +34,7 @@ WHERE VP_ID=#attributes.VP_ID#
 <input type="hidden" name="UNIQUE_RELATION_ID" id="UNIQUE_RELATION_ID" value='#getProducts.OFFER_ROW_REL#'>
 </cfoutput>
 <cfdump var="#DFS.Filters#">
-<cfabort>
+
 <cfquery name="SameCode" datasource="#dsn3#">
 SELECT * FROM (
     SELECT  S.PRODUCT_ID,S.STOCK_ID,S.MANUFACT_CODE,S.PRODUCT_NAME,S.PRODUCT_CATID,PC.PRODUCT_CAT,
