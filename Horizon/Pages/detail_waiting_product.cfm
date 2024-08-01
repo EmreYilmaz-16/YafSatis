@@ -73,7 +73,7 @@ WHERE 1=1
     </cfif>
 
     <cfif it.PNAME.trim() neq "EQUIPMENT"> 
-        <cfif isDefined("it.IS_OPTIONAL")  and (LEN(it.IS_OPTIONAL) AND  it.IS_OPTIONAL neq 0)>
+        <cfif isDefined("it.IS_OPTIONAL")  and (LEN(it.IS_OPTIONAL) AND  it.IS_OPTIONAL eq 0)>
        AND DTP LIKE  '%<cftry>#it.PRODUCT_CATID#<cfcatch>#it.PRODUCT_CAT_ID#</cfcatch></cftry>,%'
     </cfif>
     
