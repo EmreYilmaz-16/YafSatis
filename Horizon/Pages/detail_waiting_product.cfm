@@ -64,11 +64,13 @@ WHERE 1=1
 <cfloop array="#DFS.Filters#" item="it">
     <cfset pcatid=0>
     <cfif it.PNAME.trim() eq "EQUIPMENT">
-        <cftry>
-            <cfset pcatid=it.PRODUCT_CATID>
-                <cfcatch>
-                    <cfset pcatid=it.PRODUCT_CAT_ID>
-                    </cfcatch></cftry>
+       <cfif isDefined("it.PRODUCT_CATID")>
+        <cfset pcatid=it.PRODUCT_CATID>
+        <cfelse>
+            <cfset pcatid=it.PRODUCT_CAT_ID>
+       </cfif>
+       
+       
             
     </cfif>
     <cfset is_opt=0>
